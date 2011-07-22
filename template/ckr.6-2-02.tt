@@ -1,0 +1,3342 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@comment
+複数ファイルのテスト
+@comment_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+@def_
+
+@def $macro0()
+$LICENSE()
+#include "testout.h"
+#define NO 0
+#define OK 1
+#define YCHAR	'y'
+#define NCHAR	'n'
+#define NoMistake 00
+@def_
+
+@def $macro1()
+$LICENSE()
+$HEAD()
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+float           Float_A[0x100];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern float    Float_B[];
+	register int    i;
+
+
+	for (i = 0; i < 256; i++)
+		Float_A[i] = i;
+	function();
+
+	for (i = 0; i < 256; i++)
+		if (! TGEN_FLT_EQ(Float_A[i], Float_B[i]) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro2()
+$LICENSE()
+$HEAD()
+
+float           Float_B[0x100];	/* 1k Bytes */
+
+function()
+{
+	extern float    Float_A[];
+	register int    i;
+
+	for (i = 0; i < 256; i++)
+		Float_B[i] = Float_A[i];
+}
+@def_
+@def $macro3()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+int             statusFlag = NoMistake;
+
+FLOATDEF        Floatdef_A[0x100];	/* 1k Bytes */
+extern FLOATDEF Floatdef_B[0x100];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++)
+		Floatdef_A[i] = i;
+	function();
+
+	for (i = 0; i < 256; i++)
+		if (! TGEN_FLT_EQ(Floatdef_A[i], Floatdef_B[i]) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro4()
+$LICENSE()
+$HEAD()
+
+#include    "ftdef.h"
+
+extern FLOATDEF Floatdef_A[0x100];	/* 1k Bytes */
+FLOATDEF        Floatdef_B[0x100];	/* 1k Bytes */
+
+function()
+{
+	register int    i;
+
+	for (i = 0; i < 256; i++)
+		Floatdef_B[i] = Floatdef_A[i];
+}
+@def_
+@def $macro5()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+float           Float_A[0x100];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern float    Float_B[];
+	register int    i;
+
+
+	for (i = 0; i < 256; i++)
+		Float_A[i] = i;
+	function(Float_A);
+
+	for (i = 0; i < 256; i++)
+		if (! TGEN_FLT_EQ(Float_A[i], Float_B[i]) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro6()
+$LICENSE()
+$HEAD()
+
+float           Float_B[0x100];	/* 1k Bytes(8086) */
+
+function(argument)
+	float          *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 256; i++, *argument++)
+		Float_B[i] = *argument;
+}
+@def_
+@def $macro7()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+int             statusFlag = NoMistake;
+
+FLOATDEF        Floatdef_A[0x100];	/* 1k Bytes */
+extern FLOATDEF Floatdef_B[0x100];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++)
+		Floatdef_A[i] = i;
+	function(Floatdef_A);
+
+	for (i = 0; i < 256; i++)
+		if (! TGEN_FLT_EQ(Floatdef_A[i], Floatdef_B[i]) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro8()
+$LICENSE()
+$HEAD()
+
+#include    "ftdef.h"
+
+FLOATDEF        Floatdef_B[0x100];	/* 1k Bytes */
+
+function(argument)
+	FLOATDEF       *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 256; i++, *argument++)
+		Floatdef_B[i] = *argument;
+}
+@def_
+@def $macro9()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+int             statusFlag = NoMistake;
+
+struct StrA     Struct_A[0x40];	/* 8k Bytes */
+extern struct StrB Struct_B[0x40];	/* 8k Bytes */
+
+
+main()
+{
+	register int    i;
+
+	for (i = 0; i < 64; i++) {
+		Struct_A[i].Int = i;
+		Struct_A[i].Short = i;
+		Struct_A[i].Long = i;
+		Struct_A[i].Unsigned = i;
+		Struct_A[i].Char = YCHAR;
+		Struct_A[i].Float = i;
+	}
+
+	function();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Int != Struct_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Short != Struct_B[i].Short)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Long != Struct_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Unsigned != Struct_B[i].Unsigned)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Char != Struct_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (! TGEN_FLT_EQ(Struct_A[i].Float, Struct_B[i].Float) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro10()
+$LICENSE()
+$HEAD()
+
+#include    "fstrc.h"
+
+extern struct StrA Struct_A[0x40];	/* 1k Bytes */
+struct StrB     Struct_B[0x40];	/* 1k Bytes */
+
+function()
+{
+	register int    i;
+
+
+	for (i = 0; i < 64; i++) {
+		Struct_B[i].Int = Struct_A[i].Int;
+		Struct_B[i].Short = Struct_A[i].Short;
+		Struct_B[i].Long = Struct_A[i].Long;
+		Struct_B[i].Unsigned = Struct_A[i].Unsigned;
+		Struct_B[i].Char = Struct_A[i].Char;
+		Struct_B[i].Float = Struct_A[i].Float;
+	}
+}
+@def_
+@def $macro11()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "funi.h"
+
+
+int             statusFlag = NoMistake;
+
+union UniA      Union_A[0x100];	/* 1k Bytes */
+extern union UniB Union_B[0x100];	/* 1k Bytes */
+
+
+main()
+{
+
+	register int    i;
+
+	for (i = 0; i < 256; i++) {
+		Union_A[i].Int = i;
+		Union_A[i].Long = i;
+		Union_A[i].Char = YCHAR;
+		Union_A[i].Float = i;
+	}
+
+	function();
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Int != Union_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Long != Union_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Char != Union_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (! TGEN_FLT_EQ(Union_A[i].Float, Union_B[i].Float) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro12()
+$LICENSE()
+$HEAD()
+
+#include    "funi.h"
+
+extern union UniA Union_A[0x100];	/* 1k Bytes */
+union UniB      Union_B[0x100];	/* 1k Bytes */
+
+
+function()
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++) {
+		Union_B[i].Int = Union_A[i].Int;
+		Union_B[i].Long = Union_A[i].Long;
+		Union_B[i].Char = Union_A[i].Char;
+		Union_B[i].Float = Union_A[i].Float;
+	}
+}
+@def_
+@def $macro13()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstyp.h"
+
+int             statusFlag = NoMistake;
+
+STRDEF_A        Strdef_A[0x40];	/* 1k Bytes */
+extern STRDEF_B Strdef_B[0x40];	/* 1k Bytes */
+
+
+
+main()
+{
+	register int    i;
+
+	for (i = 0; i < 64; i++) {
+		Strdef_A[i].Int = i;
+		Strdef_A[i].Short = i;
+		Strdef_A[i].Long = i;
+		Strdef_A[i].Unsigned = i;
+		Strdef_A[i].Char = YCHAR;
+		Strdef_A[i].Float = i;
+	}
+
+	function();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Int != Strdef_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Short != Strdef_B[i].Short)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Long != Strdef_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Unsigned != Strdef_B[i].Unsigned)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Char != Strdef_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (! TGEN_FLT_EQ(Strdef_A[i].Float, Strdef_B[i].Float) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro14()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstyp.h"
+
+extern STRDEF_A Strdef_A[0x40];	/* 1k Bytes */
+STRDEF_B        Strdef_B[0x40];	/* 1k Bytes */
+
+function()
+{
+	register int    i;
+
+
+	for (i = 0; i < 64; i++) {
+		Strdef_B[i].Int = Strdef_A[i].Int;
+		Strdef_B[i].Short = Strdef_A[i].Short;
+		Strdef_B[i].Long = Strdef_A[i].Long;
+		Strdef_B[i].Unsigned = Strdef_A[i].Unsigned;
+		Strdef_B[i].Char = Strdef_A[i].Char;
+		Strdef_B[i].Float = Strdef_A[i].Float;
+	}
+}
+@def_
+@def $macro15()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "futyp.h"
+
+
+int             statusFlag = NoMistake;
+
+UNIDEF_A        Unidef_A[0x100];/* 1k Bytes(8086) */
+extern UNIDEF_B Unidef_B[0x100];/* 1k Bytes(8086) */
+
+
+
+main()
+{
+
+	register int    i;
+
+	for (i = 0; i < 256; i++) {
+		Unidef_A[i].Int = i;
+		Unidef_A[i].Long = i;
+		Unidef_A[i].Char = YCHAR;
+		Unidef_A[i].Float = i;
+	}
+
+	function();
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Int != Unidef_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Long != Unidef_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Char != Unidef_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (! TGEN_FLT_EQ(Unidef_A[i].Float, Unidef_B[i].Float) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro16()
+$LICENSE()
+$HEAD()
+
+#include    "futyp.h"
+
+extern UNIDEF_A Unidef_A[0x100];/* 1k Bytes(8086) */
+UNIDEF_B        Unidef_B[0x100];/* 1k Bytes(8086) */
+
+function()
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++) {
+		Unidef_B[i].Int = Unidef_A[i].Int;
+		Unidef_B[i].Long = Unidef_A[i].Long;
+		Unidef_B[i].Char = Unidef_A[i].Char;
+		Unidef_B[i].Float = Unidef_A[i].Float;
+	}
+}
+@def_
+@def $macro17()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+
+int             statusFlag = NoMistake;
+
+struct StrA     Struct_A[0x40];	/* 1k Bytes */
+extern struct StrB Struct_B[0x40];	/* 1k Bytes */
+
+
+main()
+{
+	register int    i;
+
+	for (i = 0; i < 64; i++) {
+		Struct_A[i].Int = i;
+		Struct_A[i].Short = i;
+		Struct_A[i].Long = i;
+		Struct_A[i].Unsigned = i;
+		Struct_A[i].Char = YCHAR;
+		Struct_A[i].Float = i;
+	}
+
+	function(Struct_A);
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Int != Struct_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Short != Struct_B[i].Short)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Long != Struct_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Unsigned != Struct_B[i].Unsigned)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Char != Struct_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (! TGEN_FLT_EQ(Struct_A[i].Float, Struct_B[i].Float) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro18()
+$LICENSE()
+$HEAD()
+
+#include    "fstrc.h"
+
+struct StrB     Struct_B[0x40];	/* 1k Bytes */
+
+function(argument)
+	struct StrA    *argument;
+{
+	register int    i;
+
+
+	for (i = 0; i < 64; i++, *argument++) {
+		Struct_B[i].Int = argument->Int;
+		Struct_B[i].Short = argument->Short;
+		Struct_B[i].Long = argument->Long;
+		Struct_B[i].Unsigned = argument->Unsigned;
+		Struct_B[i].Char = argument->Char;
+		Struct_B[i].Float = argument->Float;
+	}
+}
+@def_
+@def $macro19()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "funi.h"
+
+
+int             statusFlag = NoMistake;
+
+union UniA      Union_A[0x100];	/* 1k Bytes */
+extern union UniB Union_B[0x100];	/* 1k Bytes */
+
+
+main()
+{
+
+	register int    i;
+
+	for (i = 0; i < 256; i++) {
+		Union_A[i].Int = i;
+		Union_A[i].Long = i;
+		Union_A[i].Char = YCHAR;
+		Union_A[i].Float = i;
+	}
+
+	function(Union_A);
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Int != Union_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Long != Union_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Char != Union_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (! TGEN_FLT_EQ(Union_A[i].Float, Union_B[i].Float) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro20()
+$LICENSE()
+$HEAD()
+
+#include    "funi.h"
+
+union UniB      Union_B[0x100];	/* 1k Bytes */
+
+
+function(argument)
+	union UniA     *argument;
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++, *argument++) {
+		Union_B[i].Int = argument->Int;
+		Union_B[i].Long = argument->Long;
+		Union_B[i].Char = argument->Char;
+		Union_B[i].Float = argument->Float;
+	}
+}
+@def_
+@def $macro21()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstyp.h"
+
+
+int             statusFlag = NoMistake;
+
+STRDEF_A        Strdef_A[0x40];	/* 1k Bytes */
+extern STRDEF_B Strdef_B[0x40];	/* 1k Bytes */
+
+
+
+main()
+{
+	register int    i;
+
+	for (i = 0; i < 64; i++) {
+		Strdef_A[i].Int = i;
+		Strdef_A[i].Short = i;
+		Strdef_A[i].Long = i;
+		Strdef_A[i].Unsigned = i;
+		Strdef_A[i].Char = YCHAR;
+		Strdef_A[i].Float = i;
+	}
+
+	function(Strdef_A);
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Int != Strdef_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Short != Strdef_B[i].Short)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Long != Strdef_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Unsigned != Strdef_B[i].Unsigned)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Char != Strdef_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (! TGEN_FLT_EQ(Strdef_A[i].Float, Strdef_B[i].Float) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro22()
+$LICENSE()
+$HEAD()
+
+#include    "fstyp.h"
+
+STRDEF_B        Strdef_B[0x40];	/* 1k Bytes */
+
+function(argument)
+	STRDEF_A       *argument;
+{
+	register int    i;
+
+
+	for (i = 0; i < 64; i++, *argument++) {
+		Strdef_B[i].Int = argument->Int;
+		Strdef_B[i].Short = argument->Short;
+		Strdef_B[i].Long = argument->Long;
+		Strdef_B[i].Unsigned = argument->Unsigned;
+		Strdef_B[i].Char = argument->Char;
+		Strdef_B[i].Float = argument->Float;
+	}
+}
+@def_
+@def $macro23()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "futyp.h"
+
+
+int             statusFlag = NoMistake;
+
+UNIDEF_A        Unidef_A[0x100];/* 1k Bytes(8086) */
+extern UNIDEF_B Unidef_B[0x100];/* 1k Bytes(8086) */
+
+
+
+main()
+{
+
+	register int    i;
+
+	for (i = 0; i < 256; i++) {
+		Unidef_A[i].Int = i;
+		Unidef_A[i].Long = i;
+		Unidef_A[i].Char = YCHAR;
+		Unidef_A[i].Float = i;
+	}
+
+	function(Unidef_A);
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Int != Unidef_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Long != Unidef_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Char != Unidef_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (! TGEN_FLT_EQ(Unidef_A[i].Float, Unidef_B[i].Float) )
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro24()
+$LICENSE()
+$HEAD()
+
+#include    "futyp.h"
+
+UNIDEF_B        Unidef_B[0x100];/* 1k Bytes(8086) */
+
+function(argument)
+	UNIDEF_A       *argument;
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++, *argument++) {
+		Unidef_B[i].Int = argument->Int;
+		Unidef_B[i].Long = argument->Long;
+		Unidef_B[i].Char = argument->Char;
+		Unidef_B[i].Float = argument->Float;
+	}
+}
+@def_
+
+@def $macro25()
+$LICENSE()
+struct StrA {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	char            Dummy;
+};
+struct StrB {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	char            Dummy;
+};
+@def_
+
+@def $macro26()
+$LICENSE()
+struct StrA {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	char            Dummy;
+};
+struct StrB {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	char            Dummy;
+};
+@def_
+
+@def $macro27()
+$LICENSE()
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	char            Dummy;
+}               STRDEF_A;
+
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	char            Dummy;
+}               STRDEF_B;
+@def_
+
+@def $macro28()
+$LICENSE()
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	char            Dummy;
+}               STRDEF_A;
+
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	char            Dummy;
+}               STRDEF_B;
+@def_
+
+@def $macro29()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+int             Int_A[0x200];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern int      Int_B[];
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Int_A[i] = i;
+	function();
+
+	for (i = 0; i < 512; i++)
+		if (Int_A[i] != Int_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro30()
+$LICENSE()
+$HEAD()
+
+int             Int_B[0x200];	/* 1k Bytes(8086) */
+
+function()
+{
+	extern int      Int_A[];
+	register int    i;
+
+	for (i = 0; i < 512; i++)
+		Int_B[i] = Int_A[i];
+}
+@def_
+@def $macro31()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+short           Short_A[0x200];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern short    Short_B[];
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Short_A[i] = i;
+	function();
+
+	for (i = 0; i < 512; i++)
+		if (Short_A[i] != Short_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro32()
+$LICENSE()
+$HEAD()
+
+short           Short_B[0x200];	/* 1k Bytes(8086) */
+
+function()
+{
+	extern short    Short_A[];
+	register int    i;
+
+	for (i = 0; i < 512; i++)
+		Short_B[i] = Short_A[i];
+}
+@def_
+@def $macro33()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+long            Long_A[0x100];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern long     Long_B[];
+	register int    i;
+
+
+	for (i = 0; i < 256; i++)
+		Long_A[i] = i;
+	function();
+
+	for (i = 0; i < 256; i++)
+		if (Long_A[i] != Long_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro34()
+$LICENSE()
+$HEAD()
+
+long            Long_B[0x100];	/* 1k Bytes */
+
+function()
+{
+	extern long     Long_A[];
+	register int    i;
+
+	for (i = 0; i < 256; i++)
+		Long_B[i] = Long_A[i];
+}
+@def_
+@def $macro35()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+unsigned        Unsigned_A[0x200];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern unsigned Unsigned_B[];
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Unsigned_A[i] = i;
+	function();
+
+	for (i = 0; i < 512; i++)
+		if (Unsigned_A[i] != Unsigned_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro36()
+$LICENSE()
+$HEAD()
+
+unsigned        Unsigned_B[0x200];	/* 1k Bytes(8086) */
+
+function()
+{
+	extern unsigned Unsigned_A[];
+	register int    i;
+
+	for (i = 0; i < 512; i++)
+		Unsigned_B[i] = Unsigned_A[i];
+}
+@def_
+@def $macro37()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+char            Char_A[0x400];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern char     Char_B[];
+	register int    i;
+
+
+	for (i = 0; i < 1024; i++)
+		Char_A[i] = YCHAR;
+	function();
+
+	for (i = 0; i < 1024; i++)
+		if (Char_A[i] != Char_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro38()
+$LICENSE()
+$HEAD()
+
+char            Char_B[0x400];	/* 1k Bytes(8086) */
+
+function()
+{
+	extern char     Char_A[];
+	register int    i;
+
+	for (i = 0; i < 1024; i++)
+		Char_B[i] = Char_A[i];
+}
+@def_
+@def $macro39()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+int             statusFlag = NoMistake;
+
+
+INTDEF          Intdef_A[0x200];/* 1k Bytes(8086) */
+extern INTDEF   Intdef_B[0x200];/* 1k Bytes(8086) */
+
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Intdef_A[i] = i;
+	function();
+
+	for (i = 0; i < 512; i++)
+		if (Intdef_A[i] != Intdef_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro40()
+$LICENSE()
+$HEAD()
+
+#include    "tdef.h"
+
+extern INTDEF   Intdef_A[0x200];/* 1k Bytes(8086) */
+INTDEF          Intdef_B[0x200];/* 1k Bytes(8086) */
+
+function()
+{
+	register int    i;
+
+	for (i = 0; i < 512; i++)
+		Intdef_B[i] = Intdef_A[i];
+}
+@def_
+@def $macro41()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+int             statusFlag = NoMistake;
+
+SHORTDEF        Shortdef_A[0x200];	/* 1k Bytes */
+extern SHORTDEF Shortdef_B[0x200];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Shortdef_A[i] = i;
+	function();
+
+	for (i = 0; i < 512; i++)
+		if (Shortdef_A[i] != Shortdef_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro42()
+$LICENSE()
+$HEAD()
+
+#include    "tdef.h"
+
+extern SHORTDEF Shortdef_A[0x200];	/* 1k Bytes */
+SHORTDEF        Shortdef_B[0x200];	/* 1k Bytes */
+
+function()
+{
+	register int    i;
+
+	for (i = 0; i < 512; i++)
+		Shortdef_B[i] = Shortdef_A[i];
+}
+@def_
+@def $macro43()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+int             statusFlag = NoMistake;
+
+LONGDEF         Longdef_A[0x100];	/* 1k Bytes */
+extern LONGDEF  Longdef_B[0x100];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++)
+		Longdef_A[i] = i;
+	function();
+
+	for (i = 0; i < 256; i++)
+		if (Longdef_A[i] != Longdef_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro44()
+$LICENSE()
+$HEAD()
+
+#include    "tdef.h"
+
+extern LONGDEF  Longdef_A[0x100];	/* 1k Bytes */
+LONGDEF         Longdef_B[0x100];	/* 1k Bytes */
+
+function()
+{
+	register int    i;
+
+	for (i = 0; i < 256; i++)
+		Longdef_B[i] = Longdef_A[i];
+}
+@def_
+@def $macro45()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+int             statusFlag = NoMistake;
+
+UNSIGNDEF       Unsigndef_A[0x200];	/* 1k Bytes */
+extern UNSIGNDEF Unsigndef_B[0x200];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Unsigndef_A[i] = i;
+	function();
+
+	for (i = 0; i < 512; i++)
+		if (Unsigndef_A[i] != Unsigndef_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro46()
+$LICENSE()
+$HEAD()
+
+#include    "tdef.h"
+
+extern UNSIGNDEF Unsigndef_A[0x200];	/* 1k Bytes */
+UNSIGNDEF       Unsigndef_B[0x200];	/* 1k Bytes */
+
+function()
+{
+	register int    i;
+
+	for (i = 0; i < 512; i++)
+		Unsigndef_B[i] = Unsigndef_A[i];
+}
+@def_
+@def $macro47()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+int             statusFlag = NoMistake;
+
+CHARDEF         Chardef_A[0x400];	/* 1k Bytes */
+extern CHARDEF  Chardef_B[0x400];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 1024; i++)
+		Chardef_A[i] = YCHAR;
+	function();
+
+	for (i = 0; i < 1024; i++)
+		if (Chardef_A[i] != Chardef_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro48()
+$LICENSE()
+$HEAD()
+
+#include    "tdef.h"
+
+extern CHARDEF  Chardef_A[0x400];	/* 1k Bytes */
+CHARDEF         Chardef_B[0x400];	/* 1k Bytes */
+
+function()
+{
+	register int    i;
+
+	for (i = 0; i < 1024; i++)
+		Chardef_B[i] = Chardef_A[i];
+}
+@def_
+@def $macro49()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+int             Int_A[0x200];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern int      Int_B[];
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Int_A[i] = i;
+	function(Int_A);
+
+	for (i = 0; i < 512; i++)
+		if (Int_A[i] != Int_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro50()
+$LICENSE()
+$HEAD()
+
+int             Int_B[0x200];	/* 1k Bytes(8086) */
+
+function(argument)
+	int            *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 512; i++, *argument++)
+		Int_B[i] = *argument;
+}
+@def_
+@def $macro51()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+short           Short_A[0x200];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern short    Short_B[];
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Short_A[i] = i;
+	function(Short_A);
+
+	for (i = 0; i < 512; i++)
+		if (Short_A[i] != Short_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro52()
+$LICENSE()
+$HEAD()
+
+short           Short_B[0x200];	/* 1k Bytes(8086) */
+
+function(argument)
+	short          *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 512; i++, *argument++)
+		Short_B[i] = *argument;
+}
+@def_
+@def $macro53()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+long            Long_A[0x100];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern long     Long_B[];
+	register int    i;
+
+
+	for (i = 0; i < 256; i++)
+		Long_A[i] = i;
+	function(Long_A);
+
+	for (i = 0; i < 256; i++)
+		if (Long_A[i] != Long_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro54()
+$LICENSE()
+$HEAD()
+
+long            Long_B[0x100];	/* 1k Bytes(8086) */
+
+function(argument)
+	long           *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 256; i++, *argument++)
+		Long_B[i] = *argument;
+}
+@def_
+@def $macro55()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+unsigned        Unsigned_A[0x200];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern unsigned Unsigned_B[];
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Unsigned_A[i] = i;
+	function(Unsigned_A);
+
+	for (i = 0; i < 512; i++)
+		if (Unsigned_A[i] != Unsigned_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro56()
+$LICENSE()
+$HEAD()
+
+unsigned        Unsigned_B[0x200];	/* 1k Bytes(8086) */
+
+function(argument)
+	unsigned       *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 512; i++, *argument++)
+		Unsigned_B[i] = *argument;
+}
+@def_
+@def $macro57()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+int             statusFlag = NoMistake;
+char            Char_A[0x400];	/* 1k Bytes(8086) */
+
+main()
+{
+	extern char     Char_B[];
+	register int    i;
+
+
+	for (i = 0; i < 1024; i++)
+		Char_A[i] = YCHAR;
+	function(Char_A);
+
+	for (i = 0; i < 1024; i++)
+		if (Char_A[i] != Char_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro58()
+$LICENSE()
+$HEAD()
+
+char            Char_B[0x400];	/* 1k Bytes(8086) */
+
+function(argument)
+	char           *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 1024; i++, *argument++)
+		Char_B[i] = *argument;
+}
+@def_
+@def $macro59()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+int             statusFlag = NoMistake;
+
+INTDEF          Intdef_A[0x200];/* 1k Bytes(8086) */
+extern INTDEF   Intdef_B[0x200];/* 1k Bytes(8086) */
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Intdef_A[i] = i;
+	function(Intdef_A);
+
+	for (i = 0; i < 512; i++)
+		if (Intdef_A[i] != Intdef_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro60()
+$LICENSE()
+$HEAD()
+
+#include    "tdef.h"
+
+INTDEF          Intdef_B[0x200];/* 1k Bytes(8086) */
+
+function(argument)
+	INTDEF         *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 512; i++, *argument++)
+		Intdef_B[i] = *argument;
+}
+@def_
+@def $macro61()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+int             statusFlag = NoMistake;
+
+SHORTDEF        Shortdef_A[0x200];	/* 1k Bytes */
+extern SHORTDEF Shortdef_B[0x200];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Shortdef_A[i] = i;
+	function(Shortdef_A);
+
+	for (i = 0; i < 512; i++)
+		if (Shortdef_A[i] != Shortdef_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro62()
+$LICENSE()
+$HEAD()
+
+#include    "tdef.h"
+
+SHORTDEF        Shortdef_B[0x200];	/* 1k Bytes */
+
+function(argument)
+	SHORTDEF       *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 512; i++, *argument++)
+		Shortdef_B[i] = *argument;
+}
+@def_
+@def $macro63()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+int             statusFlag = NoMistake;
+
+LONGDEF         Longdef_A[0x100];	/* 1k Bytes */
+extern LONGDEF  Longdef_B[0x100];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++)
+		Longdef_A[i] = i;
+	function(Longdef_A);
+
+	for (i = 0; i < 256; i++)
+		if (Longdef_A[i] != Longdef_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro64()
+$LICENSE()
+$HEAD()
+
+#include    "tdef.h"
+
+LONGDEF         Longdef_B[0x100];	/* 1k Bytes */
+
+function(argument)
+	LONGDEF        *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 256; i++, *argument++)
+		Longdef_B[i] = *argument;
+}
+@def_
+@def $macro65()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+int             statusFlag = NoMistake;
+
+UNSIGNDEF       Unsigndef_A[0x200];	/* 1k Bytes */
+extern UNSIGNDEF Unsigndef_B[0x200];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 512; i++)
+		Unsigndef_A[i] = i;
+	function(Unsigndef_A);
+
+
+	for (i = 0; i < 512; i++)
+		if (Unsigndef_A[i] != Unsigndef_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro66()
+$LICENSE()
+$HEAD()
+
+#include    "tdef.h"
+
+UNSIGNDEF       Unsigndef_B[0x200];	/* 1k Bytes */
+
+function(argument)
+	UNSIGNDEF      *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 512; i++, *argument++)
+		Unsigndef_B[i] = *argument;
+}
+@def_
+@def $macro67()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+int             statusFlag = NoMistake;
+
+CHARDEF         Chardef_A[0x400];	/* 1k Bytes */
+extern CHARDEF  Chardef_B[0x400];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+
+	for (i = 0; i < 1024; i++)
+		Chardef_A[i] = YCHAR;
+	function(Chardef_A);
+
+	for (i = 0; i < 1024; i++)
+		if (Chardef_A[i] != Chardef_B[i])
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro68()
+$LICENSE()
+$HEAD()
+
+#include    "tdef.h"
+
+CHARDEF         Chardef_B[0x400];	/* 1k Bytes */
+
+function(argument)
+	CHARDEF        *argument;
+{
+	register int    i;
+
+	for (i = 0; i < 1024; i++, *argument++)
+		Chardef_B[i] = *argument;
+}
+@def_
+@def $macro69()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+int             statusFlag = NoMistake;
+
+struct StrA     Struct_A[0x40];	/* 1k Bytes */
+extern struct StrB Struct_B[0x40];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+	for (i = 0; i < 64; i++) {
+		Struct_A[i].Int = i;
+		Struct_A[i].Short = i;
+		Struct_A[i].Long = i;
+		Struct_A[i].Unsigned = i;
+		Struct_A[i].Char = YCHAR;
+	}
+
+	function();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Int != Struct_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Short != Struct_B[i].Short)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Long != Struct_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Unsigned != Struct_B[i].Unsigned)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Char != Struct_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro70()
+$LICENSE()
+$HEAD()
+
+#include    "strc.h"
+
+extern struct StrA Struct_A[0x40];	/* 1k Bytes */
+struct StrB     Struct_B[0x40];	/* 1k Bytes */
+
+function()
+{
+	register int    i;
+
+
+	for (i = 0; i < 64; i++) {
+		Struct_B[i].Int = Struct_A[i].Int;
+		Struct_B[i].Short = Struct_A[i].Short;
+		Struct_B[i].Long = Struct_A[i].Long;
+		Struct_B[i].Unsigned = Struct_A[i].Unsigned;
+		Struct_B[i].Char = Struct_A[i].Char;
+	}
+}
+@def_
+@def $macro71()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "uni.h"
+
+
+int             statusFlag = NoMistake;
+
+union UniA      Union_A[0x100];	/* 1k Bytes */
+extern union UniB Union_B[0x100];	/* 1k Bytes */
+
+
+main()
+{
+
+	register int    i;
+
+	for (i = 0; i < 256; i++) {
+		Union_A[i].Int = i;
+		Union_A[i].Long = i;
+		Union_A[i].Char = YCHAR;
+	}
+
+	function();
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Int != Union_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Long != Union_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Char != Union_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro72()
+$LICENSE()
+$HEAD()
+
+#include    "uni.h"
+
+extern union UniA Union_A[0x100];	/* 1k Bytes */
+union UniB      Union_B[0x100];	/* 1k Bytes */
+function()
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++) {
+		Union_B[i].Int = Union_A[i].Int;
+		Union_B[i].Long = Union_A[i].Long;
+		Union_B[i].Char = Union_A[i].Char;
+	}
+}
+@def_
+@def $macro73()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "styp.h"
+
+int             statusFlag = NoMistake;
+
+STRDEF_A        Strdef_A[0x40];	/* 1k Bytes */
+extern STRDEF_B Strdef_B[0x40];	/* 1k Bytes */
+
+main()
+{
+	register int    i;
+
+	for (i = 0; i < 64; i++) {
+		Strdef_A[i].Int = i;
+		Strdef_A[i].Short = i;
+		Strdef_A[i].Long = i;
+		Strdef_A[i].Unsigned = i;
+		Strdef_A[i].Char = YCHAR;
+	}
+
+	function();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Int != Strdef_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Short != Strdef_B[i].Short)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Long != Strdef_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Unsigned != Strdef_B[i].Unsigned)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Char != Strdef_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro74()
+$LICENSE()
+$HEAD()
+
+#include    "styp.h"
+
+extern STRDEF_A Strdef_A[0x40];	/* 1k Bytes */
+STRDEF_B        Strdef_B[0x40];	/* 1k Bytes */
+
+function()
+{
+	register int    i;
+
+
+	for (i = 0; i < 64; i++) {
+		Strdef_B[i].Int = Strdef_A[i].Int;
+		Strdef_B[i].Short = Strdef_A[i].Short;
+		Strdef_B[i].Long = Strdef_A[i].Long;
+		Strdef_B[i].Unsigned = Strdef_A[i].Unsigned;
+		Strdef_B[i].Char = Strdef_A[i].Char;
+	}
+}
+@def_
+@def $macro75()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "utyp.h"
+
+
+int             statusFlag = NoMistake;
+
+UNIDEF_A        Unidef_A[0x100];/* 1k Bytes(8086) */
+extern UNIDEF_B Unidef_B[0x100];/* 1k Bytes(8086) */
+
+
+main()
+{
+
+	register int    i;
+
+	for (i = 0; i < 256; i++) {
+		Unidef_A[i].Int = i;
+		Unidef_A[i].Long = i;
+		Unidef_A[i].Char = YCHAR;
+	}
+
+	function();
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Int != Unidef_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Long != Unidef_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Char != Unidef_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro76()
+$LICENSE()
+$HEAD()
+
+#include    "utyp.h"
+
+extern UNIDEF_A Unidef_A[0x100];/* 1k Bytes(8086) */
+UNIDEF_B        Unidef_B[0x100];/* 1k Bytes(8086) */
+
+function()
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++) {
+		Unidef_B[i].Int = Unidef_A[i].Int;
+		Unidef_B[i].Long = Unidef_A[i].Long;
+		Unidef_B[i].Char = Unidef_A[i].Char;
+	}
+}
+@def_
+@def $macro77()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+
+int             statusFlag = NoMistake;
+
+struct StrA     Struct_A[0x40];	/* 1k Bytes */
+extern struct StrB Struct_B[0x40];	/* 1k Bytes */
+
+
+main()
+{
+	register int    i;
+
+	for (i = 0; i < 64; i++) {
+		Struct_A[i].Int = i;
+		Struct_A[i].Short = i;
+		Struct_A[i].Long = i;
+		Struct_A[i].Unsigned = i;
+		Struct_A[i].Char = YCHAR;
+	}
+
+	function(Struct_A);
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Int != Struct_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Short != Struct_B[i].Short)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Long != Struct_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Unsigned != Struct_B[i].Unsigned)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Struct_A[i].Char != Struct_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro78()
+$LICENSE()
+$HEAD()
+
+#include    "strc.h"
+
+struct StrB     Struct_B[0x40];	/* 1k Bytes */
+
+function(argument)
+	struct StrA    *argument;
+{
+	register int    i;
+
+
+	for (i = 0; i < 64; i++, *argument++) {
+		Struct_B[i].Int = argument->Int;
+		Struct_B[i].Short = argument->Short;
+		Struct_B[i].Long = argument->Long;
+		Struct_B[i].Unsigned = argument->Unsigned;
+		Struct_B[i].Char = argument->Char;
+	}
+}
+@def_
+@def $macro79()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "uni.h"
+
+
+int             statusFlag = NoMistake;
+
+union UniA      Union_A[0x100];	/* 1k Bytes */
+extern union UniB Union_B[0x100];	/* 1k Bytes */
+
+
+main()
+{
+
+	register int    i;
+
+	for (i = 0; i < 256; i++) {
+		Union_A[i].Int = i;
+		Union_A[i].Long = i;
+		Union_A[i].Char = YCHAR;
+	}
+
+	function(Union_A);
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Int != Union_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Long != Union_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Union_A[i].Char != Union_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro80()
+$LICENSE()
+$HEAD()
+
+#include    "uni.h"
+
+union UniB      Union_B[0x100];	/* 1k Bytes */
+
+function(argument)
+	union UniA     *argument;
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++, *argument++) {
+		Union_B[i].Int = argument->Int;
+		Union_B[i].Long = argument->Long;
+		Union_B[i].Char = argument->Char;
+	}
+}
+@def_
+@def $macro81()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "styp.h"
+
+
+int             statusFlag = NoMistake;
+
+STRDEF_A        Strdef_A[0x40];	/* 1k Bytes */
+extern STRDEF_B Strdef_B[0x40];	/* 1k Bytes */
+
+
+main()
+{
+	register int    i;
+
+	for (i = 0; i < 64; i++) {
+		Strdef_A[i].Int = i;
+		Strdef_A[i].Short = i;
+		Strdef_A[i].Long = i;
+		Strdef_A[i].Unsigned = i;
+		Strdef_A[i].Char = YCHAR;
+	}
+
+	function(Strdef_A);
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Int != Strdef_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Short != Strdef_B[i].Short)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Long != Strdef_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Unsigned != Strdef_B[i].Unsigned)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 64; i++)
+		if (Strdef_A[i].Char != Strdef_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro82()
+$LICENSE()
+$HEAD()
+
+#include    "styp.h"
+
+STRDEF_B        Strdef_B[0x40];	/* 1k Bytes */
+
+function(argument)
+	STRDEF_A       *argument;
+{
+	register int    i;
+
+
+	for (i = 0; i < 64; i++, *argument++) {
+		Strdef_B[i].Int = argument->Int;
+		Strdef_B[i].Short = argument->Short;
+		Strdef_B[i].Long = argument->Long;
+		Strdef_B[i].Unsigned = argument->Unsigned;
+		Strdef_B[i].Char = argument->Char;
+	}
+}
+@def_
+@def $macro83()
+$LICENSE()
+$HEAD()
+$HEAD()
+
+
+#include    "def.h"
+#include    "utyp.h"
+
+
+int             statusFlag = NoMistake;
+
+UNIDEF_A        Unidef_A[0x100];/* 1k Bytes(8086) */
+extern UNIDEF_B Unidef_B[0x100];/* 1k Bytes(8086) */
+
+
+main()
+{
+
+	register int    i;
+
+	for (i = 0; i < 256; i++) {
+		Unidef_A[i].Int = i;
+		Unidef_A[i].Long = i;
+		Unidef_A[i].Char = YCHAR;
+	}
+
+	function(Unidef_A);
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Int != Unidef_B[i].Int)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Long != Unidef_B[i].Long)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	for (i = 0; i < 256; i++)
+		if (Unidef_A[i].Char != Unidef_B[i].Char)
+			statusFlag++;
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro84()
+$LICENSE()
+$HEAD()
+
+#include    "utyp.h"
+
+UNIDEF_B        Unidef_B[0x100];/* 1k Bytes(8086) */
+
+function(argument)
+	UNIDEF_A       *argument;
+{
+	register int    i;
+
+
+	for (i = 0; i < 256; i++, *argument++) {
+		Unidef_B[i].Int = argument->Int;
+		Unidef_B[i].Long = argument->Long;
+		Unidef_B[i].Char = argument->Char;
+	}
+}
+@def_
+
+@def $macro85()
+$LICENSE()
+typedef int     INTDEF;
+typedef short   SHORTDEF;
+typedef long    LONGDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+}               STRDEF_A;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+}               STRDEF_B;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               UNIDEF_A;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               UNIDEF_B;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	struct BdefStruct_1 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		struct CdefStruct_1 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+		}               CdefStruct_1;
+	}               BdefStruct_1;
+}               STRDEF_1;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	struct BdefStruct_2 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		struct CdefStruct_2 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+		}               CdefStruct_2;
+	}               BdefStruct_2;
+}               STRDEF_2;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	union BdefUnion_1 {
+		int             Int;
+		long            Long;
+		char            Char;
+		union CdefUnion_1 {
+			int             Int;
+			long            Long;
+			char            Char;
+		}               CdefUnion_1;
+	}               BdefUnion_1;
+}               UNIDEF_1;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	union BdefUnion_2 {
+		int             Int;
+		long            Long;
+		char            Char;
+		union CdefUnion_2 {
+			int             Int;
+			long            Long;
+			char            Char;
+		}               CdefUnion_2;
+	}               BdefUnion_2;
+}               UNIDEF_2;
+@def_
+
+@def $macro86()
+$LICENSE()
+typedef int     INTDEF;
+typedef short   SHORTDEF;
+typedef long    LONGDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef float   FLOATDEF;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               STRDEF_A;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               STRDEF_B;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF_A;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF_B;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	struct BdefStruct_1 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		float           Float;
+		struct CdefStruct_1 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+			float           Float;
+		}               CdefStruct_1;
+	}               BdefStruct_1;
+}               STRDEF_1;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	struct BdefStruct_2 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		float           Float;
+		struct CdefStruct_2 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+			float           Float;
+		}               CdefStruct_2;
+	}               BdefStruct_2;
+}               STRDEF_2;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+	union BdefUnion_1 {
+		int             Int;
+		long            Long;
+		char            Char;
+		float           Float;
+		union CdefUnion_1 {
+			int             Int;
+			long            Long;
+			char            Char;
+			float           Float;
+		}               CdefUnion_1;
+	}               BdefUnion_1;
+}               UNIDEF_1;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+	union BdefUnion_2 {
+		int             Int;
+		long            Long;
+		char            Char;
+		float           Float;
+		union CdefUnion_2 {
+			int             Int;
+			long            Long;
+			char            Char;
+			float           Float;
+		}               CdefUnion_2;
+	}               BdefUnion_2;
+}               UNIDEF_2;
+@def_
+
+@def $macro87()
+$LICENSE()
+union UniA {
+	int             Int;
+	long            Long;
+	char            Char;
+};
+union UniB {
+	int             Int;
+	long            Long;
+	char            Char;
+};
+@def_
+
+@def $macro88()
+$LICENSE()
+union UniA {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+};
+union UniB {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+};
+@def_
+
+@def $macro89()
+$LICENSE()
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               UNIDEF_A;
+
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               UNIDEF_B;
+@def_
+
+@def $macro90()
+$LICENSE()
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF_A;
+
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF_B;
+@def_
+
+@def $macro91()
+ft021.c ft022.c
+ft023.c ft024.c
+ft121.c ft122.c
+ft123.c ft124.c
+ft201.c ft202.c
+ft203.c ft204.c
+ft205.c ft206.c
+ft207.c ft208.c
+ft301.c ft302.c
+ft303.c ft304.c
+ft305.c ft306.c
+ft307.c ft308.c
+t001.c t002.c
+t003.c t004.c
+t005.c t006.c
+t007.c t008.c
+t009.c t010.c
+t011.c t012.c
+t013.c t014.c
+t015.c t016.c
+t017.c t018.c
+t019.c t020.c
+t101.c t102.c
+t103.c t104.c
+t105.c t106.c
+t107.c t108.c
+t109.c t110.c
+t111.c t112.c
+t113.c t114.c
+t115.c t116.c
+t117.c t118.c
+t119.c t120.c
+t201.c t202.c
+t203.c t204.c
+t205.c t206.c
+t207.c t208.c
+t301.c t302.c
+t303.c t304.c
+t305.c t306.c
+t307.c t308.c
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir ckr.6-2-02
+@file >>def.h $macro0() @file_
+@file >>ft021.c $macro1() @file_
+@file >>ft022.c $macro2() @file_
+@file >>ft023.c $macro3() @file_
+@file >>ft024.c $macro4() @file_
+@file >>ft121.c $macro5() @file_
+@file >>ft122.c $macro6() @file_
+@file >>ft123.c $macro7() @file_
+@file >>ft124.c $macro8() @file_
+@file >>ft201.c $macro9() @file_
+@file >>ft202.c $macro10() @file_
+@file >>ft203.c $macro11() @file_
+@file >>ft204.c $macro12() @file_
+@file >>ft205.c $macro13() @file_
+@file >>ft206.c $macro14() @file_
+@file >>ft207.c $macro15() @file_
+@file >>ft208.c $macro16() @file_
+@file >>ft301.c $macro17() @file_
+@file >>ft302.c $macro18() @file_
+@file >>ft303.c $macro19() @file_
+@file >>ft304.c $macro20() @file_
+@file >>ft305.c $macro21() @file_
+@file >>ft306.c $macro22() @file_
+@file >>ft307.c $macro23() @file_
+@file >>ft308.c $macro24() @file_
+@file >>strc.h $macro25() @file_
+@file >>fstrc.h $macro26() @file_
+@file >>styp.h $macro27() @file_
+@file >>fstyp.h $macro28() @file_
+@file >>t001.c $macro29() @file_
+@file >>t002.c $macro30() @file_
+@file >>t003.c $macro31() @file_
+@file >>t004.c $macro32() @file_
+@file >>t005.c $macro33() @file_
+@file >>t006.c $macro34() @file_
+@file >>t007.c $macro35() @file_
+@file >>t008.c $macro36() @file_
+@file >>t009.c $macro37() @file_
+@file >>t010.c $macro38() @file_
+@file >>t011.c $macro39() @file_
+@file >>t012.c $macro40() @file_
+@file >>t013.c $macro41() @file_
+@file >>t014.c $macro42() @file_
+@file >>t015.c $macro43() @file_
+@file >>t016.c $macro44() @file_
+@file >>t017.c $macro45() @file_
+@file >>t018.c $macro46() @file_
+@file >>t019.c $macro47() @file_
+@file >>t020.c $macro48() @file_
+@file >>t101.c $macro49() @file_
+@file >>t102.c $macro50() @file_
+@file >>t103.c $macro51() @file_
+@file >>t104.c $macro52() @file_
+@file >>t105.c $macro53() @file_
+@file >>t106.c $macro54() @file_
+@file >>t107.c $macro55() @file_
+@file >>t108.c $macro56() @file_
+@file >>t109.c $macro57() @file_
+@file >>t110.c $macro58() @file_
+@file >>t111.c $macro59() @file_
+@file >>t112.c $macro60() @file_
+@file >>t113.c $macro61() @file_
+@file >>t114.c $macro62() @file_
+@file >>t115.c $macro63() @file_
+@file >>t116.c $macro64() @file_
+@file >>t117.c $macro65() @file_
+@file >>t118.c $macro66() @file_
+@file >>t119.c $macro67() @file_
+@file >>t120.c $macro68() @file_
+@file >>t201.c $macro69() @file_
+@file >>t202.c $macro70() @file_
+@file >>t203.c $macro71() @file_
+@file >>t204.c $macro72() @file_
+@file >>t205.c $macro73() @file_
+@file >>t206.c $macro74() @file_
+@file >>t207.c $macro75() @file_
+@file >>t208.c $macro76() @file_
+@file >>t301.c $macro77() @file_
+@file >>t302.c $macro78() @file_
+@file >>t303.c $macro79() @file_
+@file >>t304.c $macro80() @file_
+@file >>t305.c $macro81() @file_
+@file >>t306.c $macro82() @file_
+@file >>t307.c $macro83() @file_
+@file >>t308.c $macro84() @file_
+@file >>tdef.h $macro85() @file_
+@file >>ftdef.h $macro86() @file_
+@file >>uni.h $macro87() @file_
+@file >>funi.h $macro88() @file_
+@file >>utyp.h $macro89() @file_
+@file >>futyp.h $macro90() @file_
+@file >>FILESET $macro91() @file_
+@file >>testout.h $testout() @file_
+@dir_

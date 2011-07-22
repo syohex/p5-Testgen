@@ -1,0 +1,2376 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+#include "def.h"
+@def_
+
+@def $FHEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+#include "fdef.h"
+@def_
+
+@def $macro0()
+$LICENSE()
+#include "testout.h"
+#define NoMistake 00
+long            OK = 1;
+long            NO = 0;
+@def_
+
+@def $macro1()
+$LICENSE()
+#include "testout.h"
+#define NoMistake 00
+long            OK = 1;
+long            NO = 0;
+float           OK_f = 1.0;
+float           NO_f = 0.0;
+@def_
+
+@def $macro2()
+$LICENSE()
+$FHEAD()
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a legal float constant as argument 
+ */
+{
+	function(1.0);
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	if ( TGEN_FLT_EQ(argument, 1.0) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro3()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with automatic float variable as argument 
+ */
+{
+	float           i = 1.0;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+
+	if ( TGEN_FLT_EQ(argument, 1.0) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro4()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with automatic float variable as argument. in the
+ * called another automatic float with the same name is declared 
+ */
+{
+	float           i = 1.0;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	float           i;
+
+	if (argument == i && i != 1.0 || argument != 1.0)
+		printno();
+	else
+		printok();
+	argument++;
+}
+@def_
+@def $macro5()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with automatic float variable as argument , and the
+ * programmer mistakenly changes the parameter of the called , to use its effect afterward 
+ */
+{
+	float           i = 1.0;
+
+	function(i);
+	if ( !(TGEN_FLT_EQ(i, 1.0)) )
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	argument++;
+}
+@def_
+@def $macro6()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a static float variable as argument 
+ */
+{
+	static float    i = 1.0;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	if ( TGEN_FLT_EQ(argument, 1.0) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro7()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a static float variable as argument. another
+ * static float variable with the same name is delared in the called 
+ */
+{
+	static float    i = 1.0;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	static float    i;
+
+	if ( !(TGEN_FLT_EQ(i, 0.0)) )
+		printno();
+	else
+		printok();
+	argument++;
+}
+@def_
+@def $macro8()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a static float variable as argument, and the
+ * programmer mistakenly increments the parameter and a local variable ( with the same name as that of the argument ) of the
+ * called, to use the effect afterwards 
+ */
+{
+	static float    i = 1.0;
+
+	function(i);
+	if ( !(TGEN_FLT_EQ(i, 1.0)) )
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	argument++;
+}
+@def_
+@def $macro9()
+$LICENSE()
+$FHEAD()
+
+float           i = 1.0;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with an external float as argument 
+ */
+{
+	extern float    i;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	if ( TGEN_FLT_EQ(argument, 1.0) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro10()
+$LICENSE()
+$FHEAD()
+
+float           i = 1.0;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with an external float as argument. in the called
+ * another variable with the same name is declared 
+ */
+{
+	extern float    i;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	float           i;
+
+	if (argument == i && i != 1.0 || argument != 1.0)
+		printno();
+	else
+		printok();
+	argument++;
+}
+@def_
+@def $macro11()
+$LICENSE()
+$FHEAD()
+
+float           i = 1.0;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with external float as argument, and the programmer
+ * mistakenly increments the local variable ( with the same name as that of the argument ) of the called, to use the effect
+ * afterward 
+ */
+{
+	extern float    i;
+
+	function(i);
+	if ( !(TGEN_FLT_EQ(i, 1.0)) )
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	float           i = 0.0;
+
+	i += argument;
+	if ( TGEN_FLT_EQ(i, 1.0) )
+		argument++;
+}
+@def_
+@def $macro12()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with automatic float variable address as argument 
+ */
+{
+	float           i = 1.0;
+
+	function(&i);
+	return (0);
+}
+
+function(argument)
+	float          *argument;
+{
+	if ( TGEN_FLT_EQ(*argument, 1.0) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro13()
+$LICENSE()
+$FHEAD()
+
+float           blackHall = 10.0;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with automatic float variable address as argument.
+ * the programmer mistakenly incremented this address 
+ */
+{
+	float           i = 1.0;
+
+	function(&i);
+	return (0);
+}
+
+function(argument)
+	float          *argument;
+{
+	argument = &blackHall;
+	if ( !(TGEN_FLT_EQ(*argument, 10.0)) )
+		printno();
+	else
+		printok();
+}
+@def_
+@def $macro14()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with static float variable address as argument 
+ */
+{
+	static float    i = 1.0;
+
+	function(&i);
+	return (0);
+}
+
+function(argument)
+	float          *argument;
+{
+	if ( TGEN_FLT_EQ(*argument, 1.0))
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro15()
+$LICENSE()
+$FHEAD()
+
+float           blackHall = 10.0;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with static float variable address as argument. the
+ * address is mistakenly incremented in the called 
+ */
+{
+	static float    i = 1.0;
+
+	function(&i);
+	return (0);
+}
+
+function(argument)
+	float          *argument;
+{
+	argument = &blackHall;
+	if ( !(TGEN_FLT_EQ(*argument, 10.0)) )
+		printno();
+	else
+		printok();
+}
+@def_
+@def $macro16()
+$LICENSE()
+$FHEAD()
+
+float           i = 1.0;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with extern float variable address as argument 
+ */
+{
+	extern float    i;
+
+	function(&i);
+	return (0);
+}
+
+function(argument)
+	float          *argument;
+{
+	if ( TGEN_FLT_EQ(*argument, 1.0) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro17()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with simple arithmatic expression as an argument (
+ * case 1 ) 
+ */
+{
+	float           i = 1.0;
+
+	function(i + 1.0);
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	if ( TGEN_FLT_EQ(argument, 2.0) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro18()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with complex arithmatic expression as an argument (
+ * case 1 ) 
+ */
+{
+	float           i, j, k, l, m = 1.0;
+
+	l = ++m;
+	k = ++l;
+	j = ++k;
+	i = ++j;
+	function((i + j) / (k * l - m));
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	if ( TGEN_FLT_EQ(argument, 1.0) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro19()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with complex arithmatic expression as an argument (
+ * case 2 ) 
+ */
+{
+	float           i, j, k = 3.0;
+
+	function(i = (j = k - 1.0) - 1.0);
+	if ( TGEN_FLT_EQ(i, 1.0) && TGEN_FLT_EQ(j, 1.0) );
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	if ( TGEN_FLT_EQ(argument, 1.0) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro20()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with complex logical expression as an argument 
+ */
+{
+	float           i = 1.0, j = 2.0, k = 3.0;
+
+	function((float) (i < j && j < k));
+	return (0);
+}
+
+function(argument)
+	float           argument;
+{
+	if ( TGEN_FLT_EQ(argument, 1.0) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro21()
+$LICENSE()
+$FHEAD()
+
+long            statusFlag = NoMistake;
+
+main()				/* alias parent */
+/*
+ *  test class: programme structure instance  : when a programme has a linear tree structure 
+ */
+{
+	float           gene = 1.0;
+
+	firstChild(gene++);
+	secondChild(gene++);
+	thirdChild(gene);
+	if (statusFlag != NoMistake)
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+firstChild(gene)
+	float           gene;
+{
+	firstGrandson(gene++);
+	firstGranddaughter(gene);
+}
+
+secondChild(gene)
+	float           gene;
+{
+	secondGrandson(gene++);
+	secondGranddaughter(gene);
+}
+
+thirdChild(gene)
+	float           gene;
+{
+	thirdGrandson(gene++);
+	thirdGranddaughter(gene);
+}
+
+firstGrandson(gene)
+	float           gene;
+{
+	if ( !(TGEN_FLT_EQ(gene, 1.0)) )
+		statusFlag++;
+}
+
+firstGranddaughter(gene)
+	float           gene;
+{
+	if ( !(TGEN_FLT_EQ(gene, 2.0)) )
+		statusFlag++;
+}
+
+secondGrandson(gene)
+	float           gene;
+{
+	if ( !(TGEN_FLT_EQ(gene, 2.0)) )
+		statusFlag++;
+}
+
+secondGranddaughter(gene)
+	float           gene;
+{
+	if ( !(TGEN_FLT_EQ(gene, 3.0)) )
+		statusFlag++;
+}
+
+thirdGrandson(gene)
+	float           gene;
+{
+	if ( !(TGEN_FLT_EQ(gene, 3.0)) )
+		statusFlag++;
+}
+
+thirdGranddaughter(gene)
+	float           gene;
+{
+	if ( !(TGEN_FLT_EQ(gene, 4.0)) )
+		statusFlag++;
+}
+@def_
+@def $macro22()
+$LICENSE()
+$FHEAD()
+
+#define TimeLimit 0.0
+
+float           parallelCounter = 10.0;
+long            statusFlag = NoMistake;
+
+main()
+/*
+ * test class: programme structure instance  : when a programme has a recursive function call. in this instance, a function
+ * calls itself 
+ */
+{
+	float           endCounter = 10.0;
+
+	recursiveFunction(endCounter);
+	if (statusFlag != NoMistake)
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+recursiveFunction(downToZero)
+	float           downToZero;
+{
+	if ( !(TGEN_FLT_EQ(downToZero, parallelCounter--)) )
+		statusFlag++;
+	if ( !(TGEN_FLT_EQ(downToZero, TimeLimit)) )
+		recursiveFunction(--downToZero);
+}
+@def_
+@def $macro23()
+$LICENSE()
+$FHEAD()
+
+#define TimeLimit 0.0
+
+float           parallelCounter = 10.0;
+long            statusFlag = NoMistake;
+
+main()
+/*
+ * test class: programme structure instance  : when a programme has a recursive function call in this instance, one of the
+ * three functions calls another in circular order 
+ */
+{
+	float           endCounter = 10.0;
+
+	fromThreeToOne(endCounter);
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+fromThreeToOne(counter)
+	float           counter;
+{
+	if ( !(TGEN_FLT_EQ(counter, parallelCounter--)) )
+		statusFlag++;
+	if ( !(TGEN_FLT_EQ(counter, TimeLimit)) )
+		fromOneToTwo(--counter);
+}
+fromOneToTwo(counter)
+	float           counter;
+{
+	if ( !(TGEN_FLT_EQ(counter, parallelCounter--)) )
+		statusFlag++;
+	if ( !(TGEN_FLT_EQ(counter, TimeLimit)) )
+		fromTwoToThree(--counter);
+}
+fromTwoToThree(counter)
+	float           counter;
+{
+	if ( !(TGEN_FLT_EQ(counter, parallelCounter--)) )
+		statusFlag++;
+	if ( !(TGEN_FLT_EQ(counter, TimeLimit)) )
+		fromThreeToOne(--counter);
+}
+@def_
+@def $macro24()
+$LICENSE()
+$FHEAD()
+
+main()
+/*
+ * test class: programme struture instance  : when a variable is declared in blocks. the programmer seems to confuse
+ * variable bounds 
+ */
+{
+	float           i = 0.0, counter = 0.0;
+	long            statusFlag = NoMistake;
+
+	for (i = 0.0; i < 10.0; i++) {
+		float           i = 0.0;
+
+		i++;
+		if (i > 10.0)
+			errorMessage();
+		counter++;
+	}
+	if ( !(TGEN_FLT_EQ(counter, 5.0)) )
+		errorMessage();
+	else
+		statusFlag++;
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+errorMessage()
+{
+}
+@def_
+@def $macro25()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a legal long constant as argument 
+ */
+{
+	function(1L);
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	if (argument == 1L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro26()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with an illegal long constant as argument 
+ */
+{
+	function((long)2147483648UL);
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	if (argument == 2147483648UL)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro27()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with automatic long variable as argument 
+ */
+{
+	long            i = 1L;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	if (argument == 1L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro28()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with automatic long variable as argument. in the
+ * called another automatic long with the same name is declared 
+ */
+{
+	long            i = 1L;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	long            i;
+
+	if (argument == i && i != 1L || argument != 1L)
+		printno();
+	else
+		printok();
+	argument++;
+}
+@def_
+@def $macro29()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with automatic long variable as argument , and the
+ * programmer mistakenly changes the parameter of the called , to use its effect afterward 
+ */
+{
+	long            i = 1L;
+
+	function(i);
+	if (i != 1L)
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	argument++;
+}
+@def_
+@def $macro30()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a static long variable as argument 
+ */
+{
+	static long     i = 1L;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	if (argument == 1L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro31()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a static long variable as argument. another
+ * static long variable with the same name is delared in the called 
+ */
+{
+	static long     i = 1L;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	static long     i;
+
+	if (i != 0L)
+		printno();
+	else
+		printok();
+	argument++;
+}
+@def_
+@def $macro32()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a static long variable as argument, and the
+ * programmer mistakenly increments the parameter and a local variable ( with the same name as that of the argument ) of the
+ * called, to use the effect afterwards 
+ */
+{
+	static long     i = 1L;
+
+	function(i);
+	if (i != 1L)
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	argument++;
+}
+@def_
+@def $macro33()
+$LICENSE()
+$HEAD()
+
+long            i = 1L;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with an external long as argument 
+ */
+{
+	extern long     i;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	if (argument == 1L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro34()
+$LICENSE()
+$HEAD()
+
+long            i = 1L;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with an external long as argument. in the called
+ * another variable with the same name is declared 
+ */
+{
+	extern long     i;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	long            i;
+
+	if (argument == i && i != 1L || argument != 1L)
+		printno();
+	else
+		printok();
+	argument++;
+}
+@def_
+@def $macro35()
+$LICENSE()
+$HEAD()
+
+long            i = 1L;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with external long as argument, and the programmer
+ * mistakenly increments the local variable ( with the same name as that of the argument ) of the called, to use the effect
+ * afterward 
+ */
+{
+	extern long     i;
+
+	function(i);
+	if (i != 1L)
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	long            i = 0;
+
+	i += argument;
+	if (i == 1L)
+		argument++;
+}
+@def_
+@def $macro36()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with automatic long variable address as argument 
+ */
+{
+	long            i = 1L;
+
+	function(&i);
+	return (0);
+}
+
+function(argument)
+	long           *argument;
+{
+	if (*argument == 1L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro37()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with automatic long variable address as argument.
+ * this argument is incremented in the called, to be used afterwards 
+ */
+{
+	long            i = 1L;
+
+	function(&i);
+	if (i == 2L)
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+function(argument)
+	long           *argument;
+{
+	(*argument)++;
+}
+@def_
+@def $macro38()
+$LICENSE()
+$HEAD()
+
+long            blackHall = 10L;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with automatic long variable address as argument. the
+ * programmer mistakenly incremented this address 
+ */
+{
+	long            i = 1L;
+
+	function(&i);
+	return (0);
+}
+
+function(argument)
+	long           *argument;
+{
+	argument = &blackHall;
+	if (*argument != 10L)
+		printno();
+	else
+		printok();
+}
+@def_
+@def $macro39()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with static long variable address as argument 
+ */
+{
+	static long     i = 1L;
+
+	function(&i);
+	return (0);
+}
+
+function(argument)
+	long           *argument;
+{
+	if (*argument == 1L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro40()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with static long variable address as argument. this
+ * argument is incremented in the called, to be used afterwards 
+ */
+{
+	static long     i = 1L;
+
+	function(&i);
+	if (i == 2L)
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+function(argument)
+	long           *argument;
+{
+	(*argument)++;
+}
+@def_
+@def $macro41()
+$LICENSE()
+$HEAD()
+
+long            blackHall = 10L;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with static long variable address as argument. the
+ * address is mistakenly incremented in the called 
+ */
+{
+	static long     i = 1L;
+
+	function(&i);
+	return (0);
+}
+
+function(argument)
+	long           *argument;
+{
+	argument = &blackHall;
+	if (*argument != 10L)
+		printno();
+	else
+		printok();
+}
+@def_
+@def $macro42()
+$LICENSE()
+$HEAD()
+
+long            i = 1L;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with extern long variable address as argument 
+ */
+{
+	extern long     i;
+
+	function(&i);
+	return (0);
+}
+
+function(argument)
+	long           *argument;
+{
+	if (*argument == 1L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro43()
+$LICENSE()
+$HEAD()
+
+long            i = 1L;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with extern long variable address as argument. this
+ * argument is incremented in the called, to be used afterwards 
+ */
+{
+	extern long     i;
+
+	function(&i);
+	if (i == 2L)
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+function(argument)
+	long           *argument;
+{
+	(*argument)++;
+}
+@def_
+@def $macro44()
+$LICENSE()
+$HEAD()
+
+long            i = 1L;
+long            blackHall = 10L;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with extern long variable address as argument. this
+ * address is mistakenly incremented in the called 
+ */
+{
+	extern long     i;
+
+	function(&i);
+	return (0);
+}
+
+function(argument)
+	long           *argument;
+{
+	argument = &blackHall;
+	if (*argument != 10L)
+		printno();
+	else
+		printok();
+}
+@def_
+@def $macro45()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with simple arithmatic expression as an argument (
+ * case 1 ) 
+ */
+{
+	long            i = 1L;
+
+	function(i + 1L);
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	if (argument == 2L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro46()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with complex arithmatic expression as an argument (
+ * case 1 ) 
+ */
+{
+	long            i, j, k, l, m = 1L;
+
+	l = ++m;
+	k = ++l;
+	j = ++k;
+	i = ++j;
+	function((i + j) / (k * l - m));
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	if (argument == 1L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro47()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with complex arithmatic expression as an argument (
+ * case 2 ) 
+ */
+{
+	long            i, j, k = 3L;
+
+	function(i = (j = k - 1) - 1);
+	if (i == 1L && j == 1L);
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	if (argument == 1L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro48()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with complex logical expression as an argument 
+ */
+{
+	long            i = 1L, j = 2L, k = 3L;
+
+	function((long) (i < j && j < k));
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	if (argument == 1L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro49()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with complex bitwise expression as an argument 
+ */
+{
+	long            i = 0055555L, j = 0022222L, k = j << 2;
+
+	k = j << 2;
+	function((i >>= 2) & (k | (j >>= 2)));
+	return (0);
+}
+
+function(argument)
+	long            argument;
+{
+	if (argument == 011110L)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro50()
+$LICENSE()
+$HEAD()
+
+long            statusFlag = NoMistake;
+
+main()				/* alias parent */
+/*
+ *  test class: programme structure instance  : when a programme has a linear tree structure 
+ */
+{
+	long            gene = 1L;
+
+	firstChild(gene++);
+	secondChild(gene++);
+	thirdChild(gene);
+	if (statusFlag != NoMistake)
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+firstChild(gene)
+	long            gene;
+{
+	firstGrandson(gene++);
+	firstGranddaughter(gene);
+}
+
+secondChild(gene)
+	long            gene;
+{
+	secondGrandson(gene++);
+	secondGranddaughter(gene);
+}
+
+thirdChild(gene)
+	long            gene;
+{
+	thirdGrandson(gene++);
+	thirdGranddaughter(gene);
+}
+
+firstGrandson(gene)
+	long            gene;
+{
+	if (gene != 1L)
+		statusFlag++;
+}
+
+firstGranddaughter(gene)
+	long            gene;
+{
+	if (gene != 2L)
+		statusFlag++;
+}
+
+secondGrandson(gene)
+	long            gene;
+{
+	if (gene != 2L)
+		statusFlag++;
+}
+
+secondGranddaughter(gene)
+	long            gene;
+{
+	if (gene != 3L)
+		statusFlag++;
+}
+
+thirdGrandson(gene)
+	long            gene;
+{
+	if (gene != 3L)
+		statusFlag++;
+}
+
+thirdGranddaughter(gene)
+	long            gene;
+{
+	if (gene != 4L)
+		statusFlag++;
+}
+@def_
+@def $macro51()
+$LICENSE()
+$HEAD()
+
+#define TimeLimit 0
+
+long            parallelCounter = 10L;
+long            statusFlag = NoMistake;
+
+main()
+/*
+ * test class: programme structure instance  : when a programme has a recursive function call. in this instance, a function
+ * calls itself 
+ */
+{
+	long            endCounter = 10L;
+
+	recursiveFunction(endCounter);
+	if (statusFlag != NoMistake)
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+recursiveFunction(downToZero)
+	long            downToZero;
+{
+	if (downToZero != parallelCounter--)
+		statusFlag++;
+	if (downToZero != TimeLimit)
+		recursiveFunction(--downToZero);
+}
+@def_
+@def $macro52()
+$LICENSE()
+$HEAD()
+
+#define TimeLimit 0
+
+long            parallelCounter = 10L;
+long            statusFlag = NoMistake;
+
+main()
+/*
+ * test class: programme structure instance  : when a programme has a recursive function call in this instance, one of the
+ * three functions calls another in circular order 
+ */
+{
+	long            endCounter = 10L;
+
+	fromThreeToOne(endCounter);
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+fromThreeToOne(counter)
+	long            counter;
+{
+	if (counter != parallelCounter--)
+		statusFlag++;
+	if (counter != TimeLimit)
+		fromOneToTwo(--counter);
+}
+fromOneToTwo(counter)
+	long            counter;
+{
+	if (counter != parallelCounter--)
+		statusFlag++;
+	if (counter != TimeLimit)
+		fromTwoToThree(--counter);
+}
+fromTwoToThree(counter)
+	long            counter;
+{
+	if (counter != parallelCounter--)
+		statusFlag++;
+	if (counter != TimeLimit)
+		fromThreeToOne(--counter);
+}
+@def_
+@def $macro53()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: programme structure instance  : when a variable is declared inside blocks 
+ */
+{
+	long            i = 1L;
+	long            statusFlag = NoMistake;
+
+	i--;
+	if (i) {
+		long            i = 1L;
+
+		i++;
+		if (i != 2L)
+			statusFlag++;
+	} else {
+		long            i = 1L;
+
+		i *= 10L;
+		if (i != 10L)
+			statusFlag++;
+	}
+	if (i != 0L)
+		statusFlag++;
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return (0);
+}
+@def_
+@def $macro54()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: programme struture instance  : when a variable is declared in blocks. the programmer seems to confuse
+ * variable bounds 
+ */
+{
+	long            i = 0, counter = 0, statusFlag = NoMistake;
+
+	for (i = 0; i < 10L; i++) {
+		long            i = 0;
+
+		i++;
+		if (i > 10L)
+			errorMessage();
+		counter++;
+	}
+	if (counter != 5L)
+		errorMessage();
+	else
+		statusFlag++;
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+errorMessage()
+{
+}
+@def_
+@def $macro55()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a legal unsigned constant as argument 
+ */
+{
+	function(1);
+	return (0);
+}
+
+function(argument)
+	unsigned        argument;
+{
+	if (argument == 1)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro56()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with an illegal unsigned constant as argument 
+ */
+{
+	function(-1);
+	return (0);
+}
+
+function(argument)
+	unsigned        argument;
+{
+	if (argument == (unsigned) -1)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro57()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a legal string as argument 
+ */
+{
+	function("0123456789");
+	return (0);
+}
+
+function(argument)
+	char            argument[];
+{
+	short           i;
+
+	for (i = 0; argument[i]; i++)
+		if (argument[i] != '0' + i) {
+			printno();
+			return;
+		}
+	printok();
+}
+@def_
+@def $macro58()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a mismatched character string as argument 
+ */
+{
+	function("0123456789");
+	return (0);
+}
+
+function(argument)
+	char            argument[4];
+{
+	short           i;
+
+	for (i = 0; i < 4; i++)
+		if (argument[i] != '0' + i) {
+			printno();
+			return;
+		}
+	printok();
+}
+@def_
+@def $macro59()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with register integer as argument 
+ */
+{
+	register short  i = 1;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	short           argument;
+{
+	if (argument == 1)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro60()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with register integer variable as argument. in the
+ * caller another register variable with the same name is declared 
+ */
+{
+	register short  i = 1;
+
+	function(i);
+	return (0);
+}
+
+function(argument)
+	short           argument;
+{
+	register short  i;
+
+	if (argument == i && i != 1 || argument != 1)
+		printno();
+	else
+		printok();
+	argument++;
+}
+@def_
+@def $macro61()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with registered integer as argument, and the
+ * programmer mistakenly increments the paramater of the called, to use the effect afterward 
+ */
+{
+	register short  i = 1;
+
+	function(i);
+	if (i != 1)
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+function(argument)
+	short           argument;
+{
+	argument++;
+}
+@def_
+@def $macro62()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with simple arithmatic expression as an argument (
+ * case 2 ) 
+ */
+{
+	char            i = 'a';
+
+	function(i + 1);
+	return (0);
+}
+
+function(argument)
+	char            argument;
+{
+	if (argument == 'b')
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro63()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a function as argument 
+ */
+{
+	function(dummy(1));
+	return (0);
+}
+
+function(argument)
+	register        argument;
+{
+	if (argument == 2)
+		printok();
+	else
+		printno();
+}
+
+dummy(argument)
+	register        argument;
+{
+	return (++argument);
+}
+@def_
+@def $macro64()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a function as argument, which in turn has a
+ * function as argument. we may call it a 'nested functions' 
+ */
+{
+	short           i = 1;
+
+	uno(dos(tres(++i)));
+	return (0);
+}
+
+uno(argument)
+	register        argument;
+{
+	if (argument == 4)
+		printok();
+	else
+		printno();
+}
+
+dos(argument)
+	register        argument;
+{
+	return (++argument);
+}
+
+tres(argument)
+	register        argument;
+{
+	return (++argument);
+}
+@def_
+@def $macro65()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a function as argument, which itself has
+ * functions as arguments. however, the arguments are badly given according to Kernighan's C language tutorial. still, it
+ * works 
+ */
+{
+	short           i = 1;
+
+	uno(dos(tres(--i), tres(i += 3), tres(--i)));
+	return (0);
+}
+
+uno(argument)
+	register        argument;
+{
+	if (argument == 7)
+		printok();
+	else
+		printno();
+}
+
+dos(first, second, third)
+	register        first, second, third;
+{
+	return (first + second + third);
+}
+
+tres(argument)
+	short           argument;
+{
+	return ((argument > 2) ? argument : ++argument);
+}
+@def_
+@def $macro66()
+$LICENSE()
+$HEAD()
+
+struct modelStructure {
+	short           fieldOne;
+	short           fieldTwo;
+	short           fieldThree;
+};
+
+main()
+/*
+ * test class: the way functions are used instance  : when a function, returning no value, is called as such 
+ */
+{
+	struct modelStructure structureInstance;
+
+	function(&structureInstance);
+	if (structureInstance.fieldOne != 1 ||
+	    structureInstance.fieldTwo != 2 ||
+	    structureInstance.fieldThree != 3)
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+function(pointerToStructure)
+	struct modelStructure *pointerToStructure;
+{
+	pointerToStructure->fieldOne = 1;
+	pointerToStructure->fieldTwo = 2;
+	pointerToStructure->fieldThree = 3;
+}
+@def_
+@def $macro67()
+$LICENSE()
+$HEAD()
+
+short           statusFlag = NoMistake;
+
+main()
+/*
+ * test class: the way functions are used instance  : when a function, returning no value, is called as returning integer
+ * value. this is the programmer's petty mistake 
+ */
+{
+	short           i = 0;
+
+	i = function("0123456789");
+	if (i == 0)
+		i++;
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+function(numbers)
+	char           *numbers;
+{
+	short           i;
+
+	for (i = 0; i < 10; i++)
+		if (*numbers++ != '0' + i)
+			statusFlag++;
+}
+@def_
+@def $macro68()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: the way functions are used instance  : when a function, which returns a character pointer, is called as such 
+ */
+{
+	char           *pointerToCharacter = 0, *function();
+
+	pointerToCharacter = function("0123456789");
+	if (*pointerToCharacter != '7')
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+char           *
+function(string)
+	char           *string;
+{
+	while (*string++ != '7');
+	return (--string);
+}
+@def_
+@def $macro69()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: the way functions are used instance  : when a function, which returns a pointer, mistakenly used to get an
+ * integer value 
+ */
+{
+	int             i = 1, *j = &i;
+
+	i = function(&i);
+	if ((int *) i != j - 1)
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+function(argument)
+	int            *argument;
+{
+	return ((int) --argument);
+}
+@def_
+@def $macro70()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: the way functions are used instance  : when a function appears in a conditional expression to return logical
+ * value 
+ */
+{
+	short           flag = 0;
+
+	if (function(8 + 9))
+		flag = 1;
+	if (flag)
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+function(expression)
+	short           expression;
+{
+	return (expression == expression);
+}
+@def_
+@def $macro71()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: the way functions are used instance  : when a function appears in a conditional expression to return a
+ * character 
+ */
+{
+	char            function();
+
+	if (function(0101) == 'A')
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+char 
+function(octal)
+	short           octal;
+{
+	return (octal);
+}
+@def_
+@def $macro72()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: function declaration instance  : when not declared ( that is, implicitly assumed to return an integer ) 
+ */
+{
+	short           i;
+
+	i = function(1);
+	if (i == 10)
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+function(integer)
+	short           integer;
+{
+	return (integer *= 10);
+}
+@def_
+@def $macro73()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: function declaration instance  : when declared as returning an integer 
+ */
+{
+	short           i, function();
+
+	i = function(1);
+	if (i == 10)
+		printok();
+	else
+		printno();
+	return (0);
+}
+
+short 
+function(integer)
+	short           integer;
+{
+	return (integer *= 10);
+}
+@def_
+@def $macro74()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: function declaration instance  : when declared as returning a pointer to character 
+ */
+{
+	char           *s = 0, *function();
+
+	s = function("string");
+	if (*s != 's' || *(s + 1) != 't' || *(s + 2) != 'r'
+	    || *(s + 3) != 'i' || *(s + 4) != 'n' || *(s + 5) != 'g')
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+char           *
+function(string)
+	char           *string;
+{
+	return (string);
+}
+@def_
+@def $macro75()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: function declaration instance  : pointer to function returning an integer 
+ */
+{
+	short           i = 0, statusFlag = NoMistake;
+	short           truncate(), round();
+
+	i = function(truncate, 1, 10);
+	if (i != 5)
+		statusFlag++;
+	i = function(round, 1, 10);
+	if (i != 6)
+		statusFlag++;
+	if (statusFlag != NoMistake)
+		printno();
+	else
+		printok();
+	return (0);
+}
+
+function(getMiddle, high, low)
+	short           (*getMiddle) (), high, low;
+{
+	return ((*getMiddle) (high, low));
+}
+
+short 
+truncate(a, b)
+{
+	return ((a + b) / 2);
+}
+
+short 
+round(a, b)
+{
+	return ((a + b + 1) / 2);
+}
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir ckr.4-1
+@file >>def.h $macro0() @file_
+@file >>fdef.h $macro1() @file_
+@file >>ft01.c $macro2() @file_
+@file >>ft07.c $macro3() @file_
+@file >>ft08.c $macro4() @file_
+@file >>ft09.c $macro5() @file_
+@file >>ft10.c $macro6() @file_
+@file >>ft11.c $macro7() @file_
+@file >>ft12.c $macro8() @file_
+@file >>ft13.c $macro9() @file_
+@file >>ft14.c $macro10() @file_
+@file >>ft15.c $macro11() @file_
+@file >>ft19.c $macro12() @file_
+@file >>ft21.c $macro13() @file_
+@file >>ft22.c $macro14() @file_
+@file >>ft24.c $macro15() @file_
+@file >>ft25.c $macro16() @file_
+@file >>ft28.c $macro17() @file_
+@file >>ft30.c $macro18() @file_
+@file >>ft31.c $macro19() @file_
+@file >>ft32.c $macro20() @file_
+@file >>ft41.c $macro21() @file_
+@file >>ft42.c $macro22() @file_
+@file >>ft43.c $macro23() @file_
+@file >>ft46.c $macro24() @file_
+@file >>lt01.c $macro25() @file_
+@file >>lt02.c $macro26() @file_
+@file >>lt07.c $macro27() @file_
+@file >>lt08.c $macro28() @file_
+@file >>lt09.c $macro29() @file_
+@file >>lt10.c $macro30() @file_
+@file >>lt11.c $macro31() @file_
+@file >>lt12.c $macro32() @file_
+@file >>lt13.c $macro33() @file_
+@file >>lt14.c $macro34() @file_
+@file >>lt15.c $macro35() @file_
+@file >>lt19.c $macro36() @file_
+@file >>lt20.c $macro37() @file_
+@file >>lt21.c $macro38() @file_
+@file >>lt22.c $macro39() @file_
+@file >>lt23.c $macro40() @file_
+@file >>lt24.c $macro41() @file_
+@file >>lt25.c $macro42() @file_
+@file >>lt26.c $macro43() @file_
+@file >>lt27.c $macro44() @file_
+@file >>lt28.c $macro45() @file_
+@file >>lt30.c $macro46() @file_
+@file >>lt31.c $macro47() @file_
+@file >>lt32.c $macro48() @file_
+@file >>lt33.c $macro49() @file_
+@file >>lt41.c $macro50() @file_
+@file >>lt42.c $macro51() @file_
+@file >>lt43.c $macro52() @file_
+@file >>lt45.c $macro53() @file_
+@file >>lt46.c $macro54() @file_
+@file >>t03.c $macro55() @file_
+@file >>t04.c $macro56() @file_
+@file >>t05.c $macro57() @file_
+@file >>t06.c $macro58() @file_
+@file >>t16.c $macro59() @file_
+@file >>t17.c $macro60() @file_
+@file >>t18.c $macro61() @file_
+@file >>t29.c $macro62() @file_
+@file >>t34.c $macro63() @file_
+@file >>t36.c $macro64() @file_
+@file >>t37.c $macro65() @file_
+@file >>t51.c $macro66() @file_
+@file >>t52.c $macro67() @file_
+@file >>t53.c $macro68() @file_
+@file >>t54.c $macro69() @file_
+@file >>t55.c $macro70() @file_
+@file >>t56.c $macro71() @file_
+@file >>t61.c $macro72() @file_
+@file >>t62.c $macro73() @file_
+@file >>t63.c $macro74() @file_
+@file >>t65.c $macro75() @file_
+@file >>testout.h $testout() @file_
+@dir_

@@ -1,0 +1,8475 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@comment
+�����t�@�C�����e�X�g
+@comment_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+@def_
+
+@def $macro0()
+$LICENSE()
+#include "testout.h"
+#define NO 0
+#define OK 1
+#define YCHAR	'y'
+#define NCHAR	'n'
+#define NoMistake 00
+@def_
+
+@def $macro1()
+$LICENSE()
+$HEAD()
+#include    "fstrc.h"
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+struct Str      Struct;
+union Uni       Union;
+main()
+{
+	function();
+	return (0);
+}
+@def_
+
+@def $macro2()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "fstrc.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+	extern float    ftest;
+
+	extern struct Str Struct;
+
+
+	itest = NO;
+	Struct.Int = OK;
+	itest = Struct.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Struct.Short = OK;
+	itest = Struct.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Struct.Long = OK;
+	ltest = Struct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Struct.Unsigned = OK;
+	itest = Struct.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Struct.Char = YCHAR;
+	ctest = Struct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	ftest = NO;
+	Struct.Float = 1.0;
+	ftest = Struct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro3()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+	extern float    ftest;
+
+	extern union Uni Union;
+
+	itest = NO;
+	Union.Int = OK;
+	itest = Union.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Union.Long = OK;
+	ltest = Union.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Union.Char = YCHAR;
+	ctest = Union.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	ftest = NO;
+	Union.Float = 1.0;
+	ftest = Union.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro4()
+$LICENSE()
+$HEAD()
+
+#include    "ftdef.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+STRDEF          Strdef;
+UNIDEF          Unidef;
+
+main()
+{
+	function();
+	return (0);
+}
+@def_
+@def $macro5()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+	extern float    ftest;
+
+	extern STRDEF   Strdef;
+
+
+	itest = NO;
+	Strdef.Int = OK;
+	itest = Strdef.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.Short = OK;
+	itest = Strdef.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Strdef.Long = OK;
+	ltest = Strdef.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.Unsigned = OK;
+	itest = Strdef.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Strdef.Char = YCHAR;
+	ctest = Strdef.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	ftest = NO;
+	Strdef.Float = 1.0;
+	ftest = Strdef.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro6()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+function()
+{
+	extern long     itest;
+	extern char     ctest;
+	extern float    ftest;
+
+	extern UNIDEF   Unidef;
+
+
+	itest = NO;
+	Unidef.Int = OK;
+	itest = Unidef.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Unidef.Long = OK;
+	itest = Unidef.Long;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Unidef.Char = YCHAR;
+	ctest = Unidef.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+}
+@def_
+@def $macro7()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+struct Str      Struct;
+
+main()
+{
+	itest = NO;
+	Struct.Int = OK;
+	function_I();
+
+
+	itest = NO;
+	Struct.Short = OK;
+	function_S();
+
+
+	ltest = NO;
+	Struct.Long = OK;
+	function_L();
+
+
+	itest = NO;
+	Struct.Unsigned = OK;
+	function_U();
+
+
+	ctest = NCHAR;
+	Struct.Char = YCHAR;
+	function_C();
+
+
+	ftest = NO;
+	Struct.Float = 1.0;
+	function_F();
+
+
+	return (0);
+}
+@def_
+@def $macro8()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern struct Str Struct;
+
+function_I()
+{
+	itest = Struct.Int;
+	refer();
+}
+
+
+function_S()
+{
+	itest = Struct.Short;
+	refer();
+}
+
+
+function_L()
+{
+	ltest = Struct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U()
+{
+	itest = Struct.Unsigned;
+	refer();
+}
+
+
+function_C()
+{
+	ctest = Struct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F()
+{
+	ftest = Struct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro9()
+$LICENSE()
+$HEAD()
+
+#include    "fstrc.h"
+#include    "def.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+union Uni       Union;
+
+
+main()
+{
+	itest = NO;
+	Union.Int = OK;
+	function_I();
+
+
+	ltest = NO;
+	Union.Long = OK;
+	function_L();
+
+
+	ctest = NCHAR;
+	Union.Char = YCHAR;
+	function_C();
+
+
+	ftest = NO;
+	Union.Float = 1.0;
+	function_F();
+
+
+	return (0);
+}
+@def_
+@def $macro10()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern union Uni Union;
+
+function_I()
+{
+	itest = Union.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_L()
+{
+	ltest = Union.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_C()
+{
+	ctest = Union.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F()
+{
+	ftest = Union.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro11()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+STRDEF          Strdef;
+
+main()
+{
+	itest = NO;
+	Strdef.Int = OK;
+	function_I();
+
+
+	itest = NO;
+	Strdef.Short = OK;
+	function_S();
+
+
+	ltest = NO;
+	Strdef.Long = OK;
+	function_L();
+
+
+	itest = NO;
+	Strdef.Unsigned = OK;
+	function_U();
+
+
+	ctest = NCHAR;
+	Strdef.Char = YCHAR;
+	function_C();
+
+
+	ftest = NO;
+	Strdef.Float = 1.0;
+	function_F();
+
+
+	return (0);
+}
+@def_
+@def $macro12()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern STRDEF   Strdef;
+
+function_I()
+{
+	itest = Strdef.Int;
+	refer();
+}
+
+
+function_S()
+{
+	itest = Strdef.Short;
+	refer();
+}
+
+
+function_L()
+{
+	ltest = Strdef.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U()
+{
+	itest = Strdef.Unsigned;
+	refer();
+}
+
+
+function_C()
+{
+	ctest = Strdef.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F()
+{
+	ftest = Strdef.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro13()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+UNIDEF          Unidef;
+
+main()
+{
+	itest = NO;
+	Unidef.Int = OK;
+	function_I();
+
+
+	ltest = NO;
+	Unidef.Long = OK;
+	function_L();
+
+
+	ctest = NCHAR;
+	Unidef.Char = YCHAR;
+	function_C();
+
+
+	ftest = NO;
+	Unidef.Float = 1.0;
+	function_F();
+
+
+	return (0);
+}
+@def_
+@def $macro14()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern UNIDEF   Unidef;
+
+function_I()
+{
+	itest = Unidef.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_L()
+{
+	ltest = Unidef.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_C()
+{
+	ctest = Unidef.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F()
+{
+	ftest = Unidef.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro15()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+#include    "ftdef.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+struct Str      Struct;
+STRDEF          Strdef;
+
+main()
+{
+	function_I();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_S();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_L();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_U();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_C();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	function_F();
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro16()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "fstrc.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern struct Str Struct;
+
+function_I()
+{
+	itest = NO;
+	Struct.Int = OK;
+	itest = Struct.Int;
+}
+
+
+function_S()
+{
+	itest = NO;
+	Struct.Short = OK;
+	itest = Struct.Short;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Struct.Long = OK;
+	ltest = Struct.Long;
+}
+
+
+function_U()
+{
+	itest = NO;
+	Struct.Unsigned = OK;
+	itest = Struct.Unsigned;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Struct.Char = YCHAR;
+	ctest = Struct.Char;
+}
+
+
+function_F()
+{
+	ftest = NO;
+	Struct.Float = 1.0;
+	ftest = Struct.Float;
+}
+@def_
+@def $macro17()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "ftdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern STRDEF   Strdef;
+
+function_I()
+{
+	itest = NO;
+	Strdef.Int = OK;
+	itest = Strdef.Int;
+}
+
+
+function_S()
+{
+	itest = NO;
+	Strdef.Short = OK;
+	itest = Strdef.Short;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Strdef.Long = OK;
+	ltest = Strdef.Long;
+}
+
+
+function_U()
+{
+	itest = NO;
+	Strdef.Unsigned = OK;
+	itest = Strdef.Unsigned;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Strdef.Char = YCHAR;
+	ctest = Strdef.Char;
+}
+
+
+function_F()
+{
+	ftest = NO;
+	Strdef.Float = 1.0;
+	ftest = Strdef.Float;
+}
+@def_
+@def $macro18()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+#include    "ftdef.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+union Uni       Union;
+UNIDEF          Unidef;
+
+
+main()
+{
+	function_I();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_L();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_C();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	function_F();
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro19()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "fstrc.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern union Uni Union;
+
+function_I()
+{
+	itest = NO;
+	Union.Int = OK;
+	itest = Union.Int;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Union.Long = OK;
+	ltest = Union.Long;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Union.Char = YCHAR;
+	ctest = Union.Char;
+}
+
+
+function_F()
+{
+	ftest = NO;
+	Union.Float = 1.0;
+	ftest = Union.Float;
+}
+@def_
+@def $macro20()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "ftdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern UNIDEF   Unidef;
+
+function_I()
+{
+	itest = NO;
+	Unidef.Int = OK;
+	itest = Unidef.Int;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Unidef.Long = OK;
+	ltest = Unidef.Long;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Unidef.Char = YCHAR;
+	ctest = Unidef.Char;
+}
+
+
+function_F()
+{
+	ftest = NO;
+	Unidef.Float = 1.0;
+	ftest = Unidef.Float;
+}
+@def_
+@def $macro21()
+$LICENSE()
+$HEAD()
+
+#include    "fstrc_2.h"
+#include    "ftdef_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+struct Str      Struct;
+STRDEF          Strdef;
+
+main()
+{
+	function();
+	return (0);
+}
+@def_
+@def $macro22()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+	extern float    ftest;
+
+	extern struct Str Struct;
+
+
+	itest = NO;
+	Struct.BStruct.Int = OK;
+	itest = Struct.BStruct.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Struct.BStruct.Short = OK;
+	itest = Struct.BStruct.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ltest = NO;
+	Struct.BStruct.Long = OK;
+	ltest = Struct.BStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Struct.BStruct.Unsigned = OK;
+	itest = Struct.BStruct.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ctest = NCHAR;
+	Struct.BStruct.Char = YCHAR;
+	ctest = Struct.BStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	ftest = NO;
+	Struct.BStruct.Float = 1.0;
+	ftest = Struct.BStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+	itest = NO;
+	Struct.BStruct.CStruct.Int = OK;
+	itest = Struct.BStruct.CStruct.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Short = OK;
+	itest = Struct.BStruct.CStruct.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ltest = NO;
+	Struct.BStruct.CStruct.Long = OK;
+	ltest = Struct.BStruct.CStruct.Long;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Unsigned = OK;
+	itest = Struct.BStruct.CStruct.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ctest = NCHAR;
+	Struct.BStruct.CStruct.Char = YCHAR;
+	ctest = Struct.BStruct.CStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	ftest = NO;
+	Struct.BStruct.CStruct.Float = 1.0;
+	ftest = Struct.BStruct.CStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro23()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "ftdef_2.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+	extern float    ftest;
+
+	extern STRDEF   Strdef;
+
+
+	itest = NO;
+	Strdef.BdefStruct.Int = OK;
+	itest = Strdef.BdefStruct.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.Short = OK;
+	itest = Strdef.BdefStruct.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Strdef.BdefStruct.Long = OK;
+	ltest = Strdef.BdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.Unsigned = OK;
+	itest = Strdef.BdefStruct.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.Char = YCHAR;
+	ctest = Strdef.BdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	ftest = NO;
+	Strdef.BdefStruct.Float = 1.0;
+	ftest = Strdef.BdefStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Int = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Short = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Strdef.BdefStruct.CdefStruct.Long = OK;
+	ltest = Strdef.BdefStruct.CdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Unsigned = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.CdefStruct.Char = YCHAR;
+	ctest = Strdef.BdefStruct.CdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	ftest = NO;
+	Strdef.BdefStruct.CdefStruct.Float = 1.0;
+	ftest = Strdef.BdefStruct.CdefStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro24()
+$LICENSE()
+$HEAD()
+
+#include    "fstrc_2.h"
+#include    "ftdef_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+union Uni       Union;
+UNIDEF          Unidef;
+
+main()
+{
+	function();
+	return (0);
+}
+@def_
+@def $macro25()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+	extern float    ftest;
+
+	extern union Uni Union;
+
+
+
+	itest = NO;
+	Union.BUnion.Int = OK;
+	itest = Union.BUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ltest = NO;
+	Union.BUnion.Long = OK;
+	ltest = Union.BUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	ctest = NCHAR;
+	Union.BUnion.Char = YCHAR;
+	ctest = Union.BUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	ftest = NO;
+	Union.BUnion.Float = 1.0;
+	ftest = Union.BUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Union.BUnion.CUnion.Int = OK;
+	itest = Union.BUnion.CUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ltest = NO;
+	Union.BUnion.CUnion.Long = OK;
+	ltest = Union.BUnion.CUnion.Long;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ctest = NCHAR;
+	Union.BUnion.CUnion.Char = YCHAR;
+	ctest = Union.BUnion.CUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	ftest = NO;
+	Union.BUnion.CUnion.Float = 1.0;
+	ftest = Union.BUnion.CUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro26()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "ftdef_2.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+	extern float    ftest;
+
+	extern UNIDEF   Unidef;
+
+
+	itest = NO;
+	Unidef.BdefUnion.Int = OK;
+	itest = Unidef.BdefUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Unidef.BdefUnion.Long = OK;
+	ltest = Unidef.BdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.Char = YCHAR;
+	ctest = Unidef.BdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	ftest = NO;
+	Unidef.BdefUnion.Float = 1.0;
+	ftest = Unidef.BdefUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Unidef.BdefUnion.CdefUnion.Int = OK;
+	itest = Unidef.BdefUnion.CdefUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Unidef.BdefUnion.CdefUnion.Long = OK;
+	ltest = Unidef.BdefUnion.CdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.CdefUnion.Char = YCHAR;
+	ctest = Unidef.BdefUnion.CdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+
+	ftest = NO;
+	Unidef.BdefUnion.CdefUnion.Float = 1.0;
+	ftest = Unidef.BdefUnion.CdefUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+}
+@def_
+@def $macro27()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+struct Str      Struct;
+
+main()
+{
+
+	itest = NO;
+	Struct.BStruct.Int = OK;
+	function_I();
+
+
+	itest = NO;
+	Struct.BStruct.Short = OK;
+	function_S();
+
+
+	ltest = NO;
+	Struct.BStruct.Long = OK;
+	function_L();
+
+
+	itest = NO;
+	Struct.BStruct.Unsigned = OK;
+	function_U();
+
+
+	ctest = NCHAR;
+	Struct.BStruct.Char = YCHAR;
+	function_C();
+
+
+
+	ftest = NO;
+	Struct.BStruct.Float = 1.0;
+	function_F();
+
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Int = OK;
+	function_II();
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Short = OK;
+	function_SS();
+
+
+	ltest = NO;
+	Struct.BStruct.CStruct.Long = OK;
+	function_LL();
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Unsigned = OK;
+	function_UU();
+
+
+	ctest = NCHAR;
+	Struct.BStruct.CStruct.Char = YCHAR;
+	function_CC();
+
+
+
+	ftest = NO;
+	Struct.BStruct.CStruct.Float = 1.0;
+	function_FF();
+
+
+	return (0);
+}
+@def_
+@def $macro28()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern struct Str Struct;
+
+
+function_I()
+{
+	itest = Struct.BStruct.Int;
+	refer();
+}
+
+
+
+function_S()
+{
+	itest = Struct.BStruct.Short;
+	refer();
+}
+
+
+
+function_L()
+{
+	ltest = Struct.BStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_U()
+{
+	itest = Struct.BStruct.Unsigned;
+	refer();
+}
+
+
+
+function_C()
+{
+	ctest = Struct.BStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F()
+{
+	ftest = Struct.BStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+function_II()
+{
+	itest = Struct.BStruct.CStruct.Int;
+	refer();
+}
+
+
+
+function_SS()
+{
+	itest = Struct.BStruct.CStruct.Short;
+	refer();
+}
+
+
+
+function_LL()
+{
+	ltest = Struct.BStruct.CStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_UU()
+{
+	itest = Struct.BStruct.CStruct.Unsigned;
+	refer();
+}
+
+
+
+function_CC()
+{
+	ctest = Struct.BStruct.CStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_FF()
+{
+	ftest = Struct.BStruct.CStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro29()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+union Uni       Union;
+
+main()
+{
+
+	itest = NO;
+	Union.BUnion.Int = OK;
+	function_I();
+
+
+	ltest = NO;
+	Union.BUnion.Long = OK;
+	function_L();
+
+
+	ctest = NCHAR;
+	Union.BUnion.Char = YCHAR;
+	function_C();
+
+
+
+	ftest = NO;
+	Union.BUnion.Float = 1.0;
+	function_F();
+
+
+	itest = NO;
+	Union.BUnion.CUnion.Int = OK;
+	function_II();
+
+
+	ltest = NO;
+	Union.BUnion.CUnion.Long = OK;
+	function_LL();
+
+
+	ctest = NCHAR;
+	Union.BUnion.CUnion.Char = YCHAR;
+	function_CC();
+
+
+
+	ftest = NO;
+	Union.BUnion.CUnion.Float = 1.0;
+	function_FF();
+
+
+	return (0);
+}
+@def_
+@def $macro30()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern union Uni Union;
+
+
+function_I()
+{
+	itest = Union.BUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_L()
+{
+	ltest = Union.BUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_C()
+{
+
+	ctest = Union.BUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F()
+{
+	ftest = Union.BUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+function_II()
+{
+	itest = Union.BUnion.CUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_LL()
+{
+	ltest = Union.BUnion.CUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_CC()
+{
+	ctest = Union.BUnion.CUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+
+
+function_FF()
+{
+	ftest = Union.BUnion.CUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro31()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+STRDEF          Strdef;
+
+main()
+{
+
+	itest = NO;
+	Strdef.BdefStruct.Int = OK;
+	function_I();
+
+
+	itest = NO;
+	Strdef.BdefStruct.Short = OK;
+	function_S();
+
+
+	ltest = NO;
+	Strdef.BdefStruct.Long = OK;
+	function_L();
+
+
+	itest = NO;
+	Strdef.BdefStruct.Unsigned = OK;
+	function_U();
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.Char = YCHAR;
+	function_C();
+
+
+
+	ftest = NO;
+	Strdef.BdefStruct.Float = 1.0;
+	function_F();
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Int = OK;
+	function_II();
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Short = OK;
+	function_SS();
+
+
+	ltest = NO;
+	Strdef.BdefStruct.CdefStruct.Long = OK;
+	function_LL();
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Unsigned = OK;
+	function_UU();
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.CdefStruct.Char = YCHAR;
+	function_CC();
+
+
+
+	ftest = NO;
+	Strdef.BdefStruct.CdefStruct.Float = 1.0;
+	function_FF();
+
+
+	return (0);
+}
+@def_
+@def $macro32()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern STRDEF   Strdef;
+
+
+function_I()
+{
+	itest = Strdef.BdefStruct.Int;
+	refer();
+}
+
+
+
+function_S()
+{
+	itest = Strdef.BdefStruct.Short;
+	refer();
+}
+
+
+
+function_L()
+{
+	ltest = Strdef.BdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_U()
+{
+	itest = Strdef.BdefStruct.Unsigned;
+	refer();
+}
+
+
+
+function_C()
+{
+	ctest = Strdef.BdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F()
+{
+	ftest = Strdef.BdefStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+
+
+
+function_II()
+{
+	itest = Strdef.BdefStruct.CdefStruct.Int;
+	refer();
+}
+
+
+
+function_SS()
+{
+	itest = Strdef.BdefStruct.CdefStruct.Short;
+	refer();
+}
+
+
+
+function_LL()
+{
+	ltest = Strdef.BdefStruct.CdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_UU()
+{
+	itest = Strdef.BdefStruct.CdefStruct.Unsigned;
+	refer();
+}
+
+
+
+function_CC()
+{
+	ctest = Strdef.BdefStruct.CdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_FF()
+{
+	ftest = Strdef.BdefStruct.CdefStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro33()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+UNIDEF          Unidef;
+
+main()
+{
+
+	itest = NO;
+	Unidef.BdefUnion.Int = OK;
+	function_I();
+
+
+	ltest = NO;
+	Unidef.BdefUnion.Long = OK;
+	function_L();
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.Char = YCHAR;
+	function_C();
+
+
+
+	ftest = NO;
+	Unidef.BdefUnion.Float = 1.0;
+	function_F();
+
+
+
+	itest = NO;
+	Unidef.BdefUnion.CdefUnion.Int = OK;
+	function_II();
+
+
+	ltest = NO;
+	Unidef.BdefUnion.CdefUnion.Long = OK;
+	function_LL();
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.CdefUnion.Char = YCHAR;
+	function_CC();
+
+
+
+	ftest = NO;
+	Unidef.BdefUnion.CdefUnion.Float = 1.0;
+	function_FF();
+
+
+	return (0);
+}
+@def_
+@def $macro34()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern UNIDEF   Unidef;
+
+
+function_I()
+{
+	itest = Unidef.BdefUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_L()
+{
+	ltest = Unidef.BdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_C()
+{
+
+	ctest = Unidef.BdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F()
+{
+	ftest = Unidef.BdefUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+
+function_II()
+{
+	itest = Unidef.BdefUnion.CdefUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_LL()
+{
+	ltest = Unidef.BdefUnion.CdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_CC()
+{
+	ctest = Unidef.BdefUnion.CdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+
+function_FF()
+{
+	ftest = Unidef.BdefUnion.CdefUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro35()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+#include    "ftdef_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+struct Str      Struct;
+STRDEF          Strdef;
+
+main()
+{
+	function_I();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_S();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_L();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_U();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_C();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	function_F();
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+
+	function_II();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_SS();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_LL();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_UU();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_CC();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	function_FF();
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro36()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "fstrc_2.h"
+
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern struct Str Struct;
+extern union Uni Union;
+
+
+function_I()
+{
+	itest = NO;
+	Struct.BStruct.Int = OK;
+	itest = Struct.BStruct.Int;
+}
+
+
+function_S()
+{
+	itest = NO;
+	Struct.BStruct.Short = OK;
+	itest = Struct.BStruct.Short;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Struct.BStruct.Long = OK;
+	ltest = Struct.BStruct.Long;
+}
+
+
+function_U()
+{
+	itest = NO;
+	Struct.BStruct.Unsigned = OK;
+	itest = Struct.BStruct.Unsigned;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Struct.BStruct.Char = YCHAR;
+	ctest = Struct.BStruct.Char;
+}
+
+
+
+function_F()
+{
+	ftest = NO;
+	Struct.BStruct.Float = 1.0;
+	ftest = Struct.BStruct.Float;
+}
+
+
+
+function_II()
+{
+	itest = NO;
+	Struct.BStruct.CStruct.Int = OK;
+	itest = Struct.BStruct.CStruct.Int;
+}
+
+
+function_SS()
+{
+	itest = NO;
+	Struct.BStruct.CStruct.Short = OK;
+	itest = Struct.BStruct.CStruct.Short;
+}
+
+
+function_LL()
+{
+	ltest = NO;
+	Struct.BStruct.CStruct.Long = OK;
+	ltest = Struct.BStruct.CStruct.Long;
+}
+
+
+function_UU()
+{
+	itest = NO;
+	Struct.BStruct.CStruct.Unsigned = OK;
+	itest = Struct.BStruct.CStruct.Unsigned;
+}
+
+
+function_CC()
+{
+	ctest = NCHAR;
+	Struct.BStruct.CStruct.Char = YCHAR;
+	ctest = Struct.BStruct.CStruct.Char;
+}
+
+
+function_FF()
+{
+	ftest = NO;
+	Struct.BStruct.CStruct.Float = 1.0;
+	ftest = Struct.BStruct.CStruct.Float;
+}
+@def_
+@def $macro37()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "ftdef_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern STRDEF   Strdef;
+
+function_I()
+{
+	itest = NO;
+	Strdef.BdefStruct.Int = OK;
+	itest = Strdef.BdefStruct.Int;
+}
+
+
+function_S()
+{
+	itest = NO;
+	Strdef.BdefStruct.Short = OK;
+	itest = Strdef.BdefStruct.Short;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Strdef.BdefStruct.Long = OK;
+	ltest = Strdef.BdefStruct.Long;
+}
+
+
+function_U()
+{
+	itest = NO;
+	Strdef.BdefStruct.Unsigned = OK;
+	itest = Strdef.BdefStruct.Unsigned;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Strdef.BdefStruct.Char = YCHAR;
+	ctest = Strdef.BdefStruct.Char;
+}
+
+
+
+function_F()
+{
+	ftest = NO;
+	Strdef.BdefStruct.Float = 1.0;
+	ftest = Strdef.BdefStruct.Float;
+}
+
+
+function_II()
+{
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Int = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Int;
+}
+
+
+function_SS()
+{
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Short = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Short;
+}
+
+
+function_LL()
+{
+	ltest = NO;
+	Strdef.BdefStruct.CdefStruct.Long = OK;
+	ltest = Strdef.BdefStruct.CdefStruct.Long;
+}
+
+
+function_UU()
+{
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Unsigned = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Unsigned;
+}
+
+
+function_CC()
+{
+	ctest = NCHAR;
+	Strdef.BdefStruct.CdefStruct.Char = YCHAR;
+	ctest = Strdef.BdefStruct.CdefStruct.Char;
+}
+
+
+function_FF()
+{
+	ftest = NO;
+	Strdef.BdefStruct.CdefStruct.Float = 1.0;
+	ftest = Strdef.BdefStruct.CdefStruct.Float;
+}
+@def_
+@def $macro38()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+#include    "ftdef_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+union Uni       Union;
+UNIDEF          Unidef;
+
+main()
+{
+	function_I();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_L();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_C();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	function_F();
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+
+	function_II();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_LL();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_CC();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	function_FF();
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro39()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "fstrc_2.h"
+
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern union Uni Union;
+
+
+
+function_I()
+{
+	itest = NO;
+	Union.BUnion.Int = OK;
+	itest = Union.BUnion.Int;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Union.BUnion.Long = OK;
+	ltest = Union.BUnion.Long;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Union.BUnion.Char = YCHAR;
+	ctest = Union.BUnion.Char;
+}
+
+
+
+function_F()
+{
+	ftest = NO;
+	Union.BUnion.Float = 1.0;
+	ftest = Union.BUnion.Float;
+}
+
+
+
+function_II()
+{
+	itest = NO;
+	Union.BUnion.CUnion.Int = OK;
+	itest = Union.BUnion.CUnion.Int;
+}
+
+
+function_LL()
+{
+	ltest = NO;
+	Union.BUnion.CUnion.Long = OK;
+	ltest = Union.BUnion.CUnion.Long;
+}
+
+
+function_CC()
+{
+	ctest = NCHAR;
+	Union.BUnion.CUnion.Char = YCHAR;
+	ctest = Union.BUnion.CUnion.Char;
+}
+
+
+function_FF()
+{
+	ftest = NO;
+	Union.BUnion.CUnion.Float = 1.0;
+	ftest = Union.BUnion.CUnion.Float;
+}
+@def_
+@def $macro40()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "ftdef_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern UNIDEF   Unidef;
+
+function_I()
+{
+	itest = NO;
+	Unidef.BdefUnion.Int = OK;
+	itest = Unidef.BdefUnion.Int;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Unidef.BdefUnion.Long = OK;
+	ltest = Unidef.BdefUnion.Long;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Unidef.BdefUnion.Char = YCHAR;
+	ctest = Unidef.BdefUnion.Char;
+}
+
+
+
+function_F()
+{
+	ftest = NO;
+	Unidef.BdefUnion.Float = 1.0;
+	ftest = Unidef.BdefUnion.Float;
+}
+
+
+function_II()
+{
+	itest = NO;
+	Unidef.BdefUnion.CdefUnion.Int = OK;
+	itest = Unidef.BdefUnion.CdefUnion.Int;
+}
+
+
+function_LL()
+{
+	ltest = NO;
+	Unidef.BdefUnion.CdefUnion.Long = OK;
+	ltest = Unidef.BdefUnion.CdefUnion.Long;
+}
+
+
+function_CC()
+{
+	ctest = NCHAR;
+	Unidef.BdefUnion.CdefUnion.Char = YCHAR;
+	ctest = Unidef.BdefUnion.CdefUnion.Char;
+}
+
+
+function_FF()
+{
+	ftest = NO;
+	Unidef.BdefUnion.CdefUnion.Float = 1.0;
+	ftest = Unidef.BdefUnion.CdefUnion.Float;
+}
+@def_
+@def $macro41()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+struct Str      Struct;
+
+main()
+{
+	itest = NO;
+	Struct.Int = OK;
+	function_I(&Struct);
+
+
+	itest = NO;
+	Struct.Short = OK;
+	function_S(&Struct);
+
+
+	ltest = NO;
+	Struct.Long = OK;
+	function_L(&Struct);
+
+
+	itest = NO;
+	Struct.Unsigned = OK;
+	function_U(&Struct);
+
+
+	ctest = NCHAR;
+	Struct.Char = YCHAR;
+	function_C(&Struct);
+
+
+	ftest = NO;
+	Struct.Float = 1.0;
+	function_F(&Struct);
+
+
+	return (0);
+}
+@def_
+@def $macro42()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+
+
+function_I(argument)
+	struct Str     *argument;
+{
+	if (argument->Int == 1)
+		itest = argument->Int;
+	refer();
+}
+
+
+function_S(argument)
+	struct Str     *argument;
+{
+	if (argument->Short == 1)
+		itest = argument->Short;
+	refer();
+}
+
+
+function_L(argument)
+	struct Str     *argument;
+{
+	if (argument->Long == 1)
+		ltest = argument->Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U(argument)
+	struct Str     *argument;
+{
+	if (argument->Unsigned == 1)
+		itest = argument->Unsigned;
+	refer();
+}
+
+
+function_C(argument)
+	struct Str     *argument;
+{
+	if (argument->Char == 'y')
+		ctest = argument->Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F(argument)
+	struct Str     *argument;
+{
+	if (TGEN_FLT_EQ(argument->Float, 1.0) )
+		ftest = argument->Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro43()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+union Uni       Union;
+
+main()
+{
+	itest = NO;
+	Union.Int = OK;
+	function_I(&Union);
+
+
+	ltest = NO;
+	Union.Long = OK;
+	function_L(&Union);
+
+
+	ctest = NCHAR;
+	Union.Char = YCHAR;
+	function_C(&Union);
+
+
+	ftest = NO;
+	Union.Float = 1.0;
+	function_F(&Union);
+
+
+	return (0);
+}
+@def_
+@def $macro44()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+
+
+function_I(argument)
+	union Uni      *argument;
+{
+	if (argument->Int == 1)
+		itest = argument->Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_L(argument)
+	union Uni      *argument;
+{
+	if (argument->Long == 1)
+		ltest = argument->Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_C(argument)
+	union Uni      *argument;
+{
+	if (argument->Char == 'y')
+		ctest = argument->Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_F(argument)
+	union Uni      *argument;
+{
+	if (TGEN_FLT_EQ(argument->Float, 1.0))
+		ftest = argument->Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro45()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+STRDEF          Strdef;
+
+main()
+{
+
+	itest = NO;
+	Strdef.Int = OK;
+	function_I(&Strdef);
+
+
+	itest = NO;
+	Strdef.Short = OK;
+	function_S(&Strdef);
+
+
+	ltest = NO;
+	Strdef.Long = OK;
+	function_L(&Strdef);
+
+
+	itest = NO;
+	Strdef.Unsigned = OK;
+	function_U(&Strdef);
+
+
+	ctest = NCHAR;
+	Strdef.Char = YCHAR;
+	function_C(&Strdef);
+
+
+	ftest = NO;
+	Strdef.Float = 1.0;
+	function_F(&Strdef);
+
+
+	return (0);
+}
+@def_
+@def $macro46()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+
+function_I(argument)
+	STRDEF         *argument;
+{
+	if (argument->Int == 1)
+		itest = argument->Int;
+	refer();
+}
+
+
+function_S(argument)
+	STRDEF         *argument;
+{
+	if (argument->Short == 1)
+		itest = argument->Short;
+	refer();
+}
+
+
+function_L(argument)
+	STRDEF         *argument;
+{
+	if (argument->Long == 1)
+		ltest = argument->Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U(argument)
+	STRDEF         *argument;
+{
+	if (argument->Unsigned == 1)
+		itest = argument->Unsigned;
+	refer();
+}
+
+
+function_C(argument)
+	STRDEF         *argument;
+{
+	if (argument->Char == 'y')
+		ctest = argument->Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F(argument)
+	STRDEF         *argument;
+{
+	if (TGEN_FLT_EQ(argument->Float, 1.0) )
+		ftest = argument->Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro47()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+UNIDEF          Unidef;
+
+main()
+{
+	itest = NO;
+	Unidef.Int = OK;
+	function_I(&Unidef);
+
+
+	ltest = NO;
+	Unidef.Long = OK;
+	function_L(&Unidef);
+
+
+	ctest = NCHAR;
+	Unidef.Char = YCHAR;
+	function_C(&Unidef);
+
+
+	ftest = NO;
+	Unidef.Float = 1.0;
+	function_F(&Unidef);
+
+
+	return (0);
+}
+@def_
+@def $macro48()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+
+function_I(argument)
+	UNIDEF         *argument;
+{
+	if (argument->Int == 1)
+		itest = argument->Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_L(argument)
+	UNIDEF         *argument;
+{
+	if (argument->Long == 1)
+		ltest = argument->Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_C(argument)
+	UNIDEF         *argument;
+{
+	if (argument->Char == 'y')
+		ctest = argument->Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F(argument)
+	UNIDEF         *argument;
+{
+	if (TGEN_FLT_EQ(argument->Float, 1.0) )
+		ftest = argument->Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro49()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+struct Str      Struct;
+
+main()
+{
+
+	itest = NO;
+	Struct.BStruct.Int = OK;
+	function_I(&Struct);
+
+
+	itest = NO;
+	Struct.BStruct.Short = OK;
+	function_S(&Struct);
+
+
+	ltest = NO;
+	Struct.BStruct.Long = OK;
+	function_L(&Struct);
+
+
+	itest = NO;
+	Struct.BStruct.Unsigned = OK;
+	function_U(&Struct);
+
+
+	ctest = NCHAR;
+	Struct.BStruct.Char = YCHAR;
+	function_C(&Struct);
+
+
+
+	ftest = NO;
+	Struct.BStruct.Float = 1.0;
+	function_C(&Struct);
+
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Int = OK;
+	function_II(&Struct);
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Short = OK;
+	function_SS(&Struct);
+
+
+	ltest = NO;
+	Struct.BStruct.CStruct.Long = OK;
+	function_LL(&Struct);
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Unsigned = OK;
+	function_UU(&Struct);
+
+
+	ctest = NCHAR;
+	Struct.BStruct.CStruct.Char = YCHAR;
+	function_CC(&Struct);
+
+
+	ftest = NO;
+	Struct.BStruct.CStruct.Float = 1.0;
+	function_FF(&Struct);
+
+
+
+	return (0);
+}
+@def_
+@def $macro50()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+
+function_I(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.Int == 1)
+		itest = argument->BStruct.Int;
+	refer();
+}
+
+
+function_S(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.Short == 1)
+		itest = argument->BStruct.Short;
+	refer();
+}
+
+
+function_L(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.Long == 1)
+		ltest = argument->BStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_U(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.Unsigned == 1)
+		itest = argument->BStruct.Unsigned;
+	refer();
+}
+
+
+
+function_C(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.Char == 'y')
+		ctest = argument->BStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F(argument)
+	struct Str     *argument;
+{
+ if ( (TGEN_FLT_EQ(argument->BStruct.Float, 1.0)) )
+		ftest = argument->BStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+
+
+function_II(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.CStruct.Int == 1)
+		itest = argument->BStruct.CStruct.Int;
+	refer();
+}
+
+
+
+function_SS(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.CStruct.Short == 1)
+		itest = argument->BStruct.CStruct.Short;
+	refer();
+}
+
+
+
+function_LL(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.CStruct.Long == 1)
+		ltest = argument->BStruct.CStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_UU(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.CStruct.Unsigned == 1)
+		itest = argument->BStruct.CStruct.Unsigned;
+	refer();
+}
+
+
+
+function_CC(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.CStruct.Char == 'y')
+		ctest = argument->BStruct.CStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_FF(argument)
+	struct Str     *argument;
+{
+ if ( (TGEN_FLT_EQ(argument->BStruct.CStruct.Float, 1.0)) )
+		ftest = argument->BStruct.CStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro51()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+union Uni       Union;
+
+main()
+{
+
+	itest = NO;
+	Union.BUnion.Int = OK;
+	function_I(&Union);
+
+
+	ltest = NO;
+	Union.BUnion.Long = OK;
+	function_L(&Union);
+
+
+	ctest = NCHAR;
+	Union.BUnion.Char = YCHAR;
+	function_C(&Union);
+
+
+
+	ftest = NO;
+	Union.BUnion.Float = 1.0;
+	function_F(&Union);
+
+
+
+
+	itest = NO;
+	Union.BUnion.CUnion.Int = OK;
+	function_II(&Union);
+
+
+	ltest = NO;
+	Union.BUnion.CUnion.Long = OK;
+	function_LL(&Union);
+
+
+	ctest = NCHAR;
+	Union.BUnion.CUnion.Char = YCHAR;
+	function_CC(&Union);
+
+
+	ftest = NO;
+	Union.BUnion.CUnion.Float = 1.0;
+	function_FF(&Union);
+
+
+
+	return (0);
+}
+@def_
+@def $macro52()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+
+
+function_I(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.Int == 1)
+		itest = argument->BUnion.Int;
+	refer();
+}
+
+
+
+function_L(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.Long == 1)
+		ltest = argument->BUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_C(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.Char == 'y')
+		ctest = argument->BUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F(argument)
+	union Uni      *argument;
+{
+ if ( (TGEN_FLT_EQ(argument->BUnion.Float, 1.0)) )
+		ftest = argument->BUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+function_II(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.CUnion.Int == 1)
+		itest = argument->BUnion.CUnion.Int;
+	refer();
+}
+
+
+
+function_LL(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.CUnion.Long == 1)
+		ltest = argument->BUnion.CUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_CC(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.CUnion.Char == 'y')
+		ctest = argument->BUnion.CUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_FF(argument)
+	union Uni      *argument;
+{
+	if (TGEN_FLT_EQ(argument->BUnion.CUnion.Float, 1.0) )
+		ftest = argument->BUnion.CUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro53()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+STRDEF          Strdef;
+
+main()
+{
+
+	itest = NO;
+	Strdef.BdefStruct.Int = OK;
+	function_I(&Strdef);
+
+
+	itest = NO;
+	Strdef.BdefStruct.Short = OK;
+	function_S(&Strdef);
+
+
+	ltest = NO;
+	Strdef.BdefStruct.Long = OK;
+	function_L(&Strdef);
+
+
+	itest = NO;
+	Strdef.BdefStruct.Unsigned = OK;
+	function_U(&Strdef);
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.Char = YCHAR;
+	function_C(&Strdef);
+
+
+
+	ftest = NO;
+	Strdef.BdefStruct.Float = 1.0;
+	function_F(&Strdef);
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Int = OK;
+	function_II(&Strdef);
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Short = OK;
+	function_SS(&Strdef);
+
+
+	ltest = NO;
+	Strdef.BdefStruct.CdefStruct.Long = OK;
+	function_LL(&Strdef);
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Unsigned = OK;
+	function_UU(&Strdef);
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.CdefStruct.Char = YCHAR;
+	function_CC(&Strdef);
+
+
+	ftest = NO;
+	Strdef.BdefStruct.CdefStruct.Float = 1.0;
+	function_FF(&Strdef);
+
+
+
+	return (0);
+}
+@def_
+@def $macro54()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+function_I(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.Int == 1)
+		itest = argument->BdefStruct.Int;
+	refer();
+}
+
+function_S(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.Short == 1)
+		itest = argument->BdefStruct.Short;
+	refer();
+}
+
+function_L(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.Long == 1)
+		ltest = argument->BdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+function_U(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.Unsigned == 1)
+		itest = argument->BdefStruct.Unsigned;
+	refer();
+}
+
+function_C(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.Char == 'y')
+		ctest = argument->BdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+function_F(argument)
+	STRDEF         *argument;
+{
+	if ( TGEN_FLT_EQ(argument->BdefStruct.Float, 1.0) )
+		ftest = argument->BdefStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+function_II(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.CdefStruct.Int == 1)
+		itest = argument->BdefStruct.CdefStruct.Int;
+	refer();
+}
+
+function_SS(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.CdefStruct.Short == 1)
+		itest = argument->BdefStruct.CdefStruct.Short;
+	refer();
+}
+
+function_LL(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.CdefStruct.Long == 1)
+		ltest = argument->BdefStruct.CdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+function_UU(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.CdefStruct.Unsigned == 1)
+		itest = argument->BdefStruct.CdefStruct.Unsigned;
+	refer();
+}
+
+function_CC(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.CdefStruct.Char == 'y')
+		ctest = argument->BdefStruct.CdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+function_FF(argument)
+	STRDEF         *argument;
+{
+	if ( TGEN_FLT_EQ(argument->BdefStruct.CdefStruct.Float, 1.0) )
+		ftest = argument->BdefStruct.CdefStruct.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro55()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+
+UNIDEF          Unidef;
+
+main()
+{
+	itest = NO;
+	Unidef.BdefUnion.Int = OK;
+	function_I(&Unidef);
+
+
+	ltest = NO;
+	Unidef.BdefUnion.Long = OK;
+	function_L(&Unidef);
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.Char = YCHAR;
+	function_C(&Unidef);
+
+
+	ftest = NO;
+	Unidef.BdefUnion.Float = 1.0;
+	function_F(&Unidef);
+
+
+
+	itest = NO;
+	Unidef.BdefUnion.CdefUnion.Int = OK;
+	function_II(&Unidef);
+
+
+	ltest = NO;
+	Unidef.BdefUnion.CdefUnion.Long = OK;
+	function_LL(&Unidef);
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.CdefUnion.Char = YCHAR;
+	function_CC(&Unidef);
+
+
+	ftest = NO;
+	Unidef.BdefUnion.CdefUnion.Float = 1.0;
+	function_FF(&Unidef);
+
+
+	return (0);
+}
+@def_
+@def $macro56()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+
+
+function_I(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.Int == 1)
+		itest = argument->BdefUnion.Int;
+	refer();
+}
+
+
+
+function_L(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.Long == 1)
+		ltest = argument->BdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_C(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.Char == 'y')
+		ctest = argument->BdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F(argument)
+	UNIDEF         *argument;
+{
+ if ( (TGEN_FLT_EQ(argument->BdefUnion.Float, 1.0)) )
+		ftest = argument->BdefUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+
+
+function_II(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.CdefUnion.Int == 1)
+		itest = argument->BdefUnion.CdefUnion.Int;
+	refer();
+}
+
+
+
+function_LL(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.CdefUnion.Long == 1)
+		ltest = argument->BdefUnion.CdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_CC(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.CdefUnion.Char == 'y')
+		ctest = argument->BdefUnion.CdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_FF(argument)
+	UNIDEF         *argument;
+{
+	if (TGEN_FLT_EQ(argument->BdefUnion.CdefUnion.Float, 1.0) )
+		ftest = argument->BdefUnion.CdefUnion.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+
+@def $macro57()
+$LICENSE()
+int             itest;
+long            ltest;
+char            ctest;
+int             Int;
+short           Short;
+long            Long;
+unsigned        Unsigned;
+char            Char;
+@def_
+
+@def $macro58()
+$LICENSE()
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+int             Int;
+short           Short;
+long            Long;
+unsigned        Unsigned;
+char            Char;
+float           Float;
+@def_
+
+@def $macro59()
+$LICENSE()
+struct Str {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+};
+union Uni {
+	int             Int;
+	long            Long;
+	char            Char;
+};
+@def_
+
+@def $macro60()
+$LICENSE()
+struct Str {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+};
+union Uni {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+};
+@def_
+
+@def $macro61()
+$LICENSE()
+struct Str {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	struct BStruct {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		struct CStruct {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+		}               CStruct;
+	}               BStruct;
+};
+union Uni {
+	int             Int;
+	long            Long;
+	char            Char;
+	union BUnion {
+		int             Int;
+		long            Long;
+		char            Char;
+		union CUnion {
+			int             Int;
+			long            Long;
+			char            Char;
+		}               CUnion;
+	}               BUnion;
+};
+@def_
+
+@def $macro62()
+$LICENSE()
+struct Str {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	struct BStruct {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		float           Float;
+		struct CStruct {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+			float           Float;
+		}               CStruct;
+	}               BStruct;
+};
+union Uni {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+	union BUnion {
+		int             Int;
+		long            Long;
+		char            Char;
+		float           Float;
+		union CUnion {
+			int             Int;
+			long            Long;
+			char            Char;
+			float           Float;
+		}               CUnion;
+	}               BUnion;
+};
+@def_
+
+@def $macro63()
+$LICENSE()
+$HEAD()
+
+#include    "strc.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+struct Str      Struct;
+union Uni       Union;
+
+main()
+{
+	function();
+	return (0);
+}
+@def_
+@def $macro64()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "strc.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+
+	extern struct Str Struct;
+
+
+	itest = NO;
+	Struct.Int = OK;
+	itest = Struct.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Struct.Short = OK;
+	itest = Struct.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Struct.Long = OK;
+	ltest = Struct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Struct.Unsigned = OK;
+	itest = Struct.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Struct.Char = YCHAR;
+	ctest = Struct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro65()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+
+	extern union Uni Union;
+
+	itest = NO;
+	Union.Int = OK;
+	itest = Union.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Union.Long = OK;
+	ltest = Union.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Union.Char = YCHAR;
+	ctest = Union.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro66()
+$LICENSE()
+$HEAD()
+
+#include    "tdef.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+STRDEF          Strdef;
+UNIDEF          Unidef;
+
+main()
+{
+	function();
+	return (0);
+}
+@def_
+@def $macro67()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+
+	extern STRDEF   Strdef;
+
+
+	itest = NO;
+	Strdef.Int = OK;
+	itest = Strdef.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.Short = OK;
+	itest = Strdef.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Strdef.Long = OK;
+	ltest = Strdef.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.Unsigned = OK;
+	itest = Strdef.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Strdef.Char = YCHAR;
+	ctest = Strdef.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+}
+@def_
+@def $macro68()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+function()
+{
+	extern long     itest;
+	extern char     ctest;
+
+	extern UNIDEF   Unidef;
+
+
+	itest = NO;
+	Unidef.Int = OK;
+	itest = Unidef.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Unidef.Long = OK;
+	itest = Unidef.Long;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Unidef.Char = YCHAR;
+	ctest = Unidef.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+}
+@def_
+@def $macro69()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+struct Str      Struct;
+
+main()
+{
+	itest = NO;
+	Struct.Int = OK;
+	function_I();
+
+
+	itest = NO;
+	Struct.Short = OK;
+	function_S();
+
+
+	ltest = NO;
+	Struct.Long = OK;
+	function_L();
+
+
+	itest = NO;
+	Struct.Unsigned = OK;
+	function_U();
+
+
+	ctest = NCHAR;
+	Struct.Char = YCHAR;
+	function_C();
+
+
+	return (0);
+}
+@def_
+@def $macro70()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern struct Str Struct;
+
+function_I()
+{
+	itest = Struct.Int;
+	refer();
+}
+
+
+function_S()
+{
+	itest = Struct.Short;
+	refer();
+}
+
+
+function_L()
+{
+	ltest = Struct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U()
+{
+	itest = Struct.Unsigned;
+	refer();
+}
+
+
+function_C()
+{
+	ctest = Struct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro71()
+$LICENSE()
+$HEAD()
+
+#include    "strc.h"
+#include    "def.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+union Uni       Union;
+
+
+main()
+{
+	itest = NO;
+	Union.Int = OK;
+	function_I();
+
+
+	ltest = NO;
+	Union.Long = OK;
+	function_L();
+
+
+	ctest = NCHAR;
+	Union.Char = YCHAR;
+	function_C();
+
+
+	return (0);
+}
+@def_
+@def $macro72()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern union Uni Union;
+
+function_I()
+{
+	itest = Union.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_L()
+{
+	ltest = Union.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_C()
+{
+	ctest = Union.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro73()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+
+STRDEF          Strdef;
+
+main()
+{
+	itest = NO;
+	Strdef.Int = OK;
+	function_I();
+
+
+	itest = NO;
+	Strdef.Short = OK;
+	function_S();
+
+
+	ltest = NO;
+	Strdef.Long = OK;
+	function_L();
+
+
+	itest = NO;
+	Strdef.Unsigned = OK;
+	function_U();
+
+
+	ctest = NCHAR;
+	Strdef.Char = YCHAR;
+	function_C();
+
+
+	return (0);
+}
+@def_
+@def $macro74()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern STRDEF   Strdef;
+
+function_I()
+{
+	itest = Strdef.Int;
+	refer();
+}
+
+
+function_S()
+{
+	itest = Strdef.Short;
+	refer();
+}
+
+
+function_L()
+{
+	ltest = Strdef.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U()
+{
+	itest = Strdef.Unsigned;
+	refer();
+}
+
+
+function_C()
+{
+	ctest = Strdef.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro75()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+
+UNIDEF          Unidef;
+
+main()
+{
+	itest = NO;
+	Unidef.Int = OK;
+	function_I();
+
+
+	ltest = NO;
+	Unidef.Long = OK;
+	function_L();
+
+
+	ctest = NCHAR;
+	Unidef.Char = YCHAR;
+	function_C();
+
+
+	return (0);
+}
+@def_
+@def $macro76()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern UNIDEF   Unidef;
+
+function_I()
+{
+	itest = Unidef.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_L()
+{
+	ltest = Unidef.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_C()
+{
+	ctest = Unidef.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro77()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+#include    "tdef.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+struct Str      Struct;
+STRDEF          Strdef;
+
+main()
+{
+	function_I();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_S();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_L();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_U();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_C();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro78()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "strc.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern struct Str Struct;
+
+function_I()
+{
+	itest = NO;
+	Struct.Int = OK;
+	itest = Struct.Int;
+}
+
+
+function_S()
+{
+	itest = NO;
+	Struct.Short = OK;
+	itest = Struct.Short;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Struct.Long = OK;
+	ltest = Struct.Long;
+}
+
+
+function_U()
+{
+	itest = NO;
+	Struct.Unsigned = OK;
+	itest = Struct.Unsigned;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Struct.Char = YCHAR;
+	ctest = Struct.Char;
+}
+@def_
+@def $macro79()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "tdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern STRDEF   Strdef;
+
+function_I()
+{
+	itest = NO;
+	Strdef.Int = OK;
+	itest = Strdef.Int;
+}
+
+
+function_S()
+{
+	itest = NO;
+	Strdef.Short = OK;
+	itest = Strdef.Short;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Strdef.Long = OK;
+	ltest = Strdef.Long;
+}
+
+
+function_U()
+{
+	itest = NO;
+	Strdef.Unsigned = OK;
+	itest = Strdef.Unsigned;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Strdef.Char = YCHAR;
+	ctest = Strdef.Char;
+}
+@def_
+@def $macro80()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+#include    "tdef.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+union Uni       Union;
+UNIDEF          Unidef;
+
+
+main()
+{
+	function_I();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_L();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_C();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro81()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "strc.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern union Uni Union;
+
+function_I()
+{
+	itest = NO;
+	Union.Int = OK;
+	itest = Union.Int;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Union.Long = OK;
+	ltest = Union.Long;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Union.Char = YCHAR;
+	ctest = Union.Char;
+}
+@def_
+@def $macro82()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "tdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern UNIDEF   Unidef;
+
+function_I()
+{
+	itest = NO;
+	Unidef.Int = OK;
+	itest = Unidef.Int;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Unidef.Long = OK;
+	ltest = Unidef.Long;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Unidef.Char = YCHAR;
+	ctest = Unidef.Char;
+}
+@def_
+@def $macro83()
+$LICENSE()
+$HEAD()
+
+#include    "strc_2.h"
+#include    "tdef_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+struct Str      Struct;
+STRDEF          Strdef;
+
+main()
+{
+	function();
+	return (0);
+}
+@def_
+@def $macro84()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+
+	extern struct Str Struct;
+
+
+	itest = NO;
+	Struct.BStruct.Int = OK;
+	itest = Struct.BStruct.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Struct.BStruct.Short = OK;
+	itest = Struct.BStruct.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ltest = NO;
+	Struct.BStruct.Long = OK;
+	ltest = Struct.BStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Struct.BStruct.Unsigned = OK;
+	itest = Struct.BStruct.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ctest = NCHAR;
+	Struct.BStruct.Char = YCHAR;
+	ctest = Struct.BStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Int = OK;
+	itest = Struct.BStruct.CStruct.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Short = OK;
+	itest = Struct.BStruct.CStruct.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ltest = NO;
+	Struct.BStruct.CStruct.Long = OK;
+	ltest = Struct.BStruct.CStruct.Long;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Unsigned = OK;
+	itest = Struct.BStruct.CStruct.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ctest = NCHAR;
+	Struct.BStruct.CStruct.Char = YCHAR;
+	ctest = Struct.BStruct.CStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro85()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "tdef_2.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+
+	extern STRDEF   Strdef;
+
+
+	itest = NO;
+	Strdef.BdefStruct.Int = OK;
+	itest = Strdef.BdefStruct.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.Short = OK;
+	itest = Strdef.BdefStruct.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Strdef.BdefStruct.Long = OK;
+	ltest = Strdef.BdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.Unsigned = OK;
+	itest = Strdef.BdefStruct.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.Char = YCHAR;
+	ctest = Strdef.BdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Int = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Short = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Strdef.BdefStruct.CdefStruct.Long = OK;
+	ltest = Strdef.BdefStruct.CdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Unsigned = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.CdefStruct.Char = YCHAR;
+	ctest = Strdef.BdefStruct.CdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro86()
+$LICENSE()
+$HEAD()
+
+#include    "strc_2.h"
+#include    "tdef_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+union Uni       Union;
+UNIDEF          Unidef;
+
+main()
+{
+	function();
+	return (0);
+}
+@def_
+@def $macro87()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+
+	extern union Uni Union;
+
+
+
+	itest = NO;
+	Union.BUnion.Int = OK;
+	itest = Union.BUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ltest = NO;
+	Union.BUnion.Long = OK;
+	ltest = Union.BUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	ctest = NCHAR;
+	Union.BUnion.Char = YCHAR;
+	ctest = Union.BUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Union.BUnion.CUnion.Int = OK;
+	itest = Union.BUnion.CUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ltest = NO;
+	Union.BUnion.CUnion.Long = OK;
+	ltest = Union.BUnion.CUnion.Long;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	ctest = NCHAR;
+	Union.BUnion.CUnion.Char = YCHAR;
+	ctest = Union.BUnion.CUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro88()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "tdef_2.h"
+
+function()
+{
+	extern int      itest;
+	extern long     ltest;
+	extern char     ctest;
+
+	extern UNIDEF   Unidef;
+
+
+	itest = NO;
+	Unidef.BdefUnion.Int = OK;
+	itest = Unidef.BdefUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Unidef.BdefUnion.Long = OK;
+	ltest = Unidef.BdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.Char = YCHAR;
+	ctest = Unidef.BdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Unidef.BdefUnion.CdefUnion.Int = OK;
+	itest = Unidef.BdefUnion.CdefUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ltest = NO;
+	Unidef.BdefUnion.CdefUnion.Long = OK;
+	ltest = Unidef.BdefUnion.CdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.CdefUnion.Char = YCHAR;
+	ctest = Unidef.BdefUnion.CdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+}
+@def_
+@def $macro89()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+struct Str      Struct;
+
+main()
+{
+
+	itest = NO;
+	Struct.BStruct.Int = OK;
+	function_I();
+
+
+	itest = NO;
+	Struct.BStruct.Short = OK;
+	function_S();
+
+
+	ltest = NO;
+	Struct.BStruct.Long = OK;
+	function_L();
+
+
+	itest = NO;
+	Struct.BStruct.Unsigned = OK;
+	function_U();
+
+
+	ctest = NCHAR;
+	Struct.BStruct.Char = YCHAR;
+	function_C();
+
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Int = OK;
+	function_II();
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Short = OK;
+	function_SS();
+
+
+	ltest = NO;
+	Struct.BStruct.CStruct.Long = OK;
+	function_LL();
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Unsigned = OK;
+	function_UU();
+
+
+	ctest = NCHAR;
+	Struct.BStruct.CStruct.Char = YCHAR;
+	function_CC();
+
+
+
+	return (0);
+}
+@def_
+@def $macro90()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern struct Str Struct;
+
+
+function_I()
+{
+	itest = Struct.BStruct.Int;
+	refer();
+}
+
+
+
+function_S()
+{
+	itest = Struct.BStruct.Short;
+	refer();
+}
+
+
+
+function_L()
+{
+	ltest = Struct.BStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_U()
+{
+	itest = Struct.BStruct.Unsigned;
+	refer();
+}
+
+
+
+function_C()
+{
+	ctest = Struct.BStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_II()
+{
+	itest = Struct.BStruct.CStruct.Int;
+	refer();
+}
+
+
+
+function_SS()
+{
+	itest = Struct.BStruct.CStruct.Short;
+	refer();
+}
+
+
+
+function_LL()
+{
+	ltest = Struct.BStruct.CStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_UU()
+{
+	itest = Struct.BStruct.CStruct.Unsigned;
+	refer();
+}
+
+
+
+function_CC()
+{
+	ctest = Struct.BStruct.CStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro91()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+union Uni       Union;
+
+main()
+{
+
+	itest = NO;
+	Union.BUnion.Int = OK;
+	function_I();
+
+
+	ltest = NO;
+	Union.BUnion.Long = OK;
+	function_L();
+
+
+	ctest = NCHAR;
+	Union.BUnion.Char = YCHAR;
+	function_C();
+
+
+
+	itest = NO;
+	Union.BUnion.CUnion.Int = OK;
+	function_II();
+
+
+	ltest = NO;
+	Union.BUnion.CUnion.Long = OK;
+	function_LL();
+
+
+	ctest = NCHAR;
+	Union.BUnion.CUnion.Char = YCHAR;
+	function_CC();
+
+
+	return (0);
+}
+@def_
+@def $macro92()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern union Uni Union;
+
+
+function_I()
+{
+	itest = Union.BUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_L()
+{
+	ltest = Union.BUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_C()
+{
+
+	ctest = Union.BUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_II()
+{
+	itest = Union.BUnion.CUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_LL()
+{
+	ltest = Union.BUnion.CUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_CC()
+{
+	ctest = Union.BUnion.CUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro93()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+
+STRDEF          Strdef;
+
+main()
+{
+
+	itest = NO;
+	Strdef.BdefStruct.Int = OK;
+	function_I();
+
+
+	itest = NO;
+	Strdef.BdefStruct.Short = OK;
+	function_S();
+
+
+	ltest = NO;
+	Strdef.BdefStruct.Long = OK;
+	function_L();
+
+
+	itest = NO;
+	Strdef.BdefStruct.Unsigned = OK;
+	function_U();
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.Char = YCHAR;
+	function_C();
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Int = OK;
+	function_II();
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Short = OK;
+	function_SS();
+
+
+	ltest = NO;
+	Strdef.BdefStruct.CdefStruct.Long = OK;
+	function_LL();
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Unsigned = OK;
+	function_UU();
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.CdefStruct.Char = YCHAR;
+	function_CC();
+
+
+
+	return (0);
+}
+@def_
+@def $macro94()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern STRDEF   Strdef;
+
+
+function_I()
+{
+	itest = Strdef.BdefStruct.Int;
+	refer();
+}
+
+
+
+function_S()
+{
+	itest = Strdef.BdefStruct.Short;
+	refer();
+}
+
+
+
+function_L()
+{
+	ltest = Strdef.BdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_U()
+{
+	itest = Strdef.BdefStruct.Unsigned;
+	refer();
+}
+
+
+
+function_C()
+{
+	ctest = Strdef.BdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_II()
+{
+	itest = Strdef.BdefStruct.CdefStruct.Int;
+	refer();
+}
+
+
+
+function_SS()
+{
+	itest = Strdef.BdefStruct.CdefStruct.Short;
+	refer();
+}
+
+
+
+function_LL()
+{
+	ltest = Strdef.BdefStruct.CdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_UU()
+{
+	itest = Strdef.BdefStruct.CdefStruct.Unsigned;
+	refer();
+}
+
+
+
+function_CC()
+{
+	ctest = Strdef.BdefStruct.CdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro95()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+
+UNIDEF          Unidef;
+
+main()
+{
+
+	itest = NO;
+	Unidef.BdefUnion.Int = OK;
+	function_I();
+
+
+	ltest = NO;
+	Unidef.BdefUnion.Long = OK;
+	function_L();
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.Char = YCHAR;
+	function_C();
+
+
+
+	itest = NO;
+	Unidef.BdefUnion.CdefUnion.Int = OK;
+	function_II();
+
+
+	ltest = NO;
+	Unidef.BdefUnion.CdefUnion.Long = OK;
+	function_LL();
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.CdefUnion.Char = YCHAR;
+	function_CC();
+
+
+	return (0);
+}
+@def_
+@def $macro96()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern UNIDEF   Unidef;
+
+
+function_I()
+{
+	itest = Unidef.BdefUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_L()
+{
+	ltest = Unidef.BdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_C()
+{
+
+	ctest = Unidef.BdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_II()
+{
+	itest = Unidef.BdefUnion.CdefUnion.Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_LL()
+{
+	ltest = Unidef.BdefUnion.CdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_CC()
+{
+	ctest = Unidef.BdefUnion.CdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro97()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+#include    "tdef_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+struct Str      Struct;
+STRDEF          Strdef;
+
+main()
+{
+	function_I();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_S();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_L();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_U();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_C();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	function_II();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_SS();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_LL();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_UU();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_CC();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro98()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "strc_2.h"
+
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern struct Str Struct;
+extern union Uni Union;
+
+
+function_I()
+{
+	itest = NO;
+	Struct.BStruct.Int = OK;
+	itest = Struct.BStruct.Int;
+}
+
+
+function_S()
+{
+	itest = NO;
+	Struct.BStruct.Short = OK;
+	itest = Struct.BStruct.Short;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Struct.BStruct.Long = OK;
+	ltest = Struct.BStruct.Long;
+}
+
+
+function_U()
+{
+	itest = NO;
+	Struct.BStruct.Unsigned = OK;
+	itest = Struct.BStruct.Unsigned;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Struct.BStruct.Char = YCHAR;
+	ctest = Struct.BStruct.Char;
+}
+
+
+
+function_II()
+{
+	itest = NO;
+	Struct.BStruct.CStruct.Int = OK;
+	itest = Struct.BStruct.CStruct.Int;
+}
+
+
+function_SS()
+{
+	itest = NO;
+	Struct.BStruct.CStruct.Short = OK;
+	itest = Struct.BStruct.CStruct.Short;
+}
+
+
+function_LL()
+{
+	ltest = NO;
+	Struct.BStruct.CStruct.Long = OK;
+	ltest = Struct.BStruct.CStruct.Long;
+}
+
+
+function_UU()
+{
+	itest = NO;
+	Struct.BStruct.CStruct.Unsigned = OK;
+	itest = Struct.BStruct.CStruct.Unsigned;
+}
+
+
+function_CC()
+{
+	ctest = NCHAR;
+	Struct.BStruct.CStruct.Char = YCHAR;
+	ctest = Struct.BStruct.CStruct.Char;
+}
+@def_
+@def $macro99()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "tdef_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern STRDEF   Strdef;
+
+function_I()
+{
+	itest = NO;
+	Strdef.BdefStruct.Int = OK;
+	itest = Strdef.BdefStruct.Int;
+}
+
+
+function_S()
+{
+	itest = NO;
+	Strdef.BdefStruct.Short = OK;
+	itest = Strdef.BdefStruct.Short;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Strdef.BdefStruct.Long = OK;
+	ltest = Strdef.BdefStruct.Long;
+}
+
+
+function_U()
+{
+	itest = NO;
+	Strdef.BdefStruct.Unsigned = OK;
+	itest = Strdef.BdefStruct.Unsigned;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Strdef.BdefStruct.Char = YCHAR;
+	ctest = Strdef.BdefStruct.Char;
+}
+
+
+
+function_II()
+{
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Int = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Int;
+}
+
+
+function_SS()
+{
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Short = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Short;
+}
+
+
+function_LL()
+{
+	ltest = NO;
+	Strdef.BdefStruct.CdefStruct.Long = OK;
+	ltest = Strdef.BdefStruct.CdefStruct.Long;
+}
+
+
+function_UU()
+{
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Unsigned = OK;
+	itest = Strdef.BdefStruct.CdefStruct.Unsigned;
+}
+
+
+function_CC()
+{
+	ctest = NCHAR;
+	Strdef.BdefStruct.CdefStruct.Char = YCHAR;
+	ctest = Strdef.BdefStruct.CdefStruct.Char;
+}
+@def_
+@def $macro100()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+#include    "tdef_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+union Uni       Union;
+UNIDEF          Unidef;
+
+main()
+{
+	function_I();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_L();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_C();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+
+	function_II();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_LL();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_CC();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro101()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "strc_2.h"
+
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern union Uni Union;
+
+
+
+function_I()
+{
+	itest = NO;
+	Union.BUnion.Int = OK;
+	itest = Union.BUnion.Int;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Union.BUnion.Long = OK;
+	ltest = Union.BUnion.Long;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Union.BUnion.Char = YCHAR;
+	ctest = Union.BUnion.Char;
+}
+
+
+
+function_II()
+{
+	itest = NO;
+	Union.BUnion.CUnion.Int = OK;
+	itest = Union.BUnion.CUnion.Int;
+}
+
+
+function_LL()
+{
+	ltest = NO;
+	Union.BUnion.CUnion.Long = OK;
+	ltest = Union.BUnion.CUnion.Long;
+}
+
+
+function_CC()
+{
+	ctest = NCHAR;
+	Union.BUnion.CUnion.Char = YCHAR;
+	ctest = Union.BUnion.CUnion.Char;
+}
+@def_
+@def $macro102()
+$LICENSE()
+$HEAD()
+
+#include     "def.h"
+#include     "tdef_2.h"
+
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern UNIDEF   Unidef;
+
+
+
+function_I()
+{
+	itest = NO;
+	Unidef.BdefUnion.Int = OK;
+	itest = Unidef.BdefUnion.Int;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Unidef.BdefUnion.Long = OK;
+	ltest = Unidef.BdefUnion.Long;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Unidef.BdefUnion.Char = YCHAR;
+	ctest = Unidef.BdefUnion.Char;
+}
+
+
+
+function_II()
+{
+	itest = NO;
+	Unidef.BdefUnion.CdefUnion.Int = OK;
+	itest = Unidef.BdefUnion.CdefUnion.Int;
+}
+
+
+function_LL()
+{
+	ltest = NO;
+	Unidef.BdefUnion.CdefUnion.Long = OK;
+	ltest = Unidef.BdefUnion.CdefUnion.Long;
+}
+
+
+function_CC()
+{
+	ctest = NCHAR;
+	Unidef.BdefUnion.CdefUnion.Char = YCHAR;
+	ctest = Unidef.BdefUnion.CdefUnion.Char;
+}
+@def_
+@def $macro103()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+struct Str      Struct;
+
+main()
+{
+	itest = NO;
+	Struct.Int = OK;
+	function_I(&Struct);
+
+
+	itest = NO;
+	Struct.Short = OK;
+	function_S(&Struct);
+
+
+	ltest = NO;
+	Struct.Long = OK;
+	function_L(&Struct);
+
+
+	itest = NO;
+	Struct.Unsigned = OK;
+	function_U(&Struct);
+
+
+	ctest = NCHAR;
+	Struct.Char = YCHAR;
+	function_C(&Struct);
+
+
+	return (0);
+}
+@def_
+@def $macro104()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+
+
+function_I(argument)
+	struct Str     *argument;
+{
+	if (argument->Int == 1)
+		itest = argument->Int;
+	refer();
+}
+
+
+function_S(argument)
+	struct Str     *argument;
+{
+	if (argument->Short == 1)
+		itest = argument->Short;
+	refer();
+}
+
+
+function_L(argument)
+	struct Str     *argument;
+{
+	if (argument->Long == 1)
+		ltest = argument->Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U(argument)
+	struct Str     *argument;
+{
+	if (argument->Unsigned == 1)
+		itest = argument->Unsigned;
+	refer();
+}
+
+
+function_C(argument)
+	struct Str     *argument;
+{
+	if (argument->Char == 'y')
+		ctest = argument->Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro105()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+union Uni       Union;
+
+main()
+{
+	itest = NO;
+	Union.Int = OK;
+	function_I(&Union);
+
+
+	ltest = NO;
+	Union.Long = OK;
+	function_L(&Union);
+
+
+	ctest = NCHAR;
+	Union.Char = YCHAR;
+	function_C(&Union);
+
+
+	return (0);
+}
+@def_
+@def $macro106()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+
+
+function_I(argument)
+	union Uni      *argument;
+{
+	if (argument->Int == 1)
+		itest = argument->Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_L(argument)
+	union Uni      *argument;
+{
+	if (argument->Long == 1)
+		ltest = argument->Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_C(argument)
+	union Uni      *argument;
+{
+	if (argument->Char == 'y')
+		ctest = argument->Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro107()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+STRDEF          Strdef;
+
+main()
+{
+
+	itest = NO;
+	Strdef.Int = OK;
+	function_I(&Strdef);
+
+
+	itest = NO;
+	Strdef.Short = OK;
+	function_S(&Strdef);
+
+
+	ltest = NO;
+	Strdef.Long = OK;
+	function_L(&Strdef);
+
+
+	itest = NO;
+	Strdef.Unsigned = OK;
+	function_U(&Strdef);
+
+
+	ctest = NCHAR;
+	Strdef.Char = YCHAR;
+	function_C(&Strdef);
+
+
+	return (0);
+}
+@def_
+@def $macro108()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+
+function_I(argument)
+	STRDEF         *argument;
+{
+	if (argument->Int == 1)
+		itest = argument->Int;
+	refer();
+}
+
+
+function_S(argument)
+	STRDEF         *argument;
+{
+	if (argument->Short == 1)
+		itest = argument->Short;
+	refer();
+}
+
+
+function_L(argument)
+	STRDEF         *argument;
+{
+	if (argument->Long == 1)
+		ltest = argument->Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U(argument)
+	STRDEF         *argument;
+{
+	if (argument->Unsigned == 1)
+		itest = argument->Unsigned;
+	refer();
+}
+
+
+function_C(argument)
+	STRDEF         *argument;
+{
+	if (argument->Char == 'y')
+		ctest = argument->Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro109()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+
+UNIDEF          Unidef;
+
+main()
+{
+	itest = NO;
+	Unidef.Int = OK;
+	function_I(&Unidef);
+
+
+	ltest = NO;
+	Unidef.Long = OK;
+	function_L(&Unidef);
+
+
+	ctest = NCHAR;
+	Unidef.Char = YCHAR;
+	function_C(&Unidef);
+
+
+	return (0);
+}
+@def_
+@def $macro110()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+
+function_I(argument)
+	UNIDEF         *argument;
+{
+	if (argument->Int == 1)
+		itest = argument->Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_L(argument)
+	UNIDEF         *argument;
+{
+	if (argument->Long == 1)
+		ltest = argument->Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_C(argument)
+	UNIDEF         *argument;
+{
+	if (argument->Char == 'y')
+		ctest = argument->Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro111()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+struct Str      Struct;
+
+main()
+{
+
+	itest = NO;
+	Struct.BStruct.Int = OK;
+	function_I(&Struct);
+
+
+	itest = NO;
+	Struct.BStruct.Short = OK;
+	function_S(&Struct);
+
+
+	ltest = NO;
+	Struct.BStruct.Long = OK;
+	function_L(&Struct);
+
+
+	itest = NO;
+	Struct.BStruct.Unsigned = OK;
+	function_U(&Struct);
+
+
+	ctest = NCHAR;
+	Struct.BStruct.Char = YCHAR;
+	function_C(&Struct);
+
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Int = OK;
+	function_II(&Struct);
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Short = OK;
+	function_SS(&Struct);
+
+
+	ltest = NO;
+	Struct.BStruct.CStruct.Long = OK;
+	function_LL(&Struct);
+
+
+	itest = NO;
+	Struct.BStruct.CStruct.Unsigned = OK;
+	function_UU(&Struct);
+
+
+	ctest = NCHAR;
+	Struct.BStruct.CStruct.Char = YCHAR;
+	function_CC(&Struct);
+
+
+
+	return (0);
+}
+@def_
+@def $macro112()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+
+function_I(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.Int == 1)
+		itest = argument->BStruct.Int;
+	refer();
+}
+
+
+function_S(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.Short == 1)
+		itest = argument->BStruct.Short;
+	refer();
+}
+
+
+function_L(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.Long == 1)
+		ltest = argument->BStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_U(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.Unsigned == 1)
+		itest = argument->BStruct.Unsigned;
+	refer();
+}
+
+
+
+function_C(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.Char == 'y')
+		ctest = argument->BStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_II(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.CStruct.Int == 1)
+		itest = argument->BStruct.CStruct.Int;
+	refer();
+}
+
+
+
+function_SS(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.CStruct.Short == 1)
+		itest = argument->BStruct.CStruct.Short;
+	refer();
+}
+
+
+
+function_LL(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.CStruct.Long == 1)
+		ltest = argument->BStruct.CStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_UU(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.CStruct.Unsigned == 1)
+		itest = argument->BStruct.CStruct.Unsigned;
+	refer();
+}
+
+
+
+function_CC(argument)
+	struct Str     *argument;
+{
+	if (argument->BStruct.CStruct.Char == 'y')
+		ctest = argument->BStruct.CStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro113()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+union Uni       Union;
+
+main()
+{
+
+	itest = NO;
+	Union.BUnion.Int = OK;
+	function_I(&Union);
+
+
+	ltest = NO;
+	Union.BUnion.Long = OK;
+	function_L(&Union);
+
+
+	ctest = NCHAR;
+	Union.BUnion.Char = YCHAR;
+	function_C(&Union);
+
+
+
+	itest = NO;
+	Union.BUnion.CUnion.Int = OK;
+	function_II(&Union);
+
+
+	ltest = NO;
+	Union.BUnion.CUnion.Long = OK;
+	function_LL(&Union);
+
+
+	ctest = NCHAR;
+	Union.BUnion.CUnion.Char = YCHAR;
+	function_CC(&Union);
+
+
+
+	return (0);
+}
+@def_
+@def $macro114()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+
+
+function_I(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.Int == 1)
+		itest = argument->BUnion.Int;
+	refer();
+}
+
+
+
+function_L(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.Long == 1)
+		ltest = argument->BUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_C(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.Char == 'y')
+		ctest = argument->BUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_II(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.CUnion.Int == 1)
+		itest = argument->BUnion.CUnion.Int;
+	refer();
+}
+
+
+
+function_LL(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.CUnion.Long == 1)
+		ltest = argument->BUnion.CUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_CC(argument)
+	union Uni      *argument;
+{
+	if (argument->BUnion.CUnion.Char == 'y')
+		ctest = argument->BUnion.CUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro115()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+
+int             itest;
+long            ltest;
+char            ctest;
+
+STRDEF          Strdef;
+
+main()
+{
+
+	itest = NO;
+	Strdef.BdefStruct.Int = OK;
+	function_I(&Strdef);
+
+
+	itest = NO;
+	Strdef.BdefStruct.Short = OK;
+	function_S(&Strdef);
+
+
+	ltest = NO;
+	Strdef.BdefStruct.Long = OK;
+	function_L(&Strdef);
+
+
+	itest = NO;
+	Strdef.BdefStruct.Unsigned = OK;
+	function_U(&Strdef);
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.Char = YCHAR;
+	function_C(&Strdef);
+
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Int = OK;
+	function_II(&Strdef);
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Short = OK;
+	function_SS(&Strdef);
+
+
+	ltest = NO;
+	Strdef.BdefStruct.CdefStruct.Long = OK;
+	function_LL(&Strdef);
+
+
+	itest = NO;
+	Strdef.BdefStruct.CdefStruct.Unsigned = OK;
+	function_UU(&Strdef);
+
+
+	ctest = NCHAR;
+	Strdef.BdefStruct.CdefStruct.Char = YCHAR;
+	function_CC(&Strdef);
+
+
+
+	return (0);
+}
+@def_
+@def $macro116()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+
+
+function_I(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.Int == 1)
+		itest = argument->BdefStruct.Int;
+	refer();
+}
+
+
+
+function_S(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.Short == 1)
+		itest = argument->BdefStruct.Short;
+	refer();
+}
+
+
+
+function_L(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.Long == 1)
+		ltest = argument->BdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_U(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.Unsigned == 1)
+		itest = argument->BdefStruct.Unsigned;
+	refer();
+}
+
+
+
+function_C(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.Char == 'y')
+		ctest = argument->BdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_II(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.CdefStruct.Int == 1)
+		itest = argument->BdefStruct.CdefStruct.Int;
+	refer();
+}
+
+
+
+function_SS(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.CdefStruct.Short == 1)
+		itest = argument->BdefStruct.CdefStruct.Short;
+	refer();
+}
+
+
+
+function_LL(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.CdefStruct.Long == 1)
+		ltest = argument->BdefStruct.CdefStruct.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_UU(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.CdefStruct.Unsigned == 1)
+		itest = argument->BdefStruct.CdefStruct.Unsigned;
+	refer();
+}
+
+
+
+function_CC(argument)
+	STRDEF         *argument;
+{
+	if (argument->BdefStruct.CdefStruct.Char == 'y')
+		ctest = argument->BdefStruct.CdefStruct.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro117()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+int             itest;
+long            ltest;
+char            ctest;
+
+UNIDEF          Unidef;
+
+main()
+{
+	itest = NO;
+	Unidef.BdefUnion.Int = OK;
+	function_I(&Unidef);
+
+
+	ltest = NO;
+	Unidef.BdefUnion.Long = OK;
+	function_L(&Unidef);
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.Char = YCHAR;
+	function_C(&Unidef);
+
+
+	itest = NO;
+	Unidef.BdefUnion.CdefUnion.Int = OK;
+	function_II(&Unidef);
+
+
+	ltest = NO;
+	Unidef.BdefUnion.CdefUnion.Long = OK;
+	function_LL(&Unidef);
+
+
+	ctest = NCHAR;
+	Unidef.BdefUnion.CdefUnion.Char = YCHAR;
+	function_CC(&Unidef);
+
+
+	return (0);
+}
+@def_
+@def $macro118()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+
+
+function_I(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.Int == 1)
+		itest = argument->BdefUnion.Int;
+	refer();
+}
+
+
+
+function_L(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.Long == 1)
+		ltest = argument->BdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_C(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.Char == 'y')
+		ctest = argument->BdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_II(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.CdefUnion.Int == 1)
+		itest = argument->BdefUnion.CdefUnion.Int;
+	refer();
+}
+
+
+
+function_LL(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.CdefUnion.Long == 1)
+		ltest = argument->BdefUnion.CdefUnion.Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_CC(argument)
+	UNIDEF         *argument;
+{
+	if (argument->BdefUnion.CdefUnion.Char == 'y')
+		ctest = argument->BdefUnion.CdefUnion.Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+
+@def $macro119()
+$LICENSE()
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+}               STRDEF;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               UNIDEF;
+@def_
+
+@def $macro120()
+$LICENSE()
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef float   FLOATDEF;
+typedef struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               STRDEF;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF;
+@def_
+
+@def $macro121()
+$LICENSE()
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	struct BdefStruct {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		struct CdefStruct {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+		}               CdefStruct;
+	}               BdefStruct;
+}               STRDEF;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	union BdefUnion {
+		int             Int;
+		long            Long;
+		char            Char;
+		union CdefUnion {
+			int             Int;
+			long            Long;
+			char            Char;
+		}               CdefUnion;
+	}               BdefUnion;
+}               UNIDEF;
+@def_
+
+@def $macro122()
+$LICENSE()
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef float   FLOATDEF;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	struct BdefStruct {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		float           Float;
+		struct CdefStruct {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+			float           Float;
+		}               CdefStruct;
+	}               BdefStruct;
+}               STRDEF;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+	union BdefUnion {
+		int             Int;
+		long            Long;
+		char            Char;
+		float           Float;
+		union CdefUnion {
+			int             Int;
+			long            Long;
+			char            Char;
+			float           Float;
+		}               CdefUnion;
+	}               BdefUnion;
+}               UNIDEF;
+@def_
+
+@def $macro123()
+ft000.c ft001.c: 6
+ft000.c ft002.c: 4
+ft010.c ft011.c: 6
+ft010.c ft012.c: 3
+ft101.c ft102.c: 6
+ft103.c ft104.c: 4
+ft105.c ft106.c: 6
+ft107.c ft108.c: 4
+ft200.c ft201.c
+ft200.c ft202.c
+ft210.c ft211.c
+ft210.c ft212.c
+ft300.c ft301.c: 12
+ft300.c ft302.c: 12
+ft310.c ft311.c: 8
+ft310.c ft312.c: 8
+ft401.c ft402.c: 12
+ft403.c ft404.c: 8
+ft405.c ft406.c: 12
+ft407.c ft408.c: 8
+ft500.c ft501.c
+ft500.c ft502.c
+ft510.c ft511.c
+ft510.c ft512.c
+ft601.c ft602.c: 6
+ft603.c ft604.c: 4
+ft605.c ft606.c: 6
+ft607.c ft608.c: 4
+ft701.c ft702.c: 12
+ft703.c ft704.c: 8
+ft705.c ft706.c: 12
+ft707.c ft708.c: 8
+t000.c t001.c: 5
+t000.c t002.c: 3
+t010.c t011.c: 5
+t010.c t012.c: 3
+t101.c t102.c: 5
+t103.c t104.c: 3
+t105.c t106.c: 5
+t107.c t108.c: 3
+t200.c t201.c
+t200.c t202.c
+t210.c t211.c
+t210.c t212.c
+t300.c t301.c: 10
+t300.c t302.c: 10
+t310.c t311.c: 6
+t310.c t312.c: 6
+t401.c t402.c: 10
+t403.c t404.c: 6
+t405.c t406.c: 10
+t407.c t408.c: 6
+t500.c t501.c
+t500.c t502.c
+t510.c t511.c
+t510.c t512.c
+t601.c t602.c: 5
+t603.c t604.c: 3
+t605.c t606.c: 5
+t607.c t608.c: 3
+t701.c t702.c: 10
+t703.c t704.c: 6
+t705.c t706.c: 10
+t707.c t708.c: 6
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir ckr.6-1-02
+@file >>def.h $macro0() @file_
+@file >>ft000.c $macro1() @file_
+@file >>ft001.c $macro2() @file_
+@file >>ft002.c $macro3() @file_
+@file >>ft010.c $macro4() @file_
+@file >>ft011.c $macro5() @file_
+@file >>ft012.c $macro6() @file_
+@file >>ft101.c $macro7() @file_
+@file >>ft102.c $macro8() @file_
+@file >>ft103.c $macro9() @file_
+@file >>ft104.c $macro10() @file_
+@file >>ft105.c $macro11() @file_
+@file >>ft106.c $macro12() @file_
+@file >>ft107.c $macro13() @file_
+@file >>ft108.c $macro14() @file_
+@file >>ft200.c $macro15() @file_
+@file >>ft201.c $macro16() @file_
+@file >>ft202.c $macro17() @file_
+@file >>ft210.c $macro18() @file_
+@file >>ft211.c $macro19() @file_
+@file >>ft212.c $macro20() @file_
+@file >>ft300.c $macro21() @file_
+@file >>ft301.c $macro22() @file_
+@file >>ft302.c $macro23() @file_
+@file >>ft310.c $macro24() @file_
+@file >>ft311.c $macro25() @file_
+@file >>ft312.c $macro26() @file_
+@file >>ft401.c $macro27() @file_
+@file >>ft402.c $macro28() @file_
+@file >>ft403.c $macro29() @file_
+@file >>ft404.c $macro30() @file_
+@file >>ft405.c $macro31() @file_
+@file >>ft406.c $macro32() @file_
+@file >>ft407.c $macro33() @file_
+@file >>ft408.c $macro34() @file_
+@file >>ft500.c $macro35() @file_
+@file >>ft501.c $macro36() @file_
+@file >>ft502.c $macro37() @file_
+@file >>ft510.c $macro38() @file_
+@file >>ft511.c $macro39() @file_
+@file >>ft512.c $macro40() @file_
+@file >>ft601.c $macro41() @file_
+@file >>ft602.c $macro42() @file_
+@file >>ft603.c $macro43() @file_
+@file >>ft604.c $macro44() @file_
+@file >>ft605.c $macro45() @file_
+@file >>ft606.c $macro46() @file_
+@file >>ft607.c $macro47() @file_
+@file >>ft608.c $macro48() @file_
+@file >>ft701.c $macro49() @file_
+@file >>ft702.c $macro50() @file_
+@file >>ft703.c $macro51() @file_
+@file >>ft704.c $macro52() @file_
+@file >>ft705.c $macro53() @file_
+@file >>ft706.c $macro54() @file_
+@file >>ft707.c $macro55() @file_
+@file >>ft708.c $macro56() @file_
+@file >>stnd.h $macro57() @file_
+@file >>fstnd.h $macro58() @file_
+@file >>strc.h $macro59() @file_
+@file >>fstrc.h $macro60() @file_
+@file >>strc_2.h $macro61() @file_
+@file >>fstrc_2.h $macro62() @file_
+@file >>t000.c $macro63() @file_
+@file >>t001.c $macro64() @file_
+@file >>t002.c $macro65() @file_
+@file >>t010.c $macro66() @file_
+@file >>t011.c $macro67() @file_
+@file >>t012.c $macro68() @file_
+@file >>t101.c $macro69() @file_
+@file >>t102.c $macro70() @file_
+@file >>t103.c $macro71() @file_
+@file >>t104.c $macro72() @file_
+@file >>t105.c $macro73() @file_
+@file >>t106.c $macro74() @file_
+@file >>t107.c $macro75() @file_
+@file >>t108.c $macro76() @file_
+@file >>t200.c $macro77() @file_
+@file >>t201.c $macro78() @file_
+@file >>t202.c $macro79() @file_
+@file >>t210.c $macro80() @file_
+@file >>t211.c $macro81() @file_
+@file >>t212.c $macro82() @file_
+@file >>t300.c $macro83() @file_
+@file >>t301.c $macro84() @file_
+@file >>t302.c $macro85() @file_
+@file >>t310.c $macro86() @file_
+@file >>t311.c $macro87() @file_
+@file >>t312.c $macro88() @file_
+@file >>t401.c $macro89() @file_
+@file >>t402.c $macro90() @file_
+@file >>t403.c $macro91() @file_
+@file >>t404.c $macro92() @file_
+@file >>t405.c $macro93() @file_
+@file >>t406.c $macro94() @file_
+@file >>t407.c $macro95() @file_
+@file >>t408.c $macro96() @file_
+@file >>t500.c $macro97() @file_
+@file >>t501.c $macro98() @file_
+@file >>t502.c $macro99() @file_
+@file >>t510.c $macro100() @file_
+@file >>t511.c $macro101() @file_
+@file >>t512.c $macro102() @file_
+@file >>t601.c $macro103() @file_
+@file >>t602.c $macro104() @file_
+@file >>t603.c $macro105() @file_
+@file >>t604.c $macro106() @file_
+@file >>t605.c $macro107() @file_
+@file >>t606.c $macro108() @file_
+@file >>t607.c $macro109() @file_
+@file >>t608.c $macro110() @file_
+@file >>t701.c $macro111() @file_
+@file >>t702.c $macro112() @file_
+@file >>t703.c $macro113() @file_
+@file >>t704.c $macro114() @file_
+@file >>t705.c $macro115() @file_
+@file >>t706.c $macro116() @file_
+@file >>t707.c $macro117() @file_
+@file >>t708.c $macro118() @file_
+@file >>tdef.h $macro119() @file_
+@file >>ftdef.h $macro120() @file_
+@file >>tdef_2.h $macro121() @file_
+@file >>ftdef_2.h $macro122() @file_
+@file >>FILESET $macro123() @file_
+@file >>testout.h $testout() @file_
+@dir_

@@ -1,0 +1,1005 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@comment
+�����t�@�C�����e�X�g
+@comment_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+@def_
+
+@def $macro0()
+$LICENSE()
+#include "testout.h"
+#define NO 0
+#define OK 1
+#define NoMistake 00
+@def_
+@def $macro1()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a function as argument 
+ */
+{
+	float           dummy();
+
+	function(dummy(1.0));
+	return (0);
+}
+@def_
+@def $macro2()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+function(argument)
+	float           argument;
+{
+	if ( TGEN_FLT_EQ(argument, 2.0) )
+		printok();
+	else
+		printno();
+}
+
+float 
+dummy(argument)
+	float           argument;
+{
+	return (++argument);
+}
+@def_
+@def $macro3()
+$LICENSE()
+$HEAD()
+
+float           i = 1.0;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a function as argument, which in turn has a
+ * function as argument. we may call it a 'nested functions' 
+ */
+{
+	float           dos(), tres();
+
+	uno(dos(tres(++i)));
+	return (0);
+}
+@def_
+@def $macro4()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+uno(argument)
+	float           argument;
+{
+	if ( TGEN_FLT_EQ(argument, 4.0) )
+		printok();
+	else
+		printno();
+}
+
+float 
+dos(argument)
+	float           argument;
+{
+	return (++argument);
+}
+
+float 
+tres(argument)
+	float           argument;
+{
+	return (++argument);
+}
+@def_
+@def $macro5()
+$LICENSE()
+$HEAD()
+
+float           i = 1.0;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a function as argument, which itself has
+ * functions as arguments. however, the arguments are badly given according to Kernighan's C language tutorial. still, it
+ * works 
+ */
+{
+	float           a, b, c, dos(), tres();
+
+	c = --i;
+	b = i += 3;
+	a = --i;
+	uno(dos(tres(a), tres(b), tres(c)));
+	return (0);
+}
+@def_
+@def $macro6()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+uno(argument)
+	float           argument;
+{
+	if ( TGEN_FLT_EQ(argument, 7) )
+		printok();
+	else
+		printno();
+}
+
+float 
+dos(first, second, third)
+	float           first, second, third;
+{
+	return (first + second + third);
+}
+
+float 
+tres(argument)
+	float           argument;
+{
+	return ((argument > 2) ? argument : ++argument);
+}
+@def_
+@def $macro7()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+
+main()				/* alias parent */
+/*
+ *  test class: programme structure instance  : when a programme has a linear tree structure 
+ */
+{
+	float           gene = 1.0;
+
+	firstChild(gene++);
+	secondChild(gene++);
+	thirdChild(gene);
+	if (statusFlag != NoMistake)
+		printno();
+	else
+		printok();
+	return (0);
+}
+@def_
+@def $macro8()
+$LICENSE()
+$HEAD()
+#include "def.h"
+firstChild(gene)
+	float           gene;
+{
+	firstGrandson(gene++);
+	firstGranddaughter(gene);
+}
+@def_
+@def $macro9()
+$LICENSE()
+$HEAD()
+#include "def.h"
+secondChild(gene)
+	float           gene;
+{
+	secondGrandson(gene++);
+	secondGranddaughter(gene);
+}
+@def_
+@def $macro10()
+$LICENSE()
+$HEAD()
+#include "def.h"
+thirdChild(gene)
+	float           gene;
+{
+	thirdGrandson(gene++);
+	thirdGranddaughter(gene);
+}
+@def_
+@def $macro11()
+$LICENSE()
+$HEAD()
+#include "def.h"
+firstGrandson(gene)
+	float           gene;
+{
+	extern short    statusFlag;
+
+	if (! TGEN_FLT_EQ(gene, 1) )
+		statusFlag++;
+}
+@def_
+@def $macro12()
+$LICENSE()
+$HEAD()
+#include "def.h"
+firstGranddaughter(gene)
+	float           gene;
+{
+	extern short    statusFlag;
+
+	if (! TGEN_FLT_EQ(gene, 2) )
+		statusFlag++;
+}
+@def_
+@def $macro13()
+$LICENSE()
+$HEAD()
+#include "def.h"
+secondGrandson(gene)
+	float           gene;
+{
+	extern short    statusFlag;
+
+	if (! TGEN_FLT_EQ(gene, 2) )
+		statusFlag++;
+}
+@def_
+@def $macro14()
+$LICENSE()
+$HEAD()
+#include "def.h"
+secondGranddaughter(gene)
+	float           gene;
+{
+	extern short    statusFlag;
+
+	if (! TGEN_FLT_EQ(gene, 3) )
+		statusFlag++;
+}
+@def_
+@def $macro15()
+$LICENSE()
+$HEAD()
+#include "def.h"
+thirdGrandson(gene)
+	float           gene;
+{
+	extern short    statusFlag;
+
+	if (! TGEN_FLT_EQ(gene, 3) )
+		statusFlag++;
+}
+@def_
+@def $macro16()
+$LICENSE()
+$HEAD()
+#include "def.h"
+thirdGranddaughter(gene)
+	float           gene;
+{
+	extern short    statusFlag;
+
+	if (! TGEN_FLT_EQ(gene, 4) )
+		statusFlag++;
+}
+@def_
+@def $macro17()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+float           i = 1.0;
+short           statusFlag = NoMistake;
+
+
+main()
+/*
+ * test class: programme structure instance  : when a variable is declared inside blocks 
+ */
+{
+
+	function();
+	if ( !(TGEN_FLT_EQ(i, 0)) )
+		statusFlag++;
+	if ( TGEN_FLT_EQ(statusFlag, NoMistake) )
+		printok();
+	else
+		printno();
+	return (0);
+}
+@def_
+@def $macro18()
+$LICENSE()
+$HEAD()
+#include "def.h"
+function()
+{
+	extern float    i;
+	extern short    statusFlag;
+
+	i--;
+	if (i) {
+		float           i = 1.0;
+
+		i++;
+		if (! TGEN_FLT_EQ(i, 2.0) )
+			statusFlag++;
+	} else {
+		float           i = 1.0;
+
+		i *= 10.0;
+		if (! TGEN_FLT_EQ(i, 10.0) )
+			statusFlag++;
+	}
+}
+@def_
+@def $macro19()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+float           i = 0;
+short           counter = 0;
+short           statusFlag = NoMistake;
+
+main()
+/*
+ * test class: programme struture instance  : when a variable is declared in blocks. the programmer seems to confuse
+ * variable bounds 
+ */
+{
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return (0);
+}
+@def_
+@def $macro20()
+$LICENSE()
+$HEAD()
+#include "def.h"
+function()
+{
+	extern float    i;
+	extern short    counter;
+	extern short    statusFlag;
+
+
+	for (i = 0; i < 10; i++) {
+		float           i = 0;
+
+		i++;
+		if (i > 10)
+			errorMessage();
+		counter++;
+	}
+	if (counter != 5)
+		errorMessage();
+	else
+		statusFlag++;
+}
+
+
+errorMessage()
+{
+}
+@def_
+@def $macro21()
+$LICENSE()
+$HEAD()
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a function as argument 
+ */
+{
+	function(dummy(1));
+	return (0);
+}
+@def_
+@def $macro22()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+function(argument)
+	register        argument;
+{
+	if (argument == 2)
+		printok();
+	else
+		printno();
+}
+
+dummy(argument)
+	register        argument;
+{
+	return (++argument);
+}
+@def_
+@def $macro23()
+$LICENSE()
+$HEAD()
+
+short           i = 1;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a function as argument, which in turn has a
+ * function as argument. we may call it a 'nested functions' 
+ */
+{
+
+	uno(dos(tres(++i)));
+	return (0);
+}
+@def_
+@def $macro24()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+uno(argument)
+	register        argument;
+{
+	if (argument == 4)
+		printok();
+	else
+		printno();
+}
+
+dos(argument)
+	register        argument;
+{
+	return (++argument);
+}
+
+tres(argument)
+	register        argument;
+{
+	return (++argument);
+}
+@def_
+@def $macro25()
+$LICENSE()
+$HEAD()
+
+int             i = 1;
+
+main()
+/*
+ * test class: argument receiver instance  : when a function is called with a function as argument, which itself has
+ * functions as arguments. however, the arguments are badly given according to Kernighan's C language tutorial. still, it
+ * works 
+ */
+{
+	uno(dos(tres(--i), tres(i += 3), tres(--i)));
+	return (0);
+}
+@def_
+@def $macro26()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+uno(argument)
+	register        argument;
+{
+	if (argument == 7)
+		printok();
+	else
+		printno();
+}
+
+dos(first, second, third)
+	register        first, second, third;
+{
+	return (first + second + third);
+}
+
+tres(argument)
+	register        argument;
+{
+	return ((argument > 2) ? argument : ++argument);
+}
+@def_
+@def $macro27()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+
+main()				/* alias parent */
+/*
+ *  test class: programme structure instance  : when a programme has a linear tree structure 
+ */
+{
+	short           gene = 1;
+
+	firstChild(gene++);
+	secondChild(gene++);
+	thirdChild(gene);
+	if (statusFlag != NoMistake)
+		printno();
+	else
+		printok();
+	return (0);
+}
+@def_
+@def $macro28()
+$LICENSE()
+$HEAD()
+
+firstChild(gene)
+	short           gene;
+{
+	firstGrandson(gene++);
+	firstGranddaughter(gene);
+}
+@def_
+@def $macro29()
+$LICENSE()
+$HEAD()
+
+secondChild(gene)
+	short           gene;
+{
+	secondGrandson(gene++);
+	secondGranddaughter(gene);
+}
+@def_
+@def $macro30()
+$LICENSE()
+$HEAD()
+
+thirdChild(gene)
+	short           gene;
+{
+	thirdGrandson(gene++);
+	thirdGranddaughter(gene);
+}
+@def_
+@def $macro31()
+$LICENSE()
+$HEAD()
+
+firstGrandson(gene)
+	short           gene;
+{
+	extern short    statusFlag;
+
+	if (gene != 1)
+		statusFlag++;
+}
+@def_
+@def $macro32()
+$LICENSE()
+$HEAD()
+
+firstGranddaughter(gene)
+	short           gene;
+{
+	extern short    statusFlag;
+
+	if (gene != 2)
+		statusFlag++;
+}
+@def_
+@def $macro33()
+$LICENSE()
+$HEAD()
+
+secondGrandson(gene)
+	short           gene;
+{
+	extern short    statusFlag;
+
+	if (gene != 2)
+		statusFlag++;
+}
+@def_
+@def $macro34()
+$LICENSE()
+$HEAD()
+
+secondGranddaughter(gene)
+	short           gene;
+{
+	extern short    statusFlag;
+
+	if (gene != 3)
+		statusFlag++;
+}
+@def_
+@def $macro35()
+$LICENSE()
+$HEAD()
+
+thirdGrandson(gene)
+	short           gene;
+{
+	extern short    statusFlag;
+
+	if (gene != 3)
+		statusFlag++;
+}
+@def_
+@def $macro36()
+$LICENSE()
+$HEAD()
+
+thirdGranddaughter(gene)
+	short           gene;
+{
+	extern short    statusFlag;
+
+	if (gene != 4)
+		statusFlag++;
+}
+@def_
+@def $macro37()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           parallelCounter = 10;
+short           statusFlag = NoMistake;
+
+main()
+/*
+ * test class: programme structure instance  : when a programme has a recursive function call. in this instance, a function
+ * calls itself 
+ */
+{
+	short           endCounter = 10;
+
+	recursiveFunction(endCounter);
+	if (statusFlag != NoMistake)
+		printno();
+	else
+		printok();
+	return (0);
+}
+@def_
+@def $macro38()
+$LICENSE()
+$HEAD()
+
+#define TimeLimit 0
+
+recursiveFunction(downToZero)
+	register        downToZero;
+{
+	extern short    parallelCounter;
+	extern short    statusFlag;
+
+	if (downToZero != parallelCounter--)
+		statusFlag++;
+	if (downToZero != TimeLimit)
+		recursiveFunction(--downToZero);
+}
+@def_
+@def $macro39()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           parallelCounter = 10;
+short           statusFlag = NoMistake;
+
+main()
+/*
+ * test class: programme structure instance  : when a programme has a recursive function call in this instance, one of the
+ * three functions calls another in circular order 
+ */
+{
+	short           endCounter = 10;
+
+	fromThreeToOne(endCounter);
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return (0);
+}
+@def_
+@def $macro40()
+$LICENSE()
+$HEAD()
+
+#define TimeLimit 0
+
+fromThreeToOne(counter)
+	short           counter;
+{
+	extern short    parallelCounter;
+	extern short    statusFlag;
+
+	if (counter != parallelCounter--)
+		statusFlag++;
+	if (counter != TimeLimit)
+		fromOneToTwo(--counter);
+}
+@def_
+@def $macro41()
+$LICENSE()
+$HEAD()
+
+#define TimeLimit 0
+
+fromOneToTwo(counter)
+	short           counter;
+{
+	extern short    parallelCounter;
+	extern short    statusFlag;
+
+	if (counter != parallelCounter--)
+		statusFlag++;
+	if (counter != TimeLimit)
+		fromTwoToThree(--counter);
+}
+@def_
+@def $macro42()
+$LICENSE()
+$HEAD()
+
+#define TimeLimit 0
+
+fromTwoToThree(counter)
+	short           counter;
+{
+	extern short    parallelCounter;
+	extern short    statusFlag;
+
+	if (counter != parallelCounter--)
+		statusFlag++;
+	if (counter != TimeLimit)
+		fromThreeToOne(--counter);
+}
+@def_
+@def $macro43()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           i = 1;
+short           statusFlag = NoMistake;
+
+
+main()
+/*
+ * test class: programme structure instance  : when a variable is declared inside blocks 
+ */
+{
+
+	function();
+	if (i != 0)
+		statusFlag++;
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return (0);
+}
+@def_
+@def $macro44()
+$LICENSE()
+$HEAD()
+
+function()
+{
+	extern short    i;
+	extern short    statusFlag;
+
+	i--;
+	if (i) {
+		short           i = 1;
+
+		i++;
+		if (i != 2)
+			statusFlag++;
+	} else {
+		short           i = 1;
+
+		i *= 10;
+		if (i != 10)
+			statusFlag++;
+	}
+}
+@def_
+@def $macro45()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           i = 0;
+short           counter = 0;
+short           statusFlag = NoMistake;
+
+main()
+/*
+ * test class: programme struture instance  : when a variable is declared in blocks. the programmer seems to confuse
+ * variable bounds 
+ */
+{
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return (0);
+}
+@def_
+@def $macro46()
+$LICENSE()
+$HEAD()
+
+function()
+{
+	extern short    i;
+	extern short    counter;
+	extern short    statusFlag;
+
+
+	for (i = 0; i < 10; i++) {
+		short           i = 0;
+
+		i++;
+		if (i > 10)
+			errorMessage();
+		counter++;
+	}
+	if (counter != 5)
+		errorMessage();
+	else
+		statusFlag++;
+}
+
+
+errorMessage()
+{
+}
+@def_
+
+@def $macro47()
+ft001.c ft002.c: 1
+ft021.c ft022.c: 1
+ft031.c ft032.c: 1
+ft100.c ft101.c ft102.c ft103.c ft104.c ft105.c ft106.c ft107.c ft108.c ft109.c
+ft301.c ft302.c
+ft311.c ft312.c
+t001.c t002.c: 1
+t021.c t022.c: 1
+t031.c t032.c: 1
+t100.c t101.c t102.c t103.c t104.c t105.c t106.c t107.c t108.c t109.c
+t201.c t202.c
+t210.c t211.c t212.c t213.c
+t301.c t302.c
+t311.c t312.c
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir ckr.6-3-01
+@file >>def.h $macro0() @file_
+@file >>ft001.c $macro1() @file_
+@file >>ft002.c $macro2() @file_
+@file >>ft021.c $macro3() @file_
+@file >>ft022.c $macro4() @file_
+@file >>ft031.c $macro5() @file_
+@file >>ft032.c $macro6() @file_
+@file >>ft100.c $macro7() @file_
+@file >>ft101.c $macro8() @file_
+@file >>ft102.c $macro9() @file_
+@file >>ft103.c $macro10() @file_
+@file >>ft104.c $macro11() @file_
+@file >>ft105.c $macro12() @file_
+@file >>ft106.c $macro13() @file_
+@file >>ft107.c $macro14() @file_
+@file >>ft108.c $macro15() @file_
+@file >>ft109.c $macro16() @file_
+@file >>ft301.c $macro17() @file_
+@file >>ft302.c $macro18() @file_
+@file >>ft311.c $macro19() @file_
+@file >>ft312.c $macro20() @file_
+@file >>t001.c $macro21() @file_
+@file >>t002.c $macro22() @file_
+@file >>t021.c $macro23() @file_
+@file >>t022.c $macro24() @file_
+@file >>t031.c $macro25() @file_
+@file >>t032.c $macro26() @file_
+@file >>t100.c $macro27() @file_
+@file >>t101.c $macro28() @file_
+@file >>t102.c $macro29() @file_
+@file >>t103.c $macro30() @file_
+@file >>t104.c $macro31() @file_
+@file >>t105.c $macro32() @file_
+@file >>t106.c $macro33() @file_
+@file >>t107.c $macro34() @file_
+@file >>t108.c $macro35() @file_
+@file >>t109.c $macro36() @file_
+@file >>t201.c $macro37() @file_
+@file >>t202.c $macro38() @file_
+@file >>t210.c $macro39() @file_
+@file >>t211.c $macro40() @file_
+@file >>t212.c $macro41() @file_
+@file >>t213.c $macro42() @file_
+@file >>t301.c $macro43() @file_
+@file >>t302.c $macro44() @file_
+@file >>t311.c $macro45() @file_
+@file >>t312.c $macro46() @file_
+@file >>FILESET $macro47() @file_
+@file >>testout.h $testout() @file_
+@dir_

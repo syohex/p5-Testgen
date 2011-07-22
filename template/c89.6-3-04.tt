@@ -1,0 +1,1665 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@comment
+�����t�@�C�����e�X�g
+@comment_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+@def_
+
+@def $macro0()
+$LICENSE()
+#include "testout.h"
+#define NO 0
+#define OK 1
+#define NoMistake 00
+@def_
+@def $macro1()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+float           i1;
+
+extern void castor(float*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, no return value, legal 
+ */
+{
+
+	i1 = 1.0;
+	castor(&i1);
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro2()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i2;
+
+void castor(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i1;
+
+	i2 = *variable;
+	if (! TGEN_FLT_EQ(i2, i1) )
+		statusFlag++;
+
+	if (--counter) {
+		i2++;
+		pollux(&i2);
+	}
+}
+@def_
+@def $macro3()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i3;
+
+void pollux(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i2;
+
+	i3 = *variable;
+	if (! TGEN_FLT_EQ(i3, i2) )
+		statusFlag++;
+
+	if (--counter) {
+		--i3;
+		castor(&i3);
+	}
+}
+@def_
+@def $macro4()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+float           zero = 0.0;
+float          *i = &zero;
+float           result;
+
+extern void castor(float*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, no return value, illegal 
+ */
+{
+	/*result = castor(i);*/
+	if ( TGEN_FLT_EQ(result, 0.0) )
+		result++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro5()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i2;
+
+void castor(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    result;
+	extern float    zero;
+
+	i2 = *variable;
+	if (! TGEN_FLT_EQ(i2, zero) )
+		statusFlag++;
+
+	if (--counter)
+		result = pollux(variable);
+}
+@def_
+@def $macro6()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i3;
+
+extern void castor(float*);
+
+void pollux(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    result;
+	extern float    zero;
+
+	i3 = *variable;
+	if (! TGEN_FLT_EQ(i3, zero) )
+		statusFlag++;
+
+	/*if (--counter)
+		result = castor(variable);*/
+}
+@def_
+@def $macro7()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+float           i1 = 1.0;
+
+extern void castor(float*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, return value, legal, no function declaration 
+ */
+{
+	extern float    i2;
+	float           result = 0.0;
+
+	/*result = castor(&i1);*/
+	if (! TGEN_FLT_EQ(result, i2) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro8()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i2;
+
+extern int pollux(float*);
+
+int castor(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i3;
+
+	float           result = 0.0;
+
+	i2 = *variable + 3;
+	if (--counter) {
+		result = pollux(&i2);
+		if (! TGEN_FLT_EQ(result, i3) )
+			statusFlag++;
+	}
+	i2 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro9()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i3;
+
+extern int castor(float*);
+
+int pollux(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i2;
+
+	float           result = 0.0;
+
+	i3 = *variable - 3;
+	if (--counter) {
+		result = castor(&i3);
+		if (! TGEN_FLT_EQ(result, i2) )
+			statusFlag++;
+	}
+	i3 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro10()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+float           i1 = 1.0;
+
+extern float castor(float*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, return value, legal, function declared to return an floateger 
+ */
+{
+	extern float    i2;
+	float           result = 0, castor();
+
+	result = castor(&i1);
+	if (! TGEN_FLT_EQ(result, i2) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro11()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i2;
+
+extern float pollux(float*);
+
+float 
+castor(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i3;
+
+	float           result = 0, pollux();
+
+	i2 = *variable + 3;
+	if (--counter) {
+		result = pollux(&i2);
+		if (! TGEN_FLT_EQ(result, i3) )
+			statusFlag++;
+	}
+	i2 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro12()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i3;
+
+extern float castor(float*);
+
+float 
+pollux(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i2;
+
+	float           result = 0, castor();
+
+	i3 = *variable - 3;
+	if (--counter) {
+		result = castor(&i3);
+		if (! TGEN_FLT_EQ(result, i2) )
+			statusFlag++;
+	}
+	i3 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro13()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+float           i1 = 1.0;
+
+extern int castor(float (*)(float), float*);
+extern float increment(float);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, return value, pointer to function returning an integer 
+ */
+{
+	extern float    i2;
+	float result = 0;
+
+	result = castor(increment, &i1);
+	if (! TGEN_FLT_EQ(result, i2) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro14()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i2;
+
+extern int pollux(float (*)(float), float*);
+
+int castor(float (*function)(float), float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i3;
+
+	float           result = 0;
+
+	i2 = *variable + 8;
+	if (--counter) {
+		result = pollux(function, &i2);
+		if (! TGEN_FLT_EQ(result, i3) )
+			statusFlag++;
+	}
+	i2 = function(*variable);
+	return function(*variable);
+}
+@def_
+@def $macro15()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i3;
+
+int pollux(float (*function)(float), float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i2;
+
+	float           result = 0;
+
+	i3 = *variable - 8;
+	if (--counter) {
+		result = castor(function, &i3);
+		if (! TGEN_FLT_EQ(result, i2) )
+			statusFlag++;
+	}
+	i3 = function(*variable);
+	return function(*variable);
+}
+@def_
+@def $macro16()
+$LICENSE()
+$HEAD()
+
+float 
+increment(float variable)
+{
+	return ++variable;
+}
+@def_
+@def $macro17()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+float           i1;
+
+extern int castor(float*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, in conditional expression, no function declaration 
+ */
+{
+	extern float    i2;
+	float           arg_a, arg_b;
+
+	i1 = 1.0;
+	arg_a = castor(&i1);
+	arg_b = i2;
+	if (! TGEN_FLT_EQ(arg_a, arg_b) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro18()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i2;
+
+extern int pollux(float*);
+
+int castor(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i3;
+	float           arg_a, arg_b;
+
+	i2 = *variable + 3;
+	if (--counter) {
+		arg_a = pollux(&i2);
+		arg_b = i3;
+		if (! TGEN_FLT_EQ(arg_a, arg_b) )
+			statusFlag++;
+	}
+	i2 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro19()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i3;
+
+extern int castor(float*);
+
+int pollux(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i2;
+	float           arg_a, arg_b;
+
+	i3 = *variable - 3;
+	if (--counter) {
+		arg_a = castor(&i3);
+		arg_b = i2;
+		if (! TGEN_FLT_EQ(arg_a, arg_b) )
+			statusFlag++;
+	}
+	i3 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro20()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+float           i1 = 1.0;
+
+extern float castor(float*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, in conditional expression, function declared to return an integer 
+ */
+{
+	extern float    i2;
+	float           arg_a, arg_b;
+
+	arg_a = castor(&i1);
+	arg_b = i2;
+	if (! TGEN_FLT_EQ(arg_a, arg_b) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro21()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i2;
+
+extern float pollux(float*);
+
+float 
+castor(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i3;
+
+	float           arg_a, arg_b;
+
+	i2 = *variable + 3;
+	if (--counter) {
+		arg_a = pollux(&i2);
+		arg_b = i3;
+		if (! TGEN_FLT_EQ(arg_a, arg_b) )
+			statusFlag++;
+	}
+	i2 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro22()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i3;
+
+extern float castor(float*);
+
+float 
+pollux(float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i2;
+
+	float           arg_a, arg_b;
+
+	i3 = *variable - 3;
+	if (--counter) {
+		arg_a = castor(&i3);
+		arg_b = i2;
+		if (! TGEN_FLT_EQ(arg_a, arg_b) )
+			statusFlag++;
+	}
+	i3 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro23()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+float           i1 = 1.0;
+
+extern float increment(float);
+extern int castor(float (*)(float), float*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, in conditional expression, pointer to function returning an
+ * integer 
+ */
+{
+	extern float    i2;
+	float           arg_a, arg_b;
+
+	arg_a = castor(increment, &i1);
+	arg_b = i2;
+	if (! TGEN_FLT_EQ(arg_a, arg_b) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro24()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i2;
+
+extern int pollux(float (*)(float), float*);
+
+int castor(float (*function)(float), float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i3;
+	float           arg_a, arg_b;
+
+	i2 = *variable + 10;
+	if (--counter) {
+		arg_a = pollux(function, &i2);
+		arg_b = i3;
+		if (! TGEN_FLT_EQ(arg_a, arg_b) )
+			statusFlag++;
+	}
+	i2 = function(*variable);
+	return function(*variable);
+}
+@def_
+@def $macro25()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i3;
+
+extern int castor(float (*)(float), float*);
+
+int pollux(float (*function)(float), float *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern float    i2;
+	float           arg_a, arg_b;
+
+	i3 = *variable - 10;
+	if (--counter) {
+		arg_a = castor(function, &i3);
+		arg_b = i2;
+		if (! TGEN_FLT_EQ(arg_a, arg_b) )
+			statusFlag++;
+	}
+	i3 = function(*variable);
+	return function(*variable);
+}
+@def_
+@def $macro26()
+$LICENSE()
+$HEAD()
+
+float 
+increment(float variable)
+{
+	return ++variable;
+}
+@def_
+@def $macro27()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+short           i1;
+
+extern void castor(short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, no return value, legal 
+ */
+{
+
+	i1 = 1;
+	castor(&i1);
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro28()
+$LICENSE()
+$HEAD()
+
+short           i2;
+
+extern void pollux(short*);
+
+void castor(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i1;
+
+	i2 = *variable;
+	if (i2 != i1)
+		statusFlag++;
+
+	if (--counter) {
+		i2++;
+		pollux(&i2);
+	}
+}
+@def_
+@def $macro29()
+$LICENSE()
+$HEAD()
+
+short           i3;
+
+extern void castor(short*);
+
+void pollux(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i2;
+
+	i3 = *variable;
+	if (i3 != i2)
+		statusFlag++;
+
+	if (--counter) {
+		--i3;
+		castor(&i3);
+	}
+}
+@def_
+@def $macro30()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+short           zero = 0;
+short          *i = &zero;
+short           result;
+
+extern void castor(short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, no return value, illegal 
+ */
+{
+	castor(i);
+	if (result == 0)
+		result++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro31()
+$LICENSE()
+$HEAD()
+
+short           i2;
+
+extern void pollux(short*);
+
+void castor(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    result;
+	extern short    zero;
+
+	i2 = *variable;
+	if (i2 != zero)
+		statusFlag++;
+
+	if (--counter)
+		pollux(variable);
+}
+@def_
+@def $macro32()
+$LICENSE()
+$HEAD()
+
+short           i3;
+
+extern void castor(short*);
+
+void pollux(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    result;
+	extern short    zero;
+
+	i3 = *variable;
+	if (i3 != zero)
+		statusFlag++;
+
+	if (--counter)
+		castor(variable);
+}
+@def_
+@def $macro33()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+short           i1 = 1;
+
+extern int castor(short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, return value, legal, no function declaration 
+ */
+{
+	extern short    i2;
+	short           result = 0;
+
+	result = castor(&i1);
+	if (result != i2)
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro34()
+$LICENSE()
+$HEAD()
+
+short           i2;
+
+extern int pollux(short*);
+
+int castor(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i3;
+
+	short           result = 0;
+
+	i2 = *variable + 3;
+	if (--counter) {
+		result = pollux(&i2);
+		if (result != i3)
+			statusFlag++;
+	}
+	i2 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro35()
+$LICENSE()
+$HEAD()
+
+short           i3;
+
+extern int castor(short*);
+
+int pollux(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i2;
+
+	short           result = 0;
+
+	i3 = *variable - 3;
+	if (--counter) {
+		result = castor(&i3);
+		if (result != i2)
+			statusFlag++;
+	}
+	i3 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro36()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+short           i1 = 1;
+
+extern short castor(short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, return value, legal, function declared to return an integer 
+ */
+{
+	extern short    i2;
+	short result = 0;
+
+	result = castor(&i1);
+	if (result != i2)
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro37()
+$LICENSE()
+$HEAD()
+
+short           i2;
+
+extern short pollux(short*);
+
+short 
+castor(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i3;
+
+	short result = 0;
+
+	i2 = *variable + 3;
+	if (--counter) {
+		result = pollux(&i2);
+		if (result != i3)
+			statusFlag++;
+	}
+	i2 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro38()
+$LICENSE()
+$HEAD()
+
+short           i3;
+
+extern short castor(short*);
+
+short 
+pollux(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i2;
+
+	short           result = 0;
+
+	i3 = *variable - 3;
+	if (--counter) {
+		result = castor(&i3);
+		if (result != i2)
+			statusFlag++;
+	}
+	i3 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro39()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+char           *numbers = "0123456789";
+short           i1 = 2;
+
+extern char *castor(short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, return value, function declared to return a pointer to character 
+ */
+{
+	extern char    *c2;
+	char *s;
+
+	s = castor(&i1);
+	if (*s != *c2)
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro40()
+$LICENSE()
+$HEAD()
+
+short           i2;
+char           *c2;
+
+extern char *pollux(short*);
+
+char           *
+castor(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern char    *numbers;
+	extern char    *c3;
+
+	char *s;
+
+	i2 = *variable + 4;
+	if (--counter) {
+		s = pollux(&i2);
+		if (*s != *c3)
+			statusFlag++;
+	}
+	c2 = numbers + *variable;
+	return numbers + (*variable);
+}
+@def_
+@def $macro41()
+$LICENSE()
+$HEAD()
+
+short           i3;
+char           *c3;
+
+extern char *castor(short*);
+
+char           *
+pollux(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern char    *numbers;
+	extern char    *c2;
+
+	char           *s, *castor();
+
+	i3 = *variable - 4;
+	if (--counter) {
+		s = castor(&i3);
+		if (*s != *c2)
+			statusFlag++;
+	}
+	c3 = numbers + *variable;
+	return numbers + *variable;
+}
+@def_
+@def $macro42()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+short           i1 = 1;
+
+extern int castor(short (*)(short), short*);
+extern short increment(short);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, return value, pointer to function returning an integer 
+ */
+{
+	extern short    i2;
+	short result = 0;
+
+	result = castor(increment, &i1);
+	if (result != i2)
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro43()
+$LICENSE()
+$HEAD()
+
+short           i2;
+
+extern int pollux(short (*)(short), short*);
+
+int castor(short (*function)(short), short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i3;
+
+	short           result = 0;
+
+	i2 = *variable + 8;
+	if (--counter) {
+		result = pollux(function, &i2);
+		if (result != i3)
+			statusFlag++;
+	}
+	i2 = function(*variable);
+	return function(*variable);
+}
+@def_
+@def $macro44()
+$LICENSE()
+$HEAD()
+
+short           i3;
+
+int pollux(short (*function)(short), short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i2;
+
+	short           result = 0;
+
+	i3 = *variable - 8;
+	if (--counter) {
+		result = castor(function, &i3);
+		if (result != i2)
+			statusFlag++;
+	}
+	i3 = function(*variable);
+	return function(*variable);
+}
+@def_
+@def $macro45()
+$LICENSE()
+$HEAD()
+
+short 
+increment(short variable)
+{
+	return ++variable;
+}
+@def_
+@def $macro46()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+short           i1;
+
+extern int castor(short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, in conditional expression, no function declaration 
+ */
+{
+	extern short    i2;
+
+	i1 = 1;
+	if (!(castor(&i1) == i2))
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro47()
+$LICENSE()
+$HEAD()
+
+short           i2;
+
+extern int pollux(short*);
+
+int castor(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i3;
+
+	i2 = *variable + 3;
+	if (--counter) {
+		if (!(pollux(&i2) == i3))
+			statusFlag++;
+	}
+	i2 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro48()
+$LICENSE()
+$HEAD()
+
+short           i3;
+
+extern int castor(short*);
+
+int pollux(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i2;
+
+	i3 = *variable - 3;
+	if (--counter) {
+		if (!(castor(&i3) == i2))
+			statusFlag++;
+	}
+	i3 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro49()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+short           i1 = 1;
+
+extern short castor(short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, in conditional expression, function declared to return an integer 
+ */
+{
+	extern short    i2;
+
+	if (!(castor(&i1) == i2))
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro50()
+$LICENSE()
+$HEAD()
+
+short           i2;
+
+extern short pollux(short*);
+
+short 
+castor(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i3;
+
+
+	i2 = *variable + 3;
+	if (--counter) {
+		if (!(pollux(&i2) == i3))
+			statusFlag++;
+	}
+	i2 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro51()
+$LICENSE()
+$HEAD()
+
+short           i3;
+
+extern short castor(short*);
+
+short 
+pollux(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i2;
+
+	i3 = *variable - 3;
+	if (--counter) {
+		if (!(castor(&i3) == i2))
+			statusFlag++;
+	}
+	i3 = *variable + 1;
+	return *variable + 1;
+}
+@def_
+@def $macro52()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+char           *numbers = "0123456789";
+short           i1 = 2;
+
+extern char *castor(short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, in conditional expression, function declared to return a pointer
+ * to character 
+ */
+{
+	extern char    *c2;
+
+	if (!(*castor(&i1) == *c2))
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro53()
+$LICENSE()
+$HEAD()
+
+short           i2;
+char           *c2;
+
+extern char *pollux(short*);
+
+char           *
+castor(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern char    *numbers;
+	extern char    *c3;
+
+
+	i2 = *variable + 4;
+	if (--counter) {
+		if (!(*pollux(&i2) == *c3))
+			statusFlag++;
+	}
+	c2 = numbers + *variable;
+	return numbers + *variable;
+}
+@def_
+@def $macro54()
+$LICENSE()
+$HEAD()
+
+short           i3;
+char           *c3;
+
+extern char *castor(short*);
+
+char           *
+pollux(short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern char    *numbers;
+	extern char    *c2;
+
+
+	i3 = *variable - 4;
+	if (--counter) {
+		if (!(*castor(&i3) == *c2))
+			statusFlag++;
+	}
+	c3 = numbers + *variable;
+	return numbers + *variable;
+}
+@def_
+@def $macro55()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           counter = 10;
+short           i1 = 1;
+
+extern short increment(short);
+extern int castor(short(*)(short), short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : gemini, in conditional expression, pointer to function returning an
+ * integer 
+ */
+{
+	extern short    i2;
+
+	if (!(castor(increment, &i1) == i2))
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro56()
+$LICENSE()
+$HEAD()
+
+short           i2;
+
+extern int pollux(short (*)(short), short*);
+
+int castor(short (*function)(short), short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i3;
+
+	i2 = *variable + 10;
+	if (--counter) {
+		if (!(pollux(function, &i2) == i3))
+			statusFlag++;
+	}
+	i2 = function(*variable);
+	return function(*variable);
+}
+@def_
+@def $macro57()
+$LICENSE()
+$HEAD()
+
+short           i3;
+
+extern int castor(short (*)(short), short*);
+
+int pollux(short (*function)(short), short *variable)
+{
+	extern short    statusFlag;
+	extern short    counter;
+	extern short    i2;
+
+	i3 = *variable - 10;
+	if (--counter) {
+		if (!(castor(function, &i3) == i2))
+			statusFlag++;
+	}
+	i3 = function(*variable);
+	return function(*variable);
+}
+@def_
+@def $macro58()
+$LICENSE()
+$HEAD()
+
+short 
+increment(short variable)
+{
+	return ++variable;
+}
+@def_
+
+@def $macro59()
+ft000.c ft001.c ft002.c
+ft100.c ft101.c ft102.c
+ft200.c ft201.c ft202.c
+ft300.c ft301.c ft302.c
+ft500.c ft501.c ft502.c ft503.c
+ft600.c ft601.c ft602.c
+ft700.c ft701.c ft702.c
+ft900.c ft901.c ft902.c ft903.c
+t000.c t001.c t002.c
+t100.c t101.c t102.c
+t200.c t201.c t202.c
+t300.c t301.c t302.c
+t400.c t401.c t402.c
+t500.c t501.c t502.c t503.c
+t600.c t601.c t602.c
+t700.c t701.c t702.c
+t800.c t801.c t802.c
+t900.c t901.c t902.c t903.c
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir c89.6-3-04
+@file >>def.h $macro0() @file_
+@file >>ft000.c $macro1() @file_
+@file >>ft001.c $macro2() @file_
+@file >>ft002.c $macro3() @file_
+@file >>ft100.c $macro4() @file_
+@file >>ft101.c $macro5() @file_
+@file >>ft102.c $macro6() @file_
+@file >>ft200.c $macro7() @file_
+@file >>ft201.c $macro8() @file_
+@file >>ft202.c $macro9() @file_
+@file >>ft300.c $macro10() @file_
+@file >>ft301.c $macro11() @file_
+@file >>ft302.c $macro12() @file_
+@file >>ft500.c $macro13() @file_
+@file >>ft501.c $macro14() @file_
+@file >>ft502.c $macro15() @file_
+@file >>ft503.c $macro16() @file_
+@file >>ft600.c $macro17() @file_
+@file >>ft601.c $macro18() @file_
+@file >>ft602.c $macro19() @file_
+@file >>ft700.c $macro20() @file_
+@file >>ft701.c $macro21() @file_
+@file >>ft702.c $macro22() @file_
+@file >>ft900.c $macro23() @file_
+@file >>ft901.c $macro24() @file_
+@file >>ft902.c $macro25() @file_
+@file >>ft903.c $macro26() @file_
+@file >>t000.c $macro27() @file_
+@file >>t001.c $macro28() @file_
+@file >>t002.c $macro29() @file_
+@file >>t100.c $macro30() @file_
+@file >>t101.c $macro31() @file_
+@file >>t102.c $macro32() @file_
+@file >>t200.c $macro33() @file_
+@file >>t201.c $macro34() @file_
+@file >>t202.c $macro35() @file_
+@file >>t300.c $macro36() @file_
+@file >>t301.c $macro37() @file_
+@file >>t302.c $macro38() @file_
+@file >>t400.c $macro39() @file_
+@file >>t401.c $macro40() @file_
+@file >>t402.c $macro41() @file_
+@file >>t500.c $macro42() @file_
+@file >>t501.c $macro43() @file_
+@file >>t502.c $macro44() @file_
+@file >>t503.c $macro45() @file_
+@file >>t600.c $macro46() @file_
+@file >>t601.c $macro47() @file_
+@file >>t602.c $macro48() @file_
+@file >>t700.c $macro49() @file_
+@file >>t701.c $macro50() @file_
+@file >>t702.c $macro51() @file_
+@file >>t800.c $macro52() @file_
+@file >>t801.c $macro53() @file_
+@file >>t802.c $macro54() @file_
+@file >>t900.c $macro55() @file_
+@file >>t901.c $macro56() @file_
+@file >>t902.c $macro57() @file_
+@file >>t903.c $macro58() @file_
+@file >>FILESET $macro59() @file_
+@file >>testout.h $testout() @file_
+@dir_

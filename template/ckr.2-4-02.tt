@@ -1,0 +1,774 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+@def_
+
+@def $macro0()
+$LICENSE()
+/* fudou shyousuten enzan basic type */
+$HEAD()
+
+#include "fstnd.h"
+
+short           statusFlag = 0;
+short           counter = 100;
+
+main()
+{
+
+	short           loop;
+	float           fff;
+
+	ftest = 1.0;
+	for (loop = 1; loop <= counter; loop++) {
+
+		ftest = ftest + (float) loop *(float) loop;
+		fff = LMT[loop];
+
+		if (! TGEN_FLT_EQ(ftest, fff) )
+			statusFlag++;
+	};
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro1()
+$LICENSE()
+/* fudou shyousuten enzan basic type */
+$HEAD()
+
+#include "fstnd.h"
+
+short           statusFlag = 0;
+short           counter = 100;
+
+main()
+{
+
+	short           loop;
+	short           index;
+	float           fff;
+
+	ftest = LMT[100];
+	for (loop = 1; loop <= counter; loop++) {
+		index = 100 - loop + 1;
+		ftest = ftest - (float) index *(float) index;
+
+		fff = LMT[index - 1];
+
+		if (! TGEN_FLT_EQ(ftest, fff) )
+			statusFlag++;
+	};
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro2()
+$LICENSE()
+/* fudou shyousuten enzan basic type */
+$HEAD()
+
+#include "fstnd2.h"
+
+short           statusFlag = 0;
+short           counter = 100;
+
+main()
+{
+
+	short           loop;
+	float           fff;
+
+	ftest = LMT[0];
+	for (loop = 1; loop <= counter; loop++) {
+		ftest = ftest + 1.0 / (float) loop;
+		fff = LMT[loop];
+
+		if (! TGEN_FLT_EQ(ftest, fff) )
+			statusFlag++;
+	};
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro3()
+$LICENSE()
+/* fudou shyousuten enzan basic type */
+$HEAD()
+
+#include "fstnd3.h"
+
+short           statusFlag = 0;
+short           counter = 100;
+
+main()
+{
+
+	short           loop;
+	short           index;
+	float           fff;
+
+	ftest = LMT[0];
+	for (loop = 1; loop <= counter; loop++) {
+
+		index = 100 - loop + 1;
+		ftest = ftest - 1.0 / (float) index;
+		fff = LMT[loop];
+
+		if (! TGEN_FLT_EQ(ftest, fff) )
+			statusFlag++;
+	};
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro4()
+$LICENSE()
+/* fudou shyousuten enzan basic type */
+$HEAD()
+
+#include "fstnd.h"
+
+short           statusFlag = 0;
+short           counter = 100;
+
+main()
+{
+
+	short           loop;
+	float           fff;
+
+	ftest = 1.0;
+	for (loop = 1; loop <= counter; loop++) {
+		ftest = ftest + (float) loop *(float) loop;
+		ftest++;
+
+		fff = LMT[loop];
+		fff = fff + 1.0;
+
+		if (! TGEN_FLT_EQ(ftest, fff) )
+			statusFlag++;
+
+		ftest--;
+	};
+
+	if (statusFlag == 0)
+		printok();
+	else
+		printno();
+
+	return (0);
+}
+@def_
+@def $macro5()
+$LICENSE()
+#include "testout.h"
+
+long            itest;
+char            ctest;
+float           ftest;
+
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+
+int             Int;
+long            Long;
+short           Short;
+unsigned        Unsigned;
+char            Char;
+float           Float;
+
+struct Struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               Struct;
+
+union Union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               Union;
+
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef         FLOATDEF;
+
+typedef struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               STRDEF;
+
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF;
+
+#define OK_f 1.0
+#define NO_f 0.0
+
+float           FLT[2] =
+{
+ 2.938736e-38,
+ 1.701411e+38
+};
+
+float           LMT[101] =
+{
+ 1.000000,
+ 2.000000,
+ 6.000000,
+ 15.000000,
+ 31.000000,
+ 56.000000,
+ 92.000000,
+ 141.000000,
+ 205.000000,
+ 286.000000,
+ 386.000000,
+ 507.000000,
+ 651.000000,
+ 820.000000,
+ 1016.000000,
+ 1241.000000,
+ 1497.000000,
+ 1786.000000,
+ 2110.000000,
+ 2471.000000,
+ 2871.000000,
+ 3312.000000,
+ 3796.000000,
+ 4325.000000,
+ 4901.000000,
+ 5526.000000,
+ 6202.000000,
+ 6931.000000,
+ 7715.000000,
+ 8556.000000,
+ 9456.000000,
+ 10417.000000,
+ 11441.000000,
+ 12530.000000,
+ 13686.000000,
+ 14911.000000,
+ 16207.000000,
+ 17576.000000,
+ 19020.000000,
+ 20541.000000,
+ 22141.000000,
+ 23822.000000,
+ 25586.000000,
+ 27435.000000,
+ 29371.000000,
+ 31396.000000,
+ 33512.000000,
+ 35721.000000,
+ 38025.000000,
+ 40426.000000,
+ 42926.000000,
+ 45527.000000,
+ 48231.000000,
+ 51040.000000,
+ 53956.000000,
+ 56981.000000,
+ 60117.000000,
+ 63366.000000,
+ 66730.000000,
+ 70211.000000,
+ 73811.000000,
+ 77532.000000,
+ 81376.000000,
+ 85345.000000,
+ 89441.000000,
+ 93666.000000,
+ 98022.000000,
+ 102511.000000,
+ 107135.000000,
+ 111896.000000,
+ 116796.000000,
+ 121837.000000,
+ 127021.000000,
+ 132350.000000,
+ 137826.000000,
+ 143451.000000,
+ 149227.000000,
+ 155156.000000,
+ 161240.000000,
+ 167481.000000,
+ 173881.000000,
+ 180442.000000,
+ 187166.000000,
+ 194055.000000,
+ 201111.000000,
+ 208336.000000,
+ 215732.000000,
+ 223301.000000,
+ 231045.000000,
+ 238966.000000,
+ 247066.000000,
+ 255347.000000,
+ 263811.000000,
+ 272460.000000,
+ 281296.000000,
+ 290321.000000,
+ 299537.000000,
+ 308946.000000,
+ 318550.000000,
+ 328351.000000,
+ 338351.000000
+};
+@def_
+@def $macro6()
+$LICENSE()
+#include "testout.h"
+
+long            itest;
+char            ctest;
+float           ftest;
+
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+
+int             Int;
+long            Long;
+short           Short;
+unsigned        Unsigned;
+char            Char;
+float           Float;
+
+struct Struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               Struct;
+
+union Union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               Union;
+
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef         FLOATDEF;
+
+typedef struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               STRDEF;
+
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF;
+
+#define OK_f 1.0
+#define NO_f 0.0
+
+float           FLT[2] =
+{
+ 2.938736e-38,
+ 1.701411e+38
+};
+
+float           LMT[101] =
+{
+ 0.00000000000000000000,
+ 1.00000000000000000000,
+ 1.50000000000000000000,
+ 1.83333337306976320000,
+ 2.08333349227905270000,
+ 2.28333353996276860000,
+ 2.45000028610229490000,
+ 2.59285736083984380000,
+ 2.71785736083984380000,
+ 2.82896852493286130000,
+ 2.92896842956542970000,
+ 3.01987743377685550000,
+ 3.10321068763732910000,
+ 3.18013381958007810000,
+ 3.25156235694885250000,
+ 3.31822896003723140000,
+ 3.38072896003723140000,
+ 3.43955254554748540000,
+ 3.49510812759399410000,
+ 3.54773974418640140000,
+ 3.59773969650268550000,
+ 3.64535880088806150000,
+ 3.69081330299377440000,
+ 3.73429155349731450000,
+ 3.77595829963684080000,
+ 3.81595826148986820000,
+ 3.85441970825195310000,
+ 3.89145684242248540000,
+ 3.92717123031616210000,
+ 3.96165394783020020000,
+ 3.99498724937438960000,
+ 4.02724552154541020000,
+ 4.05849552154541020000,
+ 4.08879852294921880000,
+ 4.11821031570434570000,
+ 4.14678192138671880000,
+ 4.17455959320068360000,
+ 4.20158672332763670000,
+ 4.22790241241455080000,
+ 4.25354337692260740000,
+ 4.27854347229003910000,
+ 4.30293369293212890000,
+ 4.32674312591552730000,
+ 4.34999895095825200000,
+ 4.37272644042968750000,
+ 4.39494848251342770000,
+ 4.41668748855590820000,
+ 4.43796396255493160000,
+ 4.45879745483398440000,
+ 4.47920560836791990000,
+ 4.49920558929443360000,
+ 4.51881361007690430000,
+ 4.53804445266723630000,
+ 4.55691242218017580000,
+ 4.57543087005615230000,
+ 4.59361267089843750000,
+ 4.61146974563598630000,
+ 4.62901353836059570000,
+ 4.64625501632690430000,
+ 4.66320419311523440000,
+ 4.67987108230590820000,
+ 4.69626474380493160000,
+ 4.71239376068115230000,
+ 4.72826671600341800000,
+ 4.74389171600341800000,
+ 4.75927639007568360000,
+ 4.77442789077758790000,
+ 4.78935337066650390000,
+ 4.80405902862548830000,
+ 4.81855201721191410000,
+ 4.83283758163452150000,
+ 4.84692192077636720000,
+ 4.86081075668334960000,
+ 4.87450933456420900000,
+ 4.88802289962768550000,
+ 4.90135622024536130000,
+ 4.91451406478881840000,
+ 4.92750120162963870000,
+ 4.94032192230224610000,
+ 4.95298004150390630000,
+ 4.96547985076904300000,
+ 4.97782564163208010000,
+ 4.99002075195312500000,
+ 5.00206899642944340000,
+ 5.01397371292114260000,
+ 5.02573823928833010000,
+ 5.03736591339111330000,
+ 5.04886007308959960000,
+ 5.06022357940673830000,
+ 5.07145977020263670000,
+ 5.08257102966308590000,
+ 5.09356021881103520000,
+ 5.10442972183227540000,
+ 5.11518239974975590000,
+ 5.12582063674926760000,
+ 5.13634681701660160000,
+ 5.14676332473754880000,
+ 5.15707254409790040000,
+ 5.16727685928344730000,
+ 5.17737770080566410000,
+ 5.18737792968750000000
+};
+@def_
+@def $macro7()
+$LICENSE()
+#include "testout.h"
+
+long            itest;
+char            ctest;
+float           ftest;
+
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+
+int             Int;
+long            Long;
+short           Short;
+unsigned        Unsigned;
+char            Char;
+float           Float;
+
+struct Struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               Struct;
+
+union Union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               Union;
+
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef         FLOATDEF;
+
+typedef struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               STRDEF;
+
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF;
+
+#define OK_f 1.0
+#define NO_f 0.0
+
+float           FLT[2] =
+{
+ 2.938736e-38,
+ 1.701411e+38
+};
+
+float           LMT[101] =
+{
+ 5.1873779296875000000000000,
+ 5.1773777008056641000000000,
+ 5.1672768592834473000000000,
+ 5.1570725440979004000000000,
+ 5.1467633247375488000000000,
+ 5.1363468170166016000000000,
+ 5.1258206367492676000000000,
+ 5.1151823997497559000000000,
+ 5.1044297218322754000000000,
+ 5.0935602188110352000000000,
+ 5.0825710296630859000000000,
+ 5.0714597702026367000000000,
+ 5.0602235794067383000000000,
+ 5.0488600730895996000000000,
+ 5.0373659133911133000000000,
+ 5.0257382392883301000000000,
+ 5.0139737129211426000000000,
+ 5.0020689964294434000000000,
+ 4.9900207519531250000000000,
+ 4.9778256416320801000000000,
+ 4.9654798507690430000000000,
+ 4.9529800415039063000000000,
+ 4.9403219223022461000000000,
+ 4.9275012016296387000000000,
+ 4.9145140647888184000000000,
+ 4.9013562202453613000000000,
+ 4.8880228996276855000000000,
+ 4.8745093345642090000000000,
+ 4.8608107566833496000000000,
+ 4.8469219207763672000000000,
+ 4.8328375816345215000000000,
+ 4.8185520172119141000000000,
+ 4.8040590286254883000000000,
+ 4.7893533706665039000000000,
+ 4.7744278907775879000000000,
+ 4.7592763900756836000000000,
+ 4.7438917160034180000000000,
+ 4.7282667160034180000000000,
+ 4.7123937606811523000000000,
+ 4.6962647438049316000000000,
+ 4.6798710823059082000000000,
+ 4.6632041931152344000000000,
+ 4.6462550163269043000000000,
+ 4.6290135383605957000000000,
+ 4.6114697456359863000000000,
+ 4.5936126708984375000000000,
+ 4.5754308700561523000000000,
+ 4.5569124221801758000000000,
+ 4.5380444526672363000000000,
+ 4.5188136100769043000000000,
+ 4.4992055892944336000000000,
+ 4.4792056083679199000000000,
+ 4.4587974548339844000000000,
+ 4.4379639625549316000000000,
+ 4.4166874885559082000000000,
+ 4.3949484825134277000000000,
+ 4.3727264404296875000000000,
+ 4.3499989509582520000000000,
+ 4.3267431259155273000000000,
+ 4.3029336929321289000000000,
+ 4.2785434722900391000000000,
+ 4.2535433769226074000000000,
+ 4.2279024124145508000000000,
+ 4.2015867233276367000000000,
+ 4.1745595932006836000000000,
+ 4.1467819213867188000000000,
+ 4.1182103157043457000000000,
+ 4.0887985229492188000000000,
+ 4.0584955215454102000000000,
+ 4.0272455215454102000000000,
+ 3.9949874877929688000000000,
+ 3.9616541862487793000000000,
+ 3.9271714687347412000000000,
+ 3.8914570808410645000000000,
+ 3.8544199466705322000000000,
+ 3.8159584999084473000000000,
+ 3.7759585380554199000000000,
+ 3.7342917919158936000000000,
+ 3.6908135414123535000000000,
+ 3.6453590393066406000000000,
+ 3.5977399349212646000000000,
+ 3.5477399826049805000000000,
+ 3.4951083660125732000000000,
+ 3.4395527839660645000000000,
+ 3.3807291984558105000000000,
+ 3.3182291984558105000000000,
+ 3.2515625953674316000000000,
+ 3.1801340579986572000000000,
+ 3.1032109260559082000000000,
+ 3.0198776721954346000000000,
+ 2.9289686679840088000000000,
+ 2.8289687633514404000000000,
+ 2.7178575992584229000000000,
+ 2.5928575992584229000000000,
+ 2.4500005245208740000000000,
+ 2.2833337783813477000000000,
+ 2.0833337306976318000000000,
+ 1.8333337306976318000000000,
+ 1.5000003576278687000000000,
+ 1.0000003576278687000000000,
+ 0.0000003576278686523437500
+};
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir ckr.2-4-02
+@file >>fn???.c $macro0() @file_
+@file >>fn???.c $macro1() @file_
+@file >>fn???.c $macro2() @file_
+@file >>fn???.c $macro3() @file_
+@file >>fn???.c $macro4() @file_
+@file >>fstnd.h $macro5() @file_
+@file >>fstnd2.h $macro6() @file_
+@file >>fstnd3.h $macro7() @file_
+@file >>testout.h $testout() @file_
+@dir_

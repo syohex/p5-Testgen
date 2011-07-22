@@ -1,0 +1,1738 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+# include	"incfile.h"
+
+# define	OK	1
+# define	NO	0
+@def_
+@def $HEAD2()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif /* SYSDEP_H */
+
+#include "testout.h"
+# define	OK	1
+# define	NO	0
+@def_
+
+@def $macro0()
+$LICENSE()
+#ifdef unix
+# define printno() 	printf("@NO@\n")
+# define printok() 	printf("@OK@\n")
+# endif
+# define INUM2 2
+# define INUM3 3
+# define INUM8 8
+# define NCHAR	'n'
+# define NO 0
+# define OK 1
+# define NULL 0
+# define YCHAR	'y'
+char            Char;
+char            ctest;
+long            Long;
+long            i;
+long            ipf10;
+long            ipf1;
+long            ipf2;
+long            ipf3;
+long            ipf4;
+long            ipf5;
+long            ipf6;
+long            ipf7;
+long            ipf8;
+long            ipf9;
+long            j;
+long            k;
+long            l;
+long            lcnt10;
+long            lcnt1;
+long            lcnt2;
+long            lcnt3;
+long            lcnt4;
+long            lcnt5;
+long            lcnt6;
+long            lcnt7;
+long            lcnt8;
+long            lcnt9;
+long            m;
+long            n;
+long            o;
+long            p;
+long            q;
+long            r;
+long            itest;
+short           Short;
+struct Struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+}               Struct;
+typedef char    CHARDEF;
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+}               STRDEF;
+typedef unsigned UNSIGNDEF;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               UNIDEF;
+union Union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               Union;
+unsigned        Unsigned;
+@def_
+@def $macro1()
+$LICENSE()
+$HEAD()
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+
+	if (!(!(OK * OK / OK + NO) || (OK == OK && NO != OK))) {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			lcnt3 = 0;
+			k = 0;
+			while (k < 3) {
+				lcnt3++;
+				k += 3;
+				l = 5;
+				switch (l - 3) {
+				case 4:
+					testf = NO;
+					break;
+				case 2:
+					test = OK;
+					lcnt5 = 0;
+					for (m = 0; m < 3; m++) {
+						lcnt5++;
+						m += 3;
+					}
+					break;
+				case 7:
+					testf = NO;
+					break;
+				}
+			}
+		} while (j < 3);
+	} else {
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			lcnt3 = 0;
+			k = 0;
+			while (k < 3) {
+				lcnt3++;
+				k += 3;
+				l = 5;
+				switch (l - 3) {
+				case 5:
+					testf = NO;
+					break;
+				case 2:
+					test = OK;
+					lcnt5 = 0;
+					for (m = 0; m < 3; m++) {
+						lcnt5++;
+						m += 3;
+					}
+					break;
+				case 7:
+					testf = NO;
+					break;
+				}
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt3 != 1)
+		testf = NO;
+	if (lcnt5 != 1)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro2()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	i = 10;
+	switch (i * 10 - 99) {
+	case 1:
+		test = OK;
+		lcnt2 = 0;
+		for (j = 0; j < 3 && i == 10 && OK != NO && OK * OK * OK * OK * OK * OK; j++) {
+			lcnt2++;
+			lcnt3 = 0;
+			k = 0;
+			do {
+				lcnt3++;
+				k++;
+				l = OK;
+				ipf4 = NO;
+				if (l) {
+					ipf4 = OK;
+					lcnt5 = 0;
+					m = 0;
+			LABEL1:
+					do {
+						lcnt5++;
+						m++;
+						lcnt6 = 0;
+						n = 3;
+						do {
+							lcnt6++;
+							n -= 5;
+							lcnt7 = 0;
+							o = 0;
+							while (o > -100) {
+								lcnt7++;
+								o -= 1000;
+								goto LABEL2;
+								if (OK * OK / OK % OK) {
+							LABEL2:
+									test = OK;
+									q = 20;
+									switch (q * OK / OK + OK - OK) {
+									case 0:
+										testf = NO;
+										break;
+									case 20:
+										test = OK;
+										goto LABEL3;
+										if (OK) {
+											testf = NO;
+										} else {
+									LABEL3:
+											test = OK;
+										}
+										break;
+									case 1000:
+										testf = NO;
+										break;
+									}
+								} else {
+									testf = NO;
+									q = 20;
+									switch (q * OK / OK + OK - OK) {
+									case 1:
+										testf = NO;
+										break;
+									case 20:
+										test = OK;
+										goto LABEL4;
+										if (OK) {
+											testf = NO;
+										} else {
+									LABEL4:
+											test = OK;
+										}
+										break;
+									case 1000:
+										testf = NO;
+										break;
+									}
+								}
+							}
+						} while (n > 0);
+						if (m < 3) {
+							goto LABEL1;
+						} else {
+							break;
+						}
+					} while (OK);
+				}
+			} while (k < 3);
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt3 != 3)
+		testf = NO;
+	if (ipf4 != OK)
+		testf = NO;
+	if (lcnt5 != 3)
+		testf = NO;
+	if (lcnt6 != 1)
+		testf = NO;
+	if (lcnt7 != 1)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro3()
+$LICENSE()
+/* $Id: c89.3-5.tt,v 1.4 2006/01/11 05:17:21 share Exp $ */
+$HEAD2()
+int main(void)
+{
+
+	long            test = OK;
+	long            i;
+
+	for (i = 0; i < 3; i++) {
+		while (i > 0) {
+	JUMP1:
+			if (i > 0) {
+				test = OK;
+			} else {
+				test = NO;
+			}
+			switch (i) {
+			case 0:
+				++i;
+				goto JUMP1;
+				break;
+			case 1:
+				if (0) {
+			case 2:
+					do {
+						++i;
+						if (i > 5) {
+							i = 2;
+							break;
+						}
+					} while (test);
+					if (i != 2) {
+						test = NO;
+					}
+					break;
+			default:
+					test = NO;
+					break;
+				} else {
+					i++;
+					goto JUMP1;
+				}
+			}
+			break;
+			i = -1;
+		}
+		if (i < 0 && test == OK) {
+			test = NO;
+		} else {
+			if (test != NO) {
+				test = OK;
+				if (i == 1) {
+					++i;
+					goto JUMP1;
+				}
+			}
+		}
+		continue;
+		i = 100;
+	}
+	if (i > 10) {
+		test = NO;
+	}
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro4()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+
+	if (OK * OK * OK * OK * OK * OK * OK * OK - OK || !(int) (char) (int) (char) (int) (char) OK) {
+JUMP1:
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			lcnt3 = 0;
+			k = 0;
+			while (k < 3 && (OK <= OK <= OK <= OK <= OK <= OK < OK || -(-OK - OK - OK - OK - OK - OK - OK - OK) / 8)) {
+				lcnt3++;
+				k++;
+
+				switch ((j + j + j + j + j + j + j + j) / 8) {
+				case 1:
+				case 2:
+				case 3:
+					test = OK;
+					m = OK;
+					if (*&*&*&*&*&*&*&*&*&*&m) {
+						test = OK;
+					} else {
+						testf = NO;
+					}
+					break;
+				case 4:
+					testf = NO;
+					break;
+				default:
+					testf = NO;
+					break;
+				}
+			}
+		} while ((j < 3) && (OK * OK % 2 / OK * OK % 2 / OK * OK % 2 / OK * OK % OK / OK || OK / OK / OK / OK / OK / OK / OK / OK));
+	} else {
+		goto JUMP1;
+		testf = NO;
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt3 != 3)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro5()
+$LICENSE()
+/* $Id: c89.3-5.tt,v 1.4 2006/01/11 05:17:21 share Exp $ */
+
+$HEAD2()
+
+int main(void)
+{
+	long            test, cnt1, idx, a, b, *flg;
+	long            fff[5];
+
+	flg = fff;
+
+	for (idx = 0; idx < 5; idx++)
+		flg[idx] = NO;
+	idx = cnt1 = NO;
+	test = NO;
+	a = 'a';
+	while (test != OK && cnt1++ < 1000) {
+		if (a++ == 'k') {
+			flg[idx++] = OK;
+			if (flg[0] == OK) {
+				if (flg[1] == OK) {
+					if (flg[2] == OK) {
+						if (flg[3] == OK) {
+							if (flg[4] == OK) {
+								test = OK;
+							}
+						}
+					}
+				}
+			}
+		} else {
+			flg[idx] = NO;
+		}
+		if (a > 'z') {
+			a = 'a';
+		}
+	}
+
+	if (test == OK)
+		printok();
+	if (test != OK)
+		printno();
+	return 0;
+}
+@def_
+@def $macro6()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	lcnt1 = 0;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			k = OK % OK + OK * OK / OK;
+			switch (k) {
+			case 0:
+				testf = NO;
+				break;
+			case 1:
+				test = OK;
+				lcnt4 = 0;
+				for (l = 0; l < 1 && k == OK; l++) {
+					lcnt4++;
+					if (OK * OK % OK / OK) {
+						testf = NO;
+						if (OK * OK / OK * OK / OK * OK / OK) {
+							test = OK;
+							lcnt7 = 0;
+							o = 0;
+							while (o < 3) {
+								lcnt7++;
+								o += 3;
+							}
+						} else {
+							testf = NO;
+							lcnt7 = 0;
+							p = 0;
+							while (p < 3) {
+								lcnt7++;
+								p += 3;
+							}
+						}
+					} else {
+						test = OK;
+						if (i + j + k + l + m + n + o + p + q > 0) {
+							test = OK;
+							lcnt7 = 0;
+							q = 0;
+							while (q == NO) {
+								lcnt7++;
+								q = OK;
+							}
+						} else {
+							testf = NO;
+							lcnt7 = 0;
+							n = 0;
+							while (n = OK) {
+								lcnt7++;
+								break;
+							}
+						}
+					}
+				}
+				break;
+			default:
+				testf = NO;
+				break;
+			}
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt4 != 1)
+		testf = NO;
+	if (lcnt7 != 1)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro7()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	INTDEF          Longdef;
+	SHORTDEF        Shortdef;
+	CHARDEF         Chardef;
+	UNSIGNDEF       Unsigndef;
+	STRDEF          Strdef;
+
+	lcnt1 = 0;
+
+	for (i = 3; -~~-(int) (char) !!*&i * INUM8 / INUM2 % INUM3; i--) {
+		lcnt1++;
+		lcnt2 = 0;
+		Shortdef = 1;
+		while (-~~-(int) (char) !!*&Shortdef * INUM8 / INUM2 % INUM3) {
+			lcnt2++;
+			Shortdef--;
+			Chardef = YCHAR;
+			ipf3 = NO;
+			if (-~~-(int) (char) !!*&Chardef * INUM8 / INUM2 % INUM3) {
+				ipf3 = OK;
+				Strdef.Long = OK;
+				switch (-~~-(int) (char) !!*&Strdef.Long * INUM8 / INUM2 % INUM3) {
+				case 0:
+					testf = NO;
+					break;
+				case 1:
+					test = OK;
+					Strdef.Short = NO;
+					if (-~~-(int) (char) !!*&Strdef.Short * INUM8 / INUM2 % INUM3) {
+						testf = NO;
+						lcnt6 = 0;
+						for (Strdef.Unsigned = 3; -~~-(int) (char) !!*&Strdef.Unsigned * INUM8 / INUM2 % INUM3; Strdef.Unsigned--) {
+							lcnt6++;
+						}
+					} else {
+						test = OK;
+						lcnt6 = 0;
+						for (Strdef.Unsigned = 3; -~~-(int) (char) !!*&Strdef.Unsigned * INUM8 / INUM2 % INUM3; Strdef.Unsigned--) {
+							lcnt6++;
+						}
+					}
+					break;
+				default:
+					testf = NO;
+					break;
+				}
+			}
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+	if (ipf3 != OK)
+		testf = NO;
+	if (lcnt6 != 3)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro8()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	lcnt1 = 0;
+JUMP1:
+	if (lcnt1 == 3)
+		goto JUMP2;
+	Long = (OK + OK);
+	while (Long * Long - Long / Long) {
+		lcnt1++;
+		Long--;
+		lcnt2 = 0;
+		for (Short = OK * 4; Short * Short - Short / Short; Short--) {
+			lcnt2++;
+			Unsigned = OK;
+			switch (Unsigned * Unsigned - Unsigned / Unsigned + Unsigned % (Unsigned + Unsigned)) {
+			case 0:
+				testf = NO;
+				break;
+			case 1:
+				test = OK;
+				Char = YCHAR;
+				ipf4 = NO;
+				if (((Char * Char + Char / Char - Char - 1) % Char + Char) == Char) {
+					ipf4 = OK;
+					Struct.Long = OK;
+					if (Struct.Long * Struct.Long + Struct.Long / Struct.Long - Struct.Long % (Struct.Long + Struct.Long)) {
+						test = OK;
+						lcnt6 = 0;
+						Struct.Short = (OK * 4);
+						do {
+							lcnt6++;
+							Struct.Short--;
+						} while (Struct.Short * Struct.Short - Struct.Short / Struct.Short);
+					} else {
+						testf = NO;
+						lcnt6 = 0;
+						Struct.Short = (OK * 4);
+						do {
+							lcnt6++;
+							Struct.Short--;
+						} while (Struct.Short * Struct.Short - Struct.Short / Struct.Short);
+					}
+				}
+				break;
+			default:
+				testf = NO;
+				break;
+			}
+		}
+	}
+	goto JUMP1;
+JUMP2:
+
+	if (lcnt1 != 3) {
+		testf = NO;
+	}
+	if (lcnt2 != 3) {
+		testf = NO;
+	}
+	if (ipf4 != OK) {
+		testf = NO;
+	}
+	if (lcnt6 != 3) {
+		testf = NO;
+	}
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro9()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	lcnt1 = 0;
+	Long = OK;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		lcnt2 = 0;
+		Short = OK;
+		j = 0;
+		while ((Short * 8 >> 2 + OK) && j < 3) {
+			lcnt2++;
+			j++;
+			lcnt3 = 0;
+			Unsigned = OK;
+			for (k = 0; (Unsigned * 8 >> 2 + OK) && k < 3; k++) {
+				lcnt3++;
+				Char = YCHAR;
+				if (!((Char * 8 >> 2 + NO) == YCHAR)) {
+					test = OK;
+					Struct.Long = OK;
+					switch (Struct.Long * 8 >> 2 + OK) {
+					case 1:
+						test = OK;
+						lcnt6 = 0;
+						Struct.Short = OK;
+						do {
+							lcnt6++;
+							n = OK;
+							Struct.Unsigned = OK;
+							if (Struct.Unsigned * 8 >> 2 + OK) {
+								test = OK;
+							} else {
+								testf = NO;
+							}
+						} while ((Struct.Short * 8 >> 2 + OK) && n < 1);
+						break;
+					case 4:
+						testf = NO;
+						break;
+					}
+				}
+			}
+		}
+	} while ((Long * 8 >> 2 + OK) && i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt3 != 3)
+		testf = NO;
+	if (lcnt6 != 1)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro10()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	lcnt1 = 0;
+	Long = OK;
+	i = 0;
+	while ((Long << 1 > Long >> 1 >= Long) && i < 3) {
+		lcnt1++;
+		i++;
+		lcnt2 = 0;
+		Short = OK;
+		for (j = 0; (Short << 1 > Short >> 1 >= Short) && j < 3; j++) {
+			lcnt2++;
+			Char = YCHAR;
+			switch ((Char << 1 > Char >> 1) + Char - 1 >= Char) {
+			case NO:
+				testf = NO;
+				break;
+			case OK:
+				test = OK;
+				lcnt4 = 0;
+				Unsigned = OK;
+				do {
+					lcnt4++;
+					Struct.Long = OK;
+					if (Struct.Long << 1 > Struct.Long >> 1 < Struct.Long) {
+						testf = NO;
+						Struct.Short = OK;
+						if (Struct.Short << 1 > Struct.Short >> 1 < Struct.Short) {
+							testf = NO;
+						} else {
+							test = OK;
+						}
+					} else {
+						test = OK;
+						Struct.Unsigned = OK;
+						if (Struct.Unsigned << 1 > Struct.Unsigned >> 1 < Struct.Unsigned) {
+							testf = NO;
+						} else {
+							test = OK;
+						}
+					}
+				} while (Unsigned << 1 > Unsigned >> 1 < Unsigned);
+				break;
+			default:
+				testf = NO;
+				break;
+			}
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt4 != 1)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro11()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	Long = OK;
+	switch (Long < Long > Long == Long <= Long >= Long != Long) {
+	case NO:
+		testf = NO;
+		break;
+	case OK:
+		test = OK;
+		lcnt2 = 0;
+		Short = OK;
+		for (j = 0; (Short < Short > Short == Short <= Short >= Short != Short) && j < 1; j++) {
+			lcnt2++;
+			lcnt3 = 0;
+			Unsigned = OK;
+			k = 0;
+			while ((Unsigned < Unsigned > Unsigned == Unsigned <= Unsigned >= Unsigned != Unsigned) && k < 3) {
+				lcnt3++;
+				k++;
+				Char = YCHAR;
+				ipf4 = NO;
+				if (Char < Char > Char == Char <= Char >= Char != Char) {
+					ipf4 = OK;
+					lcnt5 = 0;
+					Struct.Long = OK;
+					m = 0;
+					do {
+						lcnt5++;
+						m++;
+						lcnt6 = 0;
+						Struct.Short = OK;
+						for (n = 0; (Struct.Short < Struct.Short > Struct.Short == Struct.Short <= Struct.Short >= Struct.Short != Struct.Short) && n < 3; n++) {
+							lcnt6++;
+							Struct.Char = YCHAR;
+							if (Struct.Char < Struct.Char > Struct.Char == Struct.Char <= Struct.Char >= Struct.Char != Struct.Char) {
+								test = OK;
+							} else {
+								testf = NO;
+							}
+						}
+					} while ((Struct.Long < Struct.Long > Struct.Long == Struct.Long <= Struct.Long >= Struct.Long != Struct.Long) && m < 3);
+				}
+			}
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+	if (lcnt3 != 3)
+		testf = NO;
+	if (ipf4 != OK)
+		testf = NO;
+	if (lcnt5 != 3)
+		testf = NO;
+	if (lcnt6 != 3)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro12()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	INTDEF          Longdef;
+	SHORTDEF        Shortdef;
+
+	lcnt1 = 0;
+	Struct.Unsigned = OK;
+	i = 0;
+	while ((Struct.Unsigned < Struct.Unsigned > Struct.Unsigned == Struct.Unsigned <= Struct.Unsigned >= Struct.Unsigned != Struct.Unsigned) && i < 3) {
+		lcnt1++;
+		i++;
+		lcnt2 = 0;
+		Struct.Char = YCHAR;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			Union.Long = OK;
+			switch (Union.Long < Union.Long > Union.Long == Union.Long <= Union.Long >= Union.Long != Union.Long) {
+			case OK:
+				test = OK;
+				Union.Char = YCHAR;
+				if (Union.Char < Union.Char > Union.Char == Union.Char <= Union.Char >= Union.Char == Union.Char) {
+					testf = NO;
+					lcnt5 = 0;
+					Longdef = OK;
+					m = 0;
+					while ((Longdef < Longdef > Longdef == Longdef <= Longdef >= Longdef != Longdef) && m < 1) {
+						lcnt5++;
+						m++;
+						Shortdef = OK;
+						if (Shortdef < Shortdef > Shortdef == Shortdef <= Shortdef >= Shortdef != Shortdef) {
+							test = OK;
+						} else {
+							testf = NO;
+						}
+					}
+				} else {
+					test = OK;
+					lcnt5 = 0;
+					Longdef = OK;
+					m = 0;
+					while ((Longdef < Longdef > Longdef == Longdef <= Longdef >= Longdef != Longdef) && m < 1) {
+						lcnt5++;
+						m++;
+						Shortdef = OK;
+						if (Shortdef < Shortdef > Shortdef == Shortdef <= Shortdef >= Shortdef != Shortdef) {
+							test = OK;
+						} else {
+							testf = NO;
+						}
+					}
+				}
+				break;
+			case NO:
+				testf = NO;
+				break;
+			}
+		} while ((Struct.Char < Struct.Char > Struct.Char == Struct.Char <= Struct.Char >= Struct.Char != Struct.Char) && j < 3);
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt5 != 1)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro13()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	Long = OK;
+	ipf1 = NO;
+	if (!(Long & Long != Long)) {
+		ipf1 = OK;
+		lcnt2 = 0;
+		Short = OK;
+		for (j = 0; !(Short & Short != Short) && j < 3; j++) {
+			lcnt2++;
+			lcnt3 = 0;
+			Unsigned = OK;
+			k = 0;
+			do {
+				lcnt3++;
+				k++;
+				Char = YCHAR;
+				switch (!(Char & Char != Char)) {
+				case OK:
+					test = OK;
+					lcnt5 = 0;
+					Struct.Long = OK;
+					m = 0;
+					while (!(Struct.Long & Struct.Long != Struct.Long) && m < 3) {
+						lcnt5++;
+						m++;
+						lcnt6 = 0;
+						Struct.Short = OK;
+						for (n = 0; !(Struct.Short & Struct.Short != Struct.Short) && n < 3; n++) {
+							lcnt6++;
+							Struct.Unsigned = OK;
+							if (!(Struct.Unsigned & Struct.Unsigned != Struct.Unsigned)) {
+								test = OK;
+							} else {
+								testf = NO;
+							}
+						}
+					}
+					break;
+				case NO:
+					testf = NO;
+					break;
+				}
+			} while (!(Unsigned & Unsigned != Unsigned) && k < 3);
+		}
+	}
+	if (ipf1 != OK)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt3 != 3)
+		testf = NO;
+	if (lcnt5 != 3)
+		testf = NO;
+	if (lcnt6 != 3)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro14()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	INTDEF          Longdef;
+	UNSIGNDEF       Unsigndef;
+	SHORTDEF        Shortdef;
+	CHARDEF         Chardef;
+	STRDEF          Strdef;
+
+	Struct.Char = YCHAR;
+	switch (!(Struct.Char & Struct.Char != Struct.Char)) {
+	case NO:
+		testf = NO;
+		break;
+	case OK:
+		test = OK;
+		Union.Long = OK;
+		ipf2 = NO;
+		if (!(Union.Long & Union.Long != Union.Long)) {
+			ipf2 = OK;
+			lcnt3 = 0;
+			Union.Char = YCHAR;
+			for (k = 0; !(Union.Char & Union.Char != Union.Char) && k < 1; k++) {
+				lcnt3++;
+				lcnt4 = 0;
+				Longdef = OK;
+				l = 0;
+				while (!(Longdef & Longdef != Longdef) && l < 1) {
+					lcnt4++;
+					l++;
+					lcnt5 = 0;
+					Shortdef = OK;
+					m = 0;
+					do {
+						lcnt5++;
+						m++;
+						Unsigndef = OK;
+						if (Unsigndef & Unsigndef != Unsigndef) {
+							testf = NO;
+							lcnt7 = 0;
+							Chardef = YCHAR;
+							for (o = 0; !(Chardef & Chardef != Chardef) && o < 3; o++) {
+								lcnt7++;
+								Strdef.Long = OK;
+								if (!(Strdef.Long & Strdef.Long != Strdef.Long)) {
+									test = OK;
+								} else {
+									testf = NO;
+								}
+							}
+						}
+					} while (!(Shortdef & Shortdef != Shortdef) && m < 3);
+				}
+			}
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (ipf2 != OK)
+		testf = NO;
+	if (lcnt3 != 1)
+		testf = NO;
+	if (lcnt4 != 1)
+		testf = NO;
+	if (lcnt5 != 3)
+		testf = NO;
+	if (lcnt7 == 3)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro15()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	Long = OK;
+	ipf1 = NO;
+	if (NULL | Long ^ Long & ~Long ^ Long == Long != Long) {
+		ipf1 = OK;
+		lcnt2 = 0;
+		Short = OK;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			lcnt3 = 0;
+			Unsigned = OK;
+			k = 0;
+			while ((NULL | Unsigned ^ Unsigned & ~Unsigned ^ Unsigned == Unsigned != Unsigned) && k < 1) {
+				lcnt3++;
+				k++;
+				Char = YCHAR;
+				switch ('\0' | Char ^ Char & ~Char ^ 0) {
+				case NCHAR:
+					testf = NO;
+					break;
+				case YCHAR:
+					test = OK;
+					lcnt5 = 0;
+					Struct.Long = OK;
+					for (m = 0; (NULL | Struct.Long ^ Struct.Long & ~Struct.Long ^ Struct.Long == Struct.Long != Struct.Long) && m < 3; m++) {
+						lcnt5++;
+						Struct.Short = OK;
+						if (NULL | Struct.Short ^ Struct.Short & ~Struct.Short ^ Struct.Short == Struct.Short == Struct.Short) {
+							testf = NO;
+							lcnt7 = 0;
+							Struct.Unsigned = OK;
+							do {
+								lcnt7++;
+							} while (NULL | Struct.Unsigned ^ Struct.Unsigned & ~Struct.Unsigned ^ Struct.Unsigned == Struct.Unsigned == Struct.Unsigned);
+						} else {
+							test = OK;
+							lcnt7 = 0;
+							Struct.Unsigned = OK;
+							do {
+								lcnt7++;
+							} while (NULL | Struct.Unsigned ^ Struct.Unsigned & ~Struct.Unsigned ^ Struct.Unsigned == Struct.Unsigned == Struct.Unsigned);
+						}
+					}
+					break;
+				default:
+					testf = NO;
+					break;
+				}
+			}
+		} while ((NULL | Short ^ Short & ~Short ^ Short == Short != Short) && j < 3);
+	}
+	if (ipf1 != OK)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt3 != 1)
+		testf = NO;
+	if (lcnt5 != 3)
+		testf = NO;
+	if (lcnt7 != 1)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro16()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	Long = OK;
+	if (!(Long && NULL | Long ^ Long & ~Long)) {
+		testf = NO;
+		Short = OK;
+		switch (Short && NULL | Short ^ Short & ~Short) {
+		case OK:
+			test = OK;
+			Unsigned = OK;
+			if (!(Unsigned && NULL | Unsigned ^ Unsigned & ~Unsigned)) {
+				testf = NO;
+				lcnt4 = 0;
+				Char = YCHAR;
+				l = 0;
+				do {
+					lcnt4++;
+					l++;
+					lcnt5 = 0;
+					Struct.Long = OK;
+					m = 0;
+					while ((Struct.Long && Struct.Long ^ Struct.Long & ~Struct.Long) && m < 3) {
+						lcnt5++;
+						m++;
+						lcnt6 = 0;
+						Struct.Short = OK;
+						n = 0;
+						while ((Struct.Long && Struct.Long ^ Struct.Long & ~Struct.Long) && n < 3) {
+							lcnt6++;
+							n++;
+						}
+					}
+				} while ((Char && '\0' | Char ^ Char & ~Char) && l < 3);
+			}
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	} else {
+		test = OK;
+		Short = OK;
+		switch (Short && NULL | Short ^ Short & ~Short) {
+		case OK:
+			test = OK;
+			Unsigned = OK;
+			if (!(Unsigned && NULL | Unsigned ^ Unsigned & ~Unsigned)) {
+				testf = NO;
+				lcnt4 = 0;
+				Char = YCHAR;
+				l = 0;
+				do {
+					lcnt4++;
+					l++;
+					lcnt5 = 0;
+					Struct.Long = OK;
+					m = 0;
+					while ((Struct.Long && Struct.Long ^ Struct.Long & ~Struct.Long) && m < 3) {
+						lcnt5++;
+						m++;
+						lcnt6 = 0;
+						Struct.Short = OK;
+						n = 0;
+						while ((Struct.Long && Struct.Long ^ Struct.Long & ~Struct.Long) && n < 3) {
+							lcnt6++;
+							n++;
+						}
+					}
+				} while ((Char && '\0' | Char ^ Char & ~Char) && l < 3);
+			}
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if (lcnt4 != 0)
+		testf = NO;
+	if (lcnt5 != 0)
+		testf = NO;
+	if (lcnt6 != 0)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro17()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	INTDEF          Longdef;
+	SHORTDEF        Shortdef;
+	UNSIGNDEF       Unsigndef;
+	CHARDEF         Chardef;
+	STRDEF          Strdef;
+	UNIDEF          Unidef;
+
+	Longdef = OK;
+	switch (Longdef || Longdef && !Longdef) {
+	case NO:
+		testf = NO;
+		break;
+	case OK:
+		test = OK;
+		Shortdef = OK;
+		switch (Shortdef || Shortdef && !Shortdef) {
+		case NO:
+			testf = NO;
+			break;
+		case OK:
+			test = OK;
+			lcnt3 = 0;
+			Unsigndef = OK;
+			for (k = 0; (Unsigndef || Unsigndef && !Unsigndef) && k < 1; k++) {
+				lcnt3++;
+				Chardef = YCHAR;
+				switch (Chardef || Chardef && Chardef) {
+				case OK:
+					test = OK;
+					lcnt5 = 0;
+					Unidef.Long = OK;
+					m = 0;
+					while ((Unidef.Long || Unidef.Long && !Unidef.Long) && m < 1) {
+						lcnt5++;
+						m++;
+						lcnt6 = 0;
+						Strdef.Short = OK;
+						n = 0;
+						do {
+							lcnt6++;
+							n++;
+							Strdef.Char = YCHAR;
+							if (!Strdef.Char || Strdef.Char && !Strdef.Char) {
+								testf = NO;
+							} else {
+								test = OK;
+							}
+						} while ((Strdef.Short || Strdef.Short && !Strdef.Short) && n < 1);
+					}
+					break;
+				default:
+					testf = NO;
+					break;
+				}
+			}
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt3 != 1)
+		testf = NO;
+	if (lcnt5 != 1)
+		testf = NO;
+	if (lcnt6 != 1)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro18()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	i = 1;
+	if (i = 1) {
+		goto CASE1;
+	} else {
+		if (i = 2) {
+			goto CASE2;
+		} else {
+			goto DEFAULT;
+		}
+	}
+CASE1:
+	test = OK;
+	lcnt2 = 0;
+	j = 0;
+DOST:
+	lcnt2++;
+	j++;
+	lcnt3 = 0;
+	k = 0;
+WHST:
+	if (k >= 1)
+		goto WHEND;
+	lcnt3++;
+	k++;
+	lcnt4 = 0;
+	l = 0;
+FRST:
+	if (l >= 1)
+		goto FREND;
+	lcnt4++;
+	l++;
+	lcnt5 = 0;
+	m = 0;
+W2ST:
+	if (m >= 1)
+		goto W2END;
+	lcnt5++;
+	m++;
+	n = 1;
+	if (n != 1)
+		goto ELSE;
+	test = OK;
+	goto ENDIF;
+ELSE:
+	testf = NO;
+ENDIF:
+	goto W2ST;
+W2END:
+	goto FRST;
+FREND:
+	goto WHST;
+WHEND:
+	if (j < 1)
+		goto DOST;
+	goto BREAKSW;
+CASE2:
+	testf = NO;
+	goto BREAKSW;
+DEFAULT:
+	testf = NO;
+	goto BREAKSW;
+BREAKSW:
+
+	if (lcnt2 != 1)
+		testf = NO;
+	if (lcnt3 != 1)
+		testf = NO;
+	if (lcnt4 != 1)
+		testf = NO;
+	if (lcnt5 != 1)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro19()
+$LICENSE()
+$HEAD()
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+	Long = OK;
+	if (Long <= Long <= Long <= Long <= Long <= Long <= Long <= Long) {
+		lcnt2 = 0;
+		Long = OK;
+		for (j = 0; (Long >= Long >= Long >= Long >= Long >= Long >= Long >= Long) && j < 1; j++) {
+			lcnt2++;
+			lcnt3 = 0;
+			Short = OK;
+			k = 0;
+			while ((Long <= Long <= Long <= Long <= Long <= Long <= Long <= Long) && k < 1) {
+				lcnt3++;
+				k++;
+				lcnt4 = 0;
+				Short = OK;
+				l = 0;
+				do {
+					lcnt4++;
+					l++;
+					Unsigned = OK;
+					switch (Unsigned <= Unsigned <= Unsigned <= Unsigned <= Unsigned <= Unsigned <= Unsigned <= Unsigned) {
+					case OK:
+						test = OK;
+						Unsigned = OK;
+						if (Unsigned >= Unsigned >= Unsigned >= Unsigned >= Unsigned >= Unsigned >= Unsigned >= Unsigned) {
+							test = OK;
+							lcnt7 = 0;
+							Char = YCHAR;
+							o = 0;
+							do {
+								lcnt7++;
+								o++;
+							} while ((Char <= Char <= Char <= Char <= Char <= Char <= Char) && o < 3);
+						} else {
+							testf = NO;
+							lcnt7 = 0;
+							Char = YCHAR;
+							o = 0;
+							do {
+								lcnt7++;
+								o++;
+							} while ((Char >= Char >= Char >= Char >= Char >= Char >= Char) && o < 3);
+						}
+						break;
+					case NO:
+						testf = NO;
+						break;
+					}
+				} while ((Short >= Short >= Short >= Short >= Short >= Short >= Short >= Short) && l < 1);
+			}
+		}
+	}
+	if (lcnt2 != 1)
+		testf = NO;
+	if (lcnt3 != 1)
+		testf = NO;
+	if (lcnt4 != 1)
+		testf = NO;
+	if (lcnt7 != 3)
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir c89.3-5
+@file >>incfile.h $macro0() @file_
+@file >>t4312.c $macro1() @file_
+@file >>t4313.c $macro2() @file_
+@file >>t4314.c $macro3() @file_
+@file >>t4315.c $macro4() @file_
+@file >>t4316.c $macro5() @file_
+@file >>t4317.c $macro6() @file_
+@file >>t4318.c $macro7() @file_
+@file >>t4319.c $macro8() @file_
+@file >>t4320.c $macro9() @file_
+@file >>t4322.c $macro10() @file_
+@file >>t4323.c $macro11() @file_
+@file >>t4324.c $macro12() @file_
+@file >>t4325.c $macro13() @file_
+@file >>t4326.c $macro14() @file_
+@file >>t4327.c $macro15() @file_
+@file >>t4328.c $macro16() @file_
+@file >>t4329.c $macro17() @file_
+@file >>t4330.c $macro18() @file_
+@file >>t4331.c $macro19() @file_
+@file >>testout.h $testout() @file_
+@dir_

@@ -1,0 +1,7591 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@comment
+�����t�@�C�����e�X�g
+@comment_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+@def_
+
+@def $macro0()
+$LICENSE()
+#include "testout.h"
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+@def_
+
+@def $macro1()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+INTDEF          Intdef_A;
+SHORTDEF        Shortdef_A;
+LONGDEF         Longdef_A;
+UNSIGNDEF       Unsigndef_A;
+CHARDEF         Chardef_A;
+FLOATDEF        Floatdef_A;
+
+
+extern INTDEF   Intdef_B;
+extern SHORTDEF Shortdef_B;
+extern LONGDEF  Longdef_B;
+extern UNSIGNDEF Unsigndef_B;
+extern CHARDEF  Chardef_B;
+extern FLOATDEF Floatdef_B;
+
+extern void function_I(void);
+extern void function_S(void);
+extern void function_L(void);
+extern void function_U(void);
+extern void function_C(void);
+extern void function_F(void);
+
+int main(void)
+{
+	Intdef_A = OK;
+	function_I();
+
+	if (Intdef_A == Intdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Shortdef_A = OK;
+	function_S();
+
+	if (Shortdef_A == Shortdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Longdef_A = OK;
+	function_L();
+
+	if (Longdef_A == Longdef_B)
+		printok();
+	else
+		printno();
+
+
+	Unsigndef_A = OK;
+	function_U();
+
+	if (Unsigndef_A == Unsigndef_B)
+		printok();
+	else
+		printno();
+
+
+	Chardef_A = YCHAR;
+	function_C();
+
+	if (Chardef_A == Chardef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Floatdef_A = 1.0;
+	function_F();
+
+	if ( TGEN_FLT_EQ(Floatdef_A, Floatdef_B) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+
+@def $macro2()
+$LICENSE()
+$HEAD()
+
+#include   "def.h"
+#include   "ftdef.h"
+
+INTDEF          Intdef_B;
+SHORTDEF        Shortdef_B;
+LONGDEF         Longdef_B;
+UNSIGNDEF       Unsigndef_B;
+CHARDEF         Chardef_B;
+FLOATDEF        Floatdef_B;
+
+
+extern INTDEF   Intdef_A;
+extern SHORTDEF Shortdef_A;
+extern LONGDEF  Longdef_A;
+extern UNSIGNDEF Unsigndef_A;
+extern CHARDEF  Chardef_A;
+extern FLOATDEF Floatdef_A;
+
+
+void function_I(void)
+{
+	if (Intdef_A == 1)
+		Intdef_B = OK;
+	else
+		Intdef_B = NO;
+}
+
+
+
+void function_S(void)
+{
+	if (Shortdef_A == 1)
+		Shortdef_B = OK;
+	else
+		Shortdef_B = NO;
+}
+
+
+
+void function_L(void)
+{
+	if (Longdef_A == 1)
+		Longdef_B = OK;
+	else
+		Longdef_B = NO;
+}
+
+
+
+void function_U(void)
+{
+	if (Unsigndef_A == 1)
+		Unsigndef_B = OK;
+	else
+		Unsigndef_B = NO;
+}
+
+
+
+void function_C(void)
+{
+	if (Chardef_A == 'y')
+		Chardef_B = YCHAR;
+	else
+		Chardef_B = NCHAR;
+}
+
+
+
+void function_F(void)
+{
+	if ( TGEN_FLT_EQ(Floatdef_A, 1.0) )
+		Floatdef_B = Floatdef_A;
+	else
+		Floatdef_B = NO;
+}
+@def_
+@def $macro3()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstnd_A.h"
+
+extern void function(void);
+
+int main(void)
+{
+	extern float    Float_B;
+
+	Float_A = 1.0;
+	function();
+
+	if ( TGEN_FLT_EQ(Float_A, Float_B) )
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro4()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "fstnd_B.h"
+
+void function(void)
+{
+	extern float    Float_A;
+
+	if ( TGEN_FLT_EQ(Float_A, 1.0) )
+		Float_B = 1.0;
+	else
+		Float_B = NO;
+}
+@def_
+@def $macro5()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+INTDEF          Intdef_A;
+SHORTDEF        Shortdef_A;
+LONGDEF         Longdef_A;
+UNSIGNDEF       Unsigndef_A;
+CHARDEF         Chardef_A;
+FLOATDEF        Floatdef_A;
+
+
+extern INTDEF   Intdef_B;
+extern SHORTDEF Shortdef_B;
+extern LONGDEF  Longdef_B;
+extern UNSIGNDEF Unsigndef_B;
+extern CHARDEF  Chardef_B;
+extern FLOATDEF Floatdef_B;
+
+extern void function_I(int);
+extern void function_S(short);
+extern void function_L(long);
+extern void function_U(unsigned);
+extern void function_C(char);
+extern void function_F(float);
+
+int main(void)
+{
+	Intdef_A = OK;
+	function_I(Intdef_A);
+
+	if (Intdef_A == Intdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Shortdef_A = OK;
+	function_S(Shortdef_A);
+
+	if (Shortdef_A == Shortdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Longdef_A = OK;
+	function_L(Longdef_A);
+
+	if (Longdef_A == Longdef_B)
+		printok();
+	else
+		printno();
+
+
+	Unsigndef_A = OK;
+	function_U(Unsigndef_A);
+
+	if (Unsigndef_A == Unsigndef_B)
+		printok();
+	else
+		printno();
+
+
+	Chardef_A = YCHAR;
+	function_C(Chardef_A);
+
+	if (Chardef_A == Chardef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Floatdef_A = 1.0;
+	function_F(Floatdef_A);
+
+	if ( TGEN_FLT_EQ(Floatdef_A, Floatdef_B) )
+		printok();
+	else
+		printno();
+
+	return 0;
+}
+@def_
+@def $macro6()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "ftdef.h"
+
+INTDEF          Intdef_B;
+SHORTDEF        Shortdef_B;
+LONGDEF         Longdef_B;
+UNSIGNDEF       Unsigndef_B;
+CHARDEF         Chardef_B;
+FLOATDEF        Floatdef_B;
+
+extern INTDEF   Intdef_A;
+extern SHORTDEF Shortdef_A;
+extern LONGDEF  Longdef_A;
+extern UNSIGNDEF Unsigndef_A;
+extern CHARDEF  Chardef_A;
+extern FLOATDEF Floatdef_A;
+
+void function_I(int argument)
+{
+	if (argument == 1)
+		Intdef_B = Intdef_A;
+	else
+		Intdef_B = NO;
+}
+
+
+
+void function_S(short argument)
+{
+	if (argument == 1)
+		Shortdef_B = Shortdef_A;
+	else
+		Shortdef_B = NO;
+}
+
+
+
+void function_L(long argument)
+{
+	if (argument == 1)
+		Longdef_B = Longdef_A;
+	else
+		Longdef_B = NO;
+}
+
+
+
+void function_U(unsigned argument)
+{
+	if (argument == 1)
+		Unsigndef_B = Unsigndef_A;
+	else
+		Unsigndef_B = NO;
+}
+
+
+
+void function_C(char argument)
+{
+	if (argument == 'y')
+		Chardef_B = Chardef_A;
+	else
+		Chardef_B = NCHAR;
+}
+
+
+
+void function_F(float argument)
+{
+	if ( TGEN_FLT_EQ(argument, 1.0) )
+		Floatdef_B = Floatdef_A;
+	else
+		Floatdef_B = NO;
+}
+@def_
+@def $macro7()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstnd_A.h"
+
+extern void function(float);
+
+int main(void)
+{
+	extern float    Float_B;
+
+	Float_A = 1.0;
+	function(Float_A);
+
+	if ( TGEN_FLT_EQ(Float_A, Float_B) )
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro8()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "fstnd_B.h"
+
+void function(float argument)
+{
+	extern float    Float_A;
+
+	if ( TGEN_FLT_EQ(argument, 1.0) )
+		Float_B = Float_A;
+	else
+		Float_B = NO;
+}
+@def_
+@def $macro9()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+INTDEF          Intdef_A;
+SHORTDEF        Shortdef_A;
+LONGDEF         Longdef_A;
+UNSIGNDEF       Unsigndef_A;
+CHARDEF         Chardef_A;
+FLOATDEF        Floatdef_A;
+
+
+extern INTDEF   Intdef_B;
+extern SHORTDEF Shortdef_B;
+extern LONGDEF  Longdef_B;
+extern UNSIGNDEF Unsigndef_B;
+extern CHARDEF  Chardef_B;
+extern FLOATDEF Floatdef_B;
+
+extern void function_I(int*);
+extern void function_S(short*);
+extern void function_L(long*);
+extern void function_U(unsigned*);
+extern void function_C(char*);
+extern void function_F(float*);
+
+int main(void)
+{
+	Intdef_A = OK;
+	function_I(&Intdef_A);
+
+	if (Intdef_A == Intdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Shortdef_A = OK;
+	function_S(&Shortdef_A);
+
+	if (Shortdef_A == Shortdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Longdef_A = OK;
+	function_L(&Longdef_A);
+
+	if (Longdef_A == Longdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Unsigndef_A = OK;
+	function_U(&Unsigndef_A);
+
+	if (Unsigndef_A == Unsigndef_B)
+		printok();
+	else
+		printno();
+
+
+	Chardef_A = YCHAR;
+	function_C(&Chardef_A);
+
+	if (Chardef_A == Chardef_B)
+		printok();
+	else
+		printno();
+
+
+	Floatdef_A = 1.0;
+	function_F(&Floatdef_A);
+
+	if ( TGEN_FLT_EQ(Floatdef_A, Floatdef_B) )
+		printok();
+	else
+		printno();
+
+	return 0;
+}
+@def_
+@def $macro10()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "ftdef.h"
+
+INTDEF          Intdef_B;
+SHORTDEF        Shortdef_B;
+LONGDEF         Longdef_B;
+UNSIGNDEF       Unsigndef_B;
+CHARDEF         Chardef_B;
+FLOATDEF        Floatdef_B;
+
+
+extern INTDEF   Intdef_A;
+extern SHORTDEF Shortdef_A;
+extern LONGDEF  Longdef_A;
+extern UNSIGNDEF Unsigndef_A;
+extern CHARDEF  Chardef_A;
+extern FLOATDEF Floatdef_A;
+
+
+void function_I(int *argument)
+{
+	if (*argument == 1)
+		Intdef_B = Intdef_A;
+	else
+		Intdef_B = NO;
+}
+
+
+
+void function_S(short *argument)
+{
+	if (*argument == 1)
+		Shortdef_B = Shortdef_A;
+	else
+		Shortdef_B = NO;
+}
+
+
+
+void function_L(long *argument)
+{
+	if (*argument == 1)
+		Longdef_B = Longdef_A;
+	else
+		Longdef_B = NO;
+}
+
+
+
+void function_U(unsigned *argument)
+{
+	if (*argument == 1)
+		Unsigndef_B = Unsigndef_A;
+	else
+		Unsigndef_B = NO;
+}
+
+
+
+void function_C(char *argument)
+{
+	if (*argument == 'y')
+		Chardef_B = Chardef_A;
+	else
+		Chardef_B = NCHAR;
+}
+
+
+
+void function_F(float *argument)
+{
+	if ( TGEN_FLT_EQ(*argument, 1.0) )
+		Floatdef_B = Floatdef_A;
+	else
+		Floatdef_B = NO;
+}
+@def_
+@def $macro11()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstnd_A.h"
+
+extern void function(float*);
+
+int main(void)
+{
+	extern float    Float_B;
+
+	Float_A = 1.0;
+	function(&Float_A);
+
+	if ( TGEN_FLT_EQ(Float_A, Float_B) )
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro12()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "fstnd_B.h"
+
+void function(float *argument)
+{
+	extern float    Float_A;
+
+	if ( TGEN_FLT_EQ(*argument, 1.0) )
+		Float_B = Float_A;
+	else
+		Float_B = NO;
+}
+@def_
+@def $macro13()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+struct StrA     Struct_A;
+extern struct StrB Struct_B;
+
+extern void function_I(void);
+extern void function_S(void);
+extern void function_L(void);
+extern void function_U(void);
+extern void function_C(void);
+extern void function_F(void);
+
+int main(void)
+{
+
+	Struct_A.Int = OK;
+	function_I();
+
+	if (Struct_A.Int == Struct_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Short = OK;
+	function_S();
+
+	if (Struct_A.Short == Struct_B.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Long = OK;
+	function_L();
+
+	if (Struct_A.Long == Struct_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Unsigned = OK;
+	function_U();
+
+	if (Struct_A.Unsigned == Struct_B.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Char = YCHAR;
+	function_C();
+
+	if (Struct_A.Char == Struct_B.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Float = 1.0;
+	function_F();
+
+	if ( TGEN_FLT_EQ(Struct_A.Float, Struct_B.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro14()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+struct StrB     Struct_B;
+extern struct StrA Struct_A;
+
+
+void function_I(void)
+{
+	if (Struct_A.Int == 1)
+		Struct_B.Int = OK;
+	else
+		Struct_B.Int = NO;
+}
+
+
+void function_S(void)
+{
+	if (Struct_A.Short == 1)
+		Struct_B.Short = OK;
+	else
+		Struct_B.Short = NO;
+}
+
+
+void function_L(void)
+{
+	if (Struct_A.Long == 1)
+		Struct_B.Long = OK;
+	else
+		Struct_B.Long = NO;
+}
+
+
+void function_U(void)
+{
+	if (Struct_A.Unsigned == 1)
+		Struct_B.Unsigned = OK;
+	else
+		Struct_B.Unsigned = NO;
+}
+
+
+void function_C(void)
+{
+	if (Struct_A.Char == 'y')
+		Struct_B.Char = YCHAR;
+	else
+		Struct_B.Char = NCHAR;
+}
+
+
+
+void function_F(void)
+{
+	if ( TGEN_FLT_EQ(Struct_A.Float, 1.0) )
+		Struct_B.Float = Struct_A.Float;
+	else
+		Struct_B.Float = NO;
+}
+@def_
+@def $macro15()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+union UniA      Union_A;
+extern union UniB Union_B;
+
+extern void function_I(void);
+extern void function_L(void);
+extern void function_C(void);
+extern void function_F(void);
+
+
+
+int main(void)
+{
+
+	Union_A.Int = OK;
+	function_I();
+
+	if (Union_A.Int == Union_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_A.Long = OK;
+	function_L();
+
+	if (Union_A.Long == Union_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_A.Char = YCHAR;
+	function_C();
+
+	if (Union_A.Char == Union_B.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Union_A.Float = 1.0;
+	function_F();
+
+	if ( TGEN_FLT_EQ(Union_A.Float, Union_B.Float) )
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro16()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+
+union UniB      Union_B;
+extern union UniA Union_A;
+
+
+void function_I(void)
+{
+	if (Union_A.Int == 1)
+		Union_B.Int = OK;
+	else
+		Union_B.Int = NO;
+}
+
+
+void function_L(void)
+{
+	if (Union_A.Long == 1)
+		Union_B.Long = OK;
+	else
+		Union_B.Long = NO;
+}
+
+
+void function_C(void)
+{
+	if (Union_A.Char == 'y')
+		Union_B.Char = YCHAR;
+	else
+		Union_B.Char = NCHAR;
+}
+
+
+
+void function_F(void)
+{
+	if ( TGEN_FLT_EQ(Union_A.Float, 1.0) )
+		Union_B.Float = 1.0;
+	else
+		Union_B.Float = NO;
+}
+@def_
+@def $macro17()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+STRDEF_A        Strdef_A;
+extern STRDEF_B Strdef_B;
+
+extern void function_I(void);
+extern void function_S(void);
+extern void function_L(void);
+extern void function_U(void);
+extern void function_C(void);
+extern void function_F(void);
+
+int main(void)
+{
+
+	Strdef_A.Int = OK;
+	function_I();
+
+	if (Strdef_A.Int == Strdef_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Short = OK;
+	function_S();
+
+	if (Strdef_A.Short == Strdef_B.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Long = OK;
+	function_L();
+
+	if (Strdef_A.Long == Strdef_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Unsigned = OK;
+	function_U();
+
+	if (Strdef_A.Unsigned == Strdef_B.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Char = YCHAR;
+	function_C();
+
+	if (Strdef_A.Char == Strdef_B.Char)
+		printok();
+	else
+		printno();
+
+
+	Strdef_A.Float = 1.0;
+	function_F();
+
+	if ( TGEN_FLT_EQ(Strdef_A.Float, Strdef_B.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro18()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+STRDEF_B        Strdef_B;
+extern STRDEF_A Strdef_A;
+
+void function_I(void)
+{
+	if (Strdef_A.Int == 1)
+		Strdef_B.Int = OK;
+	else
+		Strdef_B.Int = NO;
+}
+
+
+void function_S(void)
+{
+	if (Strdef_A.Short == 1)
+		Strdef_B.Short = OK;
+	else
+		Strdef_B.Short = NO;
+}
+
+
+void function_L(void)
+{
+	if (Strdef_A.Long == 1)
+		Strdef_B.Long = OK;
+	else
+		Strdef_B.Long = NO;
+}
+
+
+void function_U(void)
+{
+	if (Strdef_A.Unsigned == 1)
+		Strdef_B.Unsigned = OK;
+	else
+		Strdef_B.Unsigned = NO;
+}
+
+
+void function_C(void)
+{
+	if (Strdef_A.Char == 'y')
+		Strdef_B.Char = YCHAR;
+	else
+		Strdef_B.Char = NCHAR;
+}
+
+
+
+void function_F(void)
+{
+	if ( TGEN_FLT_EQ(Strdef_A.Float, 1.0) )
+		Strdef_B.Float = 1.0;
+	else
+		Strdef_B.Float = NO;
+}
+@def_
+@def $macro19()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+UNIDEF_A        Unidef_A;
+extern UNIDEF_B Unidef_B;
+
+extern void function_I(void);
+extern void function_L(void);
+extern void function_C(void);
+extern void function_F(void);
+
+int main(void)
+{
+
+	Unidef_A.Int = OK;
+	function_I();
+
+	if (Unidef_A.Int == Unidef_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_A.Long = OK;
+	function_L();
+
+	if (Unidef_A.Long == Unidef_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_A.Char = YCHAR;
+	function_C();
+
+	if (Unidef_A.Char == Unidef_B.Char)
+		printok();
+	else
+		printno();
+
+
+	Unidef_A.Float = 1.0;
+	function_F();
+
+	if ( TGEN_FLT_EQ(Unidef_A.Float, Unidef_B.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro20()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+UNIDEF_B        Unidef_B;
+extern UNIDEF_A Unidef_A;
+
+
+void function_I(void)
+{
+	if (Unidef_A.Int == 1)
+		Unidef_B.Int = OK;
+	else
+		Unidef_B.Int = NO;
+}
+
+
+void function_L(void)
+{
+	if (Unidef_A.Long == 1)
+		Unidef_B.Long = OK;
+	else
+		Unidef_B.Long = NO;
+}
+
+
+void function_C(void)
+{
+	if (Unidef_A.Char == 'y')
+		Unidef_B.Char = YCHAR;
+	else
+		Unidef_B.Char = NCHAR;
+}
+
+
+
+void function_F(void)
+{
+	if ( TGEN_FLT_EQ(Unidef_A.Float, 1.0) )
+		Unidef_B.Float = 1.0;
+	else
+		Unidef_B.Float = NO;
+}
+@def_
+@def $macro21()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+struct StrA     Struct_A;
+extern struct StrB Struct_B;
+
+extern void function_I(struct StrA*);
+extern void function_S(struct StrA*);
+extern void function_L(struct StrA*);
+extern void function_U(struct StrA*);
+extern void function_C(struct StrA*);
+extern void function_F(struct StrA*);
+
+int main(void)
+{
+
+	Struct_A.Int = OK;
+	function_I(&Struct_A);
+
+	if (Struct_A.Int == Struct_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Short = OK;
+	function_S(&Struct_A);
+
+	if (Struct_A.Short == Struct_B.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Long = OK;
+	function_L(&Struct_A);
+
+	if (Struct_A.Long == Struct_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Unsigned = OK;
+	function_U(&Struct_A);
+
+	if (Struct_A.Unsigned == Struct_B.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Char = YCHAR;
+	function_C(&Struct_A);
+
+	if (Struct_A.Char == Struct_B.Char)
+		printok();
+	else
+		printno();
+
+
+	Struct_A.Float = 1.0;
+	function_F(&Struct_A);
+
+	if ( TGEN_FLT_EQ(Struct_A.Float, Struct_B.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro22()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+struct StrB     Struct_B;
+
+void function_I(struct StrA *argument)
+{
+	if (argument->Int == 1)
+		Struct_B.Int = argument->Int;
+	else
+		Struct_B.Int = NO;
+}
+
+
+void function_S(struct StrA *argument)
+{
+	if (argument->Short == 1)
+		Struct_B.Short = argument->Short;
+	else
+		Struct_B.Short = NO;
+}
+
+
+void function_L(struct StrA *argument)
+{
+	if (argument->Long == 1)
+		Struct_B.Long = argument->Long;
+	else
+		Struct_B.Long = NO;
+}
+
+
+void function_U(struct StrA *argument)
+{
+	if (argument->Unsigned == 1)
+		Struct_B.Unsigned = argument->Unsigned;
+	else
+		Struct_B.Unsigned = NO;
+}
+
+
+void function_C(struct StrA *argument)
+{
+	if (argument->Char == 'y')
+		Struct_B.Char = argument->Char;
+	else
+		Struct_B.Char = NCHAR;
+}
+
+
+
+void function_F(struct StrA *argument)
+{
+	if ( TGEN_FLT_EQ(argument->Float, 1.0) )
+		Struct_B.Float = argument->Float;
+	else
+		Struct_B.Float = NO;
+}
+@def_
+@def $macro23()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+union UniA      Union_A;
+extern union UniB Union_B;
+
+extern void function_I(union UniA*);
+extern void function_L(union UniA*);
+extern void function_C(union UniA*);
+extern void function_F(union UniA*);
+
+int main(void)
+{
+
+	Union_A.Int = OK;
+	function_I(&Union_A);
+
+	if (Union_A.Int == Union_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_A.Long = OK;
+	function_L(&Union_A);
+
+	if (Union_A.Long == Union_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_A.Char = YCHAR;
+	function_C(&Union_A);
+
+	if (Union_A.Char == Union_B.Char)
+		printok();
+	else
+		printno();
+
+
+	Union_A.Float = 1.0;
+	function_F(&Union_A);
+
+	if ( TGEN_FLT_EQ(Union_A.Float, Union_B.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro24()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+union UniB      Union_B;
+
+void function_I(union UniA *argument)
+{
+	if (argument->Int == 1)
+		Union_B.Int = argument->Int;
+	else
+		Union_B.Int = NO;
+}
+
+
+void function_L(union UniA *argument)
+{
+	if (argument->Long == 1)
+		Union_B.Long = argument->Long;
+	else
+		Union_B.Long = NO;
+}
+
+
+void function_C(union UniA *argument)
+{
+	if (argument->Char == 'y')
+		Union_B.Char = argument->Char;
+	else
+		Union_B.Char = NCHAR;
+}
+
+
+
+void function_F(union UniA *argument)
+{
+	if ( TGEN_FLT_EQ(argument->Float, 1.0) )
+		Union_B.Float = argument->Float;
+	else
+		Union_B.Float = NO;
+}
+@def_
+@def $macro25()
+$LICENSE()
+$HEAD()
+
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+STRDEF_A        Strdef_A;
+extern STRDEF_B Strdef_B;
+
+extern void function_I(STRDEF_A*);
+extern void function_S(STRDEF_A*);
+extern void function_L(STRDEF_A*);
+extern void function_U(STRDEF_A*);
+extern void function_C(STRDEF_A*);
+extern void function_F(STRDEF_A*);
+
+int main(void)
+{
+
+	Strdef_A.Int = OK;
+	function_I(&Strdef_A);
+
+	if (Strdef_A.Int == Strdef_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Short = OK;
+	function_S(&Strdef_A);
+
+	if (Strdef_A.Short == Strdef_B.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Long = OK;
+	function_L(&Strdef_A);
+
+	if (Strdef_A.Long == Strdef_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Unsigned = OK;
+	function_U(&Strdef_A);
+
+	if (Strdef_A.Unsigned == Strdef_B.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Char = YCHAR;
+	function_C(&Strdef_A);
+
+	if (Strdef_A.Char == Strdef_B.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Float = 1.0;
+	function_F(&Strdef_A);
+
+	if ( TGEN_FLT_EQ(Strdef_A.Float, Strdef_B.Float) )
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro26()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+STRDEF_B        Strdef_B;
+
+void function_I(STRDEF_A *argument)
+{
+	if (argument->Int == 1)
+		Strdef_B.Int = argument->Int;
+	else
+		Strdef_B.Int = NO;
+}
+
+
+void function_S(STRDEF_A *argument)
+{
+	if (argument->Short == 1)
+		Strdef_B.Short = argument->Short;
+	else
+		Strdef_B.Short = NO;
+}
+
+
+void function_L(STRDEF_A *argument)
+{
+	if (argument->Long == 1)
+		Strdef_B.Long = argument->Long;
+	else
+		Strdef_B.Long = NO;
+}
+
+
+void function_U(STRDEF_A *argument)
+{
+	if (argument->Unsigned == 1)
+		Strdef_B.Unsigned = argument->Unsigned;
+	else
+		Strdef_B.Unsigned = NO;
+}
+
+
+void function_C(STRDEF_A *argument)
+{
+	if (argument->Char == 'y')
+		Strdef_B.Char = argument->Char;
+	else
+		Strdef_B.Char = NCHAR;
+}
+
+
+
+void function_F(STRDEF_A *argument)
+{
+	if ( TGEN_FLT_EQ(argument->Float, 1.0) )
+
+		Strdef_B.Float = argument->Float;
+	else
+		Strdef_B.Float = NO;
+}
+@def_
+@def $macro27()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+UNIDEF_A        Unidef_A;
+extern UNIDEF_B Unidef_B;
+
+extern void function_I(UNIDEF_A*);
+extern void function_L(UNIDEF_A*);
+extern void function_C(UNIDEF_A*);
+extern void function_F(UNIDEF_A*);
+
+int main(void)
+{
+
+	Unidef_A.Int = OK;
+	function_I(&Unidef_A);
+
+	if (Unidef_A.Int == Unidef_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_A.Long = OK;
+	function_L(&Unidef_A);
+
+	if (Unidef_A.Long == Unidef_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_A.Char = YCHAR;
+	function_C(&Unidef_A);
+
+	if (Unidef_A.Char == Unidef_B.Char)
+		printok();
+	else
+		printno();
+
+
+	Unidef_A.Float = 1.0;
+	function_F(&Unidef_A);
+
+	if ( TGEN_FLT_EQ(Unidef_A.Float, Unidef_B.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro28()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+UNIDEF_B        Unidef_B;
+
+
+void function_I(UNIDEF_A *argument)
+{
+	if (argument->Int == 1)
+		Unidef_B.Int = argument->Int;
+	else
+		Unidef_B.Int = NO;
+}
+
+
+void function_L(UNIDEF_A *argument)
+{
+	if (argument->Long == 1)
+		Unidef_B.Long = argument->Long;
+	else
+		Unidef_B.Long = NO;
+}
+
+
+void function_C(UNIDEF_A *argument)
+{
+	if (argument->Char == 'y')
+		Unidef_B.Char = argument->Char;
+	else
+		Unidef_B.Char = NCHAR;
+}
+
+
+
+void function_F(UNIDEF_A *argument)
+{
+	if ( TGEN_FLT_EQ(argument->Float, 1.0) )
+		Unidef_B.Float = argument->Float;
+	else
+		Unidef_B.Float = NO;
+}
+@def_
+@def $macro29()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+struct Str1     Struct_1;
+extern struct Str2 Struct_2;
+
+extern void function_I(void);
+extern void function_S(void);
+extern void function_L(void);
+extern void function_U(void);
+extern void function_C(void);
+extern void function_F(void);
+extern void function_II(void);
+extern void function_SS(void);
+extern void function_LL(void);
+extern void function_UU(void);
+extern void function_CC(void);
+extern void function_FF(void);
+
+int main(void)
+{
+
+	Struct_1.BStruct_1.Int = OK;
+	function_I();
+
+	if (Struct_1.BStruct_1.Int == Struct_2.BStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Short = OK;
+	function_S();
+
+	if (Struct_1.BStruct_1.Short == Struct_2.BStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Long = OK;
+	function_L();
+
+	if (Struct_1.BStruct_1.Long == Struct_2.BStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Unsigned = OK;
+	function_U();
+
+	if (Struct_1.BStruct_1.Unsigned == Struct_2.BStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Char = YCHAR;
+	function_C();
+
+	if (Struct_1.BStruct_1.Char == Struct_2.BStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Float = 1.0;
+	function_F();
+
+	if ( TGEN_FLT_EQ(Struct_1.BStruct_1.Float, Struct_2.BStruct_2.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Int = OK;
+	function_II();
+
+	if (Struct_1.BStruct_1.CStruct_1.Int == Struct_2.BStruct_2.CStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Short = OK;
+	function_SS();
+
+	if (Struct_1.BStruct_1.CStruct_1.Short == Struct_2.BStruct_2.CStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Long = OK;
+	function_LL();
+
+	if (Struct_1.BStruct_1.CStruct_1.Long == Struct_2.BStruct_2.CStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Unsigned = OK;
+	function_UU();
+
+	if (Struct_1.BStruct_1.CStruct_1.Unsigned == Struct_2.BStruct_2.CStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Char = YCHAR;
+	function_CC();
+
+	if (Struct_1.BStruct_1.CStruct_1.Char == Struct_2.BStruct_2.CStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Float = 1.0;
+	function_FF();
+
+	if ( TGEN_FLT_EQ(Struct_1.BStruct_1.CStruct_1.Float, Struct_2.BStruct_2.CStruct_2.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro30()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+struct Str2     Struct_2;
+extern struct Str1 Struct_1;
+
+
+void function_I(void)
+{
+	if (Struct_1.BStruct_1.Int == 1)
+		Struct_2.BStruct_2.Int = OK;
+	else
+		Struct_2.BStruct_2.Int = NO;
+}
+
+
+void function_S(void)
+{
+	if (Struct_1.BStruct_1.Short == 1)
+		Struct_2.BStruct_2.Short = OK;
+	else
+		Struct_2.BStruct_2.Short = NO;
+}
+
+
+void function_L(void)
+{
+	if (Struct_1.BStruct_1.Long == 1)
+		Struct_2.BStruct_2.Long = OK;
+	else
+		Struct_2.BStruct_2.Long = NO;
+}
+
+
+void function_U(void)
+{
+	if (Struct_1.BStruct_1.Unsigned == 1)
+		Struct_2.BStruct_2.Unsigned = OK;
+	else
+		Struct_2.BStruct_2.Unsigned = NO;
+}
+
+
+void function_C(void)
+{
+	if (Struct_1.BStruct_1.Char == 'y')
+		Struct_2.BStruct_2.Char = YCHAR;
+	else
+		Struct_2.BStruct_2.Char = NCHAR;
+}
+
+
+
+void function_F(void)
+{
+	if ( TGEN_FLT_EQ(Struct_1.BStruct_1.Float, 1.0) )
+		Struct_2.BStruct_2.Float = 1.0;
+	else
+		Struct_2.BStruct_2.Float = NO;
+}
+
+
+void function_II(void)
+{
+	if (Struct_1.BStruct_1.CStruct_1.Int == 1)
+		Struct_2.BStruct_2.CStruct_2.Int = OK;
+	else
+		Struct_2.BStruct_2.CStruct_2.Int = NO;
+}
+
+
+
+void function_SS(void)
+{
+	if (Struct_1.BStruct_1.CStruct_1.Short == 1)
+		Struct_2.BStruct_2.CStruct_2.Short = OK;
+	else
+		Struct_2.BStruct_2.CStruct_2.Short = NO;
+}
+
+
+void function_LL(void)
+{
+	if (Struct_1.BStruct_1.CStruct_1.Long == 1)
+		Struct_2.BStruct_2.CStruct_2.Long = OK;
+	else
+		Struct_2.BStruct_2.CStruct_2.Long = NO;
+}
+
+
+void function_UU(void)
+{
+	if (Struct_1.BStruct_1.CStruct_1.Unsigned == 1)
+		Struct_2.BStruct_2.CStruct_2.Unsigned = OK;
+	else
+		Struct_2.BStruct_2.CStruct_2.Unsigned = NO;
+}
+
+
+void function_CC(void)
+{
+	if (Struct_1.BStruct_1.CStruct_1.Char == 'y')
+		Struct_2.BStruct_2.CStruct_2.Char = YCHAR;
+	else
+		Struct_2.BStruct_2.CStruct_2.Char = NCHAR;
+}
+
+
+
+void function_FF(void)
+{
+	if ( TGEN_FLT_EQ(Struct_1.BStruct_1.CStruct_1.Float, 1) )
+		Struct_2.BStruct_2.CStruct_2.Float = 1.0;
+	else
+		Struct_2.BStruct_2.CStruct_2.Float = NO;
+}
+@def_
+@def $macro31()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+union Uni1      Union_1;
+extern union Uni2 Union_2;
+
+extern void function_I(void);
+extern void function_L(void);
+extern void function_C(void);
+extern void function_F(void);
+extern void function_II(void);
+extern void function_LL(void);
+extern void function_CC(void);
+extern void function_FF(void);
+
+int main(void)
+{
+
+	Union_1.BUnion_1.Int = OK;
+	function_I();
+
+	if (Union_1.BUnion_1.Int == Union_2.BUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.Long = OK;
+	function_L();
+
+	if (Union_1.BUnion_1.Long == Union_2.BUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.Char = YCHAR;
+	function_C();
+
+	if (Union_1.BUnion_1.Char == Union_2.BUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.Float = 1.0;
+	function_F();
+
+	if ( TGEN_FLT_EQ(Union_1.BUnion_1.Float, Union_2.BUnion_2.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.CUnion_1.Int = OK;
+	function_II();
+
+	if (Union_1.BUnion_1.CUnion_1.Int == Union_2.BUnion_2.CUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.CUnion_1.Long = OK;
+	function_LL();
+
+	if (Union_1.BUnion_1.CUnion_1.Long == Union_2.BUnion_2.CUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.CUnion_1.Char = YCHAR;
+	function_CC();
+
+	if (Union_1.BUnion_1.CUnion_1.Char == Union_2.BUnion_2.CUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+	Union_1.BUnion_1.CUnion_1.Float = 1.0;
+	function_FF();
+
+	if ( TGEN_FLT_EQ(Union_1.BUnion_1.CUnion_1.Float, Union_2.BUnion_2.CUnion_2.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro32()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+union Uni2      Union_2;
+extern union Uni1 Union_1;
+
+void function_I(void)
+{
+	if (Union_1.BUnion_1.Int == 1)
+		Union_2.BUnion_2.Int = OK;
+	else
+		Union_2.BUnion_2.Int = NO;
+}
+
+
+void function_L(void)
+{
+	if (Union_1.BUnion_1.Long == 1)
+		Union_2.BUnion_2.Long = OK;
+	else
+		Union_2.BUnion_2.Long = NO;
+}
+
+
+void function_C(void)
+{
+	if (Union_1.BUnion_1.Char == 'y')
+		Union_2.BUnion_2.Char = YCHAR;
+	else
+		Union_2.BUnion_2.Char = NCHAR;
+}
+
+
+
+void function_F(void)
+{
+	if ( TGEN_FLT_EQ(Union_1.BUnion_1.Float, 1.0) )
+		Union_2.BUnion_2.Float = 1.0;
+	else
+		Union_2.BUnion_2.Float = NO;
+}
+
+
+void function_II(void)
+{
+	if (Union_1.BUnion_1.CUnion_1.Int == 1)
+		Union_2.BUnion_2.CUnion_2.Int = OK;
+	else
+		Union_2.BUnion_2.CUnion_2.Int = NO;
+}
+
+
+void function_LL(void)
+{
+	if (Union_1.BUnion_1.CUnion_1.Long == 1)
+		Union_2.BUnion_2.CUnion_2.Long = OK;
+	else
+		Union_2.BUnion_2.CUnion_2.Long = NO;
+}
+
+
+void function_CC(void)
+{
+	if (Union_1.BUnion_1.CUnion_1.Char == 'y')
+		Union_2.BUnion_2.CUnion_2.Char = YCHAR;
+	else
+		Union_2.BUnion_2.CUnion_2.Char = NCHAR;
+}
+
+
+void function_FF(void)
+{
+	if ( TGEN_FLT_EQ(Union_1.BUnion_1.CUnion_1.Float, 1.0) )
+		Union_2.BUnion_2.CUnion_2.Float = 1.0;
+	else
+		Union_2.BUnion_2.CUnion_2.Float = NO;
+}
+@def_
+@def $macro33()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+STRDEF_1        Strdef_1;
+extern STRDEF_2 Strdef_2;
+
+extern void function_I(void);
+extern void function_S(void);
+extern void function_L(void);
+extern void function_U(void);
+extern void function_C(void);
+extern void function_F(void);
+extern void function_II(void);
+extern void function_SS(void);
+extern void function_LL(void);
+extern void function_UU(void);
+extern void function_CC(void);
+extern void function_FF(void);
+
+int main(void)
+{
+
+	Strdef_1.BdefStruct_1.Int = OK;
+	function_I();
+
+	if (Strdef_1.BdefStruct_1.Int == Strdef_2.BdefStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Short = OK;
+	function_S();
+
+	if (Strdef_1.BdefStruct_1.Short == Strdef_2.BdefStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Long = OK;
+	function_L();
+
+	if (Strdef_1.BdefStruct_1.Long == Strdef_2.BdefStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Unsigned = OK;
+	function_U();
+
+	if (Strdef_1.BdefStruct_1.Unsigned == Strdef_2.BdefStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Char = YCHAR;
+	function_C();
+
+	if (Strdef_1.BdefStruct_1.Char == Strdef_2.BdefStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Float = 1.0;
+	function_F();
+
+	if ( TGEN_FLT_EQ(Strdef_1.BdefStruct_1.Float, Strdef_2.BdefStruct_2.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Int = OK;
+	function_II();
+
+	if (Strdef_1.BdefStruct_1.Int == Strdef_2.BdefStruct_2.CdefStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Short = OK;
+	function_SS();
+
+	if (Strdef_1.BdefStruct_1.Short == Strdef_2.BdefStruct_2.CdefStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Long = OK;
+	function_LL();
+
+	if (Strdef_1.BdefStruct_1.Long == Strdef_2.BdefStruct_2.CdefStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Unsigned = OK;
+	function_UU();
+
+	if (Strdef_1.BdefStruct_1.Unsigned == Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Char = YCHAR;
+	function_CC();
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Char == Strdef_2.BdefStruct_2.CdefStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Float = 1.0;
+	function_FF();
+
+	if ( TGEN_FLT_EQ(Strdef_1.BdefStruct_1.Float, Strdef_2.BdefStruct_2.CdefStruct_2.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro34()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+STRDEF_2        Strdef_2;
+extern STRDEF_1 Strdef_1;
+
+void function_I(void)
+{
+	if (Strdef_1.BdefStruct_1.Int == 1)
+		Strdef_2.BdefStruct_2.Int = OK;
+	else
+		Strdef_2.BdefStruct_2.Int = NO;
+}
+
+
+void function_S(void)
+{
+	if (Strdef_1.BdefStruct_1.Short == 1)
+		Strdef_2.BdefStruct_2.Short = OK;
+	else
+		Strdef_2.BdefStruct_2.Short = NO;
+}
+
+
+void function_L(void)
+{
+	if (Strdef_1.BdefStruct_1.Long == 1)
+		Strdef_2.BdefStruct_2.Long = OK;
+	else
+		Strdef_2.BdefStruct_2.Long = NO;
+}
+
+
+void function_U(void)
+{
+	if (Strdef_1.BdefStruct_1.Unsigned == 1)
+		Strdef_2.BdefStruct_2.Unsigned = OK;
+	else
+		Strdef_2.BdefStruct_2.Unsigned = NO;
+}
+
+
+void function_C(void)
+{
+	if (Strdef_1.BdefStruct_1.Char == 'y')
+		Strdef_2.BdefStruct_2.Char = YCHAR;
+	else
+		Strdef_2.BdefStruct_2.Char = NCHAR;
+}
+
+
+
+void function_F(void)
+{
+	if ( TGEN_FLT_EQ(Strdef_1.BdefStruct_1.Float, 1.0) )
+		Strdef_2.BdefStruct_2.Float = 1.0;
+	else
+		Strdef_2.BdefStruct_2.Float = NO;
+}
+
+
+void function_II(void)
+{
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Int == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Int = OK;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Int = NO;
+}
+
+
+
+void function_SS(void)
+{
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Short == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Short = OK;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Short = NO;
+}
+
+
+void function_LL(void)
+{
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Long == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Long = OK;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Long = NO;
+}
+
+
+void function_UU(void)
+{
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Unsigned == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned = OK;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned = NO;
+}
+
+
+void function_CC(void)
+{
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Char == 'y')
+		Strdef_2.BdefStruct_2.CdefStruct_2.Char = YCHAR;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Char = NCHAR;
+}
+
+
+void function_FF(void)
+{
+	if ( TGEN_FLT_EQ(Strdef_1.BdefStruct_1.CdefStruct_1.Float, 1.0) )
+		Strdef_2.BdefStruct_2.CdefStruct_2.Float = 1.0;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Float = NO;
+}
+@def_
+@def $macro35()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+UNIDEF_1        Unidef_1;
+extern UNIDEF_2 Unidef_2;
+
+extern void function_I(void);
+extern void function_L(void);
+extern void function_C(void);
+extern void function_F(void);
+extern void function_II(void);
+extern void function_LL(void);
+extern void function_CC(void);
+extern void function_FF(void);
+
+int main(void)
+{
+
+	Unidef_1.BdefUnion_1.Int = OK;
+	function_I();
+
+	if (Unidef_1.BdefUnion_1.Int == Unidef_2.BdefUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.Long = OK;
+	function_L();
+
+	if (Unidef_1.BdefUnion_1.Long == Unidef_2.BdefUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.Char = YCHAR;
+	function_C();
+
+	if (Unidef_1.BdefUnion_1.Char == Unidef_2.BdefUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.Float = 1.0;
+	function_F();
+
+	if (Unidef_1.BdefUnion_1.Float == Unidef_2.BdefUnion_2.Float)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Int = OK;
+	function_II();
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Int == Unidef_2.BdefUnion_2.CdefUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Long = OK;
+	function_LL();
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Long == Unidef_2.BdefUnion_2.CdefUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Char = YCHAR;
+	function_CC();
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Char == Unidef_2.BdefUnion_2.CdefUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Float = 1.0;
+	function_FF();
+
+	if ( TGEN_FLT_EQ(Unidef_1.BdefUnion_1.CdefUnion_1.Float, Unidef_2.BdefUnion_2.CdefUnion_2.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro36()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+UNIDEF_2        Unidef_2;
+extern UNIDEF_1 Unidef_1;
+
+
+void function_I(void)
+{
+	if (Unidef_1.BdefUnion_1.Int == 1)
+		Unidef_2.BdefUnion_2.Int = OK;
+	else
+		Unidef_2.BdefUnion_2.Int = NO;
+}
+
+
+void function_L(void)
+{
+	if (Unidef_1.BdefUnion_1.Long == 1)
+		Unidef_2.BdefUnion_2.Long = OK;
+	else
+		Unidef_2.BdefUnion_2.Long = NO;
+}
+
+
+void function_C(void)
+{
+	if (Unidef_1.BdefUnion_1.Char == 'y')
+		Unidef_2.BdefUnion_2.Char = YCHAR;
+	else
+		Unidef_2.BdefUnion_2.Char = NCHAR;
+}
+
+
+
+void function_F(void)
+{
+	if ( TGEN_FLT_EQ(Unidef_1.BdefUnion_1.Float, 1.0) )
+		Unidef_2.BdefUnion_2.Float = 1.0;
+	else
+		Unidef_2.BdefUnion_2.Long = NO;
+}
+
+
+void function_II(void)
+{
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Int == 1)
+		Unidef_2.BdefUnion_2.CdefUnion_2.Int = OK;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Int = NO;
+}
+
+
+void function_LL(void)
+{
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Long == 1)
+		Unidef_2.BdefUnion_2.CdefUnion_2.Long = OK;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Long = NO;
+}
+
+
+void function_CC(void)
+{
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Char == 'y')
+		Unidef_2.BdefUnion_2.CdefUnion_2.Char = YCHAR;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Char = NCHAR;
+}
+
+
+void function_FF(void)
+{
+	if ( TGEN_FLT_EQ(Unidef_1.BdefUnion_1.CdefUnion_1.Float, 1.0) )
+		Unidef_2.BdefUnion_2.CdefUnion_2.Float = 1.0;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Float = NO;
+}
+@def_
+@def $macro37()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+struct Str1     Struct_1;
+extern struct Str2 Struct_2;
+
+extern void function_I(struct Str1*);
+extern void function_S(struct Str1*);
+extern void function_L(struct Str1*);
+extern void function_U(struct Str1*);
+extern void function_C(struct Str1*);
+extern void function_F(struct Str1*);
+extern void function_II(struct Str1*);
+extern void function_SS(struct Str1*);
+extern void function_LL(struct Str1*);
+extern void function_UU(struct Str1*);
+extern void function_CC(struct Str1*);
+extern void function_FF(struct Str1*);
+
+int main(void)
+{
+
+	Struct_1.BStruct_1.Int = OK;
+	function_I(&Struct_1);
+
+	if (Struct_1.BStruct_1.Int == Struct_2.BStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Short = OK;
+	function_S(&Struct_1);
+
+	if (Struct_1.BStruct_1.Short == Struct_2.BStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Long = OK;
+	function_L(&Struct_1);
+
+	if (Struct_1.BStruct_1.Long == Struct_2.BStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Unsigned = OK;
+	function_U(&Struct_1);
+
+	if (Struct_1.BStruct_1.Unsigned == Struct_2.BStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Char = YCHAR;
+	function_C(&Struct_1);
+
+	if (Struct_1.BStruct_1.Char == Struct_2.BStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Float = 1.0;
+	function_F(&Struct_1);
+
+	if ( TGEN_FLT_EQ(Struct_1.BStruct_1.Float, Struct_2.BStruct_2.Float) )
+		printok();
+	else
+		printno();
+
+
+	Struct_1.BStruct_1.CStruct_1.Int = OK;
+	function_II(&Struct_1);
+
+	if (Struct_1.BStruct_1.CStruct_1.Int == Struct_2.BStruct_2.CStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Short = OK;
+	function_SS(&Struct_1);
+
+	if (Struct_1.BStruct_1.CStruct_1.Short == Struct_2.BStruct_2.CStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Long = OK;
+	function_LL(&Struct_1);
+
+	if (Struct_1.BStruct_1.CStruct_1.Long == Struct_2.BStruct_2.CStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Unsigned = OK;
+	function_UU(&Struct_1);
+
+	if (Struct_1.BStruct_1.CStruct_1.Unsigned == Struct_2.BStruct_2.CStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Char = YCHAR;
+	function_CC(&Struct_1);
+
+	if (Struct_1.BStruct_1.CStruct_1.Char == Struct_2.BStruct_2.CStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+	Struct_1.BStruct_1.CStruct_1.Float = 1.0;
+	function_FF(&Struct_1);
+
+	if ( TGEN_FLT_EQ(Struct_1.BStruct_1.CStruct_1.Float, Struct_2.BStruct_2.CStruct_2.Float) )
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro38()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+struct Str2     Struct_2;
+
+void function_I(struct Str1 *argument)
+{
+	if (argument->BStruct_1.Int == 1)
+		Struct_2.BStruct_2.Int = argument->BStruct_1.Int;
+	else
+		Struct_2.BStruct_2.Int = NO;
+}
+
+
+void function_S(struct Str1 *argument)
+{
+	if (argument->BStruct_1.Short == 1)
+		Struct_2.BStruct_2.Short = argument->BStruct_1.Short;
+	else
+		Struct_2.BStruct_2.Short = NO;
+}
+
+
+void function_L(struct Str1 *argument)
+{
+	if (argument->BStruct_1.Long == 1)
+		Struct_2.BStruct_2.Long = argument->BStruct_1.Long;
+	else
+		Struct_2.BStruct_2.Long = NO;
+}
+
+
+void function_U(struct Str1 *argument)
+{
+	if (argument->BStruct_1.Unsigned == 1)
+		Struct_2.BStruct_2.Unsigned = argument->BStruct_1.Unsigned;
+	else
+		Struct_2.BStruct_2.Unsigned = NO;
+}
+
+
+void function_C(struct Str1 *argument)
+{
+	if (argument->BStruct_1.Char == 'y')
+		Struct_2.BStruct_2.Char = argument->BStruct_1.Char;
+	else
+		Struct_2.BStruct_2.Char = NCHAR;
+}
+
+
+
+void function_F(struct Str1 *argument)
+{
+	if ( TGEN_FLT_EQ(argument->BStruct_1.Float, 1.0) )
+		Struct_2.BStruct_2.Float = argument->BStruct_1.Float;
+	else
+		Struct_2.BStruct_2.Float = NO;
+}
+
+
+void function_II(struct Str1 *argument)
+{
+	if (argument->BStruct_1.CStruct_1.Int == 1)
+		Struct_2.BStruct_2.CStruct_2.Int = argument->BStruct_1.CStruct_1.Int;
+	else
+		Struct_2.BStruct_2.CStruct_2.Int = NO;
+}
+
+
+void function_SS(struct Str1 *argument)
+{
+	if (argument->BStruct_1.CStruct_1.Short == 1)
+		Struct_2.BStruct_2.CStruct_2.Short = argument->BStruct_1.CStruct_1.Short;
+	else
+		Struct_2.BStruct_2.CStruct_2.Short = NO;
+}
+
+
+void function_LL(struct Str1 *argument)
+{
+	if (argument->BStruct_1.CStruct_1.Long == 1)
+		Struct_2.BStruct_2.CStruct_2.Long = argument->BStruct_1.CStruct_1.Long;
+	else
+		Struct_2.BStruct_2.CStruct_2.Long = NO;
+}
+
+
+void function_UU(struct Str1 *argument)
+{
+	if (argument->BStruct_1.CStruct_1.Unsigned == 1)
+		Struct_2.BStruct_2.CStruct_2.Unsigned = argument->BStruct_1.CStruct_1.Unsigned;
+	else
+		Struct_2.BStruct_2.CStruct_2.Unsigned = NO;
+}
+
+
+void function_CC(struct Str1 *argument)
+{
+	if (argument->BStruct_1.CStruct_1.Char == 'y')
+		Struct_2.BStruct_2.CStruct_2.Char = argument->BStruct_1.CStruct_1.Char;
+	else
+		Struct_2.BStruct_2.CStruct_2.Char = NCHAR;
+}
+
+
+void function_FF(struct Str1 *argument)
+{
+	if ( TGEN_FLT_EQ(argument->BStruct_1.CStruct_1.Float, 1.0) )
+		Struct_2.BStruct_2.CStruct_2.Float = argument->BStruct_1.CStruct_1.Float;
+	else
+		Struct_2.BStruct_2.CStruct_2.Float = NO;
+}
+@def_
+@def $macro39()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+union Uni1      Union_1;
+extern union Uni2 Union_2;
+
+extern void function_I(union Uni1*);
+extern void function_L(union Uni1*);
+extern void function_C(union Uni1*);
+extern void function_F(union Uni1*);
+extern void function_II(union Uni1*);
+extern void function_LL(union Uni1*);
+extern void function_CC(union Uni1*);
+extern void function_FF(union Uni1*);
+
+int main(void)
+{
+	Union_1.BUnion_1.Int = OK;
+	function_I(&Union_1);
+
+	if (Union_1.BUnion_1.Int == Union_2.BUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.Long = OK;
+	function_L(&Union_1);
+
+	if (Union_1.BUnion_1.Long == Union_2.BUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.Char = YCHAR;
+	function_C(&Union_1);
+
+	if (Union_1.BUnion_1.Char == Union_2.BUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+
+	Union_1.BUnion_1.Float = 1.0;
+	function_F(&Union_1);
+
+	if ( TGEN_FLT_EQ(Union_1.BUnion_1.Float, Union_2.BUnion_2.Float) )
+		printok();
+	else
+		printno();
+
+
+	Union_1.BUnion_1.CUnion_1.Int = OK;
+	function_II(&Union_1);
+
+	if (Union_1.BUnion_1.CUnion_1.Int == Union_2.BUnion_2.CUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.CUnion_1.Long = OK;
+	function_LL(&Union_1);
+
+	if (Union_1.BUnion_1.CUnion_1.Long == Union_2.BUnion_2.CUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.CUnion_1.Char = YCHAR;
+	function_CC(&Union_1);
+
+	if (Union_1.BUnion_1.CUnion_1.Char == Union_2.BUnion_2.CUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+	Union_1.BUnion_1.CUnion_1.Float = 1.0;
+	function_FF(&Union_1);
+
+	if ( TGEN_FLT_EQ(Union_1.BUnion_1.CUnion_1.Float, Union_2.BUnion_2.CUnion_2.Float) )
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro40()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "fstrc.h"
+
+union Uni2      Union_2;
+
+void function_I(union Uni1 *argument)
+{
+	if (argument->BUnion_1.Int == 1)
+		Union_2.BUnion_2.Int = argument->BUnion_1.Int;
+	else
+		Union_2.BUnion_2.Int = NO;
+}
+
+
+void function_L(union Uni1 *argument)
+{
+	if (argument->BUnion_1.Long == 1)
+		Union_2.BUnion_2.Long = argument->BUnion_1.Long;
+	else
+		Union_2.BUnion_2.Long = NO;
+}
+
+
+void function_C(union Uni1 *argument)
+{
+	if (argument->BUnion_1.Char == 'y')
+		Union_2.BUnion_2.Char = argument->BUnion_1.Char;
+	else
+		Union_2.BUnion_2.Char = NCHAR;
+}
+
+
+
+void function_F(union Uni1 *argument)
+{
+	if ( TGEN_FLT_EQ(argument->BUnion_1.Float, 1.0) )
+		Union_2.BUnion_2.Float = argument->BUnion_1.Float;
+	else
+		Union_2.BUnion_2.Float = NO;
+}
+
+
+void function_II(union Uni1 *argument)
+{
+	if (argument->BUnion_1.CUnion_1.Int == 1)
+		Union_2.BUnion_2.CUnion_2.Int = argument->BUnion_1.CUnion_1.Int;
+	else
+		Union_2.BUnion_2.CUnion_2.Int = NO;
+}
+
+
+void function_LL(union Uni1 *argument)
+{
+	if (argument->BUnion_1.CUnion_1.Long == 1)
+		Union_2.BUnion_2.CUnion_2.Long = argument->BUnion_1.CUnion_1.Long;
+	else
+		Union_2.BUnion_2.CUnion_2.Long = NO;
+}
+
+
+void function_CC(union Uni1 *argument)
+{
+	if (argument->BUnion_1.CUnion_1.Char == 'y')
+		Union_2.BUnion_2.CUnion_2.Char = argument->BUnion_1.CUnion_1.Char;
+	else
+		Union_2.BUnion_2.CUnion_2.Char = NCHAR;
+}
+
+
+void function_FF(union Uni1 *argument)
+{
+	if ( TGEN_FLT_EQ(argument->BUnion_1.CUnion_1.Float, 1.0) )
+		Union_2.BUnion_2.CUnion_2.Float = argument->BUnion_1.CUnion_1.Float;
+	else
+		Union_2.BUnion_2.CUnion_2.Float = NO;
+}
+@def_
+@def $macro41()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+STRDEF_1        Strdef_1;
+extern STRDEF_2 Strdef_2;
+
+extern void function_I(STRDEF_1*);
+extern void function_S(STRDEF_1*);
+extern void function_L(STRDEF_1*);
+extern void function_U(STRDEF_1*);
+extern void function_C(STRDEF_1*);
+extern void function_F(STRDEF_1*);
+extern void function_II(STRDEF_1*);
+extern void function_SS(STRDEF_1*);
+extern void function_LL(STRDEF_1*);
+extern void function_UU(STRDEF_1*);
+extern void function_CC(STRDEF_1*);
+extern void function_FF(STRDEF_1*);
+
+int main(void)
+{
+
+	Strdef_1.BdefStruct_1.Int = OK;
+	function_I(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.Int == Strdef_2.BdefStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Short = OK;
+	function_S(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.Short == Strdef_2.BdefStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Long = OK;
+	function_L(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.Long == Strdef_2.BdefStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Unsigned = OK;
+	function_U(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.Unsigned == Strdef_2.BdefStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Char = YCHAR;
+	function_C(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.Char == Strdef_2.BdefStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+
+	Strdef_1.BdefStruct_1.Float = 1.0;
+	function_F(&Strdef_1);
+
+	if ( TGEN_FLT_EQ(Strdef_1.BdefStruct_1.Float, Strdef_2.BdefStruct_2.Float) )
+		printok();
+	else
+		printno();
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Int = OK;
+	function_II(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Int == Strdef_2.BdefStruct_2.CdefStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Short = OK;
+	function_SS(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Short == Strdef_2.BdefStruct_2.CdefStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Long = OK;
+	function_LL(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Long == Strdef_2.BdefStruct_2.CdefStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Unsigned = OK;
+	function_UU(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Unsigned == Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Char = YCHAR;
+	function_CC(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Char == Strdef_2.BdefStruct_2.CdefStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Float = 1.0;
+	function_FF(&Strdef_1);
+
+	if ( TGEN_FLT_EQ(Strdef_1.BdefStruct_1.CdefStruct_1.Float, Strdef_2.BdefStruct_2.CdefStruct_2.Float) )
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro42()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+STRDEF_2        Strdef_2;
+
+void function_I(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.Int == 1)
+		Strdef_2.BdefStruct_2.Int = argument->BdefStruct_1.Int;
+	else
+		Strdef_2.BdefStruct_2.Int = NO;
+}
+
+
+void function_S(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.Short == 1)
+		Strdef_2.BdefStruct_2.Short = argument->BdefStruct_1.Short;
+	else
+		Strdef_2.BdefStruct_2.Short = NO;
+}
+
+
+void function_L(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.Long == 1)
+		Strdef_2.BdefStruct_2.Long = argument->BdefStruct_1.Long;
+	else
+		Strdef_2.BdefStruct_2.Long = NO;
+}
+
+
+void function_U(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.Unsigned == 1)
+		Strdef_2.BdefStruct_2.Unsigned = argument->BdefStruct_1.Unsigned;
+	else
+		Strdef_2.BdefStruct_2.Unsigned = NO;
+}
+
+
+void function_C(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.Char == 'y')
+		Strdef_2.BdefStruct_2.Char = argument->BdefStruct_1.Char;
+	else
+		Strdef_2.BdefStruct_2.Char = NCHAR;
+}
+
+
+void function_F(STRDEF_1 *argument)
+{
+	if ( TGEN_FLT_EQ(argument->BdefStruct_1.Float, 1.0) )
+		Strdef_2.BdefStruct_2.Float = argument->BdefStruct_1.Float;
+	else
+		Strdef_2.BdefStruct_2.Float = NO;
+}
+
+
+
+void function_II(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.CdefStruct_1.Int == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Int = argument->BdefStruct_1.CdefStruct_1.Int;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Int = NO;
+}
+
+
+void function_SS(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.CdefStruct_1.Short == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Short = argument->BdefStruct_1.CdefStruct_1.Short;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Short = NO;
+}
+
+
+void function_LL(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.CdefStruct_1.Long == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Long = argument->BdefStruct_1.CdefStruct_1.Long;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Long = NO;
+}
+
+
+void function_UU(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.CdefStruct_1.Unsigned == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned = argument->BdefStruct_1.CdefStruct_1.Unsigned;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned = NO;
+}
+
+
+void function_CC(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.CdefStruct_1.Char == 'y')
+		Strdef_2.BdefStruct_2.CdefStruct_2.Char = argument->BdefStruct_1.CdefStruct_1.Char;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Char = NCHAR;
+}
+
+
+
+void function_FF(STRDEF_1 *argument)
+{
+	if ( TGEN_FLT_EQ(argument->BdefStruct_1.CdefStruct_1.Float, 1.0) )
+		Strdef_2.BdefStruct_2.CdefStruct_2.Float = argument->BdefStruct_1.CdefStruct_1.Float;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Float = NO;
+}
+@def_
+@def $macro43()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+UNIDEF_1        Unidef_1;
+extern UNIDEF_2 Unidef_2;
+
+extern void function_I(UNIDEF_1*);
+extern void function_L(UNIDEF_1*);
+extern void function_C(UNIDEF_1*);
+extern void function_F(UNIDEF_1*);
+extern void function_II(UNIDEF_1*);
+extern void function_LL(UNIDEF_1*);
+extern void function_CC(UNIDEF_1*);
+extern void function_FF(UNIDEF_1*);
+
+int main(void)
+{
+
+	Unidef_1.BdefUnion_1.Int = OK;
+	function_I(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.Int == Unidef_2.BdefUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.Long = OK;
+	function_L(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.Long == Unidef_2.BdefUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.Char = YCHAR;
+	function_C(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.Char == Unidef_2.BdefUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+
+	Unidef_1.BdefUnion_1.Float = 1.0;
+	function_F(&Unidef_1);
+
+	if ( TGEN_FLT_EQ(Unidef_1.BdefUnion_1.Float, Unidef_2.BdefUnion_2.Float) )
+		printok();
+	else
+		printno();
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Int = OK;
+	function_II(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Int == Unidef_2.BdefUnion_2.CdefUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Long = OK;
+	function_LL(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Long == Unidef_2.BdefUnion_2.CdefUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Char = YCHAR;
+	function_CC(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Char == Unidef_2.BdefUnion_2.CdefUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Float = 1.0;
+	function_FF(&Unidef_1);
+
+	if ( TGEN_FLT_EQ(Unidef_1.BdefUnion_1.CdefUnion_1.Float, Unidef_2.BdefUnion_2.CdefUnion_2.Float) )
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro44()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef_2.h"
+
+UNIDEF_2        Unidef_2;
+
+void function_I(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.Int == 1)
+		Unidef_2.BdefUnion_2.Int = argument->BdefUnion_1.Int;
+	else
+		Unidef_2.BdefUnion_2.Int = NO;
+}
+
+
+void function_L(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.Long == 1)
+		Unidef_2.BdefUnion_2.Long = argument->BdefUnion_1.Long;
+	else
+		Unidef_2.BdefUnion_2.Long = NO;
+}
+
+
+void function_C(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.Char == 'y')
+		Unidef_2.BdefUnion_2.Char = argument->BdefUnion_1.Char;
+	else
+		Unidef_2.BdefUnion_2.Char = NCHAR;
+}
+
+
+
+void function_F(UNIDEF_1 *argument)
+{
+	if ( TGEN_FLT_EQ(argument->BdefUnion_1.Float, 1.0) )
+		Unidef_2.BdefUnion_2.Float = argument->BdefUnion_1.Float;
+	else
+		Unidef_2.BdefUnion_2.Float = NO;
+}
+
+
+void function_II(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.CdefUnion_1.Int == 1)
+		Unidef_2.BdefUnion_2.CdefUnion_2.Int = argument->BdefUnion_1.CdefUnion_1.Int;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Int = NO;
+}
+
+
+void function_LL(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.CdefUnion_1.Long == 1)
+		Unidef_2.BdefUnion_2.CdefUnion_2.Long = argument->BdefUnion_1.CdefUnion_1.Long;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Long = NO;
+}
+
+
+void function_CC(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.CdefUnion_1.Char == 'y')
+		Unidef_2.BdefUnion_2.CdefUnion_2.Char = argument->BdefUnion_1.CdefUnion_1.Char;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Char = NCHAR;
+}
+
+
+void function_FF(UNIDEF_1 *argument)
+{
+	if ( TGEN_FLT_EQ(argument->BdefUnion_1.CdefUnion_1.Float, 1.0) )
+		Unidef_2.BdefUnion_2.CdefUnion_2.Float = argument->BdefUnion_1.CdefUnion_1.Float;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Float = NO;
+}
+@def_
+
+@def $macro45()
+$LICENSE()
+int             itest;
+long            ltest;
+char            ctest;
+int             Int_A;
+short           Short_A;
+long            Long_A;
+unsigned        Unsigned_A;
+char            Char_A;
+@def_
+
+@def $macro46()
+$LICENSE()
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+int             Int_A;
+short           Short_A;
+long            Long_A;
+unsigned        Unsigned_A;
+char            Char_A;
+float           Float_A;
+@def_
+
+@def $macro47()
+$LICENSE()
+int             Int_B;
+short           Short_B;
+long            Long_B;
+unsigned        Unsigned_B;
+char            Char_B;
+@def_
+
+@def $macro48()
+$LICENSE()
+int             Int_B;
+short           Short_B;
+long            Long_B;
+unsigned        Unsigned_B;
+char            Char_B;
+float           Float_B;
+@def_
+
+@def $macro49()
+$LICENSE()
+struct StrA {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+};
+union UniA {
+	int             Int;
+	long            Long;
+	char            Char;
+};
+struct Str1 {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	struct BStruct_1 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		struct CStruct_1 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+		}               CStruct_1;
+	}               BStruct_1;
+};
+union Uni1 {
+	int             Int;
+	long            Long;
+	char            Char;
+	union BUnion_1 {
+		int             Int;
+		long            Long;
+		char            Char;
+		union CUnion_1 {
+			int             Int;
+			long            Long;
+			char            Char;
+		}               CUnion_1;
+	}               BUnion_1;
+};
+struct StrB {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+};
+union UniB {
+	int             Int;
+	long            Long;
+	char            Char;
+};
+struct Str2 {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	struct BStruct_2 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		struct CStruct_2 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+		}               CStruct_2;
+	}               BStruct_2;
+};
+union Uni2 {
+	int             Int;
+	long            Long;
+	char            Char;
+	union BUnion_2 {
+		int             Int;
+		long            Long;
+		char            Char;
+		union CUnion_2 {
+			int             Int;
+			long            Long;
+			char            Char;
+		}               CUnion_2;
+	}               BUnion_2;
+};
+@def_
+
+@def $macro50()
+$LICENSE()
+struct StrA {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+};
+union UniA {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+};
+struct Str1 {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	struct BStruct_1 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		float           Float;
+		struct CStruct_1 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+			float           Float;
+		}               CStruct_1;
+	}               BStruct_1;
+};
+union Uni1 {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+	union BUnion_1 {
+		int             Int;
+		long            Long;
+		char            Char;
+		float           Float;
+		union CUnion_1 {
+			int             Int;
+			long            Long;
+			char            Char;
+			float           Float;
+		}               CUnion_1;
+	}               BUnion_1;
+};
+struct StrB {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+};
+union UniB {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+};
+struct Str2 {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	struct BStruct_2 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		float           Float;
+		struct CStruct_2 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+			float           Float;
+		}               CStruct_2;
+	}               BStruct_2;
+};
+union Uni2 {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+	union BUnion_2 {
+		int             Int;
+		long            Long;
+		char            Char;
+		float           Float;
+		union CUnion_2 {
+			int             Int;
+			long            Long;
+			char            Char;
+			float           Float;
+		}               CUnion_2;
+	}               BUnion_2;
+};
+@def_
+
+@def $macro51()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(void);
+
+int main(void)
+{
+	extern int      Int_B;
+
+	Int_A = OK;
+	function();
+
+	if (Int_A == Int_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro52()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_B.h"
+
+void function(void)
+{
+	extern int      Int_A;
+
+	if (Int_A == 1)
+		Int_B = OK;
+	else
+		Int_B = NO;
+}
+@def_
+@def $macro53()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(void);
+
+int main(void)
+{
+	extern short    Short_B;
+
+	Short_A = OK;
+	function();
+
+	if (Short_A == Short_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro54()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(void)
+{
+	extern short    Short_A;
+
+	if (Short_A == 1)
+		Short_B = OK;
+	else
+		Short_B = NO;
+}
+@def_
+@def $macro55()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(void);
+
+int main(void)
+{
+	extern long     Long_B;
+
+	Long_A = OK;
+	function();
+
+	if (Long_A == Long_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro56()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(void)
+{
+	extern long     Long_A;
+
+	if (Long_A == 1)
+		Long_B = OK;
+	else
+		Long_B = NO;
+}
+@def_
+@def $macro57()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(void);
+
+int main(void)
+{
+	extern unsigned Unsigned_B;
+
+	Unsigned_A = OK;
+	function();
+
+	if (Unsigned_A == Unsigned_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro58()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(void)
+{
+	extern unsigned Unsigned_A;
+
+	if (Unsigned_A == 1)
+		Unsigned_B = OK;
+	else
+		Unsigned_B = NO;
+}
+@def_
+@def $macro59()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(void);
+
+int main(void)
+{
+	extern char     Char_B;
+
+	Char_A = YCHAR;
+	function();
+
+	if (Char_A == Char_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro60()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(void)
+{
+	extern char     Char_A;
+
+	if (Char_A == 'y')
+		Char_B = YCHAR;
+	else
+		Char_B = NCHAR;
+}
+@def_
+@def $macro61()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+INTDEF          Intdef_A;
+SHORTDEF        Shortdef_A;
+LONGDEF         Longdef_A;
+UNSIGNDEF       Unsigndef_A;
+CHARDEF         Chardef_A;
+
+
+extern INTDEF   Intdef_B;
+extern SHORTDEF Shortdef_B;
+extern LONGDEF  Longdef_B;
+extern UNSIGNDEF Unsigndef_B;
+extern CHARDEF  Chardef_B;
+
+extern void function_I(void);
+extern void function_S(void);
+extern void function_L(void);
+extern void function_U(void);
+extern void function_C(void);
+
+int main(void)
+{
+	Intdef_A = OK;
+	function_I();
+
+	if (Intdef_A == Intdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Shortdef_A = OK;
+	function_S();
+
+	if (Shortdef_A == Shortdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Longdef_A = OK;
+	function_L();
+
+	if (Longdef_A == Longdef_B)
+		printok();
+	else
+		printno();
+
+
+	Unsigndef_A = OK;
+	function_U();
+
+	if (Unsigndef_A == Unsigndef_B)
+		printok();
+	else
+		printno();
+
+
+	Chardef_A = YCHAR;
+	function_C();
+
+	if (Chardef_A == Chardef_B)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro62()
+$LICENSE()
+$HEAD()
+
+#include   "def.h"
+#include   "tdef.h"
+
+INTDEF          Intdef_B;
+SHORTDEF        Shortdef_B;
+LONGDEF         Longdef_B;
+UNSIGNDEF       Unsigndef_B;
+CHARDEF         Chardef_B;
+
+
+extern INTDEF   Intdef_A;
+extern SHORTDEF Shortdef_A;
+extern LONGDEF  Longdef_A;
+extern UNSIGNDEF Unsigndef_A;
+extern CHARDEF  Chardef_A;
+
+
+void function_I(void)
+{
+	if (Intdef_A == 1)
+		Intdef_B = OK;
+	else
+		Intdef_B = NO;
+}
+
+
+
+void function_S(void)
+{
+	if (Shortdef_A == 1)
+		Shortdef_B = OK;
+	else
+		Shortdef_B = NO;
+}
+
+
+
+void function_L(void)
+{
+	if (Longdef_A == 1)
+		Longdef_B = OK;
+	else
+		Longdef_B = NO;
+}
+
+
+
+void function_U(void)
+{
+	if (Unsigndef_A == 1)
+		Unsigndef_B = OK;
+	else
+		Unsigndef_B = NO;
+}
+
+
+
+void function_C(void)
+{
+	if (Chardef_A == 'y')
+		Chardef_B = YCHAR;
+	else
+		Chardef_B = NCHAR;
+}
+@def_
+@def $macro63()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(int);
+
+int main(void)
+{
+	extern int      Int_B;
+
+	Int_A = OK;
+	function(Int_A);
+
+	if (Int_A == Int_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro64()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(int argument)
+{
+	extern int      Int_A;
+
+	if (argument == 1)
+		Int_B = Int_A;
+	else
+		Int_B = NO;
+}
+@def_
+@def $macro65()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(short);
+
+int main(void)
+{
+	extern short    Short_B;
+
+	Short_A = OK;
+	function(Short_A);
+
+	if (Short_A == Short_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro66()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(short argument)
+{
+	extern short    Short_A;
+
+	if (argument == 1)
+		Short_B = Short_A;
+	else
+		Short_B = NO;
+}
+@def_
+@def $macro67()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(long);
+
+int main(void)
+{
+	extern long     Long_B;
+
+	Long_A = OK;
+	function(Long_A);
+
+	if (Long_A == Long_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro68()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(long argument)
+{
+	extern long     Long_A;
+
+	if (argument == 1)
+		Long_B = Long_A;
+	else
+		Long_B = NO;
+}
+@def_
+@def $macro69()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(unsigned);
+
+int main(void)
+{
+	extern unsigned Unsigned_B;
+
+	Unsigned_A = OK;
+	function(Unsigned_A);
+
+	if (Unsigned_A == Unsigned_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro70()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(unsigned argument)
+{
+	extern unsigned Unsigned_A;
+
+	if (argument == 1)
+		Unsigned_B = Unsigned_A;
+	else
+		Unsigned_B = NO;
+}
+@def_
+@def $macro71()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(char);
+
+int main(void)
+{
+	extern char     Char_B;
+
+	Char_A = YCHAR;
+	function(Char_A);
+
+	if (Char_A == Char_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro72()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(char argument)
+{
+	extern char     Char_A;
+
+	if (argument == 'y')
+		Char_B = Char_A;
+	else
+		Char_B = NCHAR;
+}
+@def_
+@def $macro73()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+INTDEF          Intdef_A;
+SHORTDEF        Shortdef_A;
+LONGDEF         Longdef_A;
+UNSIGNDEF       Unsigndef_A;
+CHARDEF         Chardef_A;
+
+
+extern INTDEF   Intdef_B;
+extern SHORTDEF Shortdef_B;
+extern LONGDEF  Longdef_B;
+extern UNSIGNDEF Unsigndef_B;
+extern CHARDEF  Chardef_B;
+
+extern void function_I(int);
+extern void function_S(short);
+extern void function_L(long);
+extern void function_U(unsigned);
+extern void function_C(char);
+
+int main(void)
+{
+	Intdef_A = OK;
+	function_I(Intdef_A);
+
+	if (Intdef_A == Intdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Shortdef_A = OK;
+	function_S(Shortdef_A);
+
+	if (Shortdef_A == Shortdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Longdef_A = OK;
+	function_L(Longdef_A);
+
+	if (Longdef_A == Longdef_B)
+		printok();
+	else
+		printno();
+
+
+	Unsigndef_A = OK;
+	function_U(Unsigndef_A);
+
+	if (Unsigndef_A == Unsigndef_B)
+		printok();
+	else
+		printno();
+
+
+	Chardef_A = YCHAR;
+	function_C(Chardef_A);
+
+	if (Chardef_A == Chardef_B)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro74()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "tdef.h"
+
+INTDEF          Intdef_B;
+SHORTDEF        Shortdef_B;
+LONGDEF         Longdef_B;
+UNSIGNDEF       Unsigndef_B;
+CHARDEF         Chardef_B;
+
+
+extern INTDEF   Intdef_A;
+extern SHORTDEF Shortdef_A;
+extern LONGDEF  Longdef_A;
+extern UNSIGNDEF Unsigndef_A;
+extern CHARDEF  Chardef_A;
+
+
+void function_I(int argument)
+{
+	if (argument == 1)
+		Intdef_B = Intdef_A;
+	else
+		Intdef_B = NO;
+}
+
+
+
+void function_S(short argument)
+{
+	if (argument == 1)
+		Shortdef_B = Shortdef_A;
+	else
+		Shortdef_B = NO;
+}
+
+
+
+void function_L(long argument)
+{
+	if (argument == 1)
+		Longdef_B = Longdef_A;
+	else
+		Longdef_B = NO;
+}
+
+
+
+void function_U(unsigned argument)
+{
+	if (argument == 1)
+		Unsigndef_B = Unsigndef_A;
+	else
+		Unsigndef_B = NO;
+}
+
+
+
+void function_C(char argument)
+{
+	if (argument == 'y')
+		Chardef_B = Chardef_A;
+	else
+		Chardef_B = NCHAR;
+}
+@def_
+@def $macro75()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(int*);
+
+int main(void)
+{
+	extern int      Int_B;
+
+	Int_A = OK;
+	function(&Int_A);
+
+	if (Int_A == Int_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro76()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(int *argument)
+{
+	extern int      Int_A;
+
+	if (*argument == 1)
+		Int_B = Int_A;
+	else
+		Int_B = NO;
+}
+@def_
+@def $macro77()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(short*);
+
+int main(void)
+{
+	extern short    Short_B;
+
+	Short_A = OK;
+	function(&Short_A);
+
+	if (Short_A == Short_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro78()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(short *argument)
+{
+	extern short    Short_A;
+
+	if (*argument == 1)
+		Short_B = Short_A;
+	else
+		Short_B = NO;
+}
+@def_
+@def $macro79()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(long*);
+
+int main(void)
+{
+	extern long     Long_B;
+
+	Long_A = OK;
+	function(&Long_A);
+
+	if (Long_A == Long_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro80()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(long *argument)
+{
+	extern long     Long_A;
+
+	if (*argument == 1)
+		Long_B = Long_A;
+	else
+		Long_B = NO;
+}
+@def_
+@def $macro81()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(unsigned*);
+
+int main(void)
+{
+	extern unsigned Unsigned_B;
+
+	Unsigned_A = OK;
+	function(&Unsigned_A);
+
+	if (Unsigned_A == Unsigned_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro82()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(unsigned *argument)
+{
+	extern unsigned Unsigned_A;
+
+	if (*argument == 1)
+		Unsigned_B = Unsigned_A;
+	else
+		Unsigned_B = NO;
+}
+@def_
+@def $macro83()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "stnd_A.h"
+
+extern void function(char*);
+
+int main(void)
+{
+	extern char     Char_B;
+
+	Char_A = YCHAR;
+	function(&Char_A);
+
+	if (Char_A == Char_B)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro84()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "stnd_B.h"
+
+void function(char *argument)
+{
+	extern char     Char_A;
+
+	if (*argument == 'y')
+		Char_B = Char_A;
+	else
+		Char_B = NO;
+}
+@def_
+@def $macro85()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+INTDEF          Intdef_A;
+SHORTDEF        Shortdef_A;
+LONGDEF         Longdef_A;
+UNSIGNDEF       Unsigndef_A;
+CHARDEF         Chardef_A;
+
+
+extern INTDEF   Intdef_B;
+extern SHORTDEF Shortdef_B;
+extern LONGDEF  Longdef_B;
+extern UNSIGNDEF Unsigndef_B;
+extern CHARDEF  Chardef_B;
+
+extern void function_I(int*);
+extern void function_S(short*);
+extern void function_L(long*);
+extern void function_U(unsigned*);
+extern void function_C(char*);
+
+int main(void)
+{
+	Intdef_A = OK;
+	function_I(&Intdef_A);
+
+	if (Intdef_A == Intdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Shortdef_A = OK;
+	function_S(&Shortdef_A);
+
+	if (Shortdef_A == Shortdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Longdef_A = OK;
+	function_L(&Longdef_A);
+
+	if (Longdef_A == Longdef_B)
+		printok();
+	else
+		printno();
+
+
+
+	Unsigndef_A = OK;
+	function_U(&Unsigndef_A);
+
+	if (Unsigndef_A == Unsigndef_B)
+		printok();
+	else
+		printno();
+
+
+	Chardef_A = YCHAR;
+	function_C(&Chardef_A);
+
+	if (Chardef_A == Chardef_B)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro86()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "tdef.h"
+
+INTDEF          Intdef_B;
+SHORTDEF        Shortdef_B;
+LONGDEF         Longdef_B;
+UNSIGNDEF       Unsigndef_B;
+CHARDEF         Chardef_B;
+
+
+extern INTDEF   Intdef_A;
+extern SHORTDEF Shortdef_A;
+extern LONGDEF  Longdef_A;
+extern UNSIGNDEF Unsigndef_A;
+extern CHARDEF  Chardef_A;
+
+
+void function_I(int *argument)
+{
+	if (*argument == 1)
+		Intdef_B = Intdef_A;
+	else
+		Intdef_B = NO;
+}
+
+
+
+void function_S(short *argument)
+{
+	if (*argument == 1)
+		Shortdef_B = Shortdef_A;
+	else
+		Shortdef_B = NO;
+}
+
+
+
+void function_L(long *argument)
+{
+	if (*argument == 1)
+		Longdef_B = Longdef_A;
+	else
+		Longdef_B = NO;
+}
+
+
+
+void function_U(unsigned *argument)
+{
+	if (*argument == 1)
+		Unsigndef_B = Unsigndef_A;
+	else
+		Unsigndef_B = NO;
+}
+
+
+
+void function_C(char *argument)
+{
+	if (*argument == 'y')
+		Chardef_B = Chardef_A;
+	else
+		Chardef_B = NCHAR;
+}
+@def_
+@def $macro87()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+struct StrA     Struct_A;
+extern struct StrB Struct_B;
+
+extern void function_I(void);
+extern void function_S(void);
+extern void function_L(void);
+extern void function_U(void);
+extern void function_C(void);
+
+int main(void)
+{
+
+	Struct_A.Int = OK;
+	function_I();
+
+	if (Struct_A.Int == Struct_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Short = OK;
+	function_S();
+
+	if (Struct_A.Short == Struct_B.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Long = OK;
+	function_L();
+
+	if (Struct_A.Long == Struct_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Unsigned = OK;
+	function_U();
+
+	if (Struct_A.Unsigned == Struct_B.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Char = YCHAR;
+	function_C();
+
+	if (Struct_A.Char == Struct_B.Char)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro88()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+struct StrB     Struct_B;
+extern struct StrA Struct_A;
+
+
+void function_I(void)
+{
+	if (Struct_A.Int == 1)
+		Struct_B.Int = OK;
+	else
+		Struct_B.Int = NO;
+}
+
+
+void function_S(void)
+{
+	if (Struct_A.Short == 1)
+		Struct_B.Short = OK;
+	else
+		Struct_B.Short = NO;
+}
+
+
+void function_L(void)
+{
+	if (Struct_A.Long == 1)
+		Struct_B.Long = OK;
+	else
+		Struct_B.Long = NO;
+}
+
+
+void function_U(void)
+{
+	if (Struct_A.Unsigned == 1)
+		Struct_B.Unsigned = OK;
+	else
+		Struct_B.Unsigned = NO;
+}
+
+
+void function_C(void)
+{
+	if (Struct_A.Char == 'y')
+		Struct_B.Char = YCHAR;
+	else
+		Struct_B.Char = NCHAR;
+}
+@def_
+@def $macro89()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+union UniA      Union_A;
+extern union UniB Union_B;
+
+extern void function_I(void);
+extern void function_L(void);
+extern void function_C(void);
+
+int main(void)
+{
+
+	Union_A.Int = OK;
+	function_I();
+
+	if (Union_A.Int == Union_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_A.Long = OK;
+	function_L();
+
+	if (Union_A.Long == Union_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_A.Char = YCHAR;
+	function_C();
+
+	if (Union_A.Char == Union_B.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro90()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+
+union UniB      Union_B;
+extern union UniA Union_A;
+
+
+void function_I(void)
+{
+	if (Union_A.Int == 1)
+		Union_B.Int = OK;
+	else
+		Union_B.Int = NO;
+}
+
+
+void function_L(void)
+{
+	if (Union_A.Long == 1)
+		Union_B.Long = OK;
+	else
+		Union_B.Long = NO;
+}
+
+
+void function_C(void)
+{
+	if (Union_A.Char == 'y')
+		Union_B.Char = YCHAR;
+	else
+		Union_B.Char = NCHAR;
+}
+@def_
+@def $macro91()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+STRDEF_A        Strdef_A;
+extern STRDEF_B Strdef_B;
+
+extern void function_I(void);
+extern void function_S(void);
+extern void function_L(void);
+extern void function_U(void);
+extern void function_C(void);
+
+int main(void)
+{
+
+	Strdef_A.Int = OK;
+	function_I();
+
+	if (Strdef_A.Int == Strdef_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Short = OK;
+	function_S();
+
+	if (Strdef_A.Short == Strdef_B.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Long = OK;
+	function_L();
+
+	if (Strdef_A.Long == Strdef_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Unsigned = OK;
+	function_U();
+
+	if (Strdef_A.Unsigned == Strdef_B.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Char = YCHAR;
+	function_C();
+
+	if (Strdef_A.Char == Strdef_B.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro92()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+STRDEF_B        Strdef_B;
+extern STRDEF_A Strdef_A;
+
+
+void function_I(void)
+{
+	if (Strdef_A.Int == 1)
+		Strdef_B.Int = OK;
+	else
+		Strdef_B.Int = NO;
+}
+
+
+void function_S(void)
+{
+	if (Strdef_A.Short == 1)
+		Strdef_B.Short = OK;
+	else
+		Strdef_B.Short = NO;
+}
+
+
+void function_L(void)
+{
+	if (Strdef_A.Long == 1)
+		Strdef_B.Long = OK;
+	else
+		Strdef_B.Long = NO;
+}
+
+
+void function_U(void)
+{
+	if (Strdef_A.Unsigned == 1)
+		Strdef_B.Unsigned = OK;
+	else
+		Strdef_B.Unsigned = NO;
+}
+
+
+void function_C(void)
+{
+	if (Strdef_A.Char == 'y')
+		Strdef_B.Char = YCHAR;
+	else
+		Strdef_B.Char = NCHAR;
+}
+@def_
+@def $macro93()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+UNIDEF_A        Unidef_A;
+extern UNIDEF_B Unidef_B;
+
+extern void function_I(void);
+extern void function_L(void);
+extern void function_C(void);
+
+int main(void)
+{
+
+	Unidef_A.Int = OK;
+	function_I();
+
+	if (Unidef_A.Int == Unidef_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_A.Long = OK;
+	function_L();
+
+	if (Unidef_A.Long == Unidef_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_A.Char = YCHAR;
+	function_C();
+
+	if (Unidef_A.Char == Unidef_B.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro94()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+UNIDEF_B        Unidef_B;
+extern UNIDEF_A Unidef_A;
+
+
+void function_I(void)
+{
+	if (Unidef_A.Int == 1)
+		Unidef_B.Int = OK;
+	else
+		Unidef_B.Int = NO;
+}
+
+
+void function_L(void)
+{
+	if (Unidef_A.Long == 1)
+		Unidef_B.Long = OK;
+	else
+		Unidef_B.Long = NO;
+}
+
+
+void function_C(void)
+{
+	if (Unidef_A.Char == 'y')
+		Unidef_B.Char = YCHAR;
+	else
+		Unidef_B.Char = NCHAR;
+}
+@def_
+@def $macro95()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+struct StrA     Struct_A;
+extern struct StrB Struct_B;
+
+extern void function_I(struct StrA*);
+extern void function_S(struct StrA*);
+extern void function_L(struct StrA*);
+extern void function_U(struct StrA*);
+extern void function_C(struct StrA*);
+
+int main(void)
+{
+
+	Struct_A.Int = OK;
+	function_I(&Struct_A);
+
+	if (Struct_A.Int == Struct_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Short = OK;
+	function_S(&Struct_A);
+
+	if (Struct_A.Short == Struct_B.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Long = OK;
+	function_L(&Struct_A);
+
+	if (Struct_A.Long == Struct_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Unsigned = OK;
+	function_U(&Struct_A);
+
+	if (Struct_A.Unsigned == Struct_B.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_A.Char = YCHAR;
+	function_C(&Struct_A);
+
+	if (Struct_A.Char == Struct_B.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro96()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+struct StrB     Struct_B;
+
+void function_I(struct StrA *argument)
+{
+	if (argument->Int == 1)
+		Struct_B.Int = argument->Int;
+	else
+		Struct_B.Int = NO;
+}
+
+
+void function_S(struct StrA *argument)
+{
+	if (argument->Short == 1)
+		Struct_B.Short = argument->Short;
+	else
+		Struct_B.Short = NO;
+}
+
+
+void function_L(struct StrA *argument)
+{
+	if (argument->Long == 1)
+		Struct_B.Long = argument->Long;
+	else
+		Struct_B.Long = NO;
+}
+
+
+void function_U(struct StrA *argument)
+{
+	if (argument->Unsigned == 1)
+		Struct_B.Unsigned = argument->Unsigned;
+	else
+		Struct_B.Unsigned = NO;
+}
+
+
+void function_C(struct StrA *argument)
+{
+	if (argument->Char == 'y')
+		Struct_B.Char = argument->Char;
+	else
+		Struct_B.Char = NCHAR;
+}
+@def_
+@def $macro97()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+union UniA      Union_A;
+extern union UniB Union_B;
+
+extern void function_I(union UniA*);
+extern void function_L(union UniA*);
+extern void function_C(union UniA*);
+
+int main(void)
+{
+
+	Union_A.Int = OK;
+	function_I(&Union_A);
+
+	if (Union_A.Int == Union_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_A.Long = OK;
+	function_L(&Union_A);
+
+	if (Union_A.Long == Union_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_A.Char = YCHAR;
+	function_C(&Union_A);
+
+	if (Union_A.Char == Union_B.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro98()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+union UniB      Union_B;
+
+void function_I(union UniA *argument)
+{
+	if (argument->Int == 1)
+		Union_B.Int = argument->Int;
+	else
+		Union_B.Int = NO;
+}
+
+
+void function_L(union UniA *argument)
+{
+	if (argument->Long == 1)
+		Union_B.Long = argument->Long;
+	else
+		Union_B.Long = NO;
+}
+
+
+void function_C(union UniA *argument)
+{
+	if (argument->Char == 'y')
+		Union_B.Char = argument->Char;
+	else
+		Union_B.Char = NCHAR;
+}
+@def_
+@def $macro99()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+STRDEF_A        Strdef_A;
+extern STRDEF_B Strdef_B;
+
+extern void function_I(STRDEF_A*);
+extern void function_S(STRDEF_A*);
+extern void function_L(STRDEF_A*);
+extern void function_U(STRDEF_A*);
+extern void function_C(STRDEF_A*);
+
+int main(void)
+{
+
+	Strdef_A.Int = OK;
+	function_I(&Strdef_A);
+
+	if (Strdef_A.Int == Strdef_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Short = OK;
+	function_S(&Strdef_A);
+
+	if (Strdef_A.Short == Strdef_B.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Long = OK;
+	function_L(&Strdef_A);
+
+	if (Strdef_A.Long == Strdef_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Unsigned = OK;
+	function_U(&Strdef_A);
+
+	if (Strdef_A.Unsigned == Strdef_B.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_A.Char = YCHAR;
+	function_C(&Strdef_A);
+
+	if (Strdef_A.Char == Strdef_B.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro100()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+STRDEF_B        Strdef_B;
+
+void function_I(STRDEF_A *argument)
+{
+	if (argument->Int == 1)
+		Strdef_B.Int = argument->Int;
+	else
+		Strdef_B.Int = NO;
+}
+
+
+void function_S(STRDEF_A *argument)
+{
+	if (argument->Short == 1)
+		Strdef_B.Short = argument->Short;
+	else
+		Strdef_B.Short = NO;
+}
+
+
+void function_L(STRDEF_A *argument)
+{
+	if (argument->Long == 1)
+		Strdef_B.Long = argument->Long;
+	else
+		Strdef_B.Long = NO;
+}
+
+
+void function_U(STRDEF_A *argument)
+{
+	if (argument->Unsigned == 1)
+		Strdef_B.Unsigned = argument->Unsigned;
+	else
+		Strdef_B.Unsigned = NO;
+}
+
+
+void function_C(STRDEF_A *argument)
+{
+	if (argument->Char == 'y')
+		Strdef_B.Char = argument->Char;
+	else
+		Strdef_B.Char = NCHAR;
+}
+@def_
+@def $macro101()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+UNIDEF_A        Unidef_A;
+extern UNIDEF_B Unidef_B;
+
+extern void function_I(UNIDEF_A*);
+extern void function_L(UNIDEF_A*);
+extern void function_C(UNIDEF_A*);
+
+int main(void)
+{
+
+	Unidef_A.Int = OK;
+	function_I(&Unidef_A);
+
+	if (Unidef_A.Int == Unidef_B.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_A.Long = OK;
+	function_L(&Unidef_A);
+
+	if (Unidef_A.Long == Unidef_B.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_A.Char = YCHAR;
+	function_C(&Unidef_A);
+
+	if (Unidef_A.Char == Unidef_B.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro102()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+UNIDEF_B        Unidef_B;
+
+
+void function_I(UNIDEF_A *argument)
+{
+	if (argument->Int == 1)
+		Unidef_B.Int = argument->Int;
+	else
+		Unidef_B.Int = NO;
+}
+
+
+void function_L(UNIDEF_A *argument)
+{
+	if (argument->Long == 1)
+		Unidef_B.Long = argument->Long;
+	else
+		Unidef_B.Long = NO;
+}
+
+
+void function_C(UNIDEF_A *argument)
+{
+	if (argument->Char == 'y')
+		Unidef_B.Char = argument->Char;
+	else
+		Unidef_B.Char = NCHAR;
+}
+@def_
+@def $macro103()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+struct Str1     Struct_1;
+extern struct Str2 Struct_2;
+
+extern void function_I(void);
+extern void function_S(void);
+extern void function_L(void);
+extern void function_U(void);
+extern void function_C(void);
+extern void function_II(void);
+extern void function_SS(void);
+extern void function_LL(void);
+extern void function_UU(void);
+extern void function_CC(void);
+
+int main(void)
+{
+
+	Struct_1.BStruct_1.Int = OK;
+	function_I();
+
+	if (Struct_1.BStruct_1.Int == Struct_2.BStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Short = OK;
+	function_S();
+
+	if (Struct_1.BStruct_1.Short == Struct_2.BStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Long = OK;
+	function_L();
+
+	if (Struct_1.BStruct_1.Long == Struct_2.BStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Unsigned = OK;
+	function_U();
+
+	if (Struct_1.BStruct_1.Unsigned == Struct_2.BStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Char = YCHAR;
+	function_C();
+
+	if (Struct_1.BStruct_1.Char == Struct_2.BStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Int = OK;
+	function_II();
+
+	if (Struct_1.BStruct_1.CStruct_1.Int == Struct_2.BStruct_2.CStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Short = OK;
+	function_SS();
+
+	if (Struct_1.BStruct_1.CStruct_1.Short == Struct_2.BStruct_2.CStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Long = OK;
+	function_LL();
+
+	if (Struct_1.BStruct_1.CStruct_1.Long == Struct_2.BStruct_2.CStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Unsigned = OK;
+	function_UU();
+
+	if (Struct_1.BStruct_1.CStruct_1.Unsigned == Struct_2.BStruct_2.CStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Char = YCHAR;
+	function_CC();
+
+	if (Struct_1.BStruct_1.CStruct_1.Char == Struct_2.BStruct_2.CStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro104()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+struct Str2     Struct_2;
+extern struct Str1 Struct_1;
+
+
+void function_I(void)
+{
+	if (Struct_1.BStruct_1.Int == 1)
+		Struct_2.BStruct_2.Int = OK;
+	else
+		Struct_2.BStruct_2.Int = NO;
+}
+
+
+void function_S(void)
+{
+	if (Struct_1.BStruct_1.Short == 1)
+		Struct_2.BStruct_2.Short = OK;
+	else
+		Struct_2.BStruct_2.Short = NO;
+}
+
+
+void function_L(void)
+{
+	if (Struct_1.BStruct_1.Long == 1)
+		Struct_2.BStruct_2.Long = OK;
+	else
+		Struct_2.BStruct_2.Long = NO;
+}
+
+
+void function_U(void)
+{
+	if (Struct_1.BStruct_1.Unsigned == 1)
+		Struct_2.BStruct_2.Unsigned = OK;
+	else
+		Struct_2.BStruct_2.Unsigned = NO;
+}
+
+
+void function_C(void)
+{
+	if (Struct_1.BStruct_1.Char == 'y')
+		Struct_2.BStruct_2.Char = YCHAR;
+	else
+		Struct_2.BStruct_2.Char = NCHAR;
+}
+
+
+
+void function_II(void)
+{
+	if (Struct_1.BStruct_1.CStruct_1.Int == 1)
+		Struct_2.BStruct_2.CStruct_2.Int = OK;
+	else
+		Struct_2.BStruct_2.CStruct_2.Int = NO;
+}
+
+
+
+void function_SS(void)
+{
+	if (Struct_1.BStruct_1.CStruct_1.Short == 1)
+		Struct_2.BStruct_2.CStruct_2.Short = OK;
+	else
+		Struct_2.BStruct_2.CStruct_2.Short = NO;
+}
+
+
+void function_LL(void)
+{
+	if (Struct_1.BStruct_1.CStruct_1.Long == 1)
+		Struct_2.BStruct_2.CStruct_2.Long = OK;
+	else
+		Struct_2.BStruct_2.CStruct_2.Long = NO;
+}
+
+
+void function_UU(void)
+{
+	if (Struct_1.BStruct_1.CStruct_1.Unsigned == 1)
+		Struct_2.BStruct_2.CStruct_2.Unsigned = OK;
+	else
+		Struct_2.BStruct_2.CStruct_2.Unsigned = NO;
+}
+
+
+void function_CC(void)
+{
+	if (Struct_1.BStruct_1.CStruct_1.Char == 'y')
+		Struct_2.BStruct_2.CStruct_2.Char = YCHAR;
+	else
+		Struct_2.BStruct_2.CStruct_2.Char = NCHAR;
+}
+@def_
+@def $macro105()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+union Uni1      Union_1;
+extern union Uni2 Union_2;
+
+extern void function_I(void);
+extern void function_L(void);
+extern void function_C(void);
+extern void function_II(void);
+extern void function_LL(void);
+extern void function_CC(void);
+
+int main(void)
+{
+
+	Union_1.BUnion_1.Int = OK;
+	function_I();
+
+	if (Union_1.BUnion_1.Int == Union_2.BUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.Long = OK;
+	function_L();
+
+	if (Union_1.BUnion_1.Long == Union_2.BUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.Char = YCHAR;
+	function_C();
+
+	if (Union_1.BUnion_1.Char == Union_2.BUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.CUnion_1.Int = OK;
+	function_II();
+
+	if (Union_1.BUnion_1.CUnion_1.Int == Union_2.BUnion_2.CUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.CUnion_1.Long = OK;
+	function_LL();
+
+	if (Union_1.BUnion_1.CUnion_1.Long == Union_2.BUnion_2.CUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.CUnion_1.Char = YCHAR;
+	function_CC();
+
+	if (Union_1.BUnion_1.CUnion_1.Char == Union_2.BUnion_2.CUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro106()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+union Uni2      Union_2;
+extern union Uni1 Union_1;
+
+
+void function_I(void)
+{
+	if (Union_1.BUnion_1.Int == 1)
+		Union_2.BUnion_2.Int = OK;
+	else
+		Union_2.BUnion_2.Int = NO;
+}
+
+
+void function_L(void)
+{
+	if (Union_1.BUnion_1.Long == 1)
+		Union_2.BUnion_2.Long = OK;
+	else
+		Union_2.BUnion_2.Long = NO;
+}
+
+
+void function_C(void)
+{
+	if (Union_1.BUnion_1.Char == 'y')
+		Union_2.BUnion_2.Char = YCHAR;
+	else
+		Union_2.BUnion_2.Char = NCHAR;
+}
+
+
+
+void function_II(void)
+{
+	if (Union_1.BUnion_1.CUnion_1.Int == 1)
+		Union_2.BUnion_2.CUnion_2.Int = OK;
+	else
+		Union_2.BUnion_2.CUnion_2.Int = NO;
+}
+
+
+void function_LL(void)
+{
+	if (Union_1.BUnion_1.CUnion_1.Long == 1)
+		Union_2.BUnion_2.CUnion_2.Long = OK;
+	else
+		Union_2.BUnion_2.CUnion_2.Long = NO;
+}
+
+
+void function_CC(void)
+{
+	if (Union_1.BUnion_1.CUnion_1.Char == 'y')
+		Union_2.BUnion_2.CUnion_2.Char = YCHAR;
+	else
+		Union_2.BUnion_2.CUnion_2.Char = NCHAR;
+}
+@def_
+@def $macro107()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+STRDEF_1        Strdef_1;
+extern STRDEF_2 Strdef_2;
+
+extern void function_I(void);
+extern void function_S(void);
+extern void function_L(void);
+extern void function_U(void);
+extern void function_C(void);
+extern void function_II(void);
+extern void function_SS(void);
+extern void function_LL(void);
+extern void function_UU(void);
+extern void function_CC(void);
+
+int main(void)
+{
+
+	Strdef_1.BdefStruct_1.Int = OK;
+	function_I();
+
+	if (Strdef_1.BdefStruct_1.Int == Strdef_2.BdefStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Short = OK;
+	function_S();
+
+	if (Strdef_1.BdefStruct_1.Short == Strdef_2.BdefStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Long = OK;
+	function_L();
+
+	if (Strdef_1.BdefStruct_1.Long == Strdef_2.BdefStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Unsigned = OK;
+	function_U();
+
+	if (Strdef_1.BdefStruct_1.Unsigned == Strdef_2.BdefStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Char = YCHAR;
+	function_C();
+
+	if (Strdef_1.BdefStruct_1.Char == Strdef_2.BdefStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Int = OK;
+	function_II();
+
+	if (Strdef_1.BdefStruct_1.Int == Strdef_2.BdefStruct_2.CdefStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Short = OK;
+	function_SS();
+
+	if (Strdef_1.BdefStruct_1.Short == Strdef_2.BdefStruct_2.CdefStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Long = OK;
+	function_LL();
+
+	if (Strdef_1.BdefStruct_1.Long == Strdef_2.BdefStruct_2.CdefStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Unsigned = OK;
+	function_UU();
+
+	if (Strdef_1.BdefStruct_1.Unsigned == Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Char = YCHAR;
+	function_CC();
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Char == Strdef_2.BdefStruct_2.CdefStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	return 0;
+}
+@def_
+@def $macro108()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+STRDEF_2        Strdef_2;
+extern STRDEF_1 Strdef_1;
+
+
+
+void function_I(void)
+{
+	if (Strdef_1.BdefStruct_1.Int == 1)
+		Strdef_2.BdefStruct_2.Int = OK;
+	else
+		Strdef_2.BdefStruct_2.Int = NO;
+}
+
+
+void function_S(void)
+{
+	if (Strdef_1.BdefStruct_1.Short == 1)
+		Strdef_2.BdefStruct_2.Short = OK;
+	else
+		Strdef_2.BdefStruct_2.Short = NO;
+}
+
+
+void function_L(void)
+{
+	if (Strdef_1.BdefStruct_1.Long == 1)
+		Strdef_2.BdefStruct_2.Long = OK;
+	else
+		Strdef_2.BdefStruct_2.Long = NO;
+}
+
+
+void function_U(void)
+{
+	if (Strdef_1.BdefStruct_1.Unsigned == 1)
+		Strdef_2.BdefStruct_2.Unsigned = OK;
+	else
+		Strdef_2.BdefStruct_2.Unsigned = NO;
+}
+
+
+void function_C(void)
+{
+	if (Strdef_1.BdefStruct_1.Char == 'y')
+		Strdef_2.BdefStruct_2.Char = YCHAR;
+	else
+		Strdef_2.BdefStruct_2.Char = NCHAR;
+}
+
+
+
+void function_II(void)
+{
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Int == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Int = OK;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Int = NO;
+}
+
+
+
+void function_SS(void)
+{
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Short == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Short = OK;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Short = NO;
+}
+
+
+void function_LL(void)
+{
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Long == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Long = OK;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Long = NO;
+}
+
+
+void function_UU(void)
+{
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Unsigned == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned = OK;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned = NO;
+}
+
+
+void function_CC(void)
+{
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Char == 'y')
+		Strdef_2.BdefStruct_2.CdefStruct_2.Char = YCHAR;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Char = NCHAR;
+}
+@def_
+@def $macro109()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+UNIDEF_1        Unidef_1;
+extern UNIDEF_2 Unidef_2;
+
+extern void function_I(void);
+extern void function_L(void);
+extern void function_C(void);
+extern void function_II(void);
+extern void function_LL(void);
+extern void function_CC(void);
+
+int main(void)
+{
+
+	Unidef_1.BdefUnion_1.Int = OK;
+	function_I();
+
+	if (Unidef_1.BdefUnion_1.Int == Unidef_2.BdefUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.Long = OK;
+	function_L();
+
+	if (Unidef_1.BdefUnion_1.Long == Unidef_2.BdefUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.Char = YCHAR;
+	function_C();
+
+	if (Unidef_1.BdefUnion_1.Char == Unidef_2.BdefUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Int = OK;
+	function_II();
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Int == Unidef_2.BdefUnion_2.CdefUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Long = OK;
+	function_LL();
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Long == Unidef_2.BdefUnion_2.CdefUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Char = YCHAR;
+	function_CC();
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Char == Unidef_2.BdefUnion_2.CdefUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro110()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+UNIDEF_2        Unidef_2;
+extern UNIDEF_1 Unidef_1;
+
+void function_I(void)
+{
+	if (Unidef_1.BdefUnion_1.Int == 1)
+		Unidef_2.BdefUnion_2.Int = OK;
+	else
+		Unidef_2.BdefUnion_2.Int = NO;
+}
+
+
+void function_L(void)
+{
+	if (Unidef_1.BdefUnion_1.Long == 1)
+		Unidef_2.BdefUnion_2.Long = OK;
+	else
+		Unidef_2.BdefUnion_2.Long = NO;
+}
+
+
+void function_C(void)
+{
+	if (Unidef_1.BdefUnion_1.Char == 'y')
+		Unidef_2.BdefUnion_2.Char = YCHAR;
+	else
+		Unidef_2.BdefUnion_2.Char = NCHAR;
+}
+
+
+
+void function_II(void)
+{
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Int == 1)
+		Unidef_2.BdefUnion_2.CdefUnion_2.Int = OK;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Int = NO;
+}
+
+
+void function_LL(void)
+{
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Long == 1)
+		Unidef_2.BdefUnion_2.CdefUnion_2.Long = OK;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Long = NO;
+}
+
+
+void function_CC(void)
+{
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Char == 'y')
+		Unidef_2.BdefUnion_2.CdefUnion_2.Char = YCHAR;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Char = NCHAR;
+}
+@def_
+@def $macro111()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+struct Str1     Struct_1;
+extern struct Str2 Struct_2;
+
+extern void function_I(struct Str1*);
+extern void function_S(struct Str1*);
+extern void function_L(struct Str1*);
+extern void function_U(struct Str1*);
+extern void function_C(struct Str1*);
+extern void function_II(struct Str1*);
+extern void function_SS(struct Str1*);
+extern void function_LL(struct Str1*);
+extern void function_UU(struct Str1*);
+extern void function_CC(struct Str1*);
+
+int main(void)
+{
+
+	Struct_1.BStruct_1.Int = OK;
+	function_I(&Struct_1);
+
+	if (Struct_1.BStruct_1.Int == Struct_2.BStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Short = OK;
+	function_S(&Struct_1);
+
+	if (Struct_1.BStruct_1.Short == Struct_2.BStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Long = OK;
+	function_L(&Struct_1);
+
+	if (Struct_1.BStruct_1.Long == Struct_2.BStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Unsigned = OK;
+	function_U(&Struct_1);
+
+	if (Struct_1.BStruct_1.Unsigned == Struct_2.BStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.Char = YCHAR;
+	function_C(&Struct_1);
+
+	if (Struct_1.BStruct_1.Char == Struct_2.BStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Int = OK;
+	function_II(&Struct_1);
+
+	if (Struct_1.BStruct_1.CStruct_1.Int == Struct_2.BStruct_2.CStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Short = OK;
+	function_SS(&Struct_1);
+
+	if (Struct_1.BStruct_1.CStruct_1.Short == Struct_2.BStruct_2.CStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Long = OK;
+	function_LL(&Struct_1);
+
+	if (Struct_1.BStruct_1.CStruct_1.Long == Struct_2.BStruct_2.CStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Unsigned = OK;
+	function_UU(&Struct_1);
+
+	if (Struct_1.BStruct_1.CStruct_1.Unsigned == Struct_2.BStruct_2.CStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Struct_1.BStruct_1.CStruct_1.Char = YCHAR;
+	function_CC(&Struct_1);
+
+	if (Struct_1.BStruct_1.CStruct_1.Char == Struct_2.BStruct_2.CStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro112()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+struct Str2     Struct_2;
+
+void function_I(struct Str1 *argument)
+{
+	if (argument->BStruct_1.Int == 1)
+		Struct_2.BStruct_2.Int = argument->BStruct_1.Int;
+	else
+		Struct_2.BStruct_2.Int = NO;
+}
+
+
+void function_S(struct Str1 *argument)
+{
+	if (argument->BStruct_1.Short == 1)
+		Struct_2.BStruct_2.Short = argument->BStruct_1.Short;
+	else
+		Struct_2.BStruct_2.Short = NO;
+}
+
+
+void function_L(struct Str1 *argument)
+{
+	if (argument->BStruct_1.Long == 1)
+		Struct_2.BStruct_2.Long = argument->BStruct_1.Long;
+	else
+		Struct_2.BStruct_2.Long = NO;
+}
+
+
+void function_U(struct Str1 *argument)
+{
+	if (argument->BStruct_1.Unsigned == 1)
+		Struct_2.BStruct_2.Unsigned = argument->BStruct_1.Unsigned;
+	else
+		Struct_2.BStruct_2.Unsigned = NO;
+}
+
+
+void function_C(struct Str1 *argument)
+{
+	if (argument->BStruct_1.Char == 'y')
+		Struct_2.BStruct_2.Char = argument->BStruct_1.Char;
+	else
+		Struct_2.BStruct_2.Char = NCHAR;
+}
+
+
+
+void function_II(struct Str1 *argument)
+{
+	if (argument->BStruct_1.CStruct_1.Int == 1)
+		Struct_2.BStruct_2.CStruct_2.Int = argument->BStruct_1.CStruct_1.Int;
+	else
+		Struct_2.BStruct_2.CStruct_2.Int = NO;
+}
+
+
+void function_SS(struct Str1 *argument)
+{
+	if (argument->BStruct_1.CStruct_1.Short == 1)
+		Struct_2.BStruct_2.CStruct_2.Short = argument->BStruct_1.CStruct_1.Short;
+	else
+		Struct_2.BStruct_2.CStruct_2.Short = NO;
+}
+
+
+void function_LL(struct Str1 *argument)
+{
+	if (argument->BStruct_1.CStruct_1.Long == 1)
+		Struct_2.BStruct_2.CStruct_2.Long = argument->BStruct_1.CStruct_1.Long;
+	else
+		Struct_2.BStruct_2.CStruct_2.Long = NO;
+}
+
+
+void function_UU(struct Str1 *argument)
+{
+	if (argument->BStruct_1.CStruct_1.Unsigned == 1)
+		Struct_2.BStruct_2.CStruct_2.Unsigned = argument->BStruct_1.CStruct_1.Unsigned;
+	else
+		Struct_2.BStruct_2.CStruct_2.Unsigned = NO;
+}
+
+
+void function_CC(struct Str1 *argument)
+{
+	if (argument->BStruct_1.CStruct_1.Char == 'y')
+		Struct_2.BStruct_2.CStruct_2.Char = argument->BStruct_1.CStruct_1.Char;
+	else
+		Struct_2.BStruct_2.CStruct_2.Char = NCHAR;
+}
+@def_
+@def $macro113()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+union Uni1      Union_1;
+extern union Uni2 Union_2;
+
+extern void function_I(union Uni1*);
+extern void function_L(union Uni1*);
+extern void function_C(union Uni1*);
+extern void function_II(union Uni1*);
+extern void function_LL(union Uni1*);
+extern void function_CC(union Uni1*);
+
+int main(void)
+{
+	Union_1.BUnion_1.Int = OK;
+	function_I(&Union_1);
+
+	if (Union_1.BUnion_1.Int == Union_2.BUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.Long = OK;
+	function_L(&Union_1);
+
+	if (Union_1.BUnion_1.Long == Union_2.BUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.Char = YCHAR;
+	function_C(&Union_1);
+
+	if (Union_1.BUnion_1.Char == Union_2.BUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.CUnion_1.Int = OK;
+	function_II(&Union_1);
+
+	if (Union_1.BUnion_1.CUnion_1.Int == Union_2.BUnion_2.CUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.CUnion_1.Long = OK;
+	function_LL(&Union_1);
+
+	if (Union_1.BUnion_1.CUnion_1.Long == Union_2.BUnion_2.CUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Union_1.BUnion_1.CUnion_1.Char = YCHAR;
+	function_CC(&Union_1);
+
+	if (Union_1.BUnion_1.CUnion_1.Char == Union_2.BUnion_2.CUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro114()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "strc.h"
+
+union Uni2      Union_2;
+
+void function_I(union Uni1 *argument)
+{
+	if (argument->BUnion_1.Int == 1)
+		Union_2.BUnion_2.Int = argument->BUnion_1.Int;
+	else
+		Union_2.BUnion_2.Int = NO;
+}
+
+
+void function_L(union Uni1 *argument)
+{
+	if (argument->BUnion_1.Long == 1)
+		Union_2.BUnion_2.Long = argument->BUnion_1.Long;
+	else
+		Union_2.BUnion_2.Long = NO;
+}
+
+
+void function_C(union Uni1 *argument)
+{
+	if (argument->BUnion_1.Char == 'y')
+		Union_2.BUnion_2.Char = argument->BUnion_1.Char;
+	else
+		Union_2.BUnion_2.Char = NCHAR;
+}
+
+
+
+void function_II(union Uni1 *argument)
+{
+	if (argument->BUnion_1.CUnion_1.Int == 1)
+		Union_2.BUnion_2.CUnion_2.Int = argument->BUnion_1.CUnion_1.Int;
+	else
+		Union_2.BUnion_2.CUnion_2.Int = NO;
+}
+
+
+void function_LL(union Uni1 *argument)
+{
+	if (argument->BUnion_1.CUnion_1.Long == 1)
+		Union_2.BUnion_2.CUnion_2.Long = argument->BUnion_1.CUnion_1.Long;
+	else
+		Union_2.BUnion_2.CUnion_2.Long = NO;
+}
+
+
+void function_CC(union Uni1 *argument)
+{
+	if (argument->BUnion_1.CUnion_1.Char == 'y')
+		Union_2.BUnion_2.CUnion_2.Char = argument->BUnion_1.CUnion_1.Char;
+	else
+		Union_2.BUnion_2.CUnion_2.Char = NCHAR;
+}
+@def_
+@def $macro115()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+STRDEF_1        Strdef_1;
+extern STRDEF_2 Strdef_2;
+
+extern void function_I(STRDEF_1*);
+extern void function_S(STRDEF_1*);
+extern void function_L(STRDEF_1*);
+extern void function_U(STRDEF_1*);
+extern void function_C(STRDEF_1*);
+extern void function_II(STRDEF_1*);
+extern void function_SS(STRDEF_1*);
+extern void function_LL(STRDEF_1*);
+extern void function_UU(STRDEF_1*);
+extern void function_CC(STRDEF_1*);
+
+int main(void)
+{
+
+	Strdef_1.BdefStruct_1.Int = OK;
+	function_I(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.Int == Strdef_2.BdefStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Short = OK;
+	function_S(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.Short == Strdef_2.BdefStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Long = OK;
+	function_L(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.Long == Strdef_2.BdefStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Unsigned = OK;
+	function_U(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.Unsigned == Strdef_2.BdefStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.Char = YCHAR;
+	function_C(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.Char == Strdef_2.BdefStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Int = OK;
+	function_II(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Int == Strdef_2.BdefStruct_2.CdefStruct_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Short = OK;
+	function_SS(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Short == Strdef_2.BdefStruct_2.CdefStruct_2.Short)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Long = OK;
+	function_LL(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Long == Strdef_2.BdefStruct_2.CdefStruct_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Unsigned = OK;
+	function_UU(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Unsigned == Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned)
+		printok();
+	else
+		printno();
+
+
+
+	Strdef_1.BdefStruct_1.CdefStruct_1.Char = YCHAR;
+	function_CC(&Strdef_1);
+
+	if (Strdef_1.BdefStruct_1.CdefStruct_1.Char == Strdef_2.BdefStruct_2.CdefStruct_2.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro116()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+STRDEF_2        Strdef_2;
+
+void function_I(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.Int == 1)
+		Strdef_2.BdefStruct_2.Int = argument->BdefStruct_1.Int;
+	else
+		Strdef_2.BdefStruct_2.Int = NO;
+}
+
+
+void function_S(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.Short == 1)
+		Strdef_2.BdefStruct_2.Short = argument->BdefStruct_1.Short;
+	else
+		Strdef_2.BdefStruct_2.Short = NO;
+}
+
+
+void function_L(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.Long == 1)
+		Strdef_2.BdefStruct_2.Long = argument->BdefStruct_1.Long;
+	else
+		Strdef_2.BdefStruct_2.Long = NO;
+}
+
+
+void function_U(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.Unsigned == 1)
+		Strdef_2.BdefStruct_2.Unsigned = argument->BdefStruct_1.Unsigned;
+	else
+		Strdef_2.BdefStruct_2.Unsigned = NO;
+}
+
+
+void function_C(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.Char == 'y')
+		Strdef_2.BdefStruct_2.Char = argument->BdefStruct_1.Char;
+	else
+		Strdef_2.BdefStruct_2.Char = NCHAR;
+}
+
+
+
+void function_II(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.CdefStruct_1.Int == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Int = argument->BdefStruct_1.CdefStruct_1.Int;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Int = NO;
+}
+
+
+void function_SS(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.CdefStruct_1.Short == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Short = argument->BdefStruct_1.CdefStruct_1.Short;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Short = NO;
+}
+
+
+void function_LL(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.CdefStruct_1.Long == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Long = argument->BdefStruct_1.CdefStruct_1.Long;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Long = NO;
+}
+
+
+void function_UU(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.CdefStruct_1.Unsigned == 1)
+		Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned = argument->BdefStruct_1.CdefStruct_1.Unsigned;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Unsigned = NO;
+}
+
+
+void function_CC(STRDEF_1 *argument)
+{
+	if (argument->BdefStruct_1.CdefStruct_1.Char == 'y')
+		Strdef_2.BdefStruct_2.CdefStruct_2.Char = argument->BdefStruct_1.CdefStruct_1.Char;
+	else
+		Strdef_2.BdefStruct_2.CdefStruct_2.Char = NCHAR;
+}
+@def_
+@def $macro117()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+UNIDEF_1        Unidef_1;
+extern UNIDEF_2 Unidef_2;
+
+extern void function_I(UNIDEF_1*);
+extern void function_L(UNIDEF_1*);
+extern void function_C(UNIDEF_1*);
+extern void function_II(UNIDEF_1*);
+extern void function_LL(UNIDEF_1*);
+extern void function_CC(UNIDEF_1*);
+
+int main(void)
+{
+
+	Unidef_1.BdefUnion_1.Int = OK;
+	function_I(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.Int == Unidef_2.BdefUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.Long = OK;
+	function_L(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.Long == Unidef_2.BdefUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.Char = YCHAR;
+	function_C(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.Char == Unidef_2.BdefUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Int = OK;
+	function_II(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Int == Unidef_2.BdefUnion_2.CdefUnion_2.Int)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Long = OK;
+	function_LL(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Long == Unidef_2.BdefUnion_2.CdefUnion_2.Long)
+		printok();
+	else
+		printno();
+
+
+
+	Unidef_1.BdefUnion_1.CdefUnion_1.Char = YCHAR;
+	function_CC(&Unidef_1);
+
+	if (Unidef_1.BdefUnion_1.CdefUnion_1.Char == Unidef_2.BdefUnion_2.CdefUnion_2.Char)
+		printok();
+	else
+		printno();
+
+
+	return 0;
+}
+@def_
+@def $macro118()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef_2.h"
+
+UNIDEF_2        Unidef_2;
+
+void function_I(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.Int == 1)
+		Unidef_2.BdefUnion_2.Int = argument->BdefUnion_1.Int;
+	else
+		Unidef_2.BdefUnion_2.Int = NO;
+}
+
+
+void function_L(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.Long == 1)
+		Unidef_2.BdefUnion_2.Long = argument->BdefUnion_1.Long;
+	else
+		Unidef_2.BdefUnion_2.Long = NO;
+}
+
+
+void function_C(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.Char == 'y')
+		Unidef_2.BdefUnion_2.Char = argument->BdefUnion_1.Char;
+	else
+		Unidef_2.BdefUnion_2.Char = NCHAR;
+}
+
+
+
+void function_II(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.CdefUnion_1.Int == 1)
+		Unidef_2.BdefUnion_2.CdefUnion_2.Int = argument->BdefUnion_1.CdefUnion_1.Int;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Int = NO;
+}
+
+
+void function_LL(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.CdefUnion_1.Long == 1)
+		Unidef_2.BdefUnion_2.CdefUnion_2.Long = argument->BdefUnion_1.CdefUnion_1.Long;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Long = NO;
+}
+
+
+void function_CC(UNIDEF_1 *argument)
+{
+	if (argument->BdefUnion_1.CdefUnion_1.Char == 'y')
+		Unidef_2.BdefUnion_2.CdefUnion_2.Char = argument->BdefUnion_1.CdefUnion_1.Char;
+	else
+		Unidef_2.BdefUnion_2.CdefUnion_2.Char = NCHAR;
+}
+@def_
+
+@def $macro119()
+$LICENSE()
+typedef int     INTDEF;
+typedef short   SHORTDEF;
+typedef long    LONGDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+@def_
+
+@def $macro120()
+$LICENSE()
+typedef int     INTDEF;
+typedef short   SHORTDEF;
+typedef long    LONGDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef float   FLOATDEF;
+@def_
+
+@def $macro121()
+$LICENSE()
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+}               STRDEF_A;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+}               STRDEF_B;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               UNIDEF_A;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               UNIDEF_B;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	struct BdefStruct_1 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		struct CdefStruct_1 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+		}               CdefStruct_1;
+	}               BdefStruct_1;
+}               STRDEF_1;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	struct BdefStruct_2 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		struct CdefStruct_2 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+		}               CdefStruct_2;
+	}               BdefStruct_2;
+}               STRDEF_2;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	union BdefUnion_1 {
+		int             Int;
+		long            Long;
+		char            Char;
+		union CdefUnion_1 {
+			int             Int;
+			long            Long;
+			char            Char;
+		}               CdefUnion_1;
+	}               BdefUnion_1;
+}               UNIDEF_1;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	union BdefUnion_2 {
+		int             Int;
+		long            Long;
+		char            Char;
+		union CdefUnion_2 {
+			int             Int;
+			long            Long;
+			char            Char;
+		}               CdefUnion_2;
+	}               BdefUnion_2;
+}               UNIDEF_2;
+@def_
+
+@def $macro122()
+$LICENSE()
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               STRDEF_A;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               STRDEF_B;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF_A;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF_B;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	struct BdefStruct_1 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		float           Float;
+		struct CdefStruct_1 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+			float           Float;
+		}               CdefStruct_1;
+	}               BdefStruct_1;
+}               STRDEF_1;
+typedef struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+	struct BdefStruct_2 {
+		int             Int;
+		short           Short;
+		long            Long;
+		unsigned        Unsigned;
+		char            Char;
+		float           Float;
+		struct CdefStruct_2 {
+			int             Int;
+			short           Short;
+			long            Long;
+			unsigned        Unsigned;
+			char            Char;
+			float           Float;
+		}               CdefStruct_2;
+	}               BdefStruct_2;
+}               STRDEF_2;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+	union BdefUnion_1 {
+		int             Int;
+		long            Long;
+		char            Char;
+		float           Float;
+		union CdefUnion_1 {
+			int             Int;
+			long            Long;
+			char            Char;
+			float           Float;
+		}               CdefUnion_1;
+	}               BdefUnion_1;
+}               UNIDEF_1;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+	union BdefUnion_2 {
+		int             Int;
+		long            Long;
+		char            Char;
+		float           Float;
+		union CdefUnion_2 {
+			int             Int;
+			long            Long;
+			char            Char;
+			float           Float;
+		}               CdefUnion_2;
+	}               BdefUnion_2;
+}               UNIDEF_2;
+@def_
+
+@def $macro123()
+ft011.c ft012.c
+ft014.c ft013.c
+ft111.c ft112.c
+ft113.c ft114.c
+ft211.c ft212.c
+ft213.c ft214.c
+ft301.c ft302.c
+ft303.c ft304.c
+ft305.c ft306.c
+ft307.c ft308.c
+ft401.c ft402.c
+ft403.c ft404.c
+ft405.c ft406.c
+ft407.c ft408.c
+ft501.c ft502.c
+ft503.c ft504.c
+ft505.c ft506.c
+ft507.c ft508.c
+ft601.c ft602.c
+ft603.c ft604.c
+ft605.c ft606.c
+ft607.c ft608.c
+t001.c t002.c
+t003.c t004.c
+t005.c t006.c
+t007.c t008.c
+t009.c t010.c
+t011.c t012.c
+t101.c t102.c
+t103.c t104.c
+t105.c t106.c
+t107.c t108.c
+t109.c t110.c
+t111.c t112.c
+t201.c t202.c
+t203.c t204.c
+t205.c t206.c
+t207.c t208.c
+t209.c t210.c
+t211.c t212.c
+t301.c t302.c
+t303.c t304.c
+t305.c t306.c
+t307.c t308.c
+t401.c t402.c
+t403.c t404.c
+t405.c t406.c
+t407.c t408.c
+t501.c t502.c
+t503.c t504.c
+t505.c t506.c
+t507.c t508.c
+t601.c t602.c
+t603.c t604.c
+t605.c t606.c
+t607.c t608.c
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir c89.6-2-01
+@file >>def.h $macro0() @file_
+@file >>ft011.c $macro1() @file_
+@file >>ft012.c $macro2() @file_
+@file >>ft013.c $macro3() @file_
+@file >>ft014.c $macro4() @file_
+@file >>ft111.c $macro5() @file_
+@file >>ft112.c $macro6() @file_
+@file >>ft113.c $macro7() @file_
+@file >>ft114.c $macro8() @file_
+@file >>ft211.c $macro9() @file_
+@file >>ft212.c $macro10() @file_
+@file >>ft213.c $macro11() @file_
+@file >>ft214.c $macro12() @file_
+@file >>ft301.c $macro13() @file_
+@file >>ft302.c $macro14() @file_
+@file >>ft303.c $macro15() @file_
+@file >>ft304.c $macro16() @file_
+@file >>ft305.c $macro17() @file_
+@file >>ft306.c $macro18() @file_
+@file >>ft307.c $macro19() @file_
+@file >>ft308.c $macro20() @file_
+@file >>ft401.c $macro21() @file_
+@file >>ft402.c $macro22() @file_
+@file >>ft403.c $macro23() @file_
+@file >>ft404.c $macro24() @file_
+@file >>ft405.c $macro25() @file_
+@file >>ft406.c $macro26() @file_
+@file >>ft407.c $macro27() @file_
+@file >>ft408.c $macro28() @file_
+@file >>ft501.c $macro29() @file_
+@file >>ft502.c $macro30() @file_
+@file >>ft503.c $macro31() @file_
+@file >>ft504.c $macro32() @file_
+@file >>ft505.c $macro33() @file_
+@file >>ft506.c $macro34() @file_
+@file >>ft507.c $macro35() @file_
+@file >>ft508.c $macro36() @file_
+@file >>ft601.c $macro37() @file_
+@file >>ft602.c $macro38() @file_
+@file >>ft603.c $macro39() @file_
+@file >>ft604.c $macro40() @file_
+@file >>ft605.c $macro41() @file_
+@file >>ft606.c $macro42() @file_
+@file >>ft607.c $macro43() @file_
+@file >>ft608.c $macro44() @file_
+@file >>stnd_A.h $macro45() @file_
+@file >>fstnd_A.h $macro46() @file_
+@file >>stnd_B.h $macro47() @file_
+@file >>fstnd_B.h $macro48() @file_
+@file >>strc.h $macro49() @file_
+@file >>fstrc.h $macro50() @file_
+@file >>t001.c $macro51() @file_
+@file >>t002.c $macro52() @file_
+@file >>t003.c $macro53() @file_
+@file >>t004.c $macro54() @file_
+@file >>t005.c $macro55() @file_
+@file >>t006.c $macro56() @file_
+@file >>t007.c $macro57() @file_
+@file >>t008.c $macro58() @file_
+@file >>t009.c $macro59() @file_
+@file >>t010.c $macro60() @file_
+@file >>t011.c $macro61() @file_
+@file >>t012.c $macro62() @file_
+@file >>t101.c $macro63() @file_
+@file >>t102.c $macro64() @file_
+@file >>t103.c $macro65() @file_
+@file >>t104.c $macro66() @file_
+@file >>t105.c $macro67() @file_
+@file >>t106.c $macro68() @file_
+@file >>t107.c $macro69() @file_
+@file >>t108.c $macro70() @file_
+@file >>t109.c $macro71() @file_
+@file >>t110.c $macro72() @file_
+@file >>t111.c $macro73() @file_
+@file >>t112.c $macro74() @file_
+@file >>t201.c $macro75() @file_
+@file >>t202.c $macro76() @file_
+@file >>t203.c $macro77() @file_
+@file >>t204.c $macro78() @file_
+@file >>t205.c $macro79() @file_
+@file >>t206.c $macro80() @file_
+@file >>t207.c $macro81() @file_
+@file >>t208.c $macro82() @file_
+@file >>t209.c $macro83() @file_
+@file >>t210.c $macro84() @file_
+@file >>t211.c $macro85() @file_
+@file >>t212.c $macro86() @file_
+@file >>t301.c $macro87() @file_
+@file >>t302.c $macro88() @file_
+@file >>t303.c $macro89() @file_
+@file >>t304.c $macro90() @file_
+@file >>t305.c $macro91() @file_
+@file >>t306.c $macro92() @file_
+@file >>t307.c $macro93() @file_
+@file >>t308.c $macro94() @file_
+@file >>t401.c $macro95() @file_
+@file >>t402.c $macro96() @file_
+@file >>t403.c $macro97() @file_
+@file >>t404.c $macro98() @file_
+@file >>t405.c $macro99() @file_
+@file >>t406.c $macro100() @file_
+@file >>t407.c $macro101() @file_
+@file >>t408.c $macro102() @file_
+@file >>t501.c $macro103() @file_
+@file >>t502.c $macro104() @file_
+@file >>t503.c $macro105() @file_
+@file >>t504.c $macro106() @file_
+@file >>t505.c $macro107() @file_
+@file >>t506.c $macro108() @file_
+@file >>t507.c $macro109() @file_
+@file >>t508.c $macro110() @file_
+@file >>t601.c $macro111() @file_
+@file >>t602.c $macro112() @file_
+@file >>t603.c $macro113() @file_
+@file >>t604.c $macro114() @file_
+@file >>t605.c $macro115() @file_
+@file >>t606.c $macro116() @file_
+@file >>t607.c $macro117() @file_
+@file >>t608.c $macro118() @file_
+@file >>tdef.h $macro119() @file_
+@file >>ftdef.h $macro120() @file_
+@file >>tdef_2.h $macro121() @file_
+@file >>ftdef_2.h $macro122() @file_
+@file >>FILESET $macro123() @file_
+@file >>testout.h $testout() @file_
+@dir_

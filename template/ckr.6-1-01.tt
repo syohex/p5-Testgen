@@ -1,0 +1,2417 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@comment
+�������t�@�C�����p�����e�X�g
+@comment_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+@def_
+
+@def $macro0()
+$LICENSE()
+#include "testout.h"
+#define NO 0
+#define OK 1
+#define YCHAR	'y'
+#define NCHAR	'n'
+#define NoMistake 00
+@def_
+
+@def $macro1()
+$LICENSE()
+$HEAD()
+
+#include    "fstnd.h"
+#include    "ftdef.h"
+
+INTDEF          Intdef;
+SHORTDEF        Shortdef;
+LONGDEF         Longdef;
+UNSIGNDEF       Unsigndef;
+CHARDEF         Chardef;
+FLOATDEF        Floatdef;
+
+main()
+{
+	function();
+	return (0);
+}
+@def_
+@def $macro2()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern INTDEF   Intdef;
+extern SHORTDEF Shortdef;
+extern LONGDEF  Longdef;
+extern UNSIGNDEF Unsigndef;
+extern CHARDEF  Chardef;
+extern FLOATDEF Floatdef;
+
+function()
+{
+	itest = NO;
+	Intdef = OK;
+	itest = Intdef;
+	refer();
+
+	itest = NO;
+	Shortdef = OK;
+	itest = Shortdef;
+	refer();
+
+	ltest = NO;
+	Longdef = OK;
+	ltest = Longdef;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	itest = NO;
+	Unsigndef = OK;
+	itest = Unsigndef;
+	refer();
+
+	ctest = NCHAR;
+	Chardef = YCHAR;
+	ctest = Chardef;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	ftest = NO;
+	Floatdef = 1.0;
+	ftest = Floatdef;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro3()
+$LICENSE()
+$HEAD()
+#include    "def.h"
+
+function()
+{
+	extern float    ftest;
+	extern float    Float;
+
+	ftest = NO;
+	Float = 1.0;
+	ftest = Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro4()
+$LICENSE()
+$HEAD()
+
+#include    "fstnd.h"
+#include    "ftdef.h"
+
+INTDEF          Intdef;
+SHORTDEF        Shortdef;
+LONGDEF         Longdef;
+UNSIGNDEF       Unsigndef;
+CHARDEF         Chardef;
+FLOATDEF        Floatdef;
+
+
+main()
+{
+	itest = NO;
+	Intdef = OK;
+	function_I();
+
+
+	itest = NO;
+	Shortdef = OK;
+	function_S();
+
+
+	ltest = NO;
+	Longdef = OK;
+	function_L();
+
+
+	itest = NO;
+	Unsigndef = OK;
+	function_U();
+
+
+	ctest = NCHAR;
+	Chardef = YCHAR;
+	function_C();
+
+
+
+	ftest = NO;
+	Floatdef = 1.0;
+	function_F();
+
+
+	return (0);
+}
+@def_
+@def $macro5()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern INTDEF   Intdef;
+extern SHORTDEF Shortdef;
+extern LONGDEF  Longdef;
+extern UNSIGNDEF Unsigndef;
+extern CHARDEF  Chardef;
+extern FLOATDEF Floatdef;
+
+
+
+function_I()
+{
+	itest = Intdef;
+	refer();
+}
+
+function_S()
+{
+	itest = Shortdef;
+	refer();
+}
+
+
+function_L()
+{
+	ltest = Longdef;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U()
+{
+	itest = Unsigndef;
+	refer();
+}
+
+
+function_C()
+{
+	ctest = Chardef;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+function_F()
+{
+	ftest = Floatdef;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro6()
+$LICENSE()
+$HEAD()
+
+#include    "fstnd.h"
+
+main()
+{
+	ftest = NO;
+	Float = 1.0;
+	function();
+	return (0);
+}
+@def_
+@def $macro7()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern float    ftest;
+	extern float    Float;
+
+	ftest = Float;
+ if ( (TGEN_FLT_EQ(ftest, OK)) )
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro8()
+$LICENSE()
+$HEAD()
+
+#include    "fstnd.h"
+#include    "ftdef.h"
+
+INTDEF          Intdef;
+SHORTDEF        Shortdef;
+LONGDEF         Longdef;
+UNSIGNDEF       Unsigndef;
+CHARDEF         Chardef;
+FLOATDEF        Floatdef;
+
+
+main()
+{
+	function_I();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_S();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_L();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_U();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_C();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+
+
+	function_F();
+ if ( (TGEN_FLT_EQ(ftest, OK)) )
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro9()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern INTDEF   Intdef;
+extern SHORTDEF Shortdef;
+extern LONGDEF  Longdef;
+extern UNSIGNDEF Unsigndef;
+extern CHARDEF  Chardef;
+extern FLOATDEF Floatdef;
+
+
+
+function_I()
+{
+	itest = NO;
+	Intdef = OK;
+	itest = Intdef;
+}
+
+
+function_S()
+{
+	itest = NO;
+	Shortdef = OK;
+	itest = Shortdef;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Longdef = OK;
+	ltest = Longdef;
+}
+
+
+function_U()
+{
+	itest = NO;
+	Unsigndef = OK;
+	itest = Unsigndef;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Chardef = YCHAR;
+	ctest = Chardef;
+}
+
+
+function_F()
+{
+	ftest = NO;
+	Floatdef = 1.0;
+	ftest = Floatdef;
+}
+@def_
+@def $macro10()
+$LICENSE()
+$HEAD()
+
+#include    "fstnd.h"
+
+main()
+{
+	function();
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+	return (0);
+}
+@def_
+@def $macro11()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern float    ftest;
+	extern float    Float;
+
+	ftest = NO;
+	Float = 1.0;
+	ftest = Float;
+}
+@def_
+@def $macro12()
+$LICENSE()
+$HEAD()
+
+#include    "fstnd.h"
+#include    "ftdef.h"
+
+INTDEF          Intdef;
+SHORTDEF        Shortdef;
+LONGDEF         Longdef;
+UNSIGNDEF       Unsigndef;
+CHARDEF         Chardef;
+FLOATDEF        Floatdef;
+
+
+main()
+{
+	itest = NO;
+	Intdef = OK;
+	function_I(Intdef);
+
+
+	itest = NO;
+	Shortdef = OK;
+	function_S(Shortdef);
+
+
+	ltest = NO;
+	Longdef = OK;
+	function_L(Longdef);
+
+
+	itest = NO;
+	Unsigndef = OK;
+	function_U(Unsigndef);
+
+
+	ctest = NCHAR;
+	Chardef = YCHAR;
+	function_C(Chardef);
+
+
+	ftest = NO;
+	Floatdef = 1.0;
+	function_F(Floatdef);
+
+
+	return (0);
+}
+@def_
+@def $macro13()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "ftdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern INTDEF   Intdef;
+extern SHORTDEF Shortdef;
+extern LONGDEF  Longdef;
+extern UNSIGNDEF Unsigndef;
+extern CHARDEF  Chardef;
+extern FLOATDEF Floatdef;
+
+
+function_I(argument)
+	int             argument;
+{
+	if (argument == 1)
+		itest = Intdef;
+	refer();
+}
+
+
+function_S(argument)
+	short           argument;
+{
+	if (argument == 1)
+		itest = Shortdef;
+	refer();
+}
+
+
+function_L(argument)
+	long            argument;
+{
+	if (argument == 1)
+		ltest = Longdef;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U(argument)
+	unsigned        argument;
+{
+	if (argument == 1)
+		itest = Unsigndef;
+	refer();
+}
+
+
+function_C(argument)
+	char            argument;
+{
+	if (argument == 'y')
+		ctest = Chardef;
+
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_F(argument)
+	float           argument;
+{
+ if ( (TGEN_FLT_EQ(argument, 1.0)) )
+		ftest = Floatdef;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro14()
+$LICENSE()
+$HEAD()
+
+#include    "fstnd.h"
+
+main()
+{
+	ftest = NO;
+	Float = 1.0;
+	function(Float);
+	return (0);
+}
+@def_
+@def $macro15()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	float           argument;
+{
+	extern float    ftest;
+	extern float    Float;
+
+ 	if ( (TGEN_FLT_EQ(argument, 1.0)) ){
+		ftest = Float;
+	}
+ 	if ( (TGEN_FLT_EQ(ftest, OK)) ){
+		printok();
+	}
+	else{
+		printno();
+	}
+}
+@def_
+@def $macro16()
+$LICENSE()
+$HEAD()
+
+#include    "fstnd.h"
+#include    "ftdef.h"
+
+INTDEF          Intdef;
+SHORTDEF        Shortdef;
+LONGDEF         Longdef;
+UNSIGNDEF       Unsigndef;
+CHARDEF         Chardef;
+FLOATDEF        Floatdef;
+
+
+main()
+{
+	itest = NO;
+	Intdef = OK;
+	function_I(&Intdef);
+
+
+	itest = NO;
+	Shortdef = OK;
+	function_S(&Shortdef);
+
+
+	ltest = NO;
+	Longdef = OK;
+	function_L(&Longdef);
+
+
+	itest = NO;
+	Unsigndef = OK;
+	function_U(&Unsigndef);
+
+
+	ctest = NCHAR;
+	Chardef = YCHAR;
+	function_C(&Chardef);
+
+
+	ftest = NO;
+	Floatdef = 1.0;
+	function_F(&Floatdef);
+
+
+	return (0);
+}
+@def_
+@def $macro17()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "ftdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+extern float    ftest;
+
+extern INTDEF   Intdef;
+extern SHORTDEF Shortdef;
+extern LONGDEF  Longdef;
+extern UNSIGNDEF Unsigndef;
+extern CHARDEF  Chardef;
+extern FLOATDEF Floatdef;
+
+
+function_I(argument)
+	int            *argument;
+{
+	if (*argument == 1)
+		itest = Intdef;
+	refer();
+}
+
+
+function_S(argument)
+	short          *argument;
+{
+	if (*argument == 1)
+		itest = Shortdef;
+	refer();
+}
+
+
+function_L(argument)
+	long           *argument;
+{
+	if (*argument == 1)
+		ltest = Longdef;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U(argument)
+	unsigned       *argument;
+{
+	if (*argument == 1)
+		itest = Unsigndef;
+	refer();
+}
+
+
+function_C(argument)
+	char           *argument;
+{
+	if (*argument == 'y')
+		ctest = Chardef;
+
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+function_F(argument)
+	float          *argument;
+{
+ if ( (TGEN_FLT_EQ(*argument, 1.0)) )
+		ftest = Floatdef;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro18()
+$LICENSE()
+$HEAD()
+
+#include    "fstnd.h"
+
+main()
+{
+	ftest = NO;
+	Float = 1.0;
+	function(&Float);
+	return (0);
+}
+@def_
+@def $macro19()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	float          *argument;
+{
+	extern float    ftest;
+	extern float    Float;
+
+
+ if ( (TGEN_FLT_EQ(*argument, 1.0)) )
+		ftest = Float;
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+}
+@def_
+
+@def $macro20()
+$LICENSE()
+#include "testout.h"
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+int             itest;
+long            ltest;
+char            ctest;
+int             Int;
+short           Short;
+long            Long;
+unsigned        Unsigned;
+char            Char;
+struct Struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+}               Struct;
+
+union Union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               Union;
+@def_
+
+@def $macro21()
+$LICENSE()
+#include "testout.h"
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+int             itest;
+long            ltest;
+char            ctest;
+float           ftest;
+int             Int;
+short           Short;
+long            Long;
+unsigned        Unsigned;
+char            Char;
+float           Float;
+struct Struct {
+	int             Int;
+	short           Short;
+	long            Long;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               Struct;
+
+union Union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               Union;
+@def_
+
+@def $macro22()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+#include    "tdef.h"
+
+INTDEF          Intdef;
+SHORTDEF        Shortdef;
+LONGDEF         Longdef;
+UNSIGNDEF       Unsigndef;
+CHARDEF         Chardef;
+
+main()
+{
+	function();
+	return (0);
+}
+@def_
+@def $macro23()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern int      itest;
+	extern int      Int;
+
+	itest = NO;
+	Int = OK;
+	itest = Int;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro24()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern int      itest;
+	extern short    Short;
+
+	itest = NO;
+	Short = OK;
+	itest = Short;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro25()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern long     ltest;
+	extern long     Long;
+
+	ltest = NO;
+	Long = OK;
+	ltest = Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro26()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern int      itest;
+	extern unsigned Unsigned;
+
+	itest = NO;
+	Unsigned = OK;
+	itest = Unsigned;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro27()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern char     ctest;
+	extern char     Char;
+
+	ctest = NCHAR;
+	Char = YCHAR;
+	ctest = Char;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro28()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern INTDEF   Intdef;
+extern SHORTDEF Shortdef;
+extern LONGDEF  Longdef;
+extern UNSIGNDEF Unsigndef;
+extern CHARDEF  Chardef;
+
+function()
+{
+	itest = NO;
+	Intdef = OK;
+	itest = Intdef;
+	refer();
+
+
+	itest = NO;
+	Shortdef = OK;
+	itest = Shortdef;
+	refer();
+
+
+	ltest = NO;
+	Longdef = OK;
+	ltest = Longdef;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+
+	itest = NO;
+	Unsigndef = OK;
+	itest = Unsigndef;
+	refer();
+
+
+	ctest = NCHAR;
+	Chardef = YCHAR;
+	ctest = Chardef;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro29()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	itest = NO;
+	Int = OK;
+	function();
+	return (0);
+}
+@def_
+@def $macro30()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern int      itest;
+	extern int      Int;
+
+	itest = Int;
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro31()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	itest = NO;
+	Short = OK;
+	function();
+	return (0);
+}
+@def_
+@def $macro32()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern int      itest;
+	extern short    Short;
+
+	itest = Short;
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro33()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	ltest = NO;
+	Long = OK;
+	function();
+	return (0);
+}
+@def_
+@def $macro34()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern long     ltest;
+	extern long     Long;
+
+	ltest = Long;
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro35()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	itest = NO;
+	Unsigned = OK;
+	function();
+	return (0);
+}
+@def_
+@def $macro36()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern int      itest;
+	extern unsigned Unsigned;
+
+	itest = Unsigned;
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro37()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	ctest = NCHAR;
+	Char = YCHAR;
+	function();
+	return (0);
+}
+@def_
+@def $macro38()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern char     ctest;
+	extern char     Char;
+
+	ctest = Char;
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro39()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+#include    "tdef.h"
+
+INTDEF          Intdef;
+SHORTDEF        Shortdef;
+LONGDEF         Longdef;
+UNSIGNDEF       Unsigndef;
+CHARDEF         Chardef;
+
+
+main()
+{
+	itest = NO;
+	Intdef = OK;
+	function_I();
+
+
+	itest = NO;
+	Shortdef = OK;
+	function_S();
+
+
+	ltest = NO;
+	Longdef = OK;
+	function_L();
+
+
+	itest = NO;
+	Unsigndef = OK;
+	function_U();
+
+
+	ctest = NCHAR;
+	Chardef = YCHAR;
+	function_C();
+	return (0);
+}
+@def_
+@def $macro40()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern INTDEF   Intdef;
+extern SHORTDEF Shortdef;
+extern LONGDEF  Longdef;
+extern UNSIGNDEF Unsigndef;
+extern CHARDEF  Chardef;
+
+
+function_I()
+{
+	itest = Intdef;
+	refer();
+}
+
+function_S()
+{
+	itest = Shortdef;
+	refer();
+}
+
+
+function_L()
+{
+	ltest = Longdef;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U()
+{
+	itest = Unsigndef;
+	refer();
+}
+
+
+function_C()
+{
+	ctest = Chardef;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro41()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	function();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+	return (0);
+}
+@def_
+@def $macro42()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern int      itest;
+	extern int      Int;
+
+	itest = NO;
+	Int = OK;
+	itest = Int;
+}
+@def_
+@def $macro43()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern int      itest;
+	extern short    Short;
+
+	itest = NO;
+	Short = OK;
+	itest = Short;
+}
+@def_
+@def $macro44()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern int      itest;
+	extern unsigned Unsigned;
+
+	itest = NO;
+	Unsigned = OK;
+	itest = Unsigned;
+}
+@def_
+@def $macro45()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	function();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+	return (0);
+}
+@def_
+@def $macro46()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern long     ltest;
+	extern long     Long;
+
+	ltest = NO;
+	Long = OK;
+	ltest = Long;
+}
+@def_
+@def $macro47()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	function();
+	if (ctest == OK)
+		printok();
+	else
+		printno();
+	return (0);
+}
+@def_
+@def $macro48()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function()
+{
+	extern char     ctest;
+	extern char     Char;
+
+	ctest = NO;
+	Char = OK;
+	ctest = Char;
+}
+@def_
+@def $macro49()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+#include    "tdef.h"
+
+INTDEF          Intdef;
+SHORTDEF        Shortdef;
+LONGDEF         Longdef;
+UNSIGNDEF       Unsigndef;
+CHARDEF         Chardef;
+
+
+main()
+{
+	function_I();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_S();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_L();
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_U();
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	function_C();
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+	return (0);
+}
+@def_
+@def $macro50()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+
+extern INTDEF   Intdef;
+extern SHORTDEF Shortdef;
+extern LONGDEF  Longdef;
+extern UNSIGNDEF Unsigndef;
+extern CHARDEF  Chardef;
+
+
+function_I()
+{
+	itest = NO;
+	Intdef = OK;
+	itest = Intdef;
+}
+
+
+function_S()
+{
+	itest = NO;
+	Shortdef = OK;
+	itest = Shortdef;
+}
+
+
+function_L()
+{
+	ltest = NO;
+	Longdef = OK;
+	ltest = Longdef;
+}
+
+
+function_U()
+{
+	itest = NO;
+	Unsigndef = OK;
+	itest = Unsigndef;
+}
+
+
+function_C()
+{
+	ctest = NCHAR;
+	Chardef = YCHAR;
+	ctest = Chardef;
+}
+@def_
+@def $macro51()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	itest = NO;
+	Int = OK;
+	function(Int);
+	return (0);
+}
+@def_
+@def $macro52()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	int             argument;
+{
+	extern int      itest;
+	extern int      Int;
+
+
+	if (argument == 1)
+		itest = Int;
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro53()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	itest = NO;
+	Short = OK;
+	function(Short);
+	return (0);
+}
+@def_
+@def $macro54()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	short           argument;
+{
+	extern int      itest;
+	extern short    Short;
+
+
+	if (argument == 1)
+		itest = Short;
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro55()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	ltest = NO;
+	Long = OK;
+	function(Long);
+	return (0);
+}
+@def_
+@def $macro56()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	long            argument;
+{
+	extern long     ltest;
+	extern long     Long;
+
+
+	if (argument == 1)
+		ltest = Long;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro57()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	itest = NO;
+	Unsigned = OK;
+	function(Unsigned);
+	return (0);
+}
+@def_
+@def $macro58()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	unsigned        argument;
+{
+	extern int      itest;
+	extern unsigned Unsigned;
+
+
+	if (argument == 1)
+		itest = Unsigned;
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro59()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	ctest = NCHAR;
+	Char = YCHAR;
+	function(Char);
+	return (0);
+}
+@def_
+@def $macro60()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	char            argument;
+{
+	extern char     ctest;
+	extern char     Char;
+
+
+	if (argument == 'y')
+		ctest = Char;
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro61()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+#include    "tdef.h"
+
+INTDEF          Intdef;
+SHORTDEF        Shortdef;
+LONGDEF         Longdef;
+UNSIGNDEF       Unsigndef;
+CHARDEF         Chardef;
+
+
+main()
+{
+	itest = NO;
+	Intdef = OK;
+	function_I(Intdef);
+
+
+	itest = NO;
+	Shortdef = OK;
+	function_S(Shortdef);
+
+
+	ltest = NO;
+	Longdef = OK;
+	function_L(Longdef);
+
+
+	itest = NO;
+	Unsigndef = OK;
+	function_U(Unsigndef);
+
+
+	ctest = NCHAR;
+	Chardef = YCHAR;
+	function_C(Chardef);
+	return (0);
+}
+@def_
+@def $macro62()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include    "tdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern INTDEF   Intdef;
+extern SHORTDEF Shortdef;
+extern LONGDEF  Longdef;
+extern UNSIGNDEF Unsigndef;
+extern CHARDEF  Chardef;
+
+
+function_I(argument)
+	int             argument;
+{
+	if (argument == 1)
+		itest = Intdef;
+	refer();
+}
+
+
+function_S(argument)
+	short           argument;
+{
+	if (argument == 1)
+		itest = Shortdef;
+	refer();
+}
+
+
+function_L(argument)
+	long            argument;
+{
+	if (argument == 1)
+		ltest = Longdef;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U(argument)
+	unsigned        argument;
+{
+	if (argument == 1)
+		itest = Unsigndef;
+	refer();
+}
+
+
+function_C(argument)
+	char            argument;
+{
+	if (argument == 'y')
+		ctest = Chardef;
+
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro63()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	itest = NO;
+	Int = OK;
+	function(&Int);
+	return (0);
+}
+@def_
+@def $macro64()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	int            *argument;
+{
+	extern int      itest;
+	extern int      Int;
+
+
+	if (*argument == 1)
+		itest = Int;
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro65()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	itest = NO;
+	Short = OK;
+	function(&Short);
+	return (0);
+}
+@def_
+@def $macro66()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	short          *argument;
+{
+	extern int      itest;
+	extern short    Short;
+
+
+	if (*argument == 1)
+		itest = Short;
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro67()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	ltest = NO;
+	Long = OK;
+	function(&Long);
+	return (0);
+}
+@def_
+@def $macro68()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	long           *argument;
+{
+	extern long     ltest;
+	extern long     Long;
+
+
+	if (*argument == 1)
+		ltest = Long;
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro69()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	itest = NO;
+	Unsigned = OK;
+	function(&Unsigned);
+	return (0);
+}
+@def_
+@def $macro70()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	unsigned       *argument;
+{
+	extern int      itest;
+	extern unsigned Unsigned;
+
+
+	if (*argument == 1)
+		itest = Unsigned;
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro71()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+
+main()
+{
+	ctest = NCHAR;
+	Char = YCHAR;
+	function(&Char);
+	return (0);
+}
+@def_
+@def $macro72()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+
+function(argument)
+	char           *argument;
+{
+	extern char     ctest;
+	extern char     Char;
+
+
+	if (*argument == 'y')
+		ctest = Char;
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+@def_
+@def $macro73()
+$LICENSE()
+$HEAD()
+
+#include    "stnd.h"
+#include    "tdef.h"
+
+INTDEF          Intdef;
+SHORTDEF        Shortdef;
+LONGDEF         Longdef;
+UNSIGNDEF       Unsigndef;
+CHARDEF         Chardef;
+
+
+main()
+{
+	itest = NO;
+	Intdef = OK;
+	function_I(&Intdef);
+
+
+	itest = NO;
+	Shortdef = OK;
+	function_S(&Shortdef);
+
+
+	ltest = NO;
+	Longdef = OK;
+	function_L(&Longdef);
+
+
+	itest = NO;
+	Unsigndef = OK;
+	function_U(&Unsigndef);
+
+
+	ctest = NCHAR;
+	Chardef = YCHAR;
+	function_C(&Chardef);
+	return (0);
+}
+@def_
+@def $macro74()
+$LICENSE()
+$HEAD()
+
+#include    "def.h"
+#include   "tdef.h"
+
+extern int      itest;
+extern long     ltest;
+extern char     ctest;
+
+extern INTDEF   Intdef;
+extern SHORTDEF Shortdef;
+extern LONGDEF  Longdef;
+extern UNSIGNDEF Unsigndef;
+extern CHARDEF  Chardef;
+
+
+function_I(argument)
+	int            *argument;
+{
+	if (*argument == 1)
+		itest = Intdef;
+	refer();
+}
+
+
+function_S(argument)
+	short          *argument;
+{
+	if (*argument == 1)
+		itest = Shortdef;
+	refer();
+}
+
+
+function_L(argument)
+	long           *argument;
+{
+	if (*argument == 1)
+		ltest = Longdef;
+
+	if (ltest == OK)
+		printok();
+	else
+		printno();
+}
+
+
+function_U(argument)
+	unsigned       *argument;
+{
+	if (*argument == 1)
+		itest = Unsigndef;
+	refer();
+}
+
+
+function_C(argument)
+	char           *argument;
+{
+	if (*argument == 'y')
+		ctest = Chardef;
+
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+}
+
+
+
+refer()
+{
+	if (itest == OK)
+		printok();
+	else
+		printno();
+}
+@def_
+
+@def $macro75()
+$LICENSE()
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+}               STRDEF;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               UNIDEF;
+@def_
+
+@def $macro76()
+$LICENSE()
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef float   FLOATDEF;
+typedef struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               STRDEF;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF;
+@def_
+
+@def $macro77()
+ft000.c ft006.c: 6
+ft000.c ft007.c: 1
+ft111.c ft112.c: 6
+ft113.c ft114.c: 1
+ft208.c ft209.c
+ft210.c ft211.c
+ft311.c ft312.c: 6
+ft313.c ft314.c: 1
+ft411.c ft412.c: 6
+ft413.c ft414.c: 1
+t000.c t001.c: 1
+t000.c t002.c: 1
+t000.c t003.c: 1
+t000.c t004.c: 1
+t000.c t005.c: 1
+t000.c t006.c: 5
+t101.c t102.c: 1
+t103.c t104.c: 1
+t105.c t106.c: 1
+t107.c t108.c: 1
+t109.c t110.c: 1
+t111.c t112.c: 5
+t200.c t201.c
+t200.c t202.c
+t200.c t203.c
+t204.c t205.c
+t206.c t207.c
+t208.c t209.c
+t301.c t302.c: 1
+t303.c t304.c: 1
+t305.c t306.c: 1
+t307.c t308.c: 1
+t309.c t310.c: 1
+t311.c t312.c: 5
+t401.c t402.c: 1
+t403.c t404.c: 1
+t405.c t406.c: 1
+t407.c t408.c: 1
+t409.c t410.c: 1
+t411.c t412.c: 5
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir ckr.6-1-01
+@file >>def.h $macro0() @file_
+@file >>ft000.c $macro1() @file_
+@file >>ft006.c $macro2() @file_
+@file >>ft007.c $macro3() @file_
+@file >>ft111.c $macro4() @file_
+@file >>ft112.c $macro5() @file_
+@file >>ft113.c $macro6() @file_
+@file >>ft114.c $macro7() @file_
+@file >>ft208.c $macro8() @file_
+@file >>ft209.c $macro9() @file_
+@file >>ft210.c $macro10() @file_
+@file >>ft211.c $macro11() @file_
+@file >>ft311.c $macro12() @file_
+@file >>ft312.c $macro13() @file_
+@file >>ft313.c $macro14() @file_
+@file >>ft314.c $macro15() @file_
+@file >>ft411.c $macro16() @file_
+@file >>ft412.c $macro17() @file_
+@file >>ft413.c $macro18() @file_
+@file >>ft414.c $macro19() @file_
+@file >>stnd.h $macro20() @file_
+@file >>fstnd.h $macro21() @file_
+@file >>t000.c $macro22() @file_
+@file >>t001.c $macro23() @file_
+@file >>t002.c $macro24() @file_
+@file >>t003.c $macro25() @file_
+@file >>t004.c $macro26() @file_
+@file >>t005.c $macro27() @file_
+@file >>t006.c $macro28() @file_
+@file >>t101.c $macro29() @file_
+@file >>t102.c $macro30() @file_
+@file >>t103.c $macro31() @file_
+@file >>t104.c $macro32() @file_
+@file >>t105.c $macro33() @file_
+@file >>t106.c $macro34() @file_
+@file >>t107.c $macro35() @file_
+@file >>t108.c $macro36() @file_
+@file >>t109.c $macro37() @file_
+@file >>t110.c $macro38() @file_
+@file >>t111.c $macro39() @file_
+@file >>t112.c $macro40() @file_
+@file >>t200.c $macro41() @file_
+@file >>t201.c $macro42() @file_
+@file >>t202.c $macro43() @file_
+@file >>t203.c $macro44() @file_
+@file >>t204.c $macro45() @file_
+@file >>t205.c $macro46() @file_
+@file >>t206.c $macro47() @file_
+@file >>t207.c $macro48() @file_
+@file >>t208.c $macro49() @file_
+@file >>t209.c $macro50() @file_
+@file >>t301.c $macro51() @file_
+@file >>t302.c $macro52() @file_
+@file >>t303.c $macro53() @file_
+@file >>t304.c $macro54() @file_
+@file >>t305.c $macro55() @file_
+@file >>t306.c $macro56() @file_
+@file >>t307.c $macro57() @file_
+@file >>t308.c $macro58() @file_
+@file >>t309.c $macro59() @file_
+@file >>t310.c $macro60() @file_
+@file >>t311.c $macro61() @file_
+@file >>t312.c $macro62() @file_
+@file >>t401.c $macro63() @file_
+@file >>t402.c $macro64() @file_
+@file >>t403.c $macro65() @file_
+@file >>t404.c $macro66() @file_
+@file >>t405.c $macro67() @file_
+@file >>t406.c $macro68() @file_
+@file >>t407.c $macro69() @file_
+@file >>t408.c $macro70() @file_
+@file >>t409.c $macro71() @file_
+@file >>t410.c $macro72() @file_
+@file >>t411.c $macro73() @file_
+@file >>t412.c $macro74() @file_
+@file >>tdef.h $macro75() @file_
+@file >>ftdef.h $macro76() @file_
+@file >>FILESET $macro77() @file_
+@file >>testout.h $testout() @file_
+@dir_

@@ -1,0 +1,9257 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@comment
+条件のテスト(ジャンプ)
+@comment_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+# include	"incfile.h"
+@def_
+
+@def $macro0()
+$LICENSE()
+#include "testout.h"
+long            i;
+long            j;
+long            k;
+
+long            lcnt1;
+long            lcnt2;
+long            lcnt3;
+
+long            ipf1;
+long            ipf2;
+long            ipf3;
+
+long            jumpf1 = 0;
+long            jumpf2 = 0;
+long            jumpf3 = 0;
+
+long            jumpgo1 = 1;
+long            jumpgo2 = 1;
+long            jumpgo3 = 1;
+@def_
+@def $macro1()
+$LICENSE()
+$HEAD()
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro2()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro3()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro4()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+	} else {
+		testf = NO;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro5()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro6()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro7()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro8()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro9()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro10()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro11()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			lcnt3 = 0;
+			k = 0;
+			do {
+				lcnt3++;
+				k += 3;
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+			} while (k < 3);
+		} while (j < 3);
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+	if (lcnt3 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro12()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			lcnt3 = 0;
+			k = 0;
+			do {
+				lcnt3++;
+				k++;
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+			} while (k < 3);
+		} while (j < 3);
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt3 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro13()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+			k = 1;
+			if (k != 1) {
+				testf = NO;
+			} else {
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+				test = OK;
+			}
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			k = 1;
+			if (k != 1) {
+				testf = NO;
+			} else {
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+				test = OK;
+			}
+		}
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+			k = 1;
+			if (k != 1) {
+				testf = NO;
+			} else {
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+				test = OK;
+			}
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			k = 1;
+			if (k != 1) {
+				testf = NO;
+			} else {
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+				test = OK;
+			}
+		}
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro14()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			k = 1;
+			if (k == 1) {
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+				test = OK;
+			} else {
+				testf = NO;
+			}
+		} else {
+			testf = NO;
+			k = 1;
+			if (k == 1) {
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+				test = OK;
+			} else {
+				testf = NO;
+			}
+		}
+	} else {
+		testf = NO;
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			k = 1;
+			if (k == 1) {
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+				test = OK;
+			} else {
+				testf = NO;
+			}
+		} else {
+			testf = NO;
+			k = 1;
+			if (k == 1) {
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+				test = OK;
+			} else {
+				testf = NO;
+			}
+		}
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro15()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			lcnt3 = 0;
+			;
+			for (k = 0; k < 3; k++) {
+				lcnt3++;
+				k += 3;
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+			}
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+	if (lcnt3 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro16()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			lcnt3 = 0;
+			;
+			for (k = 0; k < 3; k++) {
+				lcnt3++;
+				;
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+			}
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt3 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro17()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+			k = 1;
+			if (k != 1) {
+				testf = NO;
+			}
+			if (jumpgo3 == OK) {
+				jumpf3 = OK;
+				goto LABEL;
+			}
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro18()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+			k = 1;
+			ipf3 = NO;
+			if (k == 1) {
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+				ipf3 = OK;
+			}
+		}
+	}
+	if (ipf1 != OK)
+		testf = NO;
+	if (ipf2 != OK)
+		testf = NO;
+	if (ipf3 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro19()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			k = 1;
+			switch (k) {
+			case 1:
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+				test = OK;
+				break;
+			default:
+				testf = NO;
+				break;
+			}
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro20()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			k = 1;
+			switch (k) {
+			case 0:
+				testf = NO;
+				break;
+			case 1:
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+				test = OK;
+				break;
+			default:
+				testf = NO;
+				break;
+			}
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro21()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			lcnt3 = 0;
+			k = 0;
+			while (k < 3) {
+				lcnt3++;
+				k += 3;
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+			}
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+	if (lcnt3 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro22()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	if (jumpf3 == OK)
+		jumpgo3 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			lcnt3 = 0;
+			k = 0;
+			while (k < 3) {
+				lcnt3++;
+				k++;
+				if (jumpgo3 == OK) {
+					jumpf3 = OK;
+					goto LABEL;
+				}
+			}
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+	if (lcnt3 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+	if ((jumpf3 != OK) || (jumpgo3 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro23()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro24()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro25()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro26()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro27()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro28()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro29()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (ipf2 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro30()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro31()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro32()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro33()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro34()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro35()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro36()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro37()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro38()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro39()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro40()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (ipf2 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro41()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro42()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro43()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro44()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	do {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} while (i < 3);
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro45()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro46()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro47()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro48()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro49()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro50()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro51()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+	}
+
+	if (ipf2 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro52()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro53()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro54()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro55()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} else {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro56()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	} else {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro57()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	} else {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro58()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+	} else {
+		testf = NO;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro59()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} else {
+		testf = NO;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro60()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} else {
+		testf = NO;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro61()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	} else {
+		testf = NO;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro62()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+	} else {
+		testf = NO;
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+	}
+
+	if (ipf2 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro63()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	} else {
+		testf = NO;
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro64()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	} else {
+		testf = NO;
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro65()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} else {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro66()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	} else {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro67()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro68()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro69()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro70()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro71()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro72()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro73()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (ipf2 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro74()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro75()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro76()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro77()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro78()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro79()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro80()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro81()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro82()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro83()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro84()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (ipf2 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro85()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro86()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro87()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro88()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	;
+	for (i = 0; i < 3; i++) {
+		lcnt1++;
+		;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro89()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if (lcnt2 == 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro90()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if (lcnt2 == 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro91()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro92()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro93()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if (lcnt2 == 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro94()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if (lcnt2 == 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro95()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro96()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro97()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro98()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if (lcnt2 == 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro99()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	if (i != 1) {
+		testf = NO;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+	if (jumpgo1 == OK) {
+		jumpf1 = OK;
+		jumpf2 = OK;
+		jumpf3 = OK;
+		goto LABEL;
+	}
+	if (lcnt2 == 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro100()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+	if (ipf1 != OK)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro101()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+	if (ipf1 != OK)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro102()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+	}
+	if (ipf1 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro103()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+	}
+	if (ipf1 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro104()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+	if (ipf1 != OK)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro105()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+	if (ipf1 != OK)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro106()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	}
+	if (ipf1 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro107()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+	if (ipf1 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro108()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+	if (ipf1 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro109()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+	if (ipf1 != OK)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro110()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	ipf1 = NO;
+	if (i == 1) {
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		ipf1 = OK;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+	if (ipf1 != OK)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro111()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro112()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro113()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro114()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro115()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro116()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro117()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro118()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (ipf2 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro119()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro120()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro121()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro122()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro123()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro124()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro125()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro126()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro127()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro128()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro129()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (ipf2 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro130()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro131()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro132()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 1;
+	switch (i) {
+	case 0:
+		testf = NO;
+		break;
+	case 1:
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		test = OK;
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+		break;
+	default:
+		testf = NO;
+		break;
+	}
+
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro133()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro134()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro135()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro136()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro137()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro138()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro139()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro140()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (ipf2 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro141()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro142()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro143()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i += 3;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 1)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro144()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro145()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		do {
+			lcnt2++;
+			j++;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		} while (j < 3);
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro146()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		} else {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro147()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+		} else {
+			testf = NO;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro148()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro149()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		;
+		for (j = 0; j < 3; j++) {
+			lcnt2++;
+			;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro150()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		if (j != 1) {
+			testf = NO;
+		}
+		if (jumpgo2 == OK) {
+			jumpf2 = OK;
+			jumpf3 = OK;
+			goto LABEL;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro151()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		ipf2 = NO;
+		if (j == 1) {
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			ipf2 = OK;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (ipf2 != OK)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro152()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro153()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		j = 1;
+		switch (j) {
+		case 0:
+			testf = NO;
+			break;
+		case 1:
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+			test = OK;
+			break;
+		default:
+			testf = NO;
+			break;
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+@def $macro154()
+$LICENSE()
+$HEAD()
+
+long            OK = 1;
+long            NO = 0;
+
+int main(void)
+{
+	long            test = OK;
+	long            testf = OK;
+LABEL:
+	lcnt1 = 0;
+	if (jumpf1 == OK)
+		jumpgo1 = NO;
+	if (jumpf2 == OK)
+		jumpgo2 = NO;
+	i = 0;
+	while (i < 3) {
+		lcnt1++;
+		i++;
+		if (jumpgo1 == OK) {
+			jumpf1 = OK;
+			goto LABEL;
+		}
+		lcnt2 = 0;
+		j = 0;
+		while (j < 3) {
+			lcnt2++;
+			j += 3;
+			if (jumpgo2 == OK) {
+				jumpf2 = OK;
+				goto LABEL;
+			}
+		}
+	}
+
+	if (lcnt1 != 3)
+		testf = NO;
+	if (lcnt2 != 1)
+		testf = NO;
+
+	if ((jumpf1 != OK) || (jumpgo1 != NO))
+		testf = NO;
+	if ((jumpf2 != OK) || (jumpgo2 != NO))
+		testf = NO;
+
+	if (testf == NO)
+		test = NO;
+
+	if (test == OK)
+		printok();
+	if (test == NO)
+		printno();
+	return 0;
+}
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir c89.3-4-01
+@file >>incfile.h $macro0() @file_
+@file >>lt0000.c $macro1() @file_
+@file >>lt0001.c $macro2() @file_
+@file >>lt0002.c $macro3() @file_
+@file >>lt0003.c $macro4() @file_
+@file >>lt0004.c $macro5() @file_
+@file >>lt0005.c $macro6() @file_
+@file >>lt0006.c $macro7() @file_
+@file >>lt0007.c $macro8() @file_
+@file >>lt0008.c $macro9() @file_
+@file >>lt0009.c $macro10() @file_
+@file >>lt0010.c $macro11() @file_
+@file >>lt0011.c $macro12() @file_
+@file >>lt0012.c $macro13() @file_
+@file >>lt0013.c $macro14() @file_
+@file >>lt0014.c $macro15() @file_
+@file >>lt0015.c $macro16() @file_
+@file >>lt0016.c $macro17() @file_
+@file >>lt0017.c $macro18() @file_
+@file >>lt0018.c $macro19() @file_
+@file >>lt0019.c $macro20() @file_
+@file >>lt0020.c $macro21() @file_
+@file >>lt0021.c $macro22() @file_
+@file >>lt0022.c $macro23() @file_
+@file >>lt0023.c $macro24() @file_
+@file >>lt0024.c $macro25() @file_
+@file >>lt0025.c $macro26() @file_
+@file >>lt0026.c $macro27() @file_
+@file >>lt0027.c $macro28() @file_
+@file >>lt0028.c $macro29() @file_
+@file >>lt0029.c $macro30() @file_
+@file >>lt0030.c $macro31() @file_
+@file >>lt0031.c $macro32() @file_
+@file >>lt0032.c $macro33() @file_
+@file >>lt0033.c $macro34() @file_
+@file >>lt0034.c $macro35() @file_
+@file >>lt0035.c $macro36() @file_
+@file >>lt0036.c $macro37() @file_
+@file >>lt0037.c $macro38() @file_
+@file >>lt0038.c $macro39() @file_
+@file >>lt0039.c $macro40() @file_
+@file >>lt0040.c $macro41() @file_
+@file >>lt0041.c $macro42() @file_
+@file >>lt0042.c $macro43() @file_
+@file >>lt0043.c $macro44() @file_
+@file >>lt0044.c $macro45() @file_
+@file >>lt0045.c $macro46() @file_
+@file >>lt0046.c $macro47() @file_
+@file >>lt0047.c $macro48() @file_
+@file >>lt0048.c $macro49() @file_
+@file >>lt0049.c $macro50() @file_
+@file >>lt0050.c $macro51() @file_
+@file >>lt0051.c $macro52() @file_
+@file >>lt0052.c $macro53() @file_
+@file >>lt0053.c $macro54() @file_
+@file >>lt0054.c $macro55() @file_
+@file >>lt0055.c $macro56() @file_
+@file >>lt0056.c $macro57() @file_
+@file >>lt0057.c $macro58() @file_
+@file >>lt0058.c $macro59() @file_
+@file >>lt0059.c $macro60() @file_
+@file >>lt0060.c $macro61() @file_
+@file >>lt0061.c $macro62() @file_
+@file >>lt0062.c $macro63() @file_
+@file >>lt0063.c $macro64() @file_
+@file >>lt0064.c $macro65() @file_
+@file >>lt0065.c $macro66() @file_
+@file >>lt0066.c $macro67() @file_
+@file >>lt0067.c $macro68() @file_
+@file >>lt0068.c $macro69() @file_
+@file >>lt0069.c $macro70() @file_
+@file >>lt0070.c $macro71() @file_
+@file >>lt0071.c $macro72() @file_
+@file >>lt0072.c $macro73() @file_
+@file >>lt0073.c $macro74() @file_
+@file >>lt0074.c $macro75() @file_
+@file >>lt0075.c $macro76() @file_
+@file >>lt0076.c $macro77() @file_
+@file >>lt0077.c $macro78() @file_
+@file >>lt0078.c $macro79() @file_
+@file >>lt0079.c $macro80() @file_
+@file >>lt0080.c $macro81() @file_
+@file >>lt0081.c $macro82() @file_
+@file >>lt0082.c $macro83() @file_
+@file >>lt0083.c $macro84() @file_
+@file >>lt0084.c $macro85() @file_
+@file >>lt0085.c $macro86() @file_
+@file >>lt0086.c $macro87() @file_
+@file >>lt0087.c $macro88() @file_
+@file >>lt0088.c $macro89() @file_
+@file >>lt0089.c $macro90() @file_
+@file >>lt0090.c $macro91() @file_
+@file >>lt0091.c $macro92() @file_
+@file >>lt0092.c $macro93() @file_
+@file >>lt0093.c $macro94() @file_
+@file >>lt0094.c $macro95() @file_
+@file >>lt0095.c $macro96() @file_
+@file >>lt0096.c $macro97() @file_
+@file >>lt0097.c $macro98() @file_
+@file >>lt0098.c $macro99() @file_
+@file >>lt0099.c $macro100() @file_
+@file >>lt0100.c $macro101() @file_
+@file >>lt0101.c $macro102() @file_
+@file >>lt0102.c $macro103() @file_
+@file >>lt0103.c $macro104() @file_
+@file >>lt0104.c $macro105() @file_
+@file >>lt0105.c $macro106() @file_
+@file >>lt0106.c $macro107() @file_
+@file >>lt0107.c $macro108() @file_
+@file >>lt0108.c $macro109() @file_
+@file >>lt0109.c $macro110() @file_
+@file >>lt0110.c $macro111() @file_
+@file >>lt0111.c $macro112() @file_
+@file >>lt0112.c $macro113() @file_
+@file >>lt0113.c $macro114() @file_
+@file >>lt0114.c $macro115() @file_
+@file >>lt0115.c $macro116() @file_
+@file >>lt0116.c $macro117() @file_
+@file >>lt0117.c $macro118() @file_
+@file >>lt0118.c $macro119() @file_
+@file >>lt0119.c $macro120() @file_
+@file >>lt0120.c $macro121() @file_
+@file >>lt0121.c $macro122() @file_
+@file >>lt0122.c $macro123() @file_
+@file >>lt0123.c $macro124() @file_
+@file >>lt0124.c $macro125() @file_
+@file >>lt0125.c $macro126() @file_
+@file >>lt0126.c $macro127() @file_
+@file >>lt0127.c $macro128() @file_
+@file >>lt0128.c $macro129() @file_
+@file >>lt0129.c $macro130() @file_
+@file >>lt0130.c $macro131() @file_
+@file >>lt0131.c $macro132() @file_
+@file >>lt0132.c $macro133() @file_
+@file >>lt0133.c $macro134() @file_
+@file >>lt0134.c $macro135() @file_
+@file >>lt0135.c $macro136() @file_
+@file >>lt0136.c $macro137() @file_
+@file >>lt0137.c $macro138() @file_
+@file >>lt0138.c $macro139() @file_
+@file >>lt0139.c $macro140() @file_
+@file >>lt0140.c $macro141() @file_
+@file >>lt0141.c $macro142() @file_
+@file >>lt0142.c $macro143() @file_
+@file >>lt0143.c $macro144() @file_
+@file >>lt0144.c $macro145() @file_
+@file >>lt0145.c $macro146() @file_
+@file >>lt0146.c $macro147() @file_
+@file >>lt0147.c $macro148() @file_
+@file >>lt0148.c $macro149() @file_
+@file >>lt0149.c $macro150() @file_
+@file >>lt0150.c $macro151() @file_
+@file >>lt0151.c $macro152() @file_
+@file >>lt0152.c $macro153() @file_
+@file >>lt0153.c $macro154() @file_
+@file >>testout.h $testout() @file_
+@dir_

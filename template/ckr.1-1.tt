@@ -1,0 +1,676 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@comment
+値の代入のテスト
+@comment_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+#include "stnd.h"
+@def_
+
+@def $FHEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+#include "fstnd.h"
+@def_
+
+@def $test1($VAR9)
+	itest = NO;
+	$VAR9 = OK;
+	itest = $VAR9;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+@def_
+
+@def $ftest1($VAR9)
+	ftest = NO;
+	$VAR9 = 1.0;
+	ftest = $VAR9;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+@def_
+@def $ctest1($VAR9)
+	ctest = NCHAR;
+	$VAR9 = YCHAR;
+	ctest = $VAR9;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+@def_
+
+@def $macro0($MODIFIER)
+$LICENSE()
+$FHEAD()
+main()
+{
+/*--TEST--
+ $MODIFIER floatへの代入。
+--END--*/
+	$MODIFIER float           Float;
+
+	ftest = NO;
+	Float = 1.0;
+	ftest = Float;
+	refer();
+
+	ftest = NO;
+	Float = 10.0e-1;
+	ftest = Float;
+	refer();
+
+	ftest = NO;
+	Float = 0.1e1;
+	ftest = Float;
+	refer();
+
+	ftest = NO;
+	Float = 10.0E-1;
+	ftest = Float;
+	refer();
+
+	ftest = NO;
+	Float = 0.1E1;
+	ftest = Float;
+	refer();
+
+	return (0);
+}
+refer(){
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+}
+@def_
+
+@def $macro1($MODIFIER)
+$LICENSE()
+$FHEAD()
+main()
+{
+/*--TEST--
+ $MODIFIER structのメンバ変数への代入
+--END--*/
+	struct Struct {
+		int             Int;
+		long            Long;
+		short           Short;
+		unsigned        Unsigned;
+		char            Char;
+		float           Float;
+	}               Struct;
+
+$test1(Struct.Int)
+
+$test1(Struct.Long)
+
+$test1(Struct.Short)
+
+$test1(Struct.Unsigned)
+
+$ctest1(Struct.Char)
+
+$ftest1(Struct.Float)
+
+	return (0);
+}
+@def_
+
+@def $macro2()
+$LICENSE()
+$FHEAD()
+main()
+{
+/*--TEST--
+ extern structのメンバ変数への代入
+--END--*/
+	extern struct Struct Struct;
+
+$test1(Struct.Int)
+
+$test1(Struct.Long)
+
+$test1(Struct.Short)
+
+$test1(Struct.Unsigned)
+
+$ctest1(Struct.Char)
+
+$ftest1(Struct.Float)
+	return (0);
+}
+@def_
+@def $macro3($MODIFIER)
+$LICENSE()
+$FHEAD()
+main()
+{
+/*--TEST--
+ $MODIFIER unionのメンバ変数への代入
+--END--*/
+	$MODIFIER union Union {
+		int             Int;
+		long            Long;
+		char            Char;
+		float           Float;
+	}               Union;
+
+$test1(Union.Int)
+
+$test1(Union.Long)
+
+$ctest1(Union.Char)
+
+$ftest1(Union.Float)
+	return (0);
+}
+@def_
+
+@def $macro4()
+$LICENSE()
+$FHEAD()
+main()
+{
+/*--TEST--
+ extern unionのメンバ変数への代入
+--END--*/
+	extern union Union Union;
+
+$test1(Union.Int)
+
+$test1(Union.Long)
+
+$ctest1(Union.Char)
+
+$ftest1(Union.Float)
+	return (0);
+}
+@def_
+@def $macro5($MODIFIER)
+$LICENSE()
+$FHEAD()
+main()
+{
+/*--TEST--
+ $MODIFIER typedefで定義された型によって宣言された変数への代入
+--END--*/
+	$MODIFIER INTDEF          Intdef;
+	$MODIFIER LONGDEF         Longdef;
+	$MODIFIER SHORTDEF        Shortdef;
+	$MODIFIER UNSIGNDEF       Unsigndef;
+	$MODIFIER CHARDEF         Chardef;
+	$MODIFIER FLOATDEF        Floatdef;
+	$MODIFIER STRDEF          Strdef;
+	$MODIFIER UNIDEF          Unidef;
+
+$test1(Intdef)
+
+$test1(Longdef)
+
+$test1(Shortdef)
+
+$test1(Unsigndef)
+
+$ctest1(Chardef)
+
+$ftest1(Floatdef)
+
+$test1(Strdef.Int)
+
+$test1(Strdef.Long)
+
+$test1(Strdef.Short)
+
+$test1(Strdef.Unsigned)
+
+$ctest1(Strdef.Char)
+
+$ftest1(Strdef.Float)
+
+$test1(Unidef.Int)
+
+$test1(Unidef.Long)
+
+$ctest1(Unidef.Char)
+
+$ftest1(Unidef.Float)
+
+	return (0);
+}
+@def_
+
+@def $macro6()
+$LICENSE()
+$FHEAD()
+main()
+{
+/*--TEST--
+ typedefで定義された型によって宣言された変数への代入
+--END--*/
+	INTDEF          Intdef;
+	LONGDEF         Longdef;
+	SHORTDEF        Shortdef;
+	UNSIGNDEF       Unsigndef;
+	CHARDEF         Chardef;
+	FLOATDEF        Floatdef;
+	STRDEF          Strdef;
+	UNIDEF          Unidef;
+
+$test1(Intdef)
+
+$test1(Longdef)
+
+$test1(Shortdef)
+
+$test1(Unsigndef)
+
+$ctest1(Chardef)
+
+$ftest1(Floatdef)
+
+$test1(Strdef.Int)
+
+$test1(Strdef.Long)
+
+$test1(Strdef.Short)
+
+$test1(Strdef.Unsigned)
+
+$ctest1(Strdef.Char)
+
+$ftest1(Strdef.Float)
+
+$test1(Unidef.Int)
+
+$test1(Unidef.Long)
+
+$ctest1(Unidef.Char)
+
+	ftest = NO;
+	Strdef.Float = 1.0;
+	ftest = Strdef.Float;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro7($MODIFIER)
+$LICENSE()
+$HEAD()
+main()
+{
+/*--TEST--
+ $MODIFIER long型への代入
+--END--*/
+	$MODIFIER long            Long;
+
+$test1(Long)
+
+	return (0);
+}
+@def_
+
+
+@def $macro8()
+$LICENSE()
+#include "testout.h"
+long            itest;
+char            ctest;
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+int             Int;
+long            Long;
+short           Short;
+unsigned        Unsigned;
+char            Char;
+struct Struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+}               Struct;
+union Union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               Union;
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+}               STRDEF;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               UNIDEF;
+@def_
+
+@def $macro9()
+$LICENSE()
+#include "testout.h"
+long            itest;
+char            ctest;
+float           ftest;
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+int             Int;
+long            Long;
+short           Short;
+unsigned        Unsigned;
+char            Char;
+float           Float;
+struct Struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               Struct;
+union Union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               Union;
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef float   FLOATDEF;
+typedef struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+	float           Float;
+}               STRDEF;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+	float           Float;
+}               UNIDEF;
+@def_
+
+@def $macro10($MODIFIER,$DATATYPE)
+$LICENSE()
+$HEAD()
+main()
+{
+/*--TEST--
+ $MODIFIER $DATATYPE 型の変数への代入
+--END--*/
+	$MODIFIER $DATATYPE             Variable;
+
+$test1(Variable)
+
+	return (0);
+}
+@def_
+
+@def $macro11()
+$LICENSE()
+$HEAD()
+main()
+{
+/*--TEST--
+ extern int 型への代入
+--END--*/
+	extern int      Int;
+
+$test1(Int)
+
+	return (0);
+}
+@def_
+@def $macro12()
+$LICENSE()
+$HEAD()
+main()
+{
+/*--TEST--
+extern short型への代入
+--END--*/
+	extern short    Short;
+
+$test1(Short)
+
+	return (0);
+}
+@def_
+@def $macro13()
+$LICENSE()
+$HEAD()
+main()
+{
+/*--TEST--
+ extern unsigned 型の変数への代入
+--END--*/
+	extern unsigned Unsigned;
+
+$test1(Unsigned)
+
+	return (0);
+}
+@def_
+@def $macro14()
+$LICENSE()
+$HEAD()
+main()
+{
+/*--TEST--
+ extern char 型の変数への代入
+--END--*/
+	extern char     Char;
+
+	itest = NO;
+	Char = OK;
+	itest = Char;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+
+
+	return (0);
+}
+@def_
+@def $macro15()
+$LICENSE()
+$HEAD()
+main()
+{
+/*--TEST--
+ register structのメンバ変数への代入
+--END--*/
+	register struct Struct {
+		int             Int;
+		short           Short;
+		unsigned        Unsigned;
+		char            Char;
+	}               Struct;
+
+$test1(Struct.Int)
+
+$test1(Struct.Short)
+
+$test1(Struct.Unsigned)
+
+$ctest1(Struct.Char)
+
+	return (0);
+}
+@def_
+@def $macro16()
+$LICENSE()
+$HEAD()
+main()
+{
+/*--TEST--
+ register unionのメンバ変数への代入
+--END--*/
+	register union Union {
+		int             Int;
+		char            Char;
+	}               Union;
+
+$test1(Union.Int)
+
+$ctest1(Union.Char)
+
+	return (0);
+}
+@def_
+@def $macro17()
+$LICENSE()
+$HEAD()
+main()
+{
+/*--TEST--
+ register typedefで定義された型によって宣言された変数への代入
+--END--*/
+	register INTDEF Intdef;
+	register SHORTDEF Shortdef;
+	register UNSIGNDEF Unsigndef;
+	register CHARDEF Chardef;
+	register STRDEF Strdef;
+	register UNIDEF Unidef;
+
+$test1(Intdef)
+
+$test1(Shortdef)
+
+$test1(Unsigndef)
+
+$ctest1(Chardef)
+
+$test1(Strdef.Int)
+
+$test1(Strdef.Short)
+
+$test1(Strdef.Unsigned)
+
+$ctest1(Strdef.Char)
+
+$test1(Unidef.Int)
+
+$ctest1(Unidef.Char)
+
+	return (0);
+}
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir ckr.1-1
+@file >>ft???.c $macro0([,extern,static]) @ok 5 @ok_ @file_
+@file >>ft???.c $macro1([,static]) @file_
+@file >>ft???_extern.c $macro2() @file_
+@file >>ft???.c $macro3([,static]) @file_
+@file >>ft???_extern.c $macro4() @file_
+@file >>ft???.c $macro5([,static]) @file_
+@file >>ft???.c $macro6() @file_
+@file >>lt???.c $macro7([,extern,static]) @file_
+@file >>stnd.h $macro8() @file_
+@file >>fstnd.h $macro9() @file_
+@file >>t???_.c $macro10([,static,register],[int,unsigned,short,char]) @file_
+@file >>t???_extern_int.c $macro11() @file_
+@file >>t???_extern_short.c $macro12() @file_
+@file >>t???_extern_unsigned.c $macro13() @file_
+@file >>t???_extern_char.c $macro14() @file_
+@file >>t???_register.c $macro15() @file_
+@file >>t???_register.c $macro16() @file_
+@file >>t???_register.c $macro17() @file_
+@file >>testout.h $testout() @file_
+@dir_

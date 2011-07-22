@@ -1,0 +1,328 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+
+#include "testout.h"
+@def_
+
+@def $macro0()
+$LICENSE()
+/* $Id: ckr.5-1.tt,v 1.5 2006/01/11 05:17:21 share Exp $ */
+$HEAD()
+
+long f1(long);
+int  f2();
+int  f3();
+
+int
+main()
+{
+
+	(f1((long)f2()) && f3()) ? printno() : printok();
+	return (0);
+}
+
+long
+f1(i)
+	long            i;
+{
+	return (i & f3());
+}
+int
+f2()
+{
+	return (1 >> 1);
+}
+int
+f3()
+{
+	return ('\377');
+}
+@def_
+@def $macro1()
+$LICENSE()
+/* $Id: ckr.5-1.tt,v 1.5 2006/01/11 05:17:21 share Exp $ */
+$HEAD()
+
+long f1(long);
+int  f2();
+int  f3();
+
+int
+main()
+{
+
+	(f1((long)f2()) && f3()) ? printno() : printok();
+	return (0);
+}
+
+long
+f1(i)
+	long            i;
+{
+	return (i & f3());
+}
+int
+f2()
+{
+	return (1 >> 1);
+}
+int
+f3()
+{
+	return ('\377');
+}
+@def_
+@def $macro2()
+$LICENSE()
+/* $Id: ckr.5-1.tt,v 1.5 2006/01/11 05:17:21 share Exp $ */
+$HEAD()
+main()
+{
+	int             i;
+	char           *a = "God is not dead!  He's alive and autographing bibles at Cody's";
+	char           *a1 = a;
+
+	for (i = 0; *a; i++) {
+		if (*a++ != *(a1 + i)) {
+			printno();
+			goto exit;
+		}
+	}
+	printok();
+exit:
+	;
+	return (0);
+}
+@def_
+@def $macro3()
+$LICENSE()
+/* $Id: ckr.5-1.tt,v 1.5 2006/01/11 05:17:21 share Exp $ */
+$HEAD()
+typedef struct {
+	char           *mes;
+	char           *ans;
+	int             cnt;
+}               sick;
+main()
+{
+	sick            set;
+	int             l;
+
+	set.mes = "What's your name?";
+	set.ans = "My name is Dali.";
+	set.cnt = 0;
+	l = 0;
+	l = mystrlen(set.mes);
+	while (*(set.mes)) {
+		set.cnt++;
+		set.mes++;
+	}
+	l += mystrlen(set.ans);
+	while (*(set.ans)) {
+		set.cnt++;
+		set.ans++;
+	}
+	if (set.cnt != l)
+		printno();
+	else
+		printok();
+	return (0);
+}
+/* @(#)strlen.c	4.1 (Berkeley) 12/21/80 */
+/*
+ * Returns the number of non-NULL bytes in string argument. 
+ */
+
+mystrlen(s)
+	register char  *s;
+{
+	register        n;
+
+	n = 0;
+	while (*s++)
+		n++;
+	return (n);
+}
+@def_
+@def $macro4()
+$LICENSE()
+/* $Id: ckr.5-1.tt,v 1.5 2006/01/11 05:17:21 share Exp $ */
+$HEAD()
+main()
+{
+	char           *pmes[15], *pbase;
+	char          **ppmes = pmes;
+	int             i, k;
+
+	pmes[0] = "Frisbeetarianism is the belief that when you die,";
+	pmes[1] = "your soul goes up the on roof and gets stuck.";
+	pmes[2] = "*";
+	pmes[3] = "The chicken that clucks the loudest is the one most";
+	pmes[4] = " likely to show up at the steam fitters picnic.";
+	pmes[5] = "*";
+	pmes[6] = "Drawing on my fine command of language, I said nothing.";
+	pmes[7] = "*";
+	pmes[8] = "We wish you a Hare Krishna";
+	pmes[9] = "We wish you a Hare Krishna";
+	pmes[10] = "We wish you a Hare Krishna";
+	pmes[11] = "And a Sun Myung Moon!";
+	pmes[12] = " ";
+	pmes[13] = "		--Maxwell Smart";
+	pmes[14] = 0;
+
+	for (i = 0; *ppmes; i++) {
+		pbase = *(pmes + i);
+		for (k = 0; **ppmes; k++) {
+			if (*(pbase + k) != **ppmes) {
+				printno();
+				goto exit;
+			}
+			(*ppmes)++;
+		}
+		ppmes++;
+	}
+	printok();
+exit:
+	;
+	return (0);
+}
+@def_
+@def $macro5()
+$LICENSE()
+/* $Id: ckr.5-1.tt,v 1.5 2006/01/11 05:17:21 share Exp $ */
+$HEAD()
+main()
+{
+	char           *pmes[15];
+	char          **ppmes = pmes;
+	char          **ppmes2 = pmes;
+	int             i, k;
+
+	pmes[0] = "Frisbeetarianism is the belief that when you die,";
+	pmes[1] = "your soul goes up the on roof and gets stuck.";
+	pmes[2] = "*";
+	pmes[3] = "The chicken that clucks the loudest is the one most";
+	pmes[4] = " likely to show up at the steam fitters picnic.";
+	pmes[5] = "*";
+	pmes[6] = "Drawing on my fine command of language, I said nothing.";
+	pmes[7] = "*";
+	pmes[8] = "We wish you a Hare Krishna";
+	pmes[9] = "We wish you a Hare Krishna";
+	pmes[10] = "We wish you a Hare Krishna";
+	pmes[11] = "And a Sun Myung Moon!";
+	pmes[12] = " ";
+	pmes[13] = "		--Maxwell Smart";
+	pmes[14] = 0;
+
+	for (i = 0; *ppmes2; i++) {
+		for (k = 0; **ppmes2; k++) {
+			if (*(*(ppmes + i) + k) != *(*ppmes2 + k)) {
+				printno();
+				goto exit;
+			}
+			(*ppmes2)++;
+		}
+		ppmes2++;
+	}
+	printok();
+exit:
+	;
+	return (0);
+}
+@def_
+@def $macro6()
+$LICENSE()
+/* $Id: ckr.5-1.tt,v 1.5 2006/01/11 05:17:21 share Exp $ */
+$HEAD()
+# define MF ~0777
+main()
+{
+	static unsigned f[] = {0400
+			       ,0200
+			       ,0100
+			       ,0040
+			       ,0020
+			       ,0010
+			       ,0004
+			       ,0002
+			       ,0001
+	};
+	unsigned        bit = 00;
+	bit |= (f[0] |= (f[1] |= (f[2] |= (f[3] |= (f[4] |= (f[5] |= (f[6] |= (f[7] |= f[8]))))))));
+	(~(MF) ^ bit) ? printno() : (((f[0] >> 1) ^ f[1]) ? printno() : ((((f[8] << 1) | 01) ^ f[7]) ? printno() : printok()));
+	return (0);
+}
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir ckr.5-1
+@file >>ls6.c $macro0() @file_
+@file >>ls7.c $macro1() @file_
+@file >>s1.c $macro2() @file_
+@file >>s2.c $macro3() @file_
+@file >>s3.c $macro4() @file_
+@file >>s31.c $macro5() @file_
+@file >>s8.c $macro6() @file_
+@file >>testout.h $testout() @file_
+@dir_

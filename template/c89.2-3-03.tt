@@ -1,0 +1,576 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@def $HEADER()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+#include "stnd3.03.h"
+@def_
+
+@def $FHEADER()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+#include "fstnd3.03.h"
+@def_
+
+
+@def $test1($VAR9)
+	itest = NO;
+	$VAR9 = OK;
+	itest = $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+@def_
+@def $ftest1($VAR9)
+	ftest = NO_f;
+	$VAR9 = OK_f;
+	ftest = $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9 * $VAR9;
+
+ if ( (TGEN_FLT_EQ(ftest, OK_f)) )
+		printok();
+ if ( (TGEN_FLT_EQ(ftest, NO_f)) )
+		printno();
+@def_
+
+
+
+@def $macro0($MODIFIER)
+$LICENSE()
+$FHEADER()
+int main(void)
+{
+	$MODIFIER float           Float;
+
+$ftest1(Float)
+	return 0;
+}
+@def_
+
+
+@def $macro1($MODIFIER)
+$LICENSE()
+$FHEADER()
+int main(void)
+{
+	$MODIFIER struct Struct {
+		int             Int;
+		long            Long;
+		float           Float;
+		short           Short;
+		unsigned        Unsigned;
+		char            Char;
+	}               Struct;
+
+$test1(Struct.Int)
+
+$test1(Struct.Long)
+
+$ftest1(Struct.Float)
+$test1(Struct.Short)
+
+$test1(Struct.Unsigned)
+
+$test1(Struct.Char)
+
+	return 0;
+}
+@def_
+
+
+@def $macro2($MODIFIER)
+$LICENSE()
+$FHEADER()
+int main(void)
+{
+	$MODIFIER union Union {
+		int             Int;
+		long            Long;
+		float           Float;
+		char            Char;
+	}               Union;
+
+$test1(Union.Int)
+
+$test1(Union.Long)
+
+$ftest1(Union.Float)
+$test1(Union.Char)
+
+	return 0;
+}
+@def_
+
+
+@def $macro3($MODIFIER)
+$LICENSE()
+$FHEADER()
+int main(void)
+{
+	$MODIFIER INTDEF          Intdef;
+	$MODIFIER LONGDEF         Longdef;
+	$MODIFIER FLOATDEF        Floatdef;
+	$MODIFIER SHORTDEF        Shortdef;
+	$MODIFIER UNSIGNDEF       Unsigndef;
+	$MODIFIER CHARDEF         Chardef;
+	$MODIFIER STRDEF          Strdef;
+	$MODIFIER UNIDEF          Unidef;
+
+$test1(Intdef)
+
+$test1(Longdef)
+
+$ftest1(Floatdef)
+$test1(Shortdef)
+
+$test1(Unsigndef)
+
+$test1(Chardef)
+
+$test1(Strdef.Int)
+
+$test1(Strdef.Long)
+
+$ftest1(Strdef.Float)
+$test1(Strdef.Short)
+
+$test1(Strdef.Unsigned)
+
+$test1(Strdef.Char)
+
+$test1(Unidef.Int)
+
+$test1(Unidef.Long)
+
+$ftest1(Unidef.Float)
+$test1(Unidef.Char)
+
+	return 0;
+}
+@def_
+
+
+@def $macro4($MODIFIER)
+$LICENSE()
+$HEADER()
+int main(void)
+{
+	$MODIFIER long            Long;
+
+$test1(Long)
+
+	return 0;
+}
+@def_
+
+
+@def $macro5($MODIFIER)
+$LICENSE()
+$HEADER()
+int main(void)
+{
+	$MODIFIER struct Struct {
+		int             Int;
+		long            Long;
+		short           Short;
+		unsigned        Unsigned;
+		char            Char;
+	}               Struct;
+
+$test1(Struct.Int)
+
+$test1(Struct.Long)
+
+$test1(Struct.Short)
+
+$test1(Struct.Unsigned)
+
+$test1(Struct.Char)
+
+	return 0;
+}
+@def_
+
+
+@def $macro6($MODIFIER)
+$LICENSE()
+$HEADER()
+int main(void)
+{
+	$MODIFIER union Union {
+		int             Int;
+		long            Long;
+		char            Char;
+	}               Union;
+
+$test1(Union.Int)
+
+$test1(Union.Long)
+
+$test1(Union.Char)
+
+	return 0;
+}
+@def_
+
+
+@def $macro7($MODIFIER)
+$LICENSE()
+$HEADER()
+int main(void)
+{
+	$MODIFIER INTDEF          Intdef;
+	$MODIFIER LONGDEF         Longdef;
+	$MODIFIER SHORTDEF        Shortdef;
+	$MODIFIER UNSIGNDEF       Unsigndef;
+	$MODIFIER CHARDEF         Chardef;
+	$MODIFIER STRDEF          Strdef;
+	$MODIFIER UNIDEF          Unidef;
+
+$test1(Intdef)
+
+$test1(Longdef)
+
+$test1(Shortdef)
+
+$test1(Unsigndef)
+
+$test1(Chardef)
+
+$test1(Strdef.Int)
+
+$test1(Strdef.Long)
+
+$test1(Strdef.Short)
+
+$test1(Strdef.Unsigned)
+
+$test1(Strdef.Char)
+
+$test1(Unidef.Int)
+
+$test1(Unidef.Long)
+
+$test1(Unidef.Char)
+
+	return 0;
+}
+@def_
+
+
+@def $macro8()
+$LICENSE()
+#include "testout.h"
+long            itest;
+char            ctest;
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+int             Int;
+long            Long;
+short           Short;
+unsigned        Unsigned;
+char            Char;
+struct Struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+}               Struct;
+union Union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               Union;
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef struct {
+	int             Int;
+	long            Long;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+}               STRDEF;
+typedef union {
+	int             Int;
+	long            Long;
+	char            Char;
+}               UNIDEF;
+@def_
+
+@def $macro9()
+$LICENSE()
+#include "testout.h"
+float           ftest;
+long            itest;
+char            ctest;
+#define OK_f 1.0
+#define NO_f 0.0
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+int             Int;
+long            Long;
+float           Float;
+short           Short;
+unsigned        Unsigned;
+char            Char;
+struct Struct {
+	int             Int;
+	long            Long;
+	float           Float;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+}               Struct;
+union Union {
+	int             Int;
+	long            Long;
+	float           Float;
+	char            Char;
+}               Union;
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef float   FLOATDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef struct {
+	int             Int;
+	long            Long;
+	float           Float;
+	short           Short;
+	unsigned        Unsigned;
+	char            Char;
+}               STRDEF;
+typedef union {
+	int             Int;
+	long            Long;
+	float           Float;
+	char            Char;
+}               UNIDEF;
+@def_
+
+@def $macro10($MODIFIER)
+$LICENSE()
+$HEADER()
+int main(void)
+{
+	$MODIFIER int             Int;
+
+$test1(Int)
+
+	return 0;
+}
+@def_
+
+
+@def $macro11($MODIFIER)
+$LICENSE()
+$HEADER()
+int main(void)
+{
+	$MODIFIER short           Short;
+
+$test1(Short)
+
+	return 0;
+}
+@def_
+
+
+@def $macro12($MODIFIER)
+$LICENSE()
+$HEADER()
+int main(void)
+{
+	$MODIFIER unsigned        Unsigned;
+
+$test1(Unsigned)
+
+	return 0;
+}
+@def_
+
+
+@def $macro13($MODIFIER)
+$LICENSE()
+$HEADER()
+int main(void)
+{
+	$MODIFIER char            Char;
+
+$test1(Char)
+
+	return 0;
+}
+@def_
+
+
+@def $macro14($MODIFIER)
+$LICENSE()
+$HEADER()
+int main(void)
+{
+	$MODIFIER struct Struct {
+		int             Int;
+		short           Short;
+		unsigned        Unsigned;
+		char            Char;
+	}               Struct;
+
+$test1(Struct.Int)
+
+$test1(Struct.Short)
+
+$test1(Struct.Unsigned)
+
+$test1(Struct.Char)
+
+	return 0;
+}
+@def_
+
+
+@def $macro15($MODIFIER)
+$LICENSE()
+$HEADER()
+int main(void)
+{
+	$MODIFIER union Union {
+		int             Int;
+		char            Char;
+	}               Union;
+
+$test1(Union.Int)
+
+$test1(Union.Char)
+
+	return 0;
+}
+@def_
+
+
+@def $macro16($MODIFIER)
+$LICENSE()
+$HEADER()
+int main(void)
+{
+	$MODIFIER INTDEF          Intdef;
+	$MODIFIER SHORTDEF        Shortdef;
+	$MODIFIER UNSIGNDEF       Unsigndef;
+	$MODIFIER CHARDEF         Chardef;
+	$MODIFIER STRDEF          Strdef;
+	$MODIFIER UNIDEF          Unidef;
+
+$test1(Intdef)
+
+$test1(Shortdef)
+
+$test1(Unsigndef)
+
+$test1(Chardef)
+
+$test1(Strdef.Int)
+
+$test1(Strdef.Short)
+
+$test1(Strdef.Unsigned)
+
+$test1(Strdef.Char)
+
+$test1(Unidef.Int)
+
+$test1(Unidef.Char)
+
+	return 0;
+}
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir c89.2-3-03
+@file >>ft???_float.c $macro0([,extern,static]) @file_
+@file >>ft???.c $macro1([,static]) @file_
+@file >>ft???_union.c $macro2([,static]) @file_
+@file >>ft???_typedef.c $macro3([,static]) @file_
+@file >>lt???_long.c $macro4([,extern,static]) @file_
+@file >>lt???_struct.c $macro5([,static]) @file_
+@file >>lt???_union.c $macro6([,static]) @file_
+@file >>lt???_typedef.c $macro7([,static]) @file_
+@file >>stnd3.03.h $macro8() @file_
+@file >>fstnd3.03.h $macro9() @file_
+@file >>t???_int.c $macro10([,extern,static,register]) @file_
+@file >>t???_short.c $macro11([,extern,static,register]) @file_
+@file >>t???_unsigned.c $macro12([,extern,static,register]) @file_
+@file >>t???_char.c $macro13([,extern,static,register]) @file_
+@file >>t???_struct.c $macro14([,static,register]) @file_
+@file >>t???_union.c $macro15([,static,register]) @file_
+@file >>t???_tyoedef.c $macro16([,static,register]) @file_
+@file >>testout.h $testout() @file_
+@dir_

@@ -1,0 +1,3821 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@comment
+�����t�@�C�����e�X�g
+@comment_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+@def_
+
+@def $macro0()
+$LICENSE()
+#include "testout.h"
+#define NO 0
+#define OK 1
+#define NoMistake 00
+@def_
+@def $macro1()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+float           i;
+
+extern void levelOneNodeOne(float*);
+extern void levelOneNodeTwo(float*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, no return value and legal 
+ */
+{
+
+	i = 1.0;
+	levelOneNodeOne(&i);
+	i = 2.0;
+	levelOneNodeTwo(&i);
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro2()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i11;
+
+extern void levelTwoNodeOne(float*);
+extern void levelTwoNodeTwo(float*);
+
+void levelOneNodeOne(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i;
+
+	i11 = *argument;
+	if (! TGEN_FLT_EQ(*argument, i) )
+		statusFlag++;
+
+	i11 = 3.0;
+	levelTwoNodeOne(&i11);
+	i11 = 4.0;
+	levelTwoNodeTwo(&i11);
+}
+@def_
+@def $macro3()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i12;
+
+extern void levelTwoNodeThree(float*);
+extern void levelTwoNodeFour(float*);
+
+void levelOneNodeTwo(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i;
+
+	i12 = *argument;
+	if (! TGEN_FLT_EQ(i12, i) )
+		statusFlag++;
+
+	i12 = 5.0;
+	levelTwoNodeThree(&i12);
+	i12 = 6.0;
+	levelTwoNodeFour(&i12);
+}
+@def_
+@def $macro4()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i21;
+
+extern void levelThreeLeafOne(float*);
+extern void levelThreeLeafTwo(float*);
+
+void levelTwoNodeOne(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i11;
+
+	i21 = *argument;
+	if (! TGEN_FLT_EQ(i21, i11) )
+		statusFlag++;
+
+	i21 = 7.0;
+	levelThreeLeafOne(&i21);
+	i21 = 8.0;
+	levelThreeLeafTwo(&i21);
+}
+@def_
+@def $macro5()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i22;
+
+extern void levelThreeLeafThree(float*);
+extern void levelThreeLeafFour(float*);
+
+void levelTwoNodeTwo(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i11;
+
+	i22 = *argument;
+	if (! TGEN_FLT_EQ(i22, i11) )
+		statusFlag++;
+
+	i22 = 9.0;
+	levelThreeLeafThree(&i22);
+	i22 = 10.0;
+	levelThreeLeafFour(&i22);
+}
+@def_
+@def $macro6()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i23;
+
+extern void levelThreeLeafFive(float*);
+extern void levelThreeLeafSix(float*);
+
+void levelTwoNodeThree(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i12;
+
+	i23 = *argument;
+	if (! TGEN_FLT_EQ(i23, i12) )
+		statusFlag++;
+
+	i23 = 11.0;
+	levelThreeLeafFive(&i23);
+	i23 = 12.0;
+	levelThreeLeafSix(&i23);
+}
+@def_
+@def $macro7()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i24;
+
+void levelThreeLeafSeven(float*);
+void levelThreeLeafEight(float*);
+
+void levelTwoNodeFour(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i12;
+
+	i24 = *argument;
+	if (! TGEN_FLT_EQ(i24, i12) )
+		statusFlag++;
+
+	i24 = 13.0;
+	levelThreeLeafSeven(&i24);
+	i24 = 14.0;
+	levelThreeLeafEight(&i24);
+}
+@def_
+@def $macro8()
+$LICENSE()
+$HEAD()
+#include "def.h"
+
+void levelThreeLeafOne(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i21;
+
+	if (! TGEN_FLT_EQ(*argument, i21) )
+		statusFlag++;
+}
+@def_
+@def $macro9()
+$LICENSE()
+$HEAD()
+#include "def.h"
+
+void levelThreeLeafTwo(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i21;
+
+	if (! TGEN_FLT_EQ(*argument, i21) )
+		statusFlag++;
+}
+@def_
+@def $macro10()
+$LICENSE()
+$HEAD()
+#include "def.h"
+
+void levelThreeLeafThree(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i22;
+
+	if (! TGEN_FLT_EQ(*argument, i22) )
+		statusFlag++;
+}
+@def_
+@def $macro11()
+$LICENSE()
+$HEAD()
+#include "def.h"
+
+void levelThreeLeafFour(float *argument)
+{
+
+	extern short    statusFlag;
+	extern float    i22;
+
+	if (! TGEN_FLT_EQ(*argument, i22) )
+		statusFlag++;
+}
+@def_
+@def $macro12()
+$LICENSE()
+$HEAD()
+#include "def.h"
+
+void levelThreeLeafFive(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i23;
+
+	if (! TGEN_FLT_EQ(*argument, i23) )
+		statusFlag++;
+}
+@def_
+@def $macro13()
+$LICENSE()
+$HEAD()
+#include "def.h"
+
+void levelThreeLeafSix(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i23;
+
+	if (! TGEN_FLT_EQ(*argument, i23) )
+		statusFlag++;
+}
+@def_
+@def $macro14()
+$LICENSE()
+$HEAD()
+#include "def.h"
+
+void levelThreeLeafSeven(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i24;
+
+	if (! TGEN_FLT_EQ(*argument, i24) )
+		statusFlag++;
+}
+@def_
+@def $macro15()
+$LICENSE()
+$HEAD()
+#include "def.h"
+
+void levelThreeLeafEight(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i24;
+
+	if (! TGEN_FLT_EQ(*argument, i24) )
+		statusFlag++;
+}
+@def_
+@def $macro16()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+float           i;
+float           result;
+
+extern void levelOneNodeOne(float*);
+extern void levelOneNodeTwo(float*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, no return value and illegal 
+ */
+{
+
+	i = 1.0;
+	/*result = levelOneNodeOne(&i);*/
+	i = 2.0;
+	/*result = levelOneNodeTwo(&i);*/
+	if ( TGEN_FLT_EQ(result, 0) )
+		result++;
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro17()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i11;
+
+extern void levelTwoNodeOne(float*);
+extern void levelTwoNodeTwo(float*);
+
+void levelOneNodeOne(float *argument)
+{
+	extern short    statusFlag;
+	extern float    result;
+	extern float    i;
+
+	i11 = *argument;
+	if (! TGEN_FLT_EQ(i11, i) )
+		statusFlag++;
+
+	i11 = 3.0;
+	/*result = levelTwoNodeOne(&i11);*/
+	i11 = 4.0;
+	/*result = levelTwoNodeTwo(&i11);*/
+}
+@def_
+@def $macro18()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i12;
+
+extern void levelTwoNodeThree(float*);
+extern void levelTwoNodeFour(float*);
+
+void levelOneNodeTwo(float *argument)
+{
+	extern short    statusFlag;
+	extern float    result;
+	extern float    i;
+
+	i12 = *argument;
+	if (! TGEN_FLT_EQ(i12, i) )
+		statusFlag++;
+
+	i12 = 5.0;
+	/*result = levelTwoNodeThree(&i12);*/
+	i12 = 6.0;
+	/*result = levelTwoNodeFour(&i12);*/
+
+}
+@def_
+@def $macro19()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i21;
+
+extern void levelThreeLeafOne(float*);
+extern void levelThreeLeafTwo(float*);
+
+void levelTwoNodeOne(float *argument)
+{
+	extern short    statusFlag;
+	extern float    result;
+	extern float    i11;
+
+	i21 = *argument;
+	if (! TGEN_FLT_EQ(i21, i11) )
+		statusFlag++;
+
+	i21 = 7.0;
+	/*result = levelThreeLeafOne(&i21);*/
+	i21 = 8.0;
+	/*result = levelThreeLeafTwo(&i21);*/
+}
+@def_
+@def $macro20()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i22;
+
+extern void levelThreeLeafThree(float*);
+extern void levelThreeLeafFour(float*);
+
+void levelTwoNodeTwo(float *argument)
+{
+	extern short    statusFlag;
+	extern float    result;
+	extern float    i11;
+
+	i22 = *argument;
+	if (! TGEN_FLT_EQ(i22, i11) )
+		statusFlag++;
+
+	i22 = 9.0;
+	/*result = levelThreeLeafThree(&i22);*/
+	i22 = 10.0;
+	/*result = levelThreeLeafFour(&i22);*/
+}
+@def_
+@def $macro21()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i23;
+
+extern void levelThreeLeafFive(float*);
+extern void levelThreeLeafSix(float*);
+
+void levelTwoNodeThree(float *argument)
+{
+	extern short    statusFlag;
+	extern float    result;
+	extern float    i12;
+
+	i23 = *argument;
+	if (! TGEN_FLT_EQ(i23, i12) )
+		statusFlag++;
+
+	i23 = 11.0;
+	/*result = levelThreeLeafFive(&i23);*/
+	i23 = 12.0;
+	/*result = levelThreeLeafSix(&i23);*/
+}
+@def_
+@def $macro22()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i24;
+
+extern void levelThreeLeafSeven(float*);
+extern void levelThreeLeafEight(float*);
+
+void levelTwoNodeFour(float *argument)
+{
+	extern short    statusFlag;
+	extern float    result;
+	extern float    i12;
+
+	i24 = *argument;
+	if (! TGEN_FLT_EQ(i24, i12) )
+		statusFlag++;
+
+	i24 = 13.0;
+	/*result = levelThreeLeafSeven(&i24);*/
+	i24 = 14.0;
+	/*result = levelThreeLeafEight(&i24);*/
+}
+@def_
+@def $macro23()
+$LICENSE()
+$HEAD()
+#include "def.h"
+void levelThreeLeafOne(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i21;
+
+	if (! TGEN_FLT_EQ(*argument, i21) )
+		statusFlag++;
+}
+@def_
+@def $macro24()
+$LICENSE()
+$HEAD()
+#include "def.h"
+void levelThreeLeafTwo(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i21;
+
+	if (! TGEN_FLT_EQ(*argument, i21) )
+		statusFlag++;
+}
+@def_
+@def $macro25()
+$LICENSE()
+$HEAD()
+#include "def.h"
+void levelThreeLeafThree(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i22;
+
+	if (! TGEN_FLT_EQ(*argument, i22) )
+		statusFlag++;
+}
+@def_
+@def $macro26()
+$LICENSE()
+$HEAD()
+#include "def.h"
+void levelThreeLeafFour(float *argument)
+{
+
+	extern short    statusFlag;
+	extern float    i22;
+
+	if (! TGEN_FLT_EQ(*argument, i22) )
+		statusFlag++;
+}
+@def_
+@def $macro27()
+$LICENSE()
+$HEAD()
+#include "def.h"
+void levelThreeLeafFive(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i23;
+
+	if (! TGEN_FLT_EQ(*argument, i23) )
+		statusFlag++;
+}
+@def_
+@def $macro28()
+$LICENSE()
+$HEAD()
+#include "def.h"
+void levelThreeLeafSix(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i23;
+
+	if (! TGEN_FLT_EQ(*argument, i23) )
+		statusFlag++;
+}
+@def_
+@def $macro29()
+$LICENSE()
+$HEAD()
+#include "def.h"
+void levelThreeLeafSeven(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i24;
+
+	if (! TGEN_FLT_EQ(*argument, i24) )
+		statusFlag++;
+}
+@def_
+@def $macro30()
+$LICENSE()
+$HEAD()
+#include "def.h"
+void levelThreeLeafEight(float *argument)
+{
+	extern short    statusFlag;
+	extern float    i24;
+
+	if (! TGEN_FLT_EQ(*argument, i24) )
+		statusFlag++;
+}
+@def_
+@def $macro31()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+float           i;
+
+extern int levelOneNodeOne(float*);
+extern int levelOneNodeTwo(float*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration 
+ */
+{
+	extern float    i11, i12;
+	float           result = 0;
+
+	i = 1.0;
+	result = levelOneNodeOne(&i);
+	if (! TGEN_FLT_EQ(result, i11) )
+		statusFlag++;
+
+	i = 2.0;
+	result = levelOneNodeTwo(&i);
+	if (! TGEN_FLT_EQ(result, i12) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro32()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i11;
+
+extern int levelTwoNodeOne(float*);
+extern int levelTwoNodeTwo(float*);
+
+int levelOneNodeOne(float *argument)
+{
+	extern float    i21, i22;
+	extern short    statusFlag;
+	float           result = 0;
+
+	i11 = 3.0;
+	result = levelTwoNodeOne(&i11);
+	if (! TGEN_FLT_EQ(result, i21) )
+		statusFlag++;
+
+	i11 = 4.0;
+	result = levelTwoNodeTwo(&i11);
+	if (! TGEN_FLT_EQ(result, i22) )
+		statusFlag++;
+
+	i11 = *argument;
+	return *argument;
+}
+@def_
+@def $macro33()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i12;
+
+extern int levelTwoNodeThree(float*);
+extern int levelTwoNodeFour(float*);
+
+int levelOneNodeTwo(float *argument)
+{
+	extern float    i23, i24;
+	extern short    statusFlag;
+	float           result = 0.0;
+
+	i12 = 5.0;
+	result = levelTwoNodeThree(&i12);
+	if (! TGEN_FLT_EQ(result, i23) )
+		statusFlag++;
+
+	i12 = 6.0;
+	result = levelTwoNodeFour(&i12);
+	if (! TGEN_FLT_EQ(result, i24) )
+		statusFlag++;
+
+	i12 = *argument;
+	return *argument;
+}
+@def_
+@def $macro34()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i21;
+
+extern int levelThreeLeafOne(float*);
+extern int levelThreeLeafTwo(float*);
+
+int levelTwoNodeOne(float *argument)
+{
+	extern float    i31, i32;
+	extern short    statusFlag;
+	float           result = 0;
+
+	i21 = 7.0;
+	result = levelThreeLeafOne(&i21);
+	if (! TGEN_FLT_EQ(result, i31) )
+		statusFlag++;
+
+	i21 = 8.0;
+	result = levelThreeLeafTwo(&i21);
+	if (! TGEN_FLT_EQ(result, i32) )
+		statusFlag++;
+
+	i21 = *argument;
+	return *argument;
+}
+@def_
+@def $macro35()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i22;
+
+extern int levelThreeLeafThree(float*);
+extern int levelThreeLeafFour(float*);
+
+int levelTwoNodeTwo(float *argument)
+{
+	extern float    i33, i34;
+	extern short    statusFlag;
+	float           result = 0;
+
+	i22 = 9.0;
+	result = levelThreeLeafThree(&i22);
+	if (! TGEN_FLT_EQ(result, i33) )
+		statusFlag++;
+
+	i22 = 10.0;
+	result = levelThreeLeafFour(&i22);
+	if (! TGEN_FLT_EQ(result, i34) )
+		statusFlag++;
+
+	i22 = *argument;
+	return *argument;
+}
+@def_
+@def $macro36()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i23;
+
+extern int levelThreeLeafFive(float*);
+extern int levelThreeLeafSix(float*);
+
+int levelTwoNodeThree(float *argument)
+{
+	extern float    i35, i36;
+	extern short    statusFlag;
+	float           result = 0;
+
+	i23 = 11.0;
+	result = levelThreeLeafFive(&i23);
+	if (! TGEN_FLT_EQ(result, i35) )
+		statusFlag++;
+
+	i23 = 12.0;
+	result = levelThreeLeafSix(&i23);
+	if (! TGEN_FLT_EQ(result, i36) )
+		statusFlag++;
+
+	i23 = *argument;
+	return *argument;
+}
+@def_
+@def $macro37()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i24;
+
+extern int levelThreeLeafSeven(float*);
+extern int levelThreeLeafEight(float*);
+
+int levelTwoNodeFour(float *argument)
+{
+	extern float    i37, i38;
+	extern short    statusFlag;
+	float           result = 0;
+
+	i24 = 13.0;
+	result = levelThreeLeafSeven(&i24);
+	if (! TGEN_FLT_EQ(result, i37) )
+		statusFlag++;
+
+	i24 = 14.0;
+	result = levelThreeLeafEight(&i24);
+	if (! TGEN_FLT_EQ(result, i38) )
+		statusFlag++;
+
+	i24 = *argument;
+	return *argument;
+}
+@def_
+@def $macro38()
+$LICENSE()
+$HEAD()
+
+float           i31;
+
+int levelThreeLeafOne(float *argument)
+{
+	i31 = *argument;
+	return *argument;
+}
+@def_
+@def $macro39()
+$LICENSE()
+$HEAD()
+
+float           i32;
+
+int levelThreeLeafTwo(float *argument)
+{
+	i32 = *argument;
+	return *argument;
+}
+@def_
+@def $macro40()
+$LICENSE()
+$HEAD()
+
+float           i33;
+
+int levelThreeLeafThree(float *argument)
+{
+	i33 = *argument;
+	return *argument;
+}
+@def_
+@def $macro41()
+$LICENSE()
+$HEAD()
+
+float           i34;
+
+int levelThreeLeafFour(float *argument)
+{
+	i34 = *argument;
+	return *argument;
+}
+@def_
+@def $macro42()
+$LICENSE()
+$HEAD()
+
+float           i35;
+
+int levelThreeLeafFive(float *argument)
+{
+	i35 = *argument;
+	return *argument;
+}
+@def_
+@def $macro43()
+$LICENSE()
+$HEAD()
+
+float           i36;
+
+int levelThreeLeafSix(float *argument)
+{
+	i36 = *argument;
+	return *argument;
+}
+@def_
+@def $macro44()
+$LICENSE()
+$HEAD()
+
+float           i37;
+
+int levelThreeLeafSeven(float *argument)
+{
+	i37 = *argument;
+	return *argument;
+}
+@def_
+@def $macro45()
+$LICENSE()
+$HEAD()
+
+float           i38;
+
+int levelThreeLeafEight(float *argument)
+{
+	i38 = *argument;
+	return *argument;
+}
+@def_
+@def $macro46()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+float           statusFlag = NoMistake;
+float           i;
+
+extern float levelOneNodeOne(float*);
+extern float levelOneNodeTwo(float*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration 
+ */
+{
+	extern float    i11, i12;
+	float           result = 0;
+
+
+	i = 1.0;
+	result = levelOneNodeOne(&i);
+	if (! TGEN_FLT_EQ(result, i11) )
+		statusFlag++;
+
+	i = 2.0;
+	result = levelOneNodeTwo(&i);
+	if (! TGEN_FLT_EQ(result, i12) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro47()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i11;
+
+extern float levelTwoNodeOne(float*);
+extern float levelTwoNodeTwo(float*);
+
+float 
+levelOneNodeOne(float *argument)
+{
+	extern float    i21, i22;
+	extern short    statusFlag;
+	float           result = 0;
+
+
+	i11 = 3.0;
+	result = levelTwoNodeOne(&i11);
+	if (! TGEN_FLT_EQ(result, i21) )
+		statusFlag++;
+
+	i11 = 4.0;
+	result = levelTwoNodeTwo(&i11);
+	if (! TGEN_FLT_EQ(result, i22) )
+		statusFlag++;
+
+	i11 = *argument;
+	return *argument;
+}
+@def_
+@def $macro48()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i12;
+
+extern float levelTwoNodeThree(float*);
+extern float levelTwoNodeFour(float*);
+
+float 
+levelOneNodeTwo(float *argument)
+{
+	extern float    i23, i24;
+	extern short    statusFlag;
+	float           result = 0.0;
+
+
+	i12 = 5.0;
+	result = levelTwoNodeThree(&i12);
+	if (! TGEN_FLT_EQ(result, i23) )
+		statusFlag++;
+
+	i12 = 6.0;
+	result = levelTwoNodeFour(&i12);
+	if (! TGEN_FLT_EQ(result, i24) )
+		statusFlag++;
+
+	i12 = *argument;
+	return *argument;
+}
+@def_
+@def $macro49()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i21;
+
+extern float levelThreeLeafOne(float*);
+extern float levelThreeLeafTwo(float*);
+
+float 
+levelTwoNodeOne(float *argument)
+{
+	extern float    i31, i32;
+	extern short    statusFlag;
+	float           result = 0;
+
+
+	i21 = 7.0;
+	result = levelThreeLeafOne(&i21);
+	if (! TGEN_FLT_EQ(result, i31) )
+		statusFlag++;
+
+	i21 = 8.0;
+	result = levelThreeLeafTwo(&i21);
+	if (! TGEN_FLT_EQ(result, i32) )
+		statusFlag++;
+
+	i21 = *argument;
+	return *argument;
+}
+@def_
+@def $macro50()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i22;
+
+extern float levelThreeLeafThree(float*);
+extern float levelThreeLeafFour(float*);
+
+float 
+levelTwoNodeTwo(float *argument)
+{
+	extern float    i33, i34;
+	extern short    statusFlag;
+	float           result = 0;
+
+
+	i22 = 9.0;
+	result = levelThreeLeafThree(&i22);
+	if (! TGEN_FLT_EQ(result, i33) )
+		statusFlag++;
+
+	i22 = 10.0;
+	result = levelThreeLeafFour(&i22);
+	if (! TGEN_FLT_EQ(result, i34) )
+		statusFlag++;
+
+	i22 = *argument;
+	return *argument;
+}
+@def_
+@def $macro51()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i23;
+
+extern float levelThreeLeafFive(float*);
+extern float levelThreeLeafSix(float*);
+
+float 
+levelTwoNodeThree(float *argument)
+{
+	extern float    i35, i36;
+	extern short    statusFlag;
+	float           result = 0;
+	float           levelThreeLeafFive(), levelThreeLeafSix();
+
+
+	i23 = 11.0;
+	result = levelThreeLeafFive(&i23);
+	if (! TGEN_FLT_EQ(result, i35) )
+		statusFlag++;
+
+	i23 = 12.0;
+	result = levelThreeLeafSix(&i23);
+	if (! TGEN_FLT_EQ(result, i36) )
+		statusFlag++;
+
+	i23 = *argument;
+	return *argument;
+}
+@def_
+@def $macro52()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           i24;
+
+extern float levelThreeLeafSeven(float*);
+extern float levelThreeLeafEight(float*);
+
+float 
+levelTwoNodeFour(float *argument)
+{
+	extern float    i37, i38;
+	extern short    statusFlag;
+	float           result = 0;
+	float           levelThreeLeafSeven(), levelThreeLeafEight();
+
+
+	i24 = 13.0;
+	result = levelThreeLeafSeven(&i24);
+	if (! TGEN_FLT_EQ(result, i37) )
+		statusFlag++;
+
+	i24 = 14.0;
+	result = levelThreeLeafEight(&i24);
+	if (! TGEN_FLT_EQ(result, i38) )
+		statusFlag++;
+
+	i24 = *argument;
+	return *argument;
+}
+@def_
+@def $macro53()
+$LICENSE()
+$HEAD()
+
+float           i31;
+
+float 
+levelThreeLeafOne(float *argument)
+{
+	i31 = *argument;
+	return *argument;
+}
+@def_
+@def $macro54()
+$LICENSE()
+$HEAD()
+
+float           i32;
+
+float 
+levelThreeLeafTwo(float *argument)
+{
+	i32 = *argument;
+	return *argument;
+}
+@def_
+@def $macro55()
+$LICENSE()
+$HEAD()
+
+float           i33;
+
+float 
+levelThreeLeafThree(float *argument)
+{
+	i33 = *argument;
+	return *argument;
+}
+@def_
+@def $macro56()
+$LICENSE()
+$HEAD()
+
+float           i34;
+
+float 
+levelThreeLeafFour(float *argument)
+{
+	i34 = *argument;
+	return *argument;
+}
+@def_
+@def $macro57()
+$LICENSE()
+$HEAD()
+
+float           i35;
+
+float 
+levelThreeLeafFive(float *argument)
+{
+	i35 = *argument;
+	return *argument;
+}
+@def_
+@def $macro58()
+$LICENSE()
+$HEAD()
+
+float           i36;
+
+float 
+levelThreeLeafSix(float *argument)
+{
+	i36 = *argument;
+	return *argument;
+}
+@def_
+@def $macro59()
+$LICENSE()
+$HEAD()
+
+float           i37;
+
+float 
+levelThreeLeafSeven(float *argument)
+{
+	i37 = *argument;
+	return *argument;
+}
+@def_
+@def $macro60()
+$LICENSE()
+$HEAD()
+
+float           i38;
+
+float 
+levelThreeLeafEight(float *argument)
+{
+	i38 = *argument;
+	return *argument;
+}
+@def_
+@def $macro61()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+float           i = 12.0;
+
+extern int dummy1(float (*) (float*), float*);
+extern float divide4(float*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : linear tree structure, return value, legal pointer to function returning
+ * an integer 
+ */
+{
+	extern float    dum1;
+	float result = 0;
+	
+	result = dummy1(divide4, &i);
+	if (! TGEN_FLT_EQ(result, dum1) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro62()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           dum1;
+
+int dummy1(float (*func)(float*), float *floater)
+{
+	extern short    statusFlag;
+	extern float    div4;
+
+	float           i;
+
+	i = (*func) (floater);
+	if (! TGEN_FLT_EQ(i, div4) )
+		statusFlag++;
+	dum1 = i;
+	return i;
+}
+@def_
+@def $macro63()
+$LICENSE()
+$HEAD()
+
+float           div4;
+
+extern int dummy2(float (*) (float*), float*);
+extern float divide2(float*);
+
+float 
+divide4(float *floater)
+{
+
+	div4 = dummy2(divide2, floater) / 2;
+	return div4;
+}
+@def_
+@def $macro64()
+$LICENSE()
+$HEAD()
+#include "def.h"
+int dummy2(float (*func)(float*), float *floater)
+{
+	extern short    statusFlag;
+	extern float    div2;
+
+	float           i;
+
+	i = (*func) (floater);
+	if (! TGEN_FLT_EQ(i, div2) )
+		statusFlag++;
+	return i;
+}
+@def_
+@def $macro65()
+$LICENSE()
+$HEAD()
+
+float           div2;
+
+float 
+divide2(float *floater)
+{
+	div2 = *floater / 2;
+	return *floater / 2;
+}
+@def_
+@def $macro66()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+float           i, j;
+
+extern int levelOneNodeOne(float*);
+extern int levelOneNodeTwo(float*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, used in conditional expression, no function
+ * declaration 
+ */
+{
+
+	extern float    l11, l12;
+	float arg_a, arg_b;
+
+
+	i = 1.0;
+	j = i++;
+
+	arg_a = levelOneNodeOne(&j) + levelOneNodeTwo(&i);
+	arg_b = l11 + l12;
+
+	if (! TGEN_FLT_EQ(arg_a , arg_b) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro67()
+$LICENSE()
+$HEAD()
+
+float           l11;
+float           i2, j2;
+
+extern int levelTwoNodeOne(float*);
+extern int levelTwoNodeTwo(float*);
+
+int levelOneNodeOne(float *variable)
+{
+	j2 = (i2 = (*variable) + 1) + 1;
+	l11 = levelTwoNodeOne(&i2) + levelTwoNodeTwo(&j2);
+	return l11;
+}
+@def_
+@def $macro68()
+$LICENSE()
+$HEAD()
+
+float           l12;
+float           i3, j3;
+
+extern int levelTwoNodeThree(float*);
+extern int levelTwoNodeFour(float*);
+
+int levelOneNodeTwo(float *variable)
+{
+	j3 = (i3 = (*variable) + 1) + 1;
+	l12 = levelTwoNodeThree(&i3) + levelTwoNodeFour(&j3);
+	return l12;
+}
+@def_
+@def $macro69()
+$LICENSE()
+$HEAD()
+
+float           i4, j4;
+
+extern int levelThreeLeafOne(float*);
+extern int levelThreeLeafTwo(float*);
+
+int levelTwoNodeOne(float *variable)
+{
+	j4 = (i4 = (*variable) + 1) + 1;
+	return levelThreeLeafOne(&i4) + levelThreeLeafTwo(&j4);
+}
+@def_
+@def $macro70()
+$LICENSE()
+$HEAD()
+
+float           i5, j5;
+
+extern int levelThreeLeafThree(float*);
+extern int levelThreeLeafFour(float*);
+
+int levelTwoNodeTwo(float *variable)
+{
+	j5 = (i5 = (*variable) + 1) + 1;
+	return levelThreeLeafThree(&i5) + levelThreeLeafFour(&j5);
+}
+@def_
+@def $macro71()
+$LICENSE()
+$HEAD()
+
+float           i6, j6;
+
+extern int levelThreeLeafFive(float*);
+extern int levelThreeLeafFine(float*);
+
+int levelTwoNodeThree(float *variable)
+{
+	j6 = (i6 = (*variable) + 1) + 1;
+	return levelThreeLeafFive(&i6) + levelThreeLeafSix(&j6);
+}
+@def_
+@def $macro72()
+$LICENSE()
+$HEAD()
+
+extern float           i6, j6;
+
+extern int levelThreeLeafSeven(float*);
+extern int levelThreeLeafEight(float*);
+
+int levelTwoNodeFour(float *variable)
+{
+	j6 = (i6 = (*variable) + 1) + 1;
+	return levelThreeLeafSeven(&i6) + levelThreeLeafEight(&j6);
+}
+@def_
+@def $macro73()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafOne(float *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro74()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafTwo(float *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro75()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafThree(float *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro76()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafFour(float *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro77()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafFive(float *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro78()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafSix(float *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro79()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafSeven(float *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro80()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafEight(float *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro81()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+float           i = 1.0;
+
+extern float levelOneNodeOne(float*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, used in conditional expression, integer function
+ * declaration 
+ */
+{
+	extern float    l1;
+	float           arg_a, arg_b;
+
+	arg_a = levelOneNodeOne(&i);
+	arg_b = l1;
+
+	if (! TGEN_FLT_EQ(arg_a, arg_b) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro82()
+$LICENSE()
+$HEAD()
+
+float           l1;
+float           i2;
+
+extern float levelTwoNodeOne(float*);
+
+float 
+levelOneNodeOne(float *variable)
+{
+
+	i2 = 2.0 * (*variable);
+	l1 = 2 * levelTwoNodeOne(&i2);
+	return l1;
+}
+@def_
+@def $macro83()
+$LICENSE()
+$HEAD()
+
+float           i3;
+
+extern float levelThreeLeafOne(float*);
+
+float 
+levelTwoNodeOne(float *variable)
+{
+
+	i3 = 2.0 * (*variable);
+	return 2 * levelThreeLeafOne(&i3);
+}
+@def_
+@def $macro84()
+$LICENSE()
+$HEAD()
+
+float 
+levelThreeLeafOne(float *variable)
+{
+	return 2 * (*variable);
+}
+@def_
+@def $macro85()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+float           i = 12.0;
+
+extern int dummy1(float (*)(float*), float*);
+extern float divide4(float*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : linear tree structure, in conditional expression, pointer to function
+ * returning an integer 
+ */
+{
+	extern float    dum1;
+	float           arg_a, arg_b;
+
+	arg_a = dummy1(divide4, &i);
+	arg_b = dum1;
+
+	if (! TGEN_FLT_EQ(arg_a, arg_b) )
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro86()
+$LICENSE()
+$HEAD()
+#include "def.h"
+float           dum1;
+
+int dummy1(float (*func)(float*), float *integer)
+{
+	extern short    statusFlag;
+	extern float    div4;
+
+	float           ii;
+
+	if (! TGEN_FLT_EQ((ii = (*func) (integer)), div4) )
+		statusFlag++;
+
+	dum1 = ii;
+	return ii;
+}
+@def_
+@def $macro87()
+$LICENSE()
+$HEAD()
+
+float           div4;
+
+extern float divide2(float*);
+extern int dummy2(float (*)(float*), float*);
+
+float 
+divide4(float *integer)
+{
+
+	div4 = dummy2(divide2, integer) / 2;
+	return div4;
+}
+@def_
+@def $macro88()
+$LICENSE()
+$HEAD()
+#include "def.h"
+
+int dummy2(float (*func)(float*), float *integer)
+{
+	extern short    statusFlag;
+	extern float    div2;
+
+	float           ii;
+
+	if (! TGEN_FLT_EQ( (ii = (*func) (integer)),  div2) )
+		statusFlag++;
+	return ii;
+}
+@def_
+@def $macro89()
+$LICENSE()
+$HEAD()
+
+float           div2;
+
+float 
+divide2(float *integer)
+{
+	div2 = *integer / 2;
+	return *integer / 2;
+}
+@def_
+@def $macro90()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           i;
+
+extern void levelOneNodeOne(short*);
+extern void levelOneNodeTwo(short*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, no return value and legal 
+ */
+{
+
+	i = 1;
+	levelOneNodeOne(&i);
+	i = 2;
+	levelOneNodeTwo(&i);
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro91()
+$LICENSE()
+$HEAD()
+
+short           i11;
+
+extern void levelTwoNodeOne(short*);
+extern void levelTwoNodeTwo(short*);
+
+void levelOneNodeOne(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i;
+
+	i11 = *argument;
+	if (*argument != i)
+		statusFlag++;
+
+	i11 = 3;
+	levelTwoNodeOne(&i11);
+	i11 = 4;
+	levelTwoNodeTwo(&i11);
+}
+@def_
+@def $macro92()
+$LICENSE()
+$HEAD()
+
+short           i12;
+
+extern void levelTwoNodeThree(short*);
+extern void levelTwoNodeFour(short*);
+
+void levelOneNodeTwo(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i;
+
+	i12 = *argument;
+	if (i12 != i)
+		statusFlag++;
+
+	i12 = 5;
+	levelTwoNodeThree(&i12);
+	i12 = 6;
+	levelTwoNodeFour(&i12);
+}
+@def_
+@def $macro93()
+$LICENSE()
+$HEAD()
+
+short           i21;
+
+extern void levelThreeLeafOne(short*);
+extern void levelThreeLeafTwo(short*);
+
+void levelTwoNodeOne(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i11;
+
+	i21 = *argument;
+	if (i21 != i11)
+		statusFlag++;
+
+	i21 = 7;
+	levelThreeLeafOne(&i21);
+	i21 = 8;
+	levelThreeLeafTwo(&i21);
+}
+@def_
+@def $macro94()
+$LICENSE()
+$HEAD()
+
+short           i22;
+
+extern void levelThreeLeafThree(short*);
+extern void levelThreeLeafFour(short*);
+
+void levelTwoNodeTwo(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i11;
+
+	i22 = *argument;
+	if (i22 != i11)
+		statusFlag++;
+
+	i22 = 9;
+	levelThreeLeafThree(&i22);
+	i22 = 10;
+	levelThreeLeafFour(&i22);
+}
+@def_
+@def $macro95()
+$LICENSE()
+$HEAD()
+
+short           i23;
+
+extern void levelThreeLeafFive(short*);
+extern void levelThreeLeafSix(short*);
+
+void levelTwoNodeThree(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i12;
+
+	i23 = *argument;
+	if (i23 != i12)
+		statusFlag++;
+
+	i23 = 11;
+	levelThreeLeafFive(&i23);
+	i23 = 12;
+	levelThreeLeafSix(&i23);
+}
+@def_
+@def $macro96()
+$LICENSE()
+$HEAD()
+
+short           i24;
+
+extern void levelThreeLeafSeven(short*);
+extern void levelThreeLeafEight(short*);
+
+void levelTwoNodeFour(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i12;
+
+	i24 = *argument;
+	if (i24 != i12)
+		statusFlag++;
+
+	i24 = 13;
+	levelThreeLeafSeven(&i24);
+	i24 = 14;
+	levelThreeLeafEight(&i24);
+}
+@def_
+@def $macro97()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafOne(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i21;
+
+	if (*argument != i21)
+		statusFlag++;
+}
+@def_
+@def $macro98()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafTwo(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i21;
+
+	if (*argument != i21)
+		statusFlag++;
+}
+@def_
+@def $macro99()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafThree(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i22;
+
+	if (*argument != i22)
+		statusFlag++;
+}
+@def_
+@def $macro100()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafFour(short *argument)
+{
+
+	extern short    statusFlag;
+	extern short    i22;
+
+	if (*argument != i22)
+		statusFlag++;
+}
+@def_
+@def $macro101()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafFive(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i23;
+
+	if (*argument != i23)
+		statusFlag++;
+}
+@def_
+@def $macro102()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafSix(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i23;
+
+	if (*argument != i23)
+		statusFlag++;
+}
+@def_
+@def $macro103()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafSeven(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i24;
+
+	if (*argument != i24)
+		statusFlag++;
+}
+@def_
+@def $macro104()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafEight(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i24;
+
+	if (*argument != i24)
+		statusFlag++;
+}
+@def_
+@def $macro105()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           i;
+short           result;
+
+extern void levelOneNodeOne(short*);
+extern void levelOneNodeTwo(short*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, no return value and illegal 
+ */
+{
+
+	i = 1;
+	levelOneNodeOne(&i);
+	i = 2;
+	levelOneNodeTwo(&i);
+	if (result == 0)
+		result++;
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro106()
+$LICENSE()
+$HEAD()
+
+short           i11;
+
+extern void levelTwoNodeOne(short*);
+extern void levelTwoNodeOne(short*);
+
+void levelOneNodeOne(short *argument)
+{
+	extern short    statusFlag;
+	extern short    result;
+	extern short    i;
+
+	i11 = *argument;
+	if (i11 != i)
+		statusFlag++;
+
+	i11 = 3;
+	levelTwoNodeOne(&i11);
+	i11 = 4;
+	levelTwoNodeTwo(&i11);
+}
+@def_
+@def $macro107()
+$LICENSE()
+$HEAD()
+
+short           i12;
+
+
+void levelOneNodeTwo(short *argument)
+{
+	extern short    statusFlag;
+	extern short    result;
+	extern short    i;
+
+	i12 = *argument;
+	if (i12 != i)
+		statusFlag++;
+
+	i12 = 5;
+	levelTwoNodeThree(&i12);
+	i12 = 6;
+	levelTwoNodeFour(&i12);
+
+}
+@def_
+@def $macro108()
+$LICENSE()
+$HEAD()
+
+short           i21;
+
+extern void levelThreeLeafOne(short*);
+extern void levelThreeLeafTwo(short*);
+
+levelTwoNodeOne(short *argument)
+{
+	extern short    statusFlag;
+	extern short    result;
+	extern short    i11;
+
+	i21 = *argument;
+	if (i21 != i11)
+		statusFlag++;
+
+	i21 = 7;
+	levelThreeLeafOne(&i21);
+	i21 = 8;
+	levelThreeLeafTwo(&i21);
+}
+@def_
+@def $macro109()
+$LICENSE()
+$HEAD()
+
+short           i22;
+
+extern void levelThreeLeafThree(short*);
+extern void levelThreeLeafFour(short*);
+
+void levelTwoNodeTwo(short *argument)
+{
+	extern short    statusFlag;
+	extern short    result;
+	extern short    i11;
+
+	i22 = *argument;
+	if (i22 != i11)
+		statusFlag++;
+
+	i22 = 9;
+	levelThreeLeafThree(&i22);
+	i22 = 10;
+	levelThreeLeafFour(&i22);
+}
+@def_
+@def $macro110()
+$LICENSE()
+$HEAD()
+
+short           i23;
+
+extern void levelThreeLeafFive(short*);
+extern void levelThreeLeafSix(short*);
+
+void levelTwoNodeThree(short *argument)
+{
+	extern short    statusFlag;
+	extern short    result;
+	extern short    i12;
+
+	i23 = *argument;
+	if (i23 != i12)
+		statusFlag++;
+
+	i23 = 11;
+	levelThreeLeafFive(&i23);
+	i23 = 12;
+	levelThreeLeafSix(&i23);
+}
+@def_
+@def $macro111()
+$LICENSE()
+$HEAD()
+
+short           i24;
+
+extern void levelThreeLeafSeven(short*);
+extern void levelThreeLeafEight(short*);
+
+void levelTwoNodeFour(short *argument)
+{
+	extern short    statusFlag;
+	extern short    result;
+	extern short    i12;
+
+	i24 = *argument;
+	if (i24 != i12)
+		statusFlag++;
+
+	i24 = 13;
+	levelThreeLeafSeven(&i24);
+	i24 = 14;
+	levelThreeLeafEight(&i24);
+}
+@def_
+@def $macro112()
+$LICENSE()
+$HEAD()
+
+
+void levelThreeLeafOne(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i21;
+
+	if (*argument != i21)
+		statusFlag++;
+}
+@def_
+@def $macro113()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafTwo(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i21;
+
+	if (*argument != i21)
+		statusFlag++;
+}
+@def_
+@def $macro114()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafThree(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i22;
+
+	if (*argument != i22)
+		statusFlag++;
+}
+@def_
+@def $macro115()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafFour(short *argument)
+{
+
+	extern short    statusFlag;
+	extern short    i22;
+
+	if (*argument != i22)
+		statusFlag++;
+}
+@def_
+@def $macro116()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafFive(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i23;
+
+	if (*argument != i23)
+		statusFlag++;
+}
+@def_
+@def $macro117()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafSix(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i23;
+
+	if (*argument != i23)
+		statusFlag++;
+}
+@def_
+@def $macro118()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafSeven(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i24;
+
+	if (*argument != i24)
+		statusFlag++;
+}
+@def_
+@def $macro119()
+$LICENSE()
+$HEAD()
+
+void levelThreeLeafEight(short *argument)
+{
+	extern short    statusFlag;
+	extern short    i24;
+
+	if (*argument != i24)
+		statusFlag++;
+}
+@def_
+@def $macro120()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           i;
+
+extern int levelOneNodeOne(short*);
+extern int levelOneNodeTwo(short*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration 
+ */
+{
+	extern short    i11, i12;
+	short           result = 0;
+
+	i = 1;
+	result = levelOneNodeOne(&i);
+	if (result != i11)
+		statusFlag++;
+
+	i = 2;
+	result = levelOneNodeTwo(&i);
+	if (result != i12)
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro121()
+$LICENSE()
+$HEAD()
+
+short           i11;
+
+extern int levelTwoNodeOne(short*);
+extern int levelTwoNodeTwo(short*);
+
+int levelOneNodeOne(short *argument)
+{
+	extern short    i21, i22;
+	extern short    statusFlag;
+	short           result = 0;
+
+	i11 = 3;
+	result = levelTwoNodeOne(&i11);
+	if (result != i21)
+		statusFlag++;
+
+	i11 = 4;
+	result = levelTwoNodeTwo(&i11);
+	if (result != i22)
+		statusFlag++;
+
+	i11 = *argument;
+	return *argument;
+}
+@def_
+@def $macro122()
+$LICENSE()
+$HEAD()
+
+short           i12;
+
+extern int levelTwoNodeThree(short*);
+extern int levelTwoNodeFour(short*);
+
+int levelOneNodeTwo(short *argument)
+{
+	extern short    i23, i24;
+	extern short    statusFlag;
+	short           result = 0;
+
+	i12 = 5;
+	result = levelTwoNodeThree(&i12);
+	if (result != i23)
+		statusFlag++;
+
+	i12 = 6;
+	result = levelTwoNodeFour(&i12);
+	if (result != i24)
+		statusFlag++;
+
+	i12 = *argument;
+	return *argument;
+}
+@def_
+@def $macro123()
+$LICENSE()
+$HEAD()
+
+short           i21;
+
+extern int levelThreeLeafOne(short*);
+extern int levelThreeLeafTwo(short*);
+
+int levelTwoNodeOne(short *argument)
+{
+	extern short    i31, i32;
+	extern short    statusFlag;
+	short           result = 0;
+
+	i21 = 7;
+	result = levelThreeLeafOne(&i21);
+	if (result != i31)
+		statusFlag++;
+
+	i21 = 8;
+	result = levelThreeLeafTwo(&i21);
+	if (result != i32)
+		statusFlag++;
+
+	i21 = *argument;
+	return *argument;
+}
+@def_
+@def $macro124()
+$LICENSE()
+$HEAD()
+
+short           i22;
+
+extern int levelThreeleafThree(short*);
+extern int levelThreeLeafFour(short*);
+
+int levelTwoNodeTwo(short *argument)
+{
+	extern short    i33, i34;
+	extern short    statusFlag;
+	short           result = 0;
+
+	i22 = 9;
+	result = levelThreeLeafThree(&i22);
+	if (result != i33)
+		statusFlag++;
+
+	i22 = 10;
+	result = levelThreeLeafFour(&i22);
+	if (result != i34)
+		statusFlag++;
+
+	i22 = *argument;
+	return *argument;
+}
+@def_
+@def $macro125()
+$LICENSE()
+$HEAD()
+
+short           i23;
+
+extern int levelThreeLeafFive(short*);
+extern int levelThreeLeafSix(short*);
+
+int levelTwoNodeThree(short *argument)
+{
+	extern short    i35, i36;
+	extern short    statusFlag;
+	short           result = 0;
+
+	i23 = 11;
+	result = levelThreeLeafFive(&i23);
+	if (result != i35)
+		statusFlag++;
+
+	i23 = 12;
+	result = levelThreeLeafSix(&i23);
+	if (result != i36)
+		statusFlag++;
+
+	i23 = *argument;
+	return *argument;
+}
+@def_
+@def $macro126()
+$LICENSE()
+$HEAD()
+
+short           i24;
+
+extern int levelThreeLeafSeven(short*);
+extern int levelThreeLeafEight(short*);
+
+int levelTwoNodeFour(short *argument)
+{
+	extern short    i37, i38;
+	extern short    statusFlag;
+	short           result = 0;
+
+	i24 = 13;
+	result = levelThreeLeafSeven(&i24);
+	if (result != i37)
+		statusFlag++;
+
+	i24 = 14;
+	result = levelThreeLeafEight(&i24);
+	if (result != i38)
+		statusFlag++;
+
+	i24 = *argument;
+	return *argument;
+}
+@def_
+@def $macro127()
+$LICENSE()
+$HEAD()
+
+short           i31;
+
+int levelThreeLeafOne(short *argument)
+{
+	i31 = *argument;
+	return *argument;
+}
+@def_
+@def $macro128()
+$LICENSE()
+$HEAD()
+
+short           i32;
+
+int levelThreeLeafTwo(short *argument)
+{
+	i32 = *argument;
+	return *argument;
+}
+@def_
+@def $macro129()
+$LICENSE()
+$HEAD()
+
+short           i33;
+
+int levelThreeLeafThree(short *argument)
+{
+	i33 = *argument;
+	return *argument;
+}
+@def_
+@def $macro130()
+$LICENSE()
+$HEAD()
+
+short           i34;
+
+int levelThreeLeafFour(short *argument)
+{
+	i34 = *argument;
+	return *argument;
+}
+@def_
+@def $macro131()
+$LICENSE()
+$HEAD()
+
+short           i35;
+
+int levelThreeLeafFive(short *argument)
+{
+	i35 = *argument;
+	return *argument;
+}
+@def_
+@def $macro132()
+$LICENSE()
+$HEAD()
+
+short           i36;
+
+int levelThreeLeafSix(short *argument)
+{
+	i36 = *argument;
+	return *argument;
+}
+@def_
+@def $macro133()
+$LICENSE()
+$HEAD()
+
+short           i37;
+
+int levelThreeLeafSeven(short *argument)
+{
+	i37 = *argument;
+	return *argument;
+}
+@def_
+@def $macro134()
+$LICENSE()
+$HEAD()
+
+short           i38;
+
+int levelThreeLeafEight(short *argument)
+{
+	i38 = *argument;
+	return *argument;
+}
+@def_
+@def $macro135()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           i;
+
+extern short levelOneNodeOne(short*);
+extern short levelOneNodeTwo(short*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration 
+ */
+{
+	extern short    i11, i12;
+	short           result = 0;
+
+
+	i = 1;
+	result = levelOneNodeOne(&i);
+	if (result != i11)
+		statusFlag++;
+
+	i = 2;
+	result = levelOneNodeTwo(&i);
+	if (result != i12)
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro136()
+$LICENSE()
+$HEAD()
+
+short           i11;
+
+extern short levelTwoNodeOne(short*);
+extern short levelTwoNodeTwo(short*);
+
+short 
+levelOneNodeOne(short *argument)
+{
+	extern short    i21, i22;
+	extern short    statusFlag;
+	short           result = 0;
+
+
+	i11 = 3;
+	result = levelTwoNodeOne(&i11);
+	if (result != i21)
+		statusFlag++;
+
+	i11 = 4;
+	result = levelTwoNodeTwo(&i11);
+	if (result != i22)
+		statusFlag++;
+
+	i11 = *argument;
+	return *argument;
+}
+@def_
+@def $macro137()
+$LICENSE()
+$HEAD()
+
+short           i12;
+
+extern short levelTwonodeThree(short*);
+extern short levelTwoNodeFour(short*);
+
+short 
+levelOneNodeTwo(short *argument)
+{
+	extern short    i23, i24;
+	extern short    statusFlag;
+	short           result = 0;
+
+
+	i12 = 5;
+	result = levelTwoNodeThree(&i12);
+	if (result != i23)
+		statusFlag++;
+
+	i12 = 6;
+	result = levelTwoNodeFour(&i12);
+	if (result != i24)
+		statusFlag++;
+
+	i12 = *argument;
+	return *argument;
+}
+@def_
+@def $macro138()
+$LICENSE()
+$HEAD()
+
+short           i21;
+
+extern short levelThreeLeafOne(short*);
+extern short levelThreeleafTwo(short*);
+
+short 
+levelTwoNodeOne(short *argument)
+{
+	extern short    i31, i32;
+	extern short    statusFlag;
+	short           result = 0;
+
+
+	i21 = 7;
+	result = levelThreeLeafOne(&i21);
+	if (result != i31)
+		statusFlag++;
+
+	i21 = 8;
+	result = levelThreeLeafTwo(&i21);
+	if (result != i32)
+		statusFlag++;
+
+	i21 = *argument;
+	return *argument;
+}
+@def_
+@def $macro139()
+$LICENSE()
+$HEAD()
+
+short           i22;
+
+extern short levelThreeLeafThree(short*);
+extern short levelThreeLeafFour(short*);
+
+short 
+levelTwoNodeTwo(short *argument)
+{
+	extern short    i33, i34;
+	extern short    statusFlag;
+	short           result = 0;
+
+
+	i22 = 9;
+	result = levelThreeLeafThree(&i22);
+	if (result != i33)
+		statusFlag++;
+
+	i22 = 10;
+	result = levelThreeLeafFour(&i22);
+	if (result != i34)
+		statusFlag++;
+
+	i22 = *argument;
+	return *argument;
+}
+@def_
+@def $macro140()
+$LICENSE()
+$HEAD()
+
+short           i23;
+
+extern short levelThreeLeafFive(short*);
+extern short levelThreeleafSix(short*);
+
+short 
+levelTwoNodeThree(short *argument)
+{
+	extern short    i35, i36;
+	extern short    statusFlag;
+	short           result = 0;
+
+
+	i23 = 11;
+	result = levelThreeLeafFive(&i23);
+	if (result != i35)
+		statusFlag++;
+
+	i23 = 12;
+	result = levelThreeLeafSix(&i23);
+	if (result != i36)
+		statusFlag++;
+
+	i23 = *argument;
+	return *argument;
+}
+@def_
+@def $macro141()
+$LICENSE()
+$HEAD()
+
+short           i24;
+
+extern short levelThreeLeafSeven(short*);
+extern short levelThreeLeafEight(short*);
+
+short 
+levelTwoNodeFour(short *argument)
+{
+	extern short    i37, i38;
+	extern short    statusFlag;
+	short           result = 0;
+	short           levelThreeLeafSeven(), levelThreeLeafEight();
+
+
+	i24 = 13;
+	result = levelThreeLeafSeven(&i24);
+	if (result != i37)
+		statusFlag++;
+
+	i24 = 14;
+	result = levelThreeLeafEight(&i24);
+	if (result != i38)
+		statusFlag++;
+
+	i24 = *argument;
+	return *argument;
+}
+@def_
+@def $macro142()
+$LICENSE()
+$HEAD()
+
+short           i31;
+
+short 
+levelThreeLeafOne(short *argument)
+{
+	i31 = *argument;
+	return *argument;
+}
+@def_
+@def $macro143()
+$LICENSE()
+$HEAD()
+
+short           i32;
+
+short 
+levelThreeLeafTwo(short *argument)
+{
+	i32 = *argument;
+	return *argument;
+}
+@def_
+@def $macro144()
+$LICENSE()
+$HEAD()
+
+short           i33;
+
+short 
+levelThreeLeafThree(short *argument)
+{
+	i33 = *argument;
+	return *argument;
+}
+@def_
+@def $macro145()
+$LICENSE()
+$HEAD()
+
+short           i34;
+
+short 
+levelThreeLeafFour(short *argument)
+{
+	i34 = *argument;
+	return *argument;
+}
+@def_
+@def $macro146()
+$LICENSE()
+$HEAD()
+
+short           i35;
+
+short 
+levelThreeLeafFive(short *argument)
+{
+	i35 = *argument;
+	return *argument;
+}
+@def_
+@def $macro147()
+$LICENSE()
+$HEAD()
+
+short           i36;
+
+short 
+levelThreeLeafSix(short *argument)
+{
+	i36 = *argument;
+	return *argument;
+}
+@def_
+@def $macro148()
+$LICENSE()
+$HEAD()
+
+short           i37;
+
+short 
+levelThreeLeafSeven(short *argument)
+{
+	i37 = *argument;
+	return *argument;
+}
+@def_
+@def $macro149()
+$LICENSE()
+$HEAD()
+
+short           i38;
+
+short 
+levelThreeLeafEight(short *argument)
+{
+	i38 = *argument;
+	return *argument;
+}
+@def_
+@def $macro150()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+char           *numbers = "0123456789";
+short           statusFlag = NoMistake;
+short           i;
+
+extern char *levelOne(short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : linear tree structure, return value and legal, function declared to
+ * return a pointer to character 
+ */
+{
+	char           *s;
+
+	i = 1;
+	s = levelOne(&i);
+	if (*s != '1')
+		statusFlag++;
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro151()
+$LICENSE()
+$HEAD()
+
+short           i1;
+
+extern char *levelTwo(short*);
+
+char           *
+levelOne(short *variable)
+{
+	extern short    statusFlag;
+	extern short    i;
+	extern char    *numbers;
+
+	char *s1, *s2;
+	short           j;
+
+	i1 = *variable;
+	if (i1 != i)
+		statusFlag++;
+	for (s1 = numbers, j = 0; j < *variable; j++, s1++);
+	i1 = ++(*variable);
+	s2 = levelTwo(&i1);
+	if (*s2 != '2')
+		statusFlag++;
+	return s1;
+}
+@def_
+@def $macro152()
+$LICENSE()
+$HEAD()
+
+short           i2;
+
+extern char *levelThree(short*);
+
+char           *
+levelTwo(short *variable)
+{
+	extern short    statusFlag;
+	extern short    i1;
+	extern char    *numbers;
+
+	char *s1, *s2;
+	short           k;
+
+	i2 = *variable;
+	if (i2 != i1)
+		statusFlag++;
+	for (s1 = numbers, k = 0; k < *variable; k++, s1++);
+	i2 = ++(*variable);
+	s2 = levelThree(&i2);
+	if (*s2 != '3')
+		statusFlag++;
+	return s1;
+}
+@def_
+@def $macro153()
+$LICENSE()
+$HEAD()
+
+short           i3;
+
+char           *
+levelThree(short *variable)
+{
+	extern short    statusFlag;
+	extern short    i2;
+	extern char    *numbers;
+
+	char           *s;
+	short           l;
+
+	i3 = *variable;
+	if (i3 != i2)
+		statusFlag++;
+	for (s = numbers, l = 0; l < *variable; l++, s++);
+	return s;
+}
+@def_
+@def $macro154()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           i = 12;
+
+extern short divide4(short*);
+extern int dummy1(short (*)(short*), short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : linear tree structure, return value, legal pointer to function returning
+ * an integer 
+ */
+{
+	extern short    dum1;
+	short result = 0;
+
+	result = dummy1(divide4, &i);
+	if (result != dum1)
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro155()
+$LICENSE()
+$HEAD()
+
+short           dum1;
+
+int dummy1(short (*func)(short*), short *integer)
+{
+	extern short    statusFlag;
+	extern short    div4;
+
+	short           i;
+
+	i = (*func) (integer);
+	if (i != div4)
+		statusFlag++;
+	dum1 = i;
+	return i;
+}
+@def_
+@def $macro156()
+$LICENSE()
+$HEAD()
+
+short           div4;
+
+extern int dummy2(short (*)(short*), short*);
+extern short divide2(short*);
+
+short 
+divide4(short *integer)
+{
+
+	div4 = dummy2(divide2, integer) / 2;
+	return div4;
+}
+@def_
+@def $macro157()
+$LICENSE()
+$HEAD()
+
+
+int dummy2(short (*func)(short*), short *integer)
+{
+	extern short    statusFlag;
+	extern short    div2;
+
+	short           i;
+
+	i = (*func) (integer);
+	if (i != div2)
+		statusFlag++;
+	return i;
+}
+@def_
+@def $macro158()
+$LICENSE()
+$HEAD()
+
+short           div2;
+
+short 
+divide2(short *integer)
+{
+	div2 = *integer / 2;
+	return *integer / 2;
+}
+@def_
+@def $macro159()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           i, j;
+
+extern int levelOneNodeOne(short*);
+extern int levelOneNodeTwo(short*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, used in conditional expression, no function
+ * declaration 
+ */
+{
+
+	extern short    l11, l12;
+
+
+	i = 1;
+	j = i++;
+	if (!(levelOneNodeOne(&j) + levelOneNodeTwo(&i) == l11 + l12))
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro160()
+$LICENSE()
+$HEAD()
+
+short           l11;
+short           i2, j2;
+
+extern int levelTwoNodeOne(short*);
+extern int levelTwoNodeTwo(short*);
+
+int levelOneNodeOne(short *variable)
+{
+	j2 = (i2 = (*variable) + 1) + 1;
+	l11 = levelTwoNodeOne(&i2) + levelTwoNodeTwo(&j2);
+	return l11;
+}
+@def_
+@def $macro161()
+$LICENSE()
+$HEAD()
+
+short           l12;
+short           i3, j3;
+
+extern int levelTwoNodeThree(short*);
+extern int levelTwoNodeFour(short*);
+
+int levelOneNodeTwo(short *variable)
+{
+	j3 = (i3 = (*variable) + 1) + 1;
+	l12 = levelTwoNodeThree(&i3) + levelTwoNodeFour(&j3);
+	return l12;
+}
+@def_
+@def $macro162()
+$LICENSE()
+$HEAD()
+
+short           i4, j4;
+
+extern int levelThreeLeafOne(short*);
+extern int levelThreeeLeafTwo(short*);
+
+int levelTwoNodeOne(short *variable)
+{
+	j4 = (i4 = (*variable) + 1) + 1;
+	return levelThreeLeafOne(&i4) + levelThreeLeafTwo(&j4);
+}
+@def_
+@def $macro163()
+$LICENSE()
+$HEAD()
+
+short           i5, j5;
+
+extern int levelThreeLeafThree(short*);
+extern int levelThreeLeafFour(short*);
+
+int levelTwoNodeTwo(short *variable)
+{
+	j5 = (i5 = (*variable) + 1) + 1;
+	return levelThreeLeafThree(&i5) + levelThreeLeafFour(&j5);
+}
+@def_
+@def $macro164()
+$LICENSE()
+$HEAD()
+
+short           i6, j6;
+
+extern int levelThreeLeafFive(short*);
+extern int levelThreeLeafSix(short*);
+
+int levelTwoNodeThree(short *variable)
+{
+	j6 = (i6 = (*variable) + 1) + 1;
+	return levelThreeLeafFive(&i6) + levelThreeLeafSix(&j6);
+}
+@def_
+@def $macro165()
+$LICENSE()
+$HEAD()
+
+extern short           i6, j6;
+
+int levelThreeLeafSeven(short*);
+int levelThreeLeafEight(short*);
+
+int levelTwoNodeFour(short *variable)
+{
+	j6 = (i6 = (*variable) + 1) + 1;
+	return levelThreeLeafSeven(&i6) + levelThreeLeafEight(&j6);
+}
+@def_
+@def $macro166()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafOne(short *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro167()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafTwo(short *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro168()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafThree(short *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro169()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafFour(short *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro170()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafFive(short *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro171()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafSix(short *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro172()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafSeven(short *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro173()
+$LICENSE()
+$HEAD()
+
+int levelThreeLeafEight(short *variable)
+{
+	return (*variable) + 1;
+}
+@def_
+@def $macro174()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           i = 1;
+
+extern short levelOneNodeOne(short*);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, used in conditional expression, integer function
+ * declaration 
+ */
+{
+	extern short    l1;
+
+	if (!(levelOneNodeOne(&i) == l1))
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro175()
+$LICENSE()
+$HEAD()
+
+short           l1;
+short           i2;
+
+extern short levelTwoNodeOne(short*);
+
+short 
+levelOneNodeOne(short *variable)
+{
+
+	i2 = 2 * (*variable);
+	l1 = 2 * levelTwoNodeOne(&i2);
+	return l1;
+}
+@def_
+@def $macro176()
+$LICENSE()
+$HEAD()
+
+short           i3;
+
+extern short levelThreeLeafOne(short*);
+
+short 
+levelTwoNodeOne(short *variable)
+{
+
+	i3 = 2 * (*variable);
+	return 2 * levelThreeLeafOne(&i3);
+}
+@def_
+@def $macro177()
+$LICENSE()
+$HEAD()
+
+short 
+levelThreeLeafOne(short *variable)
+{
+	return 2 * (*variable);
+}
+@def_
+@def $macro178()
+$LICENSE()
+$HEAD()
+
+#include "def.h"
+
+char           *protean = "cassandracross";
+char            i = 4, j;
+
+extern char *skip(char*);
+extern int compare(char*, char*, short);
+
+int main(void)				/* alias root */
+/*
+ *  test class: extern variable address instance  : linear tree structure, used in conditional expression, function declared
+ * to return a pointer to character 
+ */
+{
+
+	j = 2 * i;
+	if (compare(skip(&i), "andra", 5) == compare(skip(&j), "across", 6))
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro179()
+$LICENSE()
+$HEAD()
+
+char           *
+skip(char *skipper)
+{
+	extern char    *protean;
+
+	short           ii;
+	char           *pointer;
+
+	for (ii = 0, pointer = protean; ii < *skipper; ii++)
+		pointer++;
+	return pointer;
+}
+@def_
+@def $macro180()
+$LICENSE()
+$HEAD()
+
+int compare(char *s1, char *s2, short n)
+{
+	while (--n >= 0 && *s1 == *s2++)
+		if (*s1++ == '\0')
+			return 0;
+	return n < 0 ? 0 : *s1 - *--s2;
+}
+@def_
+@def $macro181()
+$LICENSE()
+$HEAD()
+
+
+#include "def.h"
+
+short           statusFlag = NoMistake;
+short           i = 12;
+
+int dummy1(short (*)(short*), short*);
+short divide4(short*);
+
+int main(void)
+/*
+ * test class: extern variable address instance  : linear tree structure, in conditional expression, pointer to function
+ * returning an integer 
+ */
+{
+	extern short    dum1;
+
+	if (dummy1(divide4, &i) != dum1)
+		statusFlag++;
+
+	if (statusFlag == NoMistake)
+		printok();
+	else
+		printno();
+	return 0;
+}
+@def_
+@def $macro182()
+$LICENSE()
+$HEAD()
+
+short           dum1;
+
+int dummy1(short (*func)(short*), short *integer)
+{
+	extern short    statusFlag;
+	extern short    div4;
+
+	short           ii;
+
+	if ((ii = (*func) (integer)) != div4)
+		statusFlag++;
+
+	dum1 = ii;
+	return ii;
+}
+@def_
+@def $macro183()
+$LICENSE()
+$HEAD()
+
+short           div4;
+
+extern short divide2(short*);
+extern int dummy2(short (*)(short*), short*);
+
+short 
+divide4(short *integer)
+{
+
+	div4 = dummy2(divide2, integer) / 2;
+	return div4;
+}
+@def_
+@def $macro184()
+$LICENSE()
+$HEAD()
+
+int dummy2(short (*func)(short*), short *integer)
+{
+	extern short    statusFlag;
+	extern short    div2;
+
+	short           ii;
+
+	if ((ii = (*func) (integer)) != div2)
+		statusFlag++;
+	return ii;
+}
+@def_
+@def $macro185()
+$LICENSE()
+$HEAD()
+
+short           div2;
+
+short 
+divide2(short *integer)
+{
+	div2 = *integer / 2;
+	return *integer / 2;
+}
+@def_
+
+@def $macro186()
+ft000.c ft001.c ft002.c ft003.c ft004.c ft005.c ft006.c ft007.c ft008.c ft009.c ft010.c ft011.c ft012.c ft013.c ft014.c
+ft100.c ft101.c ft102.c ft103.c ft104.c ft105.c ft106.c ft107.c ft108.c ft109.c ft110.c ft111.c ft112.c ft113.c ft114.c
+ft200.c ft201.c ft202.c ft203.c ft204.c ft205.c ft206.c ft207.c ft208.c ft209.c ft210.c ft211.c ft212.c ft213.c ft214.c
+ft300.c ft301.c ft302.c ft303.c ft304.c ft305.c ft306.c ft307.c ft308.c ft309.c ft310.c ft311.c ft312.c ft313.c ft314.c
+ft500.c ft501.c ft502.c ft503.c ft504.c
+ft600.c ft601.c ft602.c ft603.c ft604.c ft605.c ft606.c ft607.c ft608.c ft609.c ft610.c ft611.c ft612.c ft613.c ft614.c
+ft700.c ft701.c ft702.c ft703.c
+ft900.c ft901.c ft902.c ft903.c ft904.c
+t000.c t001.c t002.c t003.c t004.c t005.c t006.c t007.c t008.c t009.c t010.c t011.c t012.c t013.c t014.c
+t100.c t101.c t102.c t103.c t104.c t105.c t106.c t107.c t108.c t109.c t110.c t111.c t112.c t113.c t114.c
+t200.c t201.c t202.c t203.c t204.c t205.c t206.c t207.c t208.c t209.c t210.c t211.c t212.c t213.c t214.c
+t300.c t301.c t302.c t303.c t304.c t305.c t306.c t307.c t308.c t309.c t310.c t311.c t312.c t313.c t314.c
+t400.c t401.c t402.c t403.c
+t500.c t501.c t502.c t503.c t504.c
+t600.c t601.c t602.c t603.c t604.c t605.c t606.c t607.c t608.c t609.c t610.c t611.c t612.c t613.c t614.c
+t700.c t701.c t702.c t703.c
+t800.c t801.c t802.c
+t900.c t901.c t902.c t903.c t904.c
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir c89.6-3-02
+@file >>def.h $macro0() @file_
+@file >>ft000.c $macro1() @file_
+@file >>ft001.c $macro2() @file_
+@file >>ft002.c $macro3() @file_
+@file >>ft003.c $macro4() @file_
+@file >>ft004.c $macro5() @file_
+@file >>ft005.c $macro6() @file_
+@file >>ft006.c $macro7() @file_
+@file >>ft007.c $macro8() @file_
+@file >>ft008.c $macro9() @file_
+@file >>ft009.c $macro10() @file_
+@file >>ft010.c $macro11() @file_
+@file >>ft011.c $macro12() @file_
+@file >>ft012.c $macro13() @file_
+@file >>ft013.c $macro14() @file_
+@file >>ft014.c $macro15() @file_
+@file >>ft100.c $macro16() @file_
+@file >>ft101.c $macro17() @file_
+@file >>ft102.c $macro18() @file_
+@file >>ft103.c $macro19() @file_
+@file >>ft104.c $macro20() @file_
+@file >>ft105.c $macro21() @file_
+@file >>ft106.c $macro22() @file_
+@file >>ft107.c $macro23() @file_
+@file >>ft108.c $macro24() @file_
+@file >>ft109.c $macro25() @file_
+@file >>ft110.c $macro26() @file_
+@file >>ft111.c $macro27() @file_
+@file >>ft112.c $macro28() @file_
+@file >>ft113.c $macro29() @file_
+@file >>ft114.c $macro30() @file_
+@file >>ft200.c $macro31() @file_
+@file >>ft201.c $macro32() @file_
+@file >>ft202.c $macro33() @file_
+@file >>ft203.c $macro34() @file_
+@file >>ft204.c $macro35() @file_
+@file >>ft205.c $macro36() @file_
+@file >>ft206.c $macro37() @file_
+@file >>ft207.c $macro38() @file_
+@file >>ft208.c $macro39() @file_
+@file >>ft209.c $macro40() @file_
+@file >>ft210.c $macro41() @file_
+@file >>ft211.c $macro42() @file_
+@file >>ft212.c $macro43() @file_
+@file >>ft213.c $macro44() @file_
+@file >>ft214.c $macro45() @file_
+@file >>ft300.c $macro46() @file_
+@file >>ft301.c $macro47() @file_
+@file >>ft302.c $macro48() @file_
+@file >>ft303.c $macro49() @file_
+@file >>ft304.c $macro50() @file_
+@file >>ft305.c $macro51() @file_
+@file >>ft306.c $macro52() @file_
+@file >>ft307.c $macro53() @file_
+@file >>ft308.c $macro54() @file_
+@file >>ft309.c $macro55() @file_
+@file >>ft310.c $macro56() @file_
+@file >>ft311.c $macro57() @file_
+@file >>ft312.c $macro58() @file_
+@file >>ft313.c $macro59() @file_
+@file >>ft314.c $macro60() @file_
+@file >>ft500.c $macro61() @file_
+@file >>ft501.c $macro62() @file_
+@file >>ft502.c $macro63() @file_
+@file >>ft503.c $macro64() @file_
+@file >>ft504.c $macro65() @file_
+@file >>ft600.c $macro66() @file_
+@file >>ft601.c $macro67() @file_
+@file >>ft602.c $macro68() @file_
+@file >>ft603.c $macro69() @file_
+@file >>ft604.c $macro70() @file_
+@file >>ft605.c $macro71() @file_
+@file >>ft606.c $macro72() @file_
+@file >>ft607.c $macro73() @file_
+@file >>ft608.c $macro74() @file_
+@file >>ft609.c $macro75() @file_
+@file >>ft610.c $macro76() @file_
+@file >>ft611.c $macro77() @file_
+@file >>ft612.c $macro78() @file_
+@file >>ft613.c $macro79() @file_
+@file >>ft614.c $macro80() @file_
+@file >>ft700.c $macro81() @file_
+@file >>ft701.c $macro82() @file_
+@file >>ft702.c $macro83() @file_
+@file >>ft703.c $macro84() @file_
+@file >>ft900.c $macro85() @file_
+@file >>ft901.c $macro86() @file_
+@file >>ft902.c $macro87() @file_
+@file >>ft903.c $macro88() @file_
+@file >>ft904.c $macro89() @file_
+@file >>t000.c $macro90() @file_
+@file >>t001.c $macro91() @file_
+@file >>t002.c $macro92() @file_
+@file >>t003.c $macro93() @file_
+@file >>t004.c $macro94() @file_
+@file >>t005.c $macro95() @file_
+@file >>t006.c $macro96() @file_
+@file >>t007.c $macro97() @file_
+@file >>t008.c $macro98() @file_
+@file >>t009.c $macro99() @file_
+@file >>t010.c $macro100() @file_
+@file >>t011.c $macro101() @file_
+@file >>t012.c $macro102() @file_
+@file >>t013.c $macro103() @file_
+@file >>t014.c $macro104() @file_
+@file >>t100.c $macro105() @file_
+@file >>t101.c $macro106() @file_
+@file >>t102.c $macro107() @file_
+@file >>t103.c $macro108() @file_
+@file >>t104.c $macro109() @file_
+@file >>t105.c $macro110() @file_
+@file >>t106.c $macro111() @file_
+@file >>t107.c $macro112() @file_
+@file >>t108.c $macro113() @file_
+@file >>t109.c $macro114() @file_
+@file >>t110.c $macro115() @file_
+@file >>t111.c $macro116() @file_
+@file >>t112.c $macro117() @file_
+@file >>t113.c $macro118() @file_
+@file >>t114.c $macro119() @file_
+@file >>t200.c $macro120() @file_
+@file >>t201.c $macro121() @file_
+@file >>t202.c $macro122() @file_
+@file >>t203.c $macro123() @file_
+@file >>t204.c $macro124() @file_
+@file >>t205.c $macro125() @file_
+@file >>t206.c $macro126() @file_
+@file >>t207.c $macro127() @file_
+@file >>t208.c $macro128() @file_
+@file >>t209.c $macro129() @file_
+@file >>t210.c $macro130() @file_
+@file >>t211.c $macro131() @file_
+@file >>t212.c $macro132() @file_
+@file >>t213.c $macro133() @file_
+@file >>t214.c $macro134() @file_
+@file >>t300.c $macro135() @file_
+@file >>t301.c $macro136() @file_
+@file >>t302.c $macro137() @file_
+@file >>t303.c $macro138() @file_
+@file >>t304.c $macro139() @file_
+@file >>t305.c $macro140() @file_
+@file >>t306.c $macro141() @file_
+@file >>t307.c $macro142() @file_
+@file >>t308.c $macro143() @file_
+@file >>t309.c $macro144() @file_
+@file >>t310.c $macro145() @file_
+@file >>t311.c $macro146() @file_
+@file >>t312.c $macro147() @file_
+@file >>t313.c $macro148() @file_
+@file >>t314.c $macro149() @file_
+@file >>t400.c $macro150() @file_
+@file >>t401.c $macro151() @file_
+@file >>t402.c $macro152() @file_
+@file >>t403.c $macro153() @file_
+@file >>t500.c $macro154() @file_
+@file >>t501.c $macro155() @file_
+@file >>t502.c $macro156() @file_
+@file >>t503.c $macro157() @file_
+@file >>t504.c $macro158() @file_
+@file >>t600.c $macro159() @file_
+@file >>t601.c $macro160() @file_
+@file >>t602.c $macro161() @file_
+@file >>t603.c $macro162() @file_
+@file >>t604.c $macro163() @file_
+@file >>t605.c $macro164() @file_
+@file >>t606.c $macro165() @file_
+@file >>t607.c $macro166() @file_
+@file >>t608.c $macro167() @file_
+@file >>t609.c $macro168() @file_
+@file >>t610.c $macro169() @file_
+@file >>t611.c $macro170() @file_
+@file >>t612.c $macro171() @file_
+@file >>t613.c $macro172() @file_
+@file >>t614.c $macro173() @file_
+@file >>t700.c $macro174() @file_
+@file >>t701.c $macro175() @file_
+@file >>t702.c $macro176() @file_
+@file >>t703.c $macro177() @file_
+@file >>t800.c $macro178() @file_
+@file >>t801.c $macro179() @file_
+@file >>t802.c $macro180() @file_
+@file >>t900.c $macro181() @file_
+@file >>t901.c $macro182() @file_
+@file >>t902.c $macro183() @file_
+@file >>t903.c $macro184() @file_
+@file >>t904.c $macro185() @file_
+@file >>FILESET $macro186() @file_
+@file >>testout.h $testout() @file_
+@dir_

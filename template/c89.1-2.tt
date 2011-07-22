@@ -1,0 +1,407 @@
+@comment
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+ishiura-gcc@ksc.kwansei.ac.jp
+
+This file was written by Yuki Uchiyama. (ishiura-gcc@ksc.kwansei.ac.jp)
+@comment_
+
+@def $LICENSE()
+/*
+  Copyright (C) 2005 Free Software Foundation, Inc.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA
+
+Please email any bugs, comments, and/or additions to this file to:
+hikichi@sra.co.jp(Nobuyuki Hikichi)
+
+This file was written by several people in Software Research Associates,
+Inc. Japan in several years.
+*/
+@def_
+
+@comment
+配列とポインタの代入のテスト
+@comment_
+
+@def $HEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+#include "stnd.h"
+#include "testout.h"
+@def_
+
+@def $FHEAD()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+#include "fstnd.h"
+#include "testout.h"
+@def_
+
+@def $test1($VAR9)
+	itest = NO;
+	*$VAR9 = OK;
+	itest = *$VAR9;
+
+	if (itest == OK)
+		printok();
+	else
+		printno();
+@def_
+@def $ftest1($VAR9)
+	ftest = NO;
+	*$VAR9 = 1.0;
+	ftest = *$VAR9;
+
+ if ( (TGEN_FLT_EQ(ftest, 1.0)) )
+		printok();
+	else
+		printno();
+@def_
+@def $ctest1($VAR9)
+	ctest = NCHAR;
+	*$VAR9 = YCHAR;
+	ctest = *$VAR9;
+
+	if (ctest == YCHAR)
+		printok();
+	else
+		printno();
+@def_
+
+@def $macro0()
+$LICENSE()
+$FHEAD()
+int main(void)
+{
+
+	/*--TEST--
+	  float型配列への代入
+	  --END--*/
+	float           Float[1];
+
+$ftest1(Float)
+
+	return 0;
+}
+@def_
+@def $macro1($MODIFIER)
+$LICENSE()
+$HEAD()
+int main(void)
+{
+	/*--TEST--
+	  long型配列への代入
+	 --END--*/
+	$MODIFIER long            Long[1];
+
+$test1(Long)
+
+	return 0;
+}
+@def_
+
+
+@def $macro2()
+$LICENSE()
+long            itest;
+char            ctest;
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+int             Int[1];
+long            Long[1];
+short           Short[1];
+unsigned        Unsigned[1];
+char            Char[1];
+struct Struct {
+	int             Int[1];
+	long            Long[1];
+	short           Short[1];
+	unsigned        Unsigned[1];
+	char            Char[1];
+}              *Struct;
+union Union {
+	int             Int[1];
+	long            Long[1];
+	char            Char[1];
+}              *Union;
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef struct {
+	int             Int[1];
+	long            Long[1];
+	short           Short[1];
+	unsigned        Unsigned[1];
+	char            Char[1];
+}               STRDEF;
+typedef union {
+	int             Int[1];
+	long            Long[1];
+	char            Char[1];
+}               UNIDEF;
+@def_
+
+@def $macro3()
+$LICENSE()
+long            itest;
+char            ctest;
+float           ftest;
+#define OK 1
+#define NO 0
+#define YCHAR	'y'
+#define NCHAR	'n'
+int             Int[1];
+long            Long[1];
+short           Short[1];
+unsigned        Unsigned[1];
+char            Char[1];
+float           Float[1];
+struct Struct {
+	int             Int[1];
+	long            Long[1];
+	short           Short[1];
+	unsigned        Unsigned[1];
+	char            Char[1];
+	float           Float[1];
+}              *Struct;
+union Union {
+	int             Int[1];
+	long            Long[1];
+	char            Char[1];
+	float           Float[1];
+}              *Union;
+typedef int     INTDEF;
+typedef long    LONGDEF;
+typedef short   SHORTDEF;
+typedef unsigned UNSIGNDEF;
+typedef char    CHARDEF;
+typedef float   FLOATDEF;
+typedef struct {
+	int             Int[1];
+	long            Long[1];
+	short           Short[1];
+	unsigned        Unsigned[1];
+	char            Char[1];
+	float           Float[1];
+}               STRDEF;
+typedef union {
+	int             Int[1];
+	long            Long[1];
+	char            Char[1];
+	float           Float[1];
+}               UNIDEF;
+@def_
+
+@def $macro4($MODIFIER)
+$LICENSE()
+$HEAD()
+int main(void)
+{
+	/*--TEST--
+	  $MODIFIER int型配列への代入
+	  --END--*/
+	$MODIFIER int             Int[1];
+
+$test1(Int)
+
+	return 0;
+}
+@def_
+
+@def $macro5($MODIFIER)
+$LICENSE()
+$HEAD()
+int main(void)
+{
+	/*--TEST--
+	  $MODIFIER short型配列への代入
+	  --END--*/
+	$MODIFIER short    Short[1];
+
+$test1(Short)
+
+	return 0;
+}
+@def_
+
+@def $macro6($MODIFIER)
+$LICENSE()
+$HEAD()
+int main(void)
+{
+	/*--TEST--
+	  $MODIFIER unsigned 型配列への代入
+	  --END--*/
+	$MODIFIER unsigned        Unsigned[1];
+
+$test1(Unsigned)
+
+	return 0;
+}
+@def_
+
+@def $macro7($MODIFIER)
+$LICENSE()
+$HEAD()
+int main(void)
+{
+	/*--TEST--
+	  $MODIFIER char型配列への代入
+	  --END--*/
+	$MODIFIER char            Char[1];
+
+$ctest1(Char)
+
+	return 0;
+}
+@def_
+
+@def $macro8()
+$LICENSE()
+$HEAD()
+int main(void)
+{
+	/*--TEST--
+	  メンバに配列を持つ構造体のメンバ変数への代入
+	  --END--*/
+	struct Struct {
+		int             Int[1];
+		short           Short[1];
+		unsigned        Unsigned[1];
+		char            Char[1];
+	}               Struct[1];
+
+$test1(Struct->Int)
+
+$test1(Struct->Short)
+
+$test1(Struct->Unsigned)
+
+$ctest1(Struct->Char)
+
+	return 0;
+}
+@def_
+@def $macro9()
+$LICENSE()
+#ifdef SYSDEP_H
+#include "sysdep.h"
+#endif
+
+#include "stnd.h"
+#include "testout.h"
+int main(void)
+{
+	/*--TEST--
+	  メンバが配列の共用体のメンバ変数への代入
+	 --END--*/
+	union Union {
+		int             Int[1];
+		char            Char[1];
+	}               Union[1];
+
+$test1(Union->Int)
+
+$ctest1(Union->Char)
+
+	return 0;
+}
+@def_
+@def $macro10()
+$LICENSE()
+$HEAD()
+int main(void)
+{
+	/*--TEST--
+	  typefefで定義された型で宣言された配列への代入
+	  --END--*/
+    INTDEF Intdef[1];
+	SHORTDEF Shortdef[1];
+	UNSIGNDEF Unsigndef[1];
+	CHARDEF Chardef[1];
+	STRDEF Strdef[1];
+	UNIDEF Unidef[1];
+
+$test1(Intdef)
+
+$test1(Shortdef)
+
+$test1(Unsigndef)
+
+$ctest1(Chardef)
+
+$test1(Strdef->Int)
+
+$test1(Strdef->Short)
+
+$test1(Strdef->Unsigned)
+
+$ctest1(Strdef->Char)
+
+$test1(Unidef->Int)
+
+$ctest1(Unidef->Char)
+
+	return 0;
+}
+@def_
+
+@def $testout()
+#ifdef unix
+#include<stdio.h>
+#define printok() printf("@OK@\n")
+#define printno() printf("@NG@\n")
+#define ABS(a) ((a > 0)? (a) : (-(a)))
+#define MAX(a, b) ((a > b)? (a) : (b))
+#define TGEN_FLT_EQ(a, b) ( ((a)==(b)) || ABS(((a) - (b))) / MAX( ABS(a), ABS(b) ) <= __FLT_EPSILON__ )
+#endif
+@def_
+
+@dir c89.1-2
+@file >>ft???.c $macro0() @file_
+@file >>lt???.c $macro1([,extern,static]) @file_
+@file >>stnd.h $macro2() @file_
+@file >>fstnd.h $macro3() @file_
+@file >>t???.c $macro4([,extern,static]) @file_
+@file >>t???.c $macro5([,extern,static]) @file_
+@file >>t???.c $macro6([,extern,static]) @file_
+@file >>t???.c $macro7([,extern,static]) @file_
+@file >>t019.c $macro8() @file_
+@file >>t023.c $macro9() @file_
+@file >>t027.c $macro10() @file_
+@file >>testout.h $testout() @file_
+@dir_
