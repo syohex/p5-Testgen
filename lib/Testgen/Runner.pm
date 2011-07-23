@@ -109,6 +109,15 @@ sub _init {
         name => "faillist" . $base,
         dir  => $self->{log_dir},
     );
+
+    if ($config->get('color')) {
+        $Testgen::TestDirectory::COLOR = 1;
+    }
+
+    if ($config->get('parallels') >= 2) {
+        require Testgen::Runner::Command;
+        $Testgen::Runner::Command::HAS_MULTICORE = 1;
+    }
 }
 
 sub _log_name {
