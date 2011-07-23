@@ -199,3 +199,50 @@ sub _collect_results {
 1;
 
 __END__
+
+=encoding utf8
+
+=head1 NAME
+
+Testgen::TestDirectory - A test directory class
+
+=head1 INTERFACE
+
+=head2 Class Methods
+
+=head3 C<< Testgen::TemplateFile->new(%args) :Testgen::TemplateFile >>
+
+Creates and returns a new Testgen::TemplateFile object with I<args>.
+Dies on error.
+
+I<%args> might be:
+
+=over
+
+=item name :Str
+
+=back
+
+=head2 Class Variable
+
+=head3 C<< $Testgen::TestDirectory::COLOR :Bool >>
+
+If this variable is true, Output of summary of test directory is colored.
+Default is false.
+
+=head2 Instance Methods
+
+=head3 C<< $template_dir->setup() >>
+
+Set up test, collect tests in this directory.
+
+=head3 C<< $template_dir->result() :HashRef >>
+
+Return results of tests in this directory as Hash reference.
+
+=head3 C<< $template_dir->summarize($log, $faillog) >>
+
+Summary of this test directory. Infomation of fail tests are outputed to
+C<$faillog>, others are outputed to C<$log>.
+
+=cut
