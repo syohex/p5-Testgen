@@ -73,7 +73,7 @@ sub run {
         $self->_do_test($testdir);
     }
 
-    $self->summarize;
+    $self->_summarize;
 }
 
 sub _init {
@@ -220,7 +220,7 @@ sub _compile_only {
     $_[0]->{config}->get('compile_only');
 }
 
-sub summarize {
+sub _summarize {
     my $self = shift;
 
     $self->_concat_logs;
