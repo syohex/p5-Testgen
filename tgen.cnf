@@ -17,4 +17,5 @@
 
     timeout       => 10,
     parallels     => 2,
+    color         => 1,
 };
