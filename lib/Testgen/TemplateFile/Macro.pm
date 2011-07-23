@@ -7,17 +7,21 @@ my @ignore_macros = ('$Id');
 sub new {
     my ($class, %args) = @_;
 
-    for my $key (qw/name dummy_args body/) {
+    for my $key (qw/name body/) {
         unless (exists $args{$key}) {
             Carp::croak("missing mandatory parameter '$key'");
         }
     }
 
-    unless (ref $args{dummy_args} eq 'ARRAY') {
+    my $dummy_args = delete $args{dummy_args} || [];
+    unless (ref $dummy_args eq 'ARRAY') {
         Carp::croak("'parameters' must be ArrayRef");
     }
 
-    bless { %args }, $class;
+    bless {
+        dummy_args => $dummy_args,
+        %args,
+    }, $class;
 }
 
 sub expand {
@@ -95,3 +99,40 @@ $macro looks like a 'Macro', but its definition is not found.
 }
 
 1;
+
+__END__
+
+=encoding utf8
+
+=head1 NAME
+
+Testgen::TemplateFile::Macro - A macro class
+
+=head1 INTERFACE
+
+=head2 Class Methods
+
+=head3 C<< Testgen::TemplateFile::Macro->new(%args) :Testgen::TemplateFile::Macro >>
+
+Creates and returns a new Testgen::Runner::Compiler object with I<args>.
+Dies on error.
+
+I<%args> might be:
+
+=over
+
+=item name :Str
+
+=item dummy_args :ArrayRef[Str] = []
+
+=item body : Str
+
+=back
+
+=head2 Instance Methods
+
+=head3 C<< $macro->expand($real_args, $global_env) >>
+
+Expand macro. I<real_args> binds to C<$macro->{dummy_args}>.
+
+=cut
