@@ -84,13 +84,13 @@ sub _init {
         compiler     => $config->get('compiler'),
         c_flags      => $config->get('c_flags'),
         ld_flags     => $config->get('ld_flags'),
-        options      => $config->get('options'),
     );
 
     $self->{executer} = Testgen::Runner::Executer->new(
-        timeout  => $config->get('timeout'),
-        simlator => $config->get('simulator'),
-        expect   => '@OK@',
+        has_print => $config->get('has_printf'),
+        timeout   => $config->get('timeout'),
+        simlator  => $config->get('simulator'),
+        expect    => $config->get('expect'),
     );
 
     $self->{start_time} = time;
