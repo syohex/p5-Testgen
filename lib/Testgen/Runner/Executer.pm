@@ -34,6 +34,7 @@ sub execute {
     my ($exit_status, $stdout) = $command->run;
 
     unless (defined $exit_status) {
+        # Timeout happens
         return Testgen::Runner::Executer::Result->new(
             command => "@cmd",
             message => "timeout: " . $test->input,
