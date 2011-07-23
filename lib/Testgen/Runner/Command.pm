@@ -3,12 +3,14 @@ use strict;
 use warnings;
 
 use Carp ();
+use Encode ();
 use File::Temp ();
 use Symbol ();
 use IPC::Open3 ();
 use IO::Select ();
 
 our $HAS_MULTICORE = 0;
+my $encoder = Encode::find_encoding('utf8');
 
 sub new {
     my ($class, %args) = @_;
@@ -52,7 +54,7 @@ sub _run_with_system {
 
     my ($stdout, $stderr) = do {
         local $/;
-        (scalar <$ofh>, scalar <$efh>)
+        map { $encoder->decode($_) } (scalar <$ofh>, scalar <$efh>);
     };
     close $efh;
     close $ofh;
