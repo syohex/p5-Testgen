@@ -164,22 +164,20 @@ sub _generate_run_script {
     my $run_script = File::Spec->catfile($testsuite_dir, 'runtest.pl');
 
     my $shebang = $^O eq 'MSWin32' ? '#!perl' : '#!/usr/bin/env perl';
+    my $libpath = File::Spec->catfile(Cwd::realpath( Cwd::getcwd ), 'lib');
 
-    my $tmpl =<<'...';
-$shebang
+    my $content =<<"...";
+${shebang}
 use strict;
 use warnings;
 
-use lib qw(#LIBPATH#);
+use lib qw(${libpath});
 use Testgen::Runner;
 
-my $runner = Testgen::Runner->new();
-$runner->parse_options(@ARGV);
-$runner->run();
+my \$runner = Testgen::Runner->new();
+\$runner->parse_options(\@ARGV);
+\$runner->run();
 ...
-
-    my $libpath = File::Spec->catfile(Cwd::realpath( Cwd::getcwd ), 'lib');
-    (my $content = $tmpl) =~ s{#LIBPATH#}{$libpath}e;
 
     open my $fh, '>', $run_script or Carp::croak("Can't open $run_script: $!");
     print {$fh} $content;
