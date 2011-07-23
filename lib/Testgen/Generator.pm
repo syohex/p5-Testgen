@@ -239,7 +239,7 @@ Testgen::Generator - A test generator class
 
 =head3 C<< Testgen::Generator->new() :Testgen::Generator >>
 
-Creates and returns a new Testgen::Generator object with I<args>.
+Creates and returns a new Testgen::Generator object.
 
 =head2 Instance Methods
 
