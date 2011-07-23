@@ -1,0 +1,19 @@
++{
+    compiler      => 'gcc',
+    simulator     => undef,
+    c_flags       => [ '-g', '-Dunix' ],
+    ld_flags      => [ '' ],
+    options       => [ '-O0', '-O2' ],
+    testdir       => 'testsuite',
+    compile_only  => 0,
+
+    size => {
+         char  => 8,
+         short => 16,
+         int   => 32,
+         long  => 64,
+         pointer => 64,
+    },
+
+    timeout       => 10,
+};
