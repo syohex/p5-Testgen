@@ -70,7 +70,7 @@ sub DESTROY {
 
 __END__
 
-=encoding utf-8
+=encoding utf8
 
 =for stopwords
 

@@ -8,7 +8,7 @@ our $VERSION = '0.01';
 1;
 __END__
 
-=encoding utf-8
+=encoding utf8
 
 =for stopwords
 
