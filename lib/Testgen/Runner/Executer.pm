@@ -8,11 +8,17 @@ use Testgen::Runner::Executer::Result;
 sub new {
     my ($class, %args) = @_;
 
+    my $has_printf = delete $args{has_printf} || 1;
+    my $timeout    = delete $args{timeout}    || 10;
+    my $expect     = delete $args{exepect}    || '@OK@';
+    my $simulator  = delete $args{simulator}  || undef;
+
     bless {
-        has_printf => 1,
-        timeout    => $args{timeout}   || 10,
-        expect     => $args{expect}    || '@OK@',
-        simlator   => $args{simulator} || undef,
+        has_printf => $has_printf,
+        timeout    => $timeout,
+        expect     => $expect,
+        simulator  => $simulator,
+        %args,
     }, $class;
 }
 
