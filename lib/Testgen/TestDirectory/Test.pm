@@ -38,29 +38,18 @@ sub new {
 
 sub _set_output {
     my $files = shift;
-    return File::Basename::basename(_first_file($files), '.c') . '.x';
+    my $name = join '_', @{$files};
+    return File::Basename::basename($name, '.c') . '.x';
 }
 
 # accessor
 sub oknum           { shift->{oknum}    }
 sub output          { shift->{output}   }
-sub log             { shift->{result}->{log}             }
-sub faillog         { shift->{result}->{faillog}         }
-sub test_num        { shift->{result}->{test_num}        }
-sub compile_success { shift->{result}->{compile_success} }
-sub compile_failure { shift->{result}->{compile_failure} }
-sub execute_success { shift->{result}->{execute_success} }
-sub execute_failure { shift->{result}->{execute_failure} }
 
 sub input {
     my $self = shift;
     my $files = $self->{files};
     ref $files eq 'ARRAY' ? join ' ', @{$files} : $files;
-}
-
-sub _first_file {
-    my $files = shift;
-    return ref $files eq 'ARRAY' ? $files->[0] : $files;
 }
 
 sub finalize {
@@ -102,7 +91,8 @@ sub analyze_result {
 sub dump_result {
     my ($self, $dir) = @_;
 
-    my $name = _first_file($self->{files});
+    my $files = $self->{files};
+    my $name = ref $files eq 'ARRAY' ? $files->[0] : $files;
     my $dump_file = File::Spec->catfile($dir, $name);
 
     open my $fh, '>', $dump_file or Carp::croak("Can't open $dump_file $!");
