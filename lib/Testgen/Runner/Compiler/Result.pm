@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 use base qw/Testgen::Runner::Result/;
+use Carp ();
 
 sub new {
     my ($class, %args) = @_;
@@ -15,56 +16,77 @@ sub new {
         Carp::croak("Invalid status parameter '$status'");
     }
 
-    if ($status eq 'warn' || $status eq 'error') {
-        unless (exists $args{message}) {
-            Carp::croak("not specified paremeter 'message'");
-        }
-    }
-
     return $self;
 }
 
 sub message {
     my $self = shift;
-
-    my $status = $self->{status};
-    if ($status eq 'success') {
-        return '';
-    } elsif ($status eq 'warn') {
-        return $self->_warn_message();
-    } elsif ($status eq 'error') {
-        return $self->_error_message();
-    }
+    return $self->is_success ? '' : $self->_indicated_message;
 }
 
-sub _warn_message {
+sub _indicated_message {
     my $self = shift;
 
-    my $str = $self->{message};
+    my ($command, $str) = ($self->{command}, $self->{message});
     return <<"...";
------ compile warning message -----
-$str
+$self->{command}
+----- Compile $self->{status} message -----
+$self->{message}
 -----------------------------------
 ...
 }
 
-sub _error_message {
-    my $self = shift;
-
-    my $str = $self->{message};
-    return <<"...";
------ compile error message -----
-$str
----------------------------------
-...
-}
-
-sub is_warning {
+sub is_warn {
     shift->{status} eq 'warn';
 }
 
-sub is_error {
-    shift->{status} eq 'error';
-}
-
 1;
+
+__END__
+
+=encoding utf8
+
+=head1 NAME
+
+Testgen::Runner::Compiler::Result - A compile command result.
+
+=head1 INTERFACE
+
+=head2 Class Methods
+
+=head3 C<< Testgen::Runner::Compiler::Result->new(%args) >>
+
+Creates and returns a new Testgen::Runner::Compiler::Result with I<%args>.
+Dies on error.
+
+I<%args> might be:
+
+=over
+
+=item status :Str
+
+I<status> must be 'success' or 'warn' or 'error'.
+
+=item command :Str
+
+=item message :Str
+
+=back
+
+=head2 Instanse Methods
+
+=head3 C<< $compile_result->message() >> :Str
+
+Return message indicated by the compiler.
+Return C<''> when compiling is success.
+
+=head3 C<< $compile_result->is_warn >> :Bool
+
+Return true if the compiler says warning.
+C<is_success> and C<is_error> are defined in F<Testgen::Runner::Result>.
+
+=head1 SEE ALSO
+
+L<Testgen::Runner::Result>
+
+=cut
