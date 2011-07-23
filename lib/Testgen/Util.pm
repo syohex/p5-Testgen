@@ -4,14 +4,6 @@ use warnings;
 package Testgen::Util;
 
 use Carp ();
-use File::Path ();
-
-sub make_dir {
-    my $dir = shift;
-
-    File::Path::rmtree([$dir], 0, 0) if -d $dir;
-    File::Path::mkpath([$dir], 0, 0777);
-}
 
 sub read_directory {
     my $dir = shift;

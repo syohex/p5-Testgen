@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 use Encode;
+use File::Path ();
 
 use Testgen::TemplateFile::Macro;
 use Testgen::Util ();
@@ -97,10 +98,14 @@ sub _parse_dir_section {
         my ($dirname, $body) = ($1, $2);
 
         my $testdir = File::Spec->catfile($self->{testsuite_dir}, $dirname);
-        Testgen::Util::make_dir($testdir);
 
-        my $guard = Testgen::Util::Chdir->new($testdir);
-        $self->parse_dir_section(\$body);
+        File::Path::rmtree([$testdir], 0, 0) if -d $testdir;
+        File::Path::mkpath([$testdir], 0, 0777);
+
+        {
+            my $guard = Testgen::Util::Chdir->new($testdir);
+            $self->parse_dir_section(\$body);
+        }
     }
 }
 
