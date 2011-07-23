@@ -1,7 +1,8 @@
 package Testgen;
+use strict;
 
 use 5.008_001;
-use strict;
+
 our $VERSION = '0.01';
 
 1;
@@ -21,21 +22,35 @@ Testgen -
 
 =head1 DESCRIPTION
 
-Testgen is
+Testgen is c test generator
 
 =head1 AUTHOR
+
+Authors of original source code are:
+
+Yuki UCHIYAMA
+
+Kazushi MORIMOTO
+
+Nagisa ISHIURA
+
+Nobuyuki HIKICHI
+
+=head1 CONTRIBUTORS
 
 Syohei YOSHIDA E<lt>syohex@gmail.comE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2011- Syohei YOSHIDA
+Copyright 2011- Ishiura lab in Kwansei Gakuin University, SRA-KTL, SRA
 
 =head1 LICENSE
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+Programs that use this code are bound to the terms and conditions of
+the GNU GPL (see the LICENSE file)
 
 =head1 SEE ALSO
+
+L<http://ist.ksc.kwansei.ac.jp/~ishiura/pub/testgen/>
 
 =cut
