@@ -135,7 +135,7 @@ sub _do_test {
     }
 #    $fm->wait_all_children;
 
-    $testdir->summarize;
+    $testdir->summarize($self->{log}, $self->{faillog});
 }
 
 sub _compile_and_execute {

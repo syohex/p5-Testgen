@@ -40,10 +40,6 @@ sub tests {
 sub setup {
     my ($self, $temp_log_dir) = @_;
     $self->_collect_tests;
-
-    for my $test ( @{$self->{tests}} ) {
-        $test->setup_log($temp_log_dir);
-    }
 }
 
 sub result {
@@ -140,9 +136,9 @@ sub _get_cfiles {
 }
 
 sub summarize {
-    my $self = shift;
+    my ($self, $log, $faillog) = @_;
 
-    my $result = $self->_collect_results();
+    my $result = $self->_collect_results($log, $faillog);
 
     if ($result->{test_num} == 0) {
         Carp::carp("[$self->{name}] You don't any tests!!");
@@ -174,7 +170,7 @@ sub summarize {
 }
 
 sub _collect_results {
-    my $self = shift;
+    my ($self, $log, $faillog) = @_;
 
     my @params = qw/test_num
                     compile_success compile_failure
@@ -185,6 +181,9 @@ sub _collect_results {
     for my $result_file ( sort @entries ) {
         my $file = File::Spec->catfile($self->{temp_dir}, $result_file);
         my $result_ref = do $file or die "Can't load $file $!";
+
+        $log->print( $result_ref->{log} );
+        $faillog->print( $result_ref->{faillog} );
 
         for my $param ( @params ) {
             $cache{$param} += $result_ref->{$param};

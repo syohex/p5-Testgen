@@ -45,6 +45,8 @@ sub _set_output {
 # accessor
 sub oknum           { shift->{oknum}    }
 sub output          { shift->{output}   }
+sub log             { shift->{result}->{log}             }
+sub faillog         { shift->{result}->{faillog}         }
 sub test_num        { shift->{result}->{test_num}        }
 sub compile_success { shift->{result}->{compile_success} }
 sub compile_failure { shift->{result}->{compile_failure} }
@@ -68,29 +70,6 @@ sub finalize {
     if (-e $self->{output}) {
         unlink $self->{output} or Carp::croak("Can't unlink $self->{output}\n");
     }
-}
-
-sub start_log {
-    my ($self, $dir_name) = @_;
-
-    $self->{log}->print("in $dir_name\n");
-    $self->{faillog}->print("in $dir_name\n");
-}
-
-sub setup_log {
-    my ($self, $dir) = @_;
-
-    my $name = _first_file($self->{files});
-
-    $self->{log} = Testgen::Log->new(
-        name => "${name}.log",
-        dir  => $dir,
-    );
-
-    $self->{faillog} = Testgen::Log->new(
-        name => "${name}.flog",
-        dir  => $dir,
-    );
 }
 
 sub analyze_result {
@@ -139,7 +118,7 @@ sub _compile_log {
     my $testname = File::Spec->catfile($self->{dir}, $self->input);
 
     chomp $message;
-    $self->{log}->print( <<"..." );
+    $self->{result}->{log} = <<"...";
 $testname
 Compile: $command
 $message
@@ -147,7 +126,7 @@ $message
 
     unless ($result->is_success) {
         my $status = $result->status;
-        $self->{faillog}->print("$testname compile $status\n");
+        $self->{result}->{faillog} = "$testname compile $status\n"
     }
 }
 
@@ -159,7 +138,7 @@ sub _execute_log {
     my $testname = File::Spec->catfile($self->{dir}, $self->input);
 
     chomp $message;
-    $self->{log}->print( <<"..." );
+    $self->{result}->{log} = <<"...";
 $testname
 Execute: $command
   (expect ok: $oknum) .....
@@ -168,7 +147,7 @@ $message
 
     unless ($result->is_success) {
         my $status = $result->status;
-        $self->{faillog}->print("$testname execute $status\n");
+        $self->{result}->{faillog} = "$testname execute $status\n";
     }
 }
 
