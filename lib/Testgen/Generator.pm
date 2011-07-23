@@ -226,3 +226,30 @@ Options:
 1;
 
 __END__
+
+=encoding utf8
+
+=head1 NAME
+
+Testgen::Generator - A test generator class
+
+=head1 INTERFACE
+
+=head2 Class Methods
+
+=head3 C<< Testgen::Generator->new() :Testgen::Generator >>
+
+Creates and returns a new Testgen::Generator object with I<args>.
+
+=head2 Instance Methods
+
+=head3 C<< $generator->parse_options(@ARGV)  >>
+
+Parse command line options.
+
+=head3 C<< $generator->run() >>
+
+Run test generator.
+Read template files, parse them and generate test files.
+
+=cut
