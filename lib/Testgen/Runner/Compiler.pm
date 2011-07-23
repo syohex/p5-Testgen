@@ -3,7 +3,6 @@ use strict;
 use warnings;
 
 use Carp ();
-use File::Spec ();
 
 use Testgen::Runner::Command;
 use Testgen::Runner::Compiler::Result;
