@@ -67,3 +67,39 @@ sub _create_cmd {
 1;
 
 __END__
+
+=encoding utf8
+
+=head1 NAME
+
+Testgen::Runner::Compiler - A compiler class
+
+=head1 INTERFACE
+
+=head2 Class Methods
+
+=head3 C<< Testgen::Runner::Compiler->new(%args) :Testgen::Runner::Compiler >>
+
+Creates and returns a new Testgen::Runner::Compiler object with I<args>.
+Dies on error.
+
+I<%args> might be:
+
+=over
+
+=item compiler :Str
+
+=item c_flags  :ArrayRef[Str] = []
+
+=item ld_flags :ArrayRef[Str] = []
+
+=back
+
+=head2 Instance Methods
+
+=head3 C<< $compiler->compile($test, $option) >>
+
+Compile test which is a F<Testgen::Runner::Testdirectory::Test> with C<$option>.
+Return a L<Testgen::Runner::Compiler::Result> object.
+
+=cut
