@@ -69,6 +69,7 @@ sub _set_predefined_macros {
     }
 
     my %predefined;
+    my $pointer_size = delete $size->{pointer};
     for my $key ( keys %{$size} ) {
         use bignum; ## for very large number
         my $power = $size->{$key};
@@ -105,6 +106,13 @@ sub _set_predefined_macros {
         $predefined{$size_min} = Testgen::TemplateFile::Macro->new(
             name => $size_min, dummy_args => [], body => $min_value,
         );
+
+        if ($pointer_size == $size->{$key}) {
+            my $intptr = '$INTPTR';
+            $predefined{$intptr} = Testgen::TemplateFile::Macro->new(
+                name => $intptr, dummy_args => [], body => $key,
+            );
+        }
     }
 
     $self->{predefined_macros} = \%predefined;
