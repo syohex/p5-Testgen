@@ -246,14 +246,14 @@ $LICENSE()
 long            itest;
 char            ctest;
 
-#define OKORL (~(037777777777))
-#define OKCOR (~(0377))
+#define OKORL (~( $ULONGMAX() ))
+#define OKCOR (~( $UCHARMAX() ))
 
 #ifndef OKOR
 # ifdef unix
-#  define OKOR (~(037777777777))
+#  define OKOR (~( $UINTMAX() ))
 # else
-#  define OKOR (~(0177777))
+#  define OKOR (~( $USHORTMAX() ))
 # endif
 #endif
 

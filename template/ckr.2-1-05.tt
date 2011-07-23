@@ -138,17 +138,17 @@ $LICENSE()
 long            itest;
 char            ctest;
 #ifndef OKRVS
-# define OKRVS (0177776)
+# define OKRVS ($USHORTMAX() - 1)
 #endif
 #ifndef OKRV
 # ifdef unix
-#  define OKRV (037777777776)
+#  define OKRV ($UINTMAX() - 1)
 # else
-#  define OKRV (0177776)
+#  define OKRV ($USHORTMAX() - 1)
 # endif
 #endif
-#define OKRVL (037777777776)
-#define OKCRV (0376)
+#define OKRVL ($ULONGMAX() - 1)
+#define OKCRV ($UCHARMAX() - 1)
 #define OK 1
 #define NO 0
 #define YCHAR	'y'

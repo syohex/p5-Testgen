@@ -199,13 +199,13 @@ $ctest1(Unidef.Char)
 $LICENSE()
 #ifndef ONE
 # ifdef unix
-#  define	ONE	~037777777776
+#  define	ONE	( ~($UINTMAX() - 1) )
 # else
-#  define	ONE	~0177776
+#  define	ONE	( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
-#define	ONEL	~037777777776
+#define	ONEL	( ~($ULONGMAX() - 1) )
 
 #include "testout.h"
 

@@ -82,9 +82,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -121,9 +121,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -161,9 +161,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -197,9 +197,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -233,9 +233,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -273,9 +273,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -312,9 +312,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -351,9 +351,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -393,9 +393,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -433,9 +433,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -473,9 +473,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -529,9 +529,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -585,9 +585,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -651,9 +651,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -717,9 +717,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -773,9 +773,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -826,9 +826,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -865,9 +865,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -914,9 +914,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -969,9 +969,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1033,9 +1033,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1089,9 +1089,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1145,9 +1145,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1193,9 +1193,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1238,9 +1238,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1283,9 +1283,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1331,9 +1331,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1378,9 +1378,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1421,9 +1421,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1466,9 +1466,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1513,9 +1513,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1563,9 +1563,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1611,9 +1611,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1659,9 +1659,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1707,9 +1707,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1752,9 +1752,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1797,9 +1797,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1845,9 +1845,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1892,9 +1892,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1935,9 +1935,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -1981,9 +1981,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2029,9 +2029,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2080,9 +2080,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2128,9 +2128,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2176,9 +2176,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2227,9 +2227,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2278,9 +2278,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2324,9 +2324,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2375,9 +2375,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2424,9 +2424,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2466,9 +2466,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2513,9 +2513,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2565,9 +2565,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2623,9 +2623,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2674,9 +2674,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2725,9 +2725,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2776,9 +2776,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2827,9 +2827,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2873,9 +2873,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2924,9 +2924,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -2973,9 +2973,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3015,9 +3015,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3062,9 +3062,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3114,9 +3114,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3172,9 +3172,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3223,9 +3223,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3274,9 +3274,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3322,9 +3322,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3370,9 +3370,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3415,9 +3415,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3460,9 +3460,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3507,9 +3507,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3550,9 +3550,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3596,9 +3596,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3644,9 +3644,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3695,9 +3695,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3743,9 +3743,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3791,9 +3791,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3838,9 +3838,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3885,9 +3885,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3929,9 +3929,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -3973,9 +3973,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4020,9 +4020,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4061,9 +4061,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4105,9 +4105,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4150,9 +4150,9 @@ long            OK = 1;
 long            NO = 0;
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4201,9 +4201,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 int main(void)
@@ -4246,9 +4246,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4293,9 +4293,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4335,9 +4335,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4377,9 +4377,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4415,9 +4415,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4453,9 +4453,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4495,9 +4495,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4536,9 +4536,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4573,9 +4573,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4614,9 +4614,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4658,9 +4658,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4700,9 +4700,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4742,9 +4742,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4787,9 +4787,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4832,9 +4832,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4874,9 +4874,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4916,9 +4916,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -4961,9 +4961,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5005,9 +5005,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5045,9 +5045,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5090,9 +5090,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5138,9 +5138,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5183,9 +5183,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5228,9 +5228,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5276,9 +5276,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5324,9 +5324,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5368,9 +5368,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5412,9 +5412,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5460,9 +5460,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5507,9 +5507,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5549,9 +5549,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5595,9 +5595,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5645,9 +5645,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5693,9 +5693,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5741,9 +5741,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5792,9 +5792,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5843,9 +5843,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5890,9 +5890,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5937,9 +5937,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -5988,9 +5988,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6038,9 +6038,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6083,9 +6083,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6132,9 +6132,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6182,9 +6182,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6233,9 +6233,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6284,9 +6284,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6332,9 +6332,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6380,9 +6380,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6425,9 +6425,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6470,9 +6470,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6518,9 +6518,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6565,9 +6565,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6608,9 +6608,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6654,9 +6654,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6702,9 +6702,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6753,9 +6753,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6801,9 +6801,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6849,9 +6849,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6897,9 +6897,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6942,9 +6942,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -6987,9 +6987,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7035,9 +7035,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7082,9 +7082,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7125,9 +7125,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7171,9 +7171,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7219,9 +7219,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7270,9 +7270,9 @@ long            NO = 0;
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7318,9 +7318,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7358,9 +7358,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7398,9 +7398,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7434,9 +7434,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7470,9 +7470,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7510,9 +7510,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7549,9 +7549,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7588,9 +7588,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7630,9 +7630,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7670,9 +7670,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7710,9 +7710,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7766,9 +7766,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7822,9 +7822,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7888,9 +7888,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -7954,9 +7954,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8010,9 +8010,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8063,9 +8063,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8102,9 +8102,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8151,9 +8151,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8206,9 +8206,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8270,9 +8270,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8326,9 +8326,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8382,9 +8382,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8430,9 +8430,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8475,9 +8475,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8520,9 +8520,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8568,9 +8568,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8615,9 +8615,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8658,9 +8658,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8704,9 +8704,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8752,9 +8752,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8803,9 +8803,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8851,9 +8851,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8899,9 +8899,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8947,9 +8947,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -8992,9 +8992,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9037,9 +9037,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9085,9 +9085,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9132,9 +9132,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9175,9 +9175,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9221,9 +9221,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9269,9 +9269,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9320,9 +9320,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9368,9 +9368,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9416,9 +9416,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9467,9 +9467,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9518,9 +9518,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9564,9 +9564,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9615,9 +9615,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9664,9 +9664,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9706,9 +9706,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9753,9 +9753,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9805,9 +9805,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9863,9 +9863,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9914,9 +9914,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -9965,9 +9965,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10016,9 +10016,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10067,9 +10067,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10113,9 +10113,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10164,9 +10164,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10213,9 +10213,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10255,9 +10255,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10302,9 +10302,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10354,9 +10354,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10412,9 +10412,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10463,9 +10463,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10514,9 +10514,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10562,9 +10562,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10610,9 +10610,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10655,9 +10655,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10700,9 +10700,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10747,9 +10747,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10790,9 +10790,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10836,9 +10836,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10884,9 +10884,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10935,9 +10935,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -10983,9 +10983,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11031,9 +11031,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11078,9 +11078,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11125,9 +11125,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11169,9 +11169,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11213,9 +11213,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11260,9 +11260,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11302,9 +11302,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11347,9 +11347,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11394,9 +11394,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11444,9 +11444,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11491,9 +11491,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11538,9 +11538,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11580,9 +11580,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11622,9 +11622,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11660,9 +11660,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11698,9 +11698,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11740,9 +11740,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11781,9 +11781,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11818,9 +11818,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11859,9 +11859,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11903,9 +11903,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11945,9 +11945,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -11987,9 +11987,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12032,9 +12032,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12077,9 +12077,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12119,9 +12119,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12161,9 +12161,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12206,9 +12206,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12250,9 +12250,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12290,9 +12290,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12335,9 +12335,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12383,9 +12383,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12428,9 +12428,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12473,9 +12473,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12521,9 +12521,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12569,9 +12569,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12613,9 +12613,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12657,9 +12657,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12705,9 +12705,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12752,9 +12752,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12794,9 +12794,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12840,9 +12840,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12890,9 +12890,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12938,9 +12938,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -12986,9 +12986,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13037,9 +13037,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13088,9 +13088,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13135,9 +13135,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13182,9 +13182,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13233,9 +13233,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13283,9 +13283,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13328,9 +13328,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13377,9 +13377,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13427,9 +13427,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13478,9 +13478,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13529,9 +13529,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13577,9 +13577,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13625,9 +13625,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13670,9 +13670,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13715,9 +13715,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13763,9 +13763,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13810,9 +13810,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13853,9 +13853,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13899,9 +13899,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13947,9 +13947,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -13998,9 +13998,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -14046,9 +14046,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -14094,9 +14094,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -14142,9 +14142,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -14187,9 +14187,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -14232,9 +14232,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -14280,9 +14280,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -14327,9 +14327,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -14370,9 +14370,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -14416,9 +14416,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -14464,9 +14464,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
@@ -14515,9 +14515,9 @@ $HEAD()
 
 #ifndef TEST
 # ifdef unix
-# define TEST ~(037777777776)
+# define TEST ( ~($UINTMAX() - 1) )
 # else
-# define TEST ~(0177776)
+# define TEST ( ~($USHORTMAX() - 1) )
 # endif
 #endif
 
