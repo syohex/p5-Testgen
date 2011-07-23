@@ -133,19 +133,38 @@ sub _log_name {
 sub _do_test {
     my ($self, $testdir) = @_;
 
-    my $parallels = $self->{config}->get('parallels') || 1;
-#    my $fm = Testgen::ForkManager->new($parallels);
+    if ($self->{config}->get('parallels') >= 2 && $^O ne 'MSWin32') {
+        $self->_do_test_parallel($testdir, $self->{config}->get('parallels'));
+    } else {
+        $self->_do_test_single($testdir);
+    }
+
+    $testdir->summarize($self->{log}, $self->{faillog});
+}
+
+sub _do_test_single {
+    my ($self, $testdir) = @_;
 
     my $temp_dir = $testdir->temp_dir;
     for my $test ( $testdir->tests ) {
-#        $fm->start and next;
         $self->_compile_and_execute($test);
         $test->dump_result( $temp_dir );
-#        $fm->finish;
     }
-#    $fm->wait_all_children;
+}
 
-    $testdir->summarize($self->{log}, $self->{faillog});
+sub _do_test_parallel {
+    my ($self, $testdir, $parallels) = @_;
+
+    my $fm = Testgen::ForkManager->new($parallels);
+
+    my $temp_dir = $testdir->temp_dir;
+    for my $test ( $testdir->tests ) {
+        $fm->start and next;
+        $self->_compile_and_execute($test);
+        $test->dump_result( $temp_dir );
+        $fm->finish;
+    }
+    $fm->wait_all_children;
 }
 
 sub _compile_and_execute {
