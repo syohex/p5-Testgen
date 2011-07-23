@@ -85,7 +85,7 @@ Output encoding.
 
 =head3 C<< $log->print($string) >>
 
-Print out I<$string> encoded C<$self->{encoding}> to stdout.
+Print out I<$string> encoded C<$self->{encoding}> to the log file.
 I<$string> should be as I<string>, not octet stream.
 
 =cut
