@@ -14,23 +14,19 @@ sub new {
         Carp::croak("missing mandatory parameter 'compiler'");
     }
 
-    my $c_flags  = delete $args{c_flags}  || [ '' ];
-    my $ld_flags = delete $args{ld_flags} || [ '' ];
-    my $options  = delete $args{options}  || [ '' ];
+    my $c_flags  = delete $args{c_flags}  || [];
+    my $ld_flags = delete $args{ld_flags} || [];
 
     bless {
         c_flags  => $c_flags,
         ld_flags => $ld_flags,
-        options  => $options,
         %args,
     }, $class;
 }
 
-# accessor
-sub options { shift->{options} }
-
 sub compile {
     my ($self, $test, $option) = @_;
+    $option ||= '';
 
     my @cmd = $self->_create_cmd($test->input, $test->output, $option);
     my $command = Testgen::Runner::Command->new( command => \@cmd );
@@ -60,9 +56,10 @@ sub _create_cmd {
     $option ||= '';
 
     # for empty parameter
-    my $cmd_str = join ' ', $self->{compiler}, @{$self->{c_flags}}
+    my $cmd_str = join ' ', $self->{compiler}
+                          , @{$self->{c_flags}} || ''
                           , $option, $input, '-o', $output
-                          , @{$self->{ld_flags}};
+                          , @{$self->{ld_flags}} || '';
 
     return split /\s+/, $cmd_str;
 }
