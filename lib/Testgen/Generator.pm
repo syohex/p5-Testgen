@@ -69,20 +69,24 @@ sub _set_predefined_macros {
         return;
     }
 
-    my %predefined;
     my $pointer_size = delete $size->{pointer};
+
+    my %predefined;
     for my $key ( keys %{$size} ) {
         use bignum; ## for very large number
+
+        $key = 'longlong' if $key eq 'long long';
+
         my $power = $size->{$key};
 
         my $size_max  = uc('$' . "${key}max");
         my $max_value = sprintf "%s", (2 ** ($power-1)) - 1;
 
         $max_value .= 'L'  if $key eq 'long';
-        $max_value .= 'LL' if $key eq 'long long';
+        $max_value .= 'LL' if $key eq 'longlong';
 
         $predefined{$size_max} = Testgen::TemplateFile::Macro->new(
-            name => $size_max, dummy_args => [], body => $max_value,
+            name => $size_max, body => $max_value,
         );
 
         my $usize_max  = uc('$' . "u${key}max");
@@ -90,10 +94,10 @@ sub _set_predefined_macros {
 
         $umax_value .= 'U'   if $key eq 'int';
         $umax_value .= 'UL'  if $key eq 'long';
-        $umax_value .= 'ULL' if $key eq 'long long';
+        $umax_value .= 'ULL' if $key eq 'longlong';
 
         $predefined{$usize_max} = Testgen::TemplateFile::Macro->new(
-            name => $usize_max, dummy_args => [], body => $umax_value,
+            name => $usize_max, body => $umax_value,
         );
 
         my $size_min  = uc('$' . "${key}min");
@@ -102,16 +106,16 @@ sub _set_predefined_macros {
         $min_value += 1 if $config->get('complement') == 1;
 
         $min_value .= 'L'  if $key eq 'long';
-        $min_value .= 'LL' if $key eq 'long long';
+        $min_value .= 'LL' if $key eq 'longlong';
 
         $predefined{$size_min} = Testgen::TemplateFile::Macro->new(
-            name => $size_min, dummy_args => [], body => $min_value,
+            name => $size_min, body => $min_value,
         );
 
         if ($pointer_size == $size->{$key}) {
             my $intptr = '$INTPTR';
             $predefined{$intptr} = Testgen::TemplateFile::Macro->new(
-                name => $intptr, dummy_args => [], body => $key,
+                name => $intptr, body => $key,
             );
         }
     }

@@ -114,7 +114,7 @@ Testgen::TemplateFile::Macro - A macro class
 
 =head3 C<< Testgen::TemplateFile::Macro->new(%args) :Testgen::TemplateFile::Macro >>
 
-Creates and returns a new Testgen::Runner::Compiler object with I<args>.
+Creates and returns a new Testgen::TemplateFile::Macro object with I<args>.
 Dies on error.
 
 I<%args> might be:
