@@ -156,3 +156,52 @@ sub count_ok_num {
 }
 
 1;
+
+__END__
+
+=encoding utf8
+
+=head1 NAME
+
+Testgen::TestDirectory::Test - A test class
+
+=head1 INTERFACE
+
+=head2 Class Methods
+
+=head3 C<< Testgen::TestDirectory::Test->new(%args) :Testgen::TestDirectory::Test >>
+
+Creates and returns a new Testgen::TestDirectory::Test object with I<args>.
+Dies on error.
+
+I<%args> might be:
+
+=over
+
+=item files :(Str|ArrayRef)
+
+=item oknum :Int = undef
+
+=back
+
+=head2 Instance Methods
+
+=head3 C<< $test->count_ok_num :Int >>
+
+Count 'printok' in test file and return count of its.
+
+=head3 C<< $test->analyze_result($compile_result, $execute_result) >>
+
+Analyze compile result and execute result of this test program.
+
+=head3 C<< $test->dump_result($dir) >>
+
+Dump test result to C< File::Spec->catfile($dir, test_name) >.
+
+=head3 C<< $test->finalize() >>
+
+Finalize this test, remove executable.
+
+=head3 C<< $template_file->parse() >>
+
+=cut
