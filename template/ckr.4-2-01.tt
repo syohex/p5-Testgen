@@ -2865,7 +2865,7 @@ main()
 {
 	long            i, divide4(), dummy1();
 
-	i = dummy1(divide4, ((long) (65500 + 4294901760U)));
+	i = dummy1(divide4, ((long) (65500 + ($ULONGMAX() & ~0xffffUL))));
 
 	if (i != -9L)
 		statusFlag++;
@@ -2882,7 +2882,7 @@ dummy1(func, Long)
 {
 	long            i = Long;
 
-	i = (*func) ((long) (65500 + 4294901760U));
+	i = (*func) ((long) (65500 + ($ULONGMAX() & ~0xffffUL)));
 	if (i != -9L)
 		statusFlag++;
 	return (i);
@@ -2903,7 +2903,7 @@ dummy2(func, Long)
 {
 	long            i = Long;
 
-	i = (*func) ((long) (65500 + 4294901760U));
+	i = (*func) ((long) (65500 + ($ULONGMAX() & ~0xffffUL)));
 	if (i != -18L)
 		statusFlag++;
 	return (i);
@@ -2982,7 +2982,7 @@ main()
 {
 	long            divide4(), dummy1();
 
-	if (dummy1(divide4, (long) (60000 + 4294901760UL)) != -1384L)
+	if (dummy1(divide4, (long) (60000 + ($ULONGMAX() & ~0xffffUL))) != -1384L)
 		statusFlag++;
 	if (statusFlag == NoMistake)
 		printok();
@@ -2996,7 +2996,7 @@ dummy1(func, Long)
 	long            (*func) (), Long;
 {
 	Long++;
-	return ((*func) ((long) (60000 + 4294901760UL)));
+	return ((*func) ((long) (60000 + ($ULONGMAX() & ~0xffffUL))));
 }
 
 long 
@@ -3015,7 +3015,7 @@ dummy2(func, Long)
 	long            i;
 
 	Long++;
-	if ((i = (*func) ((long) (60000 + 4294901760UL))) != -2768L)
+	if ((i = (*func) ((long) (60000 + ($ULONGMAX() & ~0xffffUL)))) != -2768L)
 		statusFlag++;
 	return (i);
 }

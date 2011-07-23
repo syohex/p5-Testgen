@@ -2153,7 +2153,7 @@ char* function(char *string)
 $LICENSE()
 $HEAD()
 
-int function(int*);
+$INTPTR() function($INTPTR() *);
 
 int main(void)
 /*
@@ -2161,19 +2161,19 @@ int main(void)
  * integer value 
  */
 {
-	int             i = 1, *j = &i;
+	$INTPTR()             i = 1, *j = &i;
 
 	i = function(&i);
-	if ((int *) i != j - 1)
+	if (($INTPTR() *) i != j - 1)
 		printno();
 	else
 		printok();
 	return 0;
 }
 
-int function(int *argument)
+$INTPTR() function($INTPTR() *argument)
 {
-	return (int) --argument;
+	return ($INTPTR()) --argument;
 }
 @def_
 @def $macro70()

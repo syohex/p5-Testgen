@@ -2087,26 +2087,29 @@ function(string)
 $LICENSE()
 $HEAD()
 
+$INTPTR() function($INTPTR() *argument);
+
 main()
 /*
  * test class: the way functions are used instance  : when a function, which returns a pointer, mistakenly used to get an
  * integer value 
  */
 {
-	int             i = 1, *j = &i;
+	$INTPTR()        i = 1, *j = &i;
 
 	i = function(&i);
-	if ((int *) i != j - 1)
+	if (($INTPTR() *) i != j - 1)
 		printno();
 	else
 		printok();
 	return (0);
 }
 
+$INTPTR()
 function(argument)
-	int            *argument;
+	$INTPTR()            *argument;
 {
-	return ((int) --argument);
+	return (($INTPTR()) --argument);
 }
 @def_
 @def $macro70()

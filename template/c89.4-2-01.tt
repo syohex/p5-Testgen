@@ -2742,7 +2742,7 @@ int main(void)
 {
 	long            i;
 
-	i = dummy1(divide4, ((long) (65500 + 4294901760U)));
+	i = dummy1(divide4, ((long) (65500 + ($ULONGMAX() & ~0xffffUL))));
 
 	if (i != -9L)
 		statusFlag++;
@@ -2757,7 +2757,7 @@ long dummy1(long (*func) (long), long Long)
 {
 	long            i = Long;
 
-	i = (*func) ((long) (65500 + 4294901760U));
+	i = (*func) ((long) (65500 + ($ULONGMAX() & ~0xffffUL)));
 	if (i != -9L)
 		statusFlag++;
 	return i;
@@ -2774,7 +2774,7 @@ long dummy2(long (*func) (long), long Long)
 {
 	long            i = Long;
 
-	i = (*func) ((long) (65500 + 4294901760U));
+	i = (*func) ((long) (65500 + ($ULONGMAX() & ~0xffffUL)));
 	if (i != -18L)
 		statusFlag++;
 	return i;
@@ -2846,7 +2846,7 @@ int main(void)
  * returning an long 
  */
 {
-	if (dummy1(divide4, (long) (60000 + 4294901760UL)) != -1384L)
+	if (dummy1(divide4, (long) (60000 + ($ULONGMAX() & ~0xffffUL))) != -1384L)
 		statusFlag++;
 	if (statusFlag == NoMistake)
 		printok();
@@ -2858,7 +2858,7 @@ int main(void)
 long dummy1(long (*func) (long), long Long)
 {
 	Long++;
-	return (*func) ((long) (60000 + 4294901760UL));
+	return (*func) ((long) (60000 + ($ULONGMAX() & ~0xffffUL)));
 }
 
 long divide4(long Long)
@@ -2871,7 +2871,7 @@ long dummy2(long (*func) (long), long Long)
 	long            i;
 
 	Long++;
-	if ((i = (*func) ((long) (60000 + 4294901760UL))) != -2768L)
+	if ((i = (*func) ((long) (60000 + ($ULONGMAX() & ~0xffffUL)))) != -2768L)
 		statusFlag++;
 	return i;
 }
@@ -4152,7 +4152,7 @@ int main(void)
  * integer 
  */
 {
-	short           i,divide4();
+	short           i,divide4(short);
 
 	i = dummy1(divide4, 12);
 	if (i != 3)
@@ -5836,7 +5836,7 @@ int main(void)
  * returning an integer 
  */
 {
-	short           i,divide4();
+	short           i,divide4(short);
 
 	i = dummy1(divide4, (int) 65500);
 	if (i != -9)
@@ -9233,7 +9233,7 @@ int main(void)
  * return a pointer to character 
  */
 {
-	char           *s, *levelOne();
+	char           *s, *levelOne(unsigned);
 
 	s = levelOne( (unsigned short) -65533);
 	if (*s != '3')
@@ -9247,7 +9247,7 @@ int main(void)
 
 char *levelOne(unsigned constant)
 {
-	char           *s, *levelTwo();
+	char           *s, *levelTwo(unsigned short);
 	unsigned short  i;
 
 	if (constant != (unsigned short) -65533)
@@ -9261,7 +9261,7 @@ char *levelOne(unsigned constant)
 
 char *levelTwo(unsigned short constant)
 {
-	char           *s *levelThree();
+	char           *s, *levelThree(unsigned short);
 	unsigned short  i;
 
 	if (constant != (unsigned short) -65534)
@@ -9301,7 +9301,7 @@ int main(void)
  * returning an unsigned 
  */
 {
-	unsigned short  i,divide4();
+	unsigned short  i,divide4(unsigned short);
 
 	i = dummy1(divide4, (int) -65500);
 	if (i != 9)
@@ -9576,7 +9576,7 @@ int main(void)
  * returning an unsigned 
  */
 {
-	unsigned short  divide4();
+	unsigned short  divide4(unsigned short);
 
 	if (dummy1(divide4, (int) -65500) != 9)
 		statusFlag++;
@@ -9595,7 +9595,7 @@ int dummy1(unsigned short (*func) (unsigned short), unsigned short integer)
 
 unsigned short divide4(unsigned short integer)
 {
-	unsigned short  divide2();	
+	unsigned short  divide2(unsigned short);
 
 	return dummy2(divide2, integer) / 2;
 }
