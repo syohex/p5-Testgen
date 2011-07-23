@@ -16,6 +16,8 @@ sub new {
 sub _set_default_value {
     my $conf = shift;
 
+    $conf->{color}        ||= 0;
+    $conf->{parallels}    ||= 1;
     $conf->{complement}   ||= 2;
     $conf->{compile_only} ||= 0;
     $conf->{timeout}      ||= 10;
