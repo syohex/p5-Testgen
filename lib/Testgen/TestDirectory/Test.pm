@@ -7,7 +7,6 @@ use Data::Dumper;
 use File::Basename ();
 use File::Spec ();
 
-use Testgen::Log;
 use Testgen::Util ();
 
 local $Data::Dumper::Indent = 0;

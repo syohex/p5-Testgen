@@ -182,8 +182,10 @@ sub _collect_results {
         my $file = File::Spec->catfile($self->{temp_dir}, $result_file);
         my $result_ref = do $file or die "Can't load $file $!";
 
-        $log->print( $result_ref->{log} );
-        $faillog->print( $result_ref->{faillog} );
+        $log->print($result_ref->{log});
+        if (exists $result_ref->{faillog}) {
+            $faillog->print($result_ref->{faillog})
+        }
 
         for my $param ( @params ) {
             $cache{$param} += $result_ref->{$param};
