@@ -10,7 +10,7 @@ use Term::ANSIColor ();
 use Testgen::TestDirectory::Test;
 use Testgen::Util ();
 
-use constant USE_COLOR => $ENV{TESTGEN_COLOR};
+our $COLOR = 0;
 
 my $fileset_name = 'FILESET';
 
@@ -146,11 +146,11 @@ sub summarize {
     }
 
     my $name;
-    if ( ! USE_COLOR ) {
+    if ( $COLOR ) {
         my $status_color;
         if ( $result->{test_num} == $result->{execute_success} ) {
             $status_color = 'green';
-        } elsif ( $result->{test_num} == $result->{execute_success} ) {
+        } elsif ( $result->{test_num} == $result->{compile_success} ) {
             $status_color = 'yellow';
         } else {
             $status_color = 'red';
@@ -159,7 +159,7 @@ sub summarize {
         $name = Term::ANSIColor::color('bold', $status_color)
                 . "[$self->{name}]" . Term::ANSIColor::color('reset');
     } else {
-        $name = $self->{name};
+        $name = "[$self->{name}]";
     }
 
     my $compile_ok = join '/', $result->{compile_success}, $result->{test_num};
