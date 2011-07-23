@@ -47,6 +47,7 @@ sub _run_with_system {
     my @cmd = @{$self->{command}};
 
     # [CAUTION] This use of 'system' is very insecure !!!!
+    # I don't understand why using IPC is too slow.
     my $status = system( "@cmd" . " > $out_redirect 2> $err_redirect" );
 
     my ($stdout, $stderr) = do {
@@ -103,3 +104,48 @@ sub _run_with_ipc {
 1;
 
 __END__
+
+=encoding utf8
+
+=head1 NAME
+
+Testgen::Runner::Command - A Testgen command class
+
+=head1 INTERFACE
+
+=head2 Class Methods
+
+=head3 C<< Testgen::Runner::Command->new(%args) :Testgen::Runner::Command >>
+
+Creates and returns a new Testgen::Runner::Command object with I<args>.
+Dies on error.
+
+I<%args> might be:
+
+=over
+
+=item command :ArrayRef
+
+=item timeout :Int = 0
+
+Timeout never happen by default.
+
+=back
+
+=head2 Package Variable
+
+=head3 C<< $Testgen::Runner::Command::HAS_MULTICORE >>
+
+If this variable is true, host machine may be have multicore processors.
+Default is false. On MicroSoft Windows, this variable is always false.
+
+=head2 Instance Methods
+
+=head3 C<< $command->run() >> :( $exit_status, $stdout, $stderr)
+
+Run command. Return three values, exit_status, output to STDOUT,
+output to STDERR.
+
+If timeout happens, C<$exit_status> is C<undef>.
+
+=cut
