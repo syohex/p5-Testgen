@@ -135,9 +135,9 @@ sub _generate_testsuite {
 
     for my $tt_file (@{$self->{argv}}) {
         my $template = Testgen::TemplateFile->new(
-            name              => $tt_file,
-            testsuite_dir     => $testsuite_dir,
-            predefined_macros => $self->{predefined_macros},
+            name           => $tt_file,
+            testsuite_dir  => $testsuite_dir,
+            macros         => $self->{predefined_macros},
         );
 
         print "Parse $tt_file\n";

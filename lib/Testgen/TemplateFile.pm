@@ -12,7 +12,7 @@ use constant FILESET_NAME => 'FILESET';
 sub new {
     my ($class, %args) = @_;
 
-    my $macros = delete $args{predefined_macros} || {};
+    my $macros = delete $args{macros} || {};
 
     bless {
         macros            => $macros,
