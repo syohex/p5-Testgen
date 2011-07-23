@@ -18,8 +18,8 @@ sub new {
     bless {
         macros            => $macros,
         filename_index    => 0,
-        template_encoding => 'utf-8',
-        output_encoding   => 'utf-8',
+        template_encoding => 'utf8',
+        output_encoding   => 'utf8',
         %args,
     }, $class;
 }
@@ -104,7 +104,7 @@ sub _parse_dir_section {
 
         {
             my $guard = Testgen::Util::Chdir->new($testdir);
-            $self->parse_dir_section(\$body);
+            $self->_process_dir_section(\$body);
         }
     }
 }
@@ -137,7 +137,7 @@ my %dir_section_regexp = (
     at_comment_end   => qr{ \A \@comment_  }xmso,
 );
 
-sub parse_dir_section {
+sub _process_dir_section {
     my ($self, $body_ref) = @_;
 
     open my $fh, '<', $body_ref or Carp::croak("Can't open bodyref");
@@ -167,7 +167,7 @@ sub parse_dir_section {
             for my $real_arg (@real_args) {
                 my $filename = $self->_define_filename($filename_tmpl);
                 my $expanded = $macro->expand($real_arg, $self->{macros});
-                $self->output_test($filename, $expanded);
+                $self->_output_test($filename, $expanded);
 
                 if (defined $oknum) {
                     _append_fileset($filename, $oknum);
@@ -237,7 +237,7 @@ sub _parse_macro_str {
     return ($name, \@macro_args);
 }
 
-sub output_test {
+sub _output_test {
     my ($self, $testfile, $content) = @_;
 
     open my $fh, '>', $testfile or Carp::croak("Can't open $testfile");
@@ -258,3 +258,42 @@ sub _combination {
 }
 
 1;
+
+__END__
+
+=encoding utf8
+
+=head1 NAME
+
+Testgen::TemplateFile - A template file class
+
+=head1 INTERFACE
+
+=head2 Class Methods
+
+=head3 C<< Testgen::TemplateFile->new(%args) :Testgen::TemplateFile >>
+
+Creates and returns a new Testgen::TemplateFile object with I<args>.
+Dies on error.
+
+I<%args> might be:
+
+=over
+
+=item macros :HashRef[] = {}
+
+You set this parameter if you have predefined macros.
+
+=item template_encoding :Str = 'utf8'
+
+=item output_encodign :Str = 'utf8'
+
+=back
+
+=head2 Instance Methods
+
+=head3 C<< $template_file->parse() >>
+
+Parse this template file and generate test programs.
+
+=cut
