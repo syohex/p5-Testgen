@@ -14,10 +14,14 @@ sub new {
         Carp::croak("missing mandatory parameter 'compiler'");
     }
 
-    my $options = delete $args{options} || [ '' ];
+    my $c_flags  = delete $args{c_flags}  || [ '' ];
+    my $ld_flags = delete $args{ld_flags} || [ '' ];
+    my $options  = delete $args{options}  || [ '' ];
 
     bless {
-        options => $options,
+        c_flags  => $c_flags,
+        ld_flags => $ld_flags,
+        options  => $options,
         %args,
     }, $class;
 }
