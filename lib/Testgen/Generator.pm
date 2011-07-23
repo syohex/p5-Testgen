@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 use Carp ();
+use Config;
 use Cwd ();
 use Getopt::Long ();
 use File::Spec ();
@@ -171,11 +172,11 @@ sub _generate_run_script {
     my $testsuite_dir = $self->{config}->get('testdir');
     my $run_script = File::Spec->catfile($testsuite_dir, 'runtest.pl');
 
-    my $shebang = $^O eq 'MSWin32' ? '#!perl' : '#!/usr/bin/env perl';
+    my $shebang = $Config{perlpath};
     my $libpath = File::Spec->catfile(Cwd::realpath( Cwd::getcwd ), 'lib');
 
     my $content =<<"...";
-${shebang}
+#!${shebang}
 use strict;
 use warnings;
 
