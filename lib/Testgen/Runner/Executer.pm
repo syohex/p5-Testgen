@@ -81,3 +81,40 @@ sub _create_cmd {
 1;
 
 __END__
+
+=encoding utf8
+
+=head1 NAME
+
+Testgen::Runner::Executer - A executer class
+
+=head1 INTERFACE
+
+=head2 Class Methods
+
+=head3 C<< Testgen::Runner::Executer->new(%args) :Testgen::Runner::Executer >>
+
+Creates and returns a new Testgen::Runner::Executer object with I<args>.
+
+I<%args> might be:
+
+=over
+
+=item has_printf :Bool = true
+
+=item timeout :Int = 10
+
+=item expect : Str = '@OK@'
+
+=item simulator :Str = undef
+
+=back
+
+=head2 Instance Methods
+
+=head3 C<< $executer->execute($test) >>
+
+Execute test which is a F<Testgen::Runner::Testdirectory::Test>.
+Return a L<Testgen::Runner::Executer::Result> object.
+
+=cut
