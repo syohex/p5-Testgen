@@ -3,9 +3,12 @@ use strict;
 use warnings;
 
 use Carp ();
+use File::Temp ();
 use Symbol ();
 use IPC::Open3 ();
 use IO::Select ();
+
+our $HAS_MULTICORE = 0;
 
 sub new {
     my ($class, %args) = @_;
@@ -27,6 +30,36 @@ sub new {
 }
 
 sub run {
+    my $self = shift;
+
+    if ($HAS_MULTICORE && $^O ne 'MSWin32') {
+        return $self->_run_with_system();
+    } else {
+        return $self->_run_with_ipc();
+    }
+}
+
+sub _run_with_system {
+    my $self = shift;
+
+    my ($ofh, $out_redirect) = File::Temp::tempfile();
+    my ($efh, $err_redirect) = File::Temp::tempfile();
+    my @cmd = @{$self->{command}};
+
+    # [CAUTION] This use of 'system' is very insecure !!!!
+    my $status = system( "@cmd" . " > $out_redirect 2> $err_redirect" );
+
+    my ($stdout, $stderr) = do {
+        local $/;
+        (scalar <$ofh>, scalar <$efh>)
+    };
+    close $efh;
+    close $ofh;
+
+    return ( $status, $stdout, $stderr );
+}
+
+sub _run_with_ipc {
     my $self = shift;
 
     my ($out_fh, $err_fh) = (Symbol::gensym, Symbol::gensym);
