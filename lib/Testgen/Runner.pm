@@ -9,6 +9,7 @@ use File::Temp ();
 use Cwd ();
 
 use Testgen::Config;
+use Testgen::Log;
 use Testgen::Runner::Compiler;
 use Testgen::Runner::Executer;
 use Testgen::TestDirectory;
