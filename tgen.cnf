@@ -12,6 +12,7 @@
          short => 16,
          int   => 32,
          long  => 64,
+         pointer => 64,
     },
 
     timeout       => 10,
