@@ -176,11 +176,11 @@ sub _generate_run_script {
     my $testsuite_dir = $self->{config}->get('testdir');
     my $run_script = File::Spec->catfile($testsuite_dir, 'runtest.pl');
 
-    my $shebang = $Config{perlpath};
+    my $perlpath = $Config{perlpath};
     my $libpath = File::Spec->catfile(Cwd::realpath( Cwd::getcwd ), 'lib');
 
     my $content =<<"...";
-#!${shebang}
+#!${perlpath}
 use strict;
 use warnings;
 
