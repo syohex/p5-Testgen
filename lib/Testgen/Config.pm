@@ -16,6 +16,9 @@ sub new {
 sub _set_default_value {
     my $conf = shift;
 
+    $conf->{has_printf}   ||= 1;
+    $conf->{expect}       ||= '@OK@';
+
     $conf->{color}        ||= 0;
     $conf->{parallels}    ||= 1;
     $conf->{complement}   ||= 2;
@@ -37,7 +40,7 @@ sub get {
 
 __END__
 
-=encoding utf-8
+=encoding utf8
 
 =head1 NAME
 
