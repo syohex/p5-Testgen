@@ -68,4 +68,3 @@ The config file is like this:
 F<README>
 
 =cut
-
