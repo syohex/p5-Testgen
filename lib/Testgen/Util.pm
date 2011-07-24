@@ -8,7 +8,7 @@ use Carp ();
 sub read_directory {
     my $dir = shift;
 
-    opendir my $dh, $dir or Carp::croak("Can't open directory: $dir");
+    opendir my $dh, $dir or Carp::croak("Can't open directory $dir: $!");
     my @dirs = grep { !m{^\.\.?$} } readdir $dh;
     closedir $dh;
 
@@ -20,7 +20,7 @@ sub count_ok_from_file {
 
     my $str = do {
         local $/;
-        open my $fh, '<', $file or Carp::croak("Can't open $file");
+        open my $fh, '<', $file or Carp::croak("Can't open $file: $!");
         <$fh>;
     };
 
@@ -34,7 +34,7 @@ my %ok_info_re = (
 
     testinfo_ok => qr{ \b OK: \s*(\d+)\s* }xms,
 
-    printok => qr{ \b printok \( \)   }xms,
+    printok => qr{ \b printok \( \s* \)   }xms,
 );
 
 sub _count_ok {
