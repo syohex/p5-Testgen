@@ -91,6 +91,7 @@ sub _set_default_value {
     $conf->{c_flags}   ||= [];
     $conf->{ld_flags}  ||= [];
     $conf->{simulator} ||= undef;
+    $conf->{options}   ||= [ '' ];
 
     $conf->{has_printf}   ||= 1;
     $conf->{expect}       ||= '@OK@';
