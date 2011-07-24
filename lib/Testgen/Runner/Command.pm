@@ -48,9 +48,39 @@ sub _run_with_system {
     my ($efh, $err_redirect) = File::Temp::tempfile( UNLINK => 1 );
     my @cmd = @{$self->{command}};
 
-    # [CAUTION] This use of 'system' is very insecure !!!!
-    # I don't understand why using IPC is too slow.
-    my $status = system( "@cmd" . " > $out_redirect 2> $err_redirect" );
+    ## I don't understand why using IPC is too slow.
+
+    my $status;
+    eval {
+        local $SIG{ALRM} = sub { die "timeout\n"; };
+        alarm $self->{timeout};
+        $status = system( "@cmd > $out_redirect 2> $err_redirect" );
+        alarm 0;
+    };
+    if ($@ && $@ eq "timeout\n") {
+        my $cmd_str = quotemeta "@cmd";
+        my $pid;
+
+        open my $fh, "-|", ('ps', 'x') or Carp::croak("Can't open 'ps x'");
+        while (my $line = <$fh>) {
+            chomp $line;
+
+            if ($line =~ m{$cmd_str}) {
+                $pid = (split /\s+/, $line)[0];
+                last;
+            }
+        }
+        close $fh;
+
+        if (defined $pid) {
+            kill 'TERM', $pid;
+            waitpid $pid, 0;
+        } else {
+            Carp::carp("@cmd is maybe finished");
+        }
+
+        return (undef, '', '');
+    }
 
     my ($stdout, $stderr) = do {
         local $/;
