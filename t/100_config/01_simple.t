@@ -2,10 +2,9 @@ use strict;
 use warnings;
 
 use Test::More;
-use File::Temp ();
-use Data::Dumper;
 
 use Testgen::Config;
+use t::Util qw/create_configfile/;
 
 my $test_config = {
     compiler      => 'gcc',
@@ -27,11 +26,9 @@ my $test_config = {
     parallels     => 2,
 };
 
-my ($fh, $filename) = File::Temp::tempfile();
-print {$fh} Data::Dumper::Dumper($test_config);
-close $fh;
+my $conf_file = create_configfile($test_config);
 
-my $config = Testgen::Config->new($filename);
+my $config = Testgen::Config->new($conf_file->filename);
 ok($config);
 isa_ok($config, 'Testgen::Config');
 can_ok($config, 'get');
@@ -43,20 +40,6 @@ for my $key ( keys %{$test_config} ) {
         is_deeply($got, $expected, "set param $key");
     } else {
         is($got, $expected, "set param $key");
-    }
-}
-
-my %defaults = (
-    complement => 2,
-);
-for my $key ( qw/complement/ ) {
-    my $got = $config->get($key);
-    my $expected = $defaults{$key};
-
-    if (ref $got) {
-        is_deeply($got, $expected, "set default param $key");
-    } else {
-        is($got, $expected, "set default param $key");
     }
 }
 
