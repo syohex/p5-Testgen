@@ -2,6 +2,7 @@ package Testgen::TemplateFile;
 use strict;
 use warnings;
 
+use Carp ();
 use Encode;
 use File::Path ();
 
@@ -12,6 +13,12 @@ use constant FILESET_NAME => 'FILESET';
 
 sub new {
     my ($class, %args) = @_;
+
+    for my $param (qw/name testsuite_dir/) {
+        unless (exists $args{$param}) {
+            Carp::croak("missing mandatory parameter '$param'");
+        }
+    }
 
     my $macros = delete $args{macros} || {};
 
@@ -195,10 +202,11 @@ sub _decide_filename {
     return $filename_tmpl unless defined $placeholder;
 
     my $number = sprintf "%0*d", length $placeholder, $self->{filename_index};
-    $filename_tmpl =~ s/\Q$placeholder\E/$number/;
+    my $quoted = quotemeta $placeholder;
+    (my $replaced = $filename_tmpl) =~ s/$quoted/$number/;
 
     $self->{filename_index}++;
-    return $filename_tmpl;
+    return $replaced;
 }
 
 sub _append_fileset {
