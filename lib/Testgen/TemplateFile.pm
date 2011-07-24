@@ -165,7 +165,7 @@ sub _process_dir_section {
             }
 
             for my $real_arg (@real_args) {
-                my $filename = $self->_define_filename($filename_tmpl);
+                my $filename = $self->_decide_filename($filename_tmpl);
                 my $expanded = $macro->expand($real_arg, $self->{macros});
                 $self->_output_test($filename, $expanded);
 
@@ -188,7 +188,7 @@ sub _skip_comment_section {
     }
 }
 
-sub _define_filename {
+sub _decide_filename {
     my ($self, $filename_tmpl) = @_;
 
     my ($placeholder) = $filename_tmpl =~ m{(\?+)};
