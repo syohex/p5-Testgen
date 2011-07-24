@@ -23,7 +23,7 @@ sub count_ok_from_file {
             /\*\* \s* test \s* info \s* \*\*
         }xms,
 
-        testinfo_ok => qr{ \bOK: \s*(\d+)\s* }xms,
+        testinfo_ok => qr{ \b OK: \s*(\d+)\s* }xms,
 
         printok => qr{ \b printok \( \)   }xms,
     );
@@ -77,5 +77,19 @@ __END__
 =head1 NAME
 
 Testgen::Util - Utilities of Testgen
+
+=head1 FUNCTIONS
+
+=head2 C<< read_directory($directory) :Array >>
+
+Read entries in C<$directory>
+
+=head2 C<< count_ok_from_file($file) :Int >>
+
+Read I<ok> which means passing test from C<$file> and returns ok number.
+
+=head1 UTILITY CLASS
+
+=head2 C<< Testgen::Util::Chdir >>
 
 =cut

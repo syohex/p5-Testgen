@@ -46,11 +46,11 @@ __END__
 
 Testgen::Config - Testgen config file object
 
-=head1 CONSTRACTOR
+=head1 INTERFACE
 
-=over 4
+=head2 Class Methods
 
-=item my $config = Testgen::Config->new($config_file);
+=head3 C<< Testgen::Config->new($config_file) >>
 
 The constructor takes one argument, config file name.
 The config file is just perl file, it contains a hashref.
@@ -65,21 +65,9 @@ The config file is like this:
 
 =back
 
-Testgen is c test generator
+=head1 SEE ALSO
 
-=head1 AUTHOR
-
-Authors of original source code are:
-
-Yuki UCHIYAMA
-
-Kazushi MORIMOTO
-
-Nagisa ISHIURA
-
-Nobuyuki HIKICHI
-
-
+F<README>
 
 =cut
 
