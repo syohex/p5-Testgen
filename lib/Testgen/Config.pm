@@ -63,8 +63,6 @@ The config file is like this:
         simulator => 'mips-linux-elf-run',
     };
 
-=back
-
 =head1 SEE ALSO
 
 F<README>
