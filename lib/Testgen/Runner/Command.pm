@@ -53,7 +53,7 @@ sub _run_with_system {
     my $status;
     eval {
         local $SIG{ALRM} = sub { die "timeout\n"; };
-        alarm $self->{timeout};
+        alarm $self->{timeout} if $self->{timeout};
         $status = system( "@cmd > $out_redirect 2> $err_redirect" );
         alarm 0;
     };
