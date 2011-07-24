@@ -302,7 +302,7 @@ sub _concatenate_log {
 }
 
 sub _usage {
-    print <<'...';
+    die <<'...';
 Usage : runtest.pl [options] [Regexp]
 
 Options:
@@ -314,7 +314,6 @@ Examples:
    ./runtest.pl '^c89-'     # test only c89-* directories
 
 ...
-    exit 1;
 }
 
 1;
