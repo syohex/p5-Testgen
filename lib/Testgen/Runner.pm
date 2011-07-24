@@ -176,7 +176,7 @@ sub _compile_and_execute {
     my ($compile_result, $execute_result);
     for my $option ( @{$compiler->options} ) {
         $compile_result = $compiler->compile($test, $option);
-        next if $compile_result->is_error || $self->_compile_only;
+        next if $compile_result->is_error || $self->_is_compile_only;
 
         $execute_result = $executer->execute($test);
     } continue {
@@ -216,7 +216,7 @@ sub _check_argument {
     }
 }
 
-sub _compile_only {
+sub _is_compile_only {
     $_[0]->{config}->get('compile_only');
 }
 
