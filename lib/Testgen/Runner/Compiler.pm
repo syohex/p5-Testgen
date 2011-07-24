@@ -55,11 +55,14 @@ sub _create_cmd {
     my ($self, $input, $output, $option) = @_;
     $option ||= '';
 
+    my $c_flags = $self->{c_flags};
+    my $c_flags_str = scalar @{$c_flags} ? join ' ', @{$c_flags} : '';
+    my $ld_flags = $self->{ld_flags};
+    my $ld_flags_str = scalar @{$ld_flags} ? join ' ', @{$ld_flags} : '';
+
     # for empty parameter
-    my $cmd_str = join ' ', $self->{compiler}
-                          , @{$self->{c_flags}} || ''
-                          , $option, $input, '-o', $output
-                          , @{$self->{ld_flags}} || '';
+    my $cmd_str = join ' ', $self->{compiler}, $c_flags_str,
+                          , $option, $input, '-o', $output, $ld_flags_str;
 
     return split /\s+/, $cmd_str;
 }
