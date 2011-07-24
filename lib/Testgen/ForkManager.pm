@@ -60,7 +60,7 @@ sub _wait_children {
 
     my $kid;
     do {
-        $kid = $self->_wait_one_child(POSIX::WNOHANG);
+        $kid = $self->_wait_one_child(&POSIX::WNOHANG);
     } while ($kid > 0);
 }
 
