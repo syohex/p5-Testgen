@@ -18,24 +18,30 @@ sub read_directory {
 sub count_ok_from_file {
     my $file = shift;
 
-    my %regexp = (
-        testinfo => qr{
-            /\*\* \s* test \s* info \s* \*\*
-        }xms,
-
-        testinfo_ok => qr{ \b OK: \s*(\d+)\s* }xms,
-
-        printok => qr{ \b printok \( \)   }xms,
-    );
-
     my $str = do {
         local $/;
         open my $fh, '<', $file or Carp::croak("Can't open $file");
         <$fh>;
     };
 
-    if ($str =~ m{ $regexp{testinfo} }xms) {
-        if ($str =~ m{ $regexp{testinfo_ok} }xms) {
+    return _count_ok($str);
+}
+
+my %ok_info_re = (
+    testinfo => qr{
+        /\*\* \s* test \s* info \s* \*\*
+    }xms,
+
+    testinfo_ok => qr{ \b OK: \s*(\d+)\s* }xms,
+
+    printok => qr{ \b printok \( \)   }xms,
+);
+
+sub _count_ok {
+    my $str = shift;
+
+    if ($str =~ m{ $ok_info_re{testinfo} }xms) {
+        if ($str =~ m{ $ok_info_re{testinfo_ok} }xms) {
             return $1;
         } else {
             Carp::croak("Invalid 'test info' section");
@@ -43,7 +49,8 @@ sub count_ok_from_file {
     }
 
     my $oknum = 0;
-    $oknum += 1 while $str =~ m/ $regexp{printok} /gxms;
+    $oknum += 1 while $str =~ m/ $ok_info_re{printok} /gxms;
+
     return $oknum;
 }
 
