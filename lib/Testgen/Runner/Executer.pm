@@ -8,7 +8,7 @@ use Testgen::Runner::Executer::Result;
 sub new {
     my ($class, %args) = @_;
 
-    my $has_printf = delete $args{has_printf} || 1;
+    my $has_printf = exists $args{has_printf} ? $args{has_printf} : 1;
     my $timeout    = delete $args{timeout}    || 10;
     my $expect     = delete $args{exepect}    || '@OK@';
     my $simulator  = delete $args{simulator}  || undef;
