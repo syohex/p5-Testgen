@@ -38,7 +38,7 @@ sub tests {
 }
 
 sub setup {
-    my ($self, $temp_log_dir) = @_;
+    my $self = shift;
     $self->_collect_tests;
 }
 
