@@ -14,8 +14,8 @@ Ishiura lab in Kwansei gakuin university
       compiler (type: String)  - compiler which is tested.
       testdir  (type: String)  - a directory where tests are generated.
       size     (type: Hashref) - sizes of types in C language.
-                                 It has keys, 'char', 'short', 'int', 'long'
-                                 at least.
+                                 It should have keys, 'char', 'short', 'int',
+                                 'long' at least.
 
       'size' parameter looks like as follows:
           size => {
@@ -83,7 +83,7 @@ Appendix A. Directories hierarchy
    - tgen.cnf : Default configuration file.
 
    - bin/
-      - tgen.pl : script of test files generator.
+      - tgen.pl : script which generates test files.
 
    - config/
      - tgen_32.cnf : Sample configuration file of 32bit platform.
