@@ -25,40 +25,6 @@ use Cwd ();
 }
 
 {
-    eval {
-        my $oknum = Testgen::Util::count_ok_from_file('NOTFOUND');
-    };
-    like $@, qr/Can't open/, 'file not found';
-}
-
-{
-    my $oknum = Testgen::Util::_count_ok('');
-    is($oknum, 0, 'count printok()');
-
-    $oknum = Testgen::Util::_count_ok(<<'...');
-printok();          printok(            );
-printok();
-          printok()   printok(5)
-...
-    is($oknum, 4, 'count printok()');
-
-    $oknum = Testgen::Util::_count_ok(<<'...');
-    /** test info **
-     OK: 10
-    */
-...
-    is($oknum, 10, "read from 'test info'");
-
-    eval {
-        $oknum = Testgen::Util::_count_ok(<<'...');
-    /** test info **
-    */
-...
-    };
-    like $@, qr/Invalid 'test info' section/, "invalid 'test info'";
-}
-
-{
     my $cwd1 = Cwd::realpath( Cwd::getcwd() );
     my $tempdir = File::Temp::tempdir( CLEANUP => 1 );
     my $guard = Testgen::Util::Chdir->new($tempdir);
