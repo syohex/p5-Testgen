@@ -143,8 +143,22 @@ sub _generate_testsuite {
 
     _make_dir($testsuite_dir);
 
-    $self->_generate_run_script();
-    $self->_generate_run_config();
+    my $perlpath = $Config{perlpath};
+    my $libpath = File::Spec->catfile(Cwd::realpath( Cwd::getcwd ), 'lib');
+
+    $self->_generate_run_script(
+        output_dir => $testsuite_dir,
+        perlpath   => $perlpath,
+        libpath    => $libpath,
+    );
+
+    $self->_generate_run_config($testsuite_dir);
+
+    $self->_generate_merge_script(
+        output_dir => $testsuite_dir,
+        perlpath   => $perlpath,
+        libpath    => $libpath,
+    );
 
     for my $tt_file (@{$self->{argv}}) {
         my $template = Testgen::TemplateFile->new(
@@ -171,20 +185,17 @@ sub _make_dir {
 }
 
 sub _generate_run_script {
-    my $self = shift;
+    my ($self, %args) = @_;
 
-    my $testsuite_dir = $self->{config}->get('testdir');
-    my $run_script = File::Spec->catfile($testsuite_dir, 'runtest.pl');
+    my $run_script = File::Spec->catfile($args{output_dir}, 'runtest.pl');
+    open my $fh, '>', $run_script or Carp::croak("Can't open $run_script: $!");
 
-    my $perlpath = $Config{perlpath};
-    my $libpath = File::Spec->catfile(Cwd::realpath( Cwd::getcwd ), 'lib');
-
-    my $content =<<"...";
-#!${perlpath}
+    print {$fh} <<"...";
+#!$args{perlpath}
 use strict;
 use warnings;
 
-use lib qw(${libpath});
+use lib qw($args{libpath});
 use Testgen::Runner;
 
 my \$runner = Testgen::Runner->new();
@@ -192,18 +203,41 @@ my \$runner = Testgen::Runner->new();
 \$runner->run();
 ...
 
-    open my $fh, '>', $run_script or Carp::croak("Can't open $run_script: $!");
-    print {$fh} $content;
     close $fh;
 
     chmod 0755, $run_script or Carp::croak("change permission $run_script $!");
 }
 
-sub _generate_run_config {
-    my $self = shift;
+sub _generate_merge_script {
+    my ($self, %args) = @_;
 
-    my $testsuite_dir = $self->{config}->get('testdir');
-    my $run_conf = File::Spec->catfile($testsuite_dir, 'runtest.cnf');
+    my $merge_script = File::Spec->catfile($args{output_dir}, 'merge.pl');
+    open my $fh, '>', $merge_script
+        or Carp::croak("Can't open $merge_script: $!");
+
+    print {$fh} <<"...";
+#!$args{perlpath}
+use strict;
+use warnings;
+
+use lib qw($args{libpath});
+use Testgen::Merger;
+
+my \$runner = Testgen::Merger->new();
+\$runner->parse_options(\@ARGV);
+\$runner->run();
+...
+
+    close $fh;
+
+    chmod 0755, $merge_script
+        or Carp::croak("change permission $merge_script $!");
+}
+
+sub _generate_run_config {
+    my ($self, $output_dir) = @_;
+
+    my $run_conf = File::Spec->catfile($output_dir, 'runtest.cnf');
 
     File::Copy::copy($self->{config_file}, $run_conf)
         or Carp::croak("Can't copy runconfig");
@@ -216,7 +250,7 @@ sub _usage {
 Usage: $0 [options] template_files [...]
 
 Options:
-  -c,--config       Specify config file(Default is './tgen.conf')
+  -c,--config       Specify config file(Default is './tgen.cnf')
   -i,--int-only     Test only integer tests(not implemented yet)
   -f,--float-only   Test only float tests(not implemented yet)
   -h,--help         Display help message
