@@ -8,6 +8,7 @@ use File::Temp ();
 use Term::ANSIColor ();
 
 use Testgen::TestDirectory::Test;
+use Testgen::Merger::MergedFile;
 use Testgen::Util ();
 
 our $COLOR = 0;
@@ -21,10 +22,12 @@ sub new {
         Carp::croak("missing mandatory parameter 'name'");
     }
 
+    my $tempdir = File::Temp::tempdir( CLEANUP => 1 );
+    $tempdir =~ s{/$}{};
     bless {
         tests        => [],
         result_cache => undef,
-        temp_dir     => File::Temp::tempdir( CLEANUP => 1 ),
+        temp_dir     => $tempdir,
         %args,
     }, $class;
 }
@@ -83,7 +86,6 @@ sub _collect_tests {
     }
 
     my @sorted = do {
-        # do more efficient
         sort { $a->input cmp $b->input } @tests;
     };
 
@@ -194,6 +196,55 @@ sub _collect_results {
     undef $self->{temp_dir}; # cleanup
 
     $self->{result_cache} = \%cache;
+}
+
+sub merge_tests {
+    my ($self, %args) = @_;
+
+    my $compiler = $args{compiler};
+    my $output_dir = $args{output_dir};
+
+    my $main_file = Testgen::Merger::MergedFile->new( compiler => $compiler );
+    my $sub_file  = Testgen::Merger::MergedFile->new( compiler => $compiler );
+
+    my $has_subfile = 0;
+    for my $test ( @{$self->{tests}} ) {
+        for my $file ( $test->files ) {
+            if ( _has_main($file) ) {
+                $main_file->add($file);
+            } else {
+                $sub_file->add($file);
+                $has_subfile = 1;
+            }
+        }
+    }
+
+    my ($main_name, $sub_name) = ($self->{name} . ".c", $self->{name} . "-sub.c");
+
+    my $main = File::Spec->catfile($output_dir, $main_name);
+    my $sub  = File::Spec->catfile($output_dir, $sub_name);
+
+    $main_file->output_as_main_file($main);
+
+    if ($has_subfile) {
+        # for multi file compilation
+        $sub_file->output_as_sub_file($sub);
+        return ($main_name, $sub_name);
+    }
+
+    return;
+}
+
+sub _has_main {
+    my $file = shift;
+    my $str = do {
+        local $/;
+        open my $fh, '<', $file or Carp::croak("Can't open $file: $!");
+        <$fh>
+    };
+
+    my $main_regexp = qr{ \s+ main \s* \( [^)]* \)}xms;
+    $str =~ m{$main_regexp};
 }
 
 1;
