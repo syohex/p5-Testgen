@@ -18,8 +18,11 @@ sub new {
         Carp::croak("missing mandatory parameter 'files'");
     }
 
-    my $oknum  = delete $args{oknum} || undef;
-    my $output = _set_output($args{files});
+    my $oknum = delete $args{oknum} || undef;
+    my $files = delete $args{files};
+    $files = [ $files ] unless ref $files eq 'ARRAY';
+
+    my $output = _set_output($files);
     my $result = {
         test_num        => 0,
         compile_success => 0,
@@ -29,9 +32,10 @@ sub new {
     };
 
     bless {
-        oknum           => $oknum,
-        output          => $output,
-        result          => $result,
+        files  => $files,
+        oknum  => $oknum,
+        output => $output,
+        result => $result,
         %args,
     }, $class;
 }
@@ -43,13 +47,14 @@ sub _set_output {
 }
 
 # accessor
-sub oknum           { shift->{oknum}    }
-sub output          { shift->{output}   }
+sub oknum  { shift->{oknum}  }
+sub output { shift->{output} }
+
+sub files  { @{shift->{files}} }
 
 sub input {
     my $self = shift;
-    my $files = $self->{files};
-    ref $files eq 'ARRAY' ? join ' ', @{$files} : $files;
+    return join ' ', @{$self->{files}};
 }
 
 sub finalize {
@@ -90,10 +95,7 @@ sub analyze_result {
 
 sub dump_result {
     my ($self, $dir) = @_;
-
-    my $files = $self->{files};
-    my $name = ref $files eq 'ARRAY' ? $files->[0] : $files;
-    my $dump_file = File::Spec->catfile($dir, $name);
+    my $dump_file = File::Spec->catfile($dir, $self->{files}->[0]);
 
     open my $fh, '>', $dump_file or Carp::croak("Can't open $dump_file $!");
     print {$fh} Data::Dumper::Dumper( $self->{result} );
@@ -143,15 +145,45 @@ $message
 sub count_ok_num {
     my $self = shift;
 
-    my @files = ref $self->{files} eq 'ARRAY'
-                    ? @{$self->{files}} : ($self->{files});
-
     my $oknum = 0;
-    for my $file (@files) {
-        $oknum += Testgen::Util::count_ok_from_file($file);
+    for my $file (@{$self->{files}}) {
+        my $str = do {
+            local $/;
+            open my $fh, '<', $file or Carp::croak("Can't open $file: $!");
+            <$fh>;
+        };
+
+        $oknum += _count_ok($str);
     }
 
     $self->{oknum} = $oknum;
+    return $oknum;
+}
+
+my %ok_info_re = (
+    testinfo => qr{
+        /\*\* \s* test \s* info \s* \*\*
+    }xms,
+
+    testinfo_ok => qr{ \b OK: \s*(\d+)\s* }xms,
+
+    printok => qr{ \b printok \( \s* \)   }xms,
+);
+
+sub _count_ok {
+    my $str = shift;
+
+    if ($str =~ m{ $ok_info_re{testinfo} }xms) {
+        if ($str =~ m{ $ok_info_re{testinfo_ok} }xms) {
+            return $1;
+        } else {
+            Carp::croak("Invalid 'test info' section");
+        }
+    }
+
+    my $oknum = 0;
+    $oknum += 1 while $str =~ m/ $ok_info_re{printok} /gxms;
+
     return $oknum;
 }
 
