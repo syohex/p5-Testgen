@@ -9,6 +9,8 @@ use Symbol ();
 use IPC::Open3 ();
 use IO::Select ();
 
+use constant WIN32 => $^O eq 'MSWin32';
+
 our $HAS_MULTICORE = 0;
 my $encoder = Encode::find_encoding('utf8');
 
@@ -34,10 +36,10 @@ sub new {
 sub run {
     my $self = shift;
 
-    if ($HAS_MULTICORE && $^O ne 'MSWin32') {
-        return $self->_run_with_system();
-    } else {
+    if ( WIN32 ) {
         return $self->_run_with_ipc();
+    } else {
+        return $self->_run_with_system();
     }
 }
 
@@ -163,13 +165,6 @@ I<%args> might be:
 Timeout never happen by default.
 
 =back
-
-=head2 Package Variable
-
-=head3 C<< $Testgen::Runner::Command::HAS_MULTICORE >>
-
-If this variable is true, host machine may be have multicore processors.
-Default is false. On MicroSoft Windows, this variable is always false.
 
 =head2 Instance Methods
 
