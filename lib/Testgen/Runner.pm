@@ -6,7 +6,6 @@ use Carp ();
 use Getopt::Long ();
 use File::Path ();
 use File::Temp ();
-use Cwd ();
 
 use Testgen::Config;
 use Testgen::Log;
@@ -23,7 +22,6 @@ sub new {
     my $log_dir     = delete $args{log_dir}     || 'LOG';
 
     my $config   = Testgen::Config->new($config_file);
-    my $temp_dir = File::Temp::tempdir( CLEANUP => 1 );
 
     bless {
         help           => undef,
@@ -32,7 +30,7 @@ sub new {
         start_time     => undef,
         config         => $config,
         log_dir        => $log_dir,
-        temp_dir       => Cwd::realpath($temp_dir),
+        temp_dir       => File::Temp::tempdir( CLEANUP => 1 ),
         %args,
     }, $class;
 }
@@ -64,10 +62,8 @@ sub run {
     for my $dir (sort @dirs) {
         my $guard = Testgen::Util::Chdir->new($dir);
 
-        my $testdir = Testgen::TestDirectory->new(
-            name => $dir,
-        );
-        $testdir->setup( $self->{temp_dir} );
+        my $testdir = Testgen::TestDirectory->new( name => $dir );
+        $testdir->setup();
 
         push @{$self->{test_directies}}, $testdir;
         $self->_do_test($testdir);
@@ -112,11 +108,6 @@ sub _init {
 
     if ($config->get('color')) {
         $Testgen::TestDirectory::COLOR = 1;
-    }
-
-    if ($config->get('parallels') >= 2) {
-        require Testgen::Runner::Command;
-        $Testgen::Runner::Command::HAS_MULTICORE = 1;
     }
 }
 
@@ -174,7 +165,7 @@ sub _compile_and_execute {
     my $executer = $self->{executer};
 
     my ($compile_result, $execute_result);
-    for my $option ( @{$compiler->options} ) {
+    for my $option ( @{$self->{config}->{options}} ) {
         $compile_result = $compiler->compile($test, $option);
         next if $compile_result->is_error || $self->_is_compile_only;
 
