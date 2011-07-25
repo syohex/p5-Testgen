@@ -7,10 +7,8 @@ BEGIN {
     use_ok 'Testgen::ForkManager';
     use_ok 'Testgen::Generator';
     use_ok 'Testgen::Log';
-    TODO : {
-        local $TODO = 'not implement now';
-        use_ok 'Testgen::Merger';
-    };
+    use_ok 'Testgen::Merger';
+    use_ok 'Testgen::Merger::MergedFile';
     use_ok 'Testgen::Runner';
     use_ok 'Testgen::Runner::Command';
     use_ok 'Testgen::Runner::Compiler';
@@ -26,4 +24,3 @@ BEGIN {
 };
 
 done_testing;
-
