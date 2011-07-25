@@ -38,6 +38,8 @@ Ishiura lab in Kwansei gakuin university
                                       [Yellow] - Failed executing.
                                       [Red]    - Compiling and Executing failed.
       parallels  (types: Int) - run 'n' tests simultaneously.
+                                This parameter is supported only UNIX like
+                                environment(Linux, *BSD, MacOSX).
       complement (types: Int) - complement of platform tested.
       timeout    (types: Int) - 'timeout' seconds of executing.
 
