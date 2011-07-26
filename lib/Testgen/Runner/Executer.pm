@@ -43,6 +43,7 @@ sub execute {
     }
 
     my $result;
+    my $ratio = '';
     if ($exit_status == 0 ) {
         if ($self->{has_printf}) {
             my $expect = quotemeta $self->{expect};
@@ -54,6 +55,7 @@ sub execute {
             } else {
                 $result = 'missing';
             }
+            $ratio = join '/', $oknum, $test->oknum;
         } else {
             $result = 'success';
         }
@@ -65,6 +67,7 @@ sub execute {
         command => "@cmd",
         status  => $result,
         message => $stdout,
+        ratio   => $ratio,
     );
 }
 
