@@ -29,7 +29,7 @@ sub _indicated_message {
 
     return <<"...";
 $self->{command}
------ Execute $self->{status} message -----
+----- Execute $self->{status} message ($self->{ratio}) -----
 $self->{message}
 -----------------------------------
 ...
