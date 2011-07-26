@@ -10,8 +10,8 @@ use Testgen::Runner::Compiler::Result;
 sub new {
     my ($class, %args) = @_;
 
-    unless (defined $args{compiler}) {
-        Carp::croak("missing mandatory parameter 'compiler'");
+    unless (defined $args{name}) {
+        Carp::croak("missing mandatory parameter 'name'");
     }
 
     my $c_flags  = delete $args{c_flags}  || [];
@@ -24,11 +24,14 @@ sub new {
     }, $class;
 }
 
+# accessor
+sub name { shift->{name} }
+
 sub compile {
     my ($self, $test, $option) = @_;
     $option ||= '';
 
-    my @cmd = $self->_create_cmd($test->input, $test->output, $option);
+    my @cmd = $self->_compile_command($test->input, $test->output, $option);
     my $command = Testgen::Runner::Command->new( command => \@cmd );
 
     my ($exit_status, undef, $stderr) = $command->run;
@@ -51,7 +54,35 @@ sub compile {
     );
 }
 
-sub _create_cmd {
+sub preprocess {
+    my ($self, $file) = @_;
+
+    my @cmd = $self->_preprocess_command($file);
+    my $preprocessor_cmd = Testgen::Runner::Command->new(
+        command => \@cmd,
+    );
+
+    my ($status, $stdout, $stderr) = $preprocessor_cmd->run;
+
+    return ($stdout, $stderr);
+}
+
+sub _preprocess_command {
+    my ($self, $file) = @_;
+
+    if ($self->{name} eq 'gcc') {
+        my $c_flags = $self->{c_flags};
+        my $c_flags_str = scalar @{$c_flags} ? join ' ', @{$c_flags} : '';
+        my $cmd_str = join ' ', $self->{name}, '-E',
+                              $c_flags_str, '-nostdinc', $file;
+
+        return split /\s+/, $cmd_str;
+    } else {
+        Carp::croak("'$self->{name}' is not supported");
+    }
+}
+
+sub _compile_command {
     my ($self, $input, $output, $option) = @_;
     $option ||= '';
 
@@ -61,7 +92,7 @@ sub _create_cmd {
     my $ld_flags_str = scalar @{$ld_flags} ? join ' ', @{$ld_flags} : '';
 
     # for empty parameter
-    my $cmd_str = join ' ', $self->{compiler}, $c_flags_str,
+    my $cmd_str = join ' ', $self->{name}, $c_flags_str,
                           , $option, $input, '-o', $output, $ld_flags_str;
 
     return split /\s+/, $cmd_str;
