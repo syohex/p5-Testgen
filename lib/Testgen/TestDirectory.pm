@@ -208,7 +208,10 @@ sub merge_tests {
     my $sub_file  = Testgen::Merger::MergedFile->new( compiler => $compiler );
 
     my $has_subfile = 0;
+    my $total_oknum = 0;
     for my $test ( @{$self->{tests}} ) {
+        $total_oknum += $test->oknum();
+
         for my $file ( $test->files ) {
             if ( _has_main($file) ) {
                 $main_file->add($file);
@@ -229,10 +232,10 @@ sub merge_tests {
     if ($has_subfile) {
         # for multi file compilation
         $sub_file->output_as_sub_file($sub);
-        return ($main_name, $sub_name);
+        return [ [$main_name, $sub_name], $total_oknum ];
     }
 
-    return;
+    return [$main_name, $total_oknum];
 }
 
 sub _has_main {
