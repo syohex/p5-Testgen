@@ -55,13 +55,13 @@ my %ignore_word  = map { $_ => 1 } @IGNORES;
 my $identifier_re = qr{ [a-zA-Z_] (?: [a-zA-Z0-9_]+)? }xms;
 
 ## Based on $Regexp::Common::RE{num}{real}
-my $real_num_re = qr{(?:(?i)(?:[+-]?)(?:(?=[.]?[0123456789])(?:[0123456789]*)(?:(?:[.])(?:[0123456789]{0,}))?)(?:(?:[E])(?:(?:[+-]?)(?:[0123456789]+))))};
+my $real_num_re = qr{(?:(?i)(?:[+-]?)(?:(?=[.]?[0-9])(?:[0-9]*)(?:(?:[.])(?:[0-9]{0,}))?)(?:(?:[eE])(?:(?:[+-]?)(?:[0-9]+))))};
 
 ## Based on $Regexp::Common::RE{num}{int}
-my $octal_re   = qr{(?:(?:[+-]?)(?:[01234567]+))};
-my $decimal_re = qr{(?:(?:[+-]?)(?:[0123456789]+))};
-my $hex_re     = qr{(?:(?:[+-]?)0[xX](?:[0123456789ABCDEF]+))};
-my $int_re = qr{ (?: $octal_re | $decimal_re | $hex_re ) (?: (?i)(?:ul?l?|ll?|d?f) )? }x;
+my $octal_re   = qr{(?:(?:[+-]?)(?:[0-7]+))};
+my $decimal_re = qr{(?:(?:[+-]?)(?:[0-9]+))};
+my $hex_re     = qr{(?:(?:[+-]?)0[xX](?:[0-9a-fA-F]+))};
+my $int_re = qr{ (?: $hex_re | $octal_re | $decimal_re ) (?: (?i)(?:ul?l?|ll?|d?f) )? }x;
 
 my $num_re = qr{ (?: $real_num_re (?: (?i)(?:d?f) )? | $int_re ) }xmso;
 
