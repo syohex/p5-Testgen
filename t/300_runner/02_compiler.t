@@ -7,14 +7,14 @@ use Testgen::Runner::Compiler;
 
 {
     my $compiler = Testgen::Runner::Compiler->new(
-        compiler => 'clang',
+        name     => 'clang',
         c_flags  => ['-g', '-Dlinux'],
         ld_flags => ['-lm']
     );
     ok($compiler, 'constructer');
     isa_ok($compiler, 'Testgen::Runner::Compiler');
 
-    is($compiler->{compiler}, 'clang', "'compiler' value");
+    is($compiler->{name}, 'clang', "'compiler' value");
     is_deeply($compiler->{c_flags}, ['-g', '-Dlinux'], "'c_flags' value");
     is_deeply($compiler->{ld_flags}, ['-lm'], "'ld_flags' value");
 
@@ -25,7 +25,7 @@ use Testgen::Runner::Compiler;
 
 {
     my $compiler = Testgen::Runner::Compiler->new(
-        compiler => 'gcc',
+        name     => 'gcc',
         c_flags  => ['-g'],
         ld_flags => ['-lgcc'],
     );
