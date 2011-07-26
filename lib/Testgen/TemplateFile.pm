@@ -9,8 +9,6 @@ use File::Path ();
 use Testgen::TemplateFile::Macro;
 use Testgen::Util ();
 
-use constant FILESET_NAME => 'FILESET';
-
 sub new {
     my ($class, %args) = @_;
 
@@ -212,7 +210,7 @@ sub _decide_filename {
 sub _append_fileset {
     my ($test, $oknum) = @_;
 
-    open my $fh, '>>', FILESET_NAME or Carp::croak();
+    open my $fh, '>>', 'FILESET' or Carp::croak();
     print {$fh} "$test: $oknum\n";
     close $fh;
 }
