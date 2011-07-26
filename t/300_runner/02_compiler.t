@@ -18,7 +18,7 @@ use Testgen::Runner::Compiler;
     is_deeply($compiler->{c_flags}, ['-g', '-Dlinux'], "'c_flags' value");
     is_deeply($compiler->{ld_flags}, ['-lm'], "'ld_flags' value");
 
-    my $compiler2 = Testgen::Runner::Compiler->new(compiler => 'pcc');
+    my $compiler2 = Testgen::Runner::Compiler->new( name => 'pcc');
     is_deeply($compiler2->{c_flags}, [], "'c_flags' default value");
     is_deeply($compiler2->{ld_flags}, [], "'ld_flags' default value");
 }
@@ -31,7 +31,7 @@ use Testgen::Runner::Compiler;
     );
     can_ok($compiler, 'compile');
 
-    my @cmd = $compiler->_create_cmd('a.c', 'a.out', '-O2');
+    my @cmd = $compiler->_compile_command('a.c', 'a.out', '-O2');
     is_deeply(\@cmd,
               ['gcc', '-g', '-O2', 'a.c', '-o', 'a.out', '-lgcc'],
               'compile command');
