@@ -77,9 +77,9 @@ sub _init {
 
     my $config = $self->{config};
     $self->{compiler} = Testgen::Runner::Compiler->new(
-        compiler     => $config->get('compiler'),
-        c_flags      => $config->get('c_flags'),
-        ld_flags     => $config->get('ld_flags'),
+        name     => $config->get('compiler'),
+        c_flags  => $config->get('c_flags'),
+        ld_flags => $config->get('ld_flags'),
     );
 
     $self->{executer} = Testgen::Runner::Executer->new(
