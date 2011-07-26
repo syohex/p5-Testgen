@@ -25,16 +25,12 @@ sub add {
     my ($self, $file) = @_;
     my $compiler = $self->{compiler};
 
-    my $preprocessor_cmd = Testgen::Runner::Command->new(
-        command => _preprocess_command($compiler, $file),
-    );
-
-    my ($status, $stdout, $stderr) = $preprocessor_cmd->run;
+    my ($preprocessed, $stderr) = $self->{compiler}->preprocess($file);
 
     my $prefix = _function_prefix($file);
-    my $c_source = _remove_preprocessor_directives($stdout);
+    my $c_source = _remove_preprocessor_directives($preprocessed);
     push @{$self->{functions}}, _prepend_to_identifiers($c_source, $prefix);
-    map { $self->{header}->{$_} = 1 } _find_lacking_headers($stderr, $compiler);
+    map { $self->{header}->{$_} = 1 } _find_lacking_headers($stderr, $compiler->name);
 
     push @{$self->{pseudo_mains}}, "${prefix}_main";
 }
@@ -56,18 +52,18 @@ my %reserved_word = map { $_ => 1 } @RESERVED;
 my @IGNORES = qw/ printf /;
 my %ignore_word  = map { $_ => 1 } @IGNORES;
 
-my $identifier_re = qr{ ([a-zA-Z_] (?: [a-zA-Z0-9_]+)? ) }xms;
+my $identifier_re = qr{ [a-zA-Z_] (?: [a-zA-Z0-9_]+)? }xms;
 
 ## Based on $Regexp::Common::RE{num}{real}
-my $real_num_re = qr{(?:(?i)(?:[+-]?)(?:(?=[.]?[0123456789])(?:[0123456789]*)(?:(?:[.])(?:[0123456789]{0,}))?)(?:(?:[E])(?:(?:[+-]?)(?:[0123456789]+))|))};
+my $real_num_re = qr{(?:(?i)(?:[+-]?)(?:(?=[.]?[0123456789])(?:[0123456789]*)(?:(?:[.])(?:[0123456789]{0,}))?)(?:(?:[E])(?:(?:[+-]?)(?:[0123456789]+))))};
 
 ## Based on $Regexp::Common::RE{num}{int}
-my $int_num_re = qr{(?:(?:[+-]?)(?:[0123456789ABCDEF]+))};
+my $octal_re   = qr{(?:(?:[+-]?)(?:[01234567]+))};
+my $decimal_re = qr{(?:(?:[+-]?)(?:[0123456789]+))};
+my $hex_re     = qr{(?:(?:[+-]?)0[xX](?:[0123456789ABCDEF]+))};
+my $int_re = qr{ (?: $octal_re | $decimal_re | $hex_re ) (?: (?i)(?:ul?l?|ll?|d?f) )? }x;
 
-my $num_re = qr{
-    (?: $real_num_re (?: d?f )? |  (?:0x)? $int_num_re (?:ul?l?|ll?)? )
-}xmso;
-###(?: 0[xX])? [0-9]+ (\. [0-9]+)? (?: (?i:ul?l?|ll?|e|l?f) )?
+my $num_re = qr{ (?: $real_num_re (?: (?i)(?:d?f) )? | $int_re ) }xmso;
 
 ## Based on $Regexp::Common::RE{quoted}
 my $quoted = qr{(?:(?:\")(?:[^\\\"]*(?:\\.[^\\\"]*)*)(?:\")|(?:\')(?:[^\\\']*(?:\\.[^\\\']*)*)(?:\'))};
@@ -77,26 +73,25 @@ my $symbol_re = qr{ [\\+\-*&^~/%()\{\}\[\];=?|:><.!,] }xmso;
 sub _prepend_to_identifiers {
     my ($file_str, $prefix) = @_;
     my $orig = $file_str;
+    my $replaced = '';
 
     $file_str =~ s{ \s+ }{ }gxms;
 
     my %cache;
     while (1) {
-        while ($orig =~ m{ \G (?:\s| $symbol_re+ | $quoted | $num_re) }gxmsc) {
+        while ($orig =~ m{ \G ( \s| $symbol_re+ | $quoted | $num_re ) }gxmsc) {
+            $replaced .= $1;
             # read skip
         }
 
-        if ($orig =~ m{\G $identifier_re }gxmsc) {
+        if ($orig =~ m{\G ( $identifier_re ) }gxmsc) {
             my $identifier = $1;
 
-            next if exists $ignore_word{$identifier};
-            next if exists $cache{$identifier}; # already replaced
-
-            unless ( exists $reserved_word{$identifier} ) {
-                my $replace_str = "${prefix}_${identifier}";
-                $file_str =~ s{$identifier}{$replace_str}g;
-
-                $cache{$identifier} = 1;
+            if (exists $reserved_word{$identifier}
+                || exists $ignore_word{$identifier}) {
+                $replaced .= $identifier;
+            } else {
+                $replaced .= "${prefix}_${identifier}";
             }
 
         } elsif ($orig =~ m{\G \z}gxmsc) {
@@ -104,7 +99,7 @@ sub _prepend_to_identifiers {
         }
     }
 
-    return $file_str;
+    return $replaced;
 }
 
 sub _function_prefix {
@@ -115,16 +110,6 @@ sub _function_prefix {
     $file =~ s{-}{_}g;
 
     return $file;
-}
-
-sub _preprocess_command {
-    my ($compiler, $file) = @_;
-
-    if ($compiler eq 'gcc') {
-        return [ 'gcc', '-E', '-nostdinc', $file ];
-    } else {
-        Carp::croak("'$compiler' is not supported");
-    }
 }
 
 sub _remove_preprocessor_directives {
@@ -167,7 +152,7 @@ sub output_as_sub_file {
 
     my $headers_str     = join "\n", keys %{$self->{headers}};
     my $pseudo_main_str = join ";\n", @{$self->{pseudo_mains}};
-    my $functions_str    = join "\n", @{$self->{functions}};
+    my $functions_str   = join "\n", @{$self->{functions}};
 
     open my $fh, '>', $file or Carp::croak("Can't open $file: $!");
 
