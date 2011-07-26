@@ -8,6 +8,7 @@ use File::Path ();
 use Cwd ();
 
 use Testgen::Config;
+use Testgen::Runner::Compiler;
 use Testgen::TestDirectory;
 use Testgen::Util;
 
@@ -29,7 +30,6 @@ sub new {
         help         => undef,
         config_file  => 'runtest.cnf',
         output_dir   => 'merge',
-        compiler     => 'gcc',
         match_regexp => $match_regexp,
         output_dir   => Cwd::realpath("./$output_dir"),
         argv         => [],
@@ -45,7 +45,6 @@ sub parse_options {
     Getopt::Long::GetOptions(
         "c|config=s"     => \$self->{config_file},
         "o|output-dir=s" => \$self->{output_dir},
-        "compiler=s"     => \$self->{compiler},
         "h|help"         => \$self->{help},
     );
 
@@ -70,7 +69,13 @@ sub run {
         -d $_ && $_ =~ m{$regexp};
     } Testgen::Util::read_directory('.');
 
-    my @multi_compiling;
+    my $compiler = Testgen::Runner::Compiler->new(
+        name      => $config->get('compiler'),
+        c_flags   => $config->get('c_flags'),
+        ld_flags  => $config->get('ld_flags'),
+    );
+
+    my @merge_infos;
     for my $dir (sort @target_dirs) {
         my $guard = Testgen::Util::Chdir->new($dir);
 
@@ -79,23 +84,25 @@ sub run {
         my $testdir = Testgen::TestDirectory->new( name => $dir );
         $testdir->setup();
 
-        my @retval = $testdir->merge_tests(
-            compiler   => $self->{compiler},
+        push @merge_infos, $testdir->merge_tests(
+            compiler   => $compiler,
             output_dir => $self->{output_dir},
         );
-
-        if (@retval) {
-            push @multi_compiling, "@retval";
-        }
     }
 
     # output fileset
-    if (@multi_compiling) {
-        my $fileset = File::Spec->catfile($self->{output_dir}, "FILESET");
+    my $fileset = File::Spec->catfile($self->{output_dir}, "FILESET");
+    open my $fh, '>', $fileset or Carp::croak("Can't open $fileset: $!");
+    for my $merge_info (@merge_infos) {
+        my ($file_info, $total_oknum) = @{$merge_info};
 
-        open my $fh, '>', $fileset or Carp::croak("Can't open $fileset: $!");
-        print {$fh} "$_\n" for @multi_compiling;
-        close $fh;
+        if (ref $file_info eq 'ARRAY') {
+            print {$fh} join ' ', @{$file_info};
+        } else {
+            print {$fh} $file_info;
+        }
+
+        print {$fh} " : $total_oknum\n";
     }
 }
 
