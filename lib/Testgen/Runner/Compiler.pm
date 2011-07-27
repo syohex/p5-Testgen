@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 use Carp ();
+use POSIX qw(:locale_h);
 
 use Testgen::Runner::Command;
 use Testgen::Runner::Compiler::Result;
@@ -62,7 +63,12 @@ sub preprocess {
         command => \@cmd,
     );
 
+    # I should analyze preprocessor's error message.
+    # So I hope that error message is English.
+    my $old_locale = setlocale(LC_TIME);
+    POSIX::setlocale(LC_TIME, "C");
     my ($status, $stdout, $stderr) = $preprocessor_cmd->run;
+    POSIX::setlocale(LC_TIME, $old_locale);
 
     return ($stdout, $stderr);
 }
@@ -70,16 +76,23 @@ sub preprocess {
 sub _preprocess_command {
     my ($self, $file) = @_;
 
-    if ($self->{name} eq 'gcc') {
-        my $c_flags = $self->{c_flags};
-        my $c_flags_str = scalar @{$c_flags} ? join ' ', @{$c_flags} : '';
-        my $cmd_str = join ' ', $self->{name}, '-E',
-                              $c_flags_str, '-nostdinc', $file;
+    my $compiler = $self->{name};
+    my $c_flags  = $self->{c_flags};
+    my $c_flags_str = scalar @{$c_flags} ? join ' ', @{$c_flags} : '';
 
-        return split /\s+/, $cmd_str;
+    my $cmd_str;
+    if ($compiler eq 'gcc') {
+        $cmd_str = join ' ', $compiler, '-E',
+                      $c_flags_str, '-nostdinc', $file;
+    } elsif ($compiler eq 'clang') {
+        $cmd_str = join ' ', $compiler, '-E',
+                      $c_flags_str, '-nostdinc', '-fno-color-diagnostics',
+                      $file;
     } else {
         Carp::croak("'$self->{name}' is not supported");
     }
+
+    return split /\s+/, $cmd_str;
 }
 
 sub _compile_command {
