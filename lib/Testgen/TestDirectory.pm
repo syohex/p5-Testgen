@@ -207,19 +207,28 @@ sub merge_tests {
     my $main_file = Testgen::Merger::MergedFile->new( compiler => $compiler );
     my $sub_file  = Testgen::Merger::MergedFile->new( compiler => $compiler );
 
-    my $has_subfile = 0;
-    my $total_oknum = 0;
+    my ($total_oknum, $has_subfile) = (0, 0);
+    my %cache;
     for my $test ( @{$self->{tests}} ) {
         $total_oknum += $test->oknum();
 
+        my (@mains, @subs);
         for my $file ( $test->files ) {
-            if ( _has_main($file) ) {
-                $main_file->add($file);
+            if (exists $cache{$file} || _has_main($file) ) {
+                push @mains, $file;
+                $cache{$file} = 1;
             } else {
-                $sub_file->add($file);
+                push @subs, $file;
                 $has_subfile = 1;
             }
         }
+
+        # maybe fails to link
+        Carp::carp("Multiple main files") if scalar @mains >= 2;
+
+        my $prefix = $test->merged_prefix;
+        $main_file->add($_, $prefix) for @mains;
+        $sub_file->add($_, $prefix) for @subs;
     }
 
     my ($main_name, $sub_name) = ($self->{name} . ".c", $self->{name} . "-sub.c");
