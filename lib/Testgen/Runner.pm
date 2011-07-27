@@ -178,6 +178,23 @@ sub _compile_and_execute {
     }
 }
 
+sub _option_list {
+    my $options_ref = shift;
+
+    my @options_list;
+    for my $option ( @{$options_ref} ) {
+        if (ref $option eq 'ARRAY') {
+            push @options_list, Testgen::UtiL::combination(
+                map { ref $_ eq 'ARRAY' ? $_ : [ $_ ] } @{$option}
+            );
+        } else {
+            push @options_list, [ $option ];
+        }
+    }
+
+    return @options_list;
+}
+
 sub _get_match_directories {
     my $self = shift;
     my @dirs = grep {
