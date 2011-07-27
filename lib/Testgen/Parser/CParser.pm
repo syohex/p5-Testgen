@@ -114,7 +114,7 @@ sub find_missing_headers {
 }
 
 sub remove_preprocessor_directives {
-    my $str = shift;
+    my ($self, $str) = @_;
     $str =~ s{ ^ \# .*? $ }{}gxms;
     return $str;
 }
