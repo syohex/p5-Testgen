@@ -187,6 +187,17 @@ sub _count_ok {
     return $oknum;
 }
 
+sub merged_prefix {
+    my $self = shift;
+    my $joined = join '', @{$self->{files}};
+
+    $joined =~ s{\.c}{_}g;
+    $joined =~ s{\.}{_}g;
+    $joined =~ s{-}{_}g;
+
+    return $joined;
+}
+
 1;
 
 __END__
