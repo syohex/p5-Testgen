@@ -44,4 +44,16 @@ use Cwd ();
     like $@, qr/Can't chdir/, 'chdir to not exist directory';
 }
 
+{
+    my @options = (
+        [ '-O2' ], [ '', '-funroll-loops'] ,
+    );
+
+    my $retval = Testgen::Util::combination( @options );
+    my $expected = [ ['-O2', ''], [ '-O2', '-funroll-loops'] ];
+
+    is_deeply($retval, $expected, 'gettin combination');
+
+}
+
 done_testing;
