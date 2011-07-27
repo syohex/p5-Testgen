@@ -1,6 +1,6 @@
 Testsuite generator 2
 
-Ishiura lab in Kwansei gakuin university
+Ishiura lab in Kwansei Gakuin University
 2011/JUL/25
 
 0. Introduction
@@ -54,6 +54,9 @@ Ishiura lab in Kwansei gakuin university
          complement   - 2 (It is Two's complement)
          timeout      - 10
 
+   [Examples]
+      ## TODO Write
+
    There are sample configuration files in config/ directory.
    Please see them and you use them as reference.
 
@@ -67,7 +70,11 @@ Ishiura lab in Kwansei gakuin university
     You can see command line options of tgen.pl, run 'tgen.pl --help'.
 
   2-2 Merges test files
-    # not implemented yet.
+    % cd TESTDIR # TESTDIR is $config->{testdir}
+    % ./merge.pl [Regexp] ...
+
+    After './merge.pl' test files are merged and you can do test
+    earlier than not merged case.
 
   2-3 Run test files(Compile and Execute)
     % cd TESTDIR # TESTDIR is $config->{testdir}
