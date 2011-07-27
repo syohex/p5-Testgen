@@ -6,7 +6,6 @@ use Carp ();
 use Encode ();
 use File::Temp ();
 use Symbol ();
-use IPC::Open3 ();
 use IO::Select ();
 
 use constant WIN32 => $^O eq 'MSWin32';
@@ -50,7 +49,10 @@ sub _run_with_system {
     my ($efh, $err_redirect) = File::Temp::tempfile( UNLINK => 1 );
     my @cmd = @{$self->{command}};
 
-    ## I don't understand why using IPC is too slow.
+    ### Hummmmm.
+    ##  I want to use IPC for portability, but using IPC makes slow
+    ##  and not scaling very much. I don't understand why using IPC
+    ##  is too slow. So Unix platform using 'system' instead of IPC.
 
     my $status;
     eval {
@@ -97,12 +99,31 @@ sub _run_with_system {
 sub _run_with_ipc {
     my $self = shift;
 
-    my ($out_fh, $err_fh) = (Symbol::gensym, Symbol::gensym);
-    my $pid = IPC::Open3::open3(undef, $out_fh, $err_fh, @{$self->{command}});
+    pipe(my $stdout_r, my $stdout_w);
+    pipe(my $stderr_r, my $stderr_w);
+
+    my $pid = fork;
+    Carp::croak("Can't fork process: $!") unless defined $pid;
+
+    if ($pid == 0) {
+        close $stdout_r;
+        close $stderr_r;
+
+        open STDOUT, ">&=" . fileno($stdout_w)
+            or Carp::croak("Can't dup STDOUT: $!");
+        open STDERR, ">&=" . fileno($stderr_w)
+            or Carp::croak("Can't dup STDERR: $!");
+
+        exec @{$self->{command}} or Carp::croak("Can't exec: $!");
+        exit 2; # Never reach here
+    }
+
+    close $stdout_w;
+    close $stderr_w;
 
     my $watcher = IO::Select->new();
-    $watcher->add($out_fh);
-    $watcher->add($err_fh);
+    $watcher->add($stdout_r);
+    $watcher->add($stderr_r);
 
     my $timeout = $self->{timeout};
     my ($stdout, $stderr) = ('', '');
@@ -116,7 +137,7 @@ sub _run_with_ipc {
                 } elsif ($bytes == 0) {
                     $watcher->remove($fh);
                 } else {
-                    if ($fh == $out_fh) {
+                    if ($fh == $stdout_r) {
                         $stdout .= $buf;
                     } else {
                         $stderr .= $buf;
@@ -127,12 +148,12 @@ sub _run_with_ipc {
         if ($timeout && $watcher->count > 0 && !@ready) {
             kill 'TERM' => $pid;
             waitpid $pid, 0;
-            return (undef, $stdout, $stderr);
+            return (undef, $encoder->decode($stdout), $encoder->decode($stderr));
         }
     }
 
     waitpid $pid, 0;
-    return ( ($? >> 8), $stdout, $stderr);
+    return ( ($? >> 8), $encoder->decode($stdout), $encoder->decode($stderr));
 }
 
 1;
