@@ -161,7 +161,7 @@ sub _process_dir_section {
 
             my @real_args;
             if (scalar @{$macro_args} >= 2) {
-                my $arg_combinations = _combination(@{$macro_args});
+                my $arg_combinations = Testgen::Util::combination(@{$macro_args});
                 @real_args = @{$arg_combinations};
             } elsif (scalar @{$macro_args} == 1)  {
                 @real_args = map { [ $_ ] } @{$macro_args->[0]};
@@ -249,18 +249,6 @@ sub _output_test {
     open my $fh, '>', $testfile or Carp::croak("Can't open $testfile");
     print {$fh} encode($self->{output_encoding}, $content);
     close $fh;
-}
-
-# Copy from http://ja.doukaku.org/44/lang/perl/
-sub _combination {
-    my ($a1, $a2) = splice @_, 0, 2;
-    my @result;
-    for my $e1 (@$a1){
-        for my $e2 (@$a2){
-            push @result, [(ref $e1 ? @$e1 : $e1), $e2];
-        }
-    }
-    @_ ?  _combination([@result], @_) : [ @result ];
 }
 
 1;

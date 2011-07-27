@@ -15,6 +15,18 @@ sub read_directory {
     return @dirs;
 }
 
+# Based on http://ja.doukaku.org/44/lang/perl/
+sub combination {
+    my ($a1, $a2) = splice @_, 0, 2;
+    my @result;
+    for my $e1 (@{$a1}) {
+        for my $e2 (@{$a2}) {
+            push @result, [ (ref $e1 ? @{$e1} : $e1), $e2 ];
+        }
+    }
+    @_ ? combination([ @result ], @_) : [ @result ];
+}
+
 package
     Testgen::Util::Chdir;
 
