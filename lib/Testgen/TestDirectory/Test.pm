@@ -89,7 +89,7 @@ sub analyze_result {
             $result->{execute_failure}++;
         }
 
-        $self->_execute_log($execute_result);
+        $self->_execute_log($execute_result, $compile_result->command);
     }
 }
 
@@ -122,7 +122,7 @@ $message
 }
 
 sub _execute_log {
-    my ($self, $result) = @_;
+    my ($self, $result, $compile_command) = @_;
 
     my $oknum = $self->{oknum};
     my ($command, $message) = ($result->command, $result->message);
@@ -131,7 +131,7 @@ sub _execute_log {
     chomp $message;
     $self->{result}->{log} = <<"...";
 $testname
-Execute: $command
+Execute: $command (Compile: $compile_command)
   (expect ok: $oknum) .....
 $message
 ...
