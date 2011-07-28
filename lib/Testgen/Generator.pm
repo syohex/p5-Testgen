@@ -206,6 +206,8 @@ my \$runner = Testgen::Runner->new();
     close $fh;
 
     chmod 0755, $run_script or Carp::croak("change permission $run_script $!");
+
+    print "Generate ran script '$run_script'\n";
 }
 
 sub _generate_merge_script {
@@ -232,6 +234,8 @@ my \$runner = Testgen::Merger->new();
 
     chmod 0755, $merge_script
         or Carp::croak("change permission $merge_script $!");
+
+    print "Generate merge script '$merge_script'\n";
 }
 
 sub _generate_run_config {
@@ -242,7 +246,7 @@ sub _generate_run_config {
     File::Copy::copy($self->{config_file}, $run_conf)
         or Carp::croak("Can't copy runconfig");
 
-    print "runconfig $run_conf\n";
+    print "Generate runconfig '$run_conf'\n";
 }
 
 sub _usage {
