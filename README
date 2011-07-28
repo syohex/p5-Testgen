@@ -54,9 +54,6 @@ Ishiura lab in Kwansei Gakuin University
          complement   - 2 (It is Two's complement)
          timeout      - 10
 
-   [Examples]
-      ## TODO Write
-
    There are sample configuration files in config/ directory.
    Please see them and you use them as reference.
 
@@ -97,3 +94,34 @@ Appendix A. Directories hierarchy
    - config/
      - tgen_32.cnf : Sample configuration file of 32bit platform.
      - tgen_64.cnf : Sample configuration file of 64bit platform.
+
+Appendix B. Example of configuration file
+
+    +{
+        compiler      => 'gcc',
+        testdir       => 'testsuite',
+        c_flags       => [ '-g', '-Dunix' ],
+        ld_flags      => [ '-lm', 'lpthread' ],
+        options       => [ '-O0',
+                           [
+                             '-O2',
+                             [
+                               '-funroll-looping',
+                               '-fomit-frame-pointer',
+                             ],
+                           ],
+                         ]
+
+        size => {
+             char  => 8,
+             short => 16,
+             int   => 32,
+             long  => 64,
+             pointer => 64,
+        },
+    };
+
+    Then Testgen execute compiling commands as follows against each test files.
+        gcc -g -Dunix -O0 TEST_FILE -lm -lpthread
+        gcc -g -Dunix -O2 -funroll-looping TEST_FILE -lm -lpthread
+        gcc -g -Dunix -O2 -fomit-frame-pointer TEST_FILE -lm -lpthread
