@@ -29,10 +29,9 @@ sub new {
 sub name { shift->{name} }
 
 sub compile {
-    my ($self, $test, $option) = @_;
-    $option ||= '';
+    my ($self, $test, @options) = @_;
 
-    my @cmd = $self->_compile_command($test->input, $test->output, $option);
+    my @cmd = $self->_compile_command($test->input, $test->output, @options);
     my $command = Testgen::Runner::Command->new( command => \@cmd );
 
     my ($exit_status, undef, $stderr) = $command->run;
@@ -96,17 +95,18 @@ sub _preprocess_command {
 }
 
 sub _compile_command {
-    my ($self, $input, $output, $option) = @_;
-    $option ||= '';
+    my ($self, $input, $output, @options) = @_;
 
     my $c_flags = $self->{c_flags};
     my $c_flags_str = scalar @{$c_flags} ? join ' ', @{$c_flags} : '';
     my $ld_flags = $self->{ld_flags};
     my $ld_flags_str = scalar @{$ld_flags} ? join ' ', @{$ld_flags} : '';
+    my $options_str = scalar @options ? join ' ', @options : '';
 
     # for empty parameter
     my $cmd_str = join ' ', $self->{name}, $c_flags_str,
-                          , $option, $input, '-o', $output, $ld_flags_str;
+                          , $options_str
+                          , $input, '-o', $output, $ld_flags_str;
 
     return split /\s+/, $cmd_str;
 }

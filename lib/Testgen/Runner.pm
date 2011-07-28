@@ -165,7 +165,8 @@ sub _compile_and_execute {
     my $executer = $self->{executer};
 
     my ($compile_result, $execute_result);
-    for my $option ( @{$self->{config}->{options}} ) {
+    my @options_list = _option_list($self->{config}->{options});
+    for my $option ( @options_list ) {
         $compile_result = $compiler->compile($test, $option);
         next if $compile_result->is_error || $self->_is_compile_only;
 
