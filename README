@@ -4,6 +4,18 @@ Ishiura lab in Kwansei Gakuin University
 2011/JUL/25
 
 0. Introduction
+     Testgen is a test program generator for testing compiler.
+
+   Requirement
+     Testgen is implemented in 'Pure Perl' with standard modules.
+     You require only perl 5.8.1 or higher.
+
+   Testing platforms
+     Ubuntu 10.10 32bit
+     CentOS 5.5 64bit
+     MacOSX Snow Leopard 64bit
+
+     I hope that Testgen works well on Unix like platforms.
 
 1. Write configuration file
    First you should write a configuration file.
@@ -27,21 +39,21 @@ Ishiura lab in Kwansei Gakuin University
        These macros are used in template files.
 
    [Optional Parameters]
-      simulator (types: String)   - simulator used running executable.
-      c_flags   (types: ArrayRef) - compile flags which turn on at compiling.
-      ld_flags  (types: ArrayRef) - linker flags which turn on at compiling.
-      options   (types: ArrayRef) - user specified compile option.
+      simulator (type: String)   - simulator used running executable.
+      c_flags   (type: ArrayRef) - compile flags which turn on at compiling.
+      ld_flags  (type: ArrayRef) - linker flags which turn on at compiling.
+      options   (type: ArrayRef) - user specified compile option.
                                     'run script' compiles each one.
-      compile_only (types: Bool)  - a flag of only compileing, not executing.
-      color        (types: Bool)  - using color logging.
+      compile_only (type: Bool)  - a flag of only compileing, not executing.
+      color        (type: Bool)  - using color logging.
                                       [Green]  - All tests passed
                                       [Yellow] - Failed executing.
                                       [Red]    - Compiling and Executing failed.
-      parallels  (types: Int) - run 'n' tests simultaneously.
+      parallels  (type: Int) - run 'n' tests simultaneously.
                                 This parameter is supported only UNIX like
                                 environment(Linux, *BSD, MacOSX).
-      complement (types: Int) - complement of platform tested.
-      timeout    (types: Int) - 'timeout' seconds of executing.
+      complement (type: Int) - complement of platform tested.
+      timeout    (type: Int) - 'timeout' seconds of executing.
 
       [Default values]
          simulator    - undef
@@ -59,7 +71,7 @@ Ishiura lab in Kwansei Gakuin University
 
 2. How to use
   2-1 Generates test files
-    % perl bin/tgen.pl --config=config/tgen.cnf
+    % perl bin/tgen.pl --config=config/tgen.cnf template/*.tt
 
     Then testsuites are generated in the directory($config->{testdir}).
     And a 'run script' is generated in same directory.
