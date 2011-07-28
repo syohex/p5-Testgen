@@ -29,7 +29,7 @@ sub add {
     my $compiler = $self->{compiler};
     my ($preprocessed, $stderr) = $compiler->preprocess($file);
 
-    my $parser   = Testgen::Parser->new(
+    my $parser   = Testgen::Parser->create_parser(
         lang     => 'c',
         compiler => $compiler->name,
     );

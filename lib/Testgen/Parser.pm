@@ -4,7 +4,7 @@ use warnings;
 
 use Carp ();
 
-sub new {
+sub create_parser {
     my ($class, %args) = @_;
 
     unless (exists $args{lang}) {

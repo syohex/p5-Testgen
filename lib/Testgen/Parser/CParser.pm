@@ -8,6 +8,11 @@ use Carp ();
 sub new {
     my ($class, %args) = @_;
 
+    my $caller = (caller)[0];
+    unless ($caller eq 'Testgen::Parser') {
+        Carp::croak("Can't call constructor directly");
+    }
+
     unless (exists $args{compiler}) {
         Carp::croak("missing mandatory parameter 'compiler'");
     }
