@@ -83,10 +83,10 @@ sub _init {
     );
 
     $self->{executer} = Testgen::Runner::Executer->new(
-        has_print => $config->get('has_printf'),
-        timeout   => $config->get('timeout'),
-        simlator  => $config->get('simulator'),
-        expect    => $config->get('expect'),
+        has_print  => $config->get('has_printf'),
+        timeout    => $config->get('timeout'),
+        simulator  => $config->get('simulator'),
+        expect     => $config->get('expect'),
     );
 
     $self->{start_time} = time;
