@@ -195,7 +195,7 @@ sub _option_list {
         }
     }
 
-    return @options_list;
+    return scalar @options_list != 0 ? @options_list : ('');
 }
 
 sub _get_match_directories {
