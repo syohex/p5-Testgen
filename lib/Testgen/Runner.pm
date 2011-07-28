@@ -184,9 +184,11 @@ sub _option_list {
     my @options_list;
     for my $option ( @{$options_ref} ) {
         if (ref $option eq 'ARRAY') {
-            push @options_list, Testgen::UtiL::combination(
+            my $combinations = Testgen::Util::combination(
                 map { ref $_ eq 'ARRAY' ? $_ : [ $_ ] } @{$option}
             );
+
+            push @options_list, @{$combinations};
         } else {
             push @options_list, [ $option ];
         }
