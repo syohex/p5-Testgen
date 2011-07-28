@@ -85,10 +85,7 @@ sub _collect_tests {
         push @tests, $test;
     }
 
-    my @sorted = do {
-        sort { $a->input cmp $b->input } @tests;
-    };
-
+    my @sorted = sort { $a->input cmp $b->input } @tests;
     $self->{tests} = \@sorted;
 }
 
@@ -167,7 +164,7 @@ sub summarize {
     my $compile_ok = join '/', $result->{compile_success}, $result->{test_num};
     my $execute_ok = join '/', $result->{execute_success}, $result->{test_num};
 
-    printf "%s Compile OK %s, Execute OK => %s \n",
+    printf "%s Compile OK => %s, Execute OK => %s \n",
         $name, $compile_ok, $execute_ok;
 }
 
@@ -184,9 +181,9 @@ sub _collect_results {
         my $file = File::Spec->catfile($self->{temp_dir}, $result_file);
         my $result_ref = do $file or die "Can't load $file $!";
 
-        $log->print($result_ref->{log});
+        $log->print($_) for @{$result_ref->{log}};
         if (exists $result_ref->{faillog}) {
-            $faillog->print($result_ref->{faillog})
+            $faillog->print($_) for @{$result_ref->{faillog}};
         }
 
         for my $param ( @params ) {
