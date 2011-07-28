@@ -39,12 +39,12 @@ my $identifier_re = qr{ [a-zA-Z_] (?: [a-zA-Z0-9_]+)? }xms;
 my $real_num_re = qr{(?:(?i)(?:[+-]?)(?:(?=[.]?[0-9])(?:[0-9]*)(?:(?:[.])(?:[0-9]{0,}))?)(?:(?:[eE])(?:(?:[+-]?)(?:[0-9]+))|))};
 
 ## Based on $Regexp::Common::RE{num}{int}
-my $octal_re   = qr{(?:(?:[+-]?)(?:[0-7]+))};
-my $decimal_re = qr{(?:(?:[+-]?)(?:[1-9](?: [0-9]+) ?))};
-my $hex_re     = qr{(?:(?:[+-]?)0[xX](?:[0-9a-fA-F]+))};
-my $int_re = qr{ (?: $hex_re | $octal_re | $decimal_re ) (?: (?i)(?:ul?l?|ll?|d?f) )? }x;
+my $octal_re   = qr{(?:(?:[+-]?)(?:0[0-7]+))}x;
+my $decimal_re = qr{(?:(?:[+-]?)(?:[1-9](?:[0-9]+)?))}x;
+my $hex_re     = qr{(?:(?:[+-]?)0[xX](?:[0-9a-fA-F]+))}x;
+my $int_re = qr{(?:$decimal_re|$hex_re|$octal_re)(?:ull|ul|ll|[ul]|df|f)?}ix;
 
-my $num_re = qr{ (?: $int_re | $real_num_re (?: (?i)(?:d?f) )? ) }xmso;
+my $num_re = qr{(?:$int_re|$real_num_re(?:d?f)?) }ix;
 
 ## Based on $Regexp::Common::RE{quoted}
 my $quoted = qr{(?:(?:\")(?:[^\\\"]*(?:\\.[^\\\"]*)*)(?:\")|(?:\')(?:[^\\\']*(?:\\.[^\\\']*)*)(?:\'))};
@@ -58,27 +58,31 @@ sub prepend_to_identifier {
     $file_str =~ s{ \s+ }{ }gxms;
 
     my %cache;
+    my @tokens;
     while (1) {
-        while ($file_str =~ m{ \G (\s|$quoted|$num_re|$symbol_re+) }gxmsc) {
-            $replaced .= $1;
-        }
-
-        if ($file_str =~ m{\G ( $identifier_re ) }gxmsc) {
+        if ($file_str =~ m{\G (\s) }gcxms ) {
+            push @tokens, $1;
+        } elsif ($file_str =~ m{\G ($quoted) }gcxms ) {
+            push @tokens, $1;
+        } elsif ($file_str =~ m{\G ($num_re) }gcxms) {
+            push @tokens, $1;
+        } elsif ($file_str =~ m{\G ( (?:$symbol_re)+ ) }gcxms) {
+            push @tokens, $1;
+        } elsif ($file_str =~ m{\G ( $identifier_re ) }gcxms) {
             my $identifier = $1;
-
             if (exists $reserved_word{$identifier}
                 || exists $ignore_word{$identifier}) {
-                $replaced .= $identifier;
+                push @tokens, $identifier;
             } else {
-                $replaced .= "${prefix}_${identifier}";
+                push @tokens, "${prefix}_${identifier}"
             }
 
-        } elsif ($file_str =~ m{\G \z}gxmsc) {
+        } elsif ($file_str =~ m{\G \z}gcxms) {
             last;
         }
     }
 
-    return $replaced;
+    return join '', @tokens;
 }
 
 my %error_message = (
