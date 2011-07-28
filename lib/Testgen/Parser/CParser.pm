@@ -41,30 +41,28 @@ my %ignore_word  = map { $_ => 1 } @IGNORES;
 my $identifier_re = qr{ [a-zA-Z_] (?: [a-zA-Z0-9_]+)? }xms;
 
 ## Based on $Regexp::Common::RE{num}{real}
-my $real_num_re = qr{(?:[+-]?(?:(?=[.]?[0-9])(?:[0-9]*)(?:(?:[.])(?:[0-9]{0,}))?)(?:(?:[eE])(?:(?:[+-]?)(?:[0-9]+))|))};
+my $real_num_re = qr{(?:[+-]?(?:(?=[.]?[0-9])(?:[0-9]*)(?:(?:[.])(?:[0-9]{0,}))?)(?:(?:[eE])(?:(?:[+-]?)(?:[0-9]+))|))}o;
 
 ## Based on $Regexp::Common::RE{num}{int}
-my $octal_re   = qr{0[0-7]+}x;
-my $decimal_re = qr{(?:[0-9]|[1-9][0-9]+)}x;
-my $hex_re     = qr{0[xX][0-9a-fA-F]+}x;
-my $int_re = qr{[+-]?(?:$octal_re|$hex_re|$decimal_re)(?:ull|ul|ll|[ul]|df|f)?}ix;
+my $octal_re   = qr{0[0-7]+}ox;
+my $decimal_re = qr{(?:[0-9]|[1-9][0-9]+)}ox;
+my $hex_re     = qr{0[xX][0-9a-fA-F]+}ox;
+my $int_re = qr{[+-]?(?:$octal_re|$hex_re|$decimal_re)(?:ull|ul|ll|[ul]|df|f)?}iox;
 
-my $num_re = qr{(?:$int_re|$real_num_re(?:d?f)?) }ix;
+my $num_re = qr{(?:$int_re|$real_num_re(?:d?f)?) }iox;
 
 ## Based on $Regexp::Common::RE{quoted}
-my $quoted = qr{(?:(?:\")(?:[^\\\"]*(?:\\.[^\\\"]*)*)(?:\")|(?:\')(?:[^\\\']*(?:\\.[^\\\']*)*)(?:\'))};
+my $quoted = qr{(?:(?:\")(?:[^\\\"]*(?:\\.[^\\\"]*)*)(?:\")|(?:\')(?:[^\\\']*(?:\\.[^\\\']*)*)(?:\'))}o;
 
-my $symbol_re = qr{ [\\+\-\*&^~/%()\{\}\[\];=?|:><.!,] }xmso;
+my $symbol_re = qr{ [\\+\-\*&^~/%()\{\}\[\];=?|:><.!,] }oxms;
 
 sub prepend_to_identifier {
     my ($self, $file_str, $prefix) = @_;
     my $replaced = '';
 
-    $file_str =~ s{ \s+ }{ }gxms;
-
     my @tokens;
     while (1) {
-        if ($file_str =~ m{\G (\s) }gcxms ) {
+        if ($file_str =~ m{\G (\s+) }gcxms ) {
             push @tokens, $1;
         } elsif ($file_str =~ m{\G ($quoted) }gcxms ) {
             push @tokens, $1;
