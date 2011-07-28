@@ -17,22 +17,12 @@ sub new {
 
     my $output_dir = delete $args{output_dir} || 'merged';
 
-    my $match_str = delete $args{match_regexp} || '^ckr';
-    my $match_regexp;
-    eval {
-        $match_regexp = qr/$match_str/;
-    };
-    if ($@) {
-        Carp::croak("invalid regexp $match_str");
-    }
-
     bless {
         help         => undef,
         config_file  => 'runtest.cnf',
         output_dir   => 'merge',
-        match_regexp => $match_regexp,
+        match_regexp => qr/^ckr/,
         output_dir   => Cwd::realpath("./$output_dir"),
-        argv         => [],
         %args,
     }, $class;
 }
@@ -52,7 +42,18 @@ sub parse_options {
         _usage();
     }
 
-    $self->{argv} = [ @ARGV ];
+    if ( scalar @ARGV >= 1 ) {
+        my $regexp;
+        my $arg = shift @ARGV;
+        eval {
+            $regexp = qr/$arg/;
+        };
+        if ($@) {
+            Carp::croak("invalid regexp argument: '$arg'");
+        }
+
+        $self->{match_regexp} = $regexp;
+    }
 }
 
 sub run {
@@ -121,3 +122,37 @@ Options:
 1;
 
 __END__
+
+=encoding utf8
+
+=head1 NAME
+
+Testgen::Merger - A test runner class
+
+=head1 INTERFACE
+
+=head2 Class Methods
+
+=head3 C<< Testgen::Merger->new(%args) :Testgen::Merger >>
+
+Creates and returns a new Testgen::Merger object with I<args>.
+
+I<%args> might be:
+
+=over
+
+=item output_dir = 'merged'
+
+=back
+
+=head2 Instance Methods
+
+=head3 C<< $runner->parse_options(@ARGV)  >>
+
+Parse command line options.
+
+=head3 C<< $runner->run() >>
+
+Merge test files and output them into C<$self->{output_dir}>.
+
+=cut
