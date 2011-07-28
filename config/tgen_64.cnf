@@ -3,7 +3,11 @@
     simulator     => undef,
     c_flags       => [ '-g', '-Dunix' ],
     ld_flags      => [ '' ],
-    options       => [ '-O0', '-O2' ],
+    options       => ['-O0',
+                       [ '-O2',
+                         [ '-fomit-frame-pointer', '-funroll-loops' ],
+                       ],
+                     ],
     testdir       => 'testsuite',
     compile_only  => 0,
 
