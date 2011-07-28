@@ -1,4 +1,21 @@
 Revision history for Perl extension Testgen
 
 0.01  2011-07-15
-        - original version
+  [Modification]
+     General
+       - Object Oriented prgramming
+       - Modern Perl programming style
+       - CPAN style directory hierarchy.
+       - Add test programs under t/ directory.
+
+     Template
+       - Fix typo author's name 'Youki Uchiyama' => 'Yuki Uchiyama'
+       - Default encoding euc-jp => utf8
+       - Introduction of predefined macro (eg. $CHARMAX(), $UCHARMAX()...)
+
+     Configuration file
+       - just a perl hash reference
+
+     Run script
+       - color log
+       - parallel testing(Experimental)
