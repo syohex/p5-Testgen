@@ -109,7 +109,7 @@ sub _compile_log {
     my $testname = File::Spec->catfile($self->{dir}, $self->input);
 
     chomp $message;
-    $self->{result}->{log} = <<"...";
+    push @{$self->{result}->{log}}, <<"...";
 $testname
 Compile: $command
 $message
@@ -117,7 +117,7 @@ $message
 
     unless ($result->is_success) {
         my $status = $result->status;
-        $self->{result}->{faillog} = "$testname compile $status\n"
+        push @{$self->{result}->{faillog}}, "$testname compile $status\n"
     }
 }
 
@@ -129,7 +129,7 @@ sub _execute_log {
     my $testname = File::Spec->catfile($self->{dir}, $self->input);
 
     chomp $message;
-    $self->{result}->{log} = <<"...";
+    push @{$self->{result}->{log}}, <<"...";
 $testname
 Execute: $command (Compile: $compile_command)
   (expect ok: $oknum) .....
@@ -138,7 +138,7 @@ $message
 
     unless ($result->is_success) {
         my $status = $result->status;
-        $self->{result}->{faillog} = "$testname execute $status\n";
+        push @{$self->{result}->{faillog}}, "$testname execute $status\n";
     }
 }
 
