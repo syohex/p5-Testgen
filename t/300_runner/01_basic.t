@@ -47,4 +47,34 @@ my $tempdir = File::Temp::tempdir( CLEANUP => 1 );
     can_ok($generator, 'run');
 }
 
+{
+    my $input = [ '-O0', '-O2' ];
+
+    my @option_lists = Testgen::Runner::_option_list($input);
+    my @expected = (['-O0'], ['-O2']);
+
+    is_deeply(\@option_lists, \@expected, 'options list');
+
+    $input = [
+        '-O0',
+        [
+            '-O2',
+            [
+                '-funroll-looping',
+                '-fopenmp',
+            ]
+        ]
+    ];
+
+    @option_lists = Testgen::Runner::_option_list($input);
+    @expected = (
+        [ '-O0' ],
+        [ '-O2', '-funroll-looping' ],
+        [ '-O2', '-fopenmp' ],
+    );
+
+    is_deeply(\@option_lists, \@expected, 'options list');
+
+}
+
 done_testing;

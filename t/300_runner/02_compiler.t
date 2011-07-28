@@ -31,9 +31,9 @@ use Testgen::Runner::Compiler;
     );
     can_ok($compiler, 'compile');
 
-    my @cmd = $compiler->_compile_command('a.c', 'a.out', '-O2');
+    my @cmd = $compiler->_compile_command('a.c', 'a.out', '-O2', '-ansi');
     is_deeply(\@cmd,
-              ['gcc', '-g', '-O2', 'a.c', '-o', 'a.out', '-lgcc'],
+              ['gcc', '-g', '-O2', '-ansi', 'a.c', '-o', 'a.out', '-lgcc'],
               'compile command');
 }
 
