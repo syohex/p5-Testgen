@@ -41,13 +41,13 @@ my %ignore_word  = map { $_ => 1 } @IGNORES;
 my $identifier_re = qr{ [a-zA-Z_] (?: [a-zA-Z0-9_]+)? }xms;
 
 ## Based on $Regexp::Common::RE{num}{real}
-my $real_num_re = qr{(?:(?i)(?:[+-]?)(?:(?=[.]?[0-9])(?:[0-9]*)(?:(?:[.])(?:[0-9]{0,}))?)(?:(?:[eE])(?:(?:[+-]?)(?:[0-9]+))|))};
+my $real_num_re = qr{(?:[+-]?(?:(?=[.]?[0-9])(?:[0-9]*)(?:(?:[.])(?:[0-9]{0,}))?)(?:(?:[eE])(?:(?:[+-]?)(?:[0-9]+))|))};
 
 ## Based on $Regexp::Common::RE{num}{int}
-my $octal_re   = qr{(?:(?:[+-]?)(?:0[0-7]+))}x;
-my $decimal_re = qr{(?:(?:[+-]?)(?:[1-9](?:[0-9]+)?))}x;
-my $hex_re     = qr{(?:(?:[+-]?)0[xX](?:[0-9a-fA-F]+))}x;
-my $int_re = qr{(?:$decimal_re|$hex_re|$octal_re)(?:ull|ul|ll|[ul]|df|f)?}ix;
+my $octal_re   = qr{0[0-7]+}x;
+my $decimal_re = qr{(?:[0-9]|[1-9][0-9]+)}x;
+my $hex_re     = qr{0[xX][0-9a-fA-F]+}x;
+my $int_re = qr{[+-]?(?:$octal_re|$hex_re|$decimal_re)(?:ull|ul|ll|[ul]|df|f)?}ix;
 
 my $num_re = qr{(?:$int_re|$real_num_re(?:d?f)?) }ix;
 
@@ -62,7 +62,6 @@ sub prepend_to_identifier {
 
     $file_str =~ s{ \s+ }{ }gxms;
 
-    my %cache;
     my @tokens;
     while (1) {
         if ($file_str =~ m{\G (\s) }gcxms ) {
@@ -84,6 +83,8 @@ sub prepend_to_identifier {
 
         } elsif ($file_str =~ m{\G \z}gcxms) {
             last;
+        } else {
+            Carp::croak("Oops, found token which is not match all regexp");
         }
     }
 
