@@ -1,0 +1,20 @@
++{
+    compiler      => 'v850-linux-elf-gcc',
+    simulator     => 'v850-linux-elf-run',
+    c_flags       => [ '-g', '-Dunix' ],
+    ld_flags      => [ '' ],
+    options       => ['-O0', '-O2'],
+    testdir       => 'testsuite_v850',
+    compile_only  => 0,
+
+    size => {
+         char  => 8,
+         short => 16,
+         int   => 32,
+         long  => 32,
+         pointer => 32,
+    },
+
+    timeout       => 10,
+    color         => 1,
+};
