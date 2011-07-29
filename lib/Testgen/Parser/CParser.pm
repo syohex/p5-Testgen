@@ -145,7 +145,6 @@ You cannot call constructor of C<Testgen::Parser::CParser> directly.
 You can get C<Testgen::Parser::CParser> instance via
 C<Testgen::Parser::create_parser>
 
-
 =head2 Instance Methods
 
 =head3 C<< $runner->add($file, $prefix)  >>
