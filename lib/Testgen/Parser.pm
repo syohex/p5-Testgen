@@ -11,13 +11,12 @@ sub create_parser {
         Carp::croak("missing mandatory parameter 'lang'");
     }
 
-    my $lang = delete $args{lang};
-    $lang = lc $lang;
+    my $lang = ucfirst( lc(delete $args{lang}) );
+    my $parser_class = __PACKAGE__ . "::" . "${lang}Parser";
 
     my $parser;
-    if ($lang eq 'c') {
-        require Testgen::Parser::CParser;
-        $parser = Testgen::Parser::CParser->new(%args);
+    if ( _load_class($parser_class) ) {
+        $parser = $parser_class->new(%args);
     } else {
         Carp::croak("'$lang' parser is not implemented yet");
     }
@@ -25,8 +24,23 @@ sub create_parser {
     return $parser;
 }
 
+sub _load_class {
+    my $class_name = shift;
+
+    $class_name =~ s{::}{/}g;
+    $class_name .= '.pm';
+
+    eval {
+        require $class_name;
+    };
+
+    return 0 if $@;
+
+    return 1;
+}
+
 sub prepend_to_identifier {
-    die "prepend_to_identifiers should be overridden";
+    die "prepend_to_identifiers must be overridden";
 }
 
 1;
