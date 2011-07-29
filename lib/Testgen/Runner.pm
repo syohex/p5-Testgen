@@ -10,7 +10,7 @@ use File::Temp ();
 use Testgen::Config;
 use Testgen::Log;
 use Testgen::Runner::Compiler;
-use Testgen::Runner::Executer;
+use Testgen::Runner::Executor;
 use Testgen::TestDirectory;
 use Testgen::ForkManager;
 use Testgen::Util ();
@@ -82,7 +82,7 @@ sub _init {
         ld_flags => $config->get('ld_flags'),
     );
 
-    $self->{executer} = Testgen::Runner::Executer->new(
+    $self->{executer} = Testgen::Runner::Executor->new(
         has_print  => $config->get('has_printf'),
         timeout    => $config->get('timeout'),
         simulator  => $config->get('simulator'),
