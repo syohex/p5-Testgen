@@ -190,9 +190,10 @@ $LICENSE()
 long            itest;
 char            ctest;
 
-#ifndef NULL
-#define NULL 0
+#ifdef NULL
+#undef NULL
 #endif
+#define NULL 0
 
 #define OK 1
 #define NO 0

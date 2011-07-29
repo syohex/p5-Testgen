@@ -78,9 +78,10 @@ $LICENSE()
 # define NCHAR	'n'
 # define NO 0
 # define OK 1
-#ifndef NULL
-# define NULL 0
+#ifdef NULL
+#undef NULL
 #endif
+# define NULL 0
 # define YCHAR	'y'
 char            Char;
 char            ctest;
