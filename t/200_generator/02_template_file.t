@@ -8,12 +8,17 @@ use File::Path;
 use Test::More;
 use Testgen::TemplateFile;
 
-use t::Util qw/create_template_file/;
+use t::Util qw/create_tmp_file/;
 
 {
-    my $template = create_template_file(<<'...');
+    my $content = <<'...';
 this is template
 ...
+    my $template = create_tmp_file(
+        content => $content,
+        suffix  => '.tt',
+    );
+
     my $tt_file = Testgen::TemplateFile->new(
         name => $template->filename,
         testsuite_dir => 'test',
@@ -39,7 +44,7 @@ this is template
 }
 
 {
-    my $template = create_template_file(<<'...');
+    my $content = <<'...';
 @def $TEST($ARG)
 This is $ARG
 @def_
@@ -48,6 +53,12 @@ This is $ARG
 Ignore this section
 @comment_
 ...
+
+    my $template = create_tmp_file(
+        content => $content,
+        suffix  => '.tt',
+    );
+
 
     my $tt_file = Testgen::TemplateFile->new(
         name => $template->filename,
@@ -65,7 +76,7 @@ Ignore this section
 
 {
     my $tempdir  = File::Temp::tempdir( CLEANUP => 1 );
-    my $template = create_template_file(<<'...');
+    my $content = <<'...';
 @def $test($ARG)
 This is $ARG
 @def_
@@ -77,6 +88,10 @@ This is comment
 @comment_
 @dir_
 ...
+    my $template = create_tmp_file(
+        content => $content,
+        suffix  => '.tt',
+    );
 
     my $tt_file = Testgen::TemplateFile->new(
         name => $template->filename,
@@ -113,11 +128,16 @@ This is comment
 }
 
 {
-    my $template = create_template_file(<<'...');
+    my $content = <<'...';
 @unknown
 This is unknown section
 @unknown_
 ...
+    my $template = create_tmp_file(
+        content => $content,
+        suffix  => '.tt',
+    );
+
     my $tt_file = Testgen::TemplateFile->new(
         name => $template->filename,
         testsuite_dir => 'test',
