@@ -1,6 +1,7 @@
 .gitignore
 bin/tgen.pl
 Changes
+config/clang_64.cnf
 config/tgen_32.cnf
 config/tgen_64.cnf
 config/v850_cross.cnf
@@ -51,7 +52,7 @@ t/200_generator/04_testdirectory.t
 t/200_generator/05_test.t
 t/300_runner/01_basic.t
 t/300_runner/02_compiler.t
-t/300_runner/03_executer.t
+t/300_runner/03_executor.t
 t/300_runner/04_result.t
 t/300_runner/05_command.t
 t/400_log/01_basic.t
