@@ -1,9 +1,9 @@
-package Testgen::Runner::Executer;
+package Testgen::Runner::Executor;
 use strict;
 use warnings;
 
 use Testgen::Runner::Command;
-use Testgen::Runner::Executer::Result;
+use Testgen::Runner::Executor::Result;
 
 sub new {
     my ($class, %args) = @_;
@@ -35,7 +35,7 @@ sub execute {
 
     unless (defined $exit_status) {
         # Timeout happens
-        return Testgen::Runner::Executer::Result->new(
+        return Testgen::Runner::Executor::Result->new(
             command => "@cmd",
             message => "timeout: " . $test->input,
             status  => 'timeout',
@@ -63,7 +63,7 @@ sub execute {
         $result = 'error';
     }
 
-    return Testgen::Runner::Executer::Result->new(
+    return Testgen::Runner::Executor::Result->new(
         command => "@cmd",
         status  => $result,
         message => $stdout,
@@ -89,15 +89,15 @@ __END__
 
 =head1 NAME
 
-Testgen::Runner::Executer - A executer class
+Testgen::Runner::Executor - A executer class
 
 =head1 INTERFACE
 
 =head2 Class Methods
 
-=head3 C<< Testgen::Runner::Executer->new(%args) :Testgen::Runner::Executer >>
+=head3 C<< Testgen::Runner::Executor->new(%args) :Testgen::Runner::Executor >>
 
-Creates and returns a new Testgen::Runner::Executer object with I<args>.
+Creates and returns a new Testgen::Runner::Executor object with I<args>.
 
 I<%args> might be:
 
@@ -118,6 +118,6 @@ I<%args> might be:
 =head3 C<< $executer->execute($test) >>
 
 Execute test which is a F<Testgen::Runner::Testdirectory::Test>.
-Return a L<Testgen::Runner::Executer::Result> object.
+Return a L<Testgen::Runner::Executor::Result> object.
 
 =cut

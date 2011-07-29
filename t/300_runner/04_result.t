@@ -4,7 +4,7 @@ use warnings;
 use Test::More;
 
 use Testgen::Runner::Compiler::Result;
-use Testgen::Runner::Executer::Result;
+use Testgen::Runner::Executor::Result;
 
 {
     my $result = Testgen::Runner::Compiler::Result->new(
@@ -72,13 +72,13 @@ warning compiling
 }
 
 {
-    my $result = Testgen::Runner::Executer::Result->new(
+    my $result = Testgen::Runner::Executor::Result->new(
         status  => 'missing',
         command => "run a.out",
         message => 'missing @OK@ number',
     );
     ok($result, 'constructor');
-    isa_ok($result, 'Testgen::Runner::Executer::Result');
+    isa_ok($result, 'Testgen::Runner::Executor::Result');
 }
 
 {

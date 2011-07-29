@@ -1,4 +1,4 @@
-package Testgen::Runner::Executer::Result;
+package Testgen::Runner::Executor::Result;
 use strict;
 use warnings;
 
@@ -49,15 +49,15 @@ sub is_timeout {
 
 =head1 NAME
 
-Testgen::Runner::Executer::Result - A execute command result.
+Testgen::Runner::Executor::Result - A execute command result.
 
 =head1 INTERFACE
 
 =head2 Class Methods
 
-=head3 C<< Testgen::Runner::Executer::Result->new(%args) >>
+=head3 C<< Testgen::Runner::Executor::Result->new(%args) >>
 
-Creates and returns a new Testgen::Runner::Executer::Result with I<%args>.
+Creates and returns a new Testgen::Runner::Executor::Result with I<%args>.
 Dies on error.
 
 I<%args> might be:
