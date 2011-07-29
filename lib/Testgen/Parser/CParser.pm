@@ -92,7 +92,7 @@ sub prepend_to_identifier {
 my %error_message = (
     gcc => qr{
         no \s+ include \s path \s in \s which \s to \s search \s for \s
-        ([^.]+.h)
+        ([^.]+\.h)
     }ixmso,
 
     clang => qr{
@@ -130,3 +130,35 @@ sub remove_preprocessor_directives {
 1;
 
 __END__
+
+=encoding utf8
+
+=head1 NAME
+
+Testgen::Parser::CParser - A C language parser class
+
+=head1 INTERFACE
+
+=head2 Constructor
+
+You cannot call constructor of C<Testgen::Parser::CParser> directly.
+You can get C<Testgen::Parser::CParser> instance via
+C<Testgen::Parser::create_parser>
+
+
+=head2 Instance Methods
+
+=head3 C<< $runner->add($file, $prefix)  >>
+
+Add a C<$file> to merged files. C<$prefix> has a meaning
+case of separate compilation.
+
+=head3 C<< $runner->output_as_main_file >>
+
+Generate file which contains 'main' function.
+
+=head3 C<< $runner->output_as_sub_file >>
+
+Generate file which does not contain 'main' function.
+
+=cut
