@@ -4,6 +4,9 @@ use warnings;
 use Test::More;
 
 use Testgen::Runner::Compiler;
+use Testgen::TestDirectory::Test;
+use Testgen::Config;
+use t::Util qw(create_tmp_file);
 
 {
     my $compiler = Testgen::Runner::Compiler->new(
@@ -35,6 +38,49 @@ use Testgen::Runner::Compiler;
     is_deeply(\@cmd,
               ['gcc', '-g', '-O2', '-ansi', 'a.c', '-o', 'a.out', '-lgcc'],
               'compile command');
+}
+
+my $compiler;
+$compiler = 'gcc' if Testgen::Config::_is_exist('gcc');
+
+SKIP: {
+    skip "you don't have any compiler", 2 unless defined $compiler;
+
+    my $content =<<'...';
+#define RETURN_VALUE 10
+int main()
+{
+    return RETURN_VALUE;
+}
+...
+    my $cfile = create_tmp_file(
+        suffix  => '.c',
+        content => $content,
+    );
+
+    my $test = Testgen::TestDirectory::Test->new(
+        files => [ $cfile ],
+    );
+
+    my $compiler = Testgen::Runner::Compiler->new(
+        name     => $compiler,
+        c_flags  => ['-c'],
+    );
+
+    my ($stdout, $stderr) = $compiler->preprocess($cfile);
+    like $stdout, qr/return \s+ 10/x, "proprocessing c file";
+
+    my $result = $compiler->compile($test);
+    isa_ok($result, "Testgen::Runner::Compiler::Result");
+
+    $test->finalize;
+}
+
+{
+    eval {
+        my $compiler = Testgen::Runner::Compiler->new;
+    };
+    like $@, qr/missing mandatory parameter/, "constructor without 'name'";
 }
 
 done_testing;
