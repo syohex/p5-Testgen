@@ -1,6 +1,6 @@
 Testsuite generator 2
 
-Ishiura lab in Kwansei Gakuin University
+Ishiura Lab in Kwansei Gakuin University
 2011/JUL/25
 
 0. Introduction
@@ -133,7 +133,7 @@ Appendix B. Example of configuration file
         },
     };
 
-    Then Testgen execute compiling commands as follows against each test files.
+    Then Testgen execute compiling commands as follows for each test files.
         gcc -g -Dunix -O0 TEST_FILE -lm -lpthread
         gcc -g -Dunix -O2 -funroll-looping TEST_FILE -lm -lpthread
         gcc -g -Dunix -O2 -fomit-frame-pointer TEST_FILE -lm -lpthread

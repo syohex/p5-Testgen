@@ -1,21 +1,35 @@
-Revision history for Perl extension Testgen
+Revision history for Testgen2
 
 0.01  2011-07-15
+  initial release (by Syohei YOSHIDA)
+  Original source codes are testgen2-20110128.zip.
+
   [Modification]
      General
        - Object Oriented prgramming
-       - Modern Perl programming style
-       - CPAN style directory hierarchy.
-       - Add test programs under t/ directory.
+       - Modern Perl programming style as possible
+       - CPAN style directory hierarchy
+       - Add test programs under t/ directory
+       - Remove use of external command, using standard module
+         instead of them as possible
 
-     Template
+       More readable as possible !!
+
+     Template file
        - Fix typo author's name 'Youki Uchiyama' => 'Yuki Uchiyama'
        - Default encoding euc-jp => utf8
        - Introduction of predefined macro (eg. $CHARMAX(), $UCHARMAX()...)
+           Original template file depend on 32bit platform, so some tests
+           are failed on 64bit platform. You can do away with number literals
+           which depend on bit-width of target platform by using predefined
+           macros.
+
+           Predefined macros are auto generated from a configuration file.
 
      Configuration file
-       - just a perl hash reference
+       - just a perl hash reference( parsing and analyzing easily!! )
 
      Run script
        - color log
+       - fix log message
        - parallel testing(Experimental)
