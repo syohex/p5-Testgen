@@ -36,10 +36,6 @@ Nagisa ISHIURA
 
 Nobuyuki HIKICHI
 
-=head1 CONTRIBUTORS
-
-Syohei YOSHIDA E<lt>syohex@gmail.comE<gt>
-
 =head1 COPYRIGHT
 
 Copyright 2011- Ishiura lab in Kwansei Gakuin University, SRA-KTL, SRA
