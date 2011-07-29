@@ -35,7 +35,7 @@ my @RESERVED = (qw/
 /);
 my %reserved_word = map { $_ => 1 } @RESERVED;
 
-my @IGNORES = qw/ printf /;
+my @IGNORES = qw/ printf FLT_EPSILON /;
 my %ignore_word  = map { $_ => 1 } @IGNORES;
 
 my $identifier_re = qr{ [a-zA-Z_] (?: [a-zA-Z0-9_]+)? }xms;
