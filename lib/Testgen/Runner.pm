@@ -82,7 +82,7 @@ sub _init {
         ld_flags => $config->get('ld_flags'),
     );
 
-    $self->{executer} = Testgen::Runner::Executor->new(
+    $self->{executor} = Testgen::Runner::Executor->new(
         has_print  => $config->get('has_printf'),
         timeout    => $config->get('timeout'),
         simulator  => $config->get('simulator'),
@@ -162,7 +162,7 @@ sub _compile_and_execute {
     my ($self, $test) = @_;
 
     my $compiler = $self->{compiler};
-    my $executer = $self->{executer};
+    my $executor = $self->{executor};
 
     my ($compile_result, $execute_result);
     my @options_list = _option_list($self->{config}->{options});
@@ -170,7 +170,7 @@ sub _compile_and_execute {
         $compile_result = $compiler->compile($test, @{$option});
         next if $compile_result->is_error || $self->_is_compile_only;
 
-        $execute_result = $executer->execute($test);
+        $execute_result = $executor->execute($test);
     } continue {
         $test->analyze_result($compile_result, $execute_result);
         $test->finalize;

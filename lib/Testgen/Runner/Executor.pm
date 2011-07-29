@@ -89,7 +89,7 @@ __END__
 
 =head1 NAME
 
-Testgen::Runner::Executor - A executer class
+Testgen::Runner::Executor - A executor class
 
 =head1 INTERFACE
 
@@ -115,7 +115,7 @@ I<%args> might be:
 
 =head2 Instance Methods
 
-=head3 C<< $executer->execute($test) >>
+=head3 C<< $executor->execute($test) >>
 
 Execute test which is a F<Testgen::Runner::Testdirectory::Test>.
 Return a L<Testgen::Runner::Executor::Result> object.
