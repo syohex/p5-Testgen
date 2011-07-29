@@ -32,13 +32,15 @@ Yuki UCHIYAMA
 
 Kazushi MORIMOTO
 
+Shinji OBUCHI
+
 Nagisa ISHIURA
 
 Nobuyuki HIKICHI
 
 =head1 COPYRIGHT
 
-Copyright 2011- Ishiura lab in Kwansei Gakuin University, SRA-KTL, SRA
+Copyright 2011- Ishiura Lab. in Kwansei Gakuin University, SRA-KTL, SRA
 
 =head1 LICENSE
 
