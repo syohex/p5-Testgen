@@ -20,7 +20,6 @@ sub new {
     bless {
         help         => undef,
         config_file  => 'runtest.cnf',
-        output_dir   => 'merge',
         match_regexp => qr/^ckr/,
         output_dir   => Cwd::realpath("./$output_dir"),
         %args,
@@ -34,7 +33,7 @@ sub parse_options {
 
     Getopt::Long::GetOptions(
         "c|config=s"     => \$self->{config_file},
-        "o|output-dir=s" => \$self->{output_dir},
+        "o|output-dir=s" => \my $output_dir,
         "h|help"         => \$self->{help},
     );
 
@@ -53,6 +52,10 @@ sub parse_options {
         }
 
         $self->{match_regexp} = $regexp;
+    }
+
+    if (defined $output_dir) {
+        $self->{output_dir} = Cwd::realpath("./$output_dir");
     }
 }
 
