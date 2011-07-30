@@ -80,7 +80,7 @@ sub _preprocess_command {
     my $c_flags_str = scalar @{$c_flags} ? join ' ', @{$c_flags} : '';
 
     my $cmd_str;
-    if ($compiler eq 'gcc') {
+    if ($compiler eq 'gcc' || $compiler eq 'pcc') {
         $cmd_str = join ' ', $compiler, '-E',
                       $c_flags_str, '-nostdinc', $file;
     } elsif ($compiler eq 'clang') {
