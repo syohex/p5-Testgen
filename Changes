@@ -18,6 +18,13 @@ Revision history for Testgen2
      Template file
        - Fix typo author's name 'Youki Uchiyama' => 'Yuki Uchiyama'
        - Default encoding euc-jp => utf8
+       - Fix definiton of NULL. Some preprocessors don't permit
+         to redefine macro as default.
+       - Fix TGEN_FLT_EQ. Because __FLT_EPSILON__ is GCC's predefined macro,
+         other compiler does not defined it. In ANSI-C, FLT_EPSILON macro
+         defines in float.h. So __FLT_EPSILON__ is changed FLT_EPSILON and
+         add '#include <float.h>'.
+
        - Introduction of predefined macro (eg. $CHARMAX(), $UCHARMAX()...)
            Original template file depend on 32bit platform, so some tests
            are failed on 64bit platform. You can do away with number literals
