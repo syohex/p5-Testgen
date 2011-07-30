@@ -22,7 +22,7 @@ sub new {
         Carp::croak("missing mandatory parameter 'name'");
     }
 
-    my $tempdir = File::Temp::tempdir( CLEANUP => 1 );
+    my $tempdir = File::Temp::tempdir( DIR => '.', CLEANUP => 1 );
     $tempdir =~ s{/$}{};
     bless {
         tests        => [],

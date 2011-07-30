@@ -30,7 +30,7 @@ sub new {
         start_time     => undef,
         config         => $config,
         log_dir        => $log_dir,
-        temp_dir       => File::Temp::tempdir( CLEANUP => 1 ),
+        temp_dir       => File::Temp::tempdir( DIR => '.', CLEANUP => 1 ),
         %args,
     }, $class;
 }
