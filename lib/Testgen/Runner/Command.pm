@@ -70,6 +70,7 @@ sub _run_with_system {
             chomp $line;
 
             if ($line =~ m{$cmd_str}) {
+                $line =~ s{^\s*}{};
                 $pid = (split /\s+/, $line)[0];
                 last;
             }
