@@ -13,10 +13,6 @@ sub new {
         Carp::croak("Can't call constructor directly");
     }
 
-    unless (exists $args{compiler}) {
-        Carp::croak("missing mandatory parameter 'compiler'");
-    }
-
     bless { %args }, $class;
 }
 
@@ -38,7 +34,7 @@ my %reserved_word = map { $_ => 1 } @RESERVED;
 my @IGNORES = qw/ printf FLT_EPSILON /;
 my %ignore_word  = map { $_ => 1 } @IGNORES;
 
-my $identifier_re = qr{ [a-zA-Z_] (?: [a-zA-Z0-9_]+)? }xms;
+my $identifier_re = qr{ [a-zA-Z_] (?: [a-zA-Z0-9_]+)? }oxms;
 
 ## Based on $Regexp::Common::RE{num}{real}
 my $real_num_re = qr{(?:[+-]?(?:(?=[.]?[0-9])(?:[0-9]*)(?:(?:[.])(?:[0-9]{0,}))?)(?:(?:[eE])(?:(?:[+-]?)(?:[0-9]+))|))}o;
@@ -62,9 +58,9 @@ sub prepend_to_identifier {
 
     my @tokens;
     while (1) {
-        if ($file_str =~ m{\G (\s+) }gcxms ) {
+        if ($file_str =~ m{\G (\s+) }gcxms) {
             push @tokens, $1;
-        } elsif ($file_str =~ m{\G ($quoted) }gcxms ) {
+        } elsif ($file_str =~ m{\G ($quoted) }gcxms) {
             push @tokens, $1;
         } elsif ($file_str =~ m{\G ($num_re) }gcxms) {
             push @tokens, $1;
@@ -78,7 +74,6 @@ sub prepend_to_identifier {
             } else {
                 push @tokens, "${prefix}_${identifier}"
             }
-
         } elsif ($file_str =~ m{\G \z}gcxms) {
             last;
         } else {
@@ -89,32 +84,16 @@ sub prepend_to_identifier {
     return join '', @tokens;
 }
 
-my %error_message = (
-    gcc => qr{
-        no \s+ include \s path \s in \s which \s to \s search \s for \s
-        ([^.]+\.h)
-    }ixmso,
-
-    clang => qr{
-        ' ([^']+) ' \s file \s not \s found
-    }ixmso,
-
-    pcc => qr{
-       error: \s cannot \s find \s '([^']+)'
-    }ixmso,
-);
+my $error_message_re = qr{
+    no \s+ include \s path \s in \s which \s to \s search \s for \s
+    ([^.]+\.h)
+}ixmso;
 
 sub find_missing_headers {
     my ($self, $errmsg) = @_;
 
-    my $compiler = $self->{compiler};
-    unless (exists $error_message{$compiler}) {
-        Carp::croak("'$compiler' is not supported\n");
-    }
-
-    my $regexp = $error_message{$compiler};
     my %header;
-    while ($errmsg =~ m{$regexp}g) {
+    while ($errmsg =~ m{$error_message_re}g) {
          $header{$1} = 1;
     }
 
