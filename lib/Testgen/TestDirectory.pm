@@ -56,7 +56,7 @@ sub result {
 sub _collect_tests {
     my $self = shift;
 
-    my @cfiles = _get_cfiles('.');
+    my @cfiles = grep m{\.c$}x, Testgen::Util::read_directory($dir);
 
     if (-e $fileset_name) {
         my %cfile;
@@ -128,11 +128,6 @@ sub _read_fileset {
     close $fh;
 
     return @tests;
-}
-
-sub _get_cfiles {
-    my $dir = shift;
-    return grep m{\.c$}x, Testgen::Util::read_directory($dir);
 }
 
 sub summarize {
