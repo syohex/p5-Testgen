@@ -9,8 +9,6 @@ use File::Spec ();
 
 use Testgen::Util ();
 
-local $Data::Dumper::Indent = 0;
-
 sub new {
     my ($class, %args) = @_;
 
@@ -98,7 +96,10 @@ sub dump_result {
     my $dump_file = File::Spec->catfile($dir, $self->{files}->[0]);
 
     open my $fh, '>', $dump_file or Carp::croak("Can't open $dump_file $!");
+
+    local $Data::Dumper::Indent = 0;
     print {$fh} Data::Dumper::Dumper( $self->{result} );
+
     close $fh;
 }
 
