@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 use Carp ();
+use Cwd ();
 use Scalar::Util qw(blessed);
 use File::Temp ();
 use Term::ANSIColor ();
@@ -22,18 +23,18 @@ sub new {
         Carp::croak("missing mandatory parameter 'name'");
     }
 
-    my $tempdir = File::Temp::tempdir( DIR => '.', CLEANUP => 1 );
-    $tempdir =~ s{/$}{};
+    my $temp_dir = File::Temp->newdir( DIR => Cwd::getcwd );
+
     bless {
         tests        => [],
         result_cache => undef,
-        temp_dir     => $tempdir,
+        temp_dir     => $temp_dir,
         %args,
     }, $class;
 }
 
 # accessor
-sub temp_dir { shift->{temp_dir} }
+sub temp_dir { shift->{temp_dir}->dirname }
 
 sub tests {
     my $self = shift;
@@ -176,9 +177,10 @@ sub _collect_results {
                     execute_success execute_failure/;
     my %cache;
 
-    my @entries = Testgen::Util::read_directory( $self->{temp_dir} );
+    my $dir_name = $self->{temp_dir}->dirname;
+    my @entries = Testgen::Util::read_directory( $dir_name );
     for my $result_file ( sort @entries ) {
-        my $file = File::Spec->catfile($self->{temp_dir}, $result_file);
+        my $file = File::Spec->catfile($dir_name, $result_file);
         my $result_ref = do $file or die "Can't load $file $!";
 
         $log->print($_) for @{$result_ref->{log}};
@@ -190,7 +192,6 @@ sub _collect_results {
             $cache{$param} += $result_ref->{$param};
         }
     }
-    undef $self->{temp_dir}; # cleanup
 
     $self->{result_cache} = \%cache;
 }

@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 use Carp ();
+use Cwd ();
 use Getopt::Long ();
 use File::Path ();
 use File::Temp ();
@@ -22,6 +23,7 @@ sub new {
     my $log_dir     = delete $args{log_dir}     || 'LOG';
 
     my $config   = Testgen::Config->new($config_file);
+    my $temp_dir = File::Temp->newdir( DIR => Cwd::getcwd );
 
     bless {
         help           => undef,
@@ -30,7 +32,7 @@ sub new {
         start_time     => undef,
         config         => $config,
         log_dir        => $log_dir,
-        temp_dir       => File::Temp::tempdir( DIR => '.', CLEANUP => 1 ),
+        temp_dir       => $temp_dir,
         %args,
     }, $class;
 }
@@ -289,7 +291,7 @@ Test Finish    : $end_time
 
 sub _concat_logs {
     my $self = shift;
-    my $guard = Testgen::Util::Chdir->new( $self->{temp_dir} );
+    my $guard = Testgen::Util::Chdir->new( $self->{temp_dir}->dirname );
 
     my @entries  = Testgen::Util::read_directory( '.' );
     my @logs     = grep m/\.log$/,  @entries;
