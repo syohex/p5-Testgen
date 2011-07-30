@@ -45,8 +45,8 @@ sub run {
 sub _run_with_system {
     my $self = shift;
 
-    my ($ofh, $out_redirect) = File::Temp::tempfile( UNLINK => 1 );
-    my ($efh, $err_redirect) = File::Temp::tempfile( UNLINK => 1 );
+    my ($ofh, $out_redirect) = File::Temp::tempfile( DIR => '.', UNLINK => 1 );
+    my ($efh, $err_redirect) = File::Temp::tempfile( DIR => '.', UNLINK => 1 );
     my @cmd = @{$self->{command}};
 
     ### Hummmmm.
