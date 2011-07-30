@@ -208,7 +208,7 @@ sub _get_match_directories {
     my $temp_dir = File::Basename::basename($self->{temp_dir}->dirname);
     my @dirs = grep {
         -d $_ && ($_ ne $log_dir && $_ ne $temp_dir);
-    }
+    } Testgen::Util::read_directory('.');
 
     return @dirs unless defined $self->{match_regexp};
 
