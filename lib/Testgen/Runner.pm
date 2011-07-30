@@ -203,7 +203,7 @@ sub _option_list {
 sub _get_match_directories {
     my $self = shift;
     my @dirs = grep {
-        -d $_ && $_ ne $self->{log_dir}
+        -d $_ && $_ ne $self->{log_dir} && ne $self->{temp_dir}->dirname
     } Testgen::Util::read_directory('.');
 
     return @dirs unless defined $self->{match_regexp};
