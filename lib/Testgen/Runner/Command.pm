@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 use Carp ();
+use Cwd ();
 use Encode ();
 use File::Temp ();
 use Symbol ();
@@ -45,10 +46,11 @@ sub run {
 sub _run_with_system {
     my $self = shift;
 
-    my $ofh = File::Temp->new( DIR => '.' );
+    my $cwd = Cwd::getcwd;
+    my $ofh = File::Temp->new( DIR => $cwd );
     my $out_redirect = $ofh->filename;
 
-    my $efh = File::Temp->new( DIR => '.' );
+    my $efh = File::Temp->new( DIR => $cwd );
     my $err_redirect = $efh->filename;
 
     my @cmd = @{$self->{command}};
