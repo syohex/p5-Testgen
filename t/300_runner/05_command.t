@@ -5,6 +5,7 @@ use Test::More;
 use t::Util qw/create_tmp_file/;
 
 use Testgen::Runner::Command;
+use Testgen::Util;
 
 {
     my $echo_cmd = [ qw/echo hello world/ ];
@@ -18,10 +19,15 @@ use Testgen::Runner::Command;
     is($cmd->{timeout}, 0, 'parameter command');
 }
 
-{
-    my $true_cmd = [ qw/true/ ];
+my ($true_cmd, $false_cmd);
+$true_cmd = 'true' if Testgen::Util::which('true');
+$false_cmd = 'false' if Testgen::Util::which('false');
+
+SKIP: {
+    skip "you don't have 'true' command", 2 unless defined $true_cmd;
+
     my $cmd = Testgen::Runner::Command->new(
-        command => $true_cmd,
+        command => [ $true_cmd ],
     );
 
     my ($status, $stdout, $stderr) = $cmd->_run_with_system;
@@ -29,13 +35,15 @@ use Testgen::Runner::Command;
 
     ($status, $stdout, $stderr) = $cmd->_run_with_ipc;
     is($status, 0, "command is succeed with 'IPC'");
+}
 
-    my $false_cmd = [ qw/false/ ];
-    $cmd = Testgen::Runner::Command->new(
-        command => $false_cmd,
+SKIP: {
+    skip "you don't have 'false' command", 2 unless defined $false_cmd;
+    my $cmd = Testgen::Runner::Command->new(
+        command => [ $false_cmd ],
     );
 
-    ($status, $stdout, $stderr) = $cmd->_run_with_system;
+    my ($status, $stdout, $stderr) = $cmd->_run_with_system;
     ok($status != 0, "command is failed with 'system'");
 
     ($status, $stdout, $stderr) = $cmd->_run_with_ipc;

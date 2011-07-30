@@ -5,7 +5,7 @@ use Test::More;
 
 use Testgen::Runner::Compiler;
 use Testgen::TestDirectory::Test;
-use Testgen::Config;
+use Testgen::Util;
 use t::Util qw(create_tmp_file);
 
 {
@@ -41,7 +41,7 @@ use t::Util qw(create_tmp_file);
 }
 
 my $compiler;
-$compiler = 'gcc' if Testgen::Config::_is_exist('gcc');
+$compiler = 'gcc' if Testgen::Util::which('gcc');
 
 SKIP: {
     skip "you don't have any compiler", 2 unless defined $compiler;
