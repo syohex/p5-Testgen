@@ -7,6 +7,7 @@ use POSIX qw(:locale_h);
 
 use Testgen::Runner::Command;
 use Testgen::Runner::Compiler::Result;
+use Testgen::Util ();
 
 sub new {
     my ($class, %args) = @_;
@@ -80,15 +81,11 @@ sub _preprocess_command {
     my $c_flags_str = scalar @{$c_flags} ? join ' ', @{$c_flags} : '';
 
     my $cmd_str;
-    if ($compiler eq 'gcc' || $compiler eq 'pcc') {
+    if ( Testgen::Util::which('gcc') ) {
         $cmd_str = join ' ', $compiler, '-E',
                       $c_flags_str, '-nostdinc', $file;
-    } elsif ($compiler eq 'clang') {
-        $cmd_str = join ' ', $compiler, '-E',
-                      $c_flags_str, '-nostdinc', '-fno-color-diagnostics',
-                      $file;
     } else {
-        Carp::croak("'$self->{name}' is not supported");
+        Carp::croak("You need 'gcc' for merging tests");
     }
 
     return split /\s+/, $cmd_str;
