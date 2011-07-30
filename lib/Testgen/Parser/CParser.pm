@@ -102,8 +102,16 @@ sub find_missing_headers {
 
 sub remove_preprocessor_directives {
     my ($self, $str) = @_;
-    $str =~ s{ ^ \# .*? $ }{}gxms;
-    return $str;
+
+    open my $fh, '<', \$str or Carp::croak("Can't open string as file:$!");
+
+    my @not_directive_lines;
+    while (my $line = <$fh>) {
+        push @not_directive_lines, $line unless $line =~ m{^#}o;
+    }
+    close $fh;
+
+    return join '', @not_directive_lines;
 }
 
 1;
