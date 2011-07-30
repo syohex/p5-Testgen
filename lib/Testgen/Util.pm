@@ -27,6 +27,33 @@ sub combination {
     @_ ? combination([ @result ], @_) : [ @result ];
 }
 
+# 'which' function is based on 'File::Which::which'.
+sub which {
+    my $command = shift;
+    my @paths = File::Spec->path;
+    my @extensions = ('');
+
+    if ($^O eq 'MSWin32') {
+        unshift @paths, '.';
+        push @extensions, '.exe';
+    }
+
+    for my $path ( @paths ) {
+        my $path = File::Spec->catfile($path, $command);
+
+        for my $extension (@extensions) {
+            my $file = $path . $extension;
+            next if -d $file;
+
+            if (-e $file && -x $file) {
+                return 1;
+            }
+        }
+    }
+
+    return 0;
+}
+
 package
     Testgen::Util::Chdir;
 
