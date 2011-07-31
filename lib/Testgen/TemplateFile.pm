@@ -259,7 +259,7 @@ __END__
 
 =head1 NAME
 
-Testgen::TemplateFile - A template file class
+Testgen::TemplateFile - Template file class
 
 =head1 INTERFACE
 
