@@ -25,6 +25,27 @@ use Cwd ();
 }
 
 {
+    my @options = (
+        [ '-O2' ], [ '', '-funroll-loops'] ,
+    );
+
+    my $retval = Testgen::Util::combination( @options );
+    my $expected = [ ['-O2', ''], [ '-O2', '-funroll-loops'] ];
+
+    is_deeply($retval, $expected, 'gettin combination');
+}
+
+{
+    ok(Testgen::Util::which('perl'), "'which' function");
+    ok(!Testgen::Util::which('HOGEHOGE'), "not exist command");
+}
+
+{
+    ok(Testgen::Util::load_class('Testgen'), "'load_class' function");
+    ok(!Testgen::Util::load_class('Testgen::NOTFOUND'), "not found class");
+}
+
+{
     my $cwd1 = Cwd::realpath( Cwd::getcwd() );
     my $tempdir = File::Temp::tempdir( CLEANUP => 1 );
     my $guard = Testgen::Util::Chdir->new($tempdir);
@@ -42,18 +63,6 @@ use Cwd ();
         my $guard = Testgen::Util::Chdir->new('NOTFOUND');
     };
     like $@, qr/Can't chdir/, 'chdir to not exist directory';
-}
-
-{
-    my @options = (
-        [ '-O2' ], [ '', '-funroll-loops'] ,
-    );
-
-    my $retval = Testgen::Util::combination( @options );
-    my $expected = [ ['-O2', ''], [ '-O2', '-funroll-loops'] ];
-
-    is_deeply($retval, $expected, 'gettin combination');
-
 }
 
 done_testing;

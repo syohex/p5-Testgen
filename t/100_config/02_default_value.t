@@ -22,6 +22,7 @@ my $conf_file = create_configfile($test_config);
 my $config = Testgen::Config->new($conf_file->filename);
 
 my %defaults = (
+    lang         => 'c',
     complement   => 2,
     c_flags      => [],
     ld_flags     => [],
