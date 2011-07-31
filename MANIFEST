@@ -1,7 +1,9 @@
 .gitignore
 bin/tgen.pl
 Changes
+config/arm32_cross.cnf
 config/clang_64.cnf
+config/pcc_32.cnf
 config/tgen_32.cnf
 config/tgen_64.cnf
 config/v850_cross.cnf
@@ -21,6 +23,7 @@ lib/Testgen/Generator.pm
 lib/Testgen/Log.pm
 lib/Testgen/Merger.pm
 lib/Testgen/Merger/MergedFile.pm
+lib/Testgen/Merger/MergedFile/CMergedFile.pm
 lib/Testgen/Parser.pm
 lib/Testgen/Parser/CParser.pm
 lib/Testgen/Runner.pm
@@ -57,6 +60,10 @@ t/300_runner/04_result.t
 t/300_runner/05_command.t
 t/400_log/01_basic.t
 t/500_merger/01_basic.t
+t/500_merger/02_merged_file.t
+t/500_merger/03_c_merged_file.t
+t/600_parser/01_basic.t
+t/600_parser/02_cparser.t
 t/999_util/01_basic.t
 t/Util.pm
 template/c89.1-1.tt
