@@ -3,96 +3,41 @@ use strict;
 use warnings;
 
 use Carp ();
-use Scalar::Util qw/blessed/;
 
 use Testgen::Runner::Command;
 use Testgen::Parser;
+use Testgen::Util ();
 
-sub new {
+sub create_mergedfile {
     my ($class, %args) = @_;
 
-    unless (exists $args{compiler}) {
-        Carp::croak("missing mandatory parameter 'compiler'");
+    unless (exists $args{lang}) {
+        Carp::croak("missing mandatory parameter 'lang'");
     }
 
-    unless (blessed $args{compiler} eq 'Testgen::Runner::Compiler') {
-        Carp::croak("'compiler' parameter isa Testgen::Runner::Compiler");
+    my $lang = ucfirst( lc(delete $args{lang}) );
+    my $merged_file_class = __PACKAGE__ . "::" . "${lang}MergedFile";
+
+    my $merged_file;
+    if ( Testgen::Util::load_class($merged_file_class) ) {
+        $merged_file = $merged_file_class->new(%args);
+    } else {
+        Carp::croak("To merge '$lang' files is not implemented yet");
     }
 
-    bless {
-        fragments    => [],
-        headers      => {},
-        pseudo_mains => [],
-        %args,
-    }, $class;
+    return $merged_file;
 }
 
 sub add {
-    my ($self, $file, $prefix) = @_;
-
-    my $compiler = $self->{compiler};
-    my ($preprocessed, $stderr) = $compiler->preprocess($file);
-
-    my $parser   = Testgen::Parser->create_parser(
-        lang     => 'c',
-        compiler => $compiler->name,
-    );
-    my $c_source = $parser->remove_preprocessor_directives($preprocessed);
-    my $modified = $parser->prepend_to_identifier($c_source, $prefix);
-
-    my @missing_headers = $parser->find_missing_headers($stderr);
-
-    push @{$self->{fragments}}, $modified;
-    map { $self->{headers}->{$_} = 1 } @missing_headers;
-
-    push @{$self->{pseudo_mains}}, "${prefix}_main";
+    die "You must override 'add' method";
 }
 
 sub output_as_main_file {
-    my ($self, $file) = @_;
-
-    my $headers_str   = $self->_include_statements_str;
-    my $pseudo_main_str = join "\n", map { "$_();" } @{$self->{pseudo_mains}};
-    my $fragments_str   = join "\n", @{$self->{fragments}};
-
-    open my $fh, '>', $file or Carp::croak("Can't open $file: $!");
-
-    print {$fh} <<"...";
-$headers_str
-
-int main ()
-{
-
-$pseudo_main_str
-
-    return 0;
-}
-
-$fragments_str
-...
-
-    close $fh;
+    die "You must override 'output_as_main_file' method";
 }
 
 sub output_as_sub_file {
-    my ($self, $file) = @_;
-
-    my $headers_str   = $self->_include_statements_str;
-    my $fragments_str = join "\n", @{$self->{fragments}};
-
-    open my $fh, '>', $file or Carp::croak("Can't open $file: $!");
-
-    print {$fh} <<"...";
-$headers_str
-
-$fragments_str
-...
-    close $fh;
-}
-
-sub _include_statements_str {
-    my $self = shift;
-    return join "\n", map { "#include<${_}>" } keys %{$self->{headers}};
+    die "You must override 'output_as_sub_file' method";
 }
 
 1;
@@ -103,39 +48,16 @@ __END__
 
 =head1 NAME
 
-Testgen::Merger::MergedFile - A merged file class
+Testgen::Merger::MergedFile - Base class of Merged file.
 
 =head1 INTERFACE
 
-=head2 Class Methods
+=head2 Overridden Methods by Child Class
 
-=head3 C<< Testgen::Merger::MergedFile->new(%args) :Testgen::Merger::MergedFile >>
+=head3 add
 
-Creates and returns a new Testgen::Merger::MergedFile object with I<args>.
+=head3 output_as_main_file
 
-I<%args> might be:
-
-=over
-
-=item compiler :Testgen::Runner::Compiler
-
-The compiler which used to merge files.
-
-=back
-
-=head2 Instance Methods
-
-=head3 C<< $runner->add($file, $prefix)  >>
-
-Add a C<$file> to merged files. C<$prefix> has a meaning
-case of separate compilation.
-
-=head3 C<< $runner->output_as_main_file >>
-
-Generate file which contains 'main' function.
-
-=head3 C<< $runner->output_as_sub_file >>
-
-Generate file which does not contain 'main' function.
+=head3 output_as_sub_file
 
 =cut
