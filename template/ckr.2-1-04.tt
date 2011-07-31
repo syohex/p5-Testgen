@@ -535,14 +535,14 @@ $test1(Unidef.Char)
 @comment_
 @file >>stnd4.h $macro8() @file_
 @file >>fstnd4.h $macro9() @file_
-@comment $macro10 ���� char �^�����
+@comment $macro10 から char 型を除く
 @file >>t???_.c $macro10([,static,register],Variable,[int,short,unsigned,char]) @file_
 @comment_
 @file >>t???_.c $macro10([,static,register],Variable,[int,short,unsigned]) @file_
 @file >>t???_extern_int.c $macro10(extern,Int,int) @file_
 @file >>t???_extern_unsigned.c $macro10(extern,Unsigned,unsigned) @file_
 @file >>t???_extern_short.c $macro10(extern,Short,short) @file_
-@comment 
+@comment
 @file >>t???_extern_char.c $macro10(extern,Char,char) @file_
 @file >>t???.c $macro15([,,static,register]) @file_
 @file >>t???.c $macro16([,,static,register]) @file_

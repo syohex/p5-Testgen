@@ -307,7 +307,7 @@ $ctest1(Unidef.Char)
 @file >>lt???.c $macro0([,extern,static]) @file_
 @file >>lt???.c $macro1([,static]) @file_
 @file >>stnd2.5.h $macro2() @file_
-@comment $macro3 ���������� char �^���r
+@comment $macro3 の引数から char 型を排除
 @file >>t???_.c $macro3([,static,register],Variable,[int,short,unsigned,char]) @file_
 @comment_
 @file >>t???_.c $macro3([,static,register],Variable,[int,short,unsigned]) @file_
