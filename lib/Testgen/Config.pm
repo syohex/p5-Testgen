@@ -63,6 +63,7 @@ sub _check_size_parameters {
 sub _set_default_value {
     my $conf = shift;
 
+    $conf->{lang}      ||= 'c';
     $conf->{c_flags}   ||= [];
     $conf->{ld_flags}  ||= [];
     $conf->{simulator} ||= undef;
@@ -96,7 +97,7 @@ __END__
 
 =head1 NAME
 
-Testgen::Config - Testgen config file object
+Testgen::Config - Testgen config file class
 
 =head1 INTERFACE
 
