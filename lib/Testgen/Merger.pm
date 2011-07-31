@@ -89,6 +89,7 @@ sub run {
         $testdir->setup();
 
         push @merge_infos, $testdir->merge_tests(
+            lang       => $config->get('lang'),
             compiler   => $compiler,
             output_dir => $self->{output_dir},
         );
@@ -130,7 +131,7 @@ __END__
 
 =head1 NAME
 
-Testgen::Merger - A test runner class
+Testgen::Merger - Test merger class.
 
 =head1 INTERFACE
 
