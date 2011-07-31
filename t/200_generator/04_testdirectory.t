@@ -19,6 +19,8 @@ use Testgen::TestDirectory;
 
     can_ok($testdir, 'temp_dir');
     can_ok($testdir, 'tests');
+    can_ok($testdir, 'summarize');
+    can_ok($testdir, 'merge_tests');
 
     $testdir->{tests} = [ qw/a b c/ ];
     my @files = $testdir->tests;
