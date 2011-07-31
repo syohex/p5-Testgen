@@ -1,7 +1,7 @@
 Testsuite generator 2
 
 Ishiura Lab in Kwansei Gakuin University
-2011/JUL/25
+2011/JUL/31
 
 0. Introduction
      Testgen is a test program generator for testing compiler.
@@ -11,9 +11,9 @@ Ishiura Lab in Kwansei Gakuin University
      You require only perl 5.8.1 or higher.
 
    Testing platforms
-     Ubuntu 10.10 32bit
-     CentOS 5.5 64bit
-     MacOSX Snow Leopard 64bit
+     Ubuntu 10.10 32bit(gcc-4.4.5, pcc-1.0.0)
+     Ubuntu 11.04 64bit(gcc-4.5.2, clang-2.8)
+     MacOSX Snow Leopard 64bit(gcc-4.2.1, clang-2.9])
 
      I hope that Testgen works well on Unix like platforms.
 
@@ -39,6 +39,8 @@ Ishiura Lab in Kwansei Gakuin University
        These macros are used in template files.
 
    [Optional Parameters]
+      lang      (type: String)   - programming languages.
+                                   Now only suppored 'C'.
       simulator (type: String)   - simulator used running executable.
       c_flags   (type: ArrayRef) - compile flags which turn on at compiling.
       ld_flags  (type: ArrayRef) - linker flags which turn on at compiling.
@@ -56,6 +58,7 @@ Ishiura Lab in Kwansei Gakuin University
       timeout    (type: Int) - 'timeout' seconds of executing.
 
       [Default values]
+         lang         - 'c'
          simulator    - undef
          c_flags      - []
          ld_flags     - []
@@ -85,6 +88,10 @@ Ishiura Lab in Kwansei Gakuin University
     After './merge.pl' test files are merged and you can do test
     earlier than not merged case.
 
+    [NOTE]
+      - You need 'gcc' for merge tests, because Testgen use 'gcc'
+        to merge files.
+
   2-3 Run test files(Compile and Execute)
     % cd TESTDIR # TESTDIR is $config->{testdir}
     % ./runtest.pl [Regexp] ...
@@ -104,8 +111,8 @@ Appendix A. Directories hierarchy
       - tgen.pl : script which generates test files.
 
    - config/
-     - tgen_32.cnf : Sample configuration file of 32bit platform.
-     - tgen_64.cnf : Sample configuration file of 64bit platform.
+      Here are sample configuration files.
+      Please see how to write your configuration file.
 
 Appendix B. Example of configuration file
 
