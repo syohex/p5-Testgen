@@ -5,6 +5,7 @@ use warnings;
 use Carp ();
 use Getopt::Long ();
 use File::Path ();
+use File::Basename ();
 use Cwd ();
 
 use Testgen::Config;
@@ -101,13 +102,8 @@ sub run {
     for my $merge_info (@merge_infos) {
         my ($file_info, $total_oknum) = @{$merge_info};
 
-        if (ref $file_info eq 'ARRAY') {
-            print {$fh} join ' ', @{$file_info};
-        } else {
-            print {$fh} $file_info;
-        }
-
-        print {$fh} " : $total_oknum\n";
+        my $str = join ' ', map { File::Basename::basename($_) } @{$file_info};
+        print {$fh} "$str : $total_oknum\n";
     }
 }
 
@@ -118,7 +114,6 @@ Usage: $0 [options]
 Options:
   -c,--config       Specify config file(Default is './runtest.cnf')
   -o,--output-dir   Specify output directory where generated merged file.
-  --compiler        Specify compiled used preprocessing(Default is 'gcc')
   -h,--help         Display help message
 ...
 }

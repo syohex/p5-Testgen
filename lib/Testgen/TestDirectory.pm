@@ -231,10 +231,14 @@ sub merge_tests {
         $sub_file->add($_, $prefix) for @subs;
     }
 
+    my @output_files;
+
     my $main_name = File::Spec->catfile($output_dir, $self->{name} . ".c");
     open my $fh, '>', $main_name or Carp::croak("Can't open $main_file:$!");
     print {$fh} $main_file->output_as_main_file;
     close $fh;
+
+    push @output_files, $main_name;
 
     if ($has_subfile) {
         # for multi file compilation
@@ -242,10 +246,11 @@ sub merge_tests {
         open my $fh, '>', $sub_name or Carp::croak("Can't open $sub_file:$!");
         print {$fh} $sub_file->output_as_sub_file;
         close $fh;
-        return [ [$main_name, $sub_name], $total_oknum ];
+
+        push @output_files, $sub_name;
     }
 
-    return [$main_name, $total_oknum];
+    return [ \@output_files, $total_oknum ];
 }
 
 sub _has_main {
@@ -308,5 +313,21 @@ Return results of tests in this directory as Hash reference.
 
 Summary of this test directory. Infomation of fail tests are outputed to
 C<$faillog>, others are outputed to C<$log>.
+
+=head3 C<< $template_dir->merge_tests(%args) >> : [ $files:ArrayRef, $oknum:Int ]
+
+Merge test files in this directory.
+
+I<%args> might be:
+
+=over
+
+=item lang :Str
+
+=item compiler: Testgen::Runner::Compiler
+
+=item output :Str
+
+=back
 
 =cut
