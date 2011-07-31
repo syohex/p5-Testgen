@@ -40,7 +40,7 @@ __END__
 
 =head1 NAME
 
-Testgen::Runner::Result - A base class of command result
+Testgen::Runner::Result - Base class of command result
 
 =head1 INTERFACE
 

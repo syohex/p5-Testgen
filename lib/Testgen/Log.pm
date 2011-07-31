@@ -53,7 +53,7 @@ __END__
 
 =head1 NAME
 
-Testgen::Log - A Testgen log class
+Testgen::Log - Testgen log class
 
 =head1 INTERFACE
 
@@ -86,6 +86,6 @@ Output encoding.
 =head3 C<< $log->print($string) >>
 
 Print out I<$string> encoded C<$self->{encoding}> to the log file.
-I<$string> should be as I<string>, not octet stream.
+You must pass I<$string> as I<string>, not octet stream.
 
 =cut

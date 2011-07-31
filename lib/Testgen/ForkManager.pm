@@ -92,7 +92,7 @@ __END__
 
 =head1 NAME
 
-Testgen::ForkManager - A simple fork manager.
+Testgen::ForkManager - Simple fork manager
 
 =head1 SYNOPSIS
 

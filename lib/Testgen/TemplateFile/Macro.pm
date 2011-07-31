@@ -106,7 +106,7 @@ __END__
 
 =head1 NAME
 
-Testgen::TemplateFile::Macro - A macro class
+Testgen::TemplateFile::Macro - Macro class in template file
 
 =head1 INTERFACE
 

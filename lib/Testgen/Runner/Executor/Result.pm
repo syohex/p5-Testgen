@@ -49,7 +49,7 @@ sub is_timeout {
 
 =head1 NAME
 
-Testgen::Runner::Executor::Result - A execute command result.
+Testgen::Runner::Executor::Result - Result class of Execute command.
 
 =head1 INTERFACE
 

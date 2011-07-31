@@ -207,7 +207,7 @@ __END__
 
 =head1 NAME
 
-Testgen::TestDirectory::Test - A test class
+Testgen::TestDirectory::Test - Test class
 
 =head1 INTERFACE
 

@@ -116,7 +116,7 @@ __END__
 
 =head1 NAME
 
-Testgen::Runner::Compiler - A compiler class
+Testgen::Runner::Compiler - Compiler class
 
 =head1 INTERFACE
 

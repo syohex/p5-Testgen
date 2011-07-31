@@ -89,7 +89,7 @@ __END__
 
 =head1 NAME
 
-Testgen::Runner::Executor - A executor class
+Testgen::Runner::Executor - Executor class
 
 =head1 INTERFACE
 

@@ -169,7 +169,7 @@ __END__
 
 =head1 NAME
 
-Testgen::Runner::Command - A Testgen command class
+Testgen::Runner::Command - Testgen command class
 
 =head1 INTERFACE
 

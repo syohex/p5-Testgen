@@ -269,7 +269,7 @@ __END__
 
 =head1 NAME
 
-Testgen::Generator - A test generator class
+Testgen::Generator - Test generator class
 
 =head1 INTERFACE
 
