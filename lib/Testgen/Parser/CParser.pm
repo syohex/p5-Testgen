@@ -122,7 +122,7 @@ __END__
 
 =head1 NAME
 
-Testgen::Parser::CParser - A C language parser class
+Testgen::Parser::CParser - C language parser class
 
 =head1 INTERFACE
 
