@@ -194,11 +194,18 @@ sub _collect_results {
 sub merge_tests {
     my ($self, %args) = @_;
 
-    my $compiler = $args{compiler};
+    my $lang       = $args{lang};
+    my $compiler   = $args{compiler};
     my $output_dir = $args{output_dir};
 
-    my $main_file = Testgen::Merger::MergedFile->new( compiler => $compiler );
-    my $sub_file  = Testgen::Merger::MergedFile->new( compiler => $compiler );
+    my $main_file = Testgen::Merger::MergedFile->create_mergedfile(
+        lang     => $lang,
+        compiler => $compiler,
+    );
+    my $sub_file  = Testgen::Merger::MergedFile->create_mergedfile(
+        lang     => $lang,
+        compiler => $compiler,
+    );
 
     my ($total_oknum, $has_subfile) = (0, 0);
     my %cache;
@@ -224,16 +231,17 @@ sub merge_tests {
         $sub_file->add($_, $prefix) for @subs;
     }
 
-    my ($main_name, $sub_name) = ($self->{name} . ".c", $self->{name} . "-sub.c");
-
-    my $main = File::Spec->catfile($output_dir, $main_name);
-    my $sub  = File::Spec->catfile($output_dir, $sub_name);
-
-    $main_file->output_as_main_file($main);
+    my $main_name = File::Spec->catfile($output_dir, $self->{name} . ".c");
+    open my $fh, '>', $main_name or Carp::croak("Can't open $main_file:$!");
+    print {$fh} $main_file->output_as_main_file;
+    close $fh;
 
     if ($has_subfile) {
         # for multi file compilation
-        $sub_file->output_as_sub_file($sub);
+        my $sub_name = File::Spec->catfile($output_dir, $self->{name} . "-sub.c");
+        open my $fh, '>', $sub_name or Carp::croak("Can't open $sub_file:$!");
+        print {$fh} $sub_file->output_as_sub_file;
+        close $fh;
         return [ [$main_name, $sub_name], $total_oknum ];
     }
 
@@ -260,7 +268,7 @@ __END__
 
 =head1 NAME
 
-Testgen::TestDirectory - A test directory class
+Testgen::TestDirectory - Test directory class
 
 =head1 INTERFACE
 
