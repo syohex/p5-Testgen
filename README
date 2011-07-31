@@ -12,8 +12,8 @@ Ishiura Lab in Kwansei Gakuin University
 
    Testing platforms
      Ubuntu 10.10 32bit(gcc-4.4.5, pcc-1.0.0)
-     Ubuntu 11.04 64bit(gcc-4.5.2, clang-2.8)
-     MacOSX Snow Leopard 64bit(gcc-4.2.1, clang-2.9])
+     Ubuntu 11.04 64bit(gcc-4.5.2, clang-2.8, arm-elf-gcc-4.6.1)
+     Mac OSX Snow Leopard 64bit(gcc-4.2.1, clang-2.9)
 
      I hope that Testgen works well on Unix like platforms.
 
@@ -112,7 +112,6 @@ Appendix A. Directories hierarchy
 
    - config/
       Here are sample configuration files.
-      Please see how to write your configuration file.
 
 Appendix B. Example of configuration file
 
