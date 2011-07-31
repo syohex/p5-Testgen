@@ -6,7 +6,7 @@ Revision history for Testgen2
 
   [Modification]
      General
-       - Object Oriented prgramming
+       - Object Oriented programming
        - Modern Perl programming style as possible
        - CPAN style directory hierarchy
        - Add test programs under t/ directory
