@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 use Carp ();
+use Testgen::Util ();
 
 sub create_parser {
     my ($class, %args) = @_;
@@ -15,28 +16,13 @@ sub create_parser {
     my $parser_class = __PACKAGE__ . "::" . "${lang}Parser";
 
     my $parser;
-    if ( _load_class($parser_class) ) {
+    if ( Testgen::Util::load_class($parser_class) ) {
         $parser = $parser_class->new(%args);
     } else {
         Carp::croak("'$lang' parser is not implemented yet");
     }
 
     return $parser;
-}
-
-sub _load_class {
-    my $class_name = shift;
-
-    $class_name =~ s{::}{/}g;
-    $class_name .= '.pm';
-
-    eval {
-        require $class_name;
-    };
-
-    return 0 if $@;
-
-    return 1;
 }
 
 sub prepend_to_identifier {
@@ -51,6 +37,6 @@ __END__
 
 =head1 NAME
 
-Testgen::Parser - A base class of parser of each language.
+Testgen::Parser - Base class of parser of each language.
 
 =cut

@@ -54,6 +54,21 @@ sub which {
     return 0;
 }
 
+sub load_class {
+    my $class_name = shift;
+
+    $class_name =~ s{::}{/}g;
+    $class_name .= '.pm';
+
+    eval {
+        require $class_name;
+    };
+
+    return 0 if $@;
+
+    return 1;
+}
+
 package
     Testgen::Util::Chdir;
 
@@ -91,8 +106,31 @@ Testgen::Util - Utilities of Testgen
 
 Read entries in C<$directory>
 
+=head2 C<< conbination($array_ref1, $array_ref2 ...) :Array >>
+
+Get all combination.
+
+=head2 C<< which($executable) :Bool >>
+
+Return true if C<$executable> is installed in your system.
+
 =head1 UTILITY CLASS
 
 =head2 C<< Testgen::Util::Chdir >>
+
+use like as follow:
+
+   # CWD(Current working directory) is '/foo'
+
+   {
+       my $guard = Testgen::Util::Chdir->new('bar');
+       # CWD is '/foo/bar'
+
+       You do something in '/foo/bar'
+
+       # When called destructor of $guard, CWD is restored.
+   }
+
+   # CWD is '/foo'
 
 =cut
