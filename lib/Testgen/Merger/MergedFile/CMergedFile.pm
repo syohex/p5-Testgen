@@ -2,6 +2,8 @@ package Testgen::Merger::MergedFile::CMergedFile;
 use strict;
 use warnings;
 
+use base qw/Testgen::Merger::MergedFile/;
+
 use Carp ();
 use Scalar::Util qw/blessed/;
 
