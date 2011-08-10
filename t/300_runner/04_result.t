@@ -79,6 +79,7 @@ warning compiling
     );
     ok($result, 'constructor');
     isa_ok($result, 'Testgen::Runner::Executor::Result');
+    is($result->{ratio}, '0/0', 'default value');
 }
 
 {
