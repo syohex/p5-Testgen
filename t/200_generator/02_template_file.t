@@ -107,9 +107,9 @@ $filename
 
     my $macro = $tt_file->{macros}->{'$TEST'};
 
-    is($macro->{name}, '$TEST', 'macro name');
-    is_deeply($macro->{dummy_args}, ['$ARG'], 'macro dummy args');
-    is($macro->{body}, "This is \$ARG\n", 'macro body');
+    is($macro->{name}, '$TEST', 'included macro name');
+    is_deeply($macro->{dummy_args}, ['$ARG'], 'included macro dummy args');
+    is($macro->{body}, "This is \$ARG\n", 'included macro body');
 }
 
 {
