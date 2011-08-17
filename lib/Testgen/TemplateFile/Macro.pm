@@ -70,9 +70,9 @@ $self->{name}
         my $expanded;
         if (exists $arg_binding{$macro}) {
             $expanded = $arg_binding{$macro};
-        } elsif ($global_env->{$macro}) {
+        } elsif (exists $global_env->{$macro}) {
             my $macro_def = $global_env->{$macro};
-            my $arg_ref   = [ split ',', $arg_str ] || [];
+            my $arg_ref   = [ split ',', $arg_str ];
 
             $expanded = $macro_def->expand($arg_ref, $global_env);
         } else {
