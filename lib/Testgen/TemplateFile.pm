@@ -85,7 +85,12 @@ sub _parse_include_section {
 
     my $include_file;
     for my $path ( @{$self->{include_path}} ) {
-        my $filepath = File::Spec->catfile($path, $filename);
+        my $filepath = $filename;
+
+        unless (File::Spec->file_name_is_absolute($filename)) {
+            $filepath = File::Spec->catfile($path, $filename);
+        }
+
         if ( -e $filepath ) {
             $include_file = $filepath;
             last;
@@ -93,7 +98,7 @@ sub _parse_include_section {
     }
 
     unless (defined $include_file) {
-        Carp::croak("'$include_file' is not found");
+        Carp::croak("'$filename' is not found");
     }
 
     $self->_parse_string( $self->_read_file($include_file) );
