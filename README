@@ -119,7 +119,7 @@ Appendix B. Example of configuration file
         compiler      => 'gcc',
         testdir       => 'testsuite',
         c_flags       => [ '-g', '-Dunix' ],
-        ld_flags      => [ '-lm', 'lpthread' ],
+        ld_flags      => [ '-lm', '-lpthread' ],
         options       => [ '-O0',
                            [
                              '-O2',
