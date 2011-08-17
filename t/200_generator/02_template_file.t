@@ -75,6 +75,44 @@ Ignore this section
 }
 
 {
+    my $content = <<'...';
+@def $TEST($ARG)
+This is $ARG
+@def_
+...
+
+    my $include_file = create_tmp_file(
+        content => $content,
+        suffix  => '.inc',
+    );
+    $include_file->autoflush(1);
+
+    my $filename = $include_file->filename;
+    my $content2 = <<"...";
+\@include
+$filename
+\@include_
+...
+
+    my $template = create_tmp_file(
+        content => $content2,
+        suffix  => '.tt',
+    );
+
+    my $tt_file = Testgen::TemplateFile->new(
+        name => $template->filename,
+        testsuite_dir => 'test',
+    );
+    $tt_file->parse();
+
+    my $macro = $tt_file->{macros}->{'$TEST'};
+
+    is($macro->{name}, '$TEST', 'macro name');
+    is_deeply($macro->{dummy_args}, ['$ARG'], 'macro dummy args');
+    is($macro->{body}, "This is \$ARG\n", 'macro body');
+}
+
+{
     my $tempdir  = File::Temp::tempdir( CLEANUP => 1 );
     my $content = <<'...';
 @def $test($ARG)
