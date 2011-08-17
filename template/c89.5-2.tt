@@ -554,7 +554,7 @@ long            statusFlag = NoMistake;
 
 int main(void)
 /*
- * test class: programme structure instance  : when a programme has a recursive function call. alas, eternal recursion! 
+ * test class: programme structure instance  : when a programme has a recursive function call. alas, eternal recursion!
  */
 {
 	long            endCounter = 0;

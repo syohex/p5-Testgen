@@ -65,7 +65,7 @@ void function(float);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with a legal float constant as argument 
+ * test class: argument receiver instance  : when a function is called with a legal float constant as argument
  */
 {
 	function(1.0);
@@ -88,7 +88,7 @@ void function(float);
 
 int main()
 /*
- * test class: argument receiver instance  : when a function is called with automatic float variable as argument 
+ * test class: argument receiver instance  : when a function is called with automatic float variable as argument
  */
 {
 	float           i = 1.0;
@@ -115,7 +115,7 @@ void function(float);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with automatic float variable as argument. in the
- * called another automatic float with the same name is declared 
+ * called another automatic float with the same name is declared
  */
 {
 	float           i = 1.0;
@@ -144,7 +144,7 @@ void function(float);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with automatic float variable as argument , and the
- * programmer mistakenly changes the parameter of the called , to use its effect afterward 
+ * programmer mistakenly changes the parameter of the called , to use its effect afterward
  */
 {
 	float           i = 1.0;
@@ -170,7 +170,7 @@ void function(float);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with a static float variable as argument 
+ * test class: argument receiver instance  : when a function is called with a static float variable as argument
  */
 {
 	static float    i = 1.0;
@@ -196,7 +196,7 @@ void function(float);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with a static float variable as argument. another
- * static float variable with the same name is delared in the called 
+ * static float variable with the same name is delared in the called
  */
 {
 	static float    i = 1.0;
@@ -226,7 +226,7 @@ int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with a static float variable as argument, and the
  * programmer mistakenly increments the parameter and a local variable ( with the same name as that of the argument ) of the
- * called, to use the effect afterwards 
+ * called, to use the effect afterwards
  */
 {
 	static float    i = 1.0;
@@ -254,7 +254,7 @@ float           i = 1.0;
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with an external float as argument 
+ * test class: argument receiver instance  : when a function is called with an external float as argument
  */
 {
 	extern float    i;
@@ -282,7 +282,7 @@ float           i = 1.0;
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with an external float as argument. in the called
- * another variable with the same name is declared 
+ * another variable with the same name is declared
  */
 {
 	extern float    i;
@@ -314,7 +314,7 @@ int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with external float as argument, and the programmer
  * mistakenly increments the local variable ( with the same name as that of the argument ) of the called, to use the effect
- * afterward 
+ * afterward
  */
 {
 	extern float    i;
@@ -343,7 +343,7 @@ $FHEAD()
 void function(float*);
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with automatic float variable address as argument 
+ * test class: argument receiver instance  : when a function is called with automatic float variable address as argument
  */
 {
 	float           i = 1.0;
@@ -371,7 +371,7 @@ float           blackHall = 10.0;
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with automatic float variable address as argument.
- * the programmer mistakenly incremented this address 
+ * the programmer mistakenly incremented this address
  */
 {
 	float           i = 1.0;
@@ -397,7 +397,7 @@ void function(float*);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with static float variable address as argument 
+ * test class: argument receiver instance  : when a function is called with static float variable address as argument
  */
 {
 	static float    i = 1.0;
@@ -425,7 +425,7 @@ float           blackHall = 10.0;
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with static float variable address as argument. the
- * address is mistakenly incremented in the called 
+ * address is mistakenly incremented in the called
  */
 {
 	static float    i = 1.0;
@@ -453,7 +453,7 @@ float           i = 1.0;
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with extern float variable address as argument 
+ * test class: argument receiver instance  : when a function is called with extern float variable address as argument
  */
 {
 	extern float    i;
@@ -479,7 +479,7 @@ void function(float);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with simple arithmatic expression as an argument (
- * case 1 ) 
+ * case 1 )
  */
 {
 	float           i = 1.0;
@@ -505,7 +505,7 @@ void function(float);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with complex arithmatic expression as an argument (
- * case 1 ) 
+ * case 1 )
  */
 {
 	float           i, j, k, l, m = 1.0;
@@ -535,7 +535,7 @@ void function(float);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with complex arithmatic expression as an argument (
- * case 2 ) 
+ * case 2 )
  */
 {
 	float           i, j, k = 3.0;
@@ -561,7 +561,7 @@ void function(float);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with complex logical expression as an argument 
+ * test class: argument receiver instance  : when a function is called with complex logical expression as an argument
  */
 {
 	float           i = 1.0, j = 2.0, k = 3.0;
@@ -596,7 +596,7 @@ long            statusFlag = NoMistake;
 
 int main(void)				/* alias parent */
 /*
- *  test class: programme structure instance  : when a programme has a linear tree structure 
+ *  test class: programme structure instance  : when a programme has a linear tree structure
  */
 {
 	float           gene = 1.0;
@@ -679,7 +679,7 @@ long            statusFlag = NoMistake;
 int main(void)
 /*
  * test class: programme structure instance  : when a programme has a recursive function call. in this instance, a function
- * calls itself 
+ * calls itself
  */
 {
 	float           endCounter = 10.0;
@@ -716,7 +716,7 @@ long            statusFlag = NoMistake;
 int main(void)
 /*
  * test class: programme structure instance  : when a programme has a recursive function call in this instance, one of the
- * three functions calls another in circular order 
+ * three functions calls another in circular order
  */
 {
 	float           endCounter = 10.0;
@@ -760,7 +760,7 @@ void errorMessage(void);
 int main(void)
 /*
  * test class: programme struture instance  : when a variable is declared in blocks. the programmer seems to confuse
- * variable bounds 
+ * variable bounds
  */
 {
 	float           i = 0.0, counter = 0.0;
@@ -797,7 +797,7 @@ void function(long);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with a legal long constant as argument 
+ * test class: argument receiver instance  : when a function is called with a legal long constant as argument
  */
 {
 	function(1L);
@@ -820,7 +820,7 @@ void function(long);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with an illegal long constant as argument 
+ * test class: argument receiver instance  : when a function is called with an illegal long constant as argument
  */
 {
 	function((long)2147483648UL);
@@ -843,7 +843,7 @@ void function(long);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with automatic long variable as argument 
+ * test class: argument receiver instance  : when a function is called with automatic long variable as argument
  */
 {
 	long            i = 1L;
@@ -869,7 +869,7 @@ void function(long);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with automatic long variable as argument. in the
- * called another automatic long with the same name is declared 
+ * called another automatic long with the same name is declared
  */
 {
 	long            i = 1L;
@@ -898,7 +898,7 @@ void function(long);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with automatic long variable as argument , and the
- * programmer mistakenly changes the parameter of the called , to use its effect afterward 
+ * programmer mistakenly changes the parameter of the called , to use its effect afterward
  */
 {
 	long            i = 1L;
@@ -924,7 +924,7 @@ void function(long);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with a static long variable as argument 
+ * test class: argument receiver instance  : when a function is called with a static long variable as argument
  */
 {
 	static long     i = 1L;
@@ -950,7 +950,7 @@ void function(long);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with a static long variable as argument. another
- * static long variable with the same name is delared in the called 
+ * static long variable with the same name is delared in the called
  */
 {
 	static long     i = 1L;
@@ -980,7 +980,7 @@ int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with a static long variable as argument, and the
  * programmer mistakenly increments the parameter and a local variable ( with the same name as that of the argument ) of the
- * called, to use the effect afterwards 
+ * called, to use the effect afterwards
  */
 {
 	static long     i = 1L;
@@ -1008,7 +1008,7 @@ long            i = 1L;
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with an external long as argument 
+ * test class: argument receiver instance  : when a function is called with an external long as argument
  */
 {
 	extern long     i;
@@ -1036,7 +1036,7 @@ long            i = 1L;
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with an external long as argument. in the called
- * another variable with the same name is declared 
+ * another variable with the same name is declared
  */
 {
 	extern long     i;
@@ -1068,7 +1068,7 @@ int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with external long as argument, and the programmer
  * mistakenly increments the local variable ( with the same name as that of the argument ) of the called, to use the effect
- * afterward 
+ * afterward
  */
 {
 	extern long     i;
@@ -1098,7 +1098,7 @@ void function(long*);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with automatic long variable address as argument 
+ * test class: argument receiver instance  : when a function is called with automatic long variable address as argument
  */
 {
 	long            i = 1L;
@@ -1124,7 +1124,7 @@ void function(long*);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with automatic long variable address as argument.
- * this argument is incremented in the called, to be used afterwards 
+ * this argument is incremented in the called, to be used afterwards
  */
 {
 	long            i = 1L;
@@ -1153,7 +1153,7 @@ long            blackHall = 10L;
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with automatic long variable address as argument. the
- * programmer mistakenly incremented this address 
+ * programmer mistakenly incremented this address
  */
 {
 	long            i = 1L;
@@ -1179,7 +1179,7 @@ void function(long*);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with static long variable address as argument 
+ * test class: argument receiver instance  : when a function is called with static long variable address as argument
  */
 {
 	static long     i = 1L;
@@ -1205,7 +1205,7 @@ void function(long*);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with static long variable address as argument. this
- * argument is incremented in the called, to be used afterwards 
+ * argument is incremented in the called, to be used afterwards
  */
 {
 	static long     i = 1L;
@@ -1234,7 +1234,7 @@ long            blackHall = 10L;
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with static long variable address as argument. the
- * address is mistakenly incremented in the called 
+ * address is mistakenly incremented in the called
  */
 {
 	static long     i = 1L;
@@ -1262,7 +1262,7 @@ long            i = 1L;
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with extern long variable address as argument 
+ * test class: argument receiver instance  : when a function is called with extern long variable address as argument
  */
 {
 	extern long     i;
@@ -1290,7 +1290,7 @@ long            i = 1L;
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with extern long variable address as argument. this
- * argument is incremented in the called, to be used afterwards 
+ * argument is incremented in the called, to be used afterwards
  */
 {
 	extern long     i;
@@ -1320,7 +1320,7 @@ long            blackHall = 10L;
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with extern long variable address as argument. this
- * address is mistakenly incremented in the called 
+ * address is mistakenly incremented in the called
  */
 {
 	extern long     i;
@@ -1347,7 +1347,7 @@ void function(long);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with simple arithmatic expression as an argument (
- * case 1 ) 
+ * case 1 )
  */
 {
 	long            i = 1L;
@@ -1373,7 +1373,7 @@ void function(long);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with complex arithmatic expression as an argument (
- * case 1 ) 
+ * case 1 )
  */
 {
 	long            i, j, k, l, m = 1L;
@@ -1403,7 +1403,7 @@ void function(long);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with complex arithmatic expression as an argument (
- * case 2 ) 
+ * case 2 )
  */
 {
 	long            i, j, k = 3L;
@@ -1429,7 +1429,7 @@ void function(long);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with complex logical expression as an argument 
+ * test class: argument receiver instance  : when a function is called with complex logical expression as an argument
  */
 {
 	long            i = 1L, j = 2L, k = 3L;
@@ -1454,7 +1454,7 @@ void function(long);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with complex bitwise expression as an argument 
+ * test class: argument receiver instance  : when a function is called with complex bitwise expression as an argument
  */
 {
 	long            i = 0055555L, j = 0022222L, k = j << 2;
@@ -1490,7 +1490,7 @@ long            statusFlag = NoMistake;
 
 int main(void)				/* alias parent */
 /*
- *  test class: programme structure instance  : when a programme has a linear tree structure 
+ *  test class: programme structure instance  : when a programme has a linear tree structure
  */
 {
 	long            gene = 1L;
@@ -1573,7 +1573,7 @@ long            statusFlag = NoMistake;
 int main(void)
 /*
  * test class: programme structure instance  : when a programme has a recursive function call. in this instance, a function
- * calls itself 
+ * calls itself
  */
 {
 	long            endCounter = 10L;
@@ -1610,7 +1610,7 @@ long            statusFlag = NoMistake;
 int main(void)
 /*
  * test class: programme structure instance  : when a programme has a recursive function call in this instance, one of the
- * three functions calls another in circular order 
+ * three functions calls another in circular order
  */
 {
 	long            endCounter = 10L;
@@ -1651,7 +1651,7 @@ $HEAD()
 
 int main(void)
 /*
- * test class: programme structure instance  : when a variable is declared inside blocks 
+ * test class: programme structure instance  : when a variable is declared inside blocks
  */
 {
 	long            i = 1L;
@@ -1689,7 +1689,7 @@ void errorMessage();
 int main(void)
 /*
  * test class: programme struture instance  : when a variable is declared in blocks. the programmer seems to confuse
- * variable bounds 
+ * variable bounds
  */
 {
 	long            i = 0, counter = 0, statusFlag = NoMistake;
@@ -1725,7 +1725,7 @@ void function(unsigned argument);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with a legal unsigned constant as argument 
+ * test class: argument receiver instance  : when a function is called with a legal unsigned constant as argument
  */
 {
 	function(1);
@@ -1746,7 +1746,7 @@ $HEAD()
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with an illegal unsigned constant as argument 
+ * test class: argument receiver instance  : when a function is called with an illegal unsigned constant as argument
  */
 {
 	function(-1);
@@ -1770,7 +1770,7 @@ void function(char[]);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with a legal string as argument 
+ * test class: argument receiver instance  : when a function is called with a legal string as argument
  */
 {
 	function("0123456789");
@@ -1797,7 +1797,7 @@ void function(char[4]);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with a mismatched character string as argument 
+ * test class: argument receiver instance  : when a function is called with a mismatched character string as argument
  */
 {
 	function("0123456789");
@@ -1824,7 +1824,7 @@ void function(short);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with register integer as argument 
+ * test class: argument receiver instance  : when a function is called with register integer as argument
  */
 {
 	register short  i = 1;
@@ -1850,7 +1850,7 @@ void function(short);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with register integer variable as argument. in the
- * caller another register variable with the same name is declared 
+ * caller another register variable with the same name is declared
  */
 {
 	register short  i = 1;
@@ -1879,7 +1879,7 @@ void function(short);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with registered integer as argument, and the
- * programmer mistakenly increments the paramater of the called, to use the effect afterward 
+ * programmer mistakenly increments the paramater of the called, to use the effect afterward
  */
 {
 	register short  i = 1;
@@ -1906,7 +1906,7 @@ void function(char);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with simple arithmatic expression as an argument (
- * case 2 ) 
+ * case 2 )
  */
 {
 	char            i = 'a';
@@ -1932,7 +1932,7 @@ int dummy(register int);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with a function as argument 
+ * test class: argument receiver instance  : when a function is called with a function as argument
  */
 {
 	function(dummy(1));
@@ -1963,7 +1963,7 @@ int tres(register int);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with a function as argument, which in turn has a
- * function as argument. we may call it a 'nested functions' 
+ * function as argument. we may call it a 'nested functions'
  */
 {
 	short           i = 1;
@@ -2002,7 +2002,7 @@ int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with a function as argument, which itself has
  * functions as arguments. however, the arguments are badly given according to Kernighan's C language tutorial. still, it
- * works 
+ * works
  */
 {
 	short           i = 1;
@@ -2043,7 +2043,7 @@ void function(struct modelStructure*);
 
 int main(void)
 /*
- * test class: the way functions are used instance  : when a function, returning no value, is called as such 
+ * test class: the way functions are used instance  : when a function, returning no value, is called as such
  */
 {
 	struct modelStructure structureInstance;
@@ -2076,7 +2076,7 @@ void function(char*);
 int main(void)
 /*
  * test class: the way functions are used instance  : when a function, returning no value, is called as returning integer
- * value. this is the programmer's petty mistake 
+ * value. this is the programmer's petty mistake
  */
 {
 	short           i = 0;
@@ -2108,7 +2108,7 @@ char* function(char*);
 
 int main(void)
 /*
- * test class: the way functions are used instance  : when a function, which returns a character pointer, is called as such 
+ * test class: the way functions are used instance  : when a function, which returns a character pointer, is called as such
  */
 {
 	char           *pointerToCharacter = 0;
@@ -2136,7 +2136,7 @@ $INTPTR() function($INTPTR() *);
 int main(void)
 /*
  * test class: the way functions are used instance  : when a function, which returns a pointer, mistakenly used to get an
- * integer value 
+ * integer value
  */
 {
 	$INTPTR()             i = 1, *j = &i;
@@ -2163,7 +2163,7 @@ int function(short);
 int main(void)
 /*
  * test class: the way functions are used instance  : when a function appears in a conditional expression to return logical
- * value 
+ * value
  */
 {
 	short           flag = 0;
@@ -2191,7 +2191,7 @@ char function(short);
 int main(void)
 /*
  * test class: the way functions are used instance  : when a function appears in a conditional expression to return a
- * character 
+ * character
  */
 {
 	if (function(0101) == 'A')
@@ -2214,7 +2214,7 @@ int function(short);
 
 int main(void)
 /*
- * test class: function declaration instance  : when not declared ( that is, implicitly assumed to return an integer ) 
+ * test class: function declaration instance  : when not declared ( that is, implicitly assumed to return an integer )
  */
 {
 	short           i;
@@ -2240,7 +2240,7 @@ short function(short);
 
 int main(void)
 /*
- * test class: function declaration instance  : when declared as returning an integer 
+ * test class: function declaration instance  : when declared as returning an integer
  */
 {
 	short           i;
@@ -2266,7 +2266,7 @@ char *function(char*);
 
 int main(void)
 /*
- * test class: function declaration instance  : when declared as returning a pointer to character 
+ * test class: function declaration instance  : when declared as returning a pointer to character
  */
 {
 	char           *s = 0;
@@ -2295,7 +2295,7 @@ short round(int, int);
 
 int main(void)
 /*
- * test class: function declaration instance  : pointer to function returning an integer 
+ * test class: function declaration instance  : pointer to function returning an integer
  */
 {
 	short           i = 0, statusFlag = NoMistake;

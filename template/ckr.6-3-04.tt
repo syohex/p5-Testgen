@@ -54,7 +54,7 @@ float           i1;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, no return value, legal 
+ * test class: extern variable address instance  : gemini, no return value, legal
  */
 {
 
@@ -129,7 +129,7 @@ float           result;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, no return value, illegal 
+ * test class: extern variable address instance  : gemini, no return value, illegal
  */
 {
 	result = castor(i);
@@ -199,7 +199,7 @@ float           i1 = 1.0;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, return value, legal, no function declaration 
+ * test class: extern variable address instance  : gemini, return value, legal, no function declaration
  */
 {
 	extern float    i2;
@@ -278,7 +278,7 @@ float           i1 = 1.0;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, return value, legal, function declared to return an floateger 
+ * test class: extern variable address instance  : gemini, return value, legal, function declared to return an floateger
  */
 {
 	extern float    i2;
@@ -301,7 +301,7 @@ $HEAD()
 #include "def.h"
 float           i2;
 
-float 
+float
 castor(variable)
 	float          *variable;
 {
@@ -327,7 +327,7 @@ $HEAD()
 #include "def.h"
 float           i3;
 
-float 
+float
 pollux(variable)
 	float          *variable;
 {
@@ -359,7 +359,7 @@ float           i1 = 1.0;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, return value, pointer to function returning an integer 
+ * test class: extern variable address instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	extern float    i2;
@@ -430,7 +430,7 @@ pollux(function, variable)
 $LICENSE()
 $HEAD()
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -449,7 +449,7 @@ float           i1;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, in conditional expression, no function declaration 
+ * test class: extern variable address instance  : gemini, in conditional expression, no function declaration
  */
 {
 	extern float    i2;
@@ -530,7 +530,7 @@ float           i1 = 1.0;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: extern variable address instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 	extern float    i2;
@@ -555,7 +555,7 @@ $HEAD()
 #include "def.h"
 float           i2;
 
-float 
+float
 castor(variable)
 	float          *variable;
 {
@@ -583,7 +583,7 @@ $HEAD()
 #include "def.h"
 float           i3;
 
-float 
+float
 pollux(variable)
 	float          *variable;
 {
@@ -618,7 +618,7 @@ float           i1 = 1.0;
 main()
 /*
  * test class: extern variable address instance  : gemini, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	extern float    i2;
@@ -691,7 +691,7 @@ pollux(function, variable)
 $LICENSE()
 $HEAD()
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -710,7 +710,7 @@ short           i1;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, no return value, legal 
+ * test class: extern variable address instance  : gemini, no return value, legal
  */
 {
 
@@ -785,7 +785,7 @@ short           result;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, no return value, illegal 
+ * test class: extern variable address instance  : gemini, no return value, illegal
  */
 {
 	result = castor(i);
@@ -855,7 +855,7 @@ short           i1 = 1;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, return value, legal, no function declaration 
+ * test class: extern variable address instance  : gemini, return value, legal, no function declaration
  */
 {
 	extern short    i2;
@@ -934,7 +934,7 @@ short           i1 = 1;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: extern variable address instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	extern short    i2;
@@ -957,7 +957,7 @@ $HEAD()
 
 short           i2;
 
-short 
+short
 castor(variable)
 	short          *variable;
 {
@@ -983,7 +983,7 @@ $HEAD()
 
 short           i3;
 
-short 
+short
 pollux(variable)
 	short          *variable;
 {
@@ -1016,7 +1016,7 @@ short           i1 = 2;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: extern variable address instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	extern char    *c2;
@@ -1101,7 +1101,7 @@ short           i1 = 1;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, return value, pointer to function returning an integer 
+ * test class: extern variable address instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	extern short    i2;
@@ -1172,7 +1172,7 @@ pollux(function, variable)
 $LICENSE()
 $HEAD()
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -1191,7 +1191,7 @@ short           i1;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, in conditional expression, no function declaration 
+ * test class: extern variable address instance  : gemini, in conditional expression, no function declaration
  */
 {
 	extern short    i2;
@@ -1263,7 +1263,7 @@ short           i1 = 1;
 
 main()
 /*
- * test class: extern variable address instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: extern variable address instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 	extern short    i2;
@@ -1285,7 +1285,7 @@ $HEAD()
 
 short           i2;
 
-short 
+short
 castor(variable)
 	short          *variable;
 {
@@ -1310,7 +1310,7 @@ $HEAD()
 
 short           i3;
 
-short 
+short
 pollux(variable)
 	short          *variable;
 {
@@ -1341,7 +1341,7 @@ short           i1 = 2;
 main()
 /*
  * test class: extern variable address instance  : gemini, in conditional expression, function declared to return a pointer
- * to character 
+ * to character
  */
 {
 	extern char    *c2;
@@ -1424,7 +1424,7 @@ short           i1 = 1;
 main()
 /*
  * test class: extern variable address instance  : gemini, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	extern short    i2;
@@ -1488,7 +1488,7 @@ pollux(function, variable)
 $LICENSE()
 $HEAD()
 
-short 
+short
 increment(variable)
 	short           variable;
 {

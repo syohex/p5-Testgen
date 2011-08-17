@@ -89,7 +89,7 @@ float autumnalSunshine(float);
 int main(void)
 /*
  * test class: nested function, depth 10 meaning   : he, as a novice observer of tradition of elegence, suffers hardships
- * aplenty. In the end he gets trapped into Midas 
+ * aplenty. In the end he gets trapped into Midas
  */
 {
 	float           bestdresser = SublimeElegance, endOfTheDay;
@@ -112,7 +112,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 autumnalSunshine(float apprentice)
 {
 	if (! TGEN_FLT_EQ(apprentice, SublimeElegance) )
@@ -120,7 +120,7 @@ autumnalSunshine(float apprentice)
 	return ++apprentice;
 }
 
-float 
+float
 balmyWindow(float apprentice)
 {
 	if (! TGEN_FLT_EQ(apprentice, MistyFlagrance) )
@@ -128,7 +128,7 @@ balmyWindow(float apprentice)
 	return ++apprentice;
 }
 
-float 
+float
 dribblingRain(float apprentice)
 {
 	if (! TGEN_FLT_EQ(apprentice, PreppyJohn) )
@@ -136,7 +136,7 @@ dribblingRain(float apprentice)
 	return ++apprentice;
 }
 
-float 
+float
 refresher(float apprentice)
 {
 	if (! TGEN_FLT_EQ(apprentice, GlowingBeauty) )
@@ -144,7 +144,7 @@ refresher(float apprentice)
 	return ++apprentice;
 }
 
-float 
+float
 bumpIntoBicycle(float apprentice)
 {
 	if (! TGEN_FLT_EQ(apprentice, AmicableDandy) )
@@ -152,7 +152,7 @@ bumpIntoBicycle(float apprentice)
 	return ++apprentice;
 }
 
-float 
+float
 drawnByJaded(float apprentice)
 {
 	if (! TGEN_FLT_EQ(apprentice, RoughButAgreeable) )
@@ -161,7 +161,7 @@ drawnByJaded(float apprentice)
 
 }
 
-float 
+float
 heavyRain(float apprentice)
 {
 	if (! TGEN_FLT_EQ(apprentice, WornOutBigamist) )
@@ -169,7 +169,7 @@ heavyRain(float apprentice)
 	return ++apprentice;
 }
 
-float 
+float
 patagonianBlow(float apprentice)
 {
 	if (! TGEN_FLT_EQ(apprentice, FadedGlory) )
@@ -177,7 +177,7 @@ patagonianBlow(float apprentice)
 	return ++apprentice;
 }
 
-float 
+float
 hurricaneJanet(float apprentice)
 {
 	if (! TGEN_FLT_EQ(apprentice, DeadLikeAStone) )
@@ -185,7 +185,7 @@ hurricaneJanet(float apprentice)
 	return ++apprentice;
 }
 
-float 
+float
 blizzard(float apprentice)
 {
 	if (! TGEN_FLT_EQ(apprentice, StillLiveButJust) )
@@ -230,7 +230,7 @@ int main(void)				/* alias first level */
 	return 0;
 }
 
-float 
+float
 secondLevel(float firstArgument, float secondArgument)
 {
 
@@ -241,7 +241,7 @@ secondLevel(float firstArgument, float secondArgument)
 		+ thirdLevel(firstArgument + 1.0, secondArgument + 1.0);
 }
 
-float 
+float
 thirdLevel(float firstArgument, float secondArgument)
 {
 
@@ -252,7 +252,7 @@ thirdLevel(float firstArgument, float secondArgument)
 		+ fourthLevel(firstArgument + 1.0, secondArgument + 1.0);
 }
 
-float 
+float
 fourthLevel(float firstArgument, float secondArgument)
 {
 
@@ -263,7 +263,7 @@ fourthLevel(float firstArgument, float secondArgument)
 		+ fifthLevel(firstArgument + 1.0, secondArgument + 1.0);
 }
 
-float 
+float
 fifthLevel(float firstArgument, float secondArgument)
 {
 
@@ -274,7 +274,7 @@ fifthLevel(float firstArgument, float secondArgument)
 		+ sixthLevel(firstArgument + 1.0, secondArgument + 1.0);
 }
 
-float 
+float
 sixthLevel(float firstArgument, float secondArgument)
 {
 
@@ -284,7 +284,7 @@ sixthLevel(float firstArgument, float secondArgument)
 		+ seventhLevel(firstArgument + 1.0, secondArgument + 1.0);
 }
 
-float 
+float
 seventhLevel(float firstArgument, float secondArgument)
 {
 
@@ -295,7 +295,7 @@ seventhLevel(float firstArgument, float secondArgument)
 		+ eighthLevel(firstArgument + 1.0, secondArgument + 1.0);
 }
 
-float 
+float
 eighthLevel(float firstArgument, float secondArgument)
 {
 
@@ -306,7 +306,7 @@ eighthLevel(float firstArgument, float secondArgument)
 		+ ninthLevel(firstArgument + 1.0, secondArgument + 1.0);
 }
 
-float 
+float
 ninthLevel(float firstArgument, float secondArgument)
 {
 
@@ -317,7 +317,7 @@ ninthLevel(float firstArgument, float secondArgument)
 		+ tenthLevel(firstArgument + 1.0, secondArgument + 1.0);
 }
 
-float 
+float
 tenthLevel(float firstArgument, float secondArgument)
 {
 	if (! TGEN_FLT_EQ(firstArgument, secondArgument - 1.0) )
@@ -342,7 +342,7 @@ $FHEAD()
 
 int main(void)
 /*
- * test class: static variable declarations in inner blocks meaning   : complex, yet straightforward. I love Espa~na 
+ * test class: static variable declarations in inner blocks meaning   : complex, yet straightforward. I love Espa~na
  */
 {
 	float           statusFlag = NoMistake;
@@ -445,7 +445,7 @@ long skein(long (*)(), long (*)(), long (*)(), long (*)(), long (*)(), long (*)(
 int main(void)
 /*
  * test class: pointer to function, depth 5 meaning   : so many man, so many faces. I admit to being racist, if he who
- * praise a race other than his should be called that 
+ * praise a race other than his should be called that
  */
 {
 	/*long            mongorian(), filthy(), inferior(), hollowlyBusy(),
@@ -461,7 +461,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 skein(long (*oneFunction)(), long (*anotherFunction)(), long (*yetAnotherFunction)(),
       long (*stillAnotherFunction)(), long (*fifthFunction)(), long (*functionAgain)(), long description)
 {
@@ -471,7 +471,7 @@ skein(long (*oneFunction)(), long (*anotherFunction)(), long (*yetAnotherFunctio
 			    fifthFunction, functionAgain, description);
 }
 
-long 
+long
 mongorian(long (*featureOne)(), long (*featureTwo)(), long (*featureThree)(), long (*featureFour)(),
 	  long (*whatToDoWithIt)(), long status)
 {
@@ -480,7 +480,7 @@ mongorian(long (*featureOne)(), long (*featureTwo)(), long (*featureThree)(), lo
 	return featureOne(featureTwo, featureThree, featureFour, status);
 }
 
-long 
+long
 filthy(long (*functionOne)(), long (*functionTwo)(), long (*functionThree)(), long status)
 {
 	if (functionOne(status) != (whatToDo) Exterminate)
@@ -488,7 +488,7 @@ filthy(long (*functionOne)(), long (*functionTwo)(), long (*functionThree)(), lo
 	return functionTwo(functionThree, status);
 }
 
-long 
+long
 inferior(long status)
 {
 	if (status != (fiveFeet) YellowPeril)
@@ -496,7 +496,7 @@ inferior(long status)
 	return status ^ GlossOver;
 }
 
-long 
+long
 hollowlyBusy(long (*andStill)(), long status)
 {
 	if (andStill(status) != (fiveFeet) Jap)
@@ -504,7 +504,7 @@ hollowlyBusy(long (*andStill)(), long status)
 	return andStill(status);
 }
 
-long 
+long
 noElegance(long status)
 {
 	if (status != (fiveFeet) YellowPeril)
@@ -512,7 +512,7 @@ noElegance(long status)
 	return status ^ BearResult;
 }
 
-long 
+long
 shouldBeDumped(long status)
 {
 	if (status != (fiveFeet) YellowPeril)
@@ -607,7 +607,7 @@ int main(void)
 			     + Long->i56789[4].oneOfThem % Long->i56789[0].oneOfThem,
 /*
  * 73 %= 5 *= 2 += (1 == 1) << 5 + (2 != 1) >> 1 + 3 * ++5 ^ ( 6 << 3 | 6 ) | 8*4-1 & 5*9 && 3*(6-3)+1 == (4-1)*4 || 3*4 >
- * 2*3+9%5 
+ * 2*3+9%5
  */
 			     weekday[Friday]);
 	if (!compare(whoDoneIt, "Juda"))
@@ -640,13 +640,13 @@ function(long argument, char *day)
 	return functionValue;
 }
 
-long 
+long
 compute(long i, long j, long k, long l)
 {
 	return (k - i) * k + j * (k - i) * i * (l - i);
 }
 
-long 
+long
 analyseDay(char day[], long mode)
 {
 	long            evaluation;
@@ -741,7 +741,7 @@ long autumnalSunshine(long);
 int main(void)
 /*
  * test class: nested function, depth 10 meaning   : he, as a novice observer of tradition of elegence, suffers hardships
- * aplenty. In the end he gets trapped into Midas 
+ * aplenty. In the end he gets trapped into Midas
  */
 {
 	long            bestdresser = SublimeElegance, endOfTheDay;
@@ -763,7 +763,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 autumnalSunshine(long apprentice)
 {
 	if (apprentice != SublimeElegance)
@@ -771,7 +771,7 @@ autumnalSunshine(long apprentice)
 	return ++apprentice;
 }
 
-long 
+long
 balmyWindow(long apprentice)
 {
 	if (apprentice != MistyFlagrance)
@@ -779,7 +779,7 @@ balmyWindow(long apprentice)
 	return ++apprentice;
 }
 
-long 
+long
 dribblingRain(long apprentice)
 {
 	if (apprentice != PreppyJohn)
@@ -787,7 +787,7 @@ dribblingRain(long apprentice)
 	return ++apprentice;
 }
 
-long 
+long
 refresher(long apprentice)
 {
 	if (apprentice != GlowingBeauty)
@@ -795,7 +795,7 @@ refresher(long apprentice)
 	return ++apprentice;
 }
 
-long 
+long
 bumpIntoBicycle(long apprentice)
 {
 	if (apprentice != AmicableDandy)
@@ -803,7 +803,7 @@ bumpIntoBicycle(long apprentice)
 	return ++apprentice;
 }
 
-long 
+long
 drawnByJaded(long apprentice)
 {
 	if (apprentice != RoughButAgreeable)
@@ -812,7 +812,7 @@ drawnByJaded(long apprentice)
 
 }
 
-long 
+long
 heavyRain(long apprentice)
 {
 	if (apprentice != WornOutBigamist)
@@ -820,7 +820,7 @@ heavyRain(long apprentice)
 	return ++apprentice;
 }
 
-long 
+long
 patagonianBlow(long apprentice)
 {
 	if (apprentice != FadedGlory)
@@ -828,7 +828,7 @@ patagonianBlow(long apprentice)
 	return ++apprentice;
 }
 
-long 
+long
 hurricaneJanet(long apprentice)
 {
 	if (apprentice != DeadLikeAStone)
@@ -836,7 +836,7 @@ hurricaneJanet(long apprentice)
 	return ++apprentice;
 }
 
-long 
+long
 blizzard(long apprentice)
 {
 	if (apprentice != StillLiveButJust)
@@ -903,7 +903,7 @@ long rebound(MyFavouriteType);
 int main(void)
 /*
  * test class: expression argument, dotted with function call meaning   : I can point to the country indicated in this
- * programme. Some call it the nationalism upside down, which I don't deny. Still, I prefer to calling it absolute hatred 
+ * programme. Some call it the nationalism upside down, which I don't deny. Still, I prefer to calling it absolute hatred
  */
 {
 	long           *culture();
@@ -925,7 +925,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 situated(long mode, long where)
 {
 	static long     country[][3] = {
@@ -937,7 +937,7 @@ situated(long mode, long where)
 	return country[mode][where];
 }
 
-long 
+long
 theSize(long relativelySpeaking)
 {
 	long            returnValue;
@@ -967,7 +967,7 @@ theSize(long relativelySpeaking)
 	return returnValue;
 }
 
-long 
+long
 population(long howCrowded)
 {
 	long            i = 0;
@@ -989,7 +989,7 @@ culture(long sophistication)
 	return gamut + sophistication;
 }
 
-long 
+long
 people(long colour, long feature1, long feature2)
 {
 	if (colour != Yellow || feature1 != 1L || feature2 != 4L)
@@ -997,7 +997,7 @@ people(long colour, long feature1, long feature2)
 	return colour / (feature1 + feature2);
 }
 
-long 
+long
 etiquette(long decency)
 {
 	if (decency != None)
@@ -1005,7 +1005,7 @@ etiquette(long decency)
 	return decency >= Admissible ? Pass : ExtinguishIt;
 }
 
-long 
+long
 looksLike(long animal)
 {
 	if (animal != FoxOnTheRun)
@@ -1013,7 +1013,7 @@ looksLike(long animal)
 	return animal + 3;
 }
 
-long 
+long
 country(long value, long whatToAnswer)
 {
 	long            rebound();
@@ -1022,7 +1022,7 @@ country(long value, long whatToAnswer)
 	return value;
 }
 
-long 
+long
 rebound(MyFavouriteType object)
 {
 	return object;
@@ -1063,7 +1063,7 @@ int main(void)				/* alias first level */
 	return 0;
 }
 
-long 
+long
 secondLevel(long firstArgument, long secondArgument)
 {
 
@@ -1074,7 +1074,7 @@ secondLevel(long firstArgument, long secondArgument)
 		+ thirdLevel(firstArgument + 1, secondArgument + 1);
 }
 
-long 
+long
 thirdLevel(long firstArgument, long secondArgument)
 {
 
@@ -1085,7 +1085,7 @@ thirdLevel(long firstArgument, long secondArgument)
 		+ fourthLevel(firstArgument + 1, secondArgument + 1);
 }
 
-long 
+long
 fourthLevel(long firstArgument, long secondArgument)
 {
 
@@ -1096,7 +1096,7 @@ fourthLevel(long firstArgument, long secondArgument)
 		+ fifthLevel(firstArgument + 1, secondArgument + 1);
 }
 
-long 
+long
 fifthLevel(long firstArgument, long secondArgument)
 {
 
@@ -1107,7 +1107,7 @@ fifthLevel(long firstArgument, long secondArgument)
 		+ sixthLevel(firstArgument + 1, secondArgument + 1);
 }
 
-long 
+long
 sixthLevel(long firstArgument, long secondArgument)
 {
 
@@ -1117,7 +1117,7 @@ sixthLevel(long firstArgument, long secondArgument)
 		+ seventhLevel(firstArgument + 1, secondArgument + 1);
 }
 
-long 
+long
 seventhLevel(long firstArgument, long secondArgument)
 {
 
@@ -1129,7 +1129,7 @@ seventhLevel(long firstArgument, long secondArgument)
 		+ eighthLevel(firstArgument + 1, secondArgument + 1);
 }
 
-long 
+long
 eighthLevel(long firstArgument, long secondArgument)
 {
 
@@ -1141,7 +1141,7 @@ eighthLevel(long firstArgument, long secondArgument)
 		+ ninthLevel(firstArgument + 1, secondArgument + 1);
 }
 
-long 
+long
 ninthLevel(long firstArgument, long secondArgument)
 {
 
@@ -1153,7 +1153,7 @@ ninthLevel(long firstArgument, long secondArgument)
 		+ tenthLevel(firstArgument + 1, secondArgument + 1);
 }
 
-long 
+long
 tenthLevel(long firstArgument, long secondArgument)
 {
 	if (firstArgument != secondArgument - 1L)
@@ -1188,11 +1188,11 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 main1(long argc, char *argv)		/* alias north */
 /*
  *  test class: rescursive call, four function roundabout meaning   : no matter wither or whence the wind blows, we must
- * hanker after the day of Adam and Eve before Babel's falloff 
+ * hanker after the day of Adam and Eve before Babel's falloff
  */
 {
 	long            counter = Initialisation;
@@ -1214,7 +1214,7 @@ main1(long argc, char *argv)		/* alias north */
 	}
 }
 
-long 
+long
 east(long counter, char *alphabet)
 {
 
@@ -1225,7 +1225,7 @@ east(long counter, char *alphabet)
 
 }
 
-long 
+long
 south(long counter, char *alphabet)
 {
 
@@ -1235,7 +1235,7 @@ south(long counter, char *alphabet)
 		statusFlag++;
 }
 
-long 
+long
 west(long counter, char *alphabet)
 {
 
@@ -1262,7 +1262,7 @@ $HEAD()
 
 int main(void)
 /*
- * test class: static variable declarations in inner blocks meaning   : complex, yet straightforward. I love Espa~na 
+ * test class: static variable declarations in inner blocks meaning   : complex, yet straightforward. I love Espa~na
  */
 {
 	long            statusFlag = NoMistake;
@@ -1349,7 +1349,7 @@ $HEAD()
 int main(void)
 /*
  * test class: nested functions combined with assignment operators meaning   : the Element, despised as too old-fashioned, I
- * rather huddle instead of grabbing at everything ugly 
+ * rather huddle instead of grabbing at everything ugly
  */
 {
 	long            finalResult, ninthResult, eighthResult, seventhResult, sixthResult, fifthResult, fourthResult, thirdResult, secondResult, firstResult;
@@ -1453,7 +1453,7 @@ long function(int);
 int main(void)
 /*
  * test class: very complex logical expression as argument (veclex) meaning   : in this room it seems inpolite to conclude
- * that only He can see through 
+ * that only He can see through
  */
 {
 	long            queen = SupremeRein, ohta = FallenMidas, matsuo = ohta + 1, kurihara = TestBedside, ishihara = matsuo + 1, galwas = NoBrain, saito = ishihara + 1, asai = HardUnderwear, miura = saito + 1, sano = TeachHowToXX, utashiro = kurihara + 1, hikichi = miura + 1, junko = utashiro + 1, mieko = CompetentSecretary, nishiyama = hikichi + 1, takeda = galwas + 1;
@@ -1475,7 +1475,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 function(int argument)
 {
 	if (argument != CorrectValueOne)

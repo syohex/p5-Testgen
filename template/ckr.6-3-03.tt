@@ -53,7 +53,7 @@ float           i;
 
 main()
 /*
- * test class: extern variable address instance  : recursive call, no return value, legal 
+ * test class: extern variable address instance  : recursive call, no return value, legal
  */
 {
 
@@ -103,7 +103,7 @@ float           result;
 
 main()
 /*
- * test class: extern variable address instance  : recursive call, no return value, illegal 
+ * test class: extern variable address instance  : recursive call, no return value, illegal
  */
 {
 	extern short    statusFlag;
@@ -155,7 +155,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable address instance  : recursive call, return value, legal, no function declaration 
+ * test class: extern variable address instance  : recursive call, return value, legal, no function declaration
  */
 {
 	extern short    statusFlag;
@@ -212,7 +212,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable address instance  : recursive call, return value, legal, integer function declaration 
+ * test class: extern variable address instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	extern short    statusFlag;
@@ -241,7 +241,7 @@ $HEAD()
 short           statusFlag = NoMistake;
 float           rec;
 
-float 
+float
 recursiveFunction(variable)
 	float          *variable;
 {
@@ -273,7 +273,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable address instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: extern variable address instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	extern float    dum;
@@ -313,7 +313,7 @@ dummy(function, variable)
 	return (dum);
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -333,7 +333,7 @@ float           i = 1.0;
 main()
 /*
  * test class: extern variable address instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	extern float    rec;
@@ -389,7 +389,7 @@ float           i = 1.0;
 main()
 /*
  * test class: extern variable address instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	extern float    rec;
@@ -415,7 +415,7 @@ $HEAD()
 #include "def.h"
 float           rec;
 
-float 
+float
 recursiveFunction(variable)
 	float          *variable;
 {
@@ -449,7 +449,7 @@ float           i = 1.0;
 main()
 /*
  * test class: extern variable address instance  : recursive call, in conditional expression, pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	extern float    dum;
@@ -494,7 +494,7 @@ dummy(function, variable)
 }
 
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -512,7 +512,7 @@ short           i;
 
 main()
 /*
- * test class: extern variable address instance  : recursive call, no return value, legal 
+ * test class: extern variable address instance  : recursive call, no return value, legal
  */
 {
 
@@ -562,7 +562,7 @@ short           result;
 
 main()
 /*
- * test class: extern variable address instance  : recursive call, no return value, illegal 
+ * test class: extern variable address instance  : recursive call, no return value, illegal
  */
 {
 	extern short    statusFlag;
@@ -614,7 +614,7 @@ short           i = 1;
 
 main()
 /*
- * test class: extern variable address instance  : recursive call, return value, legal, no function declaration 
+ * test class: extern variable address instance  : recursive call, return value, legal, no function declaration
  */
 {
 	extern short    statusFlag;
@@ -671,7 +671,7 @@ short           i = 1;
 
 main()
 /*
- * test class: extern variable address instance  : recursive call, return value, legal, integer function declaration 
+ * test class: extern variable address instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	extern short    statusFlag;
@@ -700,7 +700,7 @@ $HEAD()
 short           statusFlag = NoMistake;
 short           rec;
 
-short 
+short
 recursiveFunction(variable)
 	short          *variable;
 {
@@ -733,7 +733,7 @@ short           i = 2;
 main()
 /*
  * test class: extern variable address instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	extern short    statusFlag;
@@ -791,7 +791,7 @@ short           i = 1;
 
 main()
 /*
- * test class: extern variable address instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: extern variable address instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	extern short    dum;
@@ -831,7 +831,7 @@ dummy(function, variable)
 	return (dum);
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -851,7 +851,7 @@ short           i = 1;
 main()
 /*
  * test class: extern variable address instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	extern short    rec;
@@ -899,7 +899,7 @@ short           i = 1;
 main()
 /*
  * test class: extern variable address instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	extern short    rec;
@@ -921,7 +921,7 @@ $HEAD()
 
 short           rec;
 
-short 
+short
 recursiveFunction(variable)
 	short          *variable;
 {
@@ -952,7 +952,7 @@ short           i = 2;
 main()
 /*
  * test class: extern variable address instance  : recursive call, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	extern char    *rec;
@@ -1003,7 +1003,7 @@ short           i = 1;
 main()
 /*
  * test class: extern variable address instance  : recursive call, in conditional expression, pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	extern short    dum;
@@ -1040,7 +1040,7 @@ dummy(function, variable)
 }
 
 
-short 
+short
 increment(variable)
 	short           variable;
 {

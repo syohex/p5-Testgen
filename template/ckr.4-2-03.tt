@@ -66,7 +66,7 @@ float           variable;
 
 main()				/* alias root */
 /*
- *  test class: extern float variable instance  : linear tree structure, no return value and legal 
+ *  test class: extern float variable instance  : linear tree structure, no return value and legal
  */
 {
 	extern float    i;
@@ -255,7 +255,7 @@ float           i, variable;
 
 main()				/* alias root */
 /*
- *  test class: extern float variable instance  : linear tree structure, no return value and illegal 
+ *  test class: extern float variable instance  : linear tree structure, no return value and illegal
  */
 {
 	extern float    i;
@@ -459,7 +459,7 @@ float           i;
 
 main()				/* alias root */
 /*
- *  test class: extern variable instance  : linear tree structure, return value and legal, Float function declaration 
+ *  test class: extern variable instance  : linear tree structure, return value and legal, Float function declaration
  */
 {
 	extern float    i;
@@ -480,7 +480,7 @@ main()				/* alias root */
 	return (0);
 }
 
-float 
+float
 levelOneNodeOne(variable)
 	float           variable;
 {
@@ -498,7 +498,7 @@ levelOneNodeOne(variable)
 	return (storage);
 }
 
-float 
+float
 levelOneNodeTwo(variable)
 	float           variable;
 {
@@ -516,7 +516,7 @@ levelOneNodeTwo(variable)
 	return (storage);
 }
 
-float 
+float
 levelTwoNodeOne(variable)
 	float           variable;
 {
@@ -534,7 +534,7 @@ levelTwoNodeOne(variable)
 	return (storage);
 }
 
-float 
+float
 levelTwoNodeTwo(variable)
 	float           variable;
 {
@@ -552,7 +552,7 @@ levelTwoNodeTwo(variable)
 	return (storage);
 }
 
-float 
+float
 levelTwoNodeThree(variable)
 	float           variable;
 {
@@ -570,7 +570,7 @@ levelTwoNodeThree(variable)
 	return (storage);
 }
 
-float 
+float
 levelTwoNodeFour(variable)
 	float           variable;
 {
@@ -588,56 +588,56 @@ levelTwoNodeFour(variable)
 	return (storage);
 }
 
-float 
+float
 levelThreeLeafOne(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafTwo(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafThree(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafFour(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafFive(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafSix(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafSeven(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafEight(variable)
 	float           variable;
 {
@@ -653,7 +653,7 @@ float           i;
 
 main()
 /*
- * test class: extern variable instance  : linear tree structure, return value, legal pointer to function returning a float 
+ * test class: extern variable instance  : linear tree structure, return value, legal pointer to function returning a float
  */
 {
 	extern float    i;
@@ -670,7 +670,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy1(func, Float)
 	float           (*func) (), Float;
 {
@@ -682,7 +682,7 @@ dummy1(func, Float)
 	return (i);
 }
 
-float 
+float
 divide4(Float)
 	float           Float;
 {
@@ -691,7 +691,7 @@ divide4(Float)
 	return (dummy2(divide2, Float) / 2.0);
 }
 
-float 
+float
 dummy2(func, Float)
 	float           (*func) (), Float;
 {
@@ -703,7 +703,7 @@ dummy2(func, Float)
 	return (i);
 }
 
-float 
+float
 divide2(Float)
 	float           Float;
 {
@@ -720,7 +720,7 @@ float           i;
 main()				/* alias root */
 /*
  *  test class: extern variable instance  : linear tree structure, used in conditional expression, Float function
- * declaration 
+ * declaration
  */
 {
 	extern float    i;
@@ -739,7 +739,7 @@ main()				/* alias root */
 	return (0);
 }
 
-float 
+float
 levelOneNodeOne(variable)
 	float           variable;
 {
@@ -749,7 +749,7 @@ levelOneNodeOne(variable)
 	return (2.0 * levelTwoNodeOne(ii));
 }
 
-float 
+float
 levelTwoNodeOne(variable)
 	float           variable;
 {
@@ -759,7 +759,7 @@ levelTwoNodeOne(variable)
 	return (2.0 * levelThreeLeafOne(iii));
 }
 
-float 
+float
 levelThreeLeafOne(variable)
 	float           variable;
 {
@@ -776,7 +776,7 @@ float           i;
 main()
 /*
  * test class: extern variable instance  : linear tree structure, in conditional expression, pointer to function returning a
- * float 
+ * float
  */
 {
 	extern float    i;
@@ -795,7 +795,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy1(func, Float)
 	float           (*func) (), Float;
 {
@@ -806,7 +806,7 @@ dummy1(func, Float)
 	return (ii);
 }
 
-float 
+float
 divide4(Float)
 	float           Float;
 {
@@ -815,7 +815,7 @@ divide4(Float)
 	return (dummy2(divide2, Float) / 2.0);
 }
 
-float 
+float
 dummy2(func, Float)
 	float           (*func) (), Float;
 {
@@ -826,7 +826,7 @@ dummy2(func, Float)
 	return (ii);
 }
 
-float 
+float
 divide2(Float)
 	float           Float;
 {
@@ -843,7 +843,7 @@ float           i;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, no return value, legal 
+ * test class: extern variable instance  : recursive call, no return value, legal
  */
 {
 	extern float    i;
@@ -876,7 +876,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, no return value, illegal 
+ * test class: extern variable instance  : recursive call, no return value, illegal
  */
 {
 	extern float    i;
@@ -915,7 +915,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, return value, legal, Float function declaration 
+ * test class: extern variable instance  : recursive call, return value, legal, Float function declaration
  */
 {
 	extern float    i;
@@ -931,7 +931,7 @@ main()
 	return (0);
 }
 
-float 
+float
 recursiveFunction(variable)
 	float           variable;
 {
@@ -956,7 +956,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, return value, pointer to function returning a float 
+ * test class: extern variable instance  : recursive call, return value, pointer to function returning a float
  */
 {
 	float           increment(), dummy();
@@ -971,7 +971,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy(function, variable)
 	float           (*function) (), variable;
 {
@@ -984,7 +984,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -1001,7 +1001,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, function in conditional expression, Float function declaration 
+ * test class: extern variable instance  : recursive call, function in conditional expression, Float function declaration
  */
 {
 	float           recursiveFunction();
@@ -1019,7 +1019,7 @@ main()
 	return (0);
 }
 
-float 
+float
 recursiveFunction(variable)
 	float           variable;
 {
@@ -1045,7 +1045,7 @@ float           i;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, in conditional expression, pointer to function returning a float 
+ * test class: extern variable instance  : recursive call, in conditional expression, pointer to function returning a float
  */
 {
 	float           increment(), dummy();
@@ -1063,7 +1063,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy(function, variable)
 	float           (*function) (), variable;
 {
@@ -1079,7 +1079,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -1096,7 +1096,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable instance  : gemini, no return value, legal 
+ * test class: extern variable instance  : gemini, no return value, legal
  */
 {
 	extern float    i;
@@ -1141,7 +1141,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable instance  : gemini, no return value, illegal 
+ * test class: extern variable instance  : gemini, no return value, illegal
  */
 {
 	extern float    i;
@@ -1197,7 +1197,7 @@ float           i;
 
 main()
 /*
- * test class: extern variable instance  : gemini, return value, legal, function declared to return a float 
+ * test class: extern variable instance  : gemini, return value, legal, function declared to return a float
  */
 {
 	extern float    i;
@@ -1214,7 +1214,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(variable)
 	float           variable;
 {
@@ -1228,7 +1228,7 @@ castor(variable)
 	return (++variable);
 }
 
-float 
+float
 pollux(variable)
 	float           variable;
 {
@@ -1253,7 +1253,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable instance  : gemini, return value, pointer to function returning a float 
+ * test class: extern variable instance  : gemini, return value, pointer to function returning a float
  */
 {
 	float           increment();
@@ -1269,7 +1269,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(function, variable)
 	float           (*function) (), variable;
 {
@@ -1283,7 +1283,7 @@ castor(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 pollux(function, variable)
 	float           (*function) (), variable;
 {
@@ -1297,7 +1297,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -1314,7 +1314,7 @@ float           i = 1.0, ii, iii;
 
 main()
 /*
- * test class: extern variable instance  : gemini, in conditional expression, function declared to return a float 
+ * test class: extern variable instance  : gemini, in conditional expression, function declared to return a float
  */
 {
 	extern float    i;
@@ -1332,7 +1332,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(variable)
 	float           variable;
 {
@@ -1350,7 +1350,7 @@ castor(variable)
 	return (++variable);
 }
 
-float 
+float
 pollux(variable)
 	float           variable;
 {
@@ -1378,7 +1378,7 @@ float           i;
 
 main()
 /*
- * test class: extern variable instance  : gemini, in conditional expression, pointer to function returning a float 
+ * test class: extern variable instance  : gemini, in conditional expression, pointer to function returning a float
  */
 {
 	extern float    i;
@@ -1398,7 +1398,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(function, variable)
 	float           (*function) (), variable;
 {
@@ -1415,7 +1415,7 @@ castor(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 pollux(function, variable)
 	float           (*function) (), variable;
 {
@@ -1432,7 +1432,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -1448,7 +1448,7 @@ float           i;
 
 main()				/* alias root */
 /*
- *  test class: external variable, with local namesake instance  : linear tree structure, no return value and legal 
+ *  test class: external variable, with local namesake instance  : linear tree structure, no return value and legal
  */
 {
 	extern float    i;
@@ -1623,7 +1623,7 @@ float           i, whatIsThis;
 
 main()				/* alias root */
 /*
- *  test class: external variable, with local namesake instance  : linear tree structure, no return value and illegal 
+ *  test class: external variable, with local namesake instance  : linear tree structure, no return value and illegal
  */
 {
 	extern float    i;
@@ -1797,7 +1797,7 @@ float           i = 1.0;
 main()				/* alias root */
 /*
  *  test class: external variable, with local namesake instance  : linear tree structure, return value and legal, Float
- * function declaration 
+ * function declaration
  */
 {
 	float           levelOneNodeOne(), levelOneNodeTwo();
@@ -1816,7 +1816,7 @@ main()				/* alias root */
 	return (0);
 }
 
-float 
+float
 levelOneNodeOne(variable)
 	float           variable;
 {
@@ -1835,7 +1835,7 @@ levelOneNodeOne(variable)
 	return (variable);
 }
 
-float 
+float
 levelOneNodeTwo(variable)
 	float           variable;
 {
@@ -1854,7 +1854,7 @@ levelOneNodeTwo(variable)
 	return (variable);
 }
 
-float 
+float
 levelTwoNodeOne(variable)
 	float           variable;
 {
@@ -1873,7 +1873,7 @@ levelTwoNodeOne(variable)
 	return (variable);
 }
 
-float 
+float
 levelTwoNodeTwo(variable)
 	float           variable;
 {
@@ -1892,7 +1892,7 @@ levelTwoNodeTwo(variable)
 	return (variable);
 }
 
-float 
+float
 levelTwoNodeThree(variable)
 	float           variable;
 {
@@ -1911,7 +1911,7 @@ levelTwoNodeThree(variable)
 	return (variable);
 }
 
-float 
+float
 levelTwoNodeFour(variable)
 	float           variable;
 {
@@ -1930,7 +1930,7 @@ levelTwoNodeFour(variable)
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafOne(variable)
 	float           variable;
 {
@@ -1939,7 +1939,7 @@ levelThreeLeafOne(variable)
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafTwo(variable)
 	float           variable;
 {
@@ -1948,7 +1948,7 @@ levelThreeLeafTwo(variable)
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafThree(variable)
 	float           variable;
 {
@@ -1957,7 +1957,7 @@ levelThreeLeafThree(variable)
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafFour(variable)
 	float           variable;
 {
@@ -1966,7 +1966,7 @@ levelThreeLeafFour(variable)
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafFive(variable)
 	float           variable;
 {
@@ -1975,7 +1975,7 @@ levelThreeLeafFive(variable)
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafSix(variable)
 	float           variable;
 {
@@ -1984,7 +1984,7 @@ levelThreeLeafSix(variable)
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafSeven(variable)
 	float           variable;
 {
@@ -1993,7 +1993,7 @@ levelThreeLeafSeven(variable)
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafEight(variable)
 	float           variable;
 {
@@ -2012,7 +2012,7 @@ float           i;
 main()
 /*
  * test class: external variable, with local namesake instance  : linear tree structure, return value, legal pointer to
- * function returning a float 
+ * function returning a float
  */
 {
 	extern float    i;
@@ -2029,7 +2029,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy1(func, Float)
 	float           (*func) (), Float;
 {
@@ -2041,7 +2041,7 @@ dummy1(func, Float)
 	return (i);
 }
 
-float 
+float
 divide4(Float)
 	float           Float;
 {
@@ -2050,7 +2050,7 @@ divide4(Float)
 	return (dummy2(divide2, Float) / 2.0);
 }
 
-float 
+float
 dummy2(func, Float)
 	float           (*func) (), Float;
 {
@@ -2062,7 +2062,7 @@ dummy2(func, Float)
 	return (i);
 }
 
-float 
+float
 divide2(Float)
 	float           Float;
 {
@@ -2079,7 +2079,7 @@ float           i = 1.0;
 main()				/* alias root */
 /*
  *  test class: external variable, with local namesake instance  : linear tree structure, used in conditional expression,
- * Float function declaration 
+ * Float function declaration
  */
 {
 	float           levelOneNodeOne();
@@ -2096,7 +2096,7 @@ main()				/* alias root */
 	return (0);
 }
 
-float 
+float
 levelOneNodeOne(variable)
 	float           variable;
 {
@@ -2106,7 +2106,7 @@ levelOneNodeOne(variable)
 	return (2.0 * levelTwoNodeOne(i));
 }
 
-float 
+float
 levelTwoNodeOne(variable)
 	float           variable;
 {
@@ -2116,7 +2116,7 @@ levelTwoNodeOne(variable)
 	return (2.0 * levelThreeLeafOne(i));
 }
 
-float 
+float
 levelThreeLeafOne(variable)
 	float           variable;
 {
@@ -2133,7 +2133,7 @@ float           i;
 main()
 /*
  * test class: external variable, with local namesake instance  : linear tree structure, in conditional expression, pointer
- * to function returning a float 
+ * to function returning a float
  */
 {
 	extern float    i;
@@ -2152,7 +2152,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy1(func, Float)
 	float           (*func) (), Float;
 {
@@ -2163,7 +2163,7 @@ dummy1(func, Float)
 	return (i);
 }
 
-float 
+float
 divide4(Float)
 	float           Float;
 {
@@ -2172,7 +2172,7 @@ divide4(Float)
 	return (dummy2(divide2, Float) / 2.0);
 }
 
-float 
+float
 dummy2(func, Float)
 	float           (*func) (), Float;
 {
@@ -2183,7 +2183,7 @@ dummy2(func, Float)
 	return (i);
 }
 
-float 
+float
 divide2(Float)
 	float           Float;
 {
@@ -2200,7 +2200,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: external variable, with local namesake instance  : recursive call, no return value, legal 
+ * test class: external variable, with local namesake instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(i);
@@ -2231,7 +2231,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: external variable, with local namesake instance  : recursive call, no return value, illegal 
+ * test class: external variable, with local namesake instance  : recursive call, no return value, illegal
  */
 {
 	float           result;
@@ -2273,7 +2273,7 @@ float           i = 1.0;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, return value, legal, Float function
- * declaration 
+ * declaration
  */
 {
 	extern float    i;
@@ -2289,7 +2289,7 @@ main()
 	return (0);
 }
 
-float 
+float
 recursiveFunction(variable)
 	float           variable;
 {
@@ -2315,7 +2315,7 @@ float           i = 1.0;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, return value, pointer to function
- * returning a float 
+ * returning a float
  */
 {
 	float           increment(), dummy();
@@ -2330,7 +2330,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy(function, variable)
 	float           (*function) (), variable;
 {
@@ -2343,7 +2343,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -2361,7 +2361,7 @@ float           i = 1.0;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, function in conditional expression, Float
- * function declaration 
+ * function declaration
  */
 {
 	extern float    i;
@@ -2379,7 +2379,7 @@ main()
 	return (0);
 }
 
-float 
+float
 recursiveFunction(variable)
 	float           variable;
 {
@@ -2406,7 +2406,7 @@ float           i = 1.0;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, in conditional expression, pointer to
- * function returning a float 
+ * function returning a float
  */
 {
 	float           increment(), dummy();
@@ -2423,7 +2423,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy(function, variable)
 	float           (*function) (), variable;
 {
@@ -2439,7 +2439,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -2456,7 +2456,7 @@ float           i;
 
 main()
 /*
- * test class: external variable, with local namesake instance  : gemini, no return value, legal 
+ * test class: external variable, with local namesake instance  : gemini, no return value, legal
  */
 {
 	extern float    i;
@@ -2502,7 +2502,7 @@ static float    i = 1.0;
 
 main()
 /*
- * test class: external variable, with local namesake instance  : gemini, no return value, illegal 
+ * test class: external variable, with local namesake instance  : gemini, no return value, illegal
  */
 {
 	extern float    i;
@@ -2559,7 +2559,7 @@ float           i = 1.0;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, return value, legal, function declared to return a
- * float 
+ * float
  */
 {
 	float           castor();
@@ -2574,7 +2574,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(variable)
 	float           variable;
 {
@@ -2588,7 +2588,7 @@ castor(variable)
 	return (++variable);
 }
 
-float 
+float
 pollux(variable)
 	float           variable;
 {
@@ -2614,7 +2614,7 @@ float           i = 1.0;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, return value, pointer to function returning a
- * float 
+ * float
  */
 {
 	extern float    i;
@@ -2631,7 +2631,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(function, variable)
 	float           (*function) (), variable;
 {
@@ -2645,7 +2645,7 @@ castor(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 pollux(function, variable)
 	float           (*function) (), variable;
 {
@@ -2659,7 +2659,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -2677,7 +2677,7 @@ float           i;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, in conditional expression, function declared to
- * return a float 
+ * return a float
  */
 {
 	extern float    i;
@@ -2696,7 +2696,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(variable)
 	float           variable;
 {
@@ -2708,7 +2708,7 @@ castor(variable)
 	return (++variable);
 }
 
-float 
+float
 pollux(variable)
 	float           variable;
 {
@@ -2736,7 +2736,7 @@ float           i = 1.0;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, in conditional expression, pointer to function
- * returning a float 
+ * returning a float
  */
 {
 	float           increment();
@@ -2754,7 +2754,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(function, variable)
 	float           (*function) (), variable;
 {
@@ -2771,7 +2771,7 @@ castor(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 pollux(function, variable)
 	float           (*function) (), variable;
 {
@@ -2788,7 +2788,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -2804,7 +2804,7 @@ float           i, variable11, variable12, variable21, variable22, variable23, v
 
 main()				/* alias root */
 /*
- *  test class: extern variable, mistaken as called by address instance  : linear tree structure, no return value and legal 
+ *  test class: extern variable, mistaken as called by address instance  : linear tree structure, no return value and legal
  */
 {
 	extern float    i;
@@ -2966,7 +2966,7 @@ float           i, variable11, variable12, variable21, variable22, variable23, v
 main()				/* alias root */
 /*
  *  test class: extern variable, mistaken as called by address instance  : linear tree structure, return value and legal,
- * Float function declaration 
+ * Float function declaration
  */
 {
 	extern float    i;
@@ -2988,7 +2988,7 @@ main()				/* alias root */
 	return (0);
 }
 
-float 
+float
 levelOneNodeOne(variable)
 	float           variable;
 {
@@ -3006,7 +3006,7 @@ levelOneNodeOne(variable)
 	return (variable);
 }
 
-float 
+float
 levelOneNodeTwo(variable)
 	float           variable;
 {
@@ -3024,7 +3024,7 @@ levelOneNodeTwo(variable)
 	return (variable);
 }
 
-float 
+float
 levelTwoNodeOne(variable)
 	float           variable;
 {
@@ -3042,7 +3042,7 @@ levelTwoNodeOne(variable)
 	return (variable);
 }
 
-float 
+float
 levelTwoNodeTwo(variable)
 	float           variable;
 {
@@ -3060,7 +3060,7 @@ levelTwoNodeTwo(variable)
 	return (variable);
 }
 
-float 
+float
 levelTwoNodeThree(variable)
 	float           variable;
 {
@@ -3078,7 +3078,7 @@ levelTwoNodeThree(variable)
 	return (variable);
 }
 
-float 
+float
 levelTwoNodeFour(variable)
 	float           variable;
 {
@@ -3096,56 +3096,56 @@ levelTwoNodeFour(variable)
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafOne(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafTwo(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafThree(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafFour(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafFive(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafSix(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafSeven(variable)
 	float           variable;
 {
 	return (variable);
 }
 
-float 
+float
 levelThreeLeafEight(variable)
 	float           variable;
 {
@@ -3162,7 +3162,7 @@ float           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : linear tree structure, return value, legal pointer
- * to function returning a float 
+ * to function returning a float
  */
 {
 	extern float    i;
@@ -3179,7 +3179,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy1(func, Float)
 	float           (*func) (), Float;
 {
@@ -3191,7 +3191,7 @@ dummy1(func, Float)
 	return (result);
 }
 
-float 
+float
 divide4(Float)
 	float           Float;
 {
@@ -3200,7 +3200,7 @@ divide4(Float)
 	return (dummy2(divide2, Float) / 2.0);
 }
 
-float 
+float
 dummy2(func, Float)
 	float           (*func) (), Float;
 {
@@ -3212,7 +3212,7 @@ dummy2(func, Float)
 	return (result);
 }
 
-float 
+float
 divide2(Float)
 	float           Float;
 {
@@ -3229,7 +3229,7 @@ float           i;
 main()				/* alias root */
 /*
  *  test class: extern variable, mistaken as called by address instance  : linear tree structure, used in conditional
- * expression, Float function declaration 
+ * expression, Float function declaration
  */
 {
 	extern float    i;
@@ -3248,7 +3248,7 @@ main()				/* alias root */
 	return (0);
 }
 
-float 
+float
 levelOneNodeOne(variable)
 	float           variable;
 {
@@ -3258,7 +3258,7 @@ levelOneNodeOne(variable)
 	return (2.0 * levelTwoNodeOne(ii));
 }
 
-float 
+float
 levelTwoNodeOne(variable)
 	float           variable;
 {
@@ -3268,7 +3268,7 @@ levelTwoNodeOne(variable)
 	return (2.0 * levelThreeLeafOne(iii));
 }
 
-float 
+float
 levelThreeLeafOne(variable)
 	float           variable;
 {
@@ -3285,7 +3285,7 @@ float           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : linear tree structure, in conditional expression,
- * pointer to function returning a float 
+ * pointer to function returning a float
  */
 {
 	extern float    i;
@@ -3304,7 +3304,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy1(func, Float)
 	float           (*func) (), Float;
 {
@@ -3316,7 +3316,7 @@ dummy1(func, Float)
 	return (ii);
 }
 
-float 
+float
 divide4(Float)
 	float           Float;
 {
@@ -3325,7 +3325,7 @@ divide4(Float)
 	return (dummy2(divide2, Float) / 2.0);
 }
 
-float 
+float
 dummy2(func, Float)
 	float           (*func) (), Float;
 {
@@ -3337,7 +3337,7 @@ dummy2(func, Float)
 	return (ii);
 }
 
-float 
+float
 divide2(Float)
 	float           Float;
 {
@@ -3354,7 +3354,7 @@ float           i;
 
 main()
 /*
- * test class: extern variable, mistaken as called by address instance  : recursive call, no return value, legal 
+ * test class: extern variable, mistaken as called by address instance  : recursive call, no return value, legal
  */
 {
 	extern float    i;
@@ -3389,7 +3389,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable, mistaken as called by address instance  : recursive call, no return value, illegal 
+ * test class: extern variable, mistaken as called by address instance  : recursive call, no return value, illegal
  */
 {
 	extern float    i;
@@ -3429,7 +3429,7 @@ float           i = 1.0;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, return value, legal, Float
- * function declaration 
+ * function declaration
  */
 {
 	extern float    i;
@@ -3445,7 +3445,7 @@ main()
 	return (0);
 }
 
-float 
+float
 recursiveFunction(variable)
 	float           variable;
 {
@@ -3471,7 +3471,7 @@ float           i = 1.0;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, return value, pointer to function
- * returning a float 
+ * returning a float
  */
 {
 	float           increment(), result = 0.0, dummy();
@@ -3486,7 +3486,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy(function, variable)
 	float           (*function) (), variable;
 {
@@ -3499,7 +3499,7 @@ dummy(function, variable)
 	return (function(variable--));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -3517,7 +3517,7 @@ float           i = 1.0;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, function in conditional
- * expression, Float function declaration 
+ * expression, Float function declaration
  */
 {
 	float           recursiveFunction();
@@ -3535,7 +3535,7 @@ main()
 	return (0);
 }
 
-float 
+float
 recursiveFunction(variable)
 	float           variable;
 {
@@ -3562,7 +3562,7 @@ float           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, in conditional expression, pointer
- * to function returning a float 
+ * to function returning a float
  */
 {
 	float           increment(), dummy();
@@ -3580,7 +3580,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy(function, variable)
 	float           (*function) (), variable;
 {
@@ -3596,7 +3596,7 @@ dummy(function, variable)
 	return (function(variable--));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -3613,7 +3613,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable, mistaken as called by address instance  : gemini, no return value, legal 
+ * test class: extern variable, mistaken as called by address instance  : gemini, no return value, legal
  */
 {
 	extern float    i;
@@ -3660,7 +3660,7 @@ float           i = 1.0;
 
 main()
 /*
- * test class: extern variable, mistaken as called by address instance  : gemini, no return value, illegal 
+ * test class: extern variable, mistaken as called by address instance  : gemini, no return value, illegal
  */
 {
 	extern float    i;
@@ -3717,7 +3717,7 @@ float           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, return value, legal, function declared to
- * return a float 
+ * return a float
  */
 {
 	extern float    i;
@@ -3734,7 +3734,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(variable)
 	float           variable;
 {
@@ -3748,7 +3748,7 @@ castor(variable)
 	return (++variable);
 }
 
-float 
+float
 pollux(variable)
 	float           variable;
 {
@@ -3774,7 +3774,7 @@ float           i, ii, iii;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, return value, pointer to function
- * returning a float 
+ * returning a float
  */
 {
 	float           increment(), result = 0.0;
@@ -3791,7 +3791,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(function, variable)
 	float           (*function) (), variable;
 {
@@ -3805,7 +3805,7 @@ castor(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 pollux(function, variable)
 	float           (*function) (), variable;
 {
@@ -3819,7 +3819,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -3837,7 +3837,7 @@ float           i = 1.0, ii, iii;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, in conditional expression, function
- * declared to return a float 
+ * declared to return a float
  */
 {
 	extern float    i;
@@ -3855,7 +3855,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(variable)
 	float           variable;
 {
@@ -3873,7 +3873,7 @@ castor(variable)
 	return (++variable);
 }
 
-float 
+float
 pollux(variable)
 	float           variable;
 {
@@ -3902,7 +3902,7 @@ float           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, in conditional expression, pointer to
- * function returning a float 
+ * function returning a float
  */
 {
 	extern float    i;
@@ -3922,7 +3922,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(function, variable)
 	float           (*function) (), variable;
 {
@@ -3939,7 +3939,7 @@ castor(function, variable)
 	return (function(variable++));
 }
 
-float 
+float
 pollux(function, variable)
 	float           (*function) (), variable;
 {
@@ -3956,7 +3956,7 @@ pollux(function, variable)
 	return (function(variable++));
 }
 
-float 
+float
 increment(variable)
 	float           variable;
 {
@@ -3973,7 +3973,7 @@ long            variable;
 
 main()				/* alias root */
 /*
- *  test class: extern long variable instance  : linear tree structure, no return value and legal 
+ *  test class: extern long variable instance  : linear tree structure, no return value and legal
  */
 {
 	extern long     i;
@@ -4162,7 +4162,7 @@ long            i, variable;
 
 main()				/* alias root */
 /*
- *  test class: extern long variable instance  : linear tree structure, no return value and illegal 
+ *  test class: extern long variable instance  : linear tree structure, no return value and illegal
  */
 {
 	extern long     i;
@@ -4366,7 +4366,7 @@ long            i;
 
 main()				/* alias root */
 /*
- *  test class: extern variable instance  : linear tree structure, return value and legal, Long function declaration 
+ *  test class: extern variable instance  : linear tree structure, return value and legal, Long function declaration
  */
 {
 	extern long     i;
@@ -4387,7 +4387,7 @@ main()				/* alias root */
 	return (0);
 }
 
-long 
+long
 levelOneNodeOne(variable)
 	long            variable;
 {
@@ -4405,7 +4405,7 @@ levelOneNodeOne(variable)
 	return (storage);
 }
 
-long 
+long
 levelOneNodeTwo(variable)
 	long            variable;
 {
@@ -4423,7 +4423,7 @@ levelOneNodeTwo(variable)
 	return (storage);
 }
 
-long 
+long
 levelTwoNodeOne(variable)
 	long            variable;
 {
@@ -4441,7 +4441,7 @@ levelTwoNodeOne(variable)
 	return (storage);
 }
 
-long 
+long
 levelTwoNodeTwo(variable)
 	long            variable;
 {
@@ -4459,7 +4459,7 @@ levelTwoNodeTwo(variable)
 	return (storage);
 }
 
-long 
+long
 levelTwoNodeThree(variable)
 	long            variable;
 {
@@ -4477,7 +4477,7 @@ levelTwoNodeThree(variable)
 	return (storage);
 }
 
-long 
+long
 levelTwoNodeFour(variable)
 	long            variable;
 {
@@ -4495,56 +4495,56 @@ levelTwoNodeFour(variable)
 	return (storage);
 }
 
-long 
+long
 levelThreeLeafOne(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafTwo(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafThree(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafFour(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafFive(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafSix(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafSeven(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafEight(variable)
 	long            variable;
 {
@@ -4560,7 +4560,7 @@ long            i;
 
 main()
 /*
- * test class: extern variable instance  : linear tree structure, return value, legal pointer to function returning a long 
+ * test class: extern variable instance  : linear tree structure, return value, legal pointer to function returning a long
  */
 {
 	extern long     i;
@@ -4577,7 +4577,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy1(func, Long)
 	long            (*func) (), Long;
 {
@@ -4589,7 +4589,7 @@ dummy1(func, Long)
 	return (i);
 }
 
-long 
+long
 divide4(Long)
 	long            Long;
 {
@@ -4598,7 +4598,7 @@ divide4(Long)
 	return (dummy2(divide2, Long) / 2);
 }
 
-long 
+long
 dummy2(func, Long)
 	long            (*func) (), Long;
 {
@@ -4610,7 +4610,7 @@ dummy2(func, Long)
 	return (i);
 }
 
-long 
+long
 divide2(Long)
 	long            Long;
 {
@@ -4626,7 +4626,7 @@ long            i;
 
 main()				/* alias root */
 /*
- *  test class: extern variable instance  : linear tree structure, used in conditional expression, Long function declaration 
+ *  test class: extern variable instance  : linear tree structure, used in conditional expression, Long function declaration
  */
 {
 	extern long     i;
@@ -4642,7 +4642,7 @@ main()				/* alias root */
 	return (0);
 }
 
-long 
+long
 levelOneNodeOne(variable)
 	long            variable;
 {
@@ -4652,7 +4652,7 @@ levelOneNodeOne(variable)
 	return (2 * levelTwoNodeOne(ii));
 }
 
-long 
+long
 levelTwoNodeOne(variable)
 	long            variable;
 {
@@ -4662,7 +4662,7 @@ levelTwoNodeOne(variable)
 	return (2 * levelThreeLeafOne(iii));
 }
 
-long 
+long
 levelThreeLeafOne(variable)
 	long            variable;
 {
@@ -4679,7 +4679,7 @@ long            i;
 main()
 /*
  * test class: extern variable instance  : linear tree structure, in conditional expression, pointer to function returning a
- * long 
+ * long
  */
 {
 	extern long     i;
@@ -4695,7 +4695,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy1(func, Long)
 	long            (*func) (), Long;
 {
@@ -4706,7 +4706,7 @@ dummy1(func, Long)
 	return (ii);
 }
 
-long 
+long
 divide4(Long)
 	long            Long;
 {
@@ -4715,7 +4715,7 @@ divide4(Long)
 	return (dummy2(divide2, Long) / 2);
 }
 
-long 
+long
 dummy2(func, Long)
 	long            (*func) (), Long;
 {
@@ -4726,7 +4726,7 @@ dummy2(func, Long)
 	return (ii);
 }
 
-long 
+long
 divide2(Long)
 	long            Long;
 {
@@ -4743,7 +4743,7 @@ long            i;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, no return value, legal 
+ * test class: extern variable instance  : recursive call, no return value, legal
  */
 {
 	extern long     i;
@@ -4776,7 +4776,7 @@ long            i = 1;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, no return value, illegal 
+ * test class: extern variable instance  : recursive call, no return value, illegal
  */
 {
 	extern long     i;
@@ -4815,7 +4815,7 @@ long            i = 1;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, return value, legal, Long function declaration 
+ * test class: extern variable instance  : recursive call, return value, legal, Long function declaration
  */
 {
 	extern long     i;
@@ -4831,7 +4831,7 @@ main()
 	return (0);
 }
 
-long 
+long
 recursiveFunction(variable)
 	long            variable;
 {
@@ -4856,7 +4856,7 @@ long            i = 1;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, return value, pointer to function returning a long 
+ * test class: extern variable instance  : recursive call, return value, pointer to function returning a long
  */
 {
 	long            increment(), dummy();
@@ -4871,7 +4871,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy(function, variable)
 	long            (*function) (), variable;
 {
@@ -4884,7 +4884,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -4901,7 +4901,7 @@ long            i = 1;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, function in conditional expression, Long function declaration 
+ * test class: extern variable instance  : recursive call, function in conditional expression, Long function declaration
  */
 {
 	long            recursiveFunction();
@@ -4916,7 +4916,7 @@ main()
 	return (0);
 }
 
-long 
+long
 recursiveFunction(variable)
 	long            variable;
 {
@@ -4938,7 +4938,7 @@ long            i;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, in conditional expression, pointer to function returning a long 
+ * test class: extern variable instance  : recursive call, in conditional expression, pointer to function returning a long
  */
 {
 	long            increment(), dummy();
@@ -4953,7 +4953,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy(function, variable)
 	long            (*function) (), variable;
 {
@@ -4964,7 +4964,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -4981,7 +4981,7 @@ long            i = 1;
 
 main()
 /*
- * test class: extern variable instance  : gemini, no return value, legal 
+ * test class: extern variable instance  : gemini, no return value, legal
  */
 {
 	extern long     i;
@@ -5026,7 +5026,7 @@ long            i = 1;
 
 main()
 /*
- * test class: extern variable instance  : gemini, no return value, illegal 
+ * test class: extern variable instance  : gemini, no return value, illegal
  */
 {
 	extern long     i;
@@ -5082,7 +5082,7 @@ long            i;
 
 main()
 /*
- * test class: extern variable instance  : gemini, return value, legal, function declared to return a long 
+ * test class: extern variable instance  : gemini, return value, legal, function declared to return a long
  */
 {
 	extern long     i;
@@ -5099,7 +5099,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(variable)
 	long            variable;
 {
@@ -5113,7 +5113,7 @@ castor(variable)
 	return (++variable);
 }
 
-long 
+long
 pollux(variable)
 	long            variable;
 {
@@ -5138,7 +5138,7 @@ long            i = 1;
 
 main()
 /*
- * test class: extern variable instance  : gemini, return value, pointer to function returning a long 
+ * test class: extern variable instance  : gemini, return value, pointer to function returning a long
  */
 {
 	long            increment();
@@ -5154,7 +5154,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(function, variable)
 	long            (*function) (), variable;
 {
@@ -5168,7 +5168,7 @@ castor(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 pollux(function, variable)
 	long            (*function) (), variable;
 {
@@ -5182,7 +5182,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -5199,7 +5199,7 @@ long            i = 1, ii, iii;
 
 main()
 /*
- * test class: extern variable instance  : gemini, in conditional expression, function declared to return a long 
+ * test class: extern variable instance  : gemini, in conditional expression, function declared to return a long
  */
 {
 	extern long     i;
@@ -5214,7 +5214,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(variable)
 	long            variable;
 {
@@ -5229,7 +5229,7 @@ castor(variable)
 	return (++variable);
 }
 
-long 
+long
 pollux(variable)
 	long            variable;
 {
@@ -5254,7 +5254,7 @@ long            i;
 
 main()
 /*
- * test class: extern variable instance  : gemini, in conditional expression, pointer to function returning a long 
+ * test class: extern variable instance  : gemini, in conditional expression, pointer to function returning a long
  */
 {
 	extern long     i;
@@ -5271,7 +5271,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(function, variable)
 	long            (*function) (), variable;
 {
@@ -5284,7 +5284,7 @@ castor(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 pollux(function, variable)
 	long            (*function) (), variable;
 {
@@ -5297,7 +5297,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -5313,7 +5313,7 @@ long            i;
 
 main()				/* alias root */
 /*
- *  test class: external variable, with local namesake instance  : linear tree structure, no return value and legal 
+ *  test class: external variable, with local namesake instance  : linear tree structure, no return value and legal
  */
 {
 	extern long     i;
@@ -5488,7 +5488,7 @@ long            i, whatIsThis;
 
 main()				/* alias root */
 /*
- *  test class: external variable, with local namesake instance  : linear tree structure, no return value and illegal 
+ *  test class: external variable, with local namesake instance  : linear tree structure, no return value and illegal
  */
 {
 	extern long     i;
@@ -5662,7 +5662,7 @@ long            i = 1;
 main()				/* alias root */
 /*
  *  test class: external variable, with local namesake instance  : linear tree structure, return value and legal, Long
- * function declaration 
+ * function declaration
  */
 {
 	long            levelOneNodeOne(), levelOneNodeTwo();
@@ -5681,7 +5681,7 @@ main()				/* alias root */
 	return (0);
 }
 
-long 
+long
 levelOneNodeOne(variable)
 	long            variable;
 {
@@ -5700,7 +5700,7 @@ levelOneNodeOne(variable)
 	return (variable);
 }
 
-long 
+long
 levelOneNodeTwo(variable)
 	long            variable;
 {
@@ -5719,7 +5719,7 @@ levelOneNodeTwo(variable)
 	return (variable);
 }
 
-long 
+long
 levelTwoNodeOne(variable)
 	long            variable;
 {
@@ -5738,7 +5738,7 @@ levelTwoNodeOne(variable)
 	return (variable);
 }
 
-long 
+long
 levelTwoNodeTwo(variable)
 	long            variable;
 {
@@ -5757,7 +5757,7 @@ levelTwoNodeTwo(variable)
 	return (variable);
 }
 
-long 
+long
 levelTwoNodeThree(variable)
 	long            variable;
 {
@@ -5776,7 +5776,7 @@ levelTwoNodeThree(variable)
 	return (variable);
 }
 
-long 
+long
 levelTwoNodeFour(variable)
 	long            variable;
 {
@@ -5795,7 +5795,7 @@ levelTwoNodeFour(variable)
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafOne(variable)
 	long            variable;
 {
@@ -5804,7 +5804,7 @@ levelThreeLeafOne(variable)
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafTwo(variable)
 	long            variable;
 {
@@ -5813,7 +5813,7 @@ levelThreeLeafTwo(variable)
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafThree(variable)
 	long            variable;
 {
@@ -5822,7 +5822,7 @@ levelThreeLeafThree(variable)
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafFour(variable)
 	long            variable;
 {
@@ -5831,7 +5831,7 @@ levelThreeLeafFour(variable)
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafFive(variable)
 	long            variable;
 {
@@ -5840,7 +5840,7 @@ levelThreeLeafFive(variable)
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafSix(variable)
 	long            variable;
 {
@@ -5849,7 +5849,7 @@ levelThreeLeafSix(variable)
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafSeven(variable)
 	long            variable;
 {
@@ -5858,7 +5858,7 @@ levelThreeLeafSeven(variable)
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafEight(variable)
 	long            variable;
 {
@@ -5877,7 +5877,7 @@ long            i;
 main()
 /*
  * test class: external variable, with local namesake instance  : linear tree structure, return value, legal pointer to
- * function returning a long 
+ * function returning a long
  */
 {
 	extern long     i;
@@ -5894,7 +5894,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy1(func, Long)
 	long            (*func) (), Long;
 {
@@ -5906,7 +5906,7 @@ dummy1(func, Long)
 	return (i);
 }
 
-long 
+long
 divide4(Long)
 	long            Long;
 {
@@ -5915,7 +5915,7 @@ divide4(Long)
 	return (dummy2(divide2, Long) / 2);
 }
 
-long 
+long
 dummy2(func, Long)
 	long            (*func) (), Long;
 {
@@ -5927,7 +5927,7 @@ dummy2(func, Long)
 	return (i);
 }
 
-long 
+long
 divide2(Long)
 	long            Long;
 {
@@ -5944,7 +5944,7 @@ long            i = 1;
 main()				/* alias root */
 /*
  *  test class: external variable, with local namesake instance  : linear tree structure, used in conditional expression,
- * Long function declaration 
+ * Long function declaration
  */
 {
 	long            levelOneNodeOne();
@@ -5958,7 +5958,7 @@ main()				/* alias root */
 	return (0);
 }
 
-long 
+long
 levelOneNodeOne(variable)
 	long            variable;
 {
@@ -5968,7 +5968,7 @@ levelOneNodeOne(variable)
 	return (2 * levelTwoNodeOne(i));
 }
 
-long 
+long
 levelTwoNodeOne(variable)
 	long            variable;
 {
@@ -5978,7 +5978,7 @@ levelTwoNodeOne(variable)
 	return (2 * levelThreeLeafOne(i));
 }
 
-long 
+long
 levelThreeLeafOne(variable)
 	long            variable;
 {
@@ -5995,7 +5995,7 @@ long            i;
 main()
 /*
  * test class: external variable, with local namesake instance  : linear tree structure, in conditional expression, pointer
- * to function returning a long 
+ * to function returning a long
  */
 {
 	extern long     i;
@@ -6011,7 +6011,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy1(func, Long)
 	long            (*func) (), Long;
 {
@@ -6022,7 +6022,7 @@ dummy1(func, Long)
 	return (i);
 }
 
-long 
+long
 divide4(Long)
 	long            Long;
 {
@@ -6031,7 +6031,7 @@ divide4(Long)
 	return (dummy2(divide2, Long) / 2);
 }
 
-long 
+long
 dummy2(func, Long)
 	long            (*func) (), Long;
 {
@@ -6042,7 +6042,7 @@ dummy2(func, Long)
 	return (i);
 }
 
-long 
+long
 divide2(Long)
 	long            Long;
 {
@@ -6059,7 +6059,7 @@ long            i = 1;
 
 main()
 /*
- * test class: external variable, with local namesake instance  : recursive call, no return value, legal 
+ * test class: external variable, with local namesake instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(i);
@@ -6090,7 +6090,7 @@ long            i = 1;
 
 main()
 /*
- * test class: external variable, with local namesake instance  : recursive call, no return value, illegal 
+ * test class: external variable, with local namesake instance  : recursive call, no return value, illegal
  */
 {
 	long            result;
@@ -6132,7 +6132,7 @@ long            i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, return value, legal, Long function
- * declaration 
+ * declaration
  */
 {
 	extern long     i;
@@ -6148,7 +6148,7 @@ main()
 	return (0);
 }
 
-long 
+long
 recursiveFunction(variable)
 	long            variable;
 {
@@ -6174,7 +6174,7 @@ long            i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, return value, pointer to function
- * returning a long 
+ * returning a long
  */
 {
 	long            increment(), dummy();
@@ -6189,7 +6189,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy(function, variable)
 	long            (*function) (), variable;
 {
@@ -6202,7 +6202,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -6220,7 +6220,7 @@ long            i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, function in conditional expression, Long
- * function declaration 
+ * function declaration
  */
 {
 	extern long     i;
@@ -6235,7 +6235,7 @@ main()
 	return (0);
 }
 
-long 
+long
 recursiveFunction(variable)
 	long            variable;
 {
@@ -6258,7 +6258,7 @@ long            i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, in conditional expression, pointer to
- * function returning a long 
+ * function returning a long
  */
 {
 	long            increment(), dummy();
@@ -6272,7 +6272,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy(function, variable)
 	long            (*function) (), variable;
 {
@@ -6283,7 +6283,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -6300,7 +6300,7 @@ long            i;
 
 main()
 /*
- * test class: external variable, with local namesake instance  : gemini, no return value, legal 
+ * test class: external variable, with local namesake instance  : gemini, no return value, legal
  */
 {
 	extern long     i;
@@ -6346,7 +6346,7 @@ static long     i = 1;
 
 main()
 /*
- * test class: external variable, with local namesake instance  : gemini, no return value, illegal 
+ * test class: external variable, with local namesake instance  : gemini, no return value, illegal
  */
 {
 	extern long     i;
@@ -6403,7 +6403,7 @@ long            i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, return value, legal, function declared to return a
- * long 
+ * long
  */
 {
 	long            castor();
@@ -6418,7 +6418,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(variable)
 	long            variable;
 {
@@ -6432,7 +6432,7 @@ castor(variable)
 	return (++variable);
 }
 
-long 
+long
 pollux(variable)
 	long            variable;
 {
@@ -6457,7 +6457,7 @@ long            i = 1;
 
 main()
 /*
- * test class: external variable, with local namesake instance  : gemini, return value, pointer to function returning a long 
+ * test class: external variable, with local namesake instance  : gemini, return value, pointer to function returning a long
  */
 {
 	extern long     i;
@@ -6474,7 +6474,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(function, variable)
 	long            (*function) (), variable;
 {
@@ -6488,7 +6488,7 @@ castor(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 pollux(function, variable)
 	long            (*function) (), variable;
 {
@@ -6502,7 +6502,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -6520,7 +6520,7 @@ long            i;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, in conditional expression, function declared to
- * return a long 
+ * return a long
  */
 {
 	extern long     i;
@@ -6536,7 +6536,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(variable)
 	long            variable;
 {
@@ -6548,7 +6548,7 @@ castor(variable)
 	return (++variable);
 }
 
-long 
+long
 pollux(variable)
 	long            variable;
 {
@@ -6572,7 +6572,7 @@ long            i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, in conditional expression, pointer to function
- * returning a long 
+ * returning a long
  */
 {
 	long            increment();
@@ -6587,7 +6587,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(function, variable)
 	long            (*function) (), variable;
 {
@@ -6600,7 +6600,7 @@ castor(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 pollux(function, variable)
 	long            (*function) (), variable;
 {
@@ -6613,7 +6613,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -6629,7 +6629,7 @@ long            i, variable11, variable12, variable21, variable22, variable23, v
 
 main()				/* alias root */
 /*
- *  test class: extern variable, mistaken as called by address instance  : linear tree structure, no return value and legal 
+ *  test class: extern variable, mistaken as called by address instance  : linear tree structure, no return value and legal
  */
 {
 	extern long     i;
@@ -6791,7 +6791,7 @@ long            i, variable11, variable12, variable21, variable22, variable23, v
 main()				/* alias root */
 /*
  *  test class: extern variable, mistaken as called by address instance  : linear tree structure, return value and legal,
- * Long function declaration 
+ * Long function declaration
  */
 {
 	extern long     i;
@@ -6813,7 +6813,7 @@ main()				/* alias root */
 	return (0);
 }
 
-long 
+long
 levelOneNodeOne(variable)
 	long            variable;
 {
@@ -6831,7 +6831,7 @@ levelOneNodeOne(variable)
 	return (variable);
 }
 
-long 
+long
 levelOneNodeTwo(variable)
 	long            variable;
 {
@@ -6849,7 +6849,7 @@ levelOneNodeTwo(variable)
 	return (variable);
 }
 
-long 
+long
 levelTwoNodeOne(variable)
 	long            variable;
 {
@@ -6867,7 +6867,7 @@ levelTwoNodeOne(variable)
 	return (variable);
 }
 
-long 
+long
 levelTwoNodeTwo(variable)
 	long            variable;
 {
@@ -6885,7 +6885,7 @@ levelTwoNodeTwo(variable)
 	return (variable);
 }
 
-long 
+long
 levelTwoNodeThree(variable)
 	long            variable;
 {
@@ -6903,7 +6903,7 @@ levelTwoNodeThree(variable)
 	return (variable);
 }
 
-long 
+long
 levelTwoNodeFour(variable)
 	long            variable;
 {
@@ -6921,56 +6921,56 @@ levelTwoNodeFour(variable)
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafOne(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafTwo(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafThree(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafFour(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafFive(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafSix(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafSeven(variable)
 	long            variable;
 {
 	return (variable);
 }
 
-long 
+long
 levelThreeLeafEight(variable)
 	long            variable;
 {
@@ -6987,7 +6987,7 @@ long            i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : linear tree structure, return value, legal pointer
- * to function returning a long 
+ * to function returning a long
  */
 {
 	extern long     i;
@@ -7004,7 +7004,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy1(func, Long)
 	long            (*func) (), Long;
 {
@@ -7016,7 +7016,7 @@ dummy1(func, Long)
 	return (result);
 }
 
-long 
+long
 divide4(Long)
 	long            Long;
 {
@@ -7025,7 +7025,7 @@ divide4(Long)
 	return (dummy2(divide2, Long) / 2);
 }
 
-long 
+long
 dummy2(func, Long)
 	long            (*func) (), Long;
 {
@@ -7037,7 +7037,7 @@ dummy2(func, Long)
 	return (result);
 }
 
-long 
+long
 divide2(Long)
 	long            Long;
 {
@@ -7054,7 +7054,7 @@ long            i;
 main()				/* alias root */
 /*
  *  test class: extern variable, mistaken as called by address instance  : linear tree structure, used in conditional
- * expression, Long function declaration 
+ * expression, Long function declaration
  */
 {
 	extern long     i;
@@ -7070,7 +7070,7 @@ main()				/* alias root */
 	return (0);
 }
 
-long 
+long
 levelOneNodeOne(variable)
 	long            variable;
 {
@@ -7080,7 +7080,7 @@ levelOneNodeOne(variable)
 	return (2 * levelTwoNodeOne(ii));
 }
 
-long 
+long
 levelTwoNodeOne(variable)
 	long            variable;
 {
@@ -7090,7 +7090,7 @@ levelTwoNodeOne(variable)
 	return (2 * levelThreeLeafOne(iii));
 }
 
-long 
+long
 levelThreeLeafOne(variable)
 	long            variable;
 {
@@ -7107,7 +7107,7 @@ long            i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : linear tree structure, in conditional expression,
- * pointer to function returning a long 
+ * pointer to function returning a long
  */
 {
 	extern long     i;
@@ -7123,7 +7123,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy1(func, Long)
 	long            (*func) (), Long;
 {
@@ -7135,7 +7135,7 @@ dummy1(func, Long)
 	return (ii);
 }
 
-long 
+long
 divide4(Long)
 	long            Long;
 {
@@ -7144,7 +7144,7 @@ divide4(Long)
 	return (dummy2(divide2, Long) / 2);
 }
 
-long 
+long
 dummy2(func, Long)
 	long            (*func) (), Long;
 {
@@ -7156,7 +7156,7 @@ dummy2(func, Long)
 	return (ii);
 }
 
-long 
+long
 divide2(Long)
 	long            Long;
 {
@@ -7173,7 +7173,7 @@ long            i;
 
 main()
 /*
- * test class: extern variable, mistaken as called by address instance  : recursive call, no return value, legal 
+ * test class: extern variable, mistaken as called by address instance  : recursive call, no return value, legal
  */
 {
 	extern long     i;
@@ -7208,7 +7208,7 @@ long            i = 1;
 
 main()
 /*
- * test class: extern variable, mistaken as called by address instance  : recursive call, no return value, illegal 
+ * test class: extern variable, mistaken as called by address instance  : recursive call, no return value, illegal
  */
 {
 	extern long     i;
@@ -7248,7 +7248,7 @@ long            i = 1;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, return value, legal, Long function
- * declaration 
+ * declaration
  */
 {
 	extern long     i;
@@ -7264,7 +7264,7 @@ main()
 	return (0);
 }
 
-long 
+long
 recursiveFunction(variable)
 	long            variable;
 {
@@ -7290,7 +7290,7 @@ long            i = 1;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, return value, pointer to function
- * returning a long 
+ * returning a long
  */
 {
 	long            increment(), result = 0, dummy();
@@ -7305,7 +7305,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy(function, variable)
 	long            (*function) (), variable;
 {
@@ -7318,7 +7318,7 @@ dummy(function, variable)
 	return (function(variable--));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -7336,7 +7336,7 @@ long            i = 1;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, function in conditional
- * expression, Long function declaration 
+ * expression, Long function declaration
  */
 {
 	long            recursiveFunction();
@@ -7351,7 +7351,7 @@ main()
 	return (0);
 }
 
-long 
+long
 recursiveFunction(variable)
 	long            variable;
 {
@@ -7374,7 +7374,7 @@ long            i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, in conditional expression, pointer
- * to function returning a long 
+ * to function returning a long
  */
 {
 	long            increment(), dummy();
@@ -7389,7 +7389,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy(function, variable)
 	long            (*function) (), variable;
 {
@@ -7400,7 +7400,7 @@ dummy(function, variable)
 	return (function(variable--));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -7417,7 +7417,7 @@ long            i = 1;
 
 main()
 /*
- * test class: extern variable, mistaken as called by address instance  : gemini, no return value, legal 
+ * test class: extern variable, mistaken as called by address instance  : gemini, no return value, legal
  */
 {
 	extern long     i;
@@ -7464,7 +7464,7 @@ long            i = 1;
 
 main()
 /*
- * test class: extern variable, mistaken as called by address instance  : gemini, no return value, illegal 
+ * test class: extern variable, mistaken as called by address instance  : gemini, no return value, illegal
  */
 {
 	extern long     i;
@@ -7521,7 +7521,7 @@ long            i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, return value, legal, function declared to
- * return a long 
+ * return a long
  */
 {
 	extern long     i;
@@ -7538,7 +7538,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(variable)
 	long            variable;
 {
@@ -7552,7 +7552,7 @@ castor(variable)
 	return (++variable);
 }
 
-long 
+long
 pollux(variable)
 	long            variable;
 {
@@ -7578,7 +7578,7 @@ long            i, ii, iii;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, return value, pointer to function
- * returning a long 
+ * returning a long
  */
 {
 	long            increment(), result = 0;
@@ -7595,7 +7595,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(function, variable)
 	long            (*function) (), variable;
 {
@@ -7609,7 +7609,7 @@ castor(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 pollux(function, variable)
 	long            (*function) (), variable;
 {
@@ -7623,7 +7623,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -7641,7 +7641,7 @@ long            i = 1, ii, iii;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, in conditional expression, function
- * declared to return a long 
+ * declared to return a long
  */
 {
 	extern long     i;
@@ -7656,7 +7656,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(variable)
 	long            variable;
 {
@@ -7671,7 +7671,7 @@ castor(variable)
 	return (++variable);
 }
 
-long 
+long
 pollux(variable)
 	long            variable;
 {
@@ -7697,7 +7697,7 @@ long            i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, in conditional expression, pointer to
- * function returning a long 
+ * function returning a long
  */
 {
 	extern long     i;
@@ -7714,7 +7714,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(function, variable)
 	long            (*function) (), variable;
 {
@@ -7727,7 +7727,7 @@ castor(function, variable)
 	return (function(variable++));
 }
 
-long 
+long
 pollux(function, variable)
 	long            (*function) (), variable;
 {
@@ -7740,7 +7740,7 @@ pollux(function, variable)
 	return (function(variable++));
 }
 
-long 
+long
 increment(variable)
 	long            variable;
 {
@@ -7756,7 +7756,7 @@ short           i;
 
 main()				/* alias root */
 /*
- *  test class: extern variable instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: extern variable instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	extern short    i;
@@ -7929,7 +7929,7 @@ short           i;
 
 main()				/* alias root */
 /*
- *  test class: extern variable instance  : linear tree structure, return value and legal, integer function declaration 
+ *  test class: extern variable instance  : linear tree structure, return value and legal, integer function declaration
  */
 {
 	extern short    i;
@@ -7950,7 +7950,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	short           variable;
 {
@@ -7968,7 +7968,7 @@ levelOneNodeOne(variable)
 	return (storage);
 }
 
-short 
+short
 levelOneNodeTwo(variable)
 	short           variable;
 {
@@ -7986,7 +7986,7 @@ levelOneNodeTwo(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	short           variable;
 {
@@ -8004,7 +8004,7 @@ levelTwoNodeOne(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeTwo(variable)
 	short           variable;
 {
@@ -8022,7 +8022,7 @@ levelTwoNodeTwo(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeThree(variable)
 	short           variable;
 {
@@ -8040,7 +8040,7 @@ levelTwoNodeThree(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeFour(variable)
 	short           variable;
 {
@@ -8058,56 +8058,56 @@ levelTwoNodeFour(variable)
 	return (storage);
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafTwo(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafThree(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafFour(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafFive(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafSix(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafSeven(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafEight(variable)
 	short           variable;
 {
@@ -8125,7 +8125,7 @@ short           i, j, k;
 main()
 /*
  * test class: extern variable instance  : linear tree structure, return value and legal, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -8199,7 +8199,7 @@ short           i;
 main()
 /*
  * test class: extern variable instance  : linear tree structure, return value, legal pointer to function returning an
- * integer 
+ * integer
  */
 {
 	extern short    i;
@@ -8227,7 +8227,7 @@ dummy1(func, integer)
 	return (i);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -8247,7 +8247,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -8263,7 +8263,7 @@ short           i, j;
 
 main()				/* alias root */
 /*
- *  test class: extern variable instance  : linear tree structure, used in conditional expression, no function declaration 
+ *  test class: extern variable instance  : linear tree structure, used in conditional expression, no function declaration
  */
 {
 	extern short    i, j;
@@ -8385,7 +8385,7 @@ short           i;
 main()				/* alias root */
 /*
  *  test class: extern variable instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	extern short    i;
@@ -8401,7 +8401,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	short           variable;
 {
@@ -8411,7 +8411,7 @@ levelOneNodeOne(variable)
 	return (2 * levelTwoNodeOne(ii));
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	short           variable;
 {
@@ -8421,7 +8421,7 @@ levelTwoNodeOne(variable)
 	return (2 * levelThreeLeafOne(iii));
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	short           variable;
 {
@@ -8438,7 +8438,7 @@ char            i = 4, j = 8;
 main()				/* alias root */
 /*
  *  test class: extern variable instance  : linear tree structure, used in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	extern char     i, j;
@@ -8483,7 +8483,7 @@ short           i;
 main()
 /*
  * test class: extern variable instance  : linear tree structure, in conditional expression, pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	extern short    i;
@@ -8509,7 +8509,7 @@ dummy1(func, integer)
 	return (ii);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -8528,7 +8528,7 @@ dummy2(func, integer)
 	return (ii);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -8545,7 +8545,7 @@ short           i = 1;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, return value, legal, no function declaration 
+ * test class: extern variable instance  : recursive call, return value, legal, no function declaration
  */
 {
 	i = recursiveFunction(i);
@@ -8581,7 +8581,7 @@ short           i = 1;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, return value, legal, integer function declaration 
+ * test class: extern variable instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	extern short    i;
@@ -8597,7 +8597,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	short           variable;
 {
@@ -8623,7 +8623,7 @@ short           i;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, return value, function declared to return a pointer to character 
+ * test class: extern variable instance  : recursive call, return value, function declared to return a pointer to character
  */
 {
 	char           *s, *recursiveFunction();
@@ -8664,7 +8664,7 @@ short           i = 1;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: extern variable instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	short           increment();
@@ -8691,7 +8691,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -8708,7 +8708,7 @@ short           i = 1, j;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, function in conditional expression, no function declaration 
+ * test class: extern variable instance  : recursive call, function in conditional expression, no function declaration
  */
 {
 	extern short    i;
@@ -8744,7 +8744,7 @@ short           i = 1;
 
 main()
 /*
- * test class: extern variable instance  : recursive call, function in conditional expression, integer function declaration 
+ * test class: extern variable instance  : recursive call, function in conditional expression, integer function declaration
  */
 {
 	short           recursiveFunction();
@@ -8759,7 +8759,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	short           variable;
 {
@@ -8783,7 +8783,7 @@ short           i;
 main()
 /*
  * test class: extern variable instance  : recursive call, in conditional expression, function declared to return a pointer
- * to character 
+ * to character
  */
 {
 	char           *recursiveFunction();
@@ -8821,7 +8821,7 @@ short           i;
 main()
 /*
  * test class: extern variable instance  : recursive call, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           increment();
@@ -8845,7 +8845,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -8862,7 +8862,7 @@ short           i, ii, iii;
 
 main()
 /*
- * test class: extern variable instance  : gemini, return value, legal, no function declaration 
+ * test class: extern variable instance  : gemini, return value, legal, no function declaration
  */
 {
 	i = 1;
@@ -8910,7 +8910,7 @@ short           i;
 
 main()
 /*
- * test class: extern variable instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: extern variable instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	extern short    i;
@@ -8927,7 +8927,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	short           variable;
 {
@@ -8941,7 +8941,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	short           variable;
 {
@@ -8966,7 +8966,7 @@ char           *numbers = "0123456789";
 
 main()
 /*
- * test class: extern variable instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: extern variable instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s, *castor();
@@ -9023,7 +9023,7 @@ short           i = 1;
 
 main()
 /*
- * test class: extern variable instance  : gemini, return value, pointer to function returning an integer 
+ * test class: extern variable instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	short           increment();
@@ -9062,7 +9062,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -9079,7 +9079,7 @@ short           i = 1;
 
 main()
 /*
- * test class: extern variable instance  : gemini, in conditional expression, no function declaration 
+ * test class: extern variable instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor(i) == 2))
@@ -9123,7 +9123,7 @@ short           i = 1, ii, iii;
 
 main()
 /*
- * test class: extern variable instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: extern variable instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 	extern short    i;
@@ -9138,7 +9138,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	short           variable;
 {
@@ -9153,7 +9153,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	short           variable;
 {
@@ -9179,7 +9179,7 @@ static short    i, ii, iii;
 main()
 /*
  * test class: extern variable instance  : gemini, in conditional expression, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *castor();
@@ -9234,7 +9234,7 @@ short           i;
 
 main()
 /*
- * test class: extern variable instance  : gemini, in conditional expression, pointer to function returning an integer 
+ * test class: extern variable instance  : gemini, in conditional expression, pointer to function returning an integer
  */
 {
 	extern short    i;
@@ -9272,7 +9272,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -9289,7 +9289,7 @@ short           i;
 main()				/* alias root */
 /*
  *  test class: external variable, with local namesake instance  : linear tree structure, return value and legal, no
- * function declaration 
+ * function declaration
  */
 {
 	extern short    i;
@@ -9485,7 +9485,7 @@ short           i = 1;
 main()				/* alias root */
 /*
  *  test class: external variable, with local namesake instance  : linear tree structure, return value and legal, integer
- * function declaration 
+ * function declaration
  */
 {
 	short           levelOneNodeOne(), levelOneNodeTwo();
@@ -9504,7 +9504,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	short           variable;
 {
@@ -9523,7 +9523,7 @@ levelOneNodeOne(variable)
 	return (variable);
 }
 
-short 
+short
 levelOneNodeTwo(variable)
 	short           variable;
 {
@@ -9542,7 +9542,7 @@ levelOneNodeTwo(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	short           variable;
 {
@@ -9561,7 +9561,7 @@ levelTwoNodeOne(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeTwo(variable)
 	short           variable;
 {
@@ -9580,7 +9580,7 @@ levelTwoNodeTwo(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeThree(variable)
 	short           variable;
 {
@@ -9599,7 +9599,7 @@ levelTwoNodeThree(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeFour(variable)
 	short           variable;
 {
@@ -9618,7 +9618,7 @@ levelTwoNodeFour(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	short           variable;
 {
@@ -9627,7 +9627,7 @@ levelThreeLeafOne(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafTwo(variable)
 	short           variable;
 {
@@ -9636,7 +9636,7 @@ levelThreeLeafTwo(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafThree(variable)
 	short           variable;
 {
@@ -9645,7 +9645,7 @@ levelThreeLeafThree(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafFour(variable)
 	short           variable;
 {
@@ -9654,7 +9654,7 @@ levelThreeLeafFour(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafFive(variable)
 	short           variable;
 {
@@ -9663,7 +9663,7 @@ levelThreeLeafFive(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafSix(variable)
 	short           variable;
 {
@@ -9672,7 +9672,7 @@ levelThreeLeafSix(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafSeven(variable)
 	short           variable;
 {
@@ -9681,7 +9681,7 @@ levelThreeLeafSeven(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafEight(variable)
 	short           variable;
 {
@@ -9701,7 +9701,7 @@ short           i;
 main()
 /*
  * test class: external variable, with local namesake instance  : linear tree structure, return value and legal, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -9773,7 +9773,7 @@ short           i;
 main()
 /*
  * test class: external variable, with local namesake instance  : linear tree structure, return value, legal pointer to
- * function returning an integer 
+ * function returning an integer
  */
 {
 	extern short    i;
@@ -9801,7 +9801,7 @@ dummy1(func, integer)
 	return (i);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -9821,7 +9821,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -9838,7 +9838,7 @@ short           i;
 main()				/* alias root */
 /*
  *  test class: external variable, with local namesake instance  : linear tree structure, used in conditional expression, no
- * function declaration 
+ * function declaration
  */
 {
 	extern short    i;
@@ -9992,7 +9992,7 @@ short           i = 1;
 main()				/* alias root */
 /*
  *  test class: external variable, with local namesake instance  : linear tree structure, used in conditional expression,
- * integer function declaration 
+ * integer function declaration
  */
 {
 	short           levelOneNodeOne();
@@ -10006,7 +10006,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	short           variable;
 {
@@ -10016,7 +10016,7 @@ levelOneNodeOne(variable)
 	return (2 * levelTwoNodeOne(i));
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	short           variable;
 {
@@ -10026,7 +10026,7 @@ levelTwoNodeOne(variable)
 	return (2 * levelThreeLeafOne(i));
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	short           variable;
 {
@@ -10043,7 +10043,7 @@ char            i = 4, j = 8;
 main()				/* alias root */
 /*
  *  test class: external variable, with local namesake instance  : linear tree structure, used in conditional expression,
- * function declared to return a pointer to character 
+ * function declared to return a pointer to character
  */
 {
 	extern char     i, j;
@@ -10088,7 +10088,7 @@ short           i;
 main()
 /*
  * test class: external variable, with local namesake instance  : linear tree structure, in conditional expression, pointer
- * to function returning an integer 
+ * to function returning an integer
  */
 {
 	extern short    i;
@@ -10114,7 +10114,7 @@ dummy1(func, integer)
 	return (i);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -10133,7 +10133,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -10151,7 +10151,7 @@ short           i;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, return value, legal, no function
- * declaration 
+ * declaration
  */
 {
 	extern short    i;
@@ -10191,7 +10191,7 @@ short           i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, return value, legal, integer function
- * declaration 
+ * declaration
  */
 {
 	extern short    i;
@@ -10207,7 +10207,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	short           variable;
 {
@@ -10234,7 +10234,7 @@ short           i;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, return value, function declared to return
- * a pointer to character 
+ * a pointer to character
  */
 {
 	char           *s, *recursiveFunction();
@@ -10277,7 +10277,7 @@ short           i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, return value, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	short           increment();
@@ -10304,7 +10304,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -10322,7 +10322,7 @@ short           i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, function in conditional expression, no
- * function declaration 
+ * function declaration
  */
 {
 	extern short    i;
@@ -10357,7 +10357,7 @@ short           i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, function in conditional expression,
- * integer function declaration 
+ * integer function declaration
  */
 {
 	extern short    i;
@@ -10372,7 +10372,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	short           variable;
 {
@@ -10396,7 +10396,7 @@ short           i;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, in conditional expression, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	char           *recursiveFunction();
@@ -10434,7 +10434,7 @@ short           i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : recursive call, in conditional expression, pointer to
- * function returning an integer 
+ * function returning an integer
  */
 {
 	short           increment();
@@ -10458,7 +10458,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -10475,7 +10475,7 @@ static short    i;
 
 main()
 /*
- * test class: external variable, with local namesake instance  : gemini, return value, legal, no function declaration 
+ * test class: external variable, with local namesake instance  : gemini, return value, legal, no function declaration
  */
 {
 	extern short    i;
@@ -10530,7 +10530,7 @@ short           i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, return value, legal, function declared to return
- * an integer 
+ * an integer
  */
 {
 	short           castor();
@@ -10545,7 +10545,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	short           variable;
 {
@@ -10559,7 +10559,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	short           variable;
 {
@@ -10585,7 +10585,7 @@ short           i = 2;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, return value, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *s, *castor();
@@ -10641,7 +10641,7 @@ short           i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, return value, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	extern short    i;
@@ -10681,7 +10681,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -10698,7 +10698,7 @@ short           i;
 
 main()
 /*
- * test class: external variable, with local namesake instance  : gemini, in conditional expression, no function declaration 
+ * test class: external variable, with local namesake instance  : gemini, in conditional expression, no function declaration
  */
 {
 	extern short    i;
@@ -10746,7 +10746,7 @@ short           i;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, in conditional expression, function declared to
- * return an integer 
+ * return an integer
  */
 {
 	extern short    i;
@@ -10762,7 +10762,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	short           variable;
 {
@@ -10774,7 +10774,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	short           variable;
 {
@@ -10798,7 +10798,7 @@ short           i = 2;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *castor();
@@ -10848,7 +10848,7 @@ short           i = 1;
 main()
 /*
  * test class: external variable, with local namesake instance  : gemini, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	short           increment();
@@ -10884,7 +10884,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -10901,7 +10901,7 @@ short           i, variable11, variable12, variable21, variable22, variable23, v
 main()				/* alias root */
 /*
  *  test class: extern variable, mistaken as called by address instance  : linear tree structure, return value and legal, no
- * function declaration 
+ * function declaration
  */
 {
 	extern short    i;
@@ -11076,7 +11076,7 @@ short           i, variable11, variable12, variable21, variable22, variable23, v
 main()				/* alias root */
 /*
  *  test class: extern variable, mistaken as called by address instance  : linear tree structure, return value and legal,
- * integer function declaration 
+ * integer function declaration
  */
 {
 	extern short    i;
@@ -11098,7 +11098,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	short           variable;
 {
@@ -11116,7 +11116,7 @@ levelOneNodeOne(variable)
 	return (variable);
 }
 
-short 
+short
 levelOneNodeTwo(variable)
 	short           variable;
 {
@@ -11134,7 +11134,7 @@ levelOneNodeTwo(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	short           variable;
 {
@@ -11152,7 +11152,7 @@ levelTwoNodeOne(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeTwo(variable)
 	short           variable;
 {
@@ -11170,7 +11170,7 @@ levelTwoNodeTwo(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeThree(variable)
 	short           variable;
 {
@@ -11188,7 +11188,7 @@ levelTwoNodeThree(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeFour(variable)
 	short           variable;
 {
@@ -11206,56 +11206,56 @@ levelTwoNodeFour(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafTwo(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafThree(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafFour(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafFive(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafSix(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafSeven(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafEight(variable)
 	short           variable;
 {
@@ -11273,7 +11273,7 @@ short           i, j, k;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : linear tree structure, return value and legal,
- * function declared to return a pointer to character 
+ * function declared to return a pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -11350,7 +11350,7 @@ short           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : linear tree structure, return value, legal pointer
- * to function returning an integer 
+ * to function returning an integer
  */
 {
 	extern short    i;
@@ -11378,7 +11378,7 @@ dummy1(func, integer)
 	return (result);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -11398,7 +11398,7 @@ dummy2(func, integer)
 	return (result);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -11415,7 +11415,7 @@ short           i, j, ii, jj, iii, jjj, iiii, jjjj, iiiii, jjjjj, iiiiii, jjjjjj
 main()				/* alias root */
 /*
  *  test class: extern variable, mistaken as called by address instance  : linear tree structure, used in conditional
- * expression, no function declaration 
+ * expression, no function declaration
  */
 {
 	i = 1;
@@ -11539,7 +11539,7 @@ short           i;
 main()				/* alias root */
 /*
  *  test class: extern variable, mistaken as called by address instance  : linear tree structure, used in conditional
- * expression, integer function declaration 
+ * expression, integer function declaration
  */
 {
 	extern short    i;
@@ -11555,7 +11555,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	short           variable;
 {
@@ -11565,7 +11565,7 @@ levelOneNodeOne(variable)
 	return (2 * levelTwoNodeOne(ii));
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	short           variable;
 {
@@ -11575,7 +11575,7 @@ levelTwoNodeOne(variable)
 	return (2 * levelThreeLeafOne(iii));
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	short           variable;
 {
@@ -11592,7 +11592,7 @@ char            i = 4, j = 8;
 main()				/* alias root */
 /*
  *  test class: extern variable, mistaken as called by address instance  : linear tree structure, used in conditional
- * expression, function declared to return a pointer to character 
+ * expression, function declared to return a pointer to character
  */
 {
 	extern char     i, j;
@@ -11639,7 +11639,7 @@ short           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : linear tree structure, in conditional expression,
- * pointer to function returning an integer 
+ * pointer to function returning an integer
  */
 {
 	extern short    i;
@@ -11666,7 +11666,7 @@ dummy1(func, integer)
 	return (ii);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -11686,7 +11686,7 @@ dummy2(func, integer)
 	return (ii);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -11704,7 +11704,7 @@ short           i = 1;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, return value, legal, no function
- * declaration 
+ * declaration
  */
 {
 	short           result = 0;
@@ -11742,7 +11742,7 @@ short           i = 1;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, return value, legal, integer
- * function declaration 
+ * function declaration
  */
 {
 	extern short    i;
@@ -11758,7 +11758,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	short           variable;
 {
@@ -11785,7 +11785,7 @@ short           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, return value, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s, *recursiveFunction();
@@ -11827,7 +11827,7 @@ short           i = 1;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, return value, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	short           increment(), result = 0;
@@ -11854,7 +11854,7 @@ dummy(function, variable)
 	return (function(variable--));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -11872,7 +11872,7 @@ short           i = 1, j;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, function in conditional
- * expression, no function declaration 
+ * expression, no function declaration
  */
 {
 	extern short    i;
@@ -11909,7 +11909,7 @@ short           i = 1;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, function in conditional
- * expression, integer function declaration 
+ * expression, integer function declaration
  */
 {
 	short           recursiveFunction();
@@ -11924,7 +11924,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	short           variable;
 {
@@ -11948,7 +11948,7 @@ short           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, in conditional expression,
- * function declared to return a pointer to character 
+ * function declared to return a pointer to character
  */
 {
 	char           *recursiveFunction();
@@ -11986,7 +11986,7 @@ short           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : recursive call, in conditional expression, pointer
- * to function returning an integer 
+ * to function returning an integer
  */
 {
 	short           increment();
@@ -12010,7 +12010,7 @@ dummy(function, variable)
 	return (function(variable--));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -12028,7 +12028,7 @@ short           i, ii, iii;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, return value, legal, no function
- * declaration 
+ * declaration
  */
 {
 	short           result = 0;
@@ -12079,7 +12079,7 @@ short           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, return value, legal, function declared to
- * return an integer 
+ * return an integer
  */
 {
 	extern short    i;
@@ -12096,7 +12096,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	short           variable;
 {
@@ -12110,7 +12110,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	short           variable;
 {
@@ -12136,7 +12136,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, return value, function declared to return
- * a pointer to character 
+ * a pointer to character
  */
 {
 	char           *s, *castor();
@@ -12194,7 +12194,7 @@ short           i, ii, iii;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, return value, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	short           increment(), result = 0;
@@ -12234,7 +12234,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -12252,7 +12252,7 @@ short           i = 1;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (castor(i) != 2 || i != 1)
@@ -12297,7 +12297,7 @@ short           i = 1, ii, iii;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, in conditional expression, function
- * declared to return an integer 
+ * declared to return an integer
  */
 {
 	extern short    i;
@@ -12312,7 +12312,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	short           variable;
 {
@@ -12327,7 +12327,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	short           variable;
 {
@@ -12353,7 +12353,7 @@ static short    i, ii, iii;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, in conditional expression, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	char           *castor();
@@ -12409,7 +12409,7 @@ short           i;
 main()
 /*
  * test class: extern variable, mistaken as called by address instance  : gemini, in conditional expression, pointer to
- * function returning an integer 
+ * function returning an integer
  */
 {
 	extern short    i;
@@ -12447,7 +12447,7 @@ pollux(function, variable)
 	return (function(variable++));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -12462,7 +12462,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: registered variable instance  : linear tree structure, no return value and legal 
+ *  test class: registered variable instance  : linear tree structure, no return value and legal
  */
 {
 	register short  i;
@@ -12608,7 +12608,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: registered variable instance  : linear tree structure, no return value and illegal 
+ *  test class: registered variable instance  : linear tree structure, no return value and illegal
  */
 {
 	register short  i;
@@ -12781,7 +12781,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: registered variable instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: registered variable instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	register short  i = 0;
@@ -12953,7 +12953,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: registered variable instance  : linear tree structure, return value and legal, integer function declaration 
+ *  test class: registered variable instance  : linear tree structure, return value and legal, integer function declaration
  */
 {
 	register short  i = 0;
@@ -12974,7 +12974,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	register short  variable;
 {
@@ -12992,7 +12992,7 @@ levelOneNodeOne(variable)
 	return (storage);
 }
 
-short 
+short
 levelOneNodeTwo(variable)
 	register short  variable;
 {
@@ -13010,7 +13010,7 @@ levelOneNodeTwo(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	register short  variable;
 {
@@ -13028,7 +13028,7 @@ levelTwoNodeOne(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeTwo(variable)
 	register short  variable;
 {
@@ -13046,7 +13046,7 @@ levelTwoNodeTwo(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeThree(variable)
 	register short  variable;
 {
@@ -13064,7 +13064,7 @@ levelTwoNodeThree(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeFour(variable)
 	register short  variable;
 {
@@ -13082,56 +13082,56 @@ levelTwoNodeFour(variable)
 	return (storage);
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafTwo(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafThree(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafFour(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafFive(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafSix(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafSeven(variable)
 	short           variable;
 {
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafEight(variable)
 	short           variable;
 {
@@ -13148,7 +13148,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: registered variable instance  : linear tree structure, return value and legal, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -13221,7 +13221,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: registered variable instance  : linear tree structure, return value, legal pointer to function returning an
- * integer 
+ * integer
  */
 {
 	register short  i;
@@ -13250,7 +13250,7 @@ register short  integer;
 	return (i);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -13271,7 +13271,7 @@ register short  integer;
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -13287,7 +13287,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable instance  : linear tree structure, used in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	register short  i = 1, j = i++;
@@ -13406,7 +13406,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	register short  i = 1;
@@ -13421,7 +13421,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	short           variable;
 {
@@ -13432,7 +13432,7 @@ levelOneNodeOne(variable)
 	return (2 * levelTwoNodeOne(ii));
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	short           variable;
 {
@@ -13443,7 +13443,7 @@ levelTwoNodeOne(variable)
 	return (2 * levelThreeLeafOne(iii));
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	short           variable;
 {
@@ -13459,7 +13459,7 @@ char           *protean = "cassandracross";
 main()				/* alias root */
 /*
  *  test class: registered variable instance  : linear tree structure, used in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	register char   i = 4, j;
@@ -13504,7 +13504,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: registered variable instance  : linear tree structure, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	register short  i = 12;
@@ -13530,7 +13530,7 @@ register short  integer;
 	return (ii);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -13550,7 +13550,7 @@ register short  integer;
 	return (ii);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -13566,7 +13566,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : recursive call, no return value, legal 
+ * test class: registered variable instance  : recursive call, no return value, legal
  */
 {
 	register short  i;
@@ -13598,7 +13598,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : recursive call, no return value, illegal 
+ * test class: registered variable instance  : recursive call, no return value, illegal
  */
 {
 	register short  i = 1;
@@ -13635,7 +13635,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : recursive call, return value, legal, no function declaration 
+ * test class: registered variable instance  : recursive call, return value, legal, no function declaration
  */
 {
 	register short  i = 1;
@@ -13672,7 +13672,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : recursive call, return value, legal, integer function declaration 
+ * test class: registered variable instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	register short  i = 1;
@@ -13688,7 +13688,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	register short  variable;
 {
@@ -13714,7 +13714,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: registered variable instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s, *recursiveFunction();
@@ -13753,7 +13753,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: registered variable instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	register short  i = 1;
@@ -13783,7 +13783,7 @@ register short  variable;
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -13799,7 +13799,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : recursive call, function in conditional expression, no function declaration 
+ * test class: registered variable instance  : recursive call, function in conditional expression, no function declaration
  */
 {
 	register short  i = 1;
@@ -13832,7 +13832,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	short           recursiveFunction();
@@ -13847,7 +13847,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	register short  variable;
 {
@@ -13870,7 +13870,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: registered variable instance  : recursive call, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *recursiveFunction();
@@ -13905,7 +13905,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable instance  : recursive call, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           increment();
@@ -13930,7 +13930,7 @@ register short  variable;
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -13946,7 +13946,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : gemini, no return value, legal 
+ * test class: registered variable instance  : gemini, no return value, legal
  */
 {
 	register short  i = 1;
@@ -13990,7 +13990,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : gemini, no return value, illegal 
+ * test class: registered variable instance  : gemini, no return value, illegal
  */
 {
 	register short  i = 1;
@@ -14040,7 +14040,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : gemini, return value, legal, no function declaration 
+ * test class: registered variable instance  : gemini, return value, legal, no function declaration
  */
 {
 	register short  i = 1;
@@ -14090,7 +14090,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: registered variable instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	register short  i = 1;
@@ -14106,7 +14106,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	short           variable;
 {
@@ -14121,7 +14121,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	short           variable;
 {
@@ -14145,7 +14145,7 @@ char           *numbers = "0123456789";
 
 main()
 /*
- * test class: registered variable instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: registered variable instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s, *castor();
@@ -14200,7 +14200,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : gemini, return value, pointer to function returning an integer 
+ * test class: registered variable instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	register short  i = 1;
@@ -14242,7 +14242,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -14258,7 +14258,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : gemini, in conditional expression, no function declaration 
+ * test class: registered variable instance  : gemini, in conditional expression, no function declaration
  */
 {
 	register short  i = 1;
@@ -14305,7 +14305,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: registered variable instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 	register short  i = 1;
@@ -14320,7 +14320,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	short           variable;
 {
@@ -14334,7 +14334,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	short           variable;
 {
@@ -14358,7 +14358,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: registered variable instance  : gemini, in conditional expression, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *castor();
@@ -14409,7 +14409,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable instance  : gemini, in conditional expression, pointer to function returning an integer 
+ * test class: registered variable instance  : gemini, in conditional expression, pointer to function returning an integer
  */
 {
 	register short  i = 1;
@@ -14448,7 +14448,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -14463,7 +14463,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: registered variable, doubled instance  : linear tree structure, no return value and legal 
+ *  test class: registered variable, doubled instance  : linear tree structure, no return value and legal
  */
 {
 	register short  i = 0;
@@ -14636,7 +14636,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: registered variable, doubled instance  : linear tree structure, no return value and illegal 
+ *  test class: registered variable, doubled instance  : linear tree structure, no return value and illegal
  */
 {
 	register short  i;
@@ -14809,7 +14809,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable, doubled instance  : linear tree structure, return value and legal, no function
- * declaration 
+ * declaration
  */
 {
 	register short  i = 1;
@@ -15003,7 +15003,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable, doubled instance  : linear tree structure, return value and legal, integer function
- * declaration 
+ * declaration
  */
 {
 	register short  i = 1;
@@ -15023,7 +15023,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	short           variable;
 {
@@ -15042,7 +15042,7 @@ levelOneNodeOne(variable)
 	return (variable);
 }
 
-short 
+short
 levelOneNodeTwo(variable)
 	short           variable;
 {
@@ -15061,7 +15061,7 @@ levelOneNodeTwo(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	short           variable;
 {
@@ -15080,7 +15080,7 @@ levelTwoNodeOne(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeTwo(variable)
 	short           variable;
 {
@@ -15099,7 +15099,7 @@ levelTwoNodeTwo(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeThree(variable)
 	short           variable;
 {
@@ -15118,7 +15118,7 @@ levelTwoNodeThree(variable)
 	return (variable);
 }
 
-short 
+short
 levelTwoNodeFour(variable)
 	short           variable;
 {
@@ -15137,7 +15137,7 @@ levelTwoNodeFour(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	short           variable;
 {
@@ -15146,7 +15146,7 @@ levelThreeLeafOne(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafTwo(variable)
 	short           variable;
 {
@@ -15155,7 +15155,7 @@ levelThreeLeafTwo(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafThree(variable)
 	short           variable;
 {
@@ -15164,7 +15164,7 @@ levelThreeLeafThree(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafFour(variable)
 	short           variable;
 {
@@ -15173,7 +15173,7 @@ levelThreeLeafFour(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafFive(variable)
 	short           variable;
 {
@@ -15182,7 +15182,7 @@ levelThreeLeafFive(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafSix(variable)
 	short           variable;
 {
@@ -15191,7 +15191,7 @@ levelThreeLeafSix(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafSeven(variable)
 	short           variable;
 {
@@ -15200,7 +15200,7 @@ levelThreeLeafSeven(variable)
 	return (variable);
 }
 
-short 
+short
 levelThreeLeafEight(variable)
 	short           variable;
 {
@@ -15219,7 +15219,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: registered variable, doubled instance  : linear tree structure, return value and legal, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -15289,7 +15289,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: registered variable, doubled instance  : linear tree structure, return value, legal pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	register short  i = 12;
@@ -15316,7 +15316,7 @@ dummy1(func, integer)
 	return (i);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -15336,7 +15336,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -15352,7 +15352,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable, doubled instance  : linear tree structure, used in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	register short  i = 1;
@@ -15504,7 +15504,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable, doubled instance  : linear tree structure, used in conditional expression, integer
- * function declaration 
+ * function declaration
  */
 {
 	register short  i = 1;
@@ -15519,7 +15519,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	short           variable;
 {
@@ -15530,7 +15530,7 @@ levelOneNodeOne(variable)
 	return (2 * levelTwoNodeOne(i));
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	short           variable;
 {
@@ -15541,7 +15541,7 @@ levelTwoNodeOne(variable)
 	return (2 * levelThreeLeafOne(i));
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	short           variable;
 {
@@ -15557,7 +15557,7 @@ char           *protean = "cassandracross";
 main()				/* alias root */
 /*
  *  test class: registered variable, doubled instance  : linear tree structure, used in conditional expression, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	register char   i = 4, j;
@@ -15602,7 +15602,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: registered variable, doubled instance  : linear tree structure, in conditional expression, pointer to
- * function returning an integer 
+ * function returning an integer
  */
 {
 	register short  i;
@@ -15628,7 +15628,7 @@ dummy1(func, integer)
 	return (i);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -15647,7 +15647,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -15663,7 +15663,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, doubled instance  : recursive call, no return value, legal 
+ * test class: registered variable, doubled instance  : recursive call, no return value, legal
  */
 {
 	register short  i = 1;
@@ -15696,7 +15696,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, doubled instance  : recursive call, no return value, illegal 
+ * test class: registered variable, doubled instance  : recursive call, no return value, illegal
  */
 {
 	register short  i = 1;
@@ -15732,7 +15732,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, doubled instance  : recursive call, return value, legal, no function declaration 
+ * test class: registered variable, doubled instance  : recursive call, return value, legal, no function declaration
  */
 {
 	register short  i = 1;
@@ -15769,7 +15769,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, doubled instance  : recursive call, return value, legal, integer function declaration 
+ * test class: registered variable, doubled instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	register short  i = 1;
@@ -15785,7 +15785,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	short           variable;
 {
@@ -15811,7 +15811,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: registered variable, doubled instance  : recursive call, return value, function declared to return a pointer
- * to character 
+ * to character
  */
 {
 	char           *s, *recursiveFunction();
@@ -15852,7 +15852,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, doubled instance  : recursive call, return value, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	register short  i = 1;
@@ -15881,7 +15881,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -15898,7 +15898,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, doubled instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	register short  i = 1;
@@ -15933,7 +15933,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, doubled instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	register short  i = 1;
@@ -15948,7 +15948,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	short           variable;
 {
@@ -15971,7 +15971,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: registered variable, doubled instance  : recursive call, in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *recursiveFunction();
@@ -16007,7 +16007,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, doubled instance  : recursive call, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	register short  i = 1;
@@ -16033,7 +16033,7 @@ dummy(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -16049,7 +16049,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, doubled instance  : gemini, no return value, legal 
+ * test class: registered variable, doubled instance  : gemini, no return value, legal
  */
 {
 	register short  i = 1;
@@ -16093,7 +16093,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, doubled instance  : gemini, no return value, illegal 
+ * test class: registered variable, doubled instance  : gemini, no return value, illegal
  */
 {
 	register short  i = 1;
@@ -16147,7 +16147,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, doubled instance  : gemini, return value, legal, no function declaration 
+ * test class: registered variable, doubled instance  : gemini, return value, legal, no function declaration
  */
 {
 	register short  i = 1;
@@ -16197,7 +16197,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, doubled instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: registered variable, doubled instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	register short  i = 1;
@@ -16213,7 +16213,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	short           variable;
 {
@@ -16228,7 +16228,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	short           variable;
 {
@@ -16253,7 +16253,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: registered variable, doubled instance  : gemini, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s, *castor();
@@ -16308,7 +16308,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, doubled instance  : gemini, return value, pointer to function returning an integer 
+ * test class: registered variable, doubled instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	register short  i = 1;
@@ -16350,7 +16350,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -16366,7 +16366,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, doubled instance  : gemini, in conditional expression, no function declaration 
+ * test class: registered variable, doubled instance  : gemini, in conditional expression, no function declaration
  */
 {
 	register short  i = 1;
@@ -16412,7 +16412,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, doubled instance  : gemini, in conditional expression, function declared to return an
- * integer 
+ * integer
  */
 {
 	register short  i = 1;
@@ -16427,7 +16427,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	short           variable;
 {
@@ -16440,7 +16440,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	short           variable;
 {
@@ -16463,7 +16463,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: registered variable, doubled instance  : gemini, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *castor();
@@ -16513,7 +16513,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, doubled instance  : gemini, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	register short  i = 1;
@@ -16550,7 +16550,7 @@ pollux(function, variable)
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -16566,7 +16566,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable, mistaken as called by address instance  : linear tree structure, no return value and
- * legal 
+ * legal
  */
 {
 	register short  i;
@@ -16721,7 +16721,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable, mistaken as called by address instance  : linear tree structure, no return value and
- * illegal 
+ * illegal
  */
 {
 	register short  i;
@@ -16911,7 +16911,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable, mistaken as called by address instance  : linear tree structure, return value and
- * legal, no function declaration 
+ * legal, no function declaration
  */
 {
 	register short  i = 0;
@@ -17109,7 +17109,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable, mistaken as called by address instance  : linear tree structure, return value and
- * legal, integer function declaration 
+ * legal, integer function declaration
  */
 {
 	register short  i = 0;
@@ -17131,7 +17131,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	register short  variable;
 {
@@ -17149,7 +17149,7 @@ levelOneNodeOne(variable)
 	return (storage);
 }
 
-short 
+short
 levelOneNodeTwo(variable)
 	register short  variable;
 {
@@ -17167,7 +17167,7 @@ levelOneNodeTwo(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	register short  variable;
 {
@@ -17185,7 +17185,7 @@ levelTwoNodeOne(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeTwo(variable)
 	register short  variable;
 {
@@ -17203,7 +17203,7 @@ levelTwoNodeTwo(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeThree(variable)
 	register short  variable;
 {
@@ -17221,7 +17221,7 @@ levelTwoNodeThree(variable)
 	return (storage);
 }
 
-short 
+short
 levelTwoNodeFour(variable)
 	register short  variable;
 {
@@ -17239,7 +17239,7 @@ levelTwoNodeFour(variable)
 	return (storage);
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	register short  variable;
 {
@@ -17249,7 +17249,7 @@ levelThreeLeafOne(variable)
 	return (storage);
 }
 
-short 
+short
 levelThreeLeafTwo(variable)
 	register short  variable;
 {
@@ -17259,7 +17259,7 @@ levelThreeLeafTwo(variable)
 	return (storage);
 }
 
-short 
+short
 levelThreeLeafThree(variable)
 	register short  variable;
 {
@@ -17269,7 +17269,7 @@ levelThreeLeafThree(variable)
 	return (storage);
 }
 
-short 
+short
 levelThreeLeafFour(variable)
 	register short  variable;
 {
@@ -17279,7 +17279,7 @@ levelThreeLeafFour(variable)
 	return (storage);
 }
 
-short 
+short
 levelThreeLeafFive(variable)
 	register short  variable;
 {
@@ -17289,7 +17289,7 @@ levelThreeLeafFive(variable)
 	return (storage);
 }
 
-short 
+short
 levelThreeLeafSix(variable)
 	register short  variable;
 {
@@ -17299,7 +17299,7 @@ levelThreeLeafSix(variable)
 	return (storage);
 }
 
-short 
+short
 levelThreeLeafSeven(variable)
 	register short  variable;
 {
@@ -17309,7 +17309,7 @@ levelThreeLeafSeven(variable)
 	return (storage);
 }
 
-short 
+short
 levelThreeLeafEight(variable)
 	register short  variable;
 {
@@ -17329,7 +17329,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : linear tree structure, return value and legal,
- * function declared to return a pointer to character 
+ * function declared to return a pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -17399,7 +17399,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : linear tree structure, return value, legal
- * pointer to function returning an integer 
+ * pointer to function returning an integer
  */
 {
 	register short  i;
@@ -17429,7 +17429,7 @@ register short  integer;
 	return (i);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -17451,7 +17451,7 @@ register short  integer;
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -17467,7 +17467,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable, mistaken as called by address instance  : linear tree structure, used in conditional
- * expression, no function declaration 
+ * expression, no function declaration
  */
 {
 	register short  i = 1, j = i++;
@@ -17612,7 +17612,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable, mistaken as called by address instance  : linear tree structure, used in conditional
- * expression, integer function declaration 
+ * expression, integer function declaration
  */
 {
 	register short  i = 1;
@@ -17627,7 +17627,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(variable)
 	register short  variable;
 {
@@ -17641,7 +17641,7 @@ levelOneNodeOne(variable)
 	return (result);
 }
 
-short 
+short
 levelTwoNodeOne(variable)
 	register short  variable;
 {
@@ -17655,7 +17655,7 @@ levelTwoNodeOne(variable)
 	return (result);
 }
 
-short 
+short
 levelThreeLeafOne(variable)
 	register short  variable;
 {
@@ -17677,7 +17677,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: registered variable, mistaken as called by address instance  : linear tree structure, used in conditional
- * expression, function declared to return a pointer to character 
+ * expression, function declared to return a pointer to character
  */
 {
 	register char   i = 5, j = 2 * i;
@@ -17725,7 +17725,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : linear tree structure, in conditional
- * expression, pointer to function returning an integer 
+ * expression, pointer to function returning an integer
  */
 {
 	register short  i;
@@ -17753,7 +17753,7 @@ register short  integer;
 	return (ii);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -17774,7 +17774,7 @@ short           integer;
 	return (ii);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -17790,7 +17790,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, mistaken as called by address instance  : recursive call, no return value, legal 
+ * test class: registered variable, mistaken as called by address instance  : recursive call, no return value, legal
  */
 {
 	register short  i;
@@ -17822,7 +17822,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, mistaken as called by address instance  : recursive call, no return value, illegal 
+ * test class: registered variable, mistaken as called by address instance  : recursive call, no return value, illegal
  */
 {
 	register short  i = 1;
@@ -17861,7 +17861,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : recursive call, return value, legal, no
- * function declaration 
+ * function declaration
  */
 {
 	register short  i = 1;
@@ -17900,7 +17900,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : recursive call, return value, legal, integer
- * function declaration 
+ * function declaration
  */
 {
 	register short  i = 1;
@@ -17916,7 +17916,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	register short  variable;
 {
@@ -17941,7 +17941,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : recursive call, return value, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	char           *s, *recursiveFunction();
@@ -17981,7 +17981,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : recursive call, return value, pointer to
- * function returning an integer 
+ * function returning an integer
  */
 {
 	register short  i = 1;
@@ -18010,7 +18010,7 @@ register short  variable;
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -18027,7 +18027,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : recursive call, function in conditional
- * expression, no function declaration 
+ * expression, no function declaration
  */
 {
 	register short  i = 1;
@@ -18060,7 +18060,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : recursive call, function in conditional
- * expression, integer function declaration 
+ * expression, integer function declaration
  */
 {
 	short           recursiveFunction();
@@ -18075,7 +18075,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(variable)
 	register short  variable;
 {
@@ -18098,7 +18098,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : recursive call, in conditional expression,
- * function declared to return a pointer to character 
+ * function declared to return a pointer to character
  */
 {
 	char           *recursiveFunction();
@@ -18133,7 +18133,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : recursive call, in conditional expression,
- * pointer to function returning an integer 
+ * pointer to function returning an integer
  */
 {
 	short           increment();
@@ -18158,7 +18158,7 @@ register short  variable;
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -18174,7 +18174,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: registered variable, mistaken as called by address instance  : gemini, no return value, legal 
+ * test class: registered variable, mistaken as called by address instance  : gemini, no return value, legal
  */
 {
 	register short  i = 1;
@@ -18221,7 +18221,7 @@ short           result;
 
 main()
 /*
- * test class: registered variable, mistaken as called by address instance  : gemini, no return value, illegal 
+ * test class: registered variable, mistaken as called by address instance  : gemini, no return value, illegal
  */
 {
 	register short  i = 1;
@@ -18266,7 +18266,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : gemini, return value, legal, no function
- * declaration 
+ * declaration
  */
 {
 	register short  i = 1;
@@ -18320,7 +18320,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : gemini, return value, legal, function declared
- * to return an integer 
+ * to return an integer
  */
 {
 	register short  i = 1;
@@ -18336,7 +18336,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	register short  variable;
 {
@@ -18351,7 +18351,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	register short  variable;
 {
@@ -18377,7 +18377,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : gemini, return value, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s, *castor();
@@ -18433,7 +18433,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : gemini, return value, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	register short  i = 1;
@@ -18479,7 +18479,7 @@ register short  variable;
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {
@@ -18496,7 +18496,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : gemini, in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	register short  i = 1;
@@ -18544,7 +18544,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : gemini, in conditional expression, function
- * declared to return an integer 
+ * declared to return an integer
  */
 {
 	register short  i = 1;
@@ -18559,7 +18559,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(variable)
 	register short  variable;
 {
@@ -18573,7 +18573,7 @@ castor(variable)
 	return (++variable);
 }
 
-short 
+short
 pollux(variable)
 	register short  variable;
 {
@@ -18597,7 +18597,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : gemini, in conditional expression, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	char           *castor();
@@ -18649,7 +18649,7 @@ short           counter = 10;
 main()
 /*
  * test class: registered variable, mistaken as called by address instance  : gemini, in conditional expression, pointer to
- * function returning an integer 
+ * function returning an integer
  */
 {
 	register short  i = 1;
@@ -18690,7 +18690,7 @@ register short  variable;
 	return (function(variable));
 }
 
-short 
+short
 increment(variable)
 	short           variable;
 {

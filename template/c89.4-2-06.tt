@@ -81,7 +81,7 @@ float dummy(float);
 
 int main(void)				/* alias root */
 /*
- *  test class: function as argument instance  : linear tree structure, no return value and legal 
+ *  test class: function as argument instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(dummy(1.0));
@@ -189,7 +189,7 @@ void levelThreeLeafEight(float argument)
 		statusFlag++;
 }
 
-float 
+float
 dummy(float argument)
 {
 	return argument;
@@ -220,7 +220,7 @@ float dummy(float);
 
 int main(void)				/* alias root */
 /*
- *  test class: function as argument instance  : linear tree structure, no return value and illegal 
+ *  test class: function as argument instance  : linear tree structure, no return value and illegal
  */
 {
 	float           i = 0.0;
@@ -356,7 +356,7 @@ void levelThreeLeafEight(float argument)
 		statusFlag++;
 }
 
-float 
+float
 dummy(float argument)
 {
 	return argument;
@@ -387,7 +387,7 @@ float dummy(float);
 
 int main(void)				/* alias root */
 /*
- *  test class: function as argument instance  : linear tree structure, return value and legal, Float function declaration 
+ *  test class: function as argument instance  : linear tree structure, return value and legal, Float function declaration
  */
 {
 	float           i = 0.0;
@@ -407,7 +407,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-float 
+float
 levelOneNodeOne(float argument)
 {
 	float           i = 0.0;
@@ -425,7 +425,7 @@ levelOneNodeOne(float argument)
 	return argument;
 }
 
-float 
+float
 levelOneNodeTwo(float argument)
 {
 	float           i = 0.0;
@@ -443,7 +443,7 @@ levelOneNodeTwo(float argument)
 	return argument;
 }
 
-float 
+float
 levelTwoNodeOne(float argument)
 {
 	float           i = 0.0;
@@ -461,7 +461,7 @@ levelTwoNodeOne(float argument)
 	return argument;
 }
 
-float 
+float
 levelTwoNodeTwo(float argument)
 {
 	float           i = 0.0;
@@ -479,7 +479,7 @@ levelTwoNodeTwo(float argument)
 	return argument;
 }
 
-float 
+float
 levelTwoNodeThree(float argument)
 {
 	float           i = 0.0;
@@ -497,7 +497,7 @@ levelTwoNodeThree(float argument)
 	return argument;
 }
 
-float 
+float
 levelTwoNodeFour(float argument)
 {
 	float           i = 0.0;
@@ -515,7 +515,7 @@ levelTwoNodeFour(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafOne(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 7.0)) )
@@ -523,7 +523,7 @@ levelThreeLeafOne(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafTwo(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 8.0)) )
@@ -531,7 +531,7 @@ levelThreeLeafTwo(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafThree(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 9.0)) )
@@ -539,7 +539,7 @@ levelThreeLeafThree(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafFour(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 10.0)) )
@@ -547,7 +547,7 @@ levelThreeLeafFour(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafFive(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 11.0)) )
@@ -555,7 +555,7 @@ levelThreeLeafFive(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafSix(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 12.0)) )
@@ -563,7 +563,7 @@ levelThreeLeafSix(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafSeven(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 13.0)) )
@@ -571,7 +571,7 @@ levelThreeLeafSeven(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafEight(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 14.0)) )
@@ -579,7 +579,7 @@ levelThreeLeafEight(float argument)
 	return argument;
 }
 
-float 
+float
 dummy(float argument)
 {
 	return argument;
@@ -601,7 +601,7 @@ float twelve(void);
 int main(void)
 /*
  * test class: function as argument instance  : linear tree structure, return value, legal pointer to function returning a
- * float 
+ * float
  */
 {
 	/*float           i, divide4(), dummy1();*/
@@ -617,7 +617,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 dummy1(float (*func)(float), float Float)
 {
 	float           i = Float;
@@ -628,7 +628,7 @@ dummy1(float (*func)(float), float Float)
 	return i;
 }
 
-float 
+float
 divide4(float Float)
 {
 	/*float           divide2(), dummy2();*/
@@ -636,7 +636,7 @@ divide4(float Float)
 	return dummy2(divide2, Float) / 2.0;
 }
 
-float 
+float
 dummy2(float (*func)(float), float Float)
 {
 	float           i = Float;
@@ -647,13 +647,13 @@ dummy2(float (*func)(float), float Float)
 	return i;
 }
 
-float 
+float
 divide2(float Float)
 {
 	return Float / 2.0;
 }
 
-float 
+float
 twelve(void)
 {
 	return 12.0;
@@ -675,7 +675,7 @@ float mirror(float);
 int main(void)				/* alias root */
 /*
  *  test class: function as argument instance  : linear tree structure, used in conditional expression, Float function
- * declaration 
+ * declaration
  */
 {
 	/*float           levelOneNodeOne();*/
@@ -692,7 +692,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-float 
+float
 levelOneNodeOne(float argument)
 {
 	float           object = argument + 2.0;
@@ -706,7 +706,7 @@ levelOneNodeOne(float argument)
 	return argument;
 }
 
-float 
+float
 levelTwoNodeOne(float argument)
 {
 	float           object = argument + 4.0;
@@ -720,7 +720,7 @@ levelTwoNodeOne(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafOne(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 7.0)) )
@@ -728,7 +728,7 @@ levelThreeLeafOne(float argument)
 	return argument;
 }
 
-float 
+float
 mirror(float argument)
 {
 	return argument;
@@ -750,7 +750,7 @@ float twelve(void);
 int main(void)
 /*
  * test class: function as argument instance  : linear tree structure, in conditional expression, pointer to function
- * returning a float 
+ * returning a float
  */
 {
 	/*float           divide4(), dummy1();*/
@@ -767,7 +767,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 dummy1(float (*func)(float), float Float)
 {
 	float           i = Float;
@@ -777,7 +777,7 @@ dummy1(float (*func)(float), float Float)
 	return i;
 }
 
-float 
+float
 divide4(float Float)
 {
 	/*float           divide2(), dummy2();*/
@@ -785,7 +785,7 @@ divide4(float Float)
 	return dummy2(divide2, Float) / 2.0;
 }
 
-float 
+float
 dummy2(float (*func)(float), float Float)
 {
 	float           i = Float;
@@ -795,13 +795,13 @@ dummy2(float (*func)(float), float Float)
 	return i;
 }
 
-float 
+float
 divide2(float Float)
 {
 	return Float / 2.0;
 }
 
-float 
+float
 twelve(void)
 {
 	return 12.0;
@@ -820,7 +820,7 @@ float un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, no return value, legal 
+ * test class: function as argument instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(un());
@@ -839,7 +839,7 @@ void recursiveFunction(float argument)
 		recursiveFunction(un());
 }
 
-float 
+float
 un(void)
 {
 	static float    un = 1.0;
@@ -860,7 +860,7 @@ float un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, no return value, illegal 
+ * test class: function as argument instance  : recursive call, no return value, illegal
  */
 {
 	result = recursiveFunction(un());
@@ -884,7 +884,7 @@ int recursiveFunction(float argument)
 	return;
 }
 
-float 
+float
 un()
 {
 	static float    un = 1.0;
@@ -904,7 +904,7 @@ float un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, return value, legal, Float function declaration 
+ * test class: function as argument instance  : recursive call, return value, legal, Float function declaration
  */
 {
 	float           i = 0.0;
@@ -920,7 +920,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 recursiveFunction(float argument)
 {
 	float           i;
@@ -934,7 +934,7 @@ recursiveFunction(float argument)
 	return ++argument;
 }
 
-float 
+float
 un(void)
 {
 	static float    un = 1.0;
@@ -955,7 +955,7 @@ float un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, return value, pointer to function returning a float 
+ * test class: function as argument instance  : recursive call, return value, pointer to function returning a float
  */
 {
 	/*float           i, increment(), dummy();*/
@@ -971,7 +971,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 dummy(float (*function)(float), float argument)
 {
 	/*float           i, dummy();*/
@@ -985,13 +985,13 @@ dummy(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 increment(float argument)
 {
 	return ++argument;
 }
 
-float 
+float
 un(void)
 {
 	float           un = 1.0;
@@ -1012,7 +1012,7 @@ float un(void);
 int main(void)
 /*
  * test class: function as argument instance  : recursive call, function in conditional expression, Float function
- * declaration 
+ * declaration
  */
 {
 	/*float           recursiveFunction();*/
@@ -1029,7 +1029,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 recursiveFunction(float argument)
 {
 	/*float           recursiveFunction();*/
@@ -1044,7 +1044,7 @@ recursiveFunction(float argument)
 	return ++argument;
 }
 
-float 
+float
 un(void)
 {
 	static float    un = 1.0;
@@ -1066,7 +1066,7 @@ float un(void);
 int main(void)
 /*
  * test class: function as argument instance  : recursive call, in conditional expression, pointer to function returning a
- * float 
+ * float
  */
 {
 	/*float           increment(), dummy();*/
@@ -1083,7 +1083,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 dummy(float (*function)(float), float argument)
 {
 	/*float           dummy();*/
@@ -1098,13 +1098,13 @@ dummy(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 increment(float argument)
 {
 	return ++argument;
 }
 
-float 
+float
 un(void)
 {
 	static float    un = 1.0;
@@ -1125,7 +1125,7 @@ float deux(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, no return value, legal 
+ * test class: function as argument instance  : gemini, no return value, legal
  */
 {
 	/*float           un();*/
@@ -1158,14 +1158,14 @@ void pollux(float argument)
 		castor(un());
 }
 
-float 
+float
 un(void)
 {
 	float           un = 1.0;
 	return un;
 }
 
-float 
+float
 deux(void)
 {
 	float           deux = 2.0;
@@ -1189,7 +1189,7 @@ float deux(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, no return value, illegal 
+ * test class: function as argument instance  : gemini, no return value, illegal
  */
 {
 	/*float           un();*/
@@ -1224,14 +1224,14 @@ void pollux(float argument)
 		result = castor(un());*/
 }
 
-float 
+float
 un(void)
 {
 	float           un = 1.0;
 	return un;
 }
 
-float 
+float
 deux(void)
 {
 	float           deux = 2.0;
@@ -1251,10 +1251,10 @@ float rebound(float);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, return value, legal, function declared to return a float 
+ * test class: function as argument instance  : gemini, return value, legal, function declared to return a float
  */
 {
-	float i = 0.0;	
+	float i = 0.0;
 	/*float           i = 0.0, castor(), rebound();*/
 
 	i = castor(rebound(1.0));
@@ -1267,10 +1267,10 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 castor(float argument)
 {
-	float i;	
+	float i;
 	/*float           i, pollux(), rebound();*/
 
 	if (--counter) {
@@ -1281,10 +1281,10 @@ castor(float argument)
 	return ++argument;
 }
 
-float 
+float
 pollux(float argument)
 {
-	float i;	
+	float i;
 	/*float           i, rebound(), castor();*/
 
 	if (--counter) {
@@ -1295,7 +1295,7 @@ pollux(float argument)
 	return ++argument;
 }
 
-float 
+float
 rebound(float argument)
 {
 	return argument;
@@ -1322,7 +1322,7 @@ float neuf(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, return value, pointer to function returning a float 
+ * test class: function as argument instance  : gemini, return value, pointer to function returning a float
  */
 {
 	/*float           i, increment(), un();*/
@@ -1339,7 +1339,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 castor(float (*function)(float), float argument)
 {
 	float           i;
@@ -1352,7 +1352,7 @@ castor(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 pollux(float (*function)(float), float argument)
 {
 	float i;
@@ -1365,25 +1365,25 @@ pollux(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 increment(float argument)
 {
 	return ++argument;
 }
 
-float 
+float
 un(void)
 {
 	return Un;
 }
 
-float 
+float
 trois(void)
 {
 	return Trois;
 }
 
-float 
+float
 neuf(void)
 {
 	return Neuf;
@@ -1406,7 +1406,7 @@ float numero(float);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, in conditional expression, function declared to return a float 
+ * test class: function as argument instance  : gemini, in conditional expression, function declared to return a float
  */
 {
 	/*float           castor(), numero();*/
@@ -1423,7 +1423,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 castor(float argument)
 {
 	/*float           pollux(), numero();*/
@@ -1438,7 +1438,7 @@ castor(float argument)
 	return ++argument;
 }
 
-float 
+float
 pollux(float argument)
 {
 	/*float           castor(), numero();*/
@@ -1453,7 +1453,7 @@ pollux(float argument)
 	return ++argument;
 }
 
-float 
+float
 numero(float questCa)
 {
 	return questCa;
@@ -1475,7 +1475,7 @@ float neuf(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, in conditional expression, pointer to function returning a float 
+ * test class: function as argument instance  : gemini, in conditional expression, pointer to function returning a float
  */
 {
 	/*float           increment(), un(), castor();*/
@@ -1492,7 +1492,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 castor(float (*function)(float), float argument)
 {
 	/*float           neuf(), pollux();*/
@@ -1507,7 +1507,7 @@ castor(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 pollux(float (*function)(float), float argument)
 {
 	/*float           trois(), castor();*/
@@ -1522,27 +1522,27 @@ pollux(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 increment(float argument)
 {
 	return ++argument;
 }
 
-float 
+float
 un(void)
 {
 	static float    un = 1.0;
 	return un;
 }
 
-float 
+float
 trois(void)
 {
 	static float    trois = 3.0;
 	return trois;
 }
 
-float 
+float
 neuf(void)
 {
 	static float    neuf = 9.0;
@@ -1561,7 +1561,7 @@ float indeterminacy(float, float, float);
 
 int main(void)
 /*
- * test class: function as argument, variable order not determined instance  : recursive call, no return value, legal 
+ * test class: function as argument, variable order not determined instance  : recursive call, no return value, legal
  */
 {
 	float           i = 0.0, a, b, c;
@@ -1582,7 +1582,7 @@ void recursiveFunction(float argument)
 {
 	float           i = 0.0, a, b, c;
 	/*float indeterminacy();*/
-	 
+
 	if ( !(TGEN_FLT_EQ(argument, -3.0)) )
 		statusFlag++;
 	if (--counter) {
@@ -1593,7 +1593,7 @@ void recursiveFunction(float argument)
 	}
 }
 
-float 
+float
 indeterminacy(float uno, float dos, float tres)
 {
 	return uno + dos + tres;
@@ -1625,7 +1625,7 @@ float tres(float);
 
 int main(void)				/* alias root */
 /*
- *  test class: nested function as argument instance  : linear tree structure, no return value and legal 
+ *  test class: nested function as argument instance  : linear tree structure, no return value and legal
  */
 {
 	/*float           uno();*/
@@ -1754,19 +1754,19 @@ void levelThreeLeafEight(float argument)
 		statusFlag++;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -1802,7 +1802,7 @@ float tres(float);
 
 int main(void)				/* alias root */
 /*
- *  test class: nested function as argument instance  : linear tree structure, no return value and illegal 
+ *  test class: nested function as argument instance  : linear tree structure, no return value and illegal
  */
 {
 	float           i = 0.0;
@@ -1939,19 +1939,19 @@ void levelThreeLeafEight(float argument)
 		statusFlag++;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -1984,7 +1984,7 @@ float tres(float);
 int main(void)				/* alias root */
 /*
  *  test class: nested function as argument instance  : linear tree structure, return value and legal, Float function
- * declaration 
+ * declaration
  */
 {
 	/*float           uno();*/
@@ -2007,7 +2007,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-float 
+float
 levelOneNodeOne(float argument)
 {
 	/*float           uno();*/
@@ -2028,7 +2028,7 @@ levelOneNodeOne(float argument)
 	return argument;
 }
 
-float 
+float
 levelOneNodeTwo(float argument)
 {
 	/*float           uno();*/
@@ -2049,7 +2049,7 @@ levelOneNodeTwo(float argument)
 	return argument;
 }
 
-float 
+float
 levelTwoNodeOne(float argument)
 {
 	/*float           uno();*/
@@ -2070,7 +2070,7 @@ levelTwoNodeOne(float argument)
 	return argument;
 }
 
-float 
+float
 levelTwoNodeTwo(float argument)
 {
 	/*float           uno();*/
@@ -2091,7 +2091,7 @@ levelTwoNodeTwo(float argument)
 	return argument;
 }
 
-float 
+float
 levelTwoNodeThree(float argument)
 {
 	/*float           uno();*/
@@ -2112,7 +2112,7 @@ levelTwoNodeThree(float argument)
 	return argument;
 }
 
-float 
+float
 levelTwoNodeFour(float argument)
 {
 	/*float           uno();*/
@@ -2133,7 +2133,7 @@ levelTwoNodeFour(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafOne(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 7.0)) )
@@ -2141,7 +2141,7 @@ levelThreeLeafOne(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafTwo(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 8.0)) )
@@ -2149,7 +2149,7 @@ levelThreeLeafTwo(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafThree(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 9.0)) )
@@ -2157,7 +2157,7 @@ levelThreeLeafThree(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafFour(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 10.0)) )
@@ -2165,7 +2165,7 @@ levelThreeLeafFour(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafFive(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 11.0)) )
@@ -2173,7 +2173,7 @@ levelThreeLeafFive(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafSix(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 12.0)) )
@@ -2181,7 +2181,7 @@ levelThreeLeafSix(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafSeven(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 13.0)) )
@@ -2189,7 +2189,7 @@ levelThreeLeafSeven(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafEight(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 14.0)) )
@@ -2197,19 +2197,19 @@ levelThreeLeafEight(float argument)
 	return argument;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -2238,14 +2238,14 @@ float half(float);
 int main(void)
 /*
  * test class: nested function as argument instance  : linear tree structure, return value, legal pointer to function
- * returning a float 
+ * returning a float
  */
 {
 	/*float           twentyFour();*/
 
 	/*float           i, divide4(), dummy1();*/
 	float i;
-	
+
 	i = dummy1(divide4, half(twoTimes(half(twentyFour()))));
 	if ( !(TGEN_FLT_EQ(i, 3.0)) )
 		statusFlag++;
@@ -2256,7 +2256,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 dummy1(float (*func)(float), float Float)
 {
 	float           i = Float;
@@ -2267,7 +2267,7 @@ dummy1(float (*func)(float), float Float)
 	return i;
 }
 
-float 
+float
 divide4(float Float)
 {
 	/*float           divide2(), dummy2();*/
@@ -2275,7 +2275,7 @@ divide4(float Float)
 	return dummy2(divide2, Float) / 2.0;
 }
 
-float 
+float
 dummy2(float (*func)(float), float Float)
 {
 	float           i = Float;
@@ -2286,25 +2286,25 @@ dummy2(float (*func)(float), float Float)
 	return i;
 }
 
-float 
+float
 divide2(float Float)
 {
 	return Float / 2.0;
 }
 
-float 
+float
 twentyFour(void)
 {
 	return TwoDozen;
 }
 
-float 
+float
 twoTimes(float argument)
 {
 	return 2.0 * argument;
 }
 
-float 
+float
 half(float argument)
 {
 	return argument / 2.0;
@@ -2327,7 +2327,7 @@ float tres(float);
 int main(void)				/* alias root */
 /*
  *  test class: nested function as argument instance  : linear tree structure, used in conditional expression, Float
- * function declaration 
+ * function declaration
  */
 {
 	/*float           uno();*/
@@ -2347,7 +2347,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-float 
+float
 levelOneNodeOne(float argument)
 {
 	/*float           uno();*/
@@ -2364,7 +2364,7 @@ levelOneNodeOne(float argument)
 	return argument;
 }
 
-float 
+float
 levelTwoNodeOne(float argument)
 {
 	/*float           uno();*/
@@ -2381,7 +2381,7 @@ levelTwoNodeOne(float argument)
 	return argument;
 }
 
-float 
+float
 levelThreeLeafOne(float argument)
 {
 	if ( !(TGEN_FLT_EQ(argument, 7.0)) )
@@ -2389,19 +2389,19 @@ levelThreeLeafOne(float argument)
 	return argument;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -2426,7 +2426,7 @@ float half(float);
 int main(void)
 /*
  * test class: nested function as argument instance  : linear tree structure, in conditional expression, pointer to function
- * returning a float 
+ * returning a float
  */
 {
 	/*float           divide4(), dummy1();*/
@@ -2443,7 +2443,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 dummy1(float (*func)(float), float Float)
 {
 	float           i;
@@ -2456,7 +2456,7 @@ dummy1(float (*func)(float), float Float)
 	return i;
 }
 
-float 
+float
 divide4(float Float)
 {
 	/*float           divide2(), dummy2();*/
@@ -2464,7 +2464,7 @@ divide4(float Float)
 	return dummy2(divide2, Float) / 2.0;
 }
 
-float 
+float
 dummy2(float (*func)(float), float Float)
 {
 	float           i;
@@ -2477,19 +2477,19 @@ dummy2(float (*func)(float), float Float)
 	return i;
 }
 
-float 
+float
 divide2(float Float)
 {
 	return Float / 2.0;
 }
 
-float 
+float
 twoTimes(float argument)
 {
 	return 2.0 * argument;
 }
 
-float 
+float
 half(float argument)
 {
 	return argument / 2.0;
@@ -2510,7 +2510,7 @@ float tres(float);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : recursive call, no return value, legal 
+ * test class: nested function as argument instance  : recursive call, no return value, legal
  */
 {
 	/*float           dos(), tres(), uno();*/
@@ -2532,19 +2532,19 @@ void recursiveFunction(float argument)
 		recursiveFunction(uno(dos(tres(Un))));
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -2565,7 +2565,7 @@ float tres(float);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : recursive call, no return value, illegal 
+ * test class: nested function as argument instance  : recursive call, no return value, illegal
  */
 {
 	/*float           uno(), dos(), tres();*/
@@ -2596,19 +2596,19 @@ int recursiveFunction(float argument)
 	return;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -2629,7 +2629,7 @@ float tres(float);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : recursive call, return value, legal, Float function declaration 
+ * test class: nested function as argument instance  : recursive call, return value, legal, Float function declaration
  */
 {
 	/*float           uno(), dos(), tres();*/
@@ -2646,7 +2646,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 recursiveFunction(float argument)
 {
 	/*float           uno(), dos(), tres();*/
@@ -2661,19 +2661,19 @@ recursiveFunction(float argument)
 	return ++argument;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -2695,7 +2695,7 @@ float tres(float);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : recursive call, return value, pointer to function returning a float 
+ * test class: nested function as argument instance  : recursive call, return value, pointer to function returning a float
  */
 {
 	/*float           uno(), dos(), tres();*/
@@ -2712,7 +2712,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 dummy(float (*function)(float), float argument)
 {
 	/*float           uno(), dos(), tres();*/
@@ -2726,25 +2726,25 @@ dummy(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 increment(float argument)
 {
 	return ++argument;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -2766,7 +2766,7 @@ float tres(float);
 int main(void)
 /*
  * test class: nested function as argument instance  : recursive call, function in conditional expression, Float function
- * declaration 
+ * declaration
  */
 {
 	/*float           uno(), dos(), tres();*/
@@ -2784,7 +2784,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 recursiveFunction(float argument)
 {
 	/*float           uno(), dos(), tres();*/
@@ -2796,19 +2796,19 @@ recursiveFunction(float argument)
 	return ++argument;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -2831,7 +2831,7 @@ float tres(float);
 int main(void)
 /*
  * test class: nested function as argument instance  : recursive call, in conditional expression, pointer to function
- * returning a float 
+ * returning a float
  */
 {
 	/*float           increment(), uno(), dos(), tres(), dummy();*/
@@ -2848,7 +2848,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 dummy(float (*function)(float), float argument)
 {
 	/*float           uno(), dos(), tres(), dummy();*/
@@ -2859,25 +2859,25 @@ dummy(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 increment(float argument)
 {
 	return ++argument;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -2900,7 +2900,7 @@ float tres(float);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, no return value, legal 
+ * test class: nested function as argument instance  : gemini, no return value, legal
  */
 {
 	/*float           uno(), dos(), tres();*/
@@ -2933,19 +2933,19 @@ void pollux(float argument)
 		castor(uno(dos(tres((float) Un))));
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -2968,7 +2968,7 @@ float tres(void);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, no return value, illegal 
+ * test class: nested function as argument instance  : gemini, no return value, illegal
  */
 {
 	float           i;
@@ -3009,19 +3009,19 @@ void pollux(float argument)
 	}
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(void)
 {
 	return Un;
@@ -3046,7 +3046,7 @@ float tres(float);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, return value, legal, function declared to return a float 
+ * test class: nested function as argument instance  : gemini, return value, legal, function declared to return a float
  */
 {
 	float           i;
@@ -3062,7 +3062,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 castor(float argument)
 {
 	float           i;
@@ -3076,7 +3076,7 @@ castor(float argument)
 	return ++argument;
 }
 
-float 
+float
 pollux(float argument)
 {
 	float           i;
@@ -3090,19 +3090,19 @@ pollux(float argument)
 	return ++argument;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -3129,7 +3129,7 @@ float tres(float);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, return value, pointer to function returning a float 
+ * test class: nested function as argument instance  : gemini, return value, pointer to function returning a float
  */
 {
 	/*float           i, increment(), uno(), dos(), tres(), castor();*/
@@ -3145,7 +3145,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 castor(float (*function)(float), float argument)
 {
 	/*float           i, uno(), dos(), tres(), pollux();*/
@@ -3159,7 +3159,7 @@ castor(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 pollux(float (*function)(float), float argument)
 {
 	/*float           i, uno(), dos(), tres(), castor();*/
@@ -3173,25 +3173,25 @@ pollux(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 increment(float argument)
 {
 	return ++argument;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -3219,7 +3219,7 @@ float tres(float);
 int main(void)
 /*
  * test class: nested function as argument instance  : gemini, in conditional expression, function declared to return a
- * float 
+ * float
  */
 {
 	/*float           castor(), uno(), dos(), tres();*/
@@ -3236,7 +3236,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 castor(float argument)
 {
 	/*float           pollux(), uno(), dos(), tres();*/
@@ -3251,7 +3251,7 @@ castor(float argument)
 	return ++argument;
 }
 
-float 
+float
 pollux(float argument)
 {
 	/*float           uno(), dos(), tres(), castor();*/
@@ -3266,19 +3266,19 @@ pollux(float argument)
 	return ++argument;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -3309,7 +3309,7 @@ float tres(float);
 int main(void)
 /*
  * test class: nested function as argument instance  : gemini, in conditional expression, pointer to function returning a
- * float 
+ * float
  */
 {
 	/*float           increment();*/
@@ -3325,7 +3325,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 castor(float (*function)(float), float argument)
 {
 	/*float           uno(), dos(), tres(), pollux();*/
@@ -3340,7 +3340,7 @@ castor(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 pollux(float (*function)(float), float argument)
 {
 	/*float           uno(), dos(), tres(), castor();*/
@@ -3355,25 +3355,25 @@ pollux(float (*function)(float), float argument)
 	return function(argument);
 }
 
-float 
+float
 increment(float argument)
 {
 	return ++argument;
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float argument)
 {
 	return argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -3393,12 +3393,12 @@ float tres(float);
 
 int main(void)
 /*
- * test class: nested function as argument, random order instance  : recursive call, no return value, legal 
+ * test class: nested function as argument, random order instance  : recursive call, no return value, legal
  */
 {
 	float           i = 0.0, a, b, c;
 	/*float uno(), dos(), tres();*/
-	
+
 
 	c = --i;
 	b = i++;
@@ -3427,19 +3427,19 @@ void recursiveFunction(float argument)
 	}
 }
 
-float 
+float
 uno(float argument)
 {
 	return argument;
 }
 
-float 
+float
 dos(float uno, float dos, float tres)
 {
 	return uno + dos + tres;
 }
 
-float 
+float
 tres(float argument)
 {
 	return argument;
@@ -3469,7 +3469,7 @@ void levelThreeeafEight(unsigned);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 2) instance  : linear tree structure, no return value and
- * legal 
+ * legal
  */
 {
 	unsigned        i = 0;
@@ -3625,7 +3625,7 @@ int levelThreeeafEight(unsigned);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 2) instance  : linear tree structure, no return value and
- * illegal 
+ * illegal
  */
 {
 	unsigned        i = 0;
@@ -3795,7 +3795,7 @@ long levelThreeLeafEight(unsigned);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 2) instance  : linear tree structure, return value and
- * legal, Long function declaration 
+ * legal, Long function declaration
  */
 {
 	unsigned        i = 0;
@@ -3817,7 +3817,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-long 
+long
 levelOneNodeOne(unsigned variable)
 
 {
@@ -3832,7 +3832,7 @@ levelOneNodeOne(unsigned variable)
 	return variable;
 }
 
-long 
+long
 levelOneNodeTwo(unsigned variable)
 
 {
@@ -3848,7 +3848,7 @@ levelOneNodeTwo(unsigned variable)
 	return variable;
 }
 
-long 
+long
 levelTwoNodeOne(unsigned variable)
 
 {
@@ -3864,7 +3864,7 @@ levelTwoNodeOne(unsigned variable)
 	return variable;
 }
 
-long 
+long
 levelTwoNodeTwo(unsigned variable)
 
 {
@@ -3880,7 +3880,7 @@ levelTwoNodeTwo(unsigned variable)
 	return variable;
 }
 
-long 
+long
 levelTwoNodeThree(unsigned variable)
 
 {
@@ -3896,7 +3896,7 @@ levelTwoNodeThree(unsigned variable)
 	return i;
 }
 
-long 
+long
 levelTwoNodeFour(unsigned variable)
 
 {
@@ -3912,56 +3912,56 @@ levelTwoNodeFour(unsigned variable)
 	return variable;
 }
 
-long 
+long
 levelThreeLeafOne(unsigned variable)
 
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafTwo(unsigned variable)
 
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafThree(unsigned variable)
 
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafFour(unsigned variable)
 
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafFive(unsigned variable)
 
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafSix(unsigned variable)
 
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafSeven(unsigned variable)
 
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafEight(unsigned variable)
 
 {
@@ -3982,7 +3982,7 @@ void recursiveFunction(unsigned, long);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, no return value, illegal 
+ * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, no return value, illegal
  */
 {
 	unsigned        i = 0;
@@ -4022,7 +4022,7 @@ long recursiveFunction(unsigned, long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, return value, Long function
- * declaration 
+ * declaration
  */
 {
 	unsigned        i = 0;
@@ -4040,7 +4040,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 recursiveFunction(unsigned variable, long counter)
 {
 	long            result = 0;
@@ -4070,7 +4070,7 @@ unsigned recursiveFunction(long, long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, function in conditional
- * expression, Long function declaration 
+ * expression, Long function declaration
  */
 {
 	/*unsigned        recursiveFunction();*/
@@ -4086,7 +4086,7 @@ int main(void)
 	return 0;
 }
 
-unsigned 
+unsigned
 recursiveFunction(long variable, long counter)
 {
 	long            storage = variable;
@@ -4111,7 +4111,7 @@ long increment(unsigned);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, in conditional expression,
- * pointer to function returning a long 
+ * pointer to function returning a long
  */
 {
 	/*long            increment(), dummy();*/
@@ -4126,7 +4126,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy(long (*function)(unsigned), unsigned variable)
 {
 	unsigned        storage = variable;
@@ -4138,7 +4138,7 @@ dummy(long (*function)(unsigned), unsigned variable)
 	return function(storage);
 }
 
-long 
+long
 increment(unsigned variable)
 
 {
@@ -4160,7 +4160,7 @@ void pollux(unsigned, long);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 2) instance  : gemini, no return value, illegal 
+ * test class: complex arithmatic and logical expression (case 2) instance  : gemini, no return value, illegal
  */
 {
 	unsigned        i = 1, j = 2;
@@ -4210,7 +4210,7 @@ long pollux(unsigned, long);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 2) instance  : gemini, return value, no function declaration  
+ * test class: complex arithmatic and logical expression (case 2) instance  : gemini, return value, no function declaration
  */
 {
 	char            i = 1, j = 2;
@@ -4227,7 +4227,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(char variable, long counter)
 {
 	unsigned        i = 1, j = 2;
@@ -4241,7 +4241,7 @@ castor(char variable, long counter)
 	return variable;
 }
 
-long 
+long
 pollux(unsigned variable, long counter)
 {
 	char            i = 1, j = 2;
@@ -4269,7 +4269,7 @@ long increment(unsigned);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : gemini, return value, pointer to function
- * returning a long 
+ * returning a long
  */
 {
 	unsigned        i = 0;
@@ -4285,7 +4285,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long (*function)(unsigned), unsigned variable)
 {
 	long            ii = 0;
@@ -4299,7 +4299,7 @@ castor(long (*function)(unsigned), unsigned variable)
 	return function(variable);
 }
 
-long 
+long
 pollux(long (*function)(unsigned), unsigned variable)
 {
 	long            iii = 0;
@@ -4313,7 +4313,7 @@ pollux(long (*function)(unsigned), unsigned variable)
 	return function(variable);
 }
 
-long 
+long
 increment(unsigned variable)
 
 {
@@ -4333,7 +4333,7 @@ long pollux(long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : gemini, in conditional expression, function
- * declared to return a long 
+ * declared to return a long
  */
 {
 	long            i = 0;
@@ -4348,7 +4348,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long variable)
 {
 	/*long            pollux();*/
@@ -4359,7 +4359,7 @@ castor(long variable)
 	return ++variable;
 }
 
-long 
+long
 pollux(long variable)
 {
 	/*long            castor();*/
@@ -4394,7 +4394,7 @@ void levelThreeLeafEight(long);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, no return value and
- * legal 
+ * legal
  */
 {
 	static long     i = 0, j = -1, k = 1;
@@ -4534,7 +4534,7 @@ int levelThreeLeafEight(long);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, no return value and
- * illegal 
+ * illegal
  */
 {
 	static long     i = 0, j = -1, k = 1;
@@ -4688,7 +4688,7 @@ long levelThreeLeafEight(long);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, return value and
- * legal, Long function declaration 
+ * legal, Long function declaration
  */
 {
 	static long     i = 0, j = -1, k = 1;
@@ -4708,7 +4708,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-long 
+long
 levelOneNodeOne(long variable)
 {
 	long            result = 0;
@@ -4722,7 +4722,7 @@ levelOneNodeOne(long variable)
 	return variable;
 }
 
-long 
+long
 levelOneNodeTwo(long variable)
 {
 	long            i = variable + 2;
@@ -4737,7 +4737,7 @@ levelOneNodeTwo(long variable)
 	return variable;
 }
 
-long 
+long
 levelTwoNodeOne(long variable)
 {
 	long            i = variable * 2;
@@ -4752,7 +4752,7 @@ levelTwoNodeOne(long variable)
 	return variable;
 }
 
-long 
+long
 levelTwoNodeTwo(long variable)
 {
 	long            i = variable;
@@ -4767,7 +4767,7 @@ levelTwoNodeTwo(long variable)
 	return variable;
 }
 
-long 
+long
 levelTwoNodeThree(long variable)
 {
 	long            i = variable--;
@@ -4782,7 +4782,7 @@ levelTwoNodeThree(long variable)
 	return i;
 }
 
-long 
+long
 levelTwoNodeFour(long variable)
 {
 	long            i = variable / 2 - 1;
@@ -4797,49 +4797,49 @@ levelTwoNodeFour(long variable)
 	return variable;
 }
 
-long 
+long
 levelThreeLeafOne(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafTwo(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafThree(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafFour(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafFive(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafSix(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafSeven(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafEight(long variable)
 {
 	return variable;
@@ -4859,12 +4859,12 @@ long divide2(long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, return value, legal
- * pointer to function returning a long 
+ * pointer to function returning a long
  */
 {
 	static long     i = 3;
 	/*long            divide4(), result = 0, dummy1();*/
-	long result = 0; 
+	long result = 0;
 
 	result = dummy1(divide4, ((i == 3) * i - 1) * i * (i - 1));
 	if (result != 3L)
@@ -4876,7 +4876,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy1(long (*func)(long), long Long)
 {
 	long            i = Long--;
@@ -4887,7 +4887,7 @@ dummy1(long (*func)(long), long Long)
 	return i;
 }
 
-long 
+long
 divide4(long Long)
 {
 	/*long            divide2(), dummy2();*/
@@ -4895,7 +4895,7 @@ divide4(long Long)
 	return dummy2(divide2, Long) / 2;
 }
 
-long 
+long
 dummy2(long (*func)(long), long Long)
 {
 	long            i = Long++;
@@ -4906,7 +4906,7 @@ dummy2(long (*func)(long), long Long)
 	return i;
 }
 
-long 
+long
 divide2(long Long)
 {
 	return Long / 2;
@@ -4923,7 +4923,7 @@ long levelThreeLeafOne(long);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, used in conditional
- * expression, Long function declaration 
+ * expression, Long function declaration
  */
 {
 	static long     i = 1;
@@ -4939,7 +4939,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-long 
+long
 levelOneNodeOne(long variable)
 {
 	/*long            levelTwoNodeOne();*/
@@ -4947,7 +4947,7 @@ levelOneNodeOne(long variable)
 	return 2 * levelTwoNodeOne(2 * variable);
 }
 
-long 
+long
 levelTwoNodeOne(long variable)
 {
 	/*long            levelThreeLeafOne();*/
@@ -4955,7 +4955,7 @@ levelTwoNodeOne(long variable)
 	return 2 * levelThreeLeafOne(2 * variable);
 }
 
-long 
+long
 levelThreeLeafOne(long variable)
 {
 	return 2 * variable;
@@ -4975,7 +4975,7 @@ long divide2(long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, in conditional
- * expression, pointer to function returning a long 
+ * expression, pointer to function returning a long
  */
 {
 	static long     i = 2;
@@ -4990,7 +4990,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy1(long (*func)(long), long Long)
 {
 	long            i = Long % 3;
@@ -4998,7 +4998,7 @@ dummy1(long (*func)(long), long Long)
 	return (*func) ((Long + i) * (2 + i) / (2 - i));
 }
 
-long 
+long
 divide4(long Long)
 {
 	/*long            divide2(), dummy2();*/
@@ -5006,7 +5006,7 @@ divide4(long Long)
 	return dummy2(divide2, Long) / 2;
 }
 
-long 
+long
 dummy2(long (*func)(long), long Long)
 {
 	long            i = Long + 1;
@@ -5014,7 +5014,7 @@ dummy2(long (*func)(long), long Long)
 	return (*func) ((i + ++Long) / 2 - 1);
 }
 
-long 
+long
 divide2(long Long)
 {
 	return Long / 2;
@@ -5033,7 +5033,7 @@ void recursiveFunction(long, long);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, no return value, legal 
+ * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, no return value, legal
  */
 {
 	static long     i = 0;
@@ -5070,7 +5070,7 @@ void recursiveFunction(long, long);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, no return value, illegal 
+ * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, no return value, illegal
  */
 {
 	static long     i = 0;
@@ -5110,7 +5110,7 @@ long recursiveFunction(long, long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, return value, Long function
- * declaration 
+ * declaration
  */
 {
 	long            i = 0;
@@ -5128,7 +5128,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 recursiveFunction(long variable, long counter)
 {
 	long            result = 0;
@@ -5159,7 +5159,7 @@ long increment(long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, return value, pointer to
- * function returning a long 
+ * function returning a long
  */
 {
 	static long     i = 0;
@@ -5177,7 +5177,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy(long (*function)(long), long variable, long counter)
 {
 	long            result = 0;
@@ -5192,7 +5192,7 @@ dummy(long (*function)(long), long variable, long counter)
 	return function(storage);
 }
 
-long 
+long
 increment(long variable)
 {
 	return ++variable;
@@ -5212,7 +5212,7 @@ long recursiveFunction(long, long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, function in conditional
- * expression, Long function declaration 
+ * expression, Long function declaration
  */
 {
 	/*long            recursiveFunction();*/
@@ -5228,7 +5228,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 recursiveFunction(long variable, long counter)
 {
 	long            storage = variable;
@@ -5254,7 +5254,7 @@ long increment(long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, in conditional expression,
- * pointer to function returning a long 
+ * pointer to function returning a long
  */
 {
 	/*long            increment(), dummy();*/
@@ -5269,7 +5269,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy(long (*function)(long), long variable)
 {
 	long            storage = variable;
@@ -5281,7 +5281,7 @@ dummy(long (*function)(long), long variable)
 	return function(storage);
 }
 
-long 
+long
 increment(long variable)
 {
 	return ++variable;
@@ -5301,7 +5301,7 @@ void pollux(long, long);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 3) instance  : gemini, no return value, legal 
+ * test class: complex arithmatic and logical expression (case 3) instance  : gemini, no return value, legal
  */
 {
 	static long     i = 1, j = 2;
@@ -5352,7 +5352,7 @@ void pollux(long, long);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 3) instance  : gemini, no return value, illegal 
+ * test class: complex arithmatic and logical expression (case 3) instance  : gemini, no return value, illegal
  */
 {
 	static long     i = 1, j = 2;
@@ -5402,7 +5402,7 @@ long pollux(long, long);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 3) instance  : gemini, return value, no function declaration  
+ * test class: complex arithmatic and logical expression (case 3) instance  : gemini, return value, no function declaration
  */
 {
 	static long     i = 1, j = 2;
@@ -5420,7 +5420,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long variable, long counter)
 {
 	static long     i = 1, j = 2;
@@ -5435,7 +5435,7 @@ castor(long variable, long counter)
 	return variable;
 }
 
-long 
+long
 pollux(long variable, long counter)
 {
 	static long     i = 1, j = 2;
@@ -5464,7 +5464,7 @@ long increment(long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : gemini, return value, pointer to function
- * returning a long 
+ * returning a long
  */
 {
 	static long     i = 0;
@@ -5481,7 +5481,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long (*function)(long), long variable)
 {
 	long            ii = 0;
@@ -5495,7 +5495,7 @@ castor(long (*function)(long), long variable)
 	return function(variable);
 }
 
-long 
+long
 pollux(long (*function)(long), long variable)
 {
 	long            iii = 0;
@@ -5509,7 +5509,7 @@ pollux(long (*function)(long), long variable)
 	return function(variable);
 }
 
-long 
+long
 increment(long variable)
 {
 	return ++variable;
@@ -5528,7 +5528,7 @@ long pollux(long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : gemini, in conditional expression, function
- * declared to return a long 
+ * declared to return a long
  */
 {
 	static long     i = 0;
@@ -5543,7 +5543,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long variable)
 {
 	/*long            pollux();*/
@@ -5554,7 +5554,7 @@ castor(long variable)
 	return ++variable;
 }
 
-long 
+long
 pollux(long variable)
 {
 	/*long            castor();*/
@@ -5579,7 +5579,7 @@ long increment(long);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : gemini, in conditional expression, pointer to
- * function returning a long 
+ * function returning a long
  */
 {
 	static long     i = 1;
@@ -5595,7 +5595,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long (*function)(long), long variable)
 {
 	/*long            pollux();*/
@@ -5606,7 +5606,7 @@ castor(long (*function)(long), long variable)
 	return function(variable);
 }
 
-long 
+long
 pollux(long (*function)(long), long variable)
 {
 	/*long            castor();*/
@@ -5617,7 +5617,7 @@ pollux(long (*function)(long), long variable)
 	return function(variable);
 }
 
-long 
+long
 increment(long variable)
 {
 	return ++variable;
@@ -5647,7 +5647,7 @@ void levelThreeLeafEight(long);
 
 int main(void)				/* alias root */
 /*
- *  test class: bit-wise expression instance  : linear tree structure, no return value and legal 
+ *  test class: bit-wise expression instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne((i >> l | j) & k >> l & i);
@@ -5780,7 +5780,7 @@ int levelThreeLeafEight(long);
 
 int main(void)				/* alias root */
 /*
- *  test class: bit-wise expression instance  : linear tree structure, no return value and illegal 
+ *  test class: bit-wise expression instance  : linear tree structure, no return value and illegal
  */
 {
 	result = levelOneNodeOne((i >> l | j) & k >> l & i);
@@ -5928,7 +5928,7 @@ long levelThreeLeafEight(long);
 
 int main(void)				/* alias root */
 /*
- *  test class: bit-wise expression instance  : linear tree structure, return value, no function declaration 
+ *  test class: bit-wise expression instance  : linear tree structure, return value, no function declaration
  */
 {
 	long            result = 0;
@@ -5948,7 +5948,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-long 
+long
 levelOneNodeOne(long variable)
 {
 	long            result = 0;
@@ -5964,7 +5964,7 @@ levelOneNodeOne(long variable)
 	return variable;
 }
 
-long 
+long
 levelOneNodeTwo(long variable)
 {
 	long            result = 0;
@@ -5979,7 +5979,7 @@ levelOneNodeTwo(long variable)
 	return variable;
 }
 
-long 
+long
 levelTwoNodeOne(long variable)
 {
 	long            result = 0;
@@ -5994,7 +5994,7 @@ levelTwoNodeOne(long variable)
 	return variable;
 }
 
-long 
+long
 levelTwoNodeTwo(long variable)
 {
 	long            result = 0;
@@ -6009,7 +6009,7 @@ levelTwoNodeTwo(long variable)
 	return variable;
 }
 
-long 
+long
 levelTwoNodeThree(long variable)
 {
 	long            result = 0;
@@ -6024,7 +6024,7 @@ levelTwoNodeThree(long variable)
 	return variable;
 }
 
-long 
+long
 levelTwoNodeFour(long variable)
 {
 	long            result = 0;
@@ -6039,49 +6039,49 @@ levelTwoNodeFour(long variable)
 	return variable;
 }
 
-long 
+long
 levelThreeLeafOne(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafTwo(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafThree(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafFour(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafFive(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafSix(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafSeven(long variable)
 {
 	return variable;
 }
 
-long 
+long
 levelThreeLeafEight(long variable)
 {
 	return variable;
@@ -6102,11 +6102,11 @@ long divide2(long);
 int main(void)
 /*
  * test class: bit-wise expression instance  : linear tree structure, return value, legal pointer to function returning a
- * long 
+ * long
  */
 {
 	/*long            divide4(), result = 0, dummy1();*/
-	long result = 0; 
+	long result = 0;
 
 	result = dummy1(divide4, (k >> l & (i | l)) << l);
 	if (result != 3L)
@@ -6118,7 +6118,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy1(long (*func)(long), long Long)
 {
 	long            result = 0;
@@ -6129,7 +6129,7 @@ dummy1(long (*func)(long), long Long)
 	return result;
 }
 
-long 
+long
 divide4(long Long)
 {
 	/*long            divide2(), dummy2();*/
@@ -6137,7 +6137,7 @@ divide4(long Long)
 	return dummy2(divide2, Long) / 2;
 }
 
-long 
+long
 dummy2(long (*func)(long), long Long)
 {
 	long            result = 0;
@@ -6148,7 +6148,7 @@ dummy2(long (*func)(long), long Long)
 	return result;
 }
 
-long 
+long
 divide2(long Long)
 {
 	return Long / 2;
@@ -6167,7 +6167,7 @@ long levelThreeLeafOne(long);
 int main(void)				/* alias root */
 /*
  *  test class: bit-wise expression instance  : linear tree structure, used in conditional expression, Long function
- * declaration 
+ * declaration
  */
 {
 	/*long            levelOneNodeOne();*/
@@ -6182,7 +6182,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-long 
+long
 levelOneNodeOne(long variable)
 {
 	/*long            levelTwoNodeOne();*/
@@ -6190,7 +6190,7 @@ levelOneNodeOne(long variable)
 	return levelTwoNodeOne(variable << 1) << 1;
 }
 
-long 
+long
 levelTwoNodeOne(long variable)
 {
 	/*long            levelThreeLeafOne();*/
@@ -6198,7 +6198,7 @@ levelTwoNodeOne(long variable)
 	return levelThreeLeafOne(variable << 1) << 1;
 }
 
-long 
+long
 levelThreeLeafOne(long variable)
 {
 	return variable << 1;
@@ -6219,7 +6219,7 @@ long divide2(long);
 int main(void)
 /*
  * test class: bit-wise expression instance  : linear tree structure, in conditional expression, pointer to function
- * returning a long 
+ * returning a long
  */
 {
 
@@ -6232,26 +6232,26 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy1(long (*func)(long), long Long)
 {
 	return (*func) (Long & k);
 }
 
-long 
+long
 divide4(long Long)
 {
 
 	return dummy2(divide2, Long) / 2;
 }
 
-long 
+long
 dummy2(long (*func)(long), long Long)
 {
 	return (*func) (Long << l >> l);
 }
 
-long 
+long
 divide2(long Long)
 {
 	return Long / 2;
@@ -6271,7 +6271,7 @@ void recursiveFunction(long, long);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : recursive call, no return value, legal 
+ * test class: bit-wise expression instance  : recursive call, no return value, legal
  */
 {
 	long            counter = TimeLimit;
@@ -6307,7 +6307,7 @@ int recursiveFunction(long, long);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : recursive call, no return value, illegal 
+ * test class: bit-wise expression instance  : recursive call, no return value, illegal
  */
 {
 	long            counter = TimeLimit;
@@ -6345,7 +6345,7 @@ long recursiveFunction(long, long);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : recursive call, return value, function declared to return a long 
+ * test class: bit-wise expression instance  : recursive call, return value, function declared to return a long
  */
 {
 	long            result = 0;
@@ -6362,7 +6362,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 recursiveFunction(long variable, long counter)
 {
 	long            result = 0;
@@ -6392,7 +6392,7 @@ long increment(long);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : recursive call, return value, pointer to function returning a long 
+ * test class: bit-wise expression instance  : recursive call, return value, pointer to function returning a long
  */
 {
 	long            result = 0;
@@ -6408,7 +6408,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy(long (*function)(long), long variable, long counter)
 {
 	long            result = 0;
@@ -6422,7 +6422,7 @@ dummy(long (*function)(long), long variable, long counter)
 	return function(storage);
 }
 
-long 
+long
 increment(long variable)
 {
 	return ++variable;
@@ -6442,7 +6442,7 @@ long recursiveFunction(long, long);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : recursive call, function in conditional expression, Long function declaration 
+ * test class: bit-wise expression instance  : recursive call, function in conditional expression, Long function declaration
  */
 {
 	long            counter = TimeLimit;
@@ -6456,7 +6456,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 recursiveFunction(long variable, long counter)
 {
 	long            storage = variable;
@@ -6482,7 +6482,7 @@ long increment(long);
 int main(void)
 /*
  * test class: bit-wise expression instance  : recursive call, in conditional expression, pointer to function returning a
- * long 
+ * long
  */
 {
 
@@ -6495,7 +6495,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy(long (*function)(long), long variable)
 {
 	long            storage = variable;
@@ -6506,7 +6506,7 @@ dummy(long (*function)(long), long variable)
 	return function(storage);
 }
 
-long 
+long
 increment(long variable)
 {
 	return ++variable;
@@ -6527,7 +6527,7 @@ void pollux(long, long);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, no return value, legal 
+ * test class: bit-wise expression instance  : gemini, no return value, legal
  */
 {
 	long            counter = TimeLimit;
@@ -6574,7 +6574,7 @@ void pollux(long, long);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, no return value, illegal 
+ * test class: bit-wise expression instance  : gemini, no return value, illegal
  */
 {
 	long            counter = TimeLimit;
@@ -6620,7 +6620,7 @@ long pollux(long, long);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, return value, no function declaration  
+ * test class: bit-wise expression instance  : gemini, return value, no function declaration
  */
 {
 	long            counter = TimeLimit;
@@ -6636,7 +6636,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long variable, long counter)
 {
 	long            result = 0;
@@ -6649,7 +6649,7 @@ castor(long variable, long counter)
 	return variable;
 }
 
-long 
+long
 pollux(long variable, long counter)
 {
 	long            result = 0;
@@ -6676,7 +6676,7 @@ long increment(long);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, return value, pointer to function returning a long 
+ * test class: bit-wise expression instance  : gemini, return value, pointer to function returning a long
  */
 {
 
@@ -6690,7 +6690,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long (*function)(long), long variable)
 {
 	long            result = 0;
@@ -6703,7 +6703,7 @@ castor(long (*function)(long), long variable)
 	return function(variable);
 }
 
-long 
+long
 pollux(long (*function)(long), long variable)
 {
 	long            result = 0;
@@ -6716,7 +6716,7 @@ pollux(long (*function)(long), long variable)
 	return function(variable);
 }
 
-long 
+long
 increment(long variable)
 {
 	return ++variable;
@@ -6736,7 +6736,7 @@ long pollux(long);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, in conditional expression, function declared to return a long 
+ * test class: bit-wise expression instance  : gemini, in conditional expression, function declared to return a long
  */
 {
 
@@ -6749,7 +6749,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long variable)
 {
 
@@ -6760,7 +6760,7 @@ castor(long variable)
 	return ++variable;
 }
 
-long 
+long
 pollux(long variable)
 {
 	if (--counter) {
@@ -6784,7 +6784,7 @@ long increment(long);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, in conditional expression, pointer to function returning a long 
+ * test class: bit-wise expression instance  : gemini, in conditional expression, pointer to function returning a long
  */
 {
 
@@ -6797,7 +6797,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long (*function)(long), long variable)
 {
 	if (--counter) {
@@ -6807,7 +6807,7 @@ castor(long (*function)(long), long variable)
 	return function(variable);
 }
 
-long 
+long
 pollux(long (*function)(long), long variable)
 {
 	if (--counter) {
@@ -6817,7 +6817,7 @@ pollux(long (*function)(long), long variable)
 	return function(variable);
 }
 
-long 
+long
 increment(long variable)
 {
 	return ++variable;
@@ -6847,7 +6847,7 @@ long dummy(long);
 
 int main(void)				/* alias root */
 /*
- *  test class: function as argument instance  : linear tree structure, no return value and legal 
+ *  test class: function as argument instance  : linear tree structure, no return value and legal
  */
 {
 
@@ -6956,7 +6956,7 @@ void levelThreeLeafEight(long argument)
 		statusFlag++;
 }
 
-long 
+long
 dummy(long argument)
 {
 	return argument;
@@ -6986,7 +6986,7 @@ long dummy(long);
 
 int main(void)				/* alias root */
 /*
- *  test class: function as argument instance  : linear tree structure, no return value and illegal 
+ *  test class: function as argument instance  : linear tree structure, no return value and illegal
  */
 {
 	long            i = 0;
@@ -7122,7 +7122,7 @@ void levelThreeLeafEight(long argument)
 		statusFlag++;
 }
 
-long 
+long
 dummy(long argument)
 {
 	return argument;
@@ -7152,7 +7152,7 @@ long dummy(long);
 
 int main(void)				/* alias root */
 /*
- *  test class: function as argument instance  : linear tree structure, return value and legal, Long function declaration 
+ *  test class: function as argument instance  : linear tree structure, return value and legal, Long function declaration
  */
 {
 	long            i = 0;
@@ -7171,7 +7171,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-long 
+long
 levelOneNodeOne(long argument)
 {
 	long            i = 0;
@@ -7188,7 +7188,7 @@ levelOneNodeOne(long argument)
 	return argument;
 }
 
-long 
+long
 levelOneNodeTwo(long argument)
 {
 	long            i = 0;
@@ -7205,7 +7205,7 @@ levelOneNodeTwo(long argument)
 	return argument;
 }
 
-long 
+long
 levelTwoNodeOne(long argument)
 {
 	long            i = 0;
@@ -7222,7 +7222,7 @@ levelTwoNodeOne(long argument)
 	return argument;
 }
 
-long 
+long
 levelTwoNodeTwo(long argument)
 {
 	long            i = 0;
@@ -7239,7 +7239,7 @@ levelTwoNodeTwo(long argument)
 	return argument;
 }
 
-long 
+long
 levelTwoNodeThree(long argument)
 {
 	long            i = 0;
@@ -7256,7 +7256,7 @@ levelTwoNodeThree(long argument)
 	return argument;
 }
 
-long 
+long
 levelTwoNodeFour(long argument)
 {
 	long            i = 0;
@@ -7273,7 +7273,7 @@ levelTwoNodeFour(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafOne(long argument)
 {
 	if (argument != 7L)
@@ -7281,7 +7281,7 @@ levelThreeLeafOne(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafTwo(long argument)
 {
 	if (argument != 8L)
@@ -7289,7 +7289,7 @@ levelThreeLeafTwo(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafThree(long argument)
 {
 	if (argument != 9L)
@@ -7297,7 +7297,7 @@ levelThreeLeafThree(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafFour(long argument)
 {
 	if (argument != 10L)
@@ -7305,7 +7305,7 @@ levelThreeLeafFour(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafFive(long argument)
 {
 	if (argument != 11L)
@@ -7313,7 +7313,7 @@ levelThreeLeafFive(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafSix(long argument)
 {
 	if (argument != 12L)
@@ -7321,7 +7321,7 @@ levelThreeLeafSix(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafSeven(long argument)
 {
 	if (argument != 13L)
@@ -7329,7 +7329,7 @@ levelThreeLeafSeven(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafEight(long argument)
 {
 	if (argument != 14L)
@@ -7337,7 +7337,7 @@ levelThreeLeafEight(long argument)
 	return argument;
 }
 
-long 
+long
 dummy(long argument)
 {
 	return argument;
@@ -7358,7 +7358,7 @@ long twelve(void);
 int main(void)
 /*
  * test class: function as argument instance  : linear tree structure, return value, legal pointer to function returning a
- * long 
+ * long
  */
 {
 	long            i, divide4(), dummy1();
@@ -7373,7 +7373,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy1(long (*func)(long), long Long)
 {
 	long            i = Long;
@@ -7384,14 +7384,14 @@ dummy1(long (*func)(long), long Long)
 	return i;
 }
 
-long 
+long
 divide4(long Long)
 {
 
 	return dummy2(divide2, Long) / 2;
 }
 
-long 
+long
 dummy2(long (*func)(long), long Long)
 {
 	long            i = Long;
@@ -7402,13 +7402,13 @@ dummy2(long (*func)(long), long Long)
 	return i;
 }
 
-long 
+long
 divide2(long Long)
 {
 	return Long / 2;
 }
 
-long 
+long
 twelve(void)
 {
 	return 12;
@@ -7430,7 +7430,7 @@ long mirror(long);
 int main(void)				/* alias root */
 /*
  *  test class: function as argument instance  : linear tree structure, used in conditional expression, Long function
- * declaration 
+ * declaration
  */
 {
 
@@ -7443,7 +7443,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-long 
+long
 levelOneNodeOne(long argument)
 {
 	long            object = argument + 2;
@@ -7453,7 +7453,7 @@ levelOneNodeOne(long argument)
 	return argument;
 }
 
-long 
+long
 levelTwoNodeOne(long argument)
 {
 	long            object = argument + 4;
@@ -7463,7 +7463,7 @@ levelTwoNodeOne(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafOne(long argument)
 {
 	if (argument != 7L)
@@ -7471,7 +7471,7 @@ levelThreeLeafOne(long argument)
 	return argument;
 }
 
-long 
+long
 mirror(long argument)
 {
 	return argument;
@@ -7492,7 +7492,7 @@ long twelve(void);
 int main(void)
 /*
  * test class: function as argument instance  : linear tree structure, in conditional expression, pointer to function
- * returning a long 
+ * returning a long
  */
 {
 
@@ -7505,7 +7505,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy1(long (*func)(long), long Long)
 {
 	long            i = Long;
@@ -7515,14 +7515,14 @@ dummy1(long (*func)(long), long Long)
 	return i;
 }
 
-long 
+long
 divide4(long Long)
 {
 
 	return dummy2(divide2, Long) / 2;
 }
 
-long 
+long
 dummy2(long (*func)(long), long Long)
 {
 	long            i = Long;
@@ -7532,13 +7532,13 @@ dummy2(long (*func)(long), long Long)
 	return i;
 }
 
-long 
+long
 divide2(long Long)
 {
 	return Long / 2;
 }
 
-long 
+long
 twelve(void)
 {
 	return 12;
@@ -7556,7 +7556,7 @@ long un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, no return value, legal 
+ * test class: function as argument instance  : recursive call, no return value, legal
  */
 {
 	if (statusFlag == NoMistake)
@@ -7574,7 +7574,7 @@ void recursiveFunction(long argument)
 		recursiveFunction(un());
 }
 
-long 
+long
 un(void)
 {
 	static long     un = 1;
@@ -7594,7 +7594,7 @@ long un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, no return value, illegal 
+ * test class: function as argument instance  : recursive call, no return value, illegal
  */
 {
 	result = recursiveFunction(un());
@@ -7618,7 +7618,7 @@ int recursiveFunction(long argument)
 	return;
 }
 
-long 
+long
 un(void)
 {
 	static long     un = 1;
@@ -7637,7 +7637,7 @@ long un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, return value, legal, Long function declaration 
+ * test class: function as argument instance  : recursive call, return value, legal, Long function declaration
  */
 {
 	long            i = 0;
@@ -7652,7 +7652,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 recursiveFunction(long argument)
 {
 	long            i;
@@ -7665,7 +7665,7 @@ recursiveFunction(long argument)
 	return ++argument;
 }
 
-long 
+long
 un(void)
 {
 	static long     un = 1;
@@ -7685,7 +7685,7 @@ long un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, return value, pointer to function returning a long 
+ * test class: function as argument instance  : recursive call, return value, pointer to function returning a long
  */
 {
 	long            i;
@@ -7700,7 +7700,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy(long (*function)(long), long argument)
 {
 	long            i;
@@ -7713,13 +7713,13 @@ dummy(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 increment(long argument)
 {
 	return ++argument;
 }
 
-long 
+long
 un(void)
 {
 	long            un = 1;
@@ -7739,7 +7739,7 @@ long un(void);
 int main(void)
 /*
  * test class: function as argument instance  : recursive call, function in conditional expression, Long function
- * declaration 
+ * declaration
  */
 {
 
@@ -7752,7 +7752,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 recursiveFunction(long argument)
 {
 
@@ -7762,7 +7762,7 @@ recursiveFunction(long argument)
 	return ++argument;
 }
 
-long 
+long
 un(void)
 {
 	static long     un = 1;
@@ -7783,7 +7783,7 @@ long un(void);
 int main(void)
 /*
  * test class: function as argument instance  : recursive call, in conditional expression, pointer to function returning a
- * long 
+ * long
  */
 {
 
@@ -7796,7 +7796,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy(long (*function)(long), long argument)
 {
 	if (--counter)
@@ -7805,13 +7805,13 @@ dummy(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 increment(long argument)
 {
 	return ++argument;
 }
 
-long 
+long
 un(void)
 {
 	static long     un = 1;
@@ -7833,7 +7833,7 @@ long deux(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, no return value, legal 
+ * test class: function as argument instance  : gemini, no return value, legal
  */
 {
 
@@ -7863,14 +7863,14 @@ void pollux(long argument)
 		castor(un());
 }
 
-long 
+long
 un(void)
 {
 	long            un = 1;
 	return un;
 }
 
-long 
+long
 deux(void)
 {
 	long            deux = 2;
@@ -7892,7 +7892,7 @@ long deux(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, no return value, illegal 
+ * test class: function as argument instance  : gemini, no return value, illegal
  */
 {
 	if (result != 0L)
@@ -7922,14 +7922,14 @@ void pollux(long argument)
 		castor(un());
 }
 
-long 
+long
 un(void)
 {
 	long            un = 1;
 	return un;
 }
 
-long 
+long
 deux(void)
 {
 	long            deux = 2;
@@ -7949,7 +7949,7 @@ long rebound(long);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, return value, legal, function declared to return a long 
+ * test class: function as argument instance  : gemini, return value, legal, function declared to return a long
  */
 {
 	long            i = 0;
@@ -7964,7 +7964,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long argument)
 {
 	long            i;
@@ -7977,7 +7977,7 @@ castor(long argument)
 	return ++argument;
 }
 
-long 
+long
 pollux(long argument)
 {
 	long            i;
@@ -7990,7 +7990,7 @@ pollux(long argument)
 	return ++argument;
 }
 
-long 
+long
 rebound(long argument)
 {
 	return argument;
@@ -8017,7 +8017,7 @@ long neuf(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, return value, pointer to function returning a long 
+ * test class: function as argument instance  : gemini, return value, pointer to function returning a long
  */
 {
 	long            i;
@@ -8032,7 +8032,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long (*function)(long), long argument)
 {
 	long            i;
@@ -8044,7 +8044,7 @@ castor(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 pollux(long (*function)(long), long argument)
 {
 	long            i;
@@ -8056,25 +8056,25 @@ pollux(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 increment(long argument)
 {
 	return ++argument;
 }
 
-long 
+long
 un(void)
 {
 	return Un;
 }
 
-long 
+long
 trois(void)
 {
 	return (Trois);
 }
 
-long 
+long
 neuf(void)
 {
 	return (Neuf);
@@ -8097,7 +8097,7 @@ long numero(long);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, in conditional expression, function declared to return a long 
+ * test class: function as argument instance  : gemini, in conditional expression, function declared to return a long
  */
 {
 
@@ -8110,7 +8110,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long argument)
 {
 
@@ -8120,7 +8120,7 @@ castor(long argument)
 	return ++argument;
 }
 
-long 
+long
 pollux(long argument)
 {
 
@@ -8130,7 +8130,7 @@ pollux(long argument)
 	return ++argument;
 }
 
-long 
+long
 numero(long questCa)
 {
 	return questCa;
@@ -8152,7 +8152,7 @@ long neuf(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, in conditional expression, pointer to function returning a long 
+ * test class: function as argument instance  : gemini, in conditional expression, pointer to function returning a long
  */
 {
 
@@ -8165,7 +8165,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long (*function)(long), long argument)
 {
 
@@ -8175,7 +8175,7 @@ castor(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 pollux(long (*function)(long), long argument)
 {
 
@@ -8185,27 +8185,27 @@ pollux(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 increment(long argument)
 {
 	return ++argument;
 }
 
-long 
+long
 un(void)
 {
 	static long     un = 1;
 	return un;
 }
 
-long 
+long
 trois(void)
 {
 	static long     trois = 3;
 	return trois;
 }
 
-long 
+long
 neuf(void)
 {
 	static long     neuf = 9;
@@ -8224,7 +8224,7 @@ long indeterminacy(long, long, long);
 
 int main(void)
 /*
- * test class: function as argument, variable order not determined instance  : recursive call, no return value, legal 
+ * test class: function as argument, variable order not determined instance  : recursive call, no return value, legal
  */
 {
 	long            i = 0, a, b, c;
@@ -8254,7 +8254,7 @@ void recursiveFunction(long argument)
 	}
 }
 
-long 
+long
 indeterminacy(long uno, long dos, long tres)
 {
 	return uno + dos + tres;
@@ -8286,7 +8286,7 @@ long tres(long);
 
 int main(void)				/* alias root */
 /*
- *  test class: nested function as argument instance  : linear tree structure, no return value and legal 
+ *  test class: nested function as argument instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(uno(dos(tres(1L))));
@@ -8394,19 +8394,19 @@ void levelThreeLeafEight(long argument)
 		statusFlag++;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -8438,7 +8438,7 @@ long tres(long);
 
 int main(void)				/* alias root */
 /*
- *  test class: nested function as argument instance  : linear tree structure, no return value and illegal 
+ *  test class: nested function as argument instance  : linear tree structure, no return value and illegal
  */
 {
 	long            i = 0;
@@ -8574,19 +8574,19 @@ void levelThreeLeafEight(long argument)
 		statusFlag++;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -8619,7 +8619,7 @@ long tres(long);
 int main(void)				/* alias root */
 /*
  *  test class: nested function as argument instance  : linear tree structure, return value and legal, Long function
- * declaration 
+ * declaration
  */
 {
 	long            i = 0;
@@ -8638,7 +8638,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-long 
+long
 levelOneNodeOne(long argument)
 {
 	long            i = 0;
@@ -8655,7 +8655,7 @@ levelOneNodeOne(long argument)
 	return argument;
 }
 
-long 
+long
 levelOneNodeTwo(long argument)
 {
 	long            i = 0;
@@ -8672,7 +8672,7 @@ levelOneNodeTwo(long argument)
 	return argument;
 }
 
-long 
+long
 levelTwoNodeOne(long argument)
 {
 	long            i = 0;
@@ -8689,7 +8689,7 @@ levelTwoNodeOne(long argument)
 	return argument;
 }
 
-long 
+long
 levelTwoNodeTwo(long argument)
 {
 	long            i = 0;
@@ -8706,7 +8706,7 @@ levelTwoNodeTwo(long argument)
 	return argument;
 }
 
-long 
+long
 levelTwoNodeThree(long argument)
 {
 	long            i = 0;
@@ -8723,7 +8723,7 @@ levelTwoNodeThree(long argument)
 	return argument;
 }
 
-long 
+long
 levelTwoNodeFour(long argument)
 {
 	long            i = 0;
@@ -8740,7 +8740,7 @@ levelTwoNodeFour(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafOne(long argument)
 {
 	if (argument != 7L)
@@ -8748,7 +8748,7 @@ levelThreeLeafOne(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafTwo(long argument)
 {
 	if (argument != 8L)
@@ -8756,7 +8756,7 @@ levelThreeLeafTwo(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafThree(long argument)
 {
 	if (argument != 9L)
@@ -8764,7 +8764,7 @@ levelThreeLeafThree(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafFour(long argument)
 {
 	if (argument != 10L)
@@ -8772,7 +8772,7 @@ levelThreeLeafFour(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafFive(long argument)
 {
 	if (argument != 11L)
@@ -8780,7 +8780,7 @@ levelThreeLeafFive(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafSix(long argument)
 {
 	if (argument != 12L)
@@ -8788,7 +8788,7 @@ levelThreeLeafSix(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafSeven(long argument)
 {
 	if (argument != 13L)
@@ -8796,7 +8796,7 @@ levelThreeLeafSeven(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafEight(long argument)
 {
 	if (argument != 14L)
@@ -8804,19 +8804,19 @@ levelThreeLeafEight(long argument)
 	return argument;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -8843,7 +8843,7 @@ long half(long);
 int main(void)
 /*
  * test class: nested function as argument instance  : linear tree structure, return value, legal pointer to function
- * returning a long 
+ * returning a long
  */
 {
 
@@ -8859,7 +8859,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy1(long (*func)(long), long Long)
 {
 	long            i = Long;
@@ -8870,14 +8870,14 @@ dummy1(long (*func)(long), long Long)
 	return i;
 }
 
-long 
+long
 divide4(long Long)
 {
 
 	return dummy2(divide2, Long) / 2;
 }
 
-long 
+long
 dummy2(long (*func)(long), long Long)
 {
 	long            i = Long;
@@ -8888,25 +8888,25 @@ dummy2(long (*func)(long), long Long)
 	return i;
 }
 
-long 
+long
 divide2(long Long)
 {
 	return Long / 2;
 }
 
-long 
+long
 twentyFour(void)
 {
 	return TwoDozen;
 }
 
-long 
+long
 twoTimes(long argument)
 {
 	return 2 * argument;
 }
 
-long 
+long
 half(long argument)
 {
 	return argument / 2;
@@ -8929,7 +8929,7 @@ long tres(long);
 int main(void)				/* alias root */
 /*
  *  test class: nested function as argument instance  : linear tree structure, used in conditional expression, Long function
- * declaration 
+ * declaration
  */
 {
 
@@ -8942,7 +8942,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-long 
+long
 levelOneNodeOne(long argument)
 {
 	long            object = argument + 2;
@@ -8952,7 +8952,7 @@ levelOneNodeOne(long argument)
 	return argument;
 }
 
-long 
+long
 levelTwoNodeOne(long argument)
 {
 	long            object = argument + 4;
@@ -8962,7 +8962,7 @@ levelTwoNodeOne(long argument)
 	return argument;
 }
 
-long 
+long
 levelThreeLeafOne(long argument)
 {
 	if (argument != 7L)
@@ -8970,19 +8970,19 @@ levelThreeLeafOne(long argument)
 	return argument;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9005,7 +9005,7 @@ long half(long);
 int main(void)
 /*
  * test class: nested function as argument instance  : linear tree structure, in conditional expression, pointer to function
- * returning a long 
+ * returning a long
  */
 {
 
@@ -9018,7 +9018,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy1(long (*func)(long), long Long)
 {
 	long            i;
@@ -9028,14 +9028,14 @@ dummy1(long (*func)(long), long Long)
 	return i;
 }
 
-long 
+long
 divide4(long Long)
 {
 
 	return dummy2(divide2, Long) / 2;
 }
 
-long 
+long
 dummy2(long (*func)(long), long Long)
 {
 	long            i;
@@ -9045,19 +9045,19 @@ dummy2(long (*func)(long), long Long)
 	return i;
 }
 
-long 
+long
 divide2(long Long)
 {
 	return Long / 2;
 }
 
-long 
+long
 twoTimes(long argument)
 {
 	return 2 * argument;
 }
 
-long 
+long
 half(long argument)
 {
 	return argument / 2;
@@ -9080,7 +9080,7 @@ long tres(long);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : recursive call, no return value, legal 
+ * test class: nested function as argument instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(uno(dos(tres(Un))));
@@ -9100,19 +9100,19 @@ void recursiveFunction(long argument)
 		recursiveFunction(uno(dos(tres(Un))));
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9133,7 +9133,7 @@ long tres(long);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : recursive call, no return value, illegal 
+ * test class: nested function as argument instance  : recursive call, no return value, illegal
  */
 {
 	long            i;
@@ -9162,19 +9162,19 @@ int recursiveFunction(long argument)
 	return;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9195,7 +9195,7 @@ long tres(long);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : recursive call, return value, legal, Long function declaration 
+ * test class: nested function as argument instance  : recursive call, return value, legal, Long function declaration
  */
 {
 	long i;
@@ -9210,7 +9210,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 recursiveFunction(long argument)
 {
 	long i;
@@ -9223,19 +9223,19 @@ recursiveFunction(long argument)
 	return ++argument;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9257,7 +9257,7 @@ long tres(long);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : recursive call, return value, pointer to function returning a long 
+ * test class: nested function as argument instance  : recursive call, return value, pointer to function returning a long
  */
 {
 	long            i;
@@ -9272,7 +9272,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy(long (*function)(long), long argument)
 {
 	long            i;
@@ -9285,25 +9285,25 @@ dummy(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 increment(long argument)
 {
 	return ++argument;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9325,7 +9325,7 @@ long tres(long);
 int main(void)
 /*
  * test class: nested function as argument instance  : recursive call, function in conditional expression, Long function
- * declaration 
+ * declaration
  */
 {
 
@@ -9338,7 +9338,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 recursiveFunction(long argument)
 {
 
@@ -9348,19 +9348,19 @@ recursiveFunction(long argument)
 	return ++argument;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9383,7 +9383,7 @@ long tres(long);
 int main(void)
 /*
  * test class: nested function as argument instance  : recursive call, in conditional expression, pointer to function
- * returning a long 
+ * returning a long
  */
 {
 
@@ -9396,7 +9396,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 dummy(long (*function)(long), long argument)
 {
 
@@ -9406,25 +9406,25 @@ dummy(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 increment(long argument)
 {
 	return ++argument;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9447,7 +9447,7 @@ long tres(long);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, no return value, legal 
+ * test class: nested function as argument instance  : gemini, no return value, legal
  */
 {
 
@@ -9477,19 +9477,19 @@ void pollux(long argument)
 		castor(uno(dos(tres((long) Un))));
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9512,7 +9512,7 @@ long tres(void);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, no return value, illegal 
+ * test class: nested function as argument instance  : gemini, no return value, illegal
  */
 {
 	castor(uno(dos(tres())));
@@ -9549,19 +9549,19 @@ void pollux(long argument)
 	}
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(void)
 {
 	return Un;
@@ -9586,7 +9586,7 @@ long tres(long);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, return value, legal, function declared to return a long 
+ * test class: nested function as argument instance  : gemini, return value, legal, function declared to return a long
  */
 {
 	long            i;
@@ -9602,7 +9602,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long argument)
 {
 	long            i;
@@ -9616,7 +9616,7 @@ castor(long argument)
 	return ++argument;
 }
 
-long 
+long
 pollux(long argument)
 {
 	long            i;
@@ -9630,19 +9630,19 @@ pollux(long argument)
 	return ++argument;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9669,7 +9669,7 @@ long tres(long);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, return value, pointer to function returning a long 
+ * test class: nested function as argument instance  : gemini, return value, pointer to function returning a long
  */
 {
 	long            i;
@@ -9685,7 +9685,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long (*function)(long), long argument)
 {
 	long            i;
@@ -9699,7 +9699,7 @@ castor(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 pollux(long (*function)(long), long argument)
 {
 	long            i;
@@ -9713,25 +9713,25 @@ pollux(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 increment(long argument)
 {
 	return ++argument;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9758,7 +9758,7 @@ long tres(long);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, in conditional expression, function declared to return a long 
+ * test class: nested function as argument instance  : gemini, in conditional expression, function declared to return a long
  */
 {
 	/*long            castor(), uno(), dos(), tres();*/
@@ -9772,7 +9772,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long argument)
 {
 	/*long            pollux(), uno(), dos(), tres();*/
@@ -9783,7 +9783,7 @@ castor(long argument)
 	return ++argument;
 }
 
-long 
+long
 pollux(long argument)
 {
 	/*long            uno(), dos(), tres(), castor();*/
@@ -9794,19 +9794,19 @@ pollux(long argument)
 	return ++argument;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9837,7 +9837,7 @@ long tres(long);
 int main(void)
 /*
  * test class: nested function as argument instance  : gemini, in conditional expression, pointer to function returning a
- * long 
+ * long
  */
 {
 	/*long            increment();*/
@@ -9853,7 +9853,7 @@ int main(void)
 	return 0;
 }
 
-long 
+long
 castor(long (*function)(long), long argument)
 {
 	/*long            uno(), dos(), tres(), pollux();*/
@@ -9864,7 +9864,7 @@ castor(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 pollux(long (*function)(long), long argument)
 {
 	/*long            uno(), dos(), tres(), castor();*/
@@ -9875,25 +9875,25 @@ pollux(long (*function)(long), long argument)
 	return function(argument);
 }
 
-long 
+long
 increment(long argument)
 {
 	return ++argument;
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long argument)
 {
 	return argument;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9915,7 +9915,7 @@ long tres(long);
 
 int main(void)
 /*
- * test class: nested function as argument, random order instance  : recursive call, no return value, legal 
+ * test class: nested function as argument, random order instance  : recursive call, no return value, legal
  */
 {
 	long            i = 0, a, b, c;
@@ -9947,19 +9947,19 @@ void recursiveFunction(long argument)
 	}
 }
 
-long 
+long
 uno(long argument)
 {
 	return argument;
 }
 
-long 
+long
 dos(long uno, long dos, long tres)
 {
 	return uno + dos + tres;
 }
 
-long 
+long
 tres(long argument)
 {
 	return argument;
@@ -9989,7 +9989,7 @@ int levelThreeLeafEight(unsigned);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 2) instance  : linear tree structure, return value and
- * legal, no function declaration 
+ * legal, no function declaration
  */
 {
 	unsigned        i = 0;
@@ -10165,7 +10165,7 @@ short levelThreeLeafEight(unsigned);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 2) instance  : linear tree structure, return value and
- * legal, integer function declaration 
+ * legal, integer function declaration
  */
 {
 	unsigned        i = 0;
@@ -10187,7 +10187,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-short 
+short
 levelOneNodeOne(unsigned variable)
 
 {
@@ -10202,7 +10202,7 @@ levelOneNodeOne(unsigned variable)
 	return variable;
 }
 
-short 
+short
 levelOneNodeTwo(unsigned variable)
 
 {
@@ -10218,7 +10218,7 @@ levelOneNodeTwo(unsigned variable)
 	return variable;
 }
 
-short 
+short
 levelTwoNodeOne(unsigned variable)
 
 {
@@ -10234,7 +10234,7 @@ levelTwoNodeOne(unsigned variable)
 	return variable;
 }
 
-short 
+short
 levelTwoNodeTwo(unsigned variable)
 
 {
@@ -10250,7 +10250,7 @@ levelTwoNodeTwo(unsigned variable)
 	return variable;
 }
 
-short 
+short
 levelTwoNodeThree(unsigned variable)
 
 {
@@ -10266,7 +10266,7 @@ levelTwoNodeThree(unsigned variable)
 	return i;
 }
 
-short 
+short
 levelTwoNodeFour(unsigned variable)
 
 {
@@ -10282,56 +10282,56 @@ levelTwoNodeFour(unsigned variable)
 	return variable;
 }
 
-short 
+short
 levelThreeLeafOne(unsigned variable)
 
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafTwo(unsigned variable)
 
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafThree(unsigned variable)
 
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafFour(unsigned variable)
 
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafFive(unsigned variable)
 
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafSix(unsigned variable)
 
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafSeven(unsigned variable)
 
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafEight(unsigned variable)
 
 {
@@ -10351,7 +10351,7 @@ char *levelThree(unsigned, char*);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : linear tree structure, return value and legal,
- * function declared to return a pointer to character 
+ * function declared to return a pointer to character
  */
 {
 	/*char           *s, *levelOne();*/
@@ -10421,7 +10421,7 @@ unsigned divide2(unsigned);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : linear tree structure, return value, legal
- * pointer to function returning an integer 
+ * pointer to function returning an integer
  */
 {
 	unsigned        i = 3;
@@ -10448,7 +10448,7 @@ int dummy1(unsigned (*func)(unsigned), unsigned integer)
 	return i;
 }
 
-unsigned 
+unsigned
 divide4(unsigned integer)
 {
 	/*unsigned        divide2();*/
@@ -10466,7 +10466,7 @@ int dummy2(unsigned (*func)(unsigned), unsigned integer)
 	return i;
 }
 
-unsigned 
+unsigned
 divide2(unsigned integer)
 {
 	return integer / 2;
@@ -10483,7 +10483,7 @@ char levelThreeLeafOne(unsigned);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 2) instance  : linear tree structure, used in conditional
- * expression, integer function declaration 
+ * expression, integer function declaration
  */
 {
 	unsigned        i = 1;
@@ -10499,7 +10499,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-char 
+char
 levelOneNodeOne(unsigned variable)
 
 {
@@ -10508,7 +10508,7 @@ levelOneNodeOne(unsigned variable)
 	return 2 * levelTwoNodeOne(2 * variable);
 }
 
-char 
+char
 levelTwoNodeOne(unsigned variable)
 
 {
@@ -10517,7 +10517,7 @@ levelTwoNodeOne(unsigned variable)
 	return 2 * levelThreeLeafOne(2 * variable);
 }
 
-char 
+char
 levelThreeLeafOne(unsigned variable)
 
 {
@@ -10536,7 +10536,7 @@ int compare(char*, char*, short);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 2) instance  : linear tree structure, used in conditional
- * expression, function declared to return a pointer to character 
+ * expression, function declared to return a pointer to character
  */
 {
 	char            i = 2, j = i;
@@ -10583,7 +10583,7 @@ unsigned divide2(char);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : linear tree structure, in conditional
- * expression, pointer to function returning an integer 
+ * expression, pointer to function returning an integer
  */
 {
 	char            i = 2;
@@ -10605,7 +10605,7 @@ int dummy1(char (*func)(char), char integer)
 	return (*func) ((integer + i) * (2 + i) / (2 - i));
 }
 
-char 
+char
 divide4(char integer)
 {
 	/*unsigned        divide2();*/
@@ -10620,7 +10620,7 @@ int dummy2(unsigned (*func)(char), char integer)
 	return (*func) ((i + ++integer) / 2 - 1);
 }
 
-unsigned 
+unsigned
 divide2(char integer)
 {
 	return integer / 2;
@@ -10639,7 +10639,7 @@ void recursiveFunction(char, short);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, no return value, legal 
+ * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, no return value, legal
  */
 {
 	char            i = 0;
@@ -10676,7 +10676,7 @@ int recursiveFunction(char, short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, return value, no function
- * declaration 
+ * declaration
  */
 {
 	char            i = 0;
@@ -10722,7 +10722,7 @@ short recursiveFunction(unsigned, short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, return value, integer function
- * declaration 
+ * declaration
  */
 {
 	unsigned        i = 0;
@@ -10739,7 +10739,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 recursiveFunction(unsigned variable, short counter)
 {
 	short           result = 0;
@@ -10768,7 +10768,7 @@ char *recursiveFunction(char, char*, short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, return value, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	char           *s;
@@ -10817,7 +10817,7 @@ unsigned increment(char);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, return value, pointer to
- * function returning an integer 
+ * function returning an integer
  */
 {
 	char            i = 0;
@@ -10847,7 +10847,7 @@ int dummy(unsigned (*function)(char), char variable, short counter)
 	return function(storage);
 }
 
-unsigned 
+unsigned
 increment(char variable)
 {
 	return ++variable;
@@ -10867,7 +10867,7 @@ int recursiveFunction(char, short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, function in conditional
- * expression, no function declaration 
+ * expression, no function declaration
  */
 {
 	char            i = 1;
@@ -10906,7 +10906,7 @@ char *recursiveFunction(char);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, in conditional expression,
- * function declared to return a pointer to character 
+ * function declared to return a pointer to character
  */
 {
 	/*char           *recursiveFunction();*/
@@ -10945,7 +10945,7 @@ short increment(unsigned);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : recursive call, in conditional expression,
- * pointer to function returning an integer 
+ * pointer to function returning an integer
  */
 {
 	/*short           increment();*/
@@ -10970,7 +10970,7 @@ int dummy(short (*function)(unsigned), unsigned variable)
 	return function(storage);
 }
 
-short 
+short
 increment(unsigned variable)
 
 {
@@ -10991,7 +10991,7 @@ void pollux(char, short);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 2) instance  : gemini, no return value, legal 
+ * test class: complex arithmatic and logical expression (case 2) instance  : gemini, no return value, legal
  */
 {
 	char            i = 1, j = 2;
@@ -11041,7 +11041,7 @@ int pollux(unsigned, short);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 2) instance  : gemini, return value, no function declaration  
+ * test class: complex arithmatic and logical expression (case 2) instance  : gemini, return value, no function declaration
  */
 {
 	char            i = 1, j = 2;
@@ -11098,7 +11098,7 @@ short pollux(unsigned, short);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 2) instance  : gemini, return value, no function declaration  
+ * test class: complex arithmatic and logical expression (case 2) instance  : gemini, return value, no function declaration
  */
 {
 	char            i = 1, j = 2;
@@ -11116,7 +11116,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 castor(char variable, short counter)
 {
 	unsigned        i = 1, j = 2;
@@ -11131,7 +11131,7 @@ castor(char variable, short counter)
 	return variable;
 }
 
-short 
+short
 pollux(unsigned variable, short counter)
 {
 	char            i = 1, j = 2;
@@ -11159,7 +11159,7 @@ char *pollux(unsigned short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : gemini, return value, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s;
@@ -11219,7 +11219,7 @@ short increment(unsigned);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : gemini, return value, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	unsigned        i = 0;
@@ -11259,7 +11259,7 @@ int pollux(short (*function)(unsigned), unsigned variable)
 	return function(variable);
 }
 
-short 
+short
 increment(unsigned variable)
 
 {
@@ -11279,7 +11279,7 @@ int pollux(char);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : gemini, in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	char            i = 0;
@@ -11324,7 +11324,7 @@ short pollux(unsigned short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : gemini, in conditional expression, function
- * declared to return an integer 
+ * declared to return an integer
  */
 {
 	unsigned short  i = 0;
@@ -11339,7 +11339,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 castor(unsigned short variable)
 {
 	/*short           pollux();*/
@@ -11350,7 +11350,7 @@ castor(unsigned short variable)
 	return ++variable;
 }
 
-short 
+short
 pollux(unsigned short variable)
 {
 	if (--counter) {
@@ -11374,7 +11374,7 @@ char *pollux(char);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : gemini, in conditional expression, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	/*char           *castor();*/
@@ -11424,7 +11424,7 @@ short increment(char);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 2) instance  : gemini, in conditional expression, pointer to
- * function returning an integer 
+ * function returning an integer
  */
 {
 	static char     i = 1;
@@ -11457,7 +11457,7 @@ int pollux(short (*function)(char), register char variable)
 	return function(variable);
 }
 
-short 
+short
 increment(char variable)
 {
 	return ++variable;
@@ -11487,7 +11487,7 @@ int levelThreeLeafEight(short);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, return value and
- * legal, no function declaration 
+ * legal, no function declaration
  */
 {
 	static short    i = 0, j = -1, k = 1;
@@ -11647,7 +11647,7 @@ short levelThreeLeafEight(short);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, return value and
- * legal, integer function declaration 
+ * legal, integer function declaration
  */
 {
 	static short    i = 0, j = -1, k = 1;
@@ -11667,7 +11667,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-short 
+short
 levelOneNodeOne(register short variable)
 {
 	short           result = 0;
@@ -11681,7 +11681,7 @@ levelOneNodeOne(register short variable)
 	return variable;
 }
 
-short 
+short
 levelOneNodeTwo(register short variable)
 {
 	register short  i = variable + 2;
@@ -11696,7 +11696,7 @@ levelOneNodeTwo(register short variable)
 	return variable;
 }
 
-short 
+short
 levelTwoNodeOne(register short variable)
 {
 	register short  i = variable * 2;
@@ -11711,7 +11711,7 @@ levelTwoNodeOne(register short variable)
 	return variable;
 }
 
-short 
+short
 levelTwoNodeTwo(register short variable)
 {
 	register short  i = variable;
@@ -11726,7 +11726,7 @@ levelTwoNodeTwo(register short variable)
 	return variable;
 }
 
-short 
+short
 levelTwoNodeThree(register short variable)
 {
 	register short  i = variable--;
@@ -11741,7 +11741,7 @@ levelTwoNodeThree(register short variable)
 	return i;
 }
 
-short 
+short
 levelTwoNodeFour(register short variable)
 {
 	register short  i = variable / 2 - 1;
@@ -11756,49 +11756,49 @@ levelTwoNodeFour(register short variable)
 	return variable;
 }
 
-short 
+short
 levelThreeLeafOne(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafTwo(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafThree(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafFour(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafFive(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafSix(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafSeven(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafEight(short variable)
 {
 	return variable;
@@ -11817,7 +11817,7 @@ char *levelThree(register short, char*);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, return value and legal,
- * function declared to return a pointer to character 
+ * function declared to return a pointer to character
  */
 {
 	char           *s;
@@ -11887,7 +11887,7 @@ short divide2(register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, return value, legal
- * pointer to function returning an integer 
+ * pointer to function returning an integer
  */
 {
 	static short    i = 3;
@@ -11914,7 +11914,7 @@ int dummy1(short (*func)(short), register short integer)
 	return i;
 }
 
-short 
+short
 divide4(register short integer)
 {
 	/*short           divide2();*/
@@ -11932,7 +11932,7 @@ int dummy2(short (*func)(short), register short integer)
 	return i;
 }
 
-short 
+short
 divide2(register short integer)
 {
 	return integer / 2;
@@ -11949,7 +11949,7 @@ short levelThreeLeafOne(register short);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, used in conditional
- * expression, integer function declaration 
+ * expression, integer function declaration
  */
 {
 	static short    i = 1;
@@ -11965,7 +11965,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-short 
+short
 levelOneNodeOne(register short variable)
 {
 	/*short           levelTwoNodeOne();*/
@@ -11973,7 +11973,7 @@ levelOneNodeOne(register short variable)
 	return 2 * levelTwoNodeOne(2 * variable);
 }
 
-short 
+short
 levelTwoNodeOne(register short variable)
 {
 	/*short           levelThreeLeafOne();*/
@@ -11981,7 +11981,7 @@ levelTwoNodeOne(register short variable)
 	return 2 * levelThreeLeafOne(2 * variable);
 }
 
-short 
+short
 levelThreeLeafOne(register short variable)
 {
 	return 2 * variable;
@@ -11999,7 +11999,7 @@ int compare(char*, char*, register short);
 int main(void)				/* alias root */
 /*
  *  test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, used in conditional
- * expression, function declared to return a pointer to character 
+ * expression, function declared to return a pointer to character
  */
 {
 	static short    i = 2, j = 2;
@@ -12046,7 +12046,7 @@ short divide2(register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : linear tree structure, in conditional
- * expression, pointer to function returning an integer 
+ * expression, pointer to function returning an integer
  */
 {
 	static short    i = 2;
@@ -12068,7 +12068,7 @@ int dummy1(short (*func)(short), register short integer)
 	return (*func) ((integer + i) * (2 + i) / (2 - i));
 }
 
-short 
+short
 divide4(register short integer)
 {
 	/*short           divide2();*/
@@ -12083,7 +12083,7 @@ int dummy2(short (*func)(short), register short integer)
 	return (*func) ((i + ++integer) / 2 - 1);
 }
 
-short 
+short
 divide2(register short integer)
 {
 	return integer / 2;
@@ -12104,7 +12104,7 @@ short recursiveFunction(register short, register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, return value, integer function
- * declaration 
+ * declaration
  */
 {
 	register short  i = 0;
@@ -12121,7 +12121,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 recursiveFunction(register short variable, register short counter)
 {
 	short           result = 0;
@@ -12150,7 +12150,7 @@ char *recursiveFunction(register short, char*, short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, return value, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	char           *s;
@@ -12199,7 +12199,7 @@ short increment(register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, return value, pointer to
- * function returning an integer 
+ * function returning an integer
  */
 {
 	static short    i = 0;
@@ -12229,7 +12229,7 @@ int dummy(short (*function)(short), register short variable, register short coun
 	return function(storage);
 }
 
-short 
+short
 increment(register short variable)
 {
 	return ++variable;
@@ -12249,7 +12249,7 @@ int recursiveFunction(register short, register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, function in conditional
- * expression, no function declaration 
+ * expression, no function declaration
  */
 {
 	static short    i = -1;
@@ -12289,7 +12289,7 @@ short recursiveFunction(register short, register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, function in conditional
- * expression, integer function declaration 
+ * expression, integer function declaration
  */
 {
 	/*short           recursiveFunction();*/
@@ -12305,7 +12305,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 recursiveFunction(register short variable, register short counter)
 {
 	register short  storage = variable;
@@ -12330,7 +12330,7 @@ char *recursiveFunction(register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, in conditional expression,
- * function declared to return a pointer to character 
+ * function declared to return a pointer to character
  */
 {
 	/*char           *recursiveFunction();*/
@@ -12369,7 +12369,7 @@ short increment(register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : recursive call, in conditional expression,
- * pointer to function returning an integer 
+ * pointer to function returning an integer
  */
 {
 	/*short           increment();*/
@@ -12394,7 +12394,7 @@ int dummy(short (*function)(short), register short variable)
 	return function(storage);
 }
 
-short 
+short
 increment(register short variable)
 {
 	return ++variable;
@@ -12414,7 +12414,7 @@ int pollux(register short, register short);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 3) instance  : gemini, return value, no function declaration  
+ * test class: complex arithmatic and logical expression (case 3) instance  : gemini, return value, no function declaration
  */
 {
 	static short    i = 1, j = 2;
@@ -12471,7 +12471,7 @@ short pollux(register short, register short);
 
 int main(void)
 /*
- * test class: complex arithmatic and logical expression (case 3) instance  : gemini, return value, no function declaration  
+ * test class: complex arithmatic and logical expression (case 3) instance  : gemini, return value, no function declaration
  */
 {
 	static short    i = 1, j = 2;
@@ -12489,7 +12489,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 castor(register short variable, register short counter)
 {
 	static short    i = 1, j = 2;
@@ -12504,7 +12504,7 @@ castor(register short variable, register short counter)
 	return variable;
 }
 
-short 
+short
 pollux(register short variable, register short counter)
 {
 	static short    i = 1, j = 2;
@@ -12532,7 +12532,7 @@ char *pollux(register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : gemini, return value, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s;
@@ -12592,7 +12592,7 @@ short increment(register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : gemini, return value, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	static short    i = 0;
@@ -12632,7 +12632,7 @@ int pollux(short (*function)(short), register short variable)
 	return function(variable);
 }
 
-short 
+short
 increment(register short variable)
 {
 	return ++variable;
@@ -12651,7 +12651,7 @@ int pollux(register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : gemini, in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	static short    i = 0;
@@ -12696,7 +12696,7 @@ short pollux(register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : gemini, in conditional expression, function
- * declared to return an integer 
+ * declared to return an integer
  */
 {
 	static short    i = 0;
@@ -12711,7 +12711,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 castor(register short variable)
 {
 	/*short           pollux();*/
@@ -12722,7 +12722,7 @@ castor(register short variable)
 	return ++variable;
 }
 
-short 
+short
 pollux(register short variable)
 {
 	if (--counter) {
@@ -12746,7 +12746,7 @@ char *pollux(register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : gemini, in conditional expression, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	/*char           *castor();*/
@@ -12796,7 +12796,7 @@ short increment(register short);
 int main(void)
 /*
  * test class: complex arithmatic and logical expression (case 3) instance  : gemini, in conditional expression, pointer to
- * function returning an integer 
+ * function returning an integer
  */
 {
 	static short    i = 1;
@@ -12829,7 +12829,7 @@ int pollux(short (*function)(short), register short variable)
 	return function(variable);
 }
 
-short 
+short
 increment(register short variable)
 {
 	return ++variable;
@@ -12859,7 +12859,7 @@ int levelThreeLeafEight(short);
 
 int main(void)				/* alias root */
 /*
- *  test class: bit-wise expression instance  : linear tree structure, return value, function declared to return an integer 
+ *  test class: bit-wise expression instance  : linear tree structure, return value, function declared to return an integer
  */
 {
 	short           result = 0;
@@ -13021,7 +13021,7 @@ short levelThreeLeafEight(short);
 
 int main(void)				/* alias root */
 /*
- *  test class: bit-wise expression instance  : linear tree structure, return value, no function declaration 
+ *  test class: bit-wise expression instance  : linear tree structure, return value, no function declaration
  */
 {
 	short           result = 0;
@@ -13041,7 +13041,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-short 
+short
 levelOneNodeOne(short variable)
 {
 	short           result = 0;
@@ -13057,7 +13057,7 @@ levelOneNodeOne(short variable)
 	return variable;
 }
 
-short 
+short
 levelOneNodeTwo(short variable)
 {
 	short           result = 0;
@@ -13072,7 +13072,7 @@ levelOneNodeTwo(short variable)
 	return variable;
 }
 
-short 
+short
 levelTwoNodeOne(short variable)
 {
 	short           result = 0;
@@ -13087,7 +13087,7 @@ levelTwoNodeOne(short variable)
 	return variable;
 }
 
-short 
+short
 levelTwoNodeTwo(short variable)
 {
 	short           result = 0;
@@ -13102,7 +13102,7 @@ levelTwoNodeTwo(short variable)
 	return variable;
 }
 
-short 
+short
 levelTwoNodeThree(short variable)
 {
 	short           result = 0;
@@ -13117,7 +13117,7 @@ levelTwoNodeThree(short variable)
 	return variable;
 }
 
-short 
+short
 levelTwoNodeFour(short variable)
 {
 	short           result = 0;
@@ -13132,49 +13132,49 @@ levelTwoNodeFour(short variable)
 	return variable;
 }
 
-short 
+short
 levelThreeLeafOne(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafTwo(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafThree(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafFour(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafFive(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafSix(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafSeven(short variable)
 {
 	return variable;
 }
 
-short 
+short
 levelThreeLeafEight(short variable)
 {
 	return variable;
@@ -13194,7 +13194,7 @@ char *levelThree(short, char*);
 int main(void)
 /*
  * test class: bit-wise expression instance  : linear tree structure, return value and legal, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *s;
@@ -13264,7 +13264,7 @@ short divide2(short);
 int main(void)
 /*
  * test class: bit-wise expression instance  : linear tree structure, return value, legal pointer to function returning an
- * integer 
+ * integer
  */
 {
 	/*short           divide4();*/
@@ -13290,7 +13290,7 @@ int dummy1(short (*func)(short), short integer)
 	return result;
 }
 
-short 
+short
 divide4(short integer)
 {
 
@@ -13307,7 +13307,7 @@ int dummy2(short (*func)(short), short integer)
 	return result;
 }
 
-short 
+short
 divide2(short integer)
 {
 	return integer / 2;
@@ -13338,7 +13338,7 @@ int levelThreeLeafEight(short);
 int main(void)				/* alias root */
 /*
  *  test class: bit-wise expression instance  : linear tree structure, used in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (levelOneNodeOne(i & j & k) + levelOneNodeTwo(~(i | j | k) & l) != 62)
@@ -13445,7 +13445,7 @@ short levelThreeLeafOne(short);
 int main(void)				/* alias root */
 /*
  *  test class: bit-wise expression instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	short           counter = 0;
@@ -13459,21 +13459,21 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-short 
+short
 levelOneNodeOne(short variable)
 {
 
 	return levelTwoNodeOne(variable << 1) << 1;
 }
 
-short 
+short
 levelTwoNodeOne(short variable)
 {
 
 	return levelThreeLeafOne(variable << 1) << 1;
 }
 
-short 
+short
 levelThreeLeafOne(short variable)
 {
 	return variable << 1;
@@ -13492,7 +13492,7 @@ int compare(char*, char*, short);
 int main(void)				/* alias root */
 /*
  *  test class: bit-wise expression instance  : linear tree structure, used in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 
@@ -13538,7 +13538,7 @@ short divide2(short);
 int main(void)
 /*
  * test class: bit-wise expression instance  : linear tree structure, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 
@@ -13556,7 +13556,7 @@ int dummy1(short (*func)(short), short integer)
 	return (*func) (integer & k);
 }
 
-short 
+short
 divide4(short integer)
 {
 
@@ -13568,7 +13568,7 @@ int dummy2(short (*func)(short), short integer)
 	return (*func) (integer << l >> l);
 }
 
-short 
+short
 divide2(short integer)
 {
 	return integer / 2;
@@ -13588,7 +13588,7 @@ int recursiveFunction(short, short);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : recursive call, return value, no function declaration 
+ * test class: bit-wise expression instance  : recursive call, return value, no function declaration
  */
 {
 	short           result = 0;
@@ -13631,7 +13631,7 @@ short recursiveFunction(short, short);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : recursive call, return value, function declared to return an integer 
+ * test class: bit-wise expression instance  : recursive call, return value, function declared to return an integer
  */
 {
 	short           result = 0;
@@ -13647,7 +13647,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 recursiveFunction(short variable, short counter)
 {
 	short           result = 0;
@@ -13676,7 +13676,7 @@ char *recursiveFunction(short, char*, short);
 int main(void)
 /*
  * test class: bit-wise expression instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s;
@@ -13723,7 +13723,7 @@ short increment(short);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: bit-wise expression instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	short           result = 0;
@@ -13752,7 +13752,7 @@ int dummy(short (*function)(short), short variable, short counter)
 	return function(storage);
 }
 
-short 
+short
 increment(short variable)
 {
 	return ++variable;
@@ -13772,7 +13772,7 @@ int recursiveFunction(short, short);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : recursive call, function in conditional expression, no function declaration 
+ * test class: bit-wise expression instance  : recursive call, function in conditional expression, no function declaration
  */
 {
 	short           counter = TimeLimit;
@@ -13812,7 +13812,7 @@ short recursiveFunction(short, short);
 int main(void)
 /*
  * test class: bit-wise expression instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	short           counter = TimeLimit;
@@ -13826,7 +13826,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 recursiveFunction(short variable, short counter)
 {
 	short           storage = variable;
@@ -13852,7 +13852,7 @@ char *recursiveFunction(short);
 int main(void)
 /*
  * test class: bit-wise expression instance  : recursive call, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 
@@ -13890,7 +13890,7 @@ short increment(short);
 int main(void)
 /*
  * test class: bit-wise expression instance  : recursive call, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 
@@ -13913,7 +13913,7 @@ int dummy(short (*function)(short), short variable)
 	return function(storage);
 }
 
-short 
+short
 increment(short variable)
 {
 	return ++variable;
@@ -13934,7 +13934,7 @@ int pollux(short, short);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, return value, no function declaration  
+ * test class: bit-wise expression instance  : gemini, return value, no function declaration
  */
 {
 	short           counter = TimeLimit;
@@ -13989,7 +13989,7 @@ short pollux(short, short);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, return value, no function declaration  
+ * test class: bit-wise expression instance  : gemini, return value, no function declaration
  */
 {
 	short           counter = TimeLimit;
@@ -14005,7 +14005,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 castor(short variable, short counter)
 {
 	short           result = 0;
@@ -14018,7 +14018,7 @@ castor(short variable, short counter)
 	return variable;
 }
 
-short 
+short
 pollux(short variable, short counter)
 {
 	short           result = 0;
@@ -14045,7 +14045,7 @@ char *pollux(short);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: bit-wise expression instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s;
@@ -14100,7 +14100,7 @@ short increment(short);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, return value, pointer to function returning an integer 
+ * test class: bit-wise expression instance  : gemini, return value, pointer to function returning an integer
  */
 {
 
@@ -14138,7 +14138,7 @@ int pollux(short (*function)(short), short variable)
 	return function(variable);
 }
 
-short 
+short
 increment(short variable)
 {
 	return ++variable;
@@ -14157,7 +14157,7 @@ int pollux(short);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, in conditional expression, no function declaration 
+ * test class: bit-wise expression instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (castor(i & j & k) != 2)
@@ -14200,7 +14200,7 @@ short pollux(short);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: bit-wise expression instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 
@@ -14213,7 +14213,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 castor(short variable)
 {
 
@@ -14224,7 +14224,7 @@ castor(short variable)
 	return ++variable;
 }
 
-short 
+short
 pollux(short variable)
 {
 	if (--counter) {
@@ -14249,7 +14249,7 @@ char *pollux(short);
 int main(void)
 /*
  * test class: bit-wise expression instance  : gemini, in conditional expression, function declared to return a pointer to
- * character 
+ * character
  */
 {
 
@@ -14297,7 +14297,7 @@ short increment(short);
 
 int main(void)
 /*
- * test class: bit-wise expression instance  : gemini, in conditional expression, pointer to function returning an integer 
+ * test class: bit-wise expression instance  : gemini, in conditional expression, pointer to function returning an integer
  */
 {
 
@@ -14328,7 +14328,7 @@ int pollux(short (*function)(short), short variable)
 	return function(variable);
 }
 
-short 
+short
 increment(short variable)
 {
 	return ++variable;
@@ -14358,7 +14358,7 @@ int dummy(short);
 
 int main(void)				/* alias root */
 /*
- *  test class: function as argument instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: function as argument instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	short           i = 0;
@@ -14558,7 +14558,7 @@ int dummy(short);
 
 int main(void)				/* alias root */
 /*
- *  test class: function as argument instance  : linear tree structure, return value and legal, integer function declaration 
+ *  test class: function as argument instance  : linear tree structure, return value and legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -14577,7 +14577,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-short 
+short
 levelOneNodeOne(short argument)
 {
 	short           i = 0;
@@ -14594,7 +14594,7 @@ levelOneNodeOne(short argument)
 	return argument;
 }
 
-short 
+short
 levelOneNodeTwo(short argument)
 {
 	short           i = 0;
@@ -14611,7 +14611,7 @@ levelOneNodeTwo(short argument)
 	return argument;
 }
 
-short 
+short
 levelTwoNodeOne(short argument)
 {
 	short           i = 0;
@@ -14628,7 +14628,7 @@ levelTwoNodeOne(short argument)
 	return argument;
 }
 
-short 
+short
 levelTwoNodeTwo(short argument)
 {
 	short           i = 0;
@@ -14645,7 +14645,7 @@ levelTwoNodeTwo(short argument)
 	return argument;
 }
 
-short 
+short
 levelTwoNodeThree(short argument)
 {
 	short           i = 0;
@@ -14662,7 +14662,7 @@ levelTwoNodeThree(short argument)
 	return argument;
 }
 
-short 
+short
 levelTwoNodeFour(short argument)
 {
 	short           i = 0;
@@ -14679,7 +14679,7 @@ levelTwoNodeFour(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafOne(short argument)
 {
 	if (argument != 7)
@@ -14687,7 +14687,7 @@ levelThreeLeafOne(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafTwo(short argument)
 {
 	if (argument != 8)
@@ -14695,7 +14695,7 @@ levelThreeLeafTwo(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafThree(short argument)
 {
 	if (argument != 9)
@@ -14703,7 +14703,7 @@ levelThreeLeafThree(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafFour(short argument)
 {
 	if (argument != 10)
@@ -14711,7 +14711,7 @@ levelThreeLeafFour(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafFive(short argument)
 {
 	if (argument != 11)
@@ -14719,7 +14719,7 @@ levelThreeLeafFive(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafSix(short argument)
 {
 	if (argument != 12)
@@ -14727,7 +14727,7 @@ levelThreeLeafSix(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafSeven(short argument)
 {
 	if (argument != 13)
@@ -14735,7 +14735,7 @@ levelThreeLeafSeven(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafEight(short argument)
 {
 	if (argument != 14)
@@ -14764,7 +14764,7 @@ int dummy(short);
 int main(void)
 /*
  * test class: function as argument instance  : linear tree structure, return value and legal, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *s;
@@ -14841,7 +14841,7 @@ int twelve(void);
 int main(void)
 /*
  * test class: function as argument instance  : linear tree structure, return value, legal pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           i;
@@ -14866,7 +14866,7 @@ int dummy1(short (*func)(short), short integer)
 	return i;
 }
 
-short 
+short
 divide4(short integer)
 {
 
@@ -14883,7 +14883,7 @@ int dummy2(short (*func)(short), short integer)
 	return i;
 }
 
-short 
+short
 divide2(short integer)
 {
 	return integer / 2;
@@ -14919,7 +14919,7 @@ int mirror(short);
 int main(void)				/* alias root */
 /*
  *  test class: function as argument instance  : linear tree structure, used in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (levelOneNodeOne(mirror(1)) != 1)
@@ -15047,7 +15047,7 @@ int mirror(short);
 int main(void)				/* alias root */
 /*
  *  test class: function as argument instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 
@@ -15060,7 +15060,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-short 
+short
 levelOneNodeOne(short argument)
 {
 	short           object = argument + 2;
@@ -15070,7 +15070,7 @@ levelOneNodeOne(short argument)
 	return argument;
 }
 
-short 
+short
 levelTwoNodeOne(short argument)
 {
 	short           object = argument + 4;
@@ -15080,7 +15080,7 @@ levelTwoNodeOne(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafOne(short argument)
 {
 	if (argument != 7)
@@ -15106,7 +15106,7 @@ int mirror(short);
 int main(void)				/* alias root */
 /*
  *  test class: function as argument instance  : linear tree structure, used in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 
@@ -15157,7 +15157,7 @@ int twelve(void);
 int main(void)
 /*
  * test class: function as argument instance  : linear tree structure, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 
@@ -15179,7 +15179,7 @@ int dummy1(short (*func)(short), short integer)
 	return i;
 }
 
-short 
+short
 divide4(short integer)
 {
 
@@ -15195,7 +15195,7 @@ int dummy2(short (*func)(short), short integer)
 	return i;
 }
 
-short 
+short
 divide2(short integer)
 {
 	return integer / 2;
@@ -15218,7 +15218,7 @@ int un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, return value, legal, no function declaration 
+ * test class: function as argument instance  : recursive call, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -15263,7 +15263,7 @@ int un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, return value, legal, integer function declaration 
+ * test class: function as argument instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -15278,7 +15278,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 recursiveFunction(short argument)
 {
 	short           i;
@@ -15311,7 +15311,7 @@ int numero(short);
 int main(void)
 /*
  * test class: function as argument instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s;
@@ -15357,7 +15357,7 @@ int un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: function as argument instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	short           i;
@@ -15383,7 +15383,7 @@ int dummy(short (*function)(short), short argument)
 	return function(argument);
 }
 
-short 
+short
 increment(short argument)
 {
 	return ++argument;
@@ -15407,7 +15407,7 @@ int un(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : recursive call, function in conditional expression, no function declaration 
+ * test class: function as argument instance  : recursive call, function in conditional expression, no function declaration
  */
 {
 	if (!(recursiveFunction(un()) == 2))
@@ -15446,7 +15446,7 @@ int un(void);
 int main(void)
 /*
  * test class: function as argument instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 
@@ -15459,7 +15459,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 recursiveFunction(short argument)
 {
 
@@ -15489,7 +15489,7 @@ int numero(short);
 int main(void)
 /*
  * test class: function as argument instance  : recursive call, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 
@@ -15530,7 +15530,7 @@ int un(void);
 int main(void)
 /*
  * test class: function as argument instance  : recursive call, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 
@@ -15551,7 +15551,7 @@ int dummy(short (*function)(short), short argument)
 	return function(argument);
 }
 
-short 
+short
 increment(short argument)
 {
 	return ++argument;
@@ -15577,7 +15577,7 @@ int quatre(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, return value, legal, no function declaration 
+ * test class: function as argument instance  : gemini, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -15639,7 +15639,7 @@ int rebound(short);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: function as argument instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	short           i = 0;
@@ -15653,7 +15653,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 castor(short argument)
 {
 	short           i;
@@ -15666,7 +15666,7 @@ castor(short argument)
 	return ++argument;
 }
 
-short 
+short
 pollux(short argument)
 {
 	short           i;
@@ -15698,7 +15698,7 @@ int numero(short);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: function as argument instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s;
@@ -15767,7 +15767,7 @@ int neuf(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, return value, pointer to function returning an integer 
+ * test class: function as argument instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	short           i;
@@ -15804,7 +15804,7 @@ int pollux(short (*function)(short), short argument)
 	return function(argument);
 }
 
-short 
+short
 increment(short argument)
 {
 	return ++argument;
@@ -15839,7 +15839,7 @@ int quatre(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, in conditional expression, no function declaration 
+ * test class: function as argument instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor(un()) == 2))
@@ -15896,7 +15896,7 @@ int numero(register short);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: function as argument instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 
@@ -15909,7 +15909,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 castor(short argument)
 {
 
@@ -15919,7 +15919,7 @@ castor(short argument)
 	return ++argument;
 }
 
-short 
+short
 pollux(short argument)
 {
 	if (--counter)
@@ -15948,7 +15948,7 @@ int numero(register short);
 int main(void)
 /*
  * test class: function as argument instance  : gemini, in conditional expression, function declared to return a pointer to
- * character 
+ * character
  */
 {
 
@@ -16001,7 +16001,7 @@ int neuf(void);
 
 int main(void)
 /*
- * test class: function as argument instance  : gemini, in conditional expression, pointer to function returning an integer 
+ * test class: function as argument instance  : gemini, in conditional expression, pointer to function returning an integer
  */
 {
 
@@ -16030,7 +16030,7 @@ int pollux(short (*function)(short), short argument)
 	return function(argument);
 }
 
-short 
+short
 increment(short argument)
 {
 	return ++argument;
@@ -16069,7 +16069,7 @@ int dummy(short, short, short);
 int main(void)
 /*
  * test class: function as argument, variable order not determined instance  : linear tree structure, return value and
- * legal, function declared to return a pointer to character 
+ * legal, function declared to return a pointer to character
  */
 {
 	char           *s;
@@ -16155,7 +16155,7 @@ int indeterminacy(short, short, short);
 int main(void)
 /*
  * test class: function as argument, variable order not determined instance  : recursive call, return value, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	char           *s;
@@ -16217,7 +16217,7 @@ int tres(short);
 int main(void)				/* alias root */
 /*
  *  test class: nested function as argument instance  : linear tree structure, return value and legal, no function
- * declaration 
+ * declaration
  */
 {
 	short           i = 0;
@@ -16431,7 +16431,7 @@ int tres(short);
 int main(void)				/* alias root */
 /*
  *  test class: nested function as argument instance  : linear tree structure, return value and legal, integer function
- * declaration 
+ * declaration
  */
 {
 	short           i = 0;
@@ -16450,7 +16450,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-short 
+short
 levelOneNodeOne(short argument)
 {
 	short           i = 0;
@@ -16467,7 +16467,7 @@ levelOneNodeOne(short argument)
 	return argument;
 }
 
-short 
+short
 levelOneNodeTwo(short argument)
 {
 	short           i = 0;
@@ -16484,7 +16484,7 @@ levelOneNodeTwo(short argument)
 	return argument;
 }
 
-short 
+short
 levelTwoNodeOne(short argument)
 {
 	short           i = 0;
@@ -16501,7 +16501,7 @@ levelTwoNodeOne(short argument)
 	return argument;
 }
 
-short 
+short
 levelTwoNodeTwo(short argument)
 {
 	short           i = 0;
@@ -16518,7 +16518,7 @@ levelTwoNodeTwo(short argument)
 	return argument;
 }
 
-short 
+short
 levelTwoNodeThree(short argument)
 {
 	short           i = 0;
@@ -16535,7 +16535,7 @@ levelTwoNodeThree(short argument)
 	return argument;
 }
 
-short 
+short
 levelTwoNodeFour(short argument)
 {
 	short           i = 0;
@@ -16552,7 +16552,7 @@ levelTwoNodeFour(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafOne(short argument)
 {
 	if (argument != 7)
@@ -16560,7 +16560,7 @@ levelThreeLeafOne(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafTwo(short argument)
 {
 	if (argument != 8)
@@ -16568,7 +16568,7 @@ levelThreeLeafTwo(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafThree(short argument)
 {
 	if (argument != 9)
@@ -16576,7 +16576,7 @@ levelThreeLeafThree(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafFour(short argument)
 {
 	if (argument != 10)
@@ -16584,7 +16584,7 @@ levelThreeLeafFour(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafFive(short argument)
 {
 	if (argument != 11)
@@ -16592,7 +16592,7 @@ levelThreeLeafFive(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafSix(short argument)
 {
 	if (argument != 12)
@@ -16600,7 +16600,7 @@ levelThreeLeafSix(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafSeven(short argument)
 {
 	if (argument != 13)
@@ -16608,7 +16608,7 @@ levelThreeLeafSeven(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafEight(short argument)
 {
 	if (argument != 14)
@@ -16648,7 +16648,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : linear tree structure, return value and legal, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s;
@@ -16741,7 +16741,7 @@ int half(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : linear tree structure, return value, legal pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	short           i;
@@ -16766,7 +16766,7 @@ int dummy1(short (*func)(short), short integer)
 	return i;
 }
 
-short 
+short
 divide4(short integer)
 {
 
@@ -16783,7 +16783,7 @@ int dummy2(short (*func)(short), short integer)
 	return i;
 }
 
-short 
+short
 divide2(short integer)
 {
 	return integer / 2;
@@ -16831,7 +16831,7 @@ int tres(short);
 int main(void)				/* alias root */
 /*
  *  test class: nested function as argument instance  : linear tree structure, used in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (levelOneNodeOne(uno(dos(tres(1)))) != 1)
@@ -16971,7 +16971,7 @@ int tres(short);
 int main(void)				/* alias root */
 /*
  *  test class: nested function as argument instance  : linear tree structure, used in conditional expression, integer
- * function declaration 
+ * function declaration
  */
 {
 
@@ -16984,7 +16984,7 @@ int main(void)				/* alias root */
 	return 0;
 }
 
-short 
+short
 levelOneNodeOne(short argument)
 {
 	short           object = argument + 2;
@@ -16994,7 +16994,7 @@ levelOneNodeOne(short argument)
 	return argument;
 }
 
-short 
+short
 levelTwoNodeOne(short argument)
 {
 	short           object = argument + 4;
@@ -17004,7 +17004,7 @@ levelTwoNodeOne(short argument)
 	return argument;
 }
 
-short 
+short
 levelThreeLeafOne(short argument)
 {
 	if (argument != 7)
@@ -17042,7 +17042,7 @@ int tres(short);
 int main(void)				/* alias root */
 /*
  *  test class: nested function as argument instance  : linear tree structure, used in conditional expression, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 
@@ -17105,7 +17105,7 @@ int half(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : linear tree structure, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 
@@ -17127,7 +17127,7 @@ int dummy1(short (*func)(short), short integer)
 	return i;
 }
 
-short 
+short
 divide4(short integer)
 {
 
@@ -17143,7 +17143,7 @@ int dummy2(short (*func)(short), short integer)
 	return i;
 }
 
-short 
+short
 divide2(short integer)
 {
 	return integer / 2;
@@ -17174,7 +17174,7 @@ int tres(short);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : recursive call, return value, legal, no function declaration 
+ * test class: nested function as argument instance  : recursive call, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -17231,7 +17231,7 @@ int tres(short);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : recursive call, return value, legal, integer function declaration 
+ * test class: nested function as argument instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	short           i;
@@ -17246,7 +17246,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 recursiveFunction(short argument)
 {
 	short           i;
@@ -17293,7 +17293,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : recursive call, return value, function declared to return a pointer
- * to character 
+ * to character
  */
 {
 	char           *s;
@@ -17353,7 +17353,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : recursive call, return value, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           i;
@@ -17379,7 +17379,7 @@ int dummy(short (*function)(short), short argument)
 	return function(argument);
 }
 
-short 
+short
 increment(short argument)
 {
 	return ++argument;
@@ -17416,7 +17416,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction(uno(dos(tres(Un)))) == 2))
@@ -17467,7 +17467,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 
@@ -17480,7 +17480,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 recursiveFunction(short argument)
 {
 
@@ -17523,7 +17523,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : recursive call, in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 
@@ -17577,7 +17577,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : recursive call, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 
@@ -17598,7 +17598,7 @@ int dummy(short (*function)(short), short argument)
 	return function(argument);
 }
 
-short 
+short
 increment(short argument)
 {
 	return ++argument;
@@ -17638,7 +17638,7 @@ int tres(short);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, return value, legal, no function declaration 
+ * test class: nested function as argument instance  : gemini, return value, legal, no function declaration
  */
 {
 	short           i;
@@ -17711,7 +17711,7 @@ int tres(short);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: nested function as argument instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	short           i;
@@ -17726,7 +17726,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 castor(short argument)
 {
 	short           i;
@@ -17739,7 +17739,7 @@ castor(short argument)
 	return ++argument;
 }
 
-short 
+short
 pollux(short argument)
 {
 	short           i;
@@ -17787,7 +17787,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : gemini, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s;
@@ -17866,7 +17866,7 @@ int tres(short);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, return value, pointer to function returning an integer 
+ * test class: nested function as argument instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	short           i;
@@ -17903,7 +17903,7 @@ int pollux(short (*function)(short), short argument)
 	return function(argument);
 }
 
-short 
+short
 increment(short argument)
 {
 	return ++argument;
@@ -17945,7 +17945,7 @@ int tres(short);
 
 int main(void)
 /*
- * test class: nested function as argument instance  : gemini, in conditional expression, no function declaration 
+ * test class: nested function as argument instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor(uno(dos(tres(Un)))) == Deux))
@@ -18010,7 +18010,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : gemini, in conditional expression, function declared to return an
- * integer 
+ * integer
  */
 {
 
@@ -18023,7 +18023,7 @@ int main(void)
 	return 0;
 }
 
-short 
+short
 castor(short argument)
 {
 
@@ -18033,7 +18033,7 @@ castor(short argument)
 	return ++argument;
 }
 
-short 
+short
 pollux(short argument)
 {
 	if (--counter)
@@ -18079,7 +18079,7 @@ int tres(register short tres);
 int main(void)
 /*
  * test class: nested function as argument instance  : gemini, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 
@@ -18151,7 +18151,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument instance  : gemini, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 
@@ -18180,7 +18180,7 @@ int pollux(short (*function)(short), short argument)
 	return function(argument);
 }
 
-short 
+short
 increment(short argument)
 {
 	return ++argument;
@@ -18218,7 +18218,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument, random order instance  : linear tree structure, return value and legal, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	char           *s;
@@ -18316,7 +18316,7 @@ int tres(short);
 int main(void)
 /*
  * test class: nested function as argument, random order instance  : recursive call, return value, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s;

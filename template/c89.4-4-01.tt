@@ -205,7 +205,7 @@ int main(void)
 	return 0;
 }
 
-float 
+float
 refer(int essen, float value)
 {
 

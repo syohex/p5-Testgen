@@ -51,7 +51,7 @@ extern void function(float);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with a function as argument 
+ * test class: argument receiver instance  : when a function is called with a function as argument
  */
 {
 
@@ -73,7 +73,7 @@ void function(float argument)
 		printno();
 }
 
-float 
+float
 dummy(float argument)
 {
 	return ++argument;
@@ -92,7 +92,7 @@ extern float tres(float);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with a function as argument, which in turn has a
- * function as argument. we may call it a 'nested functions' 
+ * function as argument. we may call it a 'nested functions'
  */
 {
 
@@ -114,13 +114,13 @@ void uno(float argument)
 		printno();
 }
 
-float 
+float
 dos(float argument)
 {
 	return ++argument;
 }
 
-float 
+float
 tres(float argument)
 {
 	return ++argument;
@@ -140,7 +140,7 @@ int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with a function as argument, which itself has
  * functions as arguments. however, the arguments are badly given according to Kernighan's C language tutorial. still, it
- * works 
+ * works
  */
 {
 	float a, b, c;
@@ -166,13 +166,13 @@ void uno(float argument)
 		printno();
 }
 
-float 
+float
 dos(float first, float second, float third)
 {
 	return first + second + third;
 }
 
-float 
+float
 tres(float argument)
 {
 	return (argument > 2) ? argument : ++argument;
@@ -192,7 +192,7 @@ extern void thirdChild(float);
 
 int main(void)				/* alias parent */
 /*
- *  test class: programme structure instance  : when a programme has a linear tree structure 
+ *  test class: programme structure instance  : when a programme has a linear tree structure
  */
 {
 	float           gene = 1.0;
@@ -334,7 +334,7 @@ extern void function(void);
 
 int main(void)
 /*
- * test class: programme structure instance  : when a variable is declared inside blocks 
+ * test class: programme structure instance  : when a variable is declared inside blocks
  */
 {
 
@@ -386,7 +386,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: programme struture instance  : when a variable is declared in blocks. the programmer seems to confuse
- * variable bounds 
+ * variable bounds
  */
 {
 	if (statusFlag == NoMistake)
@@ -438,7 +438,7 @@ extern int dummy(register int);
 
 int main(void)
 /*
- * test class: argument receiver instance  : when a function is called with a function as argument 
+ * test class: argument receiver instance  : when a function is called with a function as argument
  */
 {
 	function(dummy(1));
@@ -477,7 +477,7 @@ extern int tres(register int);
 int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with a function as argument, which in turn has a
- * function as argument. we may call it a 'nested functions' 
+ * function as argument. we may call it a 'nested functions'
  */
 {
 
@@ -523,7 +523,7 @@ int main(void)
 /*
  * test class: argument receiver instance  : when a function is called with a function as argument, which itself has
  * functions as arguments. however, the arguments are badly given according to Kernighan's C language tutorial. still, it
- * works 
+ * works
  */
 {
 	uno(dos(tres(--i), tres(i += 3), tres(--i)));
@@ -568,7 +568,7 @@ extern void thirdChild(short);
 
 int main(void)				/* alias parent */
 /*
- *  test class: programme structure instance  : when a programme has a linear tree structure 
+ *  test class: programme structure instance  : when a programme has a linear tree structure
  */
 {
 	short           gene = 1;
@@ -708,7 +708,7 @@ extern void recursiveFunction(register int);
 int main(void)
 /*
  * test class: programme structure instance  : when a programme has a recursive function call. in this instance, a function
- * calls itself 
+ * calls itself
  */
 {
 	short           endCounter = 10;
@@ -752,7 +752,7 @@ extern void fromThreeToOne(short);
 int main(void)
 /*
  * test class: programme structure instance  : when a programme has a recursive function call in this instance, one of the
- * three functions calls another in circular order 
+ * three functions calls another in circular order
  */
 {
 	short           endCounter = 10;
@@ -833,7 +833,7 @@ extern void function(void);
 
 int main(void)
 /*
- * test class: programme structure instance  : when a variable is declared inside blocks 
+ * test class: programme structure instance  : when a variable is declared inside blocks
  */
 {
 
@@ -885,7 +885,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: programme struture instance  : when a variable is declared in blocks. the programmer seems to confuse
- * variable bounds 
+ * variable bounds
  */
 {
 	if (statusFlag == NoMistake)

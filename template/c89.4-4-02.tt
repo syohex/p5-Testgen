@@ -320,7 +320,7 @@ float           ftest;
 #define NO 0
 #define YCHAR	'y'
 #define NCHAR	'n'
-#define F_ERROR 1e-6 
+#define F_ERROR 1e-6
 #define FABS(a) ( (a) > 0? (a) : (-(a)) )
 
 int             Int;
@@ -495,7 +495,7 @@ float           ftest;
 #define NO 0
 #define YCHAR	'y'
 #define NCHAR	'n'
-#define F_ERROR 1e-6 
+#define F_ERROR 1e-6
 #define FABS(a) ( (a) > 0? (a) : (-(a)) )
 
 int             Int;
@@ -670,7 +670,7 @@ float           ftest;
 #define NO 0
 #define YCHAR	'y'
 #define NCHAR	'n'
-#define F_ERROR 1e-6 
+#define F_ERROR 1e-6
 #define FABS(a) ( (a) > 0? (a) : (-(a)) )
 
 int             Int;

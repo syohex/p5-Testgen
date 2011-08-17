@@ -79,7 +79,7 @@ void levelThreeLeafEight(float);
 
 int main(void)				/* alias root */
 /*
- *  test class: float constant instance  : linear tree structure, no return value and legal 
+ *  test class: float constant instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(1.0);
@@ -183,7 +183,7 @@ void levelThreeLeafSeven(float constant)
 
 void levelThreeLeafEight(float constant)
 {
- if ( !(TGEN_FLT_EQ(constant, 14.0)) ) 
+ if ( !(TGEN_FLT_EQ(constant, 14.0)) )
 		statusFlag++;
 }
 @def_
@@ -210,7 +210,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: float constant instance  : linear tree structure, no return value and illegal 
+ *  test class: float constant instance  : linear tree structure, no return value and illegal
  */
 {
 	float           i = 0.0;
@@ -369,7 +369,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: float constant instance  : linear tree structure, return value and legal, float function declaration 
+ *  test class: float constant instance  : linear tree structure, return value and legal, float function declaration
  */
 {
 	float           i = 0.0;
@@ -553,7 +553,7 @@ short           statusFlag = NoMistake;
 
 int main(void)
 /*
- * test class: float constant instance  : linear tree structure, return value, legal pointer to function returning an float 
+ * test class: float constant instance  : linear tree structure, return value, legal pointer to function returning an float
  */
 {
 	float           i;
@@ -610,7 +610,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: float constant instance  : linear tree structure, used in conditional expression, float function declaration 
+ *  test class: float constant instance  : linear tree structure, used in conditional expression, float function declaration
  */
 {
 	float           arg_a, arg_b;
@@ -672,7 +672,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: float constant instance  : linear tree structure, in conditional expression, pointer to function returning an
- * float 
+ * float
  */
 {
 	float           arg_a, arg_b;
@@ -728,7 +728,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : recursive call, no return value, legal 
+ * test class: float constant instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(1.0);
@@ -758,7 +758,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : recursive call, no return value, illegal 
+ * test class: float constant instance  : recursive call, no return value, illegal
  */
 {
 	float           i;
@@ -798,7 +798,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : recursive call, return value, legal, float function declaration 
+ * test class: float constant instance  : recursive call, return value, legal, float function declaration
  */
 {
 	float           i = 0.0;
@@ -837,7 +837,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : recursive call, return value, pointer to function returning an float 
+ * test class: float constant instance  : recursive call, return value, pointer to function returning an float
  */
 {
 	float           i;
@@ -879,7 +879,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : recursive call, function in conditional expression, float function declaration 
+ * test class: float constant instance  : recursive call, function in conditional expression, float function declaration
  */
 {
 	float           arg_a, arg_b;
@@ -921,7 +921,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : recursive call, in conditional expression, pointer to function returning an float 
+ * test class: float constant instance  : recursive call, in conditional expression, pointer to function returning an float
  */
 {
 	float           arg_a, arg_b;
@@ -967,7 +967,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : gemini, no return value, legal 
+ * test class: float constant instance  : gemini, no return value, legal
  */
 {
 	castor(1.0);
@@ -1006,7 +1006,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : gemini, no return value, illegal 
+ * test class: float constant instance  : gemini, no return value, illegal
  */
 {
 	float           i;
@@ -1059,7 +1059,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : gemini, return value, legal, function declared to return an float 
+ * test class: float constant instance  : gemini, return value, legal, function declared to return an float
  */
 {
 	float           i = 0.0;
@@ -1111,7 +1111,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : gemini, return value, pointer to function returning an float 
+ * test class: float constant instance  : gemini, return value, pointer to function returning an float
  */
 {
 	float           i;
@@ -1165,7 +1165,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : gemini, in conditional expression, function declared to return an float 
+ * test class: float constant instance  : gemini, in conditional expression, function declared to return an float
  */
 {
 	float           arg_a, arg_b;
@@ -1220,7 +1220,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: float constant instance  : gemini, in conditional expression, pointer to function returning an float 
+ * test class: float constant instance  : gemini, in conditional expression, pointer to function returning an float
  */
 {
 	float           arg_a, arg_b;
@@ -1290,7 +1290,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: long constant instance  : linear tree structure, no return value and legal 
+ *  test class: long constant instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(1L);
@@ -1421,7 +1421,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: long constant instance  : linear tree structure, no return value and illegal 
+ *  test class: long constant instance  : linear tree structure, no return value and illegal
  */
 {
 	long            i = 0;
@@ -1580,7 +1580,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: long constant instance  : linear tree structure, return value and legal, long function declaration 
+ *  test class: long constant instance  : linear tree structure, return value and legal, long function declaration
  */
 {
 	long            i = 0;
@@ -1764,7 +1764,7 @@ short           statusFlag = NoMistake;
 
 int main(void)
 /*
- * test class: long constant instance  : linear tree structure, return value, legal pointer to function returning an long 
+ * test class: long constant instance  : linear tree structure, return value, legal pointer to function returning an long
  */
 {
 	long            i;
@@ -1821,7 +1821,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: long constant instance  : linear tree structure, used in conditional expression, long function declaration 
+ *  test class: long constant instance  : linear tree structure, used in conditional expression, long function declaration
  */
 {
 	if (levelOneNodeOne(1L) != 1L)
@@ -1868,7 +1868,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: long constant instance  : linear tree structure, in conditional expression, pointer to function returning an
- * long 
+ * long
  */
 {
 	if (dummy1(divide4, 12L) != 3L)
@@ -1919,7 +1919,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : recursive call, no return value, legal 
+ * test class: long constant instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(1L);
@@ -1949,7 +1949,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : recursive call, no return value, illegal 
+ * test class: long constant instance  : recursive call, no return value, illegal
  */
 {
 	long            i;
@@ -1989,7 +1989,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : recursive call, return value, legal, long function declaration 
+ * test class: long constant instance  : recursive call, return value, legal, long function declaration
  */
 {
 	long            i = 0;
@@ -2028,7 +2028,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : recursive call, return value, pointer to function returning an long 
+ * test class: long constant instance  : recursive call, return value, pointer to function returning an long
  */
 {
 	long            i;
@@ -2070,7 +2070,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : recursive call, function in conditional expression, long function declaration 
+ * test class: long constant instance  : recursive call, function in conditional expression, long function declaration
  */
 {
 	if (!(recursiveFunction(1L) == 2L))
@@ -2102,7 +2102,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : recursive call, in conditional expression, pointer to function returning an long 
+ * test class: long constant instance  : recursive call, in conditional expression, pointer to function returning an long
  */
 {
 	if (!(dummy(increment, 1L) == 2L))
@@ -2139,7 +2139,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : gemini, no return value, legal 
+ * test class: long constant instance  : gemini, no return value, legal
  */
 {
 	castor(1L);
@@ -2178,7 +2178,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : gemini, no return value, illegal 
+ * test class: long constant instance  : gemini, no return value, illegal
  */
 {
 	long            i;
@@ -2231,7 +2231,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : gemini, return value, legal, function declared to return an long 
+ * test class: long constant instance  : gemini, return value, legal, function declared to return an long
  */
 {
 	long            i = 0;
@@ -2283,7 +2283,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : gemini, return value, pointer to function returning an long 
+ * test class: long constant instance  : gemini, return value, pointer to function returning an long
  */
 {
 	long            i;
@@ -2337,7 +2337,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : gemini, in conditional expression, function declared to return an long 
+ * test class: long constant instance  : gemini, in conditional expression, function declared to return an long
  */
 {
 	if (!(castor(1L) == 2L))
@@ -2378,7 +2378,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant instance  : gemini, in conditional expression, pointer to function returning an long 
+ * test class: long constant instance  : gemini, in conditional expression, pointer to function returning an long
  */
 {
 	if (!(castor(increment, 1L) == 2L))
@@ -2425,7 +2425,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: long constant, illegal instance  : linear tree structure, no return value and legal 
+ *  test class: long constant, illegal instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(2147483648UL);
@@ -2483,7 +2483,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: long constant, illegal instance  : linear tree structure, no return value and illegal 
+ *  test class: long constant, illegal instance  : linear tree structure, no return value and illegal
  */
 {
 	long            i;
@@ -2558,7 +2558,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: long constant, illegal instance  : linear tree structure, return value and legal, long function declaration 
+ *  test class: long constant, illegal instance  : linear tree structure, return value and legal, long function declaration
  */
 {
 	long            i = 0;
@@ -2715,7 +2715,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: long constant, illegal instance  : linear tree structure, return value, legal pointer to function returning
- * an long 
+ * an long
  */
 {
 	long            i;
@@ -2776,7 +2776,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: long constant, illegal instance  : linear tree structure, used in conditional expression, long function
- * declaration 
+ * declaration
  */
 {
 	if (!(levelOneNodeOne(-2147483649UL) == -2147483649UL))
@@ -2821,7 +2821,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: long constant, illegal instance  : linear tree structure, in conditional expression, pointer to function
- * returning an long 
+ * returning an long
  */
 {
 	if (dummy1(divide4, (long) (60000 + ($ULONGMAX() & ~0xffffUL))) != -1384L)
@@ -2870,7 +2870,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant, illegal instance  : recursive call, no return value, legal 
+ * test class: long constant, illegal instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(2147483648UL);
@@ -2900,7 +2900,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant, illegal instance  : recursive call, no return value, illegal 
+ * test class: long constant, illegal instance  : recursive call, no return value, illegal
  */
 {
 	long            i;
@@ -2940,7 +2940,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant, illegal instance  : recursive call, return value, legal, long function declaration 
+ * test class: long constant, illegal instance  : recursive call, return value, legal, long function declaration
  */
 {
 	long            i = 0;
@@ -2979,7 +2979,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant, illegal instance  : recursive call, return value, pointer to function returning an long 
+ * test class: long constant, illegal instance  : recursive call, return value, pointer to function returning an long
  */
 {
 	long i;
@@ -3022,7 +3022,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: long constant, illegal instance  : recursive call, function in conditional expression, long function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction(2147483650UL) == 2147483649UL))
@@ -3055,7 +3055,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: long constant, illegal instance  : recursive call, in conditional expression, pointer to function returning
- * an long 
+ * an long
  */
 {
 	long            increment(), dummy();
@@ -3095,7 +3095,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant, illegal instance  : gemini, no return value, legal 
+ * test class: long constant, illegal instance  : gemini, no return value, legal
  */
 {
 	castor(2147483680UL);
@@ -3134,7 +3134,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant, illegal instance  : gemini, no return value, illegal 
+ * test class: long constant, illegal instance  : gemini, no return value, illegal
  */
 {
 	long            i;
@@ -3187,7 +3187,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant, illegal instance  : gemini, return value, legal, function declared to return an long 
+ * test class: long constant, illegal instance  : gemini, return value, legal, function declared to return an long
  */
 {
 	long            i = 0;
@@ -3239,7 +3239,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant, illegal instance  : gemini, return value, pointer to function returning an long 
+ * test class: long constant, illegal instance  : gemini, return value, pointer to function returning an long
  */
 {
 	long            i;
@@ -3293,7 +3293,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant, illegal instance  : gemini, in conditional expression, function declared to return an long 
+ * test class: long constant, illegal instance  : gemini, in conditional expression, function declared to return an long
  */
 {
 	if (!(castor(2147483650UL) == 2147483651UL))
@@ -3334,7 +3334,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: long constant, illegal instance  : gemini, in conditional expression, pointer to function returning an long 
+ * test class: long constant, illegal instance  : gemini, in conditional expression, pointer to function returning an long
  */
 {
 	if (!(castor(increment, 2147483650UL) == 2147483651UL))
@@ -3390,7 +3390,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: integer constant instance  : linear tree structure, no return value and legal 
+ *  test class: integer constant instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(1);
@@ -3521,7 +3521,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: integer constant instance  : linear tree structure, no return value and illegal 
+ *  test class: integer constant instance  : linear tree structure, no return value and illegal
  */
 {
 	short           i = 0;
@@ -3680,7 +3680,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: integer constant instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: integer constant instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	short           i = 0;
@@ -3874,7 +3874,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: integer constant instance  : linear tree structure, return value and legal, integer function declaration 
+ *  test class: integer constant instance  : linear tree structure, return value and legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -4059,7 +4059,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: integer constant instance  : linear tree structure, return value and legal, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *s;
@@ -4127,7 +4127,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: integer constant instance  : linear tree structure, return value, legal pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           i,divide4(short);
@@ -4195,7 +4195,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: integer constant instance  : linear tree structure, used in conditional expression, no function declaration 
+ *  test class: integer constant instance  : linear tree structure, used in conditional expression, no function declaration
  */
 {
 	if (levelOneNodeOne(1) != 1)
@@ -4316,7 +4316,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: integer constant instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	if (levelOneNodeOne(1) != 1)
@@ -4361,7 +4361,7 @@ char           *protean = "cassandracross";
 int main(void)				/* alias root */
 /*
  *  test class: integer constant instance  : linear tree structure, used in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	if (compare(skip(4), "andra", 5) == compare(skip(8), "across", 6))
@@ -4403,7 +4403,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: integer constant instance  : linear tree structure, in conditional expression, pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	if (dummy1(divide4, 12) != 3)
@@ -4454,7 +4454,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : recursive call, no return value, legal 
+ * test class: integer constant instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(1);
@@ -4484,7 +4484,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : recursive call, no return value, illegal 
+ * test class: integer constant instance  : recursive call, no return value, illegal
  */
 {
 	short           i;
@@ -4524,7 +4524,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : recursive call, return value, legal, no function declaration 
+ * test class: integer constant instance  : recursive call, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -4562,7 +4562,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : recursive call, return value, legal, integer function declaration 
+ * test class: integer constant instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -4601,7 +4601,7 @@ char           *numbers = "0123456789";
 
 int main(void)
 /*
- * test class: integer constant instance  : recursive call, return value, function declared to return a pointer to character 
+ * test class: integer constant instance  : recursive call, return value, function declared to return a pointer to character
  */
 {
 	char           *s;
@@ -4640,7 +4640,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: integer constant instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	short           i;
@@ -4682,7 +4682,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : recursive call, function in conditional expression, no function declaration 
+ * test class: integer constant instance  : recursive call, function in conditional expression, no function declaration
  */
 {
 	if (!(recursiveFunction(1) == 2))
@@ -4713,7 +4713,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : recursive call, function in conditional expression, integer function declaration 
+ * test class: integer constant instance  : recursive call, function in conditional expression, integer function declaration
  */
 {
 	if (!(recursiveFunction(1) == 2))
@@ -4746,7 +4746,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: integer constant instance  : recursive call, in conditional expression, function declared to return a pointer
- * to character 
+ * to character
  */
 {
 	if (!(*recursiveFunction(2) == '2'))
@@ -4779,7 +4779,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: integer constant instance  : recursive call, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	if (!(dummy(increment, 1) == 2))
@@ -4816,7 +4816,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : gemini, no return value, legal 
+ * test class: integer constant instance  : gemini, no return value, legal
  */
 {
 	castor(1);
@@ -4855,7 +4855,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : gemini, no return value, illegal 
+ * test class: integer constant instance  : gemini, no return value, illegal
  */
 {
 	short           i;
@@ -4908,7 +4908,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : gemini, return value, legal, no function declaration 
+ * test class: integer constant instance  : gemini, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -4959,7 +4959,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: integer constant instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	short           i = 0;
@@ -5011,7 +5011,7 @@ char           *numbers = "0123456789";
 
 int main(void)
 /*
- * test class: integer constant instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: integer constant instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s;
@@ -5063,7 +5063,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : gemini, return value, pointer to function returning an integer 
+ * test class: integer constant instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	short           i;
@@ -5117,7 +5117,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : gemini, in conditional expression, no function declaration 
+ * test class: integer constant instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor(1) == 2))
@@ -5157,7 +5157,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: integer constant instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 	if (!(castor(1) == 2))
@@ -5199,7 +5199,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: integer constant instance  : gemini, in conditional expression, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	if (!(*castor(2) == '2'))
@@ -5240,7 +5240,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant instance  : gemini, in conditional expression, pointer to function returning an integer 
+ * test class: integer constant instance  : gemini, in conditional expression, pointer to function returning an integer
  */
 {
 	if (!(castor(increment, 1) == 2))
@@ -5287,7 +5287,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: integer constant, illegal instance  : linear tree structure, no return value and legal 
+ *  test class: integer constant, illegal instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne( (short) 32768);
@@ -5345,7 +5345,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: integer constant, illegal instance  : linear tree structure, no return value and illegal 
+ *  test class: integer constant, illegal instance  : linear tree structure, no return value and illegal
  */
 {
 	short           i;
@@ -5420,7 +5420,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: integer constant, illegal instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: integer constant, illegal instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	short           i = 0;
@@ -5586,7 +5586,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: integer constant, illegal instance  : linear tree structure, return value and legal, integer function
- * declaration 
+ * declaration
  */
 {
 	short           i = 0;
@@ -5743,7 +5743,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: integer constant, illegal instance  : linear tree structure, return value and legal, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s;
@@ -5811,7 +5811,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: integer constant, illegal instance  : linear tree structure, return value, legal pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	short           i,divide4(short);
@@ -5880,7 +5880,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: integer constant, illegal instance  : linear tree structure, used in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(levelOneNodeOne( (short) 32768) == (short) 32768))
@@ -6001,7 +6001,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: integer constant, illegal instance  : linear tree structure, used in conditional expression, integer
- * function declaration 
+ * function declaration
  */
 {
 	if (!(levelOneNodeOne( (short) -32769) == (short) -32769))
@@ -6044,10 +6044,10 @@ char           *protean = "cassandracross";
 int main(void)				/* alias root */
 /*
  *  test class: integer constant, illegal instance  : linear tree structure, used in conditional expression, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
-	if (compare(skip( (short) 65540), "andra", 5) 
+	if (compare(skip( (short) 65540), "andra", 5)
             == compare(skip( (short) 65544), "across", 6))
 		printok();
 	else
@@ -6087,7 +6087,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: integer constant, illegal instance  : linear tree structure, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	if (dummy1(divide4, (short) 60000) != (short) -1384)
@@ -6136,7 +6136,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant, illegal instance  : recursive call, no return value, legal 
+ * test class: integer constant, illegal instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction( (short) 32768);
@@ -6166,7 +6166,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant, illegal instance  : recursive call, no return value, illegal 
+ * test class: integer constant, illegal instance  : recursive call, no return value, illegal
  */
 {
 	short           i;
@@ -6206,7 +6206,7 @@ short           counter = 10;
 
 int main()
 /*
- * test class: integer constant, illegal instance  : recursive call, return value, legal, no function declaration 
+ * test class: integer constant, illegal instance  : recursive call, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -6244,7 +6244,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant, illegal instance  : recursive call, return value, legal, integer function declaration 
+ * test class: integer constant, illegal instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -6284,7 +6284,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: integer constant, illegal instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s;
@@ -6323,7 +6323,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant, illegal instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: integer constant, illegal instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	short           i;
@@ -6366,7 +6366,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: integer constant, illegal instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction( (short) 32770) == (short) 32771))
@@ -6398,7 +6398,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: integer constant, illegal instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction( (short) 32770) == (short) 32769))
@@ -6431,7 +6431,7 @@ char           *numbers = "0123456789";
 int main()
 /*
  * test class: integer constant, illegal instance  : recursive call, in conditional expression, function declared to return
- * a pointer to character 
+ * a pointer to character
  */
 {
 	if (!(*recursiveFunction( (short) 65538) == '2'))
@@ -6464,7 +6464,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: integer constant, illegal instance  : recursive call, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	if (!(dummy(increment, (short) 32770) == (short) 32771))
@@ -6501,7 +6501,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant, illegal instance  : gemini, no return value, legal 
+ * test class: integer constant, illegal instance  : gemini, no return value, legal
  */
 {
 	castor( (short) 32800);
@@ -6540,7 +6540,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant, illegal instance  : gemini, no return value, illegal 
+ * test class: integer constant, illegal instance  : gemini, no return value, illegal
  */
 {
 	short           i;
@@ -6593,7 +6593,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant, illegal instance  : gemini, return value, legal, no function declaration 
+ * test class: integer constant, illegal instance  : gemini, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -6644,7 +6644,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant, illegal instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: integer constant, illegal instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	short           i = 0;
@@ -6697,7 +6697,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: integer constant, illegal instance  : gemini, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s;
@@ -6749,7 +6749,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant, illegal instance  : gemini, return value, pointer to function returning an integer 
+ * test class: integer constant, illegal instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	short           i;
@@ -6803,7 +6803,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: integer constant, illegal instance  : gemini, in conditional expression, no function declaration 
+ * test class: integer constant, illegal instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor( (short) 32770) == (short) 32771))
@@ -6844,7 +6844,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: integer constant, illegal instance  : gemini, in conditional expression, function declared to return an
- * integer 
+ * integer
  */
 {
 	if (!(castor( (short) 32770) == (short) 32771))
@@ -6886,7 +6886,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: integer constant, illegal instance  : gemini, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	if (!(*castor( (short) 65538) == '2'))
@@ -6928,7 +6928,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: integer constant, illegal instance  : gemini, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	if (!(castor(increment, (short) 32770) == (short) 32771))
@@ -6984,7 +6984,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: unsigned constant instance  : linear tree structure, no return value and legal 
+ *  test class: unsigned constant instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(1);
@@ -7106,7 +7106,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: unsigned constant instance  : linear tree structure, no return value and illegal 
+ *  test class: unsigned constant instance  : linear tree structure, no return value and illegal
  */
 {
 	short           i;
@@ -7194,7 +7194,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: unsigned constant instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: unsigned constant instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	unsigned        i = 0;
@@ -7359,7 +7359,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: unsigned constant instance  : linear tree structure, return value and legal, unsigned function declaration 
+ *  test class: unsigned constant instance  : linear tree structure, return value and legal, unsigned function declaration
  */
 {
 	unsigned        i = 0;
@@ -7516,7 +7516,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: unsigned constant instance  : linear tree structure, return value and legal, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *s;
@@ -7584,7 +7584,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: unsigned constant instance  : linear tree structure, return value, legal pointer to function returning an
- * unsigned 
+ * unsigned
  */
 {
 	unsigned        i;
@@ -7652,7 +7652,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: unsigned constant instance  : linear tree structure, used in conditional expression, no function declaration 
+ *  test class: unsigned constant instance  : linear tree structure, used in conditional expression, no function declaration
  */
 {
 	if (!(levelOneNodeOne(1) == 1))
@@ -7773,7 +7773,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: unsigned constant instance  : linear tree structure, used in conditional expression, unsigned function
- * declaration 
+ * declaration
  */
 {
 	if (!(levelOneNodeOne(1) == 1))
@@ -7816,7 +7816,7 @@ char           *protean = "cassandracross";
 int main(void)				/* alias root */
 /*
  *  test class: unsigned constant instance  : linear tree structure, used in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *skip();
@@ -7860,7 +7860,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: unsigned constant instance  : linear tree structure, in conditional expression, pointer to function returning
- * an unsigned 
+ * an unsigned
  */
 {
 	if (dummy1(divide4, 16) != 4)
@@ -7909,7 +7909,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : recursive call, no return value, legal 
+ * test class: unsigned constant instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(1);
@@ -7939,7 +7939,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : recursive call, no return value, illegal 
+ * test class: unsigned constant instance  : recursive call, no return value, illegal
  */
 {
 	unsigned        i;
@@ -7979,7 +7979,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant, illegal instance  : recursive call, return value, legal, no function declaration 
+ * test class: unsigned constant, illegal instance  : recursive call, return value, legal, no function declaration
  */
 {
 	unsigned        i = 0;
@@ -8017,7 +8017,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : recursive call, return value, legal, unsigned function declaration 
+ * test class: unsigned constant instance  : recursive call, return value, legal, unsigned function declaration
  */
 {
 	unsigned        i = 0;
@@ -8057,7 +8057,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: unsigned constant instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s;
@@ -8096,7 +8096,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : recursive call, return value, pointer to function returning an unsigned 
+ * test class: unsigned constant instance  : recursive call, return value, pointer to function returning an unsigned
  */
 {
 	unsigned        i = 0;
@@ -8139,7 +8139,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : recursive call, function in conditional expression, no function declaration 
+ * test class: unsigned constant instance  : recursive call, function in conditional expression, no function declaration
  */
 {
 	if (!(recursiveFunction(1) == 2))
@@ -8171,7 +8171,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: unsigned constant instance  : recursive call, function in conditional expression, unsigned function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction(1) == 0))
@@ -8204,7 +8204,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: unsigned constant instance  : recursive call, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	if (!(*recursiveFunction(2) == '2'))
@@ -8237,7 +8237,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: unsigned constant instance  : recursive call, in conditional expression, pointer to function returning an
- * unsigned 
+ * unsigned
  */
 {
 	if (!(dummy(increment, 2) == 3))
@@ -8274,7 +8274,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : gemini, no return value, legal 
+ * test class: unsigned constant instance  : gemini, no return value, legal
  */
 {
 	castor(1);
@@ -8313,7 +8313,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : gemini, no return value, illegal 
+ * test class: unsigned constant instance  : gemini, no return value, illegal
  */
 {
 	unsigned        i;
@@ -8366,7 +8366,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : gemini, return value, legal, no function declaration 
+ * test class: unsigned constant instance  : gemini, return value, legal, no function declaration
  */
 {
 	unsigned        i = 0;
@@ -8417,7 +8417,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : gemini, return value, legal, function declared to return an unsigned 
+ * test class: unsigned constant instance  : gemini, return value, legal, function declared to return an unsigned
  */
 {
 	unsigned        i = 0;
@@ -8469,7 +8469,7 @@ char           *numbers = "0123456789";
 
 int main(void)
 /*
- * test class: unsigned constant instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: unsigned constant instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s;
@@ -8521,7 +8521,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : gemini, return value, pointer to function returning an unsigned 
+ * test class: unsigned constant instance  : gemini, return value, pointer to function returning an unsigned
  */
 {
 	unsigned        i;
@@ -8577,7 +8577,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : gemini, in conditional expression, no function declaration 
+ * test class: unsigned constant instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor(1) == 2))
@@ -8617,7 +8617,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : gemini, in conditional expression, function declared to return an unsigned 
+ * test class: unsigned constant instance  : gemini, in conditional expression, function declared to return an unsigned
  */
 {
 	unsigned        castor();
@@ -8663,7 +8663,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: unsigned constant instance  : gemini, in conditional expression, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	if (!(*castor(2) == '2'))
@@ -8704,7 +8704,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant instance  : gemini, in conditional expression, pointer to function returning an unsigned 
+ * test class: unsigned constant instance  : gemini, in conditional expression, pointer to function returning an unsigned
  */
 {
 	if (!(castor(increment, 2) == 3))
@@ -8751,7 +8751,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: unsigned constant, illegal instance  : linear tree structure, no return value and legal 
+ *  test class: unsigned constant, illegal instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(-1);
@@ -8809,7 +8809,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: unsigned constant, illegal instance  : linear tree structure, no return value and illegal 
+ *  test class: unsigned constant, illegal instance  : linear tree structure, no return value and illegal
  */
 {
 	unsigned        i;
@@ -8885,7 +8885,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: unsigned constant, illegal instance  : linear tree structure, return value and legal, no function
- * declaration 
+ * declaration
  */
 {
 	unsigned        i = 0;
@@ -9051,7 +9051,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: unsigned constant, illegal instance  : linear tree structure, return value and legal, unsigned function
- * declaration 
+ * declaration
  */
 {
 	unsigned        i = 0;
@@ -9208,7 +9208,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : linear tree structure, return value and legal, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s, *levelOne(unsigned);
@@ -9276,7 +9276,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : linear tree structure, return value, legal pointer to function
- * returning an unsigned 
+ * returning an unsigned
  */
 {
 	unsigned short  i,divide4(unsigned short);
@@ -9345,7 +9345,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: unsigned constant, illegal instance  : linear tree structure, used in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(levelOneNodeOne(-1) == (unsigned) -1))
@@ -9466,7 +9466,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: unsigned constant, illegal instance  : linear tree structure, used in conditional expression, unsigned
- * function declaration 
+ * function declaration
  */
 {
 	if (!(levelOneNodeOne(-1) == (short) -1))
@@ -9509,7 +9509,7 @@ char           *protean = "cassandracross";
 int main(void)				/* alias root */
 /*
  *  test class: unsigned constant, illegal instance  : linear tree structure, used in conditional expression, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	if (compare(skip(-65532), "andra", 5) == compare(skip(-65528), "across", 6))
@@ -9551,7 +9551,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : linear tree structure, in conditional expression, pointer to function
- * returning an unsigned 
+ * returning an unsigned
  */
 {
 	unsigned short  divide4(unsigned short);
@@ -9604,7 +9604,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant, illegal instance  : recursive call, no return value, legal 
+ * test class: unsigned constant, illegal instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(-1);
@@ -9634,7 +9634,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant, illegal instance  : recursive call, no return value, illegal 
+ * test class: unsigned constant, illegal instance  : recursive call, no return value, illegal
  */
 {
 	recursiveFunction(-1);
@@ -9670,7 +9670,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant, illegal instance  : recursive call, return value, legal, no function declaration 
+ * test class: unsigned constant, illegal instance  : recursive call, return value, legal, no function declaration
  */
 {
 	unsigned        i = 0;
@@ -9708,7 +9708,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant, illegal instance  : recursive call, return value, legal, unsigned function declaration 
+ * test class: unsigned constant, illegal instance  : recursive call, return value, legal, unsigned function declaration
  */
 {
 	unsigned        i = 0;
@@ -9748,7 +9748,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s;
@@ -9788,7 +9788,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : recursive call, return value, pointer to function returning an
- * unsigned 
+ * unsigned
  */
 {
 	unsigned        i;
@@ -9831,7 +9831,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction(-1) == (unsigned) 0))
@@ -9863,7 +9863,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : recursive call, function in conditional expression, unsigned function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction(-1) == (unsigned) -2))
@@ -9896,7 +9896,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : recursive call, in conditional expression, function declared to return
- * a pointer to character 
+ * a pointer to character
  */
 {
 	if (!(*recursiveFunction( (unsigned short) -65534) == '2'))
@@ -9929,7 +9929,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : recursive call, in conditional expression, pointer to function
- * returning an unsigned 
+ * returning an unsigned
  */
 {
 	if (!(dummy(increment, -2) == (unsigned) -1))
@@ -9966,7 +9966,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant, illegal instance  : gemini, no return value, legal 
+ * test class: unsigned constant, illegal instance  : gemini, no return value, legal
  */
 {
 	castor(-1);
@@ -10005,7 +10005,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant, illegal instance  : gemini, no return value, illegal 
+ * test class: unsigned constant, illegal instance  : gemini, no return value, illegal
  */
 {
 	unsigned        i;
@@ -10058,7 +10058,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant, illegal instance  : gemini, return value, legal, no function declaration 
+ * test class: unsigned constant, illegal instance  : gemini, return value, legal, no function declaration
  */
 {
 	unsigned        i = 0;
@@ -10109,7 +10109,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant, illegal instance  : gemini, return value, legal, function declared to return an unsigned 
+ * test class: unsigned constant, illegal instance  : gemini, return value, legal, function declared to return an unsigned
  */
 {
 	unsigned        i = 0;
@@ -10162,7 +10162,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : gemini, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s;
@@ -10214,7 +10214,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant, illegal instance  : gemini, return value, pointer to function returning an unsigned 
+ * test class: unsigned constant, illegal instance  : gemini, return value, pointer to function returning an unsigned
  */
 {
 	unsigned        i;
@@ -10270,7 +10270,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: unsigned constant, illegal instance  : gemini, in conditional expression, no function declaration 
+ * test class: unsigned constant, illegal instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor(-1) == (unsigned) 0))
@@ -10311,7 +10311,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : gemini, in conditional expression, function declared to return an
- * unsigned 
+ * unsigned
  */
 {
 	if (!(castor(-1) == (unsigned) 0))
@@ -10353,7 +10353,7 @@ char           *numbers = "0123456789";
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : gemini, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	if (!(*castor( (unsigned short) -65534) == '2'))
@@ -10395,7 +10395,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: unsigned constant, illegal instance  : gemini, in conditional expression, pointer to function returning an
- * unsigned 
+ * unsigned
  */
 {
 	unsigned        increment();
@@ -10453,7 +10453,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: literal string instance  : linear tree structure, no return value and legal 
+ *  test class: literal string instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne("A", 1);
@@ -10612,7 +10612,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: literal string instance  : linear tree structure, no return value and illegal 
+ *  test class: literal string instance  : linear tree structure, no return value and illegal
  */
 {
 	short           i;
@@ -10802,7 +10802,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: literal string instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: literal string instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	short           i = 0;
@@ -10977,7 +10977,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: literal string instance  : linear tree structure, return value and legal, integer function declaration 
+ *  test class: literal string instance  : linear tree structure, return value and legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -11141,7 +11141,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: literal string instance  : linear tree structure, return value and legal, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *s;
@@ -11209,7 +11209,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: literal string instance  : linear tree structure, return value, legal pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           i, divide4();
@@ -11283,7 +11283,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: literal string instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: literal string instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	if (!(levelOneNodeOne("A") == 1))
@@ -11413,7 +11413,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: literal string instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	if (!levelOneNodeOne("A"))
@@ -11462,7 +11462,7 @@ int compare(char*, char*, short);
 int main(void)				/* alias root */
 /*
  *  test class: literal string instance  : linear tree structure, used in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	if (compare(skip(4, "cassandracross"), "andra", 5) == compare(skip(8, "cassandracross"), "across", 6))
@@ -11504,7 +11504,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: literal string instance  : linear tree structure, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	if (dummy1(divide4, "ABCDEFGHIJKL") != 3)
@@ -11565,7 +11565,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : recursive call, no return value, legal 
+ * test class: literal string instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction("A");
@@ -11598,7 +11598,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : recursive call, no return value, illegal 
+ * test class: literal string instance  : recursive call, no return value, illegal
  */
 {
 	short           i;
@@ -11640,7 +11640,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : recursive call, return value, legal, no function declaration 
+ * test class: literal string instance  : recursive call, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -11687,7 +11687,7 @@ short           counter = 10;
 
 int main()
 /*
- * test class: literal string instance  : recursive call, return value, legal, integer function declaration 
+ * test class: literal string instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -11733,7 +11733,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : recursive call, return value, function declared to return a pointer to character 
+ * test class: literal string instance  : recursive call, return value, function declared to return a pointer to character
  */
 {
 	char           *s;
@@ -11772,7 +11772,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: literal string instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	char           *i;
@@ -11815,7 +11815,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : recursive call, function in conditional expression, no function declaration 
+ * test class: literal string instance  : recursive call, function in conditional expression, no function declaration
  */
 {
 	if (!(recursiveFunction("AB") == 2))
@@ -11855,7 +11855,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : recursive call, function in conditional expression, integer function declaration 
+ * test class: literal string instance  : recursive call, function in conditional expression, integer function declaration
  */
 {
 	if (!(recursiveFunction("AB") == 2))
@@ -11895,7 +11895,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: literal string instance  : recursive call, in conditional expression, function declared to return a pointer
- * to character 
+ * to character
  */
 {
 	if (!(*recursiveFunction(2, "0123456789") == '2'))
@@ -11928,7 +11928,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: literal string instance  : recursive call, in conditional expression, pointer to function returning a
- * character pointer 
+ * character pointer
  */
 {
 	if (!(*dummy(increment, 1, "0123456789") == '1'))
@@ -11965,7 +11965,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : gemini, no return value, legal 
+ * test class: literal string instance  : gemini, no return value, legal
  */
 {
 	castor("A");
@@ -12008,7 +12008,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : gemini, no return value, illegal 
+ * test class: literal string instance  : gemini, no return value, illegal
  */
 {
 	short           i;
@@ -12064,7 +12064,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : gemini, return value, legal, no function declaration 
+ * test class: literal string instance  : gemini, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -12124,7 +12124,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: literal string instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	short           i = 0;
@@ -12183,7 +12183,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: literal string instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s;
@@ -12235,7 +12235,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : gemini, return value, pointer to function returning an integer 
+ * test class: literal string instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	short           i;
@@ -12291,7 +12291,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : gemini, in conditional expression, no function declaration 
+ * test class: literal string instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor("A") == 2))
@@ -12336,7 +12336,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: literal string instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 	if (!(castor("AB") == 2))
@@ -12385,7 +12385,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: literal string instance  : gemini, in conditional expression, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	if (!(*castor(2, "0123456789") == '2'))
@@ -12426,7 +12426,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string instance  : gemini, in conditional expression, pointer to function returning an integer 
+ * test class: literal string instance  : gemini, in conditional expression, pointer to function returning an integer
  */
 {
 	short           increment();
@@ -12487,7 +12487,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: literal string, illegal instance  : linear tree structure, no return value and legal 
+ *  test class: literal string, illegal instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne("A");
@@ -12730,7 +12730,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: literal string, illegal instance  : linear tree structure, no return value and illegal 
+ *  test class: literal string, illegal instance  : linear tree structure, no return value and illegal
  */
 {
 	short           i;
@@ -12989,7 +12989,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: literal string, illegal instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: literal string, illegal instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	short           i = 0;
@@ -13158,7 +13158,7 @@ short           statusFlag = NoMistake;
 
 int main(void)				/* alias root */
 /*
- *  test class: literal string, illegal instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: literal string, illegal instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	short           i = 0;
@@ -13316,7 +13316,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: literal string, illegal instance  : linear tree structure, return value and legal, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s;
@@ -13378,7 +13378,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: literal string, illegal instance  : linear tree structure, return value, legal pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	short           i;
@@ -13457,7 +13457,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: literal string, illegal instance  : linear tree structure, in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(levelOneNodeOne("A") == 1))
@@ -13587,7 +13587,7 @@ short           statusFlag = NoMistake;
 int main(void)				/* alias root */
 /*
  *  test class: literal string, illegal instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	if (!levelOneNodeOne("AB"))
@@ -13636,7 +13636,7 @@ int compare(char*, char*, short);
 int main(void)				/* alias root */
 /*
  *  test class: literal string, illegal instance  : linear tree structure, used in conditional expression, function declared
- * to return a pointer to character 
+ * to return a pointer to character
  */
 {
 	if (compare(skip(4, "cassandracross"), "andra", 5) == compare(skip(8, "cassandracross"), "across", 6))
@@ -13679,7 +13679,7 @@ short           statusFlag = NoMistake;
 int main(void)
 /*
  * test class: literal string, illegal instance  : linear tree structure, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	if (dummy1(divide4, "ABCDEFGHIJKL") != 3)
@@ -13742,7 +13742,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : recursive call, no return value, legal 
+ * test class: literal string, illegal instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction("A");
@@ -13780,7 +13780,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : recursive call, no return value, illegal 
+ * test class: literal string, illegal instance  : recursive call, no return value, illegal
  */
 {
 	short           i;
@@ -13826,7 +13826,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : recursive call, return value, legal, no function declaration 
+ * test class: literal string, illegal instance  : recursive call, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -13873,7 +13873,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : recursive call, return value, legal, integer function declaration 
+ * test class: literal string, illegal instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -13920,7 +13920,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: literal string, illegal instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s;
@@ -13959,7 +13959,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: literal string, illegal instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	short           i;
@@ -14005,7 +14005,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: literal string, illegal instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction("AB") == 2))
@@ -14046,7 +14046,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: literal string, illegal instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction("AB") == 2))
@@ -14086,7 +14086,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: literal string, illegal instance  : recursive call, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	if (!(*recursiveFunction(2, "0123456789") == '2'))
@@ -14120,7 +14120,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: literal string, illegal instance  : recursive call, in conditional expression, pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	if (!(dummy(increment, "A") == 2))
@@ -14167,7 +14167,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : gemini, no return value, legal 
+ * test class: literal string, illegal instance  : gemini, no return value, legal
  */
 {
 	castor("AB");
@@ -14222,7 +14222,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : gemini, no return value, illegal 
+ * test class: literal string, illegal instance  : gemini, no return value, illegal
  */
 {
 	short           i;
@@ -14290,7 +14290,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : gemini, return value, legal, no function declaration 
+ * test class: literal string, illegal instance  : gemini, return value, legal, no function declaration
  */
 {
 	short           i;
@@ -14350,7 +14350,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: literal string, illegal instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	short           i = 0;
@@ -14409,7 +14409,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: literal string, illegal instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s;
@@ -14461,7 +14461,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : gemini, return value, pointer to function returning an integer 
+ * test class: literal string, illegal instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	short           i;
@@ -14524,7 +14524,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : gemini, in conditional expression, no function declaration 
+ * test class: literal string, illegal instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor("AB") == 2))
@@ -14573,7 +14573,7 @@ short           counter = 10;
 
 int main(void)
 /*
- * test class: literal string, illegal instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: literal string, illegal instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 	if (!(castor("AB") == 2))
@@ -14622,7 +14622,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: literal string, illegal instance  : gemini, in conditional expression, function declared to return a pointer
- * to character 
+ * to character
  */
 {
 	if (!(*castor(2, "0123456789") == '2'))
@@ -14664,7 +14664,7 @@ short           counter = 10;
 int main(void)
 /*
  * test class: literal string, illegal instance  : gemini, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	if (!(castor(increment, "A") == 2))

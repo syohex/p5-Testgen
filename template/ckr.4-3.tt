@@ -77,7 +77,7 @@ float           statusFlag = NoMistake;
 main()
 /*
  * test class: nested function, depth 10 meaning   : he, as a novice observer of tradition of elegence, suffers hardships
- * aplenty. In the end he gets trapped into Midas 
+ * aplenty. In the end he gets trapped into Midas
  */
 {
 	float           bestdresser = SublimeElegance, endOfTheDay;
@@ -99,7 +99,7 @@ main()
 	return (0);
 }
 
-float 
+float
 autumnalSunshine(apprentice)
 	float           apprentice;
 {
@@ -108,7 +108,7 @@ autumnalSunshine(apprentice)
 	return (++apprentice);
 }
 
-float 
+float
 balmyWindow(apprentice)
 	float           apprentice;
 {
@@ -117,7 +117,7 @@ balmyWindow(apprentice)
 	return (++apprentice);
 }
 
-float 
+float
 dribblingRain(apprentice)
 	float           apprentice;
 {
@@ -126,7 +126,7 @@ dribblingRain(apprentice)
 	return (++apprentice);
 }
 
-float 
+float
 refresher(apprentice)
 	float           apprentice;
 {
@@ -135,7 +135,7 @@ refresher(apprentice)
 	return (++apprentice);
 }
 
-float 
+float
 bumpIntoBicycle(apprentice)
 	float           apprentice;
 {
@@ -144,7 +144,7 @@ bumpIntoBicycle(apprentice)
 	return (++apprentice);
 }
 
-float 
+float
 drawnByJaded(apprentice)
 	float           apprentice;
 {
@@ -154,7 +154,7 @@ drawnByJaded(apprentice)
 
 }
 
-float 
+float
 heavyRain(apprentice)
 	float           apprentice;
 {
@@ -163,7 +163,7 @@ heavyRain(apprentice)
 	return (++apprentice);
 }
 
-float 
+float
 patagonianBlow(apprentice)
 	float           apprentice;
 {
@@ -172,7 +172,7 @@ patagonianBlow(apprentice)
 	return (++apprentice);
 }
 
-float 
+float
 hurricaneJanet(apprentice)
 	float           apprentice;
 {
@@ -181,7 +181,7 @@ hurricaneJanet(apprentice)
 	return (++apprentice);
 }
 
-float 
+float
 blizzard(apprentice)
 	float           apprentice;
 {
@@ -218,7 +218,7 @@ main()				/* alias first level */
 	return (0);
 }
 
-float 
+float
 secondLevel(firstArgument, secondArgument)
 	float           firstArgument, secondArgument;
 {
@@ -231,7 +231,7 @@ secondLevel(firstArgument, secondArgument)
 		+ thirdLevel(firstArgument + 1.0, secondArgument + 1.0));
 }
 
-float 
+float
 thirdLevel(firstArgument, secondArgument)
 	float           firstArgument, secondArgument;
 {
@@ -244,7 +244,7 @@ thirdLevel(firstArgument, secondArgument)
 		+ fourthLevel(firstArgument + 1.0, secondArgument + 1.0));
 }
 
-float 
+float
 fourthLevel(firstArgument, secondArgument)
 	float           firstArgument, secondArgument;
 {
@@ -257,7 +257,7 @@ fourthLevel(firstArgument, secondArgument)
 		+ fifthLevel(firstArgument + 1.0, secondArgument + 1.0));
 }
 
-float 
+float
 fifthLevel(firstArgument, secondArgument)
 	float           firstArgument, secondArgument;
 {
@@ -270,7 +270,7 @@ fifthLevel(firstArgument, secondArgument)
 		+ sixthLevel(firstArgument + 1.0, secondArgument + 1.0));
 }
 
-float 
+float
 sixthLevel(firstArgument, secondArgument)
 	float           firstArgument, secondArgument;
 {
@@ -282,7 +282,7 @@ sixthLevel(firstArgument, secondArgument)
 		+ seventhLevel(firstArgument + 1.0, secondArgument + 1.0));
 }
 
-float 
+float
 seventhLevel(firstArgument, secondArgument)
 	float           firstArgument, secondArgument;
 {
@@ -295,7 +295,7 @@ seventhLevel(firstArgument, secondArgument)
 		+ eighthLevel(firstArgument + 1.0, secondArgument + 1.0));
 }
 
-float 
+float
 eighthLevel(firstArgument, secondArgument)
 	float           firstArgument, secondArgument;
 {
@@ -308,7 +308,7 @@ eighthLevel(firstArgument, secondArgument)
 		+ ninthLevel(firstArgument + 1.0, secondArgument + 1.0));
 }
 
-float 
+float
 ninthLevel(firstArgument, secondArgument)
 	float           firstArgument, secondArgument;
 {
@@ -321,7 +321,7 @@ ninthLevel(firstArgument, secondArgument)
 		+ tenthLevel(firstArgument + 1.0, secondArgument + 1.0));
 }
 
-float 
+float
 tenthLevel(firstArgument, secondArgument)
 	float           firstArgument, secondArgument;
 {
@@ -347,7 +347,7 @@ $FHEAD()
 
 main()
 /*
- * test class: static variable declarations in inner blocks meaning   : complex, yet straightforward. I love Espa~na 
+ * test class: static variable declarations in inner blocks meaning   : complex, yet straightforward. I love Espa~na
  */
 {
 	float           statusFlag = NoMistake;
@@ -442,7 +442,7 @@ long            statusFlag = NoMistake;
 main()
 /*
  * test class: pointer to function, depth 5 meaning   : so many man, so many faces. I admit to being racist, if he who
- * praise a race other than his should be called that 
+ * praise a race other than his should be called that
  */
 {
 	long            mongorian(), filthy(), inferior(), hollowlyBusy(),
@@ -458,7 +458,7 @@ main()
 	return (0);
 }
 
-long 
+long
 skein(oneFunction, anotherFunction, yetAnotherFunction,
       stillAnotherFunction, fifthFunction, functionAgain, description)
 	long            (*oneFunction) (), (*anotherFunction) (), (*yetAnotherFunction) (),
@@ -471,7 +471,7 @@ skein(oneFunction, anotherFunction, yetAnotherFunction,
 			    fifthFunction, functionAgain, description));
 }
 
-long 
+long
 mongorian(featureOne, featureTwo, featureThree, featureFour,
 	  whatToDoWithIt, status)
 	long            (*featureOne) (), (*featureTwo) (), (*featureThree) (),
@@ -482,7 +482,7 @@ mongorian(featureOne, featureTwo, featureThree, featureFour,
 	return (featureOne(featureTwo, featureThree, featureFour, status));
 }
 
-long 
+long
 filthy(functionOne, functionTwo, functionThree, status)
 	long            (*functionOne) (), (*functionTwo) (), (*functionThree) (),
                 status;
@@ -492,7 +492,7 @@ filthy(functionOne, functionTwo, functionThree, status)
 	return (functionTwo(functionThree, status));
 }
 
-long 
+long
 inferior(status)
 	long            status;
 {
@@ -501,7 +501,7 @@ inferior(status)
 	return (status ^ GlossOver);
 }
 
-long 
+long
 hollowlyBusy(andStill, status)
 	long            (*andStill) (), status;
 {
@@ -510,7 +510,7 @@ hollowlyBusy(andStill, status)
 	return (andStill(status));
 }
 
-long 
+long
 noElegance(status)
 	long            status;
 {
@@ -519,7 +519,7 @@ noElegance(status)
 	return (status ^ BearResult);
 }
 
-long 
+long
 shouldBeDumped(status)
 	long            status;
 {
@@ -609,7 +609,7 @@ main()
 			     + Long->i56789[4].oneOfThem % Long->i56789[0].oneOfThem,
 /*
  * 73 %= 5 *= 2 += (1 == 1) << 5 + (2 != 1) >> 1 + 3 * ++5 ^ ( 6 << 3 | 6 ) | 8*4-1 & 5*9 && 3*(6-3)+1 == (4-1)*4 || 3*4 >
- * 2*3+9%5 
+ * 2*3+9%5
  */
 			     weekday[Friday]);
 	if (!compare(whoDoneIt, "Juda"))
@@ -644,14 +644,14 @@ function(argument, day)
 	return (functionValue);
 }
 
-long 
+long
 compute(i, j, k, l)
 	long            i, j, k, l;
 {
 	return ((k - i) * k + j * (k - i) * i * (l - i));
 }
 
-long 
+long
 analyseDay(day, mode)
 	char            day[];
 long            mode;
@@ -737,7 +737,7 @@ long            statusFlag = NoMistake;
 main()
 /*
  * test class: nested function, depth 10 meaning   : he, as a novice observer of tradition of elegence, suffers hardships
- * aplenty. In the end he gets trapped into Midas 
+ * aplenty. In the end he gets trapped into Midas
  */
 {
 	long            bestdresser = SublimeElegance, endOfTheDay;
@@ -759,7 +759,7 @@ main()
 	return (0);
 }
 
-long 
+long
 autumnalSunshine(apprentice)
 	long            apprentice;
 {
@@ -768,7 +768,7 @@ autumnalSunshine(apprentice)
 	return (++apprentice);
 }
 
-long 
+long
 balmyWindow(apprentice)
 	long            apprentice;
 {
@@ -777,7 +777,7 @@ balmyWindow(apprentice)
 	return (++apprentice);
 }
 
-long 
+long
 dribblingRain(apprentice)
 	long            apprentice;
 {
@@ -786,7 +786,7 @@ dribblingRain(apprentice)
 	return (++apprentice);
 }
 
-long 
+long
 refresher(apprentice)
 	long            apprentice;
 {
@@ -795,7 +795,7 @@ refresher(apprentice)
 	return (++apprentice);
 }
 
-long 
+long
 bumpIntoBicycle(apprentice)
 	long            apprentice;
 {
@@ -804,7 +804,7 @@ bumpIntoBicycle(apprentice)
 	return (++apprentice);
 }
 
-long 
+long
 drawnByJaded(apprentice)
 	long            apprentice;
 {
@@ -814,7 +814,7 @@ drawnByJaded(apprentice)
 
 }
 
-long 
+long
 heavyRain(apprentice)
 	long            apprentice;
 {
@@ -823,7 +823,7 @@ heavyRain(apprentice)
 	return (++apprentice);
 }
 
-long 
+long
 patagonianBlow(apprentice)
 	long            apprentice;
 {
@@ -832,7 +832,7 @@ patagonianBlow(apprentice)
 	return (++apprentice);
 }
 
-long 
+long
 hurricaneJanet(apprentice)
 	long            apprentice;
 {
@@ -841,7 +841,7 @@ hurricaneJanet(apprentice)
 	return (++apprentice);
 }
 
-long 
+long
 blizzard(apprentice)
 	long            apprentice;
 {
@@ -899,7 +899,7 @@ long            statusFlag = NoMistake;
 main()
 /*
  * test class: expression argument, dotted with function call meaning   : I can point to the country indicated in this
- * programme. Some call it the nationalism upside down, which I don't deny. Still, I prefer to calling it absolute hatred 
+ * programme. Some call it the nationalism upside down, which I don't deny. Still, I prefer to calling it absolute hatred
  */
 {
 	long           *culture();
@@ -921,7 +921,7 @@ main()
 	return (0);
 }
 
-long 
+long
 situated(mode, where)
 	long            mode, where;
 {
@@ -934,7 +934,7 @@ situated(mode, where)
 	return (country[mode][where]);
 }
 
-long 
+long
 theSize(relativelySpeaking)
 	long            relativelySpeaking;
 {
@@ -965,7 +965,7 @@ theSize(relativelySpeaking)
 	return (returnValue);
 }
 
-long 
+long
 population(howCrowded)
 	long            howCrowded;
 {
@@ -989,7 +989,7 @@ culture(sophistication)
 	return (gamut + sophistication);
 }
 
-long 
+long
 people(colour, feature1, feature2)
 	long            colour, feature1, feature2;
 {
@@ -998,7 +998,7 @@ people(colour, feature1, feature2)
 	return (colour / (feature1 + feature2));
 }
 
-long 
+long
 etiquette(decency)
 	long            decency;
 {
@@ -1007,7 +1007,7 @@ etiquette(decency)
 	return (decency >= Admissible ? Pass : ExtinguishIt);
 }
 
-long 
+long
 looksLike(animal)
 	long            animal;
 {
@@ -1016,7 +1016,7 @@ looksLike(animal)
 	return (animal + 3);
 }
 
-long 
+long
 country(value, whatToAnswer)
 	long            value, whatToAnswer;
 {
@@ -1026,7 +1026,7 @@ country(value, whatToAnswer)
 	return (value);
 }
 
-long 
+long
 rebound(object)
 	MyFavouriteType object;
 {
@@ -1058,7 +1058,7 @@ main()				/* alias first level */
 	return (0);
 }
 
-long 
+long
 secondLevel(firstArgument, secondArgument)
 	long            firstArgument, secondArgument;
 {
@@ -1071,7 +1071,7 @@ secondLevel(firstArgument, secondArgument)
 		+ thirdLevel(firstArgument + 1, secondArgument + 1));
 }
 
-long 
+long
 thirdLevel(firstArgument, secondArgument)
 	long            firstArgument, secondArgument;
 {
@@ -1084,7 +1084,7 @@ thirdLevel(firstArgument, secondArgument)
 		+ fourthLevel(firstArgument + 1, secondArgument + 1));
 }
 
-long 
+long
 fourthLevel(firstArgument, secondArgument)
 	long            firstArgument, secondArgument;
 {
@@ -1097,7 +1097,7 @@ fourthLevel(firstArgument, secondArgument)
 		+ fifthLevel(firstArgument + 1, secondArgument + 1));
 }
 
-long 
+long
 fifthLevel(firstArgument, secondArgument)
 	long            firstArgument, secondArgument;
 {
@@ -1110,7 +1110,7 @@ fifthLevel(firstArgument, secondArgument)
 		+ sixthLevel(firstArgument + 1, secondArgument + 1));
 }
 
-long 
+long
 sixthLevel(firstArgument, secondArgument)
 	long            firstArgument, secondArgument;
 {
@@ -1122,7 +1122,7 @@ sixthLevel(firstArgument, secondArgument)
 		+ seventhLevel(firstArgument + 1, secondArgument + 1));
 }
 
-long 
+long
 seventhLevel(firstArgument, secondArgument)
 	long            firstArgument, secondArgument;
 {
@@ -1135,7 +1135,7 @@ seventhLevel(firstArgument, secondArgument)
 		+ eighthLevel(firstArgument + 1, secondArgument + 1));
 }
 
-long 
+long
 eighthLevel(firstArgument, secondArgument)
 	long            firstArgument, secondArgument;
 {
@@ -1148,7 +1148,7 @@ eighthLevel(firstArgument, secondArgument)
 		+ ninthLevel(firstArgument + 1, secondArgument + 1));
 }
 
-long 
+long
 ninthLevel(firstArgument, secondArgument)
 	long            firstArgument, secondArgument;
 {
@@ -1161,7 +1161,7 @@ ninthLevel(firstArgument, secondArgument)
 		+ tenthLevel(firstArgument + 1, secondArgument + 1));
 }
 
-long 
+long
 tenthLevel(firstArgument, secondArgument)
 	long            firstArgument, secondArgument;
 {
@@ -1194,11 +1194,11 @@ main()
 	return (0);
 }
 
-long 
+long
 main1(argc, argv)		/* alias north */
 /*
  *  test class: rescursive call, four function roundabout meaning   : no matter wither or whence the wind blows, we must
- * hanker after the day of Adam and Eve before Babel's falloff 
+ * hanker after the day of Adam and Eve before Babel's falloff
  */
 	long            argc;
 	char           *argv;
@@ -1223,7 +1223,7 @@ main1(argc, argv)		/* alias north */
 	}
 }
 
-long 
+long
 east(counter, alphabet)
 	long            counter;
 	char           *alphabet;
@@ -1238,7 +1238,7 @@ east(counter, alphabet)
 
 }
 
-long 
+long
 south(counter, alphabet)
 	long            counter;
 	char           *alphabet;
@@ -1252,7 +1252,7 @@ south(counter, alphabet)
 		statusFlag++;
 }
 
-long 
+long
 west(counter, alphabet)
 	long            counter;
 	char           *alphabet;
@@ -1283,7 +1283,7 @@ $HEAD()
 
 main()
 /*
- * test class: static variable declarations in inner blocks meaning   : complex, yet straightforward. I love Espa~na 
+ * test class: static variable declarations in inner blocks meaning   : complex, yet straightforward. I love Espa~na
  */
 {
 	long            statusFlag = NoMistake;
@@ -1370,7 +1370,7 @@ $HEAD()
 main()
 /*
  * test class: nested functions combined with assignment operators meaning   : the Element, despised as too old-fashioned, I
- * rather huddle instead of grabbing at everything ugly 
+ * rather huddle instead of grabbing at everything ugly
  */
 {
 	long            finalResult, ninthResult, eighthResult, seventhResult, sixthResult, fifthResult, fourthResult, thirdResult, secondResult, firstResult;
@@ -1482,7 +1482,7 @@ long            statusFlag = NoMistake;
 main()
 /*
  * test class: very complex logical expression as argument (veclex) meaning   : in this room it seems inpolite to conclude
- * that only He can see through 
+ * that only He can see through
  */
 {
 	long            queen = SupremeRein, ohta = FallenMidas, matsuo = ohta + 1, kurihara = TestBedside, ishihara = matsuo + 1, galwas = NoBrain, saito = ishihara + 1, asai = HardUnderwear, miura = saito + 1, sano = TeachHowToXX, utashiro = kurihara + 1, hikichi = miura + 1, junko = utashiro + 1, mieko = CompetentSecretary, nishiyama = hikichi + 1, takeda = galwas + 1;
@@ -1505,7 +1505,7 @@ main()
 	return (0);
 }
 
-long 
+long
 function(argument)
 	int             argument;
 {

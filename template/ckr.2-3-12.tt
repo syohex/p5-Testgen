@@ -143,12 +143,12 @@ $FHEADER()
 main()
 {
 	$MODIFIER INTDEF          Intdef;
-	$MODIFIER LONGDEF         Longdef;	
-	$MODIFIER FLOATDEF        Floatdef;	
-	$MODIFIER SHORTDEF        Shortdef;	
-	$MODIFIER UNSIGNDEF       Unsigndef;	
-	$MODIFIER CHARDEF         Chardef;	
-	$MODIFIER STRDEF          Strdef;	
+	$MODIFIER LONGDEF         Longdef;
+	$MODIFIER FLOATDEF        Floatdef;
+	$MODIFIER SHORTDEF        Shortdef;
+	$MODIFIER UNSIGNDEF       Unsigndef;
+	$MODIFIER CHARDEF         Chardef;
+	$MODIFIER STRDEF          Strdef;
 	$MODIFIER UNIDEF          Unidef;
 
 $test1(Intdef)
@@ -254,12 +254,12 @@ $LICENSE()
 $HEADER()
 main()
 {
-	$MODIFIER INTDEF          Intdef;	
-	$MODIFIER LONGDEF         Longdef;	
-	$MODIFIER SHORTDEF        Shortdef;	
-	$MODIFIER UNSIGNDEF       Unsigndef;	
-	$MODIFIER CHARDEF         Chardef;	
-	$MODIFIER STRDEF          Strdef;	
+	$MODIFIER INTDEF          Intdef;
+	$MODIFIER LONGDEF         Longdef;
+	$MODIFIER SHORTDEF        Shortdef;
+	$MODIFIER UNSIGNDEF       Unsigndef;
+	$MODIFIER CHARDEF         Chardef;
+	$MODIFIER STRDEF          Strdef;
 	$MODIFIER UNIDEF          Unidef;
 
 $test1(Intdef)
@@ -497,11 +497,11 @@ $LICENSE()
 $HEADER()
 main()
 {
-	$MODIFIER INTDEF          Intdef;	
-	$MODIFIER SHORTDEF        Shortdef;	
-	$MODIFIER UNSIGNDEF       Unsigndef;	
-	$MODIFIER CHARDEF         Chardef;	
-	$MODIFIER STRDEF          Strdef;	
+	$MODIFIER INTDEF          Intdef;
+	$MODIFIER SHORTDEF        Shortdef;
+	$MODIFIER UNSIGNDEF       Unsigndef;
+	$MODIFIER CHARDEF         Chardef;
+	$MODIFIER STRDEF          Strdef;
 	$MODIFIER UNIDEF          Unidef;
 
 $test1(Intdef)

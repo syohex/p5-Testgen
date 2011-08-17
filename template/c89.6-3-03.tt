@@ -55,7 +55,7 @@ extern void recursiveFunction(float*);
 
 int main(void)
 /*
- * test class: extern variable address instance  : recursive call, no return value, legal 
+ * test class: extern variable address instance  : recursive call, no return value, legal
  */
 {
 
@@ -106,7 +106,7 @@ extern void recursiveFunction(float*);
 
 int main(void)
 /*
- * test class: extern variable address instance  : recursive call, no return value, illegal 
+ * test class: extern variable address instance  : recursive call, no return value, illegal
  */
 {
 	extern short    statusFlag;
@@ -159,7 +159,7 @@ extern int recursiveFunction(float*);
 
 int main(void)
 /*
- * test class: extern variable address instance  : recursive call, return value, legal, no function declaration 
+ * test class: extern variable address instance  : recursive call, return value, legal, no function declaration
  */
 {
 	extern short    statusFlag;
@@ -217,7 +217,7 @@ extern float recursiveFunction(float*);
 
 int main(void)
 /*
- * test class: extern variable address instance  : recursive call, return value, legal, integer function declaration 
+ * test class: extern variable address instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	extern short    statusFlag;
@@ -247,7 +247,7 @@ float           rec;
 
 extern float recursiveFunction(float*);
 
-float 
+float
 recursiveFunction(float *variable)
 {
 	extern short    counter;
@@ -281,7 +281,7 @@ extern float increment(float);
 
 int main(void)
 /*
- * test class: extern variable address instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: extern variable address instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	extern float    dum;
@@ -320,7 +320,7 @@ int dummy(float (*function)(float), float *variable)
 	return dum;
 }
 
-float 
+float
 increment(float variable)
 {
 	return ++variable;
@@ -341,7 +341,7 @@ extern int recursiveFunction(float*);
 int main(void)
 /*
  * test class: extern variable address instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	extern float    rec;
@@ -398,7 +398,7 @@ extern float recursiveFunction(float*);
 int main(void)
 /*
  * test class: extern variable address instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	extern float    rec;
@@ -423,7 +423,7 @@ $HEAD()
 #include "def.h"
 float           rec;
 
-float 
+float
 recursiveFunction(float *variable)
 {
 	extern short    statusFlag;
@@ -458,7 +458,7 @@ extern float increment(float);
 int main(void)
 /*
  * test class: extern variable address instance  : recursive call, in conditional expression, pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	extern float    dum;
@@ -501,7 +501,7 @@ int dummy(float (*function)(float), float *variable)
 }
 
 
-float 
+float
 increment(float variable)
 {
 	return ++variable;
@@ -520,7 +520,7 @@ extern void recursiveFunciton(short*);
 
 int main(void)
 /*
- * test class: extern variable address instance  : recursive call, no return value, legal 
+ * test class: extern variable address instance  : recursive call, no return value, legal
  */
 {
 
@@ -571,7 +571,7 @@ extern void recursiveFunction(short*);
 
 int main(void)
 /*
- * test class: extern variable address instance  : recursive call, no return value, illegal 
+ * test class: extern variable address instance  : recursive call, no return value, illegal
  */
 {
 	extern short    statusFlag;
@@ -624,7 +624,7 @@ extern int recursiveFunction(short*);
 
 int main(void)
 /*
- * test class: extern variable address instance  : recursive call, return value, legal, no function declaration 
+ * test class: extern variable address instance  : recursive call, return value, legal, no function declaration
  */
 {
 	extern short    statusFlag;
@@ -682,7 +682,7 @@ extern short recursiveFunction(short*);
 
 int main(void)
 /*
- * test class: extern variable address instance  : recursive call, return value, legal, integer function declaration 
+ * test class: extern variable address instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	extern short    statusFlag;
@@ -710,7 +710,7 @@ $HEAD()
 short           statusFlag = NoMistake;
 short           rec;
 
-short 
+short
 recursiveFunction(short *variable)
 {
 	extern short    counter;
@@ -743,7 +743,7 @@ extern char *recursiveFunction(short*);
 int main(void)
 /*
  * test class: extern variable address instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	extern short    statusFlag;
@@ -803,7 +803,7 @@ extern short increment(short);
 
 int main(void)
 /*
- * test class: extern variable address instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: extern variable address instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	extern short    dum;
@@ -842,7 +842,7 @@ int dummy(short (*function)(short), short *variable)
 	return dum;
 }
 
-short 
+short
 increment(short variable)
 {
 	return ++variable;
@@ -863,7 +863,7 @@ extern int recursiveFunction(short*);
 int main(void)
 /*
  * test class: extern variable address instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	extern short    rec;
@@ -912,7 +912,7 @@ extern short recursiveFunction(short*);
 int main(void)
 /*
  * test class: extern variable address instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	extern short    rec;
@@ -933,7 +933,7 @@ $HEAD()
 
 short           rec;
 
-short 
+short
 recursiveFunction(short *variable)
 {
 	extern short    statusFlag;
@@ -964,7 +964,7 @@ extern char *recursiveFunction(short*);
 int main(void)
 /*
  * test class: extern variable address instance  : recursive call, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	extern char    *rec;
@@ -1016,7 +1016,7 @@ extern short increment(short);
 int main(void)
 /*
  * test class: extern variable address instance  : recursive call, in conditional expression, pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	extern short    dum;
@@ -1051,7 +1051,7 @@ int dummy(short (*function)(short), short *variable)
 }
 
 
-short 
+short
 increment(short variable)
 {
 	return ++variable;

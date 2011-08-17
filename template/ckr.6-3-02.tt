@@ -53,7 +53,7 @@ float           i;
 
 main()				/* alias root */
 /*
- *  test class: extern variable address instance  : linear tree structure, no return value and legal 
+ *  test class: extern variable address instance  : linear tree structure, no return value and legal
  */
 {
 
@@ -325,7 +325,7 @@ float           result;
 
 main()				/* alias root */
 /*
- *  test class: extern variable address instance  : linear tree structure, no return value and illegal 
+ *  test class: extern variable address instance  : linear tree structure, no return value and illegal
  */
 {
 
@@ -605,7 +605,7 @@ float           i;
 
 main()				/* alias root */
 /*
- *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	extern float    i11, i12;
@@ -905,7 +905,7 @@ float           i;
 
 main()				/* alias root */
 /*
- *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	extern float    i11, i12;
@@ -936,7 +936,7 @@ $HEAD()
 #include "def.h"
 float           i11;
 
-float 
+float
 levelOneNodeOne(argument)
 	float          *argument;
 {
@@ -966,7 +966,7 @@ $HEAD()
 #include "def.h"
 float           i12;
 
-float 
+float
 levelOneNodeTwo(argument)
 	float          *argument;
 {
@@ -996,7 +996,7 @@ $HEAD()
 #include "def.h"
 float           i21;
 
-float 
+float
 levelTwoNodeOne(argument)
 	float          *argument;
 {
@@ -1026,7 +1026,7 @@ $HEAD()
 #include "def.h"
 float           i22;
 
-float 
+float
 levelTwoNodeTwo(argument)
 	float          *argument;
 {
@@ -1056,7 +1056,7 @@ $HEAD()
 #include "def.h"
 float           i23;
 
-float 
+float
 levelTwoNodeThree(argument)
 	float          *argument;
 {
@@ -1086,7 +1086,7 @@ $HEAD()
 #include "def.h"
 float           i24;
 
-float 
+float
 levelTwoNodeFour(argument)
 	float          *argument;
 {
@@ -1116,7 +1116,7 @@ $HEAD()
 
 float           i31;
 
-float 
+float
 levelThreeLeafOne(argument)
 	float          *argument;
 {
@@ -1130,7 +1130,7 @@ $HEAD()
 
 float           i32;
 
-float 
+float
 levelThreeLeafTwo(argument)
 	float          *argument;
 {
@@ -1144,7 +1144,7 @@ $HEAD()
 
 float           i33;
 
-float 
+float
 levelThreeLeafThree(argument)
 	float          *argument;
 {
@@ -1158,7 +1158,7 @@ $HEAD()
 
 float           i34;
 
-float 
+float
 levelThreeLeafFour(argument)
 	float          *argument;
 {
@@ -1172,7 +1172,7 @@ $HEAD()
 
 float           i35;
 
-float 
+float
 levelThreeLeafFive(argument)
 	float          *argument;
 {
@@ -1186,7 +1186,7 @@ $HEAD()
 
 float           i36;
 
-float 
+float
 levelThreeLeafSix(argument)
 	float          *argument;
 {
@@ -1200,7 +1200,7 @@ $HEAD()
 
 float           i37;
 
-float 
+float
 levelThreeLeafSeven(argument)
 	float          *argument;
 {
@@ -1214,7 +1214,7 @@ $HEAD()
 
 float           i38;
 
-float 
+float
 levelThreeLeafEight(argument)
 	float          *argument;
 {
@@ -1234,7 +1234,7 @@ float           i = 12.0;
 main()
 /*
  * test class: extern variable address instance  : linear tree structure, return value, legal pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	extern float    dum1;
@@ -1278,7 +1278,7 @@ $HEAD()
 
 float           div4;
 
-float 
+float
 divide4(floater)
 	float          *floater;
 {
@@ -1312,7 +1312,7 @@ $HEAD()
 
 float           div2;
 
-float 
+float
 divide2(floater)
 	float          *floater;
 {
@@ -1332,7 +1332,7 @@ float           i, j;
 main()				/* alias root */
 /*
  *  test class: extern variable address instance  : linear tree structure, used in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 
@@ -1530,7 +1530,7 @@ float           i = 1.0;
 main()				/* alias root */
 /*
  *  test class: extern variable address instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	extern float    l1;
@@ -1557,7 +1557,7 @@ $HEAD()
 float           l1;
 float           i2;
 
-float 
+float
 levelOneNodeOne(variable)
 	float          *variable;
 {
@@ -1574,7 +1574,7 @@ $HEAD()
 
 float           i3;
 
-float 
+float
 levelTwoNodeOne(variable)
 	float          *variable;
 {
@@ -1588,7 +1588,7 @@ levelTwoNodeOne(variable)
 $LICENSE()
 $HEAD()
 
-float 
+float
 levelThreeLeafOne(variable)
 	float          *variable;
 {
@@ -1607,7 +1607,7 @@ float           i = 12.0;
 main()
 /*
  * test class: extern variable address instance  : linear tree structure, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	extern float    dum1;
@@ -1654,7 +1654,7 @@ $HEAD()
 
 float           div4;
 
-float 
+float
 divide4(integer)
 	float          *integer;
 {
@@ -1687,7 +1687,7 @@ $HEAD()
 
 float           div2;
 
-float 
+float
 divide2(integer)
 	float          *integer;
 {
@@ -1706,7 +1706,7 @@ short           i;
 
 main()				/* alias root */
 /*
- *  test class: extern variable address instance  : linear tree structure, no return value and legal 
+ *  test class: extern variable address instance  : linear tree structure, no return value and legal
  */
 {
 
@@ -1978,7 +1978,7 @@ short           result;
 
 main()				/* alias root */
 /*
- *  test class: extern variable address instance  : linear tree structure, no return value and illegal 
+ *  test class: extern variable address instance  : linear tree structure, no return value and illegal
  */
 {
 
@@ -2258,7 +2258,7 @@ short           i;
 
 main()				/* alias root */
 /*
- *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	extern short    i11, i12;
@@ -2558,7 +2558,7 @@ short           i;
 
 main()				/* alias root */
 /*
- *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: extern variable address instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	extern short    i11, i12;
@@ -2589,7 +2589,7 @@ $HEAD()
 
 short           i11;
 
-short 
+short
 levelOneNodeOne(argument)
 	short          *argument;
 {
@@ -2619,7 +2619,7 @@ $HEAD()
 
 short           i12;
 
-short 
+short
 levelOneNodeTwo(argument)
 	short          *argument;
 {
@@ -2649,7 +2649,7 @@ $HEAD()
 
 short           i21;
 
-short 
+short
 levelTwoNodeOne(argument)
 	short          *argument;
 {
@@ -2679,7 +2679,7 @@ $HEAD()
 
 short           i22;
 
-short 
+short
 levelTwoNodeTwo(argument)
 	short          *argument;
 {
@@ -2709,7 +2709,7 @@ $HEAD()
 
 short           i23;
 
-short 
+short
 levelTwoNodeThree(argument)
 	short          *argument;
 {
@@ -2739,7 +2739,7 @@ $HEAD()
 
 short           i24;
 
-short 
+short
 levelTwoNodeFour(argument)
 	short          *argument;
 {
@@ -2769,7 +2769,7 @@ $HEAD()
 
 short           i31;
 
-short 
+short
 levelThreeLeafOne(argument)
 	short          *argument;
 {
@@ -2783,7 +2783,7 @@ $HEAD()
 
 short           i32;
 
-short 
+short
 levelThreeLeafTwo(argument)
 	short          *argument;
 {
@@ -2797,7 +2797,7 @@ $HEAD()
 
 short           i33;
 
-short 
+short
 levelThreeLeafThree(argument)
 	short          *argument;
 {
@@ -2811,7 +2811,7 @@ $HEAD()
 
 short           i34;
 
-short 
+short
 levelThreeLeafFour(argument)
 	short          *argument;
 {
@@ -2825,7 +2825,7 @@ $HEAD()
 
 short           i35;
 
-short 
+short
 levelThreeLeafFive(argument)
 	short          *argument;
 {
@@ -2839,7 +2839,7 @@ $HEAD()
 
 short           i36;
 
-short 
+short
 levelThreeLeafSix(argument)
 	short          *argument;
 {
@@ -2853,7 +2853,7 @@ $HEAD()
 
 short           i37;
 
-short 
+short
 levelThreeLeafSeven(argument)
 	short          *argument;
 {
@@ -2867,7 +2867,7 @@ $HEAD()
 
 short           i38;
 
-short 
+short
 levelThreeLeafEight(argument)
 	short          *argument;
 {
@@ -2888,7 +2888,7 @@ short           i;
 main()
 /*
  * test class: extern variable address instance  : linear tree structure, return value and legal, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -2996,7 +2996,7 @@ short           i = 12;
 main()
 /*
  * test class: extern variable address instance  : linear tree structure, return value, legal pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	extern short    dum1;
@@ -3040,7 +3040,7 @@ $HEAD()
 
 short           div4;
 
-short 
+short
 divide4(integer)
 	short          *integer;
 {
@@ -3074,7 +3074,7 @@ $HEAD()
 
 short           div2;
 
-short 
+short
 divide2(integer)
 	short          *integer;
 {
@@ -3094,7 +3094,7 @@ short           i, j;
 main()				/* alias root */
 /*
  *  test class: extern variable address instance  : linear tree structure, used in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 
@@ -3287,7 +3287,7 @@ short           i = 1;
 main()				/* alias root */
 /*
  *  test class: extern variable address instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	extern short    l1;
@@ -3310,7 +3310,7 @@ $HEAD()
 short           l1;
 short           i2;
 
-short 
+short
 levelOneNodeOne(variable)
 	short          *variable;
 {
@@ -3327,7 +3327,7 @@ $HEAD()
 
 short           i3;
 
-short 
+short
 levelTwoNodeOne(variable)
 	short          *variable;
 {
@@ -3341,7 +3341,7 @@ levelTwoNodeOne(variable)
 $LICENSE()
 $HEAD()
 
-short 
+short
 levelThreeLeafOne(variable)
 	short          *variable;
 {
@@ -3360,7 +3360,7 @@ char            i = 4, j;
 main()				/* alias root */
 /*
  *  test class: extern variable address instance  : linear tree structure, used in conditional expression, function declared
- * to return a pointer to character 
+ * to return a pointer to character
  */
 {
 	char           *skip();
@@ -3418,7 +3418,7 @@ short           i = 12;
 main()
 /*
  * test class: extern variable address instance  : linear tree structure, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	extern short    dum1;
@@ -3461,7 +3461,7 @@ $HEAD()
 
 short           div4;
 
-short 
+short
 divide4(integer)
 	short          *integer;
 {
@@ -3494,7 +3494,7 @@ $HEAD()
 
 short           div2;
 
-short 
+short
 divide2(integer)
 	short          *integer;
 {

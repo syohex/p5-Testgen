@@ -64,7 +64,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: float constant instance  : linear tree structure, no return value and legal 
+ *  test class: float constant instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(1.0);
@@ -194,7 +194,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: float constant instance  : linear tree structure, no return value and illegal 
+ *  test class: float constant instance  : linear tree structure, no return value and illegal
  */
 {
 	float           i = 0.0;
@@ -352,7 +352,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: float constant instance  : linear tree structure, return value and legal, float function declaration 
+ *  test class: float constant instance  : linear tree structure, return value and legal, float function declaration
  */
 {
 	float           i = 0.0;
@@ -372,7 +372,7 @@ main()				/* alias root */
 	return (0);
 }
 
-float 
+float
 levelOneNodeOne(constant)
 	float           constant;
 {
@@ -391,7 +391,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-float 
+float
 levelOneNodeTwo(constant)
 	float           constant;
 {
@@ -410,7 +410,7 @@ levelOneNodeTwo(constant)
 	return (constant);
 }
 
-float 
+float
 levelTwoNodeOne(constant)
 	float           constant;
 {
@@ -429,7 +429,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-float 
+float
 levelTwoNodeTwo(constant)
 	float           constant;
 {
@@ -448,7 +448,7 @@ levelTwoNodeTwo(constant)
 	return (constant);
 }
 
-float 
+float
 levelTwoNodeThree(constant)
 	float           constant;
 {
@@ -467,7 +467,7 @@ levelTwoNodeThree(constant)
 	return (constant);
 }
 
-float 
+float
 levelTwoNodeFour(constant)
 	float           constant;
 {
@@ -486,7 +486,7 @@ levelTwoNodeFour(constant)
 	return (constant);
 }
 
-float 
+float
 levelThreeLeafOne(constant)
 	float           constant;
 {
@@ -495,7 +495,7 @@ levelThreeLeafOne(constant)
 	return (constant);
 }
 
-float 
+float
 levelThreeLeafTwo(constant)
 	float           constant;
 {
@@ -504,7 +504,7 @@ levelThreeLeafTwo(constant)
 	return (constant);
 }
 
-float 
+float
 levelThreeLeafThree(constant)
 	float           constant;
 {
@@ -513,7 +513,7 @@ levelThreeLeafThree(constant)
 	return (constant);
 }
 
-float 
+float
 levelThreeLeafFour(constant)
 	float           constant;
 {
@@ -522,7 +522,7 @@ levelThreeLeafFour(constant)
 	return (constant);
 }
 
-float 
+float
 levelThreeLeafFive(constant)
 	float           constant;
 {
@@ -531,7 +531,7 @@ levelThreeLeafFive(constant)
 	return (constant);
 }
 
-float 
+float
 levelThreeLeafSix(constant)
 	float           constant;
 {
@@ -540,7 +540,7 @@ levelThreeLeafSix(constant)
 	return (constant);
 }
 
-float 
+float
 levelThreeLeafSeven(constant)
 	float           constant;
 {
@@ -549,7 +549,7 @@ levelThreeLeafSeven(constant)
 	return (constant);
 }
 
-float 
+float
 levelThreeLeafEight(constant)
 	float           constant;
 {
@@ -566,7 +566,7 @@ short           statusFlag = NoMistake;
 
 main()
 /*
- * test class: float constant instance  : linear tree structure, return value, legal pointer to function returning an float 
+ * test class: float constant instance  : linear tree structure, return value, legal pointer to function returning an float
  */
 {
 	float           i, divide4(), dummy1();
@@ -581,7 +581,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy1(func, Float)
 	float           (*func) (), Float;
 {
@@ -593,7 +593,7 @@ dummy1(func, Float)
 	return (i);
 }
 
-float 
+float
 divide4(Float)
 	float           Float;
 {
@@ -602,7 +602,7 @@ divide4(Float)
 	return (dummy2(divide2, Float) / 2.0);
 }
 
-float 
+float
 dummy2(func, Float)
 	float           (*func) (), Float;
 {
@@ -614,7 +614,7 @@ dummy2(func, Float)
 	return (i);
 }
 
-float 
+float
 divide2(Float)
 	float           Float;
 {
@@ -629,7 +629,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: float constant instance  : linear tree structure, used in conditional expression, float function declaration 
+ *  test class: float constant instance  : linear tree structure, used in conditional expression, float function declaration
  */
 {
 	float           levelOneNodeOne();
@@ -647,7 +647,7 @@ main()				/* alias root */
 	return (0);
 }
 
-float 
+float
 levelOneNodeOne(constant)
 	float           constant;
 {
@@ -662,7 +662,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-float 
+float
 levelTwoNodeOne(constant)
 	float           constant;
 {
@@ -677,7 +677,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-float 
+float
 levelThreeLeafOne(constant)
 	float           constant;
 {
@@ -695,7 +695,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: float constant instance  : linear tree structure, in conditional expression, pointer to function returning an
- * float 
+ * float
  */
 {
 	float           divide4(), dummy1();
@@ -713,7 +713,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy1(func, Float)
 	float           (*func) (), Float;
 {
@@ -724,7 +724,7 @@ dummy1(func, Float)
 	return (i);
 }
 
-float 
+float
 divide4(Float)
 	float           Float;
 {
@@ -733,7 +733,7 @@ divide4(Float)
 	return (dummy2(divide2, Float) / 2.0);
 }
 
-float 
+float
 dummy2(func, Float)
 	float           (*func) (), Float;
 {
@@ -744,7 +744,7 @@ dummy2(func, Float)
 	return (i);
 }
 
-float 
+float
 divide2(Float)
 	float           Float;
 {
@@ -760,7 +760,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : recursive call, no return value, legal 
+ * test class: float constant instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(1.0);
@@ -789,7 +789,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : recursive call, no return value, illegal 
+ * test class: float constant instance  : recursive call, no return value, illegal
  */
 {
 	float           i;
@@ -828,7 +828,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : recursive call, return value, legal, float function declaration 
+ * test class: float constant instance  : recursive call, return value, legal, float function declaration
  */
 {
 	float           i = 0.0;
@@ -844,7 +844,7 @@ main()
 	return (0);
 }
 
-float 
+float
 recursiveFunction(constant)
 	float           constant;
 {
@@ -868,7 +868,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : recursive call, return value, pointer to function returning an float 
+ * test class: float constant instance  : recursive call, return value, pointer to function returning an float
  */
 {
 	float           i, increment(), dummy();
@@ -883,7 +883,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy(function, constant)
 	float           (*function) (), constant;
 {
@@ -896,7 +896,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-float 
+float
 increment(constant)
 	float           constant;
 {
@@ -912,7 +912,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : recursive call, function in conditional expression, float function declaration 
+ * test class: float constant instance  : recursive call, function in conditional expression, float function declaration
  */
 {
 	float           recursiveFunction();
@@ -930,7 +930,7 @@ main()
 	return (0);
 }
 
-float 
+float
 recursiveFunction(constant)
 	float           constant;
 {
@@ -955,7 +955,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : recursive call, in conditional expression, pointer to function returning an float 
+ * test class: float constant instance  : recursive call, in conditional expression, pointer to function returning an float
  */
 {
 	float           increment(), dummy();
@@ -972,7 +972,7 @@ main()
 	return (0);
 }
 
-float 
+float
 dummy(function, constant)
 	float           (*function) (), constant;
 {
@@ -988,7 +988,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-float 
+float
 increment(constant)
 	float           constant;
 {
@@ -1004,7 +1004,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : gemini, no return value, legal 
+ * test class: float constant instance  : gemini, no return value, legal
  */
 {
 	castor(1.0);
@@ -1042,7 +1042,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : gemini, no return value, illegal 
+ * test class: float constant instance  : gemini, no return value, illegal
  */
 {
 	float           i;
@@ -1094,7 +1094,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : gemini, return value, legal, function declared to return an float 
+ * test class: float constant instance  : gemini, return value, legal, function declared to return an float
  */
 {
 	float           i = 0.0, castor();
@@ -1109,7 +1109,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(constant)
 	float           constant;
 {
@@ -1123,7 +1123,7 @@ castor(constant)
 	return (++constant);
 }
 
-float 
+float
 pollux(constant)
 	float           constant;
 {
@@ -1146,7 +1146,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : gemini, return value, pointer to function returning an float 
+ * test class: float constant instance  : gemini, return value, pointer to function returning an float
  */
 {
 	float           i, increment(), castor();
@@ -1161,7 +1161,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(function, constant)
 	float           (*function) (), constant;
 {
@@ -1174,7 +1174,7 @@ castor(function, constant)
 	return (function(constant));
 }
 
-float 
+float
 pollux(function, constant)
 	float           (*function) (), constant;
 {
@@ -1187,7 +1187,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-float 
+float
 increment(constant)
 	float           constant;
 {
@@ -1203,7 +1203,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : gemini, in conditional expression, function declared to return an float 
+ * test class: float constant instance  : gemini, in conditional expression, function declared to return an float
  */
 {
 	float           castor();
@@ -1220,7 +1220,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(constant)
 	float           constant;
 {
@@ -1236,7 +1236,7 @@ castor(constant)
 	return (++constant);
 }
 
-float 
+float
 pollux(constant)
 	float           constant;
 {
@@ -1261,7 +1261,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: float constant instance  : gemini, in conditional expression, pointer to function returning an float 
+ * test class: float constant instance  : gemini, in conditional expression, pointer to function returning an float
  */
 {
 	float           increment(), castor();
@@ -1278,7 +1278,7 @@ main()
 	return (0);
 }
 
-float 
+float
 castor(function, constant)
 	float           (*function) (), constant;
 {
@@ -1294,7 +1294,7 @@ castor(function, constant)
 	return (function(constant));
 }
 
-float 
+float
 pollux(function, constant)
 	float           (*function) (), constant;
 {
@@ -1310,7 +1310,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-float 
+float
 increment(constant)
 	float           constant;
 {
@@ -1325,7 +1325,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: long constant instance  : linear tree structure, no return value and legal 
+ *  test class: long constant instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(1L);
@@ -1455,7 +1455,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: long constant instance  : linear tree structure, no return value and illegal 
+ *  test class: long constant instance  : linear tree structure, no return value and illegal
  */
 {
 	long            i = 0;
@@ -1613,7 +1613,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: long constant instance  : linear tree structure, return value and legal, long function declaration 
+ *  test class: long constant instance  : linear tree structure, return value and legal, long function declaration
  */
 {
 	long            i = 0;
@@ -1633,7 +1633,7 @@ main()				/* alias root */
 	return (0);
 }
 
-long 
+long
 levelOneNodeOne(constant)
 	long            constant;
 {
@@ -1652,7 +1652,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-long 
+long
 levelOneNodeTwo(constant)
 	long            constant;
 {
@@ -1671,7 +1671,7 @@ levelOneNodeTwo(constant)
 	return (constant);
 }
 
-long 
+long
 levelTwoNodeOne(constant)
 	long            constant;
 {
@@ -1690,7 +1690,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-long 
+long
 levelTwoNodeTwo(constant)
 	long            constant;
 {
@@ -1709,7 +1709,7 @@ levelTwoNodeTwo(constant)
 	return (constant);
 }
 
-long 
+long
 levelTwoNodeThree(constant)
 	long            constant;
 {
@@ -1728,7 +1728,7 @@ levelTwoNodeThree(constant)
 	return (constant);
 }
 
-long 
+long
 levelTwoNodeFour(constant)
 	long            constant;
 {
@@ -1747,7 +1747,7 @@ levelTwoNodeFour(constant)
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafOne(constant)
 	long            constant;
 {
@@ -1756,7 +1756,7 @@ levelThreeLeafOne(constant)
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafTwo(constant)
 	long            constant;
 {
@@ -1765,7 +1765,7 @@ levelThreeLeafTwo(constant)
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafThree(constant)
 	long            constant;
 {
@@ -1774,7 +1774,7 @@ levelThreeLeafThree(constant)
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafFour(constant)
 	long            constant;
 {
@@ -1783,7 +1783,7 @@ levelThreeLeafFour(constant)
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafFive(constant)
 	long            constant;
 {
@@ -1792,7 +1792,7 @@ levelThreeLeafFive(constant)
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafSix(constant)
 	long            constant;
 {
@@ -1801,7 +1801,7 @@ levelThreeLeafSix(constant)
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafSeven(constant)
 	long            constant;
 {
@@ -1810,7 +1810,7 @@ levelThreeLeafSeven(constant)
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafEight(constant)
 	long            constant;
 {
@@ -1827,7 +1827,7 @@ short           statusFlag = NoMistake;
 
 main()
 /*
- * test class: long constant instance  : linear tree structure, return value, legal pointer to function returning an long 
+ * test class: long constant instance  : linear tree structure, return value, legal pointer to function returning an long
  */
 {
 	long            i, divide4(), dummy1();
@@ -1842,7 +1842,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy1(func, Long)
 	long            (*func) (), Long;
 {
@@ -1854,7 +1854,7 @@ dummy1(func, Long)
 	return (i);
 }
 
-long 
+long
 divide4(Long)
 	long            Long;
 {
@@ -1863,7 +1863,7 @@ divide4(Long)
 	return (dummy2(divide2, Long) / 2);
 }
 
-long 
+long
 dummy2(func, Long)
 	long            (*func) (), Long;
 {
@@ -1875,7 +1875,7 @@ dummy2(func, Long)
 	return (i);
 }
 
-long 
+long
 divide2(Long)
 	long            Long;
 {
@@ -1890,7 +1890,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: long constant instance  : linear tree structure, used in conditional expression, long function declaration 
+ *  test class: long constant instance  : linear tree structure, used in conditional expression, long function declaration
  */
 {
 	long            levelOneNodeOne();
@@ -1904,7 +1904,7 @@ main()				/* alias root */
 	return (0);
 }
 
-long 
+long
 levelOneNodeOne(constant)
 	long            constant;
 {
@@ -1915,7 +1915,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-long 
+long
 levelTwoNodeOne(constant)
 	long            constant;
 {
@@ -1926,7 +1926,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafOne(constant)
 	long            constant;
 {
@@ -1944,7 +1944,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: long constant instance  : linear tree structure, in conditional expression, pointer to function returning an
- * long 
+ * long
  */
 {
 	long            divide4(), dummy1();
@@ -1958,7 +1958,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy1(func, Long)
 	long            (*func) (), Long;
 {
@@ -1969,7 +1969,7 @@ dummy1(func, Long)
 	return (i);
 }
 
-long 
+long
 divide4(Long)
 	long            Long;
 {
@@ -1978,7 +1978,7 @@ divide4(Long)
 	return (dummy2(divide2, Long) / 2);
 }
 
-long 
+long
 dummy2(func, Long)
 	long            (*func) (), Long;
 {
@@ -1989,7 +1989,7 @@ dummy2(func, Long)
 	return (i);
 }
 
-long 
+long
 divide2(Long)
 	long            Long;
 {
@@ -2005,7 +2005,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : recursive call, no return value, legal 
+ * test class: long constant instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(1L);
@@ -2034,7 +2034,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : recursive call, no return value, illegal 
+ * test class: long constant instance  : recursive call, no return value, illegal
  */
 {
 	long            i;
@@ -2073,7 +2073,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : recursive call, return value, legal, long function declaration 
+ * test class: long constant instance  : recursive call, return value, legal, long function declaration
  */
 {
 	long            i = 0;
@@ -2089,7 +2089,7 @@ main()
 	return (0);
 }
 
-long 
+long
 recursiveFunction(constant)
 	long            constant;
 {
@@ -2113,7 +2113,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : recursive call, return value, pointer to function returning an long 
+ * test class: long constant instance  : recursive call, return value, pointer to function returning an long
  */
 {
 	long            i, increment(), dummy();
@@ -2128,7 +2128,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy(function, constant)
 	long            (*function) (), constant;
 {
@@ -2141,7 +2141,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 increment(constant)
 	long            constant;
 {
@@ -2157,7 +2157,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : recursive call, function in conditional expression, long function declaration 
+ * test class: long constant instance  : recursive call, function in conditional expression, long function declaration
  */
 {
 	long            recursiveFunction();
@@ -2171,7 +2171,7 @@ main()
 	return (0);
 }
 
-long 
+long
 recursiveFunction(constant)
 	long            constant;
 {
@@ -2192,7 +2192,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : recursive call, in conditional expression, pointer to function returning an long 
+ * test class: long constant instance  : recursive call, in conditional expression, pointer to function returning an long
  */
 {
 	long            increment(), dummy();
@@ -2206,7 +2206,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy(function, constant)
 	long            (*function) (), constant;
 {
@@ -2217,7 +2217,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 increment(constant)
 	long            constant;
 {
@@ -2233,7 +2233,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : gemini, no return value, legal 
+ * test class: long constant instance  : gemini, no return value, legal
  */
 {
 	castor(1L);
@@ -2271,7 +2271,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : gemini, no return value, illegal 
+ * test class: long constant instance  : gemini, no return value, illegal
  */
 {
 	long            i;
@@ -2323,7 +2323,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : gemini, return value, legal, function declared to return an long 
+ * test class: long constant instance  : gemini, return value, legal, function declared to return an long
  */
 {
 	long            i = 0, castor();
@@ -2338,7 +2338,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(constant)
 	long            constant;
 {
@@ -2352,7 +2352,7 @@ castor(constant)
 	return (++constant);
 }
 
-long 
+long
 pollux(constant)
 	long            constant;
 {
@@ -2375,7 +2375,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : gemini, return value, pointer to function returning an long 
+ * test class: long constant instance  : gemini, return value, pointer to function returning an long
  */
 {
 	long            i, increment(), castor();
@@ -2390,7 +2390,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(function, constant)
 	long            (*function) (), constant;
 {
@@ -2403,7 +2403,7 @@ castor(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 pollux(function, constant)
 	long            (*function) (), constant;
 {
@@ -2416,7 +2416,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 increment(constant)
 	long            constant;
 {
@@ -2432,7 +2432,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : gemini, in conditional expression, function declared to return an long 
+ * test class: long constant instance  : gemini, in conditional expression, function declared to return an long
  */
 {
 	long            castor();
@@ -2446,7 +2446,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(constant)
 	long            constant;
 {
@@ -2458,7 +2458,7 @@ castor(constant)
 	return (++constant);
 }
 
-long 
+long
 pollux(constant)
 	long            constant;
 {
@@ -2478,7 +2478,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant instance  : gemini, in conditional expression, pointer to function returning an long 
+ * test class: long constant instance  : gemini, in conditional expression, pointer to function returning an long
  */
 {
 	long            increment(), castor();
@@ -2492,7 +2492,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(function, constant)
 	long            (*function) (), constant;
 {
@@ -2503,7 +2503,7 @@ castor(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 pollux(function, constant)
 	long            (*function) (), constant;
 {
@@ -2514,7 +2514,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 increment(constant)
 	long            constant;
 {
@@ -2529,7 +2529,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: long constant, illegal instance  : linear tree structure, no return value and legal 
+ *  test class: long constant, illegal instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(2147483648UL);
@@ -2587,7 +2587,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: long constant, illegal instance  : linear tree structure, no return value and illegal 
+ *  test class: long constant, illegal instance  : linear tree structure, no return value and illegal
  */
 {
 	long            i;
@@ -2651,7 +2651,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: long constant, illegal instance  : linear tree structure, return value and legal, long function declaration 
+ *  test class: long constant, illegal instance  : linear tree structure, return value and legal, long function declaration
  */
 {
 	long            i = 0;
@@ -2671,7 +2671,7 @@ main()				/* alias root */
 	return (0);
 }
 
-long 
+long
 levelOneNodeOne(constant)
 	long            constant;
 {
@@ -2688,7 +2688,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-long 
+long
 levelOneNodeTwo(constant)
 	long            constant;
 {
@@ -2705,7 +2705,7 @@ levelOneNodeTwo(constant)
 	return (constant);
 }
 
-long 
+long
 levelTwoNodeOne(constant)
 	long            constant;
 {
@@ -2722,7 +2722,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-long 
+long
 levelTwoNodeTwo(constant)
 	long            constant;
 {
@@ -2739,7 +2739,7 @@ levelTwoNodeTwo(constant)
 	return (constant);
 }
 
-long 
+long
 levelTwoNodeThree(constant)
 	long            constant;
 {
@@ -2756,7 +2756,7 @@ levelTwoNodeThree(constant)
 	return (constant);
 }
 
-long 
+long
 levelTwoNodeFour(constant)
 	long            constant;
 {
@@ -2773,56 +2773,56 @@ levelTwoNodeFour(constant)
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafOne(constant)
 	long            constant;
 {
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafTwo(constant)
 	long            constant;
 {
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafThree(constant)
 	long            constant;
 {
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafFour(constant)
 	long            constant;
 {
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafFive(constant)
 	long            constant;
 {
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafSix(constant)
 	long            constant;
 {
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafSeven(constant)
 	long            constant;
 {
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafEight(constant)
 	long            constant;
 {
@@ -2838,7 +2838,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: long constant, illegal instance  : linear tree structure, return value, legal pointer to function returning
- * an long 
+ * an long
  */
 {
 	long            i, divide4(), dummy1();
@@ -2854,7 +2854,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy1(func, Long)
 	long            (*func) (), Long;
 {
@@ -2866,7 +2866,7 @@ dummy1(func, Long)
 	return (i);
 }
 
-long 
+long
 divide4(Long)
 	long            Long;
 {
@@ -2875,7 +2875,7 @@ divide4(Long)
 	return (dummy2(divide2, Long) / 2);
 }
 
-long 
+long
 dummy2(func, Long)
 	long            (*func) (), Long;
 {
@@ -2887,7 +2887,7 @@ dummy2(func, Long)
 	return (i);
 }
 
-long 
+long
 divide2(Long)
 	long            Long;
 {
@@ -2903,7 +2903,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: long constant, illegal instance  : linear tree structure, used in conditional expression, long function
- * declaration 
+ * declaration
  */
 {
 	long            levelOneNodeOne();
@@ -2917,7 +2917,7 @@ main()				/* alias root */
 	return (0);
 }
 
-long 
+long
 levelOneNodeOne(constant)
 	long            constant;
 {
@@ -2928,7 +2928,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-long 
+long
 levelTwoNodeOne(constant)
 	long            constant;
 {
@@ -2939,7 +2939,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-long 
+long
 levelThreeLeafOne(constant)
 	long            constant;
 {
@@ -2955,7 +2955,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: long constant, illegal instance  : linear tree structure, in conditional expression, pointer to function
- * returning an long 
+ * returning an long
  */
 {
 	long            divide4(), dummy1();
@@ -2969,7 +2969,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy1(func, Long)
 	long            (*func) (), Long;
 {
@@ -2977,7 +2977,7 @@ dummy1(func, Long)
 	return ((*func) ((long) (60000 + ($ULONGMAX() & ~0xffffUL))));
 }
 
-long 
+long
 divide4(Long)
 	long            Long;
 {
@@ -2986,7 +2986,7 @@ divide4(Long)
 	return (dummy2(divide2, Long) / 2);
 }
 
-long 
+long
 dummy2(func, Long)
 	long            (*func) (), Long;
 {
@@ -2998,7 +2998,7 @@ dummy2(func, Long)
 	return (i);
 }
 
-long 
+long
 divide2(Long)
 	long            Long;
 {
@@ -3014,7 +3014,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant, illegal instance  : recursive call, no return value, legal 
+ * test class: long constant, illegal instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(2147483648UL);
@@ -3043,7 +3043,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant, illegal instance  : recursive call, no return value, illegal 
+ * test class: long constant, illegal instance  : recursive call, no return value, illegal
  */
 {
 	long            i;
@@ -3082,7 +3082,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant, illegal instance  : recursive call, return value, legal, long function declaration 
+ * test class: long constant, illegal instance  : recursive call, return value, legal, long function declaration
  */
 {
 	long            i = 0;
@@ -3098,7 +3098,7 @@ main()
 	return (0);
 }
 
-long 
+long
 recursiveFunction(constant)
 	long            constant;
 {
@@ -3122,7 +3122,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant, illegal instance  : recursive call, return value, pointer to function returning an long 
+ * test class: long constant, illegal instance  : recursive call, return value, pointer to function returning an long
  */
 {
 	long            i, increment(), dummy();
@@ -3137,7 +3137,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy(function, constant)
 	long            (*function) (), constant;
 {
@@ -3150,7 +3150,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 increment(constant)
 	long            constant;
 {
@@ -3167,7 +3167,7 @@ short           counter = 10;
 main()
 /*
  * test class: long constant, illegal instance  : recursive call, function in conditional expression, long function
- * declaration 
+ * declaration
  */
 {
 	long            recursiveFunction();
@@ -3181,7 +3181,7 @@ main()
 	return (0);
 }
 
-long 
+long
 recursiveFunction(constant)
 	long            constant;
 {
@@ -3203,7 +3203,7 @@ short           counter = 10;
 main()
 /*
  * test class: long constant, illegal instance  : recursive call, in conditional expression, pointer to function returning
- * an long 
+ * an long
  */
 {
 	long            increment(), dummy();
@@ -3217,7 +3217,7 @@ main()
 	return (0);
 }
 
-long 
+long
 dummy(function, constant)
 	long            (*function) (), constant;
 {
@@ -3228,7 +3228,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 increment(constant)
 	long            constant;
 {
@@ -3244,7 +3244,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant, illegal instance  : gemini, no return value, legal 
+ * test class: long constant, illegal instance  : gemini, no return value, legal
  */
 {
 	castor(2147483680UL);
@@ -3282,7 +3282,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant, illegal instance  : gemini, no return value, illegal 
+ * test class: long constant, illegal instance  : gemini, no return value, illegal
  */
 {
 	long            i;
@@ -3334,7 +3334,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant, illegal instance  : gemini, return value, legal, function declared to return an long 
+ * test class: long constant, illegal instance  : gemini, return value, legal, function declared to return an long
  */
 {
 	long            i = 0, castor();
@@ -3349,7 +3349,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(constant)
 	long            constant;
 {
@@ -3363,7 +3363,7 @@ castor(constant)
 	return (++constant);
 }
 
-long 
+long
 pollux(constant)
 	long            constant;
 {
@@ -3386,7 +3386,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant, illegal instance  : gemini, return value, pointer to function returning an long 
+ * test class: long constant, illegal instance  : gemini, return value, pointer to function returning an long
  */
 {
 	long            i, increment(), castor();
@@ -3401,7 +3401,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(function, constant)
 	long            (*function) (), constant;
 {
@@ -3414,7 +3414,7 @@ castor(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 pollux(function, constant)
 	long            (*function) (), constant;
 {
@@ -3427,7 +3427,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 increment(constant)
 	long            constant;
 {
@@ -3443,7 +3443,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant, illegal instance  : gemini, in conditional expression, function declared to return an long 
+ * test class: long constant, illegal instance  : gemini, in conditional expression, function declared to return an long
  */
 {
 	long            castor();
@@ -3457,7 +3457,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(constant)
 	long            constant;
 {
@@ -3469,7 +3469,7 @@ castor(constant)
 	return (++constant);
 }
 
-long 
+long
 pollux(constant)
 	long            constant;
 {
@@ -3490,7 +3490,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: long constant, illegal instance  : gemini, in conditional expression, pointer to function returning an long 
+ * test class: long constant, illegal instance  : gemini, in conditional expression, pointer to function returning an long
  */
 {
 	long            increment(), castor();
@@ -3504,7 +3504,7 @@ main()
 	return (0);
 }
 
-long 
+long
 castor(function, constant)
 	long            (*function) (), constant;
 {
@@ -3515,7 +3515,7 @@ castor(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 pollux(function, constant)
 	long            (*function) (), constant;
 {
@@ -3527,7 +3527,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-long 
+long
 increment(constant)
 	long            constant;
 {
@@ -3542,7 +3542,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: integer constant instance  : linear tree structure, no return value and legal 
+ *  test class: integer constant instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(1);
@@ -3672,7 +3672,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: integer constant instance  : linear tree structure, no return value and illegal 
+ *  test class: integer constant instance  : linear tree structure, no return value and illegal
  */
 {
 	short           i = 0;
@@ -3830,7 +3830,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: integer constant instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: integer constant instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	short           i = 0;
@@ -4023,7 +4023,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: integer constant instance  : linear tree structure, return value and legal, integer function declaration 
+ *  test class: integer constant instance  : linear tree structure, return value and legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -4043,7 +4043,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(constant)
 	short           constant;
 {
@@ -4062,7 +4062,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-short 
+short
 levelOneNodeTwo(constant)
 	short           constant;
 {
@@ -4081,7 +4081,7 @@ levelOneNodeTwo(constant)
 	return (constant);
 }
 
-short 
+short
 levelTwoNodeOne(constant)
 	short           constant;
 {
@@ -4100,7 +4100,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-short 
+short
 levelTwoNodeTwo(constant)
 	short           constant;
 {
@@ -4119,7 +4119,7 @@ levelTwoNodeTwo(constant)
 	return (constant);
 }
 
-short 
+short
 levelTwoNodeThree(constant)
 	short           constant;
 {
@@ -4138,7 +4138,7 @@ levelTwoNodeThree(constant)
 	return (constant);
 }
 
-short 
+short
 levelTwoNodeFour(constant)
 	short           constant;
 {
@@ -4157,7 +4157,7 @@ levelTwoNodeFour(constant)
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafOne(constant)
 	short           constant;
 {
@@ -4166,7 +4166,7 @@ levelThreeLeafOne(constant)
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafTwo(constant)
 	short           constant;
 {
@@ -4175,7 +4175,7 @@ levelThreeLeafTwo(constant)
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafThree(constant)
 	short           constant;
 {
@@ -4184,7 +4184,7 @@ levelThreeLeafThree(constant)
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafFour(constant)
 	short           constant;
 {
@@ -4193,7 +4193,7 @@ levelThreeLeafFour(constant)
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafFive(constant)
 	short           constant;
 {
@@ -4202,7 +4202,7 @@ levelThreeLeafFive(constant)
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafSix(constant)
 	short           constant;
 {
@@ -4211,7 +4211,7 @@ levelThreeLeafSix(constant)
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafSeven(constant)
 	short           constant;
 {
@@ -4220,7 +4220,7 @@ levelThreeLeafSeven(constant)
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafEight(constant)
 	short           constant;
 {
@@ -4239,7 +4239,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: integer constant instance  : linear tree structure, return value and legal, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -4308,7 +4308,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: integer constant instance  : linear tree structure, return value, legal pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           i, divide4();
@@ -4334,7 +4334,7 @@ dummy1(func, integer)
 	return (i);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -4354,7 +4354,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -4369,7 +4369,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: integer constant instance  : linear tree structure, used in conditional expression, no function declaration 
+ *  test class: integer constant instance  : linear tree structure, used in conditional expression, no function declaration
  */
 {
 	if (levelOneNodeOne(1) != 1)
@@ -4500,7 +4500,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: integer constant instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	short           levelOneNodeOne();
@@ -4514,7 +4514,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(constant)
 	short           constant;
 {
@@ -4525,7 +4525,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-short 
+short
 levelTwoNodeOne(constant)
 	short           constant;
 {
@@ -4536,7 +4536,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafOne(constant)
 	short           constant;
 {
@@ -4554,7 +4554,7 @@ char           *protean = "cassandracross";
 main()				/* alias root */
 /*
  *  test class: integer constant instance  : linear tree structure, used in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *skip();
@@ -4597,7 +4597,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: integer constant instance  : linear tree structure, in conditional expression, pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	short           divide4();
@@ -4621,7 +4621,7 @@ dummy1(func, integer)
 	return (i);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -4640,7 +4640,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -4656,7 +4656,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : recursive call, no return value, legal 
+ * test class: integer constant instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(1);
@@ -4685,7 +4685,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : recursive call, no return value, illegal 
+ * test class: integer constant instance  : recursive call, no return value, illegal
  */
 {
 	short           i;
@@ -4724,7 +4724,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : recursive call, return value, legal, no function declaration 
+ * test class: integer constant instance  : recursive call, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -4761,7 +4761,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : recursive call, return value, legal, integer function declaration 
+ * test class: integer constant instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -4777,7 +4777,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(constant)
 	short           constant;
 {
@@ -4802,7 +4802,7 @@ char           *numbers = "0123456789";
 
 main()
 /*
- * test class: integer constant instance  : recursive call, return value, function declared to return a pointer to character 
+ * test class: integer constant instance  : recursive call, return value, function declared to return a pointer to character
  */
 {
 	char           *s, *recursiveFunction();
@@ -4840,7 +4840,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: integer constant instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	short           i, increment();
@@ -4867,7 +4867,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	short           constant;
 {
@@ -4883,7 +4883,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : recursive call, function in conditional expression, no function declaration 
+ * test class: integer constant instance  : recursive call, function in conditional expression, no function declaration
  */
 {
 	if (!(recursiveFunction(1) == 2))
@@ -4913,7 +4913,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : recursive call, function in conditional expression, integer function declaration 
+ * test class: integer constant instance  : recursive call, function in conditional expression, integer function declaration
  */
 {
 	short           recursiveFunction();
@@ -4927,7 +4927,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(constant)
 	short           constant;
 {
@@ -4950,7 +4950,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: integer constant instance  : recursive call, in conditional expression, function declared to return a pointer
- * to character 
+ * to character
  */
 {
 	char           *recursiveFunction();
@@ -4984,7 +4984,7 @@ short           counter = 10;
 main()
 /*
  * test class: integer constant instance  : recursive call, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           increment();
@@ -5007,7 +5007,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	short           constant;
 {
@@ -5023,7 +5023,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : gemini, no return value, legal 
+ * test class: integer constant instance  : gemini, no return value, legal
  */
 {
 	castor(1);
@@ -5061,7 +5061,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : gemini, no return value, illegal 
+ * test class: integer constant instance  : gemini, no return value, illegal
  */
 {
 	short           i;
@@ -5113,7 +5113,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : gemini, return value, legal, no function declaration 
+ * test class: integer constant instance  : gemini, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -5163,7 +5163,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: integer constant instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	short           i = 0, castor();
@@ -5178,7 +5178,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(constant)
 	short           constant;
 {
@@ -5192,7 +5192,7 @@ castor(constant)
 	return (++constant);
 }
 
-short 
+short
 pollux(constant)
 	short           constant;
 {
@@ -5216,7 +5216,7 @@ char           *numbers = "0123456789";
 
 main()
 /*
- * test class: integer constant instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: integer constant instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s, *castor();
@@ -5268,7 +5268,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : gemini, return value, pointer to function returning an integer 
+ * test class: integer constant instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	short           i, increment();
@@ -5307,7 +5307,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	short           constant;
 {
@@ -5323,7 +5323,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : gemini, in conditional expression, no function declaration 
+ * test class: integer constant instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor(1) == 2))
@@ -5362,7 +5362,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: integer constant instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 	short           castor();
@@ -5376,7 +5376,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(constant)
 	short           constant;
 {
@@ -5388,7 +5388,7 @@ castor(constant)
 	return (++constant);
 }
 
-short 
+short
 pollux(constant)
 	short           constant;
 {
@@ -5409,7 +5409,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: integer constant instance  : gemini, in conditional expression, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *castor();
@@ -5454,7 +5454,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant instance  : gemini, in conditional expression, pointer to function returning an integer 
+ * test class: integer constant instance  : gemini, in conditional expression, pointer to function returning an integer
  */
 {
 	short           increment();
@@ -5486,7 +5486,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	short           constant;
 {
@@ -5501,7 +5501,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: integer constant, illegal instance  : linear tree structure, no return value and legal 
+ *  test class: integer constant, illegal instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne( (short) 32768);
@@ -5559,7 +5559,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: integer constant, illegal instance  : linear tree structure, no return value and illegal 
+ *  test class: integer constant, illegal instance  : linear tree structure, no return value and illegal
  */
 {
 	short           i;
@@ -5623,7 +5623,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: integer constant, illegal instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: integer constant, illegal instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	short           i = 0;
@@ -5788,7 +5788,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: integer constant, illegal instance  : linear tree structure, return value and legal, integer function
- * declaration 
+ * declaration
  */
 {
 	short           i = 0;
@@ -5808,7 +5808,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(constant)
 	short           constant;
 {
@@ -5825,7 +5825,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-short 
+short
 levelOneNodeTwo(constant)
 	short           constant;
 {
@@ -5842,7 +5842,7 @@ levelOneNodeTwo(constant)
 	return (constant);
 }
 
-short 
+short
 levelTwoNodeOne(constant)
 	short           constant;
 {
@@ -5859,7 +5859,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-short 
+short
 levelTwoNodeTwo(constant)
 	short           constant;
 {
@@ -5876,7 +5876,7 @@ levelTwoNodeTwo(constant)
 	return (constant);
 }
 
-short 
+short
 levelTwoNodeThree(constant)
 	short           constant;
 {
@@ -5893,7 +5893,7 @@ levelTwoNodeThree(constant)
 	return (constant);
 }
 
-short 
+short
 levelTwoNodeFour(constant)
 	short           constant;
 {
@@ -5910,56 +5910,56 @@ levelTwoNodeFour(constant)
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafOne(constant)
 	short           constant;
 {
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafTwo(constant)
 	short           constant;
 {
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafThree(constant)
 	short           constant;
 {
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafFour(constant)
 	short           constant;
 {
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafFive(constant)
 	short           constant;
 {
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafSix(constant)
 	short           constant;
 {
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafSeven(constant)
 	short           constant;
 {
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafEight(constant)
 	short           constant;
 {
@@ -5976,7 +5976,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: integer constant, illegal instance  : linear tree structure, return value and legal, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -6045,7 +6045,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: integer constant, illegal instance  : linear tree structure, return value, legal pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	short           i, divide4();
@@ -6073,7 +6073,7 @@ dummy1(func, integer)
 	return (i);
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -6094,7 +6094,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -6110,7 +6110,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: integer constant, illegal instance  : linear tree structure, used in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(levelOneNodeOne( (short) 32768) == (short) 32768))
@@ -6241,7 +6241,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: integer constant, illegal instance  : linear tree structure, used in conditional expression, integer
- * function declaration 
+ * function declaration
  */
 {
 	short           levelOneNodeOne();
@@ -6255,7 +6255,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(constant)
 	short           constant;
 {
@@ -6266,7 +6266,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-short 
+short
 levelTwoNodeOne(constant)
 	short           constant;
 {
@@ -6277,7 +6277,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-short 
+short
 levelThreeLeafOne(constant)
 	short           constant;
 {
@@ -6293,12 +6293,12 @@ char           *protean = "cassandracross";
 main()				/* alias root */
 /*
  *  test class: integer constant, illegal instance  : linear tree structure, used in conditional expression, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	char           *skip();
 
-	if (compare(skip( (short) 65540), "andra", 5) 
+	if (compare(skip( (short) 65540), "andra", 5)
             == compare(skip( (short) 65544), "across", 6))
 		printok();
 	else
@@ -6337,7 +6337,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: integer constant, illegal instance  : linear tree structure, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	short           divide4();
@@ -6358,7 +6358,7 @@ dummy1(func, integer)
 	return ((*func) ( (short) 60000));
 }
 
-short 
+short
 divide4(integer)
 	short           integer;
 {
@@ -6378,7 +6378,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	short           integer;
 {
@@ -6394,7 +6394,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant, illegal instance  : recursive call, no return value, legal 
+ * test class: integer constant, illegal instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction( (short) 32768);
@@ -6423,7 +6423,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant, illegal instance  : recursive call, no return value, illegal 
+ * test class: integer constant, illegal instance  : recursive call, no return value, illegal
  */
 {
 	short           i;
@@ -6462,7 +6462,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant, illegal instance  : recursive call, return value, legal, no function declaration 
+ * test class: integer constant, illegal instance  : recursive call, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -6499,7 +6499,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant, illegal instance  : recursive call, return value, legal, integer function declaration 
+ * test class: integer constant, illegal instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -6515,7 +6515,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(constant)
 	short           constant;
 {
@@ -6541,7 +6541,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: integer constant, illegal instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s, *recursiveFunction();
@@ -6579,7 +6579,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant, illegal instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: integer constant, illegal instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	short           i, increment();
@@ -6606,7 +6606,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	short           constant;
 {
@@ -6623,7 +6623,7 @@ short           counter = 10;
 main()
 /*
  * test class: integer constant, illegal instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction( (short) 32770) == (short) 32771))
@@ -6654,7 +6654,7 @@ short           counter = 10;
 main()
 /*
  * test class: integer constant, illegal instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	short           recursiveFunction();
@@ -6668,7 +6668,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(constant)
 	short           constant;
 {
@@ -6691,7 +6691,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: integer constant, illegal instance  : recursive call, in conditional expression, function declared to return
- * a pointer to character 
+ * a pointer to character
  */
 {
 	char           *recursiveFunction();
@@ -6725,7 +6725,7 @@ short           counter = 10;
 main()
 /*
  * test class: integer constant, illegal instance  : recursive call, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	short           increment();
@@ -6748,7 +6748,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	short           constant;
 {
@@ -6764,7 +6764,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant, illegal instance  : gemini, no return value, legal 
+ * test class: integer constant, illegal instance  : gemini, no return value, legal
  */
 {
 	castor( (short) 32800);
@@ -6802,7 +6802,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant, illegal instance  : gemini, no return value, illegal 
+ * test class: integer constant, illegal instance  : gemini, no return value, illegal
  */
 {
 	short           i;
@@ -6854,7 +6854,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant, illegal instance  : gemini, return value, legal, no function declaration 
+ * test class: integer constant, illegal instance  : gemini, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -6904,7 +6904,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant, illegal instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: integer constant, illegal instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	short           i = 0, castor();
@@ -6919,7 +6919,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(constant)
 	short           constant;
 {
@@ -6933,7 +6933,7 @@ castor(constant)
 	return (++constant);
 }
 
-short 
+short
 pollux(constant)
 	short           constant;
 {
@@ -6958,7 +6958,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: integer constant, illegal instance  : gemini, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s, *castor();
@@ -7010,7 +7010,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant, illegal instance  : gemini, return value, pointer to function returning an integer 
+ * test class: integer constant, illegal instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	short           i, increment();
@@ -7049,7 +7049,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	short           constant;
 {
@@ -7065,7 +7065,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: integer constant, illegal instance  : gemini, in conditional expression, no function declaration 
+ * test class: integer constant, illegal instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor( (short) 32770) == (short) 32771))
@@ -7105,7 +7105,7 @@ short           counter = 10;
 main()
 /*
  * test class: integer constant, illegal instance  : gemini, in conditional expression, function declared to return an
- * integer 
+ * integer
  */
 {
 	short           castor();
@@ -7119,7 +7119,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(constant)
 	short           constant;
 {
@@ -7131,7 +7131,7 @@ castor(constant)
 	return (++constant);
 }
 
-short 
+short
 pollux(constant)
 	short           constant;
 {
@@ -7152,7 +7152,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: integer constant, illegal instance  : gemini, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *castor();
@@ -7198,7 +7198,7 @@ short           counter = 10;
 main()
 /*
  * test class: integer constant, illegal instance  : gemini, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           increment();
@@ -7230,7 +7230,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	short           constant;
 {
@@ -7245,7 +7245,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: unsigned constant instance  : linear tree structure, no return value and legal 
+ *  test class: unsigned constant instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(1);
@@ -7375,7 +7375,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: unsigned constant instance  : linear tree structure, no return value and illegal 
+ *  test class: unsigned constant instance  : linear tree structure, no return value and illegal
  */
 {
 	short           i;
@@ -7452,7 +7452,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: unsigned constant instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: unsigned constant instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	unsigned        i = 0;
@@ -7616,7 +7616,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: unsigned constant instance  : linear tree structure, return value and legal, unsigned function declaration 
+ *  test class: unsigned constant instance  : linear tree structure, return value and legal, unsigned function declaration
  */
 {
 	unsigned        i = 0;
@@ -7636,7 +7636,7 @@ main()				/* alias root */
 	return (0);
 }
 
-unsigned 
+unsigned
 levelOneNodeOne(constant)
 	unsigned        constant;
 {
@@ -7653,7 +7653,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelOneNodeTwo(constant)
 	unsigned        constant;
 {
@@ -7670,7 +7670,7 @@ levelOneNodeTwo(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelTwoNodeOne(constant)
 	unsigned        constant;
 {
@@ -7687,7 +7687,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelTwoNodeTwo(constant)
 	unsigned        constant;
 {
@@ -7704,7 +7704,7 @@ levelTwoNodeTwo(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelTwoNodeThree(constant)
 	unsigned        constant;
 {
@@ -7721,7 +7721,7 @@ levelTwoNodeThree(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelTwoNodeFour(constant)
 	unsigned        constant;
 {
@@ -7738,56 +7738,56 @@ levelTwoNodeFour(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafOne(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafTwo(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafThree(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafFour(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafFive(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafSix(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafSeven(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafEight(constant)
 	unsigned        constant;
 {
@@ -7804,7 +7804,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: unsigned constant instance  : linear tree structure, return value and legal, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -7873,7 +7873,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: unsigned constant instance  : linear tree structure, return value, legal pointer to function returning an
- * unsigned 
+ * unsigned
  */
 {
 	unsigned        i, divide4();
@@ -7899,7 +7899,7 @@ dummy1(func, integer)
 	return (i);
 }
 
-unsigned 
+unsigned
 divide4(integer)
 	unsigned        integer;
 {
@@ -7919,7 +7919,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-unsigned 
+unsigned
 divide2(integer)
 	unsigned        integer;
 {
@@ -7934,7 +7934,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: unsigned constant instance  : linear tree structure, used in conditional expression, no function declaration 
+ *  test class: unsigned constant instance  : linear tree structure, used in conditional expression, no function declaration
  */
 {
 	if (!(levelOneNodeOne(1) == 1))
@@ -8065,7 +8065,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: unsigned constant instance  : linear tree structure, used in conditional expression, unsigned function
- * declaration 
+ * declaration
  */
 {
 	unsigned        levelOneNodeOne();
@@ -8079,7 +8079,7 @@ main()				/* alias root */
 	return (0);
 }
 
-unsigned 
+unsigned
 levelOneNodeOne(constant)
 	unsigned        constant;
 {
@@ -8090,7 +8090,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelTwoNodeOne(constant)
 	unsigned        constant;
 {
@@ -8101,7 +8101,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafOne(constant)
 	unsigned        constant;
 {
@@ -8117,7 +8117,7 @@ char           *protean = "cassandracross";
 main()				/* alias root */
 /*
  *  test class: unsigned constant instance  : linear tree structure, used in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *skip();
@@ -8160,7 +8160,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: unsigned constant instance  : linear tree structure, in conditional expression, pointer to function returning
- * an unsigned 
+ * an unsigned
  */
 {
 	unsigned        divide4();
@@ -8181,7 +8181,7 @@ dummy1(func, integer)
 	return ((*func) (16));
 }
 
-unsigned 
+unsigned
 divide4(integer)
 	unsigned        integer;
 {
@@ -8201,7 +8201,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-unsigned 
+unsigned
 divide2(integer)
 	unsigned        integer;
 {
@@ -8217,7 +8217,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : recursive call, no return value, legal 
+ * test class: unsigned constant instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(1);
@@ -8246,7 +8246,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : recursive call, no return value, illegal 
+ * test class: unsigned constant instance  : recursive call, no return value, illegal
  */
 {
 	unsigned        i;
@@ -8285,7 +8285,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant, illegal instance  : recursive call, return value, legal, no function declaration 
+ * test class: unsigned constant, illegal instance  : recursive call, return value, legal, no function declaration
  */
 {
 	unsigned        i = 0;
@@ -8322,7 +8322,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : recursive call, return value, legal, unsigned function declaration 
+ * test class: unsigned constant instance  : recursive call, return value, legal, unsigned function declaration
  */
 {
 	unsigned        i = 0;
@@ -8338,7 +8338,7 @@ main()
 	return (0);
 }
 
-unsigned 
+unsigned
 recursiveFunction(constant)
 	unsigned        constant;
 {
@@ -8364,7 +8364,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: unsigned constant instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s, *recursiveFunction();
@@ -8402,7 +8402,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : recursive call, return value, pointer to function returning an unsigned 
+ * test class: unsigned constant instance  : recursive call, return value, pointer to function returning an unsigned
  */
 {
 	unsigned        i = 0, increment();
@@ -8430,7 +8430,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-unsigned 
+unsigned
 increment(constant)
 	unsigned        constant;
 {
@@ -8446,7 +8446,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : recursive call, function in conditional expression, no function declaration 
+ * test class: unsigned constant instance  : recursive call, function in conditional expression, no function declaration
  */
 {
 	if (!(recursiveFunction(1) == 2))
@@ -8477,7 +8477,7 @@ short           counter = 10;
 main()
 /*
  * test class: unsigned constant instance  : recursive call, function in conditional expression, unsigned function
- * declaration 
+ * declaration
  */
 {
 	unsigned        recursiveFunction();
@@ -8491,7 +8491,7 @@ main()
 	return (0);
 }
 
-unsigned 
+unsigned
 recursiveFunction(constant)
 	unsigned        constant;
 {
@@ -8514,7 +8514,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: unsigned constant instance  : recursive call, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *recursiveFunction();
@@ -8548,7 +8548,7 @@ short           counter = 10;
 main()
 /*
  * test class: unsigned constant instance  : recursive call, in conditional expression, pointer to function returning an
- * unsigned 
+ * unsigned
  */
 {
 	unsigned        increment();
@@ -8571,7 +8571,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-unsigned 
+unsigned
 increment(constant)
 	unsigned        constant;
 {
@@ -8587,7 +8587,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : gemini, no return value, legal 
+ * test class: unsigned constant instance  : gemini, no return value, legal
  */
 {
 	castor(1);
@@ -8625,7 +8625,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : gemini, no return value, illegal 
+ * test class: unsigned constant instance  : gemini, no return value, illegal
  */
 {
 	unsigned        i;
@@ -8677,7 +8677,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : gemini, return value, legal, no function declaration 
+ * test class: unsigned constant instance  : gemini, return value, legal, no function declaration
  */
 {
 	unsigned        i = 0;
@@ -8727,7 +8727,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : gemini, return value, legal, function declared to return an unsigned 
+ * test class: unsigned constant instance  : gemini, return value, legal, function declared to return an unsigned
  */
 {
 	unsigned        i = 0, castor();
@@ -8742,7 +8742,7 @@ main()
 	return (0);
 }
 
-unsigned 
+unsigned
 castor(constant)
 	unsigned        constant;
 {
@@ -8756,7 +8756,7 @@ castor(constant)
 	return (++constant);
 }
 
-unsigned 
+unsigned
 pollux(constant)
 	unsigned        constant;
 {
@@ -8780,7 +8780,7 @@ char           *numbers = "0123456789";
 
 main()
 /*
- * test class: unsigned constant instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: unsigned constant instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s, *castor();
@@ -8832,7 +8832,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : gemini, return value, pointer to function returning an unsigned 
+ * test class: unsigned constant instance  : gemini, return value, pointer to function returning an unsigned
  */
 {
 	unsigned        i, increment();
@@ -8873,7 +8873,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-unsigned 
+unsigned
 increment(constant)
 	unsigned        constant;
 {
@@ -8889,7 +8889,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : gemini, in conditional expression, no function declaration 
+ * test class: unsigned constant instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor(1) == 2))
@@ -8928,7 +8928,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : gemini, in conditional expression, function declared to return an unsigned 
+ * test class: unsigned constant instance  : gemini, in conditional expression, function declared to return an unsigned
  */
 {
 	unsigned        castor();
@@ -8942,7 +8942,7 @@ main()
 	return (0);
 }
 
-unsigned 
+unsigned
 castor(constant)
 	unsigned        constant;
 {
@@ -8954,7 +8954,7 @@ castor(constant)
 	return (++constant);
 }
 
-unsigned 
+unsigned
 pollux(constant)
 	unsigned        constant;
 {
@@ -8975,7 +8975,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: unsigned constant instance  : gemini, in conditional expression, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *castor();
@@ -9020,7 +9020,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant instance  : gemini, in conditional expression, pointer to function returning an unsigned 
+ * test class: unsigned constant instance  : gemini, in conditional expression, pointer to function returning an unsigned
  */
 {
 	unsigned        increment();
@@ -9052,7 +9052,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-unsigned 
+unsigned
 increment(constant)
 	unsigned        constant;
 {
@@ -9067,7 +9067,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: unsigned constant, illegal instance  : linear tree structure, no return value and legal 
+ *  test class: unsigned constant, illegal instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne(-1);
@@ -9125,7 +9125,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: unsigned constant, illegal instance  : linear tree structure, no return value and illegal 
+ *  test class: unsigned constant, illegal instance  : linear tree structure, no return value and illegal
  */
 {
 	unsigned        i;
@@ -9190,7 +9190,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: unsigned constant, illegal instance  : linear tree structure, return value and legal, no function
- * declaration 
+ * declaration
  */
 {
 	unsigned        i = 0;
@@ -9355,7 +9355,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: unsigned constant, illegal instance  : linear tree structure, return value and legal, unsigned function
- * declaration 
+ * declaration
  */
 {
 	unsigned        i = 0;
@@ -9375,7 +9375,7 @@ main()				/* alias root */
 	return (0);
 }
 
-unsigned 
+unsigned
 levelOneNodeOne(constant)
 	unsigned        constant;
 {
@@ -9392,7 +9392,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelOneNodeTwo(constant)
 	unsigned        constant;
 {
@@ -9409,7 +9409,7 @@ levelOneNodeTwo(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelTwoNodeOne(constant)
 	unsigned        constant;
 {
@@ -9426,7 +9426,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelTwoNodeTwo(constant)
 	unsigned        constant;
 {
@@ -9443,7 +9443,7 @@ levelTwoNodeTwo(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelTwoNodeThree(constant)
 	unsigned        constant;
 {
@@ -9460,7 +9460,7 @@ levelTwoNodeThree(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelTwoNodeFour(constant)
 	unsigned        constant;
 {
@@ -9477,56 +9477,56 @@ levelTwoNodeFour(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafOne(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafTwo(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafThree(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafFour(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafFive(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafSix(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafSeven(constant)
 	unsigned        constant;
 {
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafEight(constant)
 	unsigned        constant;
 {
@@ -9543,7 +9543,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: unsigned constant, illegal instance  : linear tree structure, return value and legal, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -9612,7 +9612,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: unsigned constant, illegal instance  : linear tree structure, return value, legal pointer to function
- * returning an unsigned 
+ * returning an unsigned
  */
 {
 	unsigned short  i, divide4();
@@ -9640,7 +9640,7 @@ dummy1(func, integer)
 	return (i);
 }
 
-unsigned short 
+unsigned short
 divide4(integer)
 	unsigned short  integer;
 {
@@ -9661,7 +9661,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-unsigned short 
+unsigned short
 divide2(integer)
 	unsigned short  integer;
 {
@@ -9677,7 +9677,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: unsigned constant, illegal instance  : linear tree structure, used in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(levelOneNodeOne(-1) == (unsigned) -1))
@@ -9808,7 +9808,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: unsigned constant, illegal instance  : linear tree structure, used in conditional expression, unsigned
- * function declaration 
+ * function declaration
  */
 {
 	unsigned        levelOneNodeOne();
@@ -9822,7 +9822,7 @@ main()				/* alias root */
 	return (0);
 }
 
-unsigned 
+unsigned
 levelOneNodeOne(constant)
 	unsigned        constant;
 {
@@ -9833,7 +9833,7 @@ levelOneNodeOne(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelTwoNodeOne(constant)
 	unsigned        constant;
 {
@@ -9844,7 +9844,7 @@ levelTwoNodeOne(constant)
 	return (constant);
 }
 
-unsigned 
+unsigned
 levelThreeLeafOne(constant)
 	unsigned        constant;
 {
@@ -9860,7 +9860,7 @@ char           *protean = "cassandracross";
 main()				/* alias root */
 /*
  *  test class: unsigned constant, illegal instance  : linear tree structure, used in conditional expression, function
- * declared to return a pointer to character 
+ * declared to return a pointer to character
  */
 {
 	char           *skip();
@@ -9903,7 +9903,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: unsigned constant, illegal instance  : linear tree structure, in conditional expression, pointer to function
- * returning an unsigned 
+ * returning an unsigned
  */
 {
 	unsigned short  divide4();
@@ -9926,7 +9926,7 @@ dummy1(func, integer)
 	return ((*func) ((int) -65500));
 }
 
-unsigned short 
+unsigned short
 divide4(integer)
 	unsigned short  integer;
 {
@@ -9947,7 +9947,7 @@ dummy2(func, integer)
 	return (i);
 }
 
-unsigned short 
+unsigned short
 divide2(integer)
 	unsigned short  integer;
 {
@@ -9963,7 +9963,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant, illegal instance  : recursive call, no return value, legal 
+ * test class: unsigned constant, illegal instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction(-1);
@@ -9992,7 +9992,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant, illegal instance  : recursive call, no return value, illegal 
+ * test class: unsigned constant, illegal instance  : recursive call, no return value, illegal
  */
 {
 	recursiveFunction(-1);
@@ -10027,7 +10027,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant, illegal instance  : recursive call, return value, legal, no function declaration 
+ * test class: unsigned constant, illegal instance  : recursive call, return value, legal, no function declaration
  */
 {
 	unsigned        i = 0;
@@ -10064,7 +10064,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant, illegal instance  : recursive call, return value, legal, unsigned function declaration 
+ * test class: unsigned constant, illegal instance  : recursive call, return value, legal, unsigned function declaration
  */
 {
 	unsigned        i = 0;
@@ -10080,7 +10080,7 @@ main()
 	return (0);
 }
 
-unsigned 
+unsigned
 recursiveFunction(constant)
 	unsigned        constant;
 {
@@ -10106,7 +10106,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: unsigned constant, illegal instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s, *recursiveFunction();
@@ -10145,7 +10145,7 @@ short           counter = 10;
 main()
 /*
  * test class: unsigned constant, illegal instance  : recursive call, return value, pointer to function returning an
- * unsigned 
+ * unsigned
  */
 {
 	unsigned        i, increment();
@@ -10172,7 +10172,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-unsigned 
+unsigned
 increment(constant)
 	unsigned        constant;
 {
@@ -10189,7 +10189,7 @@ short           counter = 10;
 main()
 /*
  * test class: unsigned constant, illegal instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction(-1) == (unsigned) 0))
@@ -10220,7 +10220,7 @@ short           counter = 10;
 main()
 /*
  * test class: unsigned constant, illegal instance  : recursive call, function in conditional expression, unsigned function
- * declaration 
+ * declaration
  */
 {
 	unsigned        recursiveFunction();
@@ -10234,7 +10234,7 @@ main()
 	return (0);
 }
 
-unsigned 
+unsigned
 recursiveFunction(constant)
 	unsigned        constant;
 {
@@ -10257,7 +10257,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: unsigned constant, illegal instance  : recursive call, in conditional expression, function declared to return
- * a pointer to character 
+ * a pointer to character
  */
 {
 	char           *recursiveFunction();
@@ -10291,7 +10291,7 @@ short           counter = 10;
 main()
 /*
  * test class: unsigned constant, illegal instance  : recursive call, in conditional expression, pointer to function
- * returning an unsigned 
+ * returning an unsigned
  */
 {
 	unsigned        increment();
@@ -10314,7 +10314,7 @@ dummy(function, constant)
 	return (function(constant));
 }
 
-unsigned 
+unsigned
 increment(constant)
 	unsigned        constant;
 {
@@ -10330,7 +10330,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant, illegal instance  : gemini, no return value, legal 
+ * test class: unsigned constant, illegal instance  : gemini, no return value, legal
  */
 {
 	castor(-1);
@@ -10368,7 +10368,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant, illegal instance  : gemini, no return value, illegal 
+ * test class: unsigned constant, illegal instance  : gemini, no return value, illegal
  */
 {
 	unsigned        i;
@@ -10420,7 +10420,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant, illegal instance  : gemini, return value, legal, no function declaration 
+ * test class: unsigned constant, illegal instance  : gemini, return value, legal, no function declaration
  */
 {
 	unsigned        i = 0;
@@ -10470,7 +10470,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant, illegal instance  : gemini, return value, legal, function declared to return an unsigned 
+ * test class: unsigned constant, illegal instance  : gemini, return value, legal, function declared to return an unsigned
  */
 {
 	unsigned        i = 0, castor();
@@ -10485,7 +10485,7 @@ main()
 	return (0);
 }
 
-unsigned 
+unsigned
 castor(constant)
 	unsigned        constant;
 {
@@ -10499,7 +10499,7 @@ castor(constant)
 	return (++constant);
 }
 
-unsigned 
+unsigned
 pollux(constant)
 	unsigned        constant;
 {
@@ -10524,7 +10524,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: unsigned constant, illegal instance  : gemini, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s, *castor();
@@ -10576,7 +10576,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant, illegal instance  : gemini, return value, pointer to function returning an unsigned 
+ * test class: unsigned constant, illegal instance  : gemini, return value, pointer to function returning an unsigned
  */
 {
 	unsigned        i, increment();
@@ -10617,7 +10617,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-unsigned 
+unsigned
 increment(constant)
 	unsigned        constant;
 {
@@ -10633,7 +10633,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: unsigned constant, illegal instance  : gemini, in conditional expression, no function declaration 
+ * test class: unsigned constant, illegal instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor(-1) == (unsigned) 0))
@@ -10673,7 +10673,7 @@ short           counter = 10;
 main()
 /*
  * test class: unsigned constant, illegal instance  : gemini, in conditional expression, function declared to return an
- * unsigned 
+ * unsigned
  */
 {
 	unsigned        castor();
@@ -10687,7 +10687,7 @@ main()
 	return (0);
 }
 
-unsigned 
+unsigned
 castor(constant)
 	unsigned        constant;
 {
@@ -10699,7 +10699,7 @@ castor(constant)
 	return (++constant);
 }
 
-unsigned 
+unsigned
 pollux(constant)
 	unsigned        constant;
 {
@@ -10720,7 +10720,7 @@ char           *numbers = "0123456789";
 main()
 /*
  * test class: unsigned constant, illegal instance  : gemini, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *castor();
@@ -10766,7 +10766,7 @@ short           counter = 10;
 main()
 /*
  * test class: unsigned constant, illegal instance  : gemini, in conditional expression, pointer to function returning an
- * unsigned 
+ * unsigned
  */
 {
 	unsigned        increment();
@@ -10798,7 +10798,7 @@ pollux(function, constant)
 	return (function(constant));
 }
 
-unsigned 
+unsigned
 increment(constant)
 	unsigned        constant;
 {
@@ -10813,7 +10813,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: literal string instance  : linear tree structure, no return value and legal 
+ *  test class: literal string instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne("A", 1);
@@ -10985,7 +10985,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: literal string instance  : linear tree structure, no return value and illegal 
+ *  test class: literal string instance  : linear tree structure, no return value and illegal
  */
 {
 	short           i;
@@ -11173,7 +11173,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: literal string instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: literal string instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	short           i = 0;
@@ -11347,7 +11347,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: literal string instance  : linear tree structure, return value and legal, integer function declaration 
+ *  test class: literal string instance  : linear tree structure, return value and legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -11367,7 +11367,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(constant)
 	char           *constant;
 {
@@ -11384,7 +11384,7 @@ levelOneNodeOne(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelOneNodeTwo(constant)
 	char           *constant;
 {
@@ -11401,7 +11401,7 @@ levelOneNodeTwo(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelTwoNodeOne(constant)
 	char           *constant;
 {
@@ -11418,7 +11418,7 @@ levelTwoNodeOne(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelTwoNodeTwo(constant)
 	char           *constant;
 {
@@ -11435,7 +11435,7 @@ levelTwoNodeTwo(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelTwoNodeThree(constant)
 	char           *constant;
 {
@@ -11452,7 +11452,7 @@ levelTwoNodeThree(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelTwoNodeFour(constant)
 	char           *constant;
 {
@@ -11469,56 +11469,56 @@ levelTwoNodeFour(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafOne(constant)
 	char           *constant;
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafTwo(constant)
 	char           *constant;
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafThree(constant)
 	char           *constant;
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafFour(constant)
 	char           *constant;
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafFive(constant)
 	char           *constant;
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafSix(constant)
 	char           *constant;
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafSeven(constant)
 	char           *constant;
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafEight(constant)
 	char           *constant;
 {
@@ -11543,7 +11543,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: literal string instance  : linear tree structure, return value and legal, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -11615,7 +11615,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: literal string instance  : linear tree structure, return value, legal pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           i, divide4();
@@ -11643,7 +11643,7 @@ char           *string;
 	return (i);
 }
 
-short 
+short
 divide4(string)
 	char           *string;
 {
@@ -11665,7 +11665,7 @@ char           *string;
 	return (i);
 }
 
-short 
+short
 divide2(string)
 	char           *string;
 {
@@ -11683,7 +11683,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: literal string instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: literal string instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	if (!(levelOneNodeOne("A") == 1))
@@ -11823,7 +11823,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: literal string instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	short           levelOneNodeOne();
@@ -11837,7 +11837,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(constant)
 	char           *constant;
 {
@@ -11848,7 +11848,7 @@ levelOneNodeOne(constant)
 	return (mystrlen(constant) == 1 ? 1 : 0);
 }
 
-short 
+short
 levelTwoNodeOne(constant)
 	char           *constant;
 {
@@ -11859,7 +11859,7 @@ levelTwoNodeOne(constant)
 	return (mystrlen(constant) == 3 ? 1 : 0);
 }
 
-short 
+short
 levelThreeLeafOne(constant)
 	char           *constant;
 {
@@ -11882,7 +11882,7 @@ $HEAD()
 main()				/* alias root */
 /*
  *  test class: literal string instance  : linear tree structure, used in conditional expression, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *skip();
@@ -11925,7 +11925,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: literal string instance  : linear tree structure, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           divide4();
@@ -11951,7 +11951,7 @@ char           *string;
 	return (i);
 }
 
-short 
+short
 divide4(string)
 	char           *string;
 {
@@ -11972,7 +11972,7 @@ char           *string;
 	return (i);
 }
 
-short 
+short
 divide2(string)
 	char           *string;
 {
@@ -11997,7 +11997,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : recursive call, no return value, legal 
+ * test class: literal string instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction("A");
@@ -12029,7 +12029,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : recursive call, no return value, illegal 
+ * test class: literal string instance  : recursive call, no return value, illegal
  */
 {
 	short           i;
@@ -12069,7 +12069,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : recursive call, return value, legal, no function declaration 
+ * test class: literal string instance  : recursive call, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -12115,7 +12115,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : recursive call, return value, legal, integer function declaration 
+ * test class: literal string instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -12131,7 +12131,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(constant)
 	char           *constant;
 {
@@ -12164,7 +12164,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : recursive call, return value, function declared to return a pointer to character 
+ * test class: literal string instance  : recursive call, return value, function declared to return a pointer to character
  */
 {
 	char           *s, *recursiveFunction();
@@ -12203,7 +12203,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: literal string instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	char           *i, *dummy(), *increment();
@@ -12250,7 +12250,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : recursive call, function in conditional expression, no function declaration 
+ * test class: literal string instance  : recursive call, function in conditional expression, no function declaration
  */
 {
 	if (!(recursiveFunction("AB") == 2))
@@ -12289,7 +12289,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : recursive call, function in conditional expression, integer function declaration 
+ * test class: literal string instance  : recursive call, function in conditional expression, integer function declaration
  */
 {
 	short           recursiveFunction();
@@ -12303,7 +12303,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(constant)
 	char           *constant;
 {
@@ -12334,7 +12334,7 @@ short           counter = 10;
 main()
 /*
  * test class: literal string instance  : recursive call, in conditional expression, function declared to return a pointer
- * to character 
+ * to character
  */
 {
 	char           *recursiveFunction();
@@ -12369,7 +12369,7 @@ short           counter = 10;
 main()
 /*
  * test class: literal string instance  : recursive call, in conditional expression, pointer to function returning a
- * character pointer 
+ * character pointer
  */
 {
 	char           *dummy(), *increment();
@@ -12412,7 +12412,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : gemini, no return value, legal 
+ * test class: literal string instance  : gemini, no return value, legal
  */
 {
 	castor("A");
@@ -12454,7 +12454,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : gemini, no return value, illegal 
+ * test class: literal string instance  : gemini, no return value, illegal
  */
 {
 	short           i;
@@ -12508,7 +12508,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : gemini, return value, legal, no function declaration 
+ * test class: literal string instance  : gemini, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -12567,7 +12567,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: literal string instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	short           i = 0, castor();
@@ -12582,7 +12582,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(constant)
 	char           *constant;
 {
@@ -12596,7 +12596,7 @@ castor(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 pollux(constant)
 	char           *constant;
 {
@@ -12628,7 +12628,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: literal string instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s, *castor();
@@ -12682,7 +12682,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : gemini, return value, pointer to function returning an integer 
+ * test class: literal string instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	short           i, increment();
@@ -12723,7 +12723,7 @@ char           *constant;
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	char           *constant;
 {
@@ -12741,7 +12741,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : gemini, in conditional expression, no function declaration 
+ * test class: literal string instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor("A") == 2))
@@ -12784,7 +12784,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: literal string instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 	short           castor();
@@ -12798,7 +12798,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(constant)
 	char           *constant;
 {
@@ -12810,7 +12810,7 @@ castor(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 pollux(constant)
 	char           *constant;
 {
@@ -12839,7 +12839,7 @@ short           counter = 10;
 main()
 /*
  * test class: literal string instance  : gemini, in conditional expression, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *castor();
@@ -12886,7 +12886,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string instance  : gemini, in conditional expression, pointer to function returning an integer 
+ * test class: literal string instance  : gemini, in conditional expression, pointer to function returning an integer
  */
 {
 	short           increment();
@@ -12920,7 +12920,7 @@ char           *constant;
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	char           *constant;
 {
@@ -12938,7 +12938,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: literal string, illegal instance  : linear tree structure, no return value and legal 
+ *  test class: literal string, illegal instance  : linear tree structure, no return value and legal
  */
 {
 	levelOneNodeOne("A");
@@ -13180,7 +13180,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: literal string, illegal instance  : linear tree structure, no return value and illegal 
+ *  test class: literal string, illegal instance  : linear tree structure, no return value and illegal
  */
 {
 	short           i;
@@ -13437,7 +13437,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: literal string, illegal instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: literal string, illegal instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	short           i = 0;
@@ -13605,7 +13605,7 @@ short           statusFlag = NoMistake;
 
 main()				/* alias root */
 /*
- *  test class: literal string, illegal instance  : linear tree structure, return value and legal, no function declaration 
+ *  test class: literal string, illegal instance  : linear tree structure, return value and legal, no function declaration
  */
 {
 	short           i = 0;
@@ -13625,7 +13625,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(constant)
 	char            constant[][3];
 {
@@ -13641,7 +13641,7 @@ levelOneNodeOne(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelOneNodeTwo(constant)
 	char            constant[][3];
 {
@@ -13657,7 +13657,7 @@ levelOneNodeTwo(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelTwoNodeOne(constant)
 	char            constant[][3];
 {
@@ -13673,7 +13673,7 @@ levelTwoNodeOne(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelTwoNodeTwo(constant)
 	char            constant[][3];
 {
@@ -13689,7 +13689,7 @@ levelTwoNodeTwo(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelTwoNodeThree(constant)
 	char            constant[][3];
 {
@@ -13705,7 +13705,7 @@ levelTwoNodeThree(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelTwoNodeFour(constant)
 	char            constant[][3];
 {
@@ -13721,56 +13721,56 @@ levelTwoNodeFour(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafOne(constant)
 	char            constant[][3];
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafTwo(constant)
 	char            constant[][3];
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafThree(constant)
 	char            constant[][3];
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafFour(constant)
 	char            constant[][3];
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafFive(constant)
 	char            constant[][3];
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafSix(constant)
 	char            constant[][3];
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafSeven(constant)
 	char            constant[][3];
 {
 	return (mystrlen(constant));
 }
 
-short 
+short
 levelThreeLeafEight(constant)
 	char            constant[][3];
 {
@@ -13795,7 +13795,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: literal string, illegal instance  : linear tree structure, return value and legal, function declared to
- * return a pointer to character 
+ * return a pointer to character
  */
 {
 	char           *s, *levelOne();
@@ -13861,7 +13861,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: literal string, illegal instance  : linear tree structure, return value, legal pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	short           i, divide4();
@@ -13889,7 +13889,7 @@ char            string[][3];
 	return (i);
 }
 
-short 
+short
 divide4(string)
 	char            string[][3];
 {
@@ -13911,7 +13911,7 @@ char            string[][3];
 	return (i);
 }
 
-short 
+short
 divide2(string)
 	char            string[][3];
 {
@@ -13934,7 +13934,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: literal string, illegal instance  : linear tree structure, in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(levelOneNodeOne("A") == 1))
@@ -14074,7 +14074,7 @@ short           statusFlag = NoMistake;
 main()				/* alias root */
 /*
  *  test class: literal string, illegal instance  : linear tree structure, used in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	short           levelOneNodeOne();
@@ -14088,7 +14088,7 @@ main()				/* alias root */
 	return (0);
 }
 
-short 
+short
 levelOneNodeOne(constant)
 	char            constant[][3];
 {
@@ -14099,7 +14099,7 @@ levelOneNodeOne(constant)
 	return (mystrlen(constant) == 2 ? 1 : 0);
 }
 
-short 
+short
 levelTwoNodeOne(constant)
 	char            constant[][3];
 {
@@ -14110,7 +14110,7 @@ levelTwoNodeOne(constant)
 	return (mystrlen(constant) == 3 ? 1 : 0);
 }
 
-short 
+short
 levelThreeLeafOne(constant)
 	char            constant[][3];
 {
@@ -14133,7 +14133,7 @@ $HEAD()
 main()				/* alias root */
 /*
  *  test class: literal string, illegal instance  : linear tree structure, used in conditional expression, function declared
- * to return a pointer to character 
+ * to return a pointer to character
  */
 {
 	char           *skip();
@@ -14177,7 +14177,7 @@ short           statusFlag = NoMistake;
 main()
 /*
  * test class: literal string, illegal instance  : linear tree structure, in conditional expression, pointer to function
- * returning an integer 
+ * returning an integer
  */
 {
 	short           divide4();
@@ -14204,7 +14204,7 @@ char            integer[][3];
 	return (i);
 }
 
-short 
+short
 divide4(integer)
 	char            integer[][3];
 {
@@ -14226,7 +14226,7 @@ char            integer[][3];
 	return (i);
 }
 
-short 
+short
 divide2(integer)
 	char            integer[][3];
 {
@@ -14251,7 +14251,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : recursive call, no return value, legal 
+ * test class: literal string, illegal instance  : recursive call, no return value, legal
  */
 {
 	recursiveFunction("A");
@@ -14288,7 +14288,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : recursive call, no return value, illegal 
+ * test class: literal string, illegal instance  : recursive call, no return value, illegal
  */
 {
 	short           i;
@@ -14332,7 +14332,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : recursive call, return value, legal, no function declaration 
+ * test class: literal string, illegal instance  : recursive call, return value, legal, no function declaration
  */
 {
 	short           i = 0;
@@ -14378,7 +14378,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : recursive call, return value, legal, integer function declaration 
+ * test class: literal string, illegal instance  : recursive call, return value, legal, integer function declaration
  */
 {
 	short           i = 0;
@@ -14394,7 +14394,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(constant)
 	char            constant[][3];
 {
@@ -14428,7 +14428,7 @@ short           counter = 10;
 main()
 /*
  * test class: literal string, illegal instance  : recursive call, return value, function declared to return a pointer to
- * character 
+ * character
  */
 {
 	char           *s, *recursiveFunction();
@@ -14467,7 +14467,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : recursive call, return value, pointer to function returning an integer 
+ * test class: literal string, illegal instance  : recursive call, return value, pointer to function returning an integer
  */
 {
 	short           i, increment();
@@ -14495,7 +14495,7 @@ char            constant[][3];
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	char           *constant;
 {
@@ -14514,7 +14514,7 @@ short           counter = 10;
 main()
 /*
  * test class: literal string, illegal instance  : recursive call, function in conditional expression, no function
- * declaration 
+ * declaration
  */
 {
 	if (!(recursiveFunction("AB") == 2))
@@ -14554,7 +14554,7 @@ short           counter = 10;
 main()
 /*
  * test class: literal string, illegal instance  : recursive call, function in conditional expression, integer function
- * declaration 
+ * declaration
  */
 {
 	short           recursiveFunction();
@@ -14568,7 +14568,7 @@ main()
 	return (0);
 }
 
-short 
+short
 recursiveFunction(constant)
 	char            constant[][3];
 {
@@ -14599,7 +14599,7 @@ short           counter = 10;
 main()
 /*
  * test class: literal string, illegal instance  : recursive call, in conditional expression, function declared to return a
- * pointer to character 
+ * pointer to character
  */
 {
 	char           *recursiveFunction();
@@ -14634,7 +14634,7 @@ short           counter = 10;
 main()
 /*
  * test class: literal string, illegal instance  : recursive call, in conditional expression, pointer to function returning
- * an integer 
+ * an integer
  */
 {
 	short           increment();
@@ -14658,7 +14658,7 @@ char            constant[][3];
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	char           *constant;
 {
@@ -14685,7 +14685,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : gemini, no return value, legal 
+ * test class: literal string, illegal instance  : gemini, no return value, legal
  */
 {
 	castor("AB");
@@ -14739,7 +14739,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : gemini, no return value, illegal 
+ * test class: literal string, illegal instance  : gemini, no return value, illegal
  */
 {
 	short           i;
@@ -14805,7 +14805,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : gemini, return value, legal, no function declaration 
+ * test class: literal string, illegal instance  : gemini, return value, legal, no function declaration
  */
 {
 	short           i;
@@ -14864,7 +14864,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : gemini, return value, legal, function declared to return an integer 
+ * test class: literal string, illegal instance  : gemini, return value, legal, function declared to return an integer
  */
 {
 	short           i = 0, castor();
@@ -14879,7 +14879,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(constant)
 	char            constant[][3];
 {
@@ -14893,7 +14893,7 @@ castor(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 pollux(constant)
 	char            constant[][3];
 {
@@ -14925,7 +14925,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : gemini, return value, function declared to return a pointer to character 
+ * test class: literal string, illegal instance  : gemini, return value, function declared to return a pointer to character
  */
 {
 	char           *s, *castor();
@@ -14979,7 +14979,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : gemini, return value, pointer to function returning an integer 
+ * test class: literal string, illegal instance  : gemini, return value, pointer to function returning an integer
  */
 {
 	short           i, increment();
@@ -15020,7 +15020,7 @@ char            constant[][3];
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	char            constant[][3];
 {
@@ -15044,7 +15044,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : gemini, in conditional expression, no function declaration 
+ * test class: literal string, illegal instance  : gemini, in conditional expression, no function declaration
  */
 {
 	if (!(castor("AB") == 2))
@@ -15092,7 +15092,7 @@ short           counter = 10;
 
 main()
 /*
- * test class: literal string, illegal instance  : gemini, in conditional expression, function declared to return an integer 
+ * test class: literal string, illegal instance  : gemini, in conditional expression, function declared to return an integer
  */
 {
 	short           castor();
@@ -15106,7 +15106,7 @@ main()
 	return (0);
 }
 
-short 
+short
 castor(constant)
 	char            constant[][3];
 {
@@ -15118,7 +15118,7 @@ castor(constant)
 	return (mystrlen(constant));
 }
 
-short 
+short
 pollux(constant)
 	char            constant[][3];
 {
@@ -15147,7 +15147,7 @@ short           counter = 10;
 main()
 /*
  * test class: literal string, illegal instance  : gemini, in conditional expression, function declared to return a pointer
- * to character 
+ * to character
  */
 {
 	char           *castor();
@@ -15195,7 +15195,7 @@ short           counter = 10;
 main()
 /*
  * test class: literal string, illegal instance  : gemini, in conditional expression, pointer to function returning an
- * integer 
+ * integer
  */
 {
 	short           increment();
@@ -15229,7 +15229,7 @@ char            constant[][3];
 	return (function(constant));
 }
 
-short 
+short
 increment(constant)
 	char           *constant;
 {
