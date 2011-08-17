@@ -75,9 +75,14 @@ sub _parse_def_section {
     if ($section =~ m{$regexp}) {
         my ($name, $param, $body) = ($1, $2, $3);
 
+        my $dummy_args = _exploit_dummy_args($param);
+        if ( grep { $_ eq '' } @{$dummy_args} ) {
+            Carp::croak("'$name' has empty argument($param). Check params");
+        }
+
         my $macro = Testgen::TemplateFile::Macro->new(
             name       => $name,
-            dummy_args => _exploit_dummy_args($param),
+            dummy_args => $dummy_args,
             body       => $body
         );
         $self->{macros}->{$name} = $macro;
