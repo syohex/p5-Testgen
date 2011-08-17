@@ -4,6 +4,7 @@ use warnings;
 
 use Carp ();
 use Encode;
+use File::Basename ();
 use File::Path ();
 
 use Testgen::TemplateFile::Macro;
@@ -19,9 +20,14 @@ sub new {
     }
 
     my $macros = delete $args{macros} || {};
+    my $include_path = delete $args{include_path} || [];
+
+    # Add default include path, which is same as template file directory
+    unshift @{$include_path}, File::Basename::dirname($args{name});
 
     bless {
         macros            => $macros,
+        include_path      => $include_path,
         filename_index    => 0,
         template_encoding => 'utf8',
         output_encoding   => 'utf8',
@@ -32,18 +38,17 @@ sub new {
 my %dispatch_table = (
     def     => \&_parse_def_section,
     dir     => \&_parse_dir_section,
+    include => \&_parse_include_section,
     comment => \&_parse_comment_section,
 );
 
 sub parse {
     my $self = shift;
+    $self->_parse_string( $self->_read_file($self->{name}) );
+}
 
-    open my $fh, '<', $self->{name} or Carp::croak("Can't open $self->{name}");
-    my $template_str = do {
-        local $/;
-        decode($self->{template_encoding}, <$fh>);
-    };
-    close $fh;
+sub _parse_string {
+    my ($self, $str) = @_;
 
     my $section_regexp = qr{
         ^\@(\S+)
@@ -51,7 +56,7 @@ sub parse {
         ^\@\1 _
     }xms;
 
-    while ($template_str =~ m{ $section_regexp }gxms) {
+    while ($str =~ m{ $section_regexp }gxms) {
         my ($section, $body) = ($1, $2);
 
         unless (exists $dispatch_table{$section}) {
@@ -62,8 +67,40 @@ sub parse {
     }
 }
 
+sub _read_file {
+    my ($self, $file) = @_;
+
+    my $str = do {
+        local $/;
+        open my $fh, '<', $file or Carp::croak("Can't open $file");
+        decode($self->{template_encoding}, <$fh>);
+    };
+
+    return $str;
+}
+
+sub _parse_include_section {
+    my ($self, $filename) = @_;
+    $filename =~ s{\A\s*|\s*\z}{}gxms;
+
+    my $include_file;
+    for my $path ( @{$self->{include_path}} ) {
+        my $filepath = File::Spec->catfile($path, $filename);
+        if ( -e $filepath ) {
+            $include_file = $filepath;
+            last;
+        }
+    }
+
+    unless (defined $include_file) {
+        Carp::croak("'$include_file' is not found");
+    }
+
+    $self->_parse_string( $self->_read_file($include_file) );
+}
+
 sub _parse_def_section {
-    my ($self, $section) = @_;
+    my ($self, $macro_def) = @_;
 
     my $regexp = qr{
         \A
@@ -72,7 +109,7 @@ sub _parse_def_section {
         \z
     }xmso;
 
-    if ($section =~ m{$regexp}) {
+    if ($macro_def =~ m{$regexp}) {
         my ($name, $param, $body) = ($1, $2, $3);
 
         my $dummy_args = _exploit_dummy_args($param);
