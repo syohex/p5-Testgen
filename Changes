@@ -1,5 +1,9 @@
 Revision history for Testgen2
 
+0.02  2011-08-17
+  Implement parsing @include section.
+    - You can include other file in template file.
+
 0.01  2011-07-31
   Code refactoring by Syohei YOSHIDA
   Original source codes are testgen2-20110128.zip.

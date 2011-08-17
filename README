@@ -1,7 +1,6 @@
 Testsuite generator 2
 
 Ishiura Lab in Kwansei Gakuin University
-2011/JUL/31
 
 0. Introduction
      Testgen is a test program generator for testing compiler.
@@ -27,16 +26,16 @@ Ishiura Lab in Kwansei Gakuin University
       testdir  (type: String)  - a directory where tests are generated.
       size     (type: Hashref) - sizes of types in C language.
                                  It should have keys, 'char', 'short', 'int',
-                                 'long' at least.
+                                 'long', 'pointer' at least.
 
       'size' parameter looks like as follows:
           size => {
-             char => 8, short => 16, int => 32, long => 64
+             char => 8, short => 16, int => 32, long => 64, pointer => 64,
           },
 
        The generator makes predefined macros from it's parameter.
        ($CHARMIN(), $CHARMAX(), $UCHARMAX() ...).
-       These macros are used in template files.
+       You can use these macros in template files.
 
    [Optional Parameters]
       lang      (type: String)   - programming languages.
