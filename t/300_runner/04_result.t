@@ -11,12 +11,14 @@ use Testgen::Runner::Executor::Result;
         status  => 'success',
         command => "gcc hello.c",
         message => 'success compiling',
+        time    => 100,
     );
     ok($result, 'constructor');
     isa_ok($result, 'Testgen::Runner::Compiler::Result');
     is($result->{status}, 'success', 'parameter status');
     is($result->{command}, 'gcc hello.c', 'parameter command');
     is($result->{message}, 'success compiling', 'parameter message');
+    is($result->{time},100, 'parameter time');
 
     can_ok($result, 'message');
     is($result->message, '', 'success message');
@@ -42,6 +44,7 @@ fail compiling
 
     is($error->message, $expected, 'error message');
     ok($error->is_error);
+    is($error->time, '-', 'default time value');
 
     my $warn= Testgen::Runner::Compiler::Result->new(
         status  => 'warn',
