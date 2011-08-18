@@ -127,8 +127,9 @@ sub _log_name {
 sub _do_test {
     my ($self, $testdir) = @_;
 
-    if ($self->{config}->get('parallels') >= 2 && $^O ne 'MSWin32') {
-        $self->_do_test_parallel($testdir, $self->{config}->get('parallels'));
+    my $parallels = $self->{config}->get('parallels');
+    if ($parallels >= 2 && $^O ne 'MSWin32') {
+        $self->_do_test_parallel($testdir, $parallels);
     } else {
         $self->_do_test_single($testdir);
     }
