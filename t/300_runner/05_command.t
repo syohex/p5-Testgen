@@ -30,11 +30,11 @@ SKIP: {
         command => [ $true_cmd ],
     );
 
-    my ($status, $stdout, $stderr) = $cmd->_run_with_system;
-    is($status, 0, "command is succeed with 'system'");
+    my $res = $cmd->_run_with_system;
+    is($res->status, 0, "command is succeed with 'system'");
 
-    ($status, $stdout, $stderr) = $cmd->_run_with_ipc;
-    is($status, 0, "command is succeed with 'IPC'");
+    $res = $cmd->_run_with_ipc;
+    is($res->status, 0, "command is succeed with 'IPC'");
 }
 
 SKIP: {
@@ -56,24 +56,11 @@ SKIP: {
         command => $echo_cmd,
     );
 
-    my ($status, $stdout, $stderr) = $cmd->_run_with_system;
-    is($stdout, "hello world\n", "capture stdout with 'system'");
+    my $res = $cmd->_run_with_system;
+    is($res->stdout, "hello world\n", "capture stdout with 'system'");
 
-    ($status, $stdout, $stderr) = $cmd->_run_with_ipc;
-    is($stdout, "hello world\n", "capture stdout with 'IPC'");
-}
-
-{
-    my $echo_cmd = [ qw/echo hello world/ ];
-    my $cmd = Testgen::Runner::Command->new(
-        command => $echo_cmd,
-    );
-
-    my ($status, $stdout, $stderr) = $cmd->_run_with_system;
-    is($stdout, "hello world\n", "capture stdout with 'system'");
-
-    ($status, $stdout, $stderr) = $cmd->_run_with_ipc;
-    is($stdout, "hello world\n", "capture stdout with 'IPC'");
+    $res = $cmd->_run_with_ipc;
+    is($res->stdout, "hello world\n", "capture stdout with 'IPC'");
 }
 
 {
@@ -83,11 +70,11 @@ SKIP: {
     );
 
     # Some error message may be captured.
-    my ($status, $stdout, $stderr) = $cmd->_run_with_system;
-    ok( length $stderr >= 1, "capture stderr with 'system'");
+    my $res = $cmd->_run_with_system;
+    ok( length $res->stderr >= 1, "capture stderr with 'system'");
 
-    ($status, $stdout, $stderr) = $cmd->_run_with_ipc;
-    ok( length $stderr >= 1, "capture stderr with 'IPC'");
+    $res = $cmd->_run_with_ipc;
+    ok( length $res->stderr >= 1, "capture stderr with 'IPC'");
 }
 
 {
@@ -98,11 +85,11 @@ SKIP: {
     );
     is($cmd->{timeout}, 1, 'setting timeout parameter');
 
-    my ($status, $stdout, $stderr) = $cmd->_run_with_system;
-    ok(!defined($status), "timeout occurs using 'system'");
+    my $res = $cmd->_run_with_system;
+    ok(!defined($res->status), "timeout occurs using 'system'");
 
-    ($status, $stdout, $stderr) = $cmd->_run_with_ipc;
-    ok(!defined($status), "timeout occurs using 'IPC'");
+    $res  = $cmd->_run_with_ipc;
+    ok(!defined($res->status), "timeout occurs using 'IPC'");
 }
 
 {
