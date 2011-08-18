@@ -35,11 +35,11 @@ sub compile {
     my @cmd = $self->_compile_command($test->input, $test->output, @options);
     my $command = Testgen::Runner::Command->new( command => \@cmd );
 
-    my ($exit_status, undef, $stderr) = $command->run;
+    my $response = $command->run;
 
     my $status;
-    if ($exit_status == 0) {
-        if ($stderr eq '') {
+    if ($response->status == 0) {
+        if ($response->stderr eq '') {
             $status = 'success';
         } else {
             $status  = 'warn';
@@ -51,7 +51,8 @@ sub compile {
     return Testgen::Runner::Compiler::Result->new(
         command => "@cmd",
         status  => $status,
-        message => $stderr,
+        message => $response->stderr,
+        time    => $response->time,
     );
 }
 
@@ -67,10 +68,10 @@ sub preprocess {
     # So I hope that error message is English.
     my $old_locale = setlocale(LC_ALL);
     POSIX::setlocale(LC_ALL, "C");
-    my ($status, $stdout, $stderr) = $preprocessor_cmd->run;
+    my $response = $preprocessor_cmd->run;
     POSIX::setlocale(LC_ALL, $old_locale);
 
-    return ($stdout, $stderr);
+    return ($response->stdout, $response->stderr);
 }
 
 sub _preprocess_command {

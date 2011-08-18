@@ -31,9 +31,9 @@ sub execute {
         timeout => $self->{timeout},
     );
 
-    my ($exit_status, $stdout) = $command->run;
+    my $response = $command->run;
 
-    unless (defined $exit_status) {
+    unless (defined $response->status) {
         # Timeout happens
         return Testgen::Runner::Executor::Result->new(
             command => "@cmd",
@@ -44,7 +44,8 @@ sub execute {
 
     my $result;
     my $ratio = '';
-    if ($exit_status == 0 ) {
+    my $stdout = $response->stdout;
+    if ($response->status == 0 ) {
         if ($self->{has_printf}) {
             my $expect = quotemeta $self->{expect};
             my $oknum = 0;
@@ -68,6 +69,7 @@ sub execute {
         status  => $result,
         message => $stdout,
         ratio   => $ratio,
+        time    => $response->time,
     );
 }
 
