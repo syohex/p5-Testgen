@@ -5,6 +5,7 @@ use warnings;
 use Carp ();
 use Cwd ();
 use Encode ();
+use Time::HiRes ();
 use File::Temp ();
 use Symbol ();
 use IO::Select ();
@@ -60,11 +61,14 @@ sub _run_with_system {
     ##  and not scaling very much. I don't understand why using IPC
     ##  is too slow. So Unix platform using 'system' instead of IPC.
 
-    my $status;
+    my ($status, $run_time);
     eval {
         local $SIG{ALRM} = sub { die "timeout\n"; };
         alarm $self->{timeout} if $self->{timeout};
+
+        my $time_start = [ Time::HiRes::gettimeofday ];
         $status = system( "@cmd > $out_redirect 2> $err_redirect" );
+        $run_time = sprintf '%.6f', Time::HiRes::tv_interval($time_start);
         alarm 0;
     };
     if ($@ && $@ eq "timeout\n") {
@@ -90,7 +94,7 @@ sub _run_with_system {
             Carp::carp("@cmd is maybe finished");
         }
 
-        return (undef, '', '');
+        return Testgen::Runner::Command::Response->new( status => undef );
     }
 
     my ($stdout, $stderr) = do {
@@ -98,7 +102,12 @@ sub _run_with_system {
         map { $encoder->decode($_) } (scalar <$ofh>, scalar <$efh>);
     };
 
-    return ( $status, $stdout, $stderr );
+    return Testgen::Runner::Command::Response->new(
+        status => $status,
+        stdout => $stdout,
+        stderr => $stderr,
+        time   => $run_time,
+    );
 }
 
 sub _run_with_ipc {
@@ -106,6 +115,8 @@ sub _run_with_ipc {
 
     pipe(my $stdout_r, my $stdout_w);
     pipe(my $stderr_r, my $stderr_w);
+
+    my $time_start = [ Time::HiRes::gettimeofday ];
 
     my $pid = fork;
     Carp::croak("Can't fork process: $!") unless defined $pid;
@@ -153,13 +164,55 @@ sub _run_with_ipc {
         if ($timeout && $watcher->count > 0 && !@ready) {
             kill 'TERM' => $pid;
             waitpid $pid, 0;
-            return (undef, $encoder->decode($stdout), $encoder->decode($stderr));
+
+            return Testgen::Runner::Command::Response->new(
+                status => undef,
+                stdout => $encoder->decode($stdout),
+                stderr => $encoder->decode($stderr),
+            );
         }
     }
 
     waitpid $pid, 0;
-    return ( ($? >> 8), $encoder->decode($stdout), $encoder->decode($stderr));
+    my $run_time = sprintf '%.6f', Time::HiRes::tv_interval($time_start);
+
+    return Testgen::Runner::Command::Response->new(
+        status => ($? >> 8),
+        stdout => $encoder->decode($stdout),
+        stderr => $encoder->decode($stderr),
+        time   => $run_time,
+    );
 }
+
+package
+    Testgen::Runner::Command::Response;
+
+use Carp ();
+
+sub new {
+    my ($class, %args) = @_;
+
+    unless (exists $args{status}) {
+        Carp::croak("missing mandatory parameter 'status'");
+    }
+
+    my $stdout = delete $args{stdout} || '';
+    my $stderr = delete $args{stderr} || '';
+    my $time   = delete $args{time}   || '-';
+
+    bless {
+        stdout => $stdout,
+        stderr => $stderr,
+        time   => $time,
+        %args,
+    }, $class;
+}
+
+# accessor
+sub status { shift->{status} }
+sub stdout { shift->{stdout} }
+sub stderr { shift->{stderr} }
+sub time   { shift->{time}   }
 
 1;
 
@@ -196,8 +249,8 @@ Timeout never happen by default.
 
 =head3 C<< $command->run() >> :( $exit_status, $stdout, $stderr)
 
-Run command. Return three values, exit_status, output to STDOUT,
-output to STDERR.
+Run command. Return a C<Testgen::Runner::Command::Response> instance.
+Its instance has member status, stdout, stderr, time.
 
 If timeout happens, C<$exit_status> is C<undef>.
 
