@@ -65,10 +65,10 @@ sub preprocess {
 
     # I should analyze preprocessor's error message.
     # So I hope that error message is English.
-    my $old_locale = setlocale(LC_TIME);
-    POSIX::setlocale(LC_TIME, "C");
+    my $old_locale = setlocale(LC_ALL);
+    POSIX::setlocale(LC_ALL, "C");
     my ($status, $stdout, $stderr) = $preprocessor_cmd->run;
-    POSIX::setlocale(LC_TIME, $old_locale);
+    POSIX::setlocale(LC_ALL, $old_locale);
 
     return ($stdout, $stderr);
 }
