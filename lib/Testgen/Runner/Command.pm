@@ -34,15 +34,7 @@ sub new {
     }, $class;
 }
 
-sub run {
-    my $self = shift;
-
-    if ( WIN32 ) {
-        return $self->_run_with_ipc();
-    } else {
-        return $self->_run_with_system();
-    }
-}
+*run = WIN32 ? \&_run_with_ipc : \&_run_with_system;
 
 sub _run_with_system {
     my $self = shift;
