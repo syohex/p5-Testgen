@@ -16,9 +16,7 @@ sub new {
         Carp::croak("Invalid status parameter '$status'");
     }
 
-    unless (defined $self->{ratio}) {
-        $self->{ratio} = '0/0';
-    }
+    $self->{ratio} ||= '0/0';
 
     return $self;
 }
