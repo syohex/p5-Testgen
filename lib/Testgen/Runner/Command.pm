@@ -14,6 +14,10 @@ use constant WIN32 => $^O eq 'MSWin32';
 
 our $HAS_MULTICORE = 0;
 my $encoder = Encode::find_encoding('utf8');
+my $overhead = do {
+    my $start = [ Time::HiRes::gettimeofday ];
+    sprintf '%.6f', Time::HiRes::tv_interval($start);
+};
 
 sub new {
     my ($class, %args) = @_;
@@ -98,7 +102,7 @@ sub _run_with_system {
         status => $status,
         stdout => $stdout,
         stderr => $stderr,
-        time   => $run_time,
+        time   => $run_time - $overhead,
     );
 }
 
@@ -172,7 +176,7 @@ sub _run_with_ipc {
         status => ($? >> 8),
         stdout => $encoder->decode($stdout),
         stderr => $encoder->decode($stderr),
-        time   => $run_time,
+        time   => $run_time - $overhead,
     );
 }
 
