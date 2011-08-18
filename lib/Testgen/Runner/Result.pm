@@ -13,6 +13,8 @@ sub new {
         }
     }
 
+    $args{time} ||= '-';
+
     bless {
         %args,
     }, $class;
@@ -21,6 +23,7 @@ sub new {
 # accessor
 sub status  { shift->{status}  }
 sub command { shift->{command} }
+sub time    { shift->{time}    }
 
 sub message { die "'message' method must be override"; }
 
