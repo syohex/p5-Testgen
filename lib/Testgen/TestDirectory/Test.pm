@@ -106,12 +106,15 @@ sub dump_result {
 sub _compile_log {
     my ($self, $result) = @_;
 
-    my ($cmd, $message, $time) = map { $result->$_ } qw/command message time/;
     my $testname = File::Spec->catfile($self->{dir}, $self->input);
+    my ($cmd, $message, $time, $status) = map {
+        $result->$_
+    } qw/command message time status/;
+
 
     chomp $message;
     push @{$self->{result}->{log}}, <<"...";
-Compile: $testname (Time: $time sec)
+Compile: $testname (Status:$status Time:$time)
 Command: $cmd
 $message
 ...
@@ -126,12 +129,14 @@ sub _execute_log {
     my ($self, $result, $compile_command) = @_;
 
     my $oknum = $self->{oknum};
-    my ($cmd, $message, $time) = map { $result->$_ } qw/command message time/;
     my $testname = File::Spec->catfile($self->{dir}, $self->input);
+    my ($cmd, $message, $time, $status) = map {
+        $result->$_
+    } qw/command message time status/;
 
     chomp $message;
     push @{$self->{result}->{log}}, <<"...";
-Execute: $testname (Time: $time sec)
+Execute: $testname (Status:$status Time:$time)
 Command: $cmd ($compile_command)
   (expect ok: $oknum) .....
 $message
