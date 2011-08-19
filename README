@@ -112,6 +112,9 @@ Appendix A. Directories hierarchy
    - config/
       Here are sample configuration files.
 
+   - util/
+       log2tsv.pl - Generate TSV file from the test log.
+
 Appendix B. Example of configuration file
 
     +{
