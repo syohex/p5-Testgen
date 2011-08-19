@@ -77,7 +77,7 @@ Ignore this section
 {
     my $content = <<'...';
 @def $TEST($ARG)
-This is $ARG
+Include abspath $ARG
 @def_
 ...
 
@@ -85,17 +85,30 @@ This is $ARG
         content => $content,
         suffix  => '.inc',
     );
-    $include_file->autoflush(1);
 
-    my $filename = $include_file->filename;
-    my $content2 = <<"...";
+    my $content2 = <<'...';
+@def $TEST2($ARG2)
+Include relpath $ARG2
+@def_
+...
+
+    my $include_file2 = create_tmp_file(
+        content => $content2,
+        suffix  => '.inc',
+    );
+
+    my ($file1, $file2) = ($include_file->filename, $include_file2->filename);
+    my $content3 = <<"...";
 \@include
-$filename
+$file1
+\@include_
+\@include
+$file2
 \@include_
 ...
 
     my $template = create_tmp_file(
-        content => $content2,
+        content => $content3,
         suffix  => '.tt',
     );
 
@@ -107,9 +120,15 @@ $filename
 
     my $macro = $tt_file->{macros}->{'$TEST'};
 
-    is($macro->{name}, '$TEST', 'included macro name');
-    is_deeply($macro->{dummy_args}, ['$ARG'], 'included macro dummy args');
-    is($macro->{body}, "This is \$ARG\n", 'included macro body');
+    is($macro->{name}, '$TEST', 'abspath included macro name');
+    is_deeply($macro->{dummy_args}, ['$ARG'], 'abspath included macro dummy args');
+    is($macro->{body}, "Include abspath \$ARG\n", 'abspath included macro body');
+
+    my $macro2 = $tt_file->{macros}->{'$TEST2'};
+
+    is($macro2->{name}, '$TEST2', 'relpath included macro name');
+    is_deeply($macro2->{dummy_args}, ['$ARG2'], 'relpath included macro dummy args');
+    is($macro2->{body}, "Include relpath \$ARG2\n", 'relpath included macro body');
 }
 
 {
