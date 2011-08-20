@@ -10,9 +10,6 @@ use File::Temp ();
 use Symbol ();
 use IO::Select ();
 
-use constant WIN32 => $^O eq 'MSWin32';
-
-our $HAS_MULTICORE = 0;
 my $encoder = Encode::find_encoding('utf8');
 my $overhead = do {
     my $start = [ Time::HiRes::gettimeofday ];
@@ -38,7 +35,9 @@ sub new {
     }, $class;
 }
 
-*run = WIN32 ? \&_run_with_ipc : \&_run_with_system;
+## Usgin IPC is not scalable and we cannot use IPC in Windows Platform.
+## ('exec' is not used in Windows)
+*run = \&_run_with_system;
 
 sub _run_with_system {
     my $self = shift;
@@ -51,11 +50,6 @@ sub _run_with_system {
     my $err_redirect = $efh->filename;
 
     my @cmd = @{$self->{command}};
-
-    ### Hummmmm.
-    ##  I want to use IPC for portability, but using IPC makes slow
-    ##  and not scaling very much. I don't understand why using IPC
-    ##  is too slow. So Unix platform using 'system' instead of IPC.
 
     my ($status, $run_time);
     eval {
