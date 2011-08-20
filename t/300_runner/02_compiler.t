@@ -24,6 +24,8 @@ use t::Util qw(create_tmp_file);
     my $compiler2 = Testgen::Runner::Compiler->new( name => 'pcc');
     is_deeply($compiler2->{c_flags}, [], "'c_flags' default value");
     is_deeply($compiler2->{ld_flags}, [], "'ld_flags' default value");
+    is_deeply($compiler2->{output_option}, '-o', "'output_option' default value");
+    is_deeply($compiler2->{option_separator}, ' ', "'option_separator' default value");
 }
 
 {

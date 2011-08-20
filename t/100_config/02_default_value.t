@@ -35,6 +35,8 @@ my %defaults = (
     complement   => 2,
     compile_only => 0,
     timeout      => 10,
+    output_option => '-o',
+    option_separator => ' ',
 );
 
 for my $key ( keys %defaults ) {
