@@ -130,7 +130,7 @@ sub _do_test {
     my ($self, $testdir) = @_;
 
     my $parallels = $self->{config}->get('parallels');
-    if ($parallels >= 2 && $^O ne 'MSWin32') {
+    if ($parallels >= 2) {
         $self->_do_test_parallel($testdir, $parallels);
     } else {
         $self->_do_test_single($testdir);
