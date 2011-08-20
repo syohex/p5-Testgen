@@ -30,8 +30,6 @@ lib/Testgen/Runner.pm
 lib/Testgen/Runner/Command.pm
 lib/Testgen/Runner/Compiler.pm
 lib/Testgen/Runner/Compiler/Result.pm
-lib/Testgen/Runner/Execoter.pm
-lib/Testgen/Runner/Execoter/Result.pm
 lib/Testgen/Runner/Executor.pm
 lib/Testgen/Runner/Executor/Result.pm
 lib/Testgen/Runner/Result.pm
@@ -236,5 +234,8 @@ template/ckr.6-3-01.tt
 template/ckr.6-3-02.tt
 template/ckr.6-3-03.tt
 template/ckr.6-3-04.tt
+template/license.inc
+template/testout.h.inc
 tgen.cnf
+util/log2tsv.pl
 xt/pod.t
