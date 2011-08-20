@@ -77,6 +77,9 @@ sub _set_default_value {
     $conf->{complement}   ||= 2;
     $conf->{compile_only} ||= 0;
     $conf->{timeout}      ||= 10;
+
+    $conf->{output_option}    ||= '-o';
+    $conf->{option_separator} ||= ' ';
 }
 
 sub get {

@@ -18,10 +18,14 @@ sub new {
 
     my $c_flags  = delete $args{c_flags}  || [];
     my $ld_flags = delete $args{ld_flags} || [];
+    my $output_option = delete $args{output_option} || '-o';
+    my $option_separator = delete $args{option_separator} || ' ';
 
     bless {
         c_flags  => $c_flags,
         ld_flags => $ld_flags,
+        output_option => $output_option,
+        option_separator => $option_separator,
         %args,
     }, $class;
 }
@@ -100,11 +104,12 @@ sub _compile_command {
     my $ld_flags = $self->{ld_flags};
     my $ld_flags_str = scalar @{$ld_flags} ? join ' ', @{$ld_flags} : '';
     my $options_str = scalar @options ? join ' ', @options : '';
+    my $outfile = $self->{output_option} . $self->{option_separator} . $output;
 
     # for empty parameter
     my $cmd_str = join ' ', $self->{name}, $c_flags_str,
                           , $options_str
-                          , $input, '-o', $output, $ld_flags_str;
+                          , $input, $outfile, $ld_flags_str;
 
     return split /\s+/, $cmd_str;
 }

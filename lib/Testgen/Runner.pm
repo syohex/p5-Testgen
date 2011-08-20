@@ -83,6 +83,8 @@ sub _init {
         name     => $config->get('compiler'),
         c_flags  => $config->get('c_flags'),
         ld_flags => $config->get('ld_flags'),
+        output_option => $config->get('output_option'),
+        option_separator => $config->get('option_separator'),
     );
 
     $self->{executor} = Testgen::Runner::Executor->new(
@@ -204,6 +206,7 @@ sub _option_list {
 
 sub _get_match_directories {
     my $self = shift;
+
 
     my $log_dir  = $self->{log_dir};
     my $temp_dir = File::Basename::basename($self->{temp_dir}->dirname);
