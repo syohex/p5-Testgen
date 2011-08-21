@@ -24,6 +24,8 @@ my $test_config = {
 
     timeout       => 10,
     parallels     => 2,
+    output_option => '/Fe',
+    option_separator => '=',
 };
 
 my $conf_file = create_configfile($test_config);
