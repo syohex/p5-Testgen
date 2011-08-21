@@ -130,6 +130,14 @@ sub _validate {
         Carp::croak("template files are not specified");
     }
 
+    if ($^O eq 'MSWin32') {
+        my @files;
+
+        for my $argv (@{$self->{argv}}) {
+            push @files, glob($argv);
+        }
+    }
+
     for my $template_file (@{$self->{argv}}) {
         unless ($template_file =~ m{\.tt$}) {
             Carp::croak("template file's suffix must be '.tt'");
