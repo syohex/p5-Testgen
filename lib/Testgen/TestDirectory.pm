@@ -4,6 +4,7 @@ use warnings;
 
 use Carp ();
 use Cwd ();
+use Encode qw(decode_utf8);
 use Scalar::Util qw(blessed);
 use File::Temp ();
 use Term::ANSIColor ();
@@ -178,9 +179,9 @@ sub _collect_results {
         my $file = File::Spec->catfile($dir_name, $result_file);
         my $result_ref = do $file or die "Can't load $file $!";
 
-        $log->print($_) for @{$result_ref->{log}};
+        $log->print( decode_utf8($_) ) for @{$result_ref->{log}};
         if (exists $result_ref->{faillog}) {
-            $faillog->print($_) for @{$result_ref->{faillog}};
+            $faillog->print( decode_utf8($_) ) for @{$result_ref->{faillog}};
         }
 
         for my $param ( @params ) {

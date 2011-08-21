@@ -4,6 +4,7 @@ use warnings;
 
 use Carp ();
 use Data::Dumper;
+use Encode qw(encode_utf8);
 use File::Basename ();
 use File::Spec ();
 
@@ -101,7 +102,7 @@ sub dump_result {
     open my $fh, '>', $dump_file or Carp::croak("Can't open $dump_file $!");
 
     local $Data::Dumper::Indent = 0;
-    print {$fh} Data::Dumper::Dumper( $self->{result} );
+    print {$fh} Data::Dumper::Dumper( encode_utf8($self->{result}) );
 
     close $fh;
 }
