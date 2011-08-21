@@ -67,7 +67,7 @@ sub execute {
     return Testgen::Runner::Executor::Result->new(
         command => "@cmd",
         status  => $result,
-        message => $stdout,
+        message => $stdout . $response->stderr,
         ratio   => $ratio,
         time    => $response->time,
     );

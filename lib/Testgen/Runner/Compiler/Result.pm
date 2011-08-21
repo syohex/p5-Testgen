@@ -27,7 +27,6 @@ sub message {
 sub _indicated_message {
     my $self = shift;
 
-    my ($command, $str) = ($self->{command}, $self->{message});
     return <<"...";
 $self->{command}
 ----- Compile $self->{status} message -----

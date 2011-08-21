@@ -56,7 +56,7 @@ sub compile {
     return Testgen::Runner::Compiler::Result->new(
         command => "@cmd",
         status  => $status,
-        message => $response->stderr,
+        message => $response->stdout . $response->stderr,
         time    => $response->time,
     );
 }
