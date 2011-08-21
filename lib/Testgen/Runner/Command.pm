@@ -102,7 +102,7 @@ sub _run_with_system {
         );
     }
 
-    unlink $out_redirect, $err_redirect or Carp::croak("Can't unlink logs:$!");
+    unlink $out_redirect, $err_redirect;
     return $response;
 }
 
