@@ -79,7 +79,8 @@ sub _set_default_value {
     $conf->{timeout}      ||= 10;
 
     $conf->{output_option}    ||= '-o';
-    $conf->{option_separator} ||= ' ';
+    $conf->{option_separator} = defined $conf->{option_separator}
+                                ? $conf->{option_separator} : ' ';
 }
 
 sub get {

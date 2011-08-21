@@ -19,7 +19,8 @@ sub new {
     my $c_flags  = delete $args{c_flags}  || [];
     my $ld_flags = delete $args{ld_flags} || [];
     my $output_option = delete $args{output_option} || '-o';
-    my $option_separator = delete $args{option_separator} || ' ';
+    my $option_separator = exists $args{option_separator}
+                           ? delete $args{option_separator} : ' ';
 
     bless {
         c_flags  => $c_flags,
