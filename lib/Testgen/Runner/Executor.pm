@@ -73,13 +73,15 @@ sub execute {
     );
 }
 
+my $CMD_PREFIX = $^O ne 'MSWin32' ? './' : '';
+
 sub _create_cmd {
     my ($self, $executable) = @_;
 
     if (defined $self->{simulator}) {
         return ($self->{simulator}, $executable);
     } else {
-        return ("./${executable}");
+        return ($CMD_PREFIX . $executable);
     }
 }
 
