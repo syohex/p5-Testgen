@@ -136,6 +136,8 @@ sub _validate {
         for my $argv (@{$self->{argv}}) {
             push @files, glob($argv);
         }
+
+        $self->{argv} = \@files;
     }
 
     for my $template_file (@{$self->{argv}}) {
