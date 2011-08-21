@@ -43,15 +43,12 @@ sub _run_with_system {
     my $self = shift;
 
     my $cwd = Cwd::getcwd;
-    my $ofh = File::Temp->new( DIR => $cwd );
-    my $out_redirect = $ofh->filename;
-
-    my $efh = File::Temp->new( DIR => $cwd );
-    my $err_redirect = $efh->filename;
+    my (undef, $out_redirect) = File::Temp::tempfile( DIR => $cwd );
+    my (undef, $err_redirect) = File::Temp::tempfile( DIR => $cwd );
 
     my @cmd = @{$self->{command}};
 
-    my ($status, $run_time);
+    my ($status, $run_time, $response);
     eval {
         local $SIG{ALRM} = sub { die "timeout\n"; };
         alarm $self->{timeout} if $self->{timeout};
@@ -84,20 +81,29 @@ sub _run_with_system {
             Carp::carp("@cmd is maybe finished");
         }
 
-        return Testgen::Runner::Command::Response->new( status => undef );
+        $response = Testgen::Runner::Command::Response->new( status => undef );
+
+    } else {
+        my ($stdout, $stderr) = do {
+            local $/;
+
+            open my $ofh, '<', $out_redirect
+               or Carp::croak("Can't open $out_redirect: $!");
+            open my $efh, '<', $err_redirect
+               or Carp::croak("Can't open $err_redirect: $!");
+            map { $encoder->decode($_) } (scalar <$ofh>, scalar <$efh>);
+        };
+
+        $response = Testgen::Runner::Command::Response->new(
+            status => $status,
+            stdout => $stdout,
+            stderr => $stderr,
+            time   => $run_time - $overhead,
+        );
     }
 
-    my ($stdout, $stderr) = do {
-        local $/;
-        map { $encoder->decode($_) } (scalar <$ofh>, scalar <$efh>);
-    };
-
-    return Testgen::Runner::Command::Response->new(
-        status => $status,
-        stdout => $stdout,
-        stderr => $stderr,
-        time   => $run_time - $overhead,
-    );
+    unlink $out_redirect, $err_redirect or Carp::croak("Can't unlink logs:$!");
+    return $response;
 }
 
 sub _run_with_ipc {
