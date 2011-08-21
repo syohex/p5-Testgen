@@ -10,7 +10,8 @@ use File::Temp ();
 use Symbol ();
 use IO::Select ();
 
-my $encoder = Encode::find_encoding('utf8');
+my $encoding = $^O eq 'MSWin32' ? 'cp932' : 'utf8';
+my $encoder = Encode::find_encoding($encoding);
 my $overhead = do {
     my $start = [ Time::HiRes::gettimeofday ];
     sprintf '%.6f', Time::HiRes::tv_interval($start);
