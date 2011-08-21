@@ -102,7 +102,7 @@ sub dump_result {
     open my $fh, '>', $dump_file or Carp::croak("Can't open $dump_file $!");
 
     local $Data::Dumper::Indent = 0;
-    print {$fh} Data::Dumper::Dumper( encode_utf8($self->{result}) );
+    print {$fh} encode_utf8( Data::Dumper::Dumper( $self->{result} ) );
 
     close $fh;
 }
@@ -114,7 +114,6 @@ sub _compile_log {
     my ($cmd, $message, $time, $status) = map {
         $result->$_
     } qw/command message time status/;
-
 
     chomp $message;
     push @{$self->{result}->{log}}, <<"...";
