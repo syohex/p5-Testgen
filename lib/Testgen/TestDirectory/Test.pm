@@ -38,10 +38,12 @@ sub new {
     }, $class;
 }
 
+my $EXTENSION = $^O eq 'MSWin32' ? '.exe' : '.x';
+
 sub _set_output {
     my $files = shift;
     my $name = join '_', @{$files};
-    return File::Basename::basename($name, '.c') . '.x';
+    return File::Basename::basename($name, '.c') . $EXTENSION;
 }
 
 # accessor
