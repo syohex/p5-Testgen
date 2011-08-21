@@ -1,5 +1,10 @@
 Revision history for Testgen2
 
+0.03  2011-08-21
+  Fix some bugs.
+  Add syntax checking.
+  Support Windows platform(Experimental).
+
 0.02  2011-08-17
   Implement parsing @include section.
     - You can include other file in template file.
