@@ -61,7 +61,8 @@ sub finalize {
     my $self = shift;
 
     if (-e $self->{output}) {
-        unlink $self->{output} or Carp::croak("Can't unlink $self->{output}\n");
+        unlink $self->{output}
+            or Carp::croak("Can't unlink $self->{output}: $!");
     }
 }
 
