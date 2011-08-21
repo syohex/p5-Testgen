@@ -40,6 +40,17 @@ use t::Util qw(create_tmp_file);
     is_deeply(\@cmd,
               ['gcc', '-g', '-O2', '-ansi', 'a.c', '-o', 'a.out', '-lgcc'],
               'compile command');
+
+    my $compiler2 = Testgen::Runner::Compiler->new(
+        name     => 'cl.exe',
+        output_option => '/Fe',
+        option_separator => '',
+    );
+
+    my @cmd2 = $compiler2->_compile_command('a.c', 'a.out', '/O2');
+    is_deeply(\@cmd2,
+              ['cl.exe', '/O2', 'a.c', '/Fea.out'],
+              'compile command specified option separator');
 }
 
 my $compiler;

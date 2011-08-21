@@ -207,6 +207,67 @@ This is unknown section
 }
 
 {
+    my $content = <<'...';
+@dir_
+...
+    my $template = create_tmp_file(
+        content => $content,
+        suffix  => '.tt',
+    );
+
+    my $tt_file = Testgen::TemplateFile->new(
+        name => $template->filename,
+        testsuite_dir => 'test',
+    );
+
+    eval {
+        $tt_file->parse;
+    };
+    like $@, qr/Found only 'dir' end at/, 'missing start of section';
+
+    $content = <<'...';
+@dir
+@dir2
+@dir_
+...
+    $template = create_tmp_file(
+        content => $content,
+        suffix  => '.tt',
+    );
+
+    $tt_file = Testgen::TemplateFile->new(
+        name => $template->filename,
+        testsuite_dir => 'test',
+    );
+
+    eval {
+        $tt_file->parse;
+    };
+    like $@, qr/Not collect 'dir2' correspondence at/, 'missing section correspondence';
+
+    $content = <<'...';
+@dir
+@dir2
+...
+    $template = create_tmp_file(
+        content => $content,
+        suffix  => '.tt',
+    );
+
+    $tt_file = Testgen::TemplateFile->new(
+        name => $template->filename,
+        testsuite_dir => 'test',
+    );
+
+    eval {
+        $tt_file->parse;
+    };
+    my $msg = $@;
+    like $msg, qr/'dir' section does not have end of section/, 'missing end of section1';
+    like $msg, qr/'dir2' section does not have end of section/, 'missing end of section2';
+}
+
+{
     eval {
         my $tt_file = Testgen::TemplateFile->new(
             testsuite_dir => 'test',
