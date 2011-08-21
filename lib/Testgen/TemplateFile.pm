@@ -69,14 +69,54 @@ sub _parse_string {
 
 sub _read_file {
     my ($self, $file) = @_;
+    my @lines;
 
-    my $str = do {
-        local $/;
-        open my $fh, '<', $file or Carp::croak("Can't open $file");
-        decode($self->{template_encoding}, <$fh>);
-    };
+    open my $fh, '<', $file or Carp::croak("Can't open $file");
 
-    return $str;
+    my @sections;
+    my $current_line = 1;
+    while (my $line = <$fh>) {
+        chomp $line;
+
+        if ($line =~ m{^\@([^_\s]+)_}) {
+            my $section = $1;
+
+            unless (@sections) {
+                Carp::croak("Found only '$section' end at $current_line");
+            }
+
+            my $last_section = (pop @sections)->[0];
+            if ($section ne $last_section) {
+                Carp::croak("Not collect '$last_section' correspondence "
+                            . "at $current_line");
+            }
+        } elsif ($line =~ m{^\@([^_\s]+)}) {
+            my $section = $1;
+
+            unless ($line =~ m{\@ $section _ \s* $}x) {
+                push @sections, [ $section, $current_line ];
+            }
+        }
+
+        push @lines, $line;
+        $current_line++;
+    }
+
+    close $fh;
+
+    if (@sections) {
+        my @messages;
+        for my $section (@sections) {
+            my ($name, $line) = @{$section};
+            push @messages, "'$name' section does not have end of section(at $line)";
+        }
+
+        my $error_num = scalar @sections;
+        push @messages, "$file has $error_num errors";
+        die join "\n", @messages;
+    }
+
+    return join "\n", @lines;
 }
 
 sub _parse_include_section {
