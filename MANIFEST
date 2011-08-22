@@ -7,6 +7,7 @@ config/pcc_32.cnf
 config/tgen_32.cnf
 config/tgen_64.cnf
 config/v850_cross.cnf
+config/vc_windows.cnf
 inc/Module/Install.pm
 inc/Module/Install/AuthorTests.pm
 inc/Module/Install/Base.pm
