@@ -20,6 +20,7 @@ use t::Util qw/create_tmp_file/;
         compiler => $compiler,
     );
     ok($merged_file);
+    isa_ok($merged_file, "Testgen::Merger::MergedFile");
     isa_ok($merged_file, "Testgen::Merger::MergedFile::CMergedFile");
 
     can_ok($merged_file, 'add');

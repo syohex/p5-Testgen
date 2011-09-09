@@ -8,6 +8,7 @@ use Testgen::Parser;
 {
     my $cparser = Testgen::Parser->create_parser(lang => 'c');
     ok($cparser);
+    isa_ok($cparser, "Testgen::Parser");
     isa_ok($cparser, 'Testgen::Parser::CParser');
 }
 
