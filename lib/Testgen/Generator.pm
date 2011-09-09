@@ -69,53 +69,57 @@ sub _set_predefined_macros {
         return;
     }
 
+    my $complement   = $config->get('complement');
     my $pointer_size = delete $size->{pointer};
 
     my %predefined;
-    for my $key ( keys %{$size} ) {
-        use bignum; ## for very large number
+    for my $type ( keys %{$size} ) {
+        my $bit_width = $size->{$type};
+        # for included space(eg. long long => longlong)
+        my $type_name = join '', split /\s/, $type;
 
-        $key = 'longlong' if $key eq 'long long';
-
-        my $power = $size->{$key};
-
-        my $size_max  = uc('$' . "${key}max");
-        my $max_value = sprintf "%s", (2 ** ($power-1)) - 1;
-
-        $max_value .= 'L'  if $key eq 'long';
-        $max_value .= 'LL' if $key eq 'longlong';
-
-        $predefined{$size_max} = Testgen::TemplateFile::Macro->new(
-            name => $size_max, body => $max_value,
+        my ($signed_min, $signed_max) = Testgen::Util::get_type_limit(
+            type       => $type,
+            bit_width  => $bit_width,
+            unsigned   => 0,
+            complement => $complement,
+            suffix     => 1,
         );
 
-        my $usize_max  = uc('$' . "u${key}max");
-        my $umax_value = sprintf "%s", (2 ** $power) - 1;
+        my $signed_max_limit = uc('$' . "${type_name}max");
+        my $signed_min_limit = uc('$' . "${type_name}min");
 
-        $umax_value .= 'U'   if $key eq 'int';
-        $umax_value .= 'UL'  if $key eq 'long';
-        $umax_value .= 'ULL' if $key eq 'longlong';
-
-        $predefined{$usize_max} = Testgen::TemplateFile::Macro->new(
-            name => $usize_max, body => $umax_value,
+        $predefined{$signed_max_limit} = Testgen::TemplateFile::Macro->new(
+            name => $signed_max_limit, body => $signed_max,
         );
 
-        my $size_min  = uc('$' . "${key}min");
-        my $min_value = sprintf "%s", -1 * (2 ** ($power-1));
-
-        $min_value += 1 if $config->get('complement') == 1;
-
-        $min_value .= 'L'  if $key eq 'long';
-        $min_value .= 'LL' if $key eq 'longlong';
-
-        $predefined{$size_min} = Testgen::TemplateFile::Macro->new(
-            name => $size_min, body => $min_value,
+        $predefined{$signed_min_limit} = Testgen::TemplateFile::Macro->new(
+            name => $signed_min_limit, body => $signed_min,
         );
 
-        if ($pointer_size == $size->{$key}) {
+        my ($unsigned_min, $unsigned_max) = Testgen::Util::get_type_limit(
+            type       => $type,
+            bit_width  => $bit_width,
+            unsigned   => 1,
+            complement => $complement,
+            suffix     => 1,
+        );
+
+        my $unsigned_min_limit = uc('$u' . "${type_name}min");
+        my $unsigned_max_limit = uc('$u' . "${type_name}max");
+
+        $predefined{$unsigned_max_limit} = Testgen::TemplateFile::Macro->new(
+            name => $unsigned_max_limit, body => $unsigned_max,
+        );
+
+        $predefined{$unsigned_min_limit} = Testgen::TemplateFile::Macro->new(
+            name => $unsigned_min_limit, body => $unsigned_min,
+        );
+
+        if ($pointer_size == $bit_width) {
             my $intptr = '$INTPTR';
             $predefined{$intptr} = Testgen::TemplateFile::Macro->new(
-                name => $intptr, body => $key,
+                name => $intptr, body => $type,
             );
         }
     }
