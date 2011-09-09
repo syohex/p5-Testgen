@@ -4,6 +4,7 @@ use warnings;
 package Testgen::Util;
 
 use Carp ();
+use POSIX ();
 
 sub read_directory {
     my $dir = shift;
@@ -13,6 +14,70 @@ sub read_directory {
     closedir $dh;
 
     return @dirs;
+}
+
+my %type_postfix = (
+    'long'        => 'L',
+    'long long'   => 'LL',
+    'float'       => 'F',
+    'long double' => 'L',
+);
+
+sub get_type_limit {
+    use bignum; ## for very large number
+
+    my %args = @_;
+
+    for my $param (qw/type bit_width/) {
+        unless (exists $args{$param}) {
+            Carp::croak("missing '$param' parameter");
+        }
+    }
+
+    my $complement = delete $args{complement} || 2;
+    unless ($complement == 1 || $complement == 2) {
+        Carp::croak("'complement' parameter should be '1' or '2'");
+    }
+    my $type_name   = delete $args{type};
+    my $bit_width   = delete $args{bit_width};
+    my $is_unsigned = delete $args{unsigned} || 0;
+    my $suffix      = delete $args{suffix} || 0;
+
+    my ($min, $max);
+    if ($type_name eq 'float') {
+        $min = POSIX::FLT_MIN;
+        $max = POSIX::FLT_MAX;
+    } elsif ($type_name eq 'double') {
+        $min = POSIX::DBL_MIN;
+        $max = POSIX::DBL_MAX;
+    } elsif ($type_name eq 'long double') {
+        $min = POSIX::LDBL_MIN;
+        $max = POSIX::LDBL_MAX;
+    } else {
+        if ($is_unsigned) {
+            $min = 0;
+            $max = (2 ** $bit_width) - 1;
+        } else {
+            $min = -(2 ** ($bit_width-1));
+            $max = (2 ** ($bit_width-1)) - 1;
+
+            $min += 1 if $complement == 1;
+        }
+    }
+
+    if ($suffix) {
+        if ($is_unsigned) {
+            $min .= "U";
+            $max .= "U";
+        }
+
+        if (exists $type_postfix{$type_name}) {
+            $min .= $type_postfix{$type_name};
+            $max .= $type_postfix{$type_name};
+        }
+    }
+
+    return ($min, $max);
 }
 
 # Based on http://ja.doukaku.org/44/lang/perl/
