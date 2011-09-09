@@ -7,6 +7,8 @@ use Testgen::Util ();
 use File::Spec ();
 use File::Temp ();
 use Cwd ();
+use bignum;
+use POSIX ();
 
 {
     my $tempdir = File::Temp::tempdir( CLEANUP => 1 );
@@ -22,6 +24,55 @@ use Cwd ();
         my @a = Testgen::Util::read_directory('NOTFOUND');
     };
     like $@, qr/Can't open directory/, 'directory not found';
+}
+
+{
+    my ($signed_min, $signed_max) = Testgen::Util::get_type_limit(
+        type       => 'long long',
+        bit_width  => 32,
+        unsigned   => 0,
+        complement => 2,
+        suffix     => 1,
+    );
+
+    my $expected_min = -(2 ** 31) . "LL";
+    is($signed_min, $expected_min, "min value");
+
+    my $expected_max = ((2 ** 31) - 1) . "LL";
+    is($signed_max, $expected_max, "max value");
+
+    ($signed_min, undef) = Testgen::Util::get_type_limit(
+        type       => 'long long',
+        bit_width  => 32,
+        unsigned   => 0,
+        complement => 1,
+        suffix     => 1,
+    );
+
+    $expected_min = -((2 ** 31) - 1) . "LL";
+    is($signed_min, $expected_min, "max value in 1 complement");
+
+    my ($unsigned_min, $unsigned_max) = Testgen::Util::get_type_limit(
+        type       => 'int',
+        bit_width  => 32,
+        unsigned   => 1,
+        complement => 2,
+        suffix     => 1,
+    );
+
+    is($unsigned_min, "0U", "unsigned min value");
+
+    $expected_max = ((2 ** 32) - 1) . "U";
+    is($unsigned_max, $expected_max, "unsigned max value");
+
+    my ($float_min, $float_max) = Testgen::Util::get_type_limit(
+        type       => 'float',
+        bit_width  => 32,
+        suffix     => 1,
+    );
+
+    is($float_min, POSIX::FLT_MIN . "F", "float min value");
+    is($float_max, POSIX::FLT_MAX . "F", "unsigned max value");
 }
 
 {
