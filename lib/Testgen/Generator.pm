@@ -72,6 +72,13 @@ sub _set_predefined_macros {
     my $complement   = $config->get('complement');
     my $pointer_size = delete $size->{pointer};
 
+    my %type_suffix = (
+        'long'        => 'L',
+        'long long'   => 'LL',
+        'float'       => 'F',
+        'long double' => 'L',
+    );
+
     my %predefined;
     for my $type ( keys %{$size} ) {
         my $bit_width = $size->{$type};
@@ -83,8 +90,12 @@ sub _set_predefined_macros {
             bit_width  => $bit_width,
             unsigned   => 0,
             complement => $complement,
-            suffix     => 1,
         );
+
+        if (exists $type_suffix{$type}) {
+            $signed_min .= $type_suffix{$type};
+            $signed_max .= $type_suffix{$type};
+        }
 
         my $signed_max_limit = uc('$' . "${type_name}max");
         my $signed_min_limit = uc('$' . "${type_name}min");
@@ -102,8 +113,17 @@ sub _set_predefined_macros {
             bit_width  => $bit_width,
             unsigned   => 1,
             complement => $complement,
-            suffix     => 1,
         );
+
+        if ($type =~ m{int|long}) {
+            $unsigned_min .= "U";
+            $unsigned_max .= "U";
+        }
+
+        if (exists $type_suffix{$type}) {
+            $unsigned_min .= $type_suffix{$type};
+            $unsigned_max .= $type_suffix{$type};
+        }
 
         my $unsigned_min_limit = uc('$u' . "${type_name}min");
         my $unsigned_max_limit = uc('$u' . "${type_name}max");

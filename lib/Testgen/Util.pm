@@ -16,13 +16,6 @@ sub read_directory {
     return @dirs;
 }
 
-my %type_postfix = (
-    'long'        => 'L',
-    'long long'   => 'LL',
-    'float'       => 'F',
-    'long double' => 'L',
-);
-
 sub get_type_limit {
     use bignum; ## for very large number
 
@@ -41,7 +34,6 @@ sub get_type_limit {
     my $type_name   = delete $args{type};
     my $bit_width   = delete $args{bit_width};
     my $is_unsigned = delete $args{unsigned} || 0;
-    my $suffix      = delete $args{suffix} || 0;
 
     my ($min, $max);
     if ($type_name eq 'float') {
@@ -62,18 +54,6 @@ sub get_type_limit {
             $max = (2 ** ($bit_width-1)) - 1;
 
             $min += 1 if $complement == 1;
-        }
-    }
-
-    if ($suffix) {
-        if ($is_unsigned) {
-            $min .= "U";
-            $max .= "U";
-        }
-
-        if (exists $type_postfix{$type_name}) {
-            $min .= $type_postfix{$type_name};
-            $max .= $type_postfix{$type_name};
         }
     }
 
