@@ -2231,12 +2231,12 @@ main()
  */
 {
 	short           i = 0, statusFlag = NoMistake;
-	short           truncate(), round();
+	short           tgen_truncate(), tgen_round();
 
-	i = function(truncate, 1, 10);
+	i = function(tgen_truncate, 1, 10);
 	if (i != 5)
 		statusFlag++;
-	i = function(round, 1, 10);
+	i = function(tgen_round, 1, 10);
 	if (i != 6)
 		statusFlag++;
 	if (statusFlag != NoMistake)
@@ -2253,13 +2253,13 @@ function(getMiddle, high, low)
 }
 
 short
-truncate(a, b)
+tgen_truncate(a, b)
 {
 	return ((a + b) / 2);
 }
 
 short
-round(a, b)
+tgen_round(a, b)
 {
 	return ((a + b + 1) / 2);
 }

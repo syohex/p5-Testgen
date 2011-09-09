@@ -2290,8 +2290,8 @@ $LICENSE()
 $HEAD()
 
 int function(short (*) (int, int), short, short);
-short truncate(int, int);
-short round(int, int);
+short tgen_truncate(int, int);
+short tgen_round(int, int);
 
 int main(void)
 /*
@@ -2300,10 +2300,10 @@ int main(void)
 {
 	short           i = 0, statusFlag = NoMistake;
 
-	i = function(truncate, 1, 10);
+	i = function(tgen_truncate, 1, 10);
 	if (i != 5)
 		statusFlag++;
-	i = function(round, 1, 10);
+	i = function(tgen_round, 1, 10);
 	if (i != 6)
 		statusFlag++;
 	if (statusFlag != NoMistake)
@@ -2318,12 +2318,12 @@ int function(short (*getMiddle) (int, int), short high, short low)
 	return (*getMiddle) (high, low);
 }
 
-short truncate(int a, int b)
+short tgen_truncate(int a, int b)
 {
 	return (a + b) / 2;
 }
 
-short round(int a, int b)
+short tgen_round(int a, int b)
 {
 	return (a + b + 1) / 2;
 }
