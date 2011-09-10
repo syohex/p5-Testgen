@@ -24,7 +24,7 @@ sub new {
         help         => undef,
         config_file  => 'runtest.cnf',
         match_regexp => qr/^ckr/,
-        output_dir   => Cwd::realpath( $merged_dir ),
+        output_dir   => $merged_dir,
         %args,
     }, $class;
 }
@@ -59,7 +59,7 @@ sub parse_options {
 
     if (defined $output_dir) {
         my $merged_dir = File::Spec->catfile(Cwd::getcwd(), $output_dir);
-        $self->{output_dir} = Cwd::realpath( $merged_dir );
+        $self->{output_dir} = $merged_dir;
     }
 }
 
