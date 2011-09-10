@@ -57,10 +57,10 @@ SKIP: {
     );
 
     my $res = $cmd->_run_with_system;
-    is($res->stdout, "hello world\n", "capture stdout with 'system'");
+    like($res->stdout, qr/hello world/, "capture stdout with 'system'");
 
     $res = $cmd->_run_with_ipc;
-    is($res->stdout, "hello world\n", "capture stdout with 'IPC'");
+    like($res->stdout, qr/hello world/, "capture stdout with 'IPC'");
 }
 
 {

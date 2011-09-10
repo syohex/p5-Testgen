@@ -32,7 +32,8 @@ use Testgen::Runner::Executor;
     can_ok($executor, 'execute');
 
     my @cmd = $executor->_create_cmd('a.out');
-    is_deeply(\@cmd, ['./a.out'], 'execute directly');
+    my $expected = $^O eq 'MSWin32' ? 'a.out' : './a.out';
+    is_deeply(\@cmd, [ $expected ], 'execute directly');
 
     my $executor2 = Testgen::Runner::Executor->new( simulator => 'run');
     my @cmd2 = $executor2->_create_cmd('a.out');
