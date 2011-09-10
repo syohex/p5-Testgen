@@ -4,6 +4,7 @@ use warnings;
 
 use Carp ();
 use Getopt::Long ();
+use File::Spec ();
 use File::Path ();
 use File::Basename ();
 use Cwd ();
@@ -17,12 +18,13 @@ sub new {
     my ($class, %args) = @_;
 
     my $output_dir = delete $args{output_dir} || 'merged';
+    my $merged_dir = File::Spec->catfile(Cwd::getcwd(), $output_dir);
 
     bless {
         help         => undef,
         config_file  => 'runtest.cnf',
         match_regexp => qr/^ckr/,
-        output_dir   => Cwd::realpath("./$output_dir"),
+        output_dir   => Cwd::realpath( $merged_dir ),
         %args,
     }, $class;
 }
@@ -56,7 +58,8 @@ sub parse_options {
     }
 
     if (defined $output_dir) {
-        $self->{output_dir} = Cwd::realpath("./$output_dir");
+        my $merged_dir = File::Spec->catfile(Cwd::getcwd(), $output_dir);
+        $self->{output_dir} = Cwd::realpath( $merged_dir );
     }
 }
 
