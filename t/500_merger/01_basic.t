@@ -6,6 +6,7 @@ use Test::More;
 use Testgen::Merger;
 
 use Cwd ();
+use File::Spec ();
 
 {
     my $merger = Testgen::Merger->new();
@@ -14,7 +15,8 @@ use Cwd ();
 
     ok( !defined($merger->{help}), 'parameter help');
     is($merger->{config_file}, 'runtest.cnf', 'parameter config_file');
-    is($merger->{output_dir}, Cwd::realpath('./merged'), 'parameter output_dir');
+    my $expected_dir = File::Spec->catfile(Cwd::getcwd, 'merged');
+    is($merger->{output_dir}, $expected_dir, 'parameter output_dir');
     ok('ckr1-1' =~ $merger->{match_regexp}, 'parameter match_regexp');
 }
 
