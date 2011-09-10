@@ -28,7 +28,8 @@ use File::Spec ();
     $merger->parse_options(@args);
 
     is($merger->{config_file}, 'new.conf', 'CLI option config_file');
-    is($merger->{output_dir}, Cwd::realpath('./foo'), 'CLI option output_dir');
+    my $expected_dir = File::Spec->catfile(Cwd::getcwd, 'foo');
+    is($merger->{output_dir}, $expected_dir, 'CLI option output_dir');
     ok('c89-100' =~ $merger->{match_regexp}, 'CLI regexp argument');
 
     eval {
