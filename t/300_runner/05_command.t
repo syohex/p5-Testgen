@@ -19,9 +19,10 @@ use Testgen::Util;
     is($cmd->{timeout}, 0, 'parameter command');
 }
 
-my ($true_cmd, $false_cmd);
+my ($true_cmd, $false_cmd, $sleep_cmd);
 $true_cmd = 'true' if Testgen::Util::which('true');
 $false_cmd = 'false' if Testgen::Util::which('false');
+$sleep_cmd = 'sleep' if Testgen::Util::which('sleep');
 
 SKIP: {
     skip "you don't have 'true' command", 2 unless defined $true_cmd;
@@ -85,7 +86,9 @@ SKIP: {
     }
 }
 
-{
+SKIP: {
+    skip "you don't have 'sleep' command", 2 unless defined $sleep_cmd;
+
     my $sleep_cmd = [ qw/sleep 2/ ];
     my $cmd = Testgen::Runner::Command->new(
         command => $sleep_cmd,
