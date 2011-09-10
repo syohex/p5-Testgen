@@ -47,6 +47,7 @@ SKIP: {
     my ($status, $stdout, $stderr) = $cmd->_run_with_system;
     ok($status != 0, "command is failed with 'system'");
 
+    skip "Windows cannot use IPC", 1 if $^O eq 'Win32';
     ($status, $stdout, $stderr) = $cmd->_run_with_ipc;
     ok($status != 0, "command is failed with 'system'");
 }
@@ -60,8 +61,11 @@ SKIP: {
     my $res = $cmd->_run_with_system;
     like($res->stdout, qr/hello world/, "capture stdout with 'system'");
 
-    $res = $cmd->_run_with_ipc;
-    like($res->stdout, qr/hello world/, "capture stdout with 'IPC'");
+    SKIP: {
+        skip "Window cannot use IPC", 1 if $^O eq 'MSWin32';
+        $res = $cmd->_run_with_ipc;
+        like($res->stdout, qr/hello world/, "capture stdout with 'IPC'");
+    }
 }
 
 {
@@ -74,8 +78,11 @@ SKIP: {
     my $res = $cmd->_run_with_system;
     ok( length $res->stderr >= 1, "capture stderr with 'system'");
 
-    $res = $cmd->_run_with_ipc;
-    ok( length $res->stderr >= 1, "capture stderr with 'IPC'");
+    SKIP: {
+        skip "Window cannot use IPC", 1 if $^O eq 'MSWin32';
+        $res = $cmd->_run_with_ipc;
+        ok( length $res->stderr >= 1, "capture stderr with 'IPC'");
+    }
 }
 
 {
@@ -89,8 +96,11 @@ SKIP: {
     my $res = $cmd->_run_with_system;
     ok(!defined($res->status), "timeout occurs using 'system'");
 
-    $res  = $cmd->_run_with_ipc;
-    ok(!defined($res->status), "timeout occurs using 'IPC'");
+    SKIP: {
+        skip "Window cannot use IPC", 1 if $^O eq 'MSWin32';
+        $res  = $cmd->_run_with_ipc;
+        ok(!defined($res->status), "timeout occurs using 'IPC'");
+    }
 }
 
 {
