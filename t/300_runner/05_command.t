@@ -33,6 +33,7 @@ SKIP: {
     my $res = $cmd->_run_with_system;
     is($res->status, 0, "command is succeed with 'system'");
 
+    skip "Windows can't use IPC", 1 if $^O eq 'MSWin32';
     $res = $cmd->_run_with_ipc;
     is($res->status, 0, "command is succeed with 'IPC'");
 }
