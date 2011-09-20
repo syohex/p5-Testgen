@@ -1,5 +1,9 @@
 Revision history for Testgen2
 
+0.04 2011-09-20
+  All tests are passed in Windows platform.
+  Add a configuration file of Visual C++ compiler.
+
 0.03  2011-08-21
   Fix some bugs.
   Add syntax checking.
