@@ -4607,7 +4607,6 @@ int recursiveFunction(long variable)
 		if (ii == 0L)
 			ii++;
 	}
-	return;
 }
 @def_
 @def $macro63()

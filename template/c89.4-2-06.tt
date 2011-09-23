@@ -881,7 +881,6 @@ int recursiveFunction(float argument)
 		statusFlag++;
 	if (--counter)
 		result = recursiveFunction(un());
-	return;
 }
 
 float
@@ -2593,7 +2592,6 @@ int recursiveFunction(float argument)
 		if ( !(TGEN_FLT_EQ(i, 1.0)) )
 			i++;
 	}
-	return;
 }
 
 float
@@ -3712,7 +3710,6 @@ int levelThreeeafOne(unsigned variable)
 {
 	if (variable != 7L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeeafTwo(unsigned variable)
@@ -3720,7 +3717,6 @@ int levelThreeeafTwo(unsigned variable)
 {
 	if (variable != 8L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeeafThree(unsigned variable)
@@ -3728,7 +3724,6 @@ int levelThreeeafThree(unsigned variable)
 {
 	if (variable != 9L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeeafFour(unsigned variable)
@@ -3736,7 +3731,6 @@ int levelThreeeafFour(unsigned variable)
 {
 	if (variable != 10L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeeafFive(unsigned variable)
@@ -3744,7 +3738,6 @@ int levelThreeeafFive(unsigned variable)
 {
 	if (variable != 11L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeeafSix(unsigned variable)
@@ -3752,7 +3745,6 @@ int levelThreeeafSix(unsigned variable)
 {
 	if (variable != 12L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeeafSeven(unsigned variable)
@@ -3760,7 +3752,6 @@ int levelThreeeafSeven(unsigned variable)
 {
 	if (variable != 13L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeeafEight(unsigned variable)
@@ -3768,7 +3759,6 @@ int levelThreeeafEight(unsigned variable)
 {
 	if (variable != 14L)
 		statusFlag++;
-	return;
 }
 @def_
 @def $macro42()
@@ -4612,56 +4602,48 @@ int levelThreeLeafOne(long variable)
 {
 	if (variable != 7L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafTwo(long variable)
 {
 	if (variable != 8L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafThree(long variable)
 {
 	if (variable != 9L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafFour(long variable)
 {
 	if (variable != 10L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafFive(long variable)
 {
 	if (variable != 11L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafSix(long variable)
 {
 	if (variable != 12L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafSeven(long variable)
 {
 	if (variable != 13L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafEight(long variable)
 {
 	if (variable != 14L)
 		statusFlag++;
-	return;
 }
 @def_
 @def $macro53()
@@ -5800,7 +5782,6 @@ int levelOneNodeOne(long variable)
 		statusFlag++;
 	result = levelTwoNodeOne(i & j & k | l);
 	result = levelTwoNodeTwo(~(j | l) & i >> l);
-	return;
 }
 
 int levelOneNodeTwo(long variable)
@@ -5809,7 +5790,6 @@ int levelOneNodeTwo(long variable)
 		statusFlag++;
 	result = levelTwoNodeThree((i >> l | j) ^ l << l);
 	result = levelTwoNodeFour(((i | l) ^ j) & (i >> l | l));
-	return;
 }
 
 int levelTwoNodeOne(long variable)
@@ -5818,7 +5798,6 @@ int levelTwoNodeOne(long variable)
 		statusFlag++;
 	result = levelThreeLeafOne((i | l) & (k | l));
 	result = levelThreeLeafTwo((i ^ k) & j);
-	return;
 }
 
 int levelTwoNodeTwo(long variable)
@@ -5827,7 +5806,6 @@ int levelTwoNodeTwo(long variable)
 		statusFlag++;
 	result = levelThreeLeafThree((k >> l | i << l) & j);
 	result = levelThreeLeafFour(~i & (j | l));
-	return;
 }
 
 int levelTwoNodeThree(long variable)
@@ -5836,7 +5814,6 @@ int levelTwoNodeThree(long variable)
 		statusFlag++;
 	result = levelThreeLeafFive(k >> l | j);
 	result = levelThreeLeafSix((k >> l & (i | l)) << l);
-	return;
 }
 
 int levelTwoNodeFour(long variable)
@@ -5845,63 +5822,54 @@ int levelTwoNodeFour(long variable)
 		statusFlag++;
 	result = levelThreeLeafSeven((i | j) & k);
 	result = levelThreeLeafEight((i ^ k) >> l);
-	return;
 }
 
 int levelThreeLeafOne(long variable)
 {
 	if (variable != 7L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafTwo(long variable)
 {
 	if (variable != 8L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafThree(long variable)
 {
 	if (variable != 9L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafFour(long variable)
 {
 	if (variable != 10L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafFive(long variable)
 {
 	if (variable != 11L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafSix(long variable)
 {
 	if (variable != 12L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafSeven(long variable)
 {
 	if (variable != 13L)
 		statusFlag++;
-	return;
 }
 
 int levelThreeLeafEight(long variable)
 {
 	if (variable != 14L)
 		statusFlag++;
-	return;
 }
 @def_
 @def $macro71()
@@ -6328,7 +6296,6 @@ int recursiveFunction(long variable, long counter)
 		statusFlag++;
 	if (counter)
 		result = recursiveFunction(++variable << l >> l, --counter);
-	return;
 }
 @def_
 @def $macro77()
@@ -7615,7 +7582,6 @@ int recursiveFunction(long argument)
 		statusFlag++;
 	if (--counter)
 		result = recursiveFunction(un());
-	return;
 }
 
 long
@@ -9159,7 +9125,6 @@ int recursiveFunction(long argument)
 		if (i != 1L)
 			i++;
 	}
-	return;
 }
 
 long
