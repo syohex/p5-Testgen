@@ -7,6 +7,8 @@ use t::Util qw/create_tmp_file/;
 use Testgen::Runner::Command;
 use Testgen::Util;
 
+use constant WIN32 => $^O eq 'MSWin32';
+
 {
     my $echo_cmd = [ qw/echo hello world/ ];
     my $cmd = Testgen::Runner::Command->new(
@@ -34,7 +36,7 @@ SKIP: {
     my $res = $cmd->_run_with_system;
     is($res->status, 0, "command is succeed with 'system'");
 
-    skip "Windows can't use IPC", 1 if $^O eq 'MSWin32';
+    skip "Windows can't use IPC", 1 if WIN32;
     $res = $cmd->_run_with_ipc;
     is($res->status, 0, "command is succeed with 'IPC'");
 }
@@ -48,7 +50,7 @@ SKIP: {
     my ($status, $stdout, $stderr) = $cmd->_run_with_system;
     ok($status != 0, "command is failed with 'system'");
 
-    skip "Windows cannot use IPC", 1 if $^O eq 'Win32';
+    skip "Windows cannot use IPC", 1 if WIN32;
     ($status, $stdout, $stderr) = $cmd->_run_with_ipc;
     ok($status != 0, "command is failed with 'system'");
 }
@@ -63,7 +65,7 @@ SKIP: {
     like($res->stdout, qr/hello world/, "capture stdout with 'system'");
 
     SKIP: {
-        skip "Window cannot use IPC", 1 if $^O eq 'MSWin32';
+        skip "Window cannot use IPC", 1 if WIN32;
         $res = $cmd->_run_with_ipc;
         like($res->stdout, qr/hello world/, "capture stdout with 'IPC'");
     }
@@ -80,7 +82,7 @@ SKIP: {
     ok( length $res->stderr >= 1, "capture stderr with 'system'");
 
     SKIP: {
-        skip "Window cannot use IPC", 1 if $^O eq 'MSWin32';
+        skip "Window cannot use IPC", 1 if WIN32;
         $res = $cmd->_run_with_ipc;
         ok( length $res->stderr >= 1, "capture stderr with 'IPC'");
     }
@@ -100,7 +102,7 @@ SKIP: {
     ok(!defined($res->status), "timeout occurs using 'system'");
 
     SKIP: {
-        skip "Window cannot use IPC", 1 if $^O eq 'MSWin32';
+        skip "Window cannot use IPC", 1 if WIN32;
         $res  = $cmd->_run_with_ipc;
         ok(!defined($res->status), "timeout occurs using 'IPC'");
     }
