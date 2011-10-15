@@ -7,8 +7,8 @@ use Cwd ();
 use Encode ();
 use Time::HiRes ();
 use File::Temp ();
-use Symbol ();
-use IO::Select ();
+use POSIX ();
+use IPC::Open3 ();
 
 my $encoding = $^O eq 'MSWin32' ? 'cp932' : 'utf8';
 my $encoder = Encode::find_encoding($encoding);
@@ -36,9 +36,11 @@ sub new {
     }, $class;
 }
 
-## Usgin IPC is not scalable and we cannot use IPC in Windows Platform.
-## ('exec' is not used in Windows)
-*run = \&_run_with_system;
+if ($^O eq 'MSWin32') {
+    *run = \&_run_with_system;
+} else {
+    *run = \&_run_with_ipc;
+}
 
 sub _run_with_system {
     my $self = shift;
@@ -110,71 +112,53 @@ sub _run_with_system {
 sub _run_with_ipc {
     my $self = shift;
 
-    pipe(my $stdout_r, my $stdout_w);
-    pipe(my $stderr_r, my $stderr_w);
+    my $cwd = Cwd::getcwd;
+    my ($cout, $coutname) = File::Temp::tempfile( DIR => $cwd, UNLINK => 1);
+    my ($cerr, $cerrname) = File::Temp::tempfile( DIR => $cwd, UNLINK => 1);
 
+    *COUT = $cout;
+    *CERR = $cerr;
+
+    my ($pid, $status, $run_time);
     my $time_start = [ Time::HiRes::gettimeofday ];
+    eval {
+        $pid = IPC::Open3::open3(my $cin, '>&COUT', '>&CERR', @{$self->{command}});
 
-    my $pid = fork;
-    Carp::croak("Can't fork process: $!") unless defined $pid;
+        local $SIG{ALRM} = sub { die "timeout\n"; };
+        alarm $self->{timeout} if $self->{timeout};
 
-    if ($pid == 0) {
-        close $stdout_r;
-        close $stderr_r;
+        while (waitpid($pid, 0) != $pid) {}
+        $run_time = sprintf '%.6f', Time::HiRes::tv_interval($time_start);
 
-        open STDOUT, ">&=" . fileno($stdout_w)
-            or Carp::croak("Can't dup STDOUT: $!");
-        open STDERR, ">&=" . fileno($stderr_w)
-            or Carp::croak("Can't dup STDERR: $!");
+        $status = $? >> 8;
+        alarm 0;
+    };
 
-        exec @{$self->{command}} or Carp::croak("Can't exec: $!");
-        exit 2; # Never reach here
+    if ($@ && $@ eq "timeout\n") {
+        kill TERM => $pid;
+        waitpid $pid, 0;
+
+        return Testgen::Runner::Command::Response->new(status => undef);
+    } elsif ($@) {
+        return Testgen::Runner::Command::Response->new(
+            status => 1, # If executing command is failed, $? is not set.
+            stderr => "$@",
+        );
     }
 
-    close $stdout_w;
-    close $stderr_w;
+    seek($cout, 0, POSIX::SEEK_SET) or Carp::croak("Can't seek stdout: $!");
+    seek($cerr, 0, POSIX::SEEK_SET) or Carp::croak("Can't seek stderr: $!");
 
-    my $watcher = IO::Select->new();
-    $watcher->add($stdout_r);
-    $watcher->add($stderr_r);
+    my ($stdout, $stderr) = map {
+        local $/;
+        <$_>;
+    } $cout, $cerr;
 
-    my $timeout = $self->{timeout};
-    my ($stdout, $stderr) = ('', '');
-    while ($watcher->count > 0) {
-        my @ready;
-        while ( @ready = $watcher->can_read($timeout) ) {
-            for my $fh ( @ready ) {
-                my $bytes = sysread $fh, my $buf, 4096;
-                if ($bytes == -1) {
-                    Carp::croak("read error $!");
-                } elsif ($bytes == 0) {
-                    $watcher->remove($fh);
-                } else {
-                    if ($fh == $stdout_r) {
-                        $stdout .= $buf;
-                    } else {
-                        $stderr .= $buf;
-                    }
-                }
-            }
-        }
-        if ($timeout && $watcher->count > 0 && !@ready) {
-            kill 'TERM' => $pid;
-            waitpid $pid, 0;
-
-            return Testgen::Runner::Command::Response->new(
-                status => undef,
-                stdout => $encoder->decode($stdout),
-                stderr => $encoder->decode($stderr),
-            );
-        }
-    }
-
-    waitpid $pid, 0;
-    my $run_time = sprintf '%.6f', Time::HiRes::tv_interval($time_start);
+    $stdout ||= '';
+    $stderr ||= '';
 
     return Testgen::Runner::Command::Response->new(
-        status => ($? >> 8),
+        status => ($status >> 8),
         stdout => $encoder->decode($stdout),
         stderr => $encoder->decode($stderr),
         time   => $run_time - $overhead,
