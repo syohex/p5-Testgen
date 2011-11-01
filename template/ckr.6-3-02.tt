@@ -3524,10 +3524,6 @@ t800.c t801.c t802.c
 t900.c t901.c t902.c t903.c t904.c
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir ckr.6-3-02
 @file >>def.h $macro0() @file_
 @file >>ft000.c $macro1() @file_
@@ -3716,5 +3712,5 @@ testout.h.inc
 @file >>t903.c $macro184() @file_
 @file >>t904.c $macro185() @file_
 @file >>FILESET $macro186() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

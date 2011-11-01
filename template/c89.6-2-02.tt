@@ -3254,10 +3254,6 @@ t305.c t306.c
 t307.c t308.c
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.6-2-02
 @file >>def.h $macro0() @file_
 @file >>ft021.c $macro1() @file_
@@ -3351,5 +3347,5 @@ testout.h.inc
 @file >>utyp.h $macro89() @file_
 @file >>futyp.h $macro90() @file_
 @file >>FILESET $macro91() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

@@ -20428,10 +20428,6 @@ increment(variable)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir ckr.4-2-05
 @file >>def.h $macro0() @file_
 @file >>fdef.h $macro1() @file_
@@ -20732,5 +20728,5 @@ testout.h.inc
 @file >>t3028.c $macro296() @file_
 @file >>t3029.c $macro297() @file_
 @file >>t3030.c $macro298() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

@@ -2368,10 +2368,6 @@ t409.c t410.c: 1
 t411.c t412.c: 5
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.6-1-01
 @file >>def.h $macro0() @file_
 @file >>ft000.c $macro1() @file_
@@ -2451,5 +2447,5 @@ testout.h.inc
 @file >>tdef.h $macro75() @file_
 @file >>ftdef.h $macro76() @file_
 @file >>FILESET $macro77() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

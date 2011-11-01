@@ -11770,10 +11770,6 @@ int main(void)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.3-3-13
 @file >>incfile.h $macro0() @file_
 @file >>lt0000.c $macro1() @file_
@@ -12084,5 +12080,5 @@ testout.h.inc
 @file >>t2461.c $macro306() @file_
 @file >>t2462.c $macro307() @file_
 @file >>t2463.c $macro308() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

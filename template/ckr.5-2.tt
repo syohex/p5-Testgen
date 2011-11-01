@@ -2288,10 +2288,6 @@ main () {
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir ckr.5-2
 @file >>char1.c $macro0() @file_
 @file >>char2.c $macro1() @file_
@@ -2302,5 +2298,5 @@ testout.h.inc
 @file >>lrecall1.c $macro6() @file_
 @file >>lsw1.c $macro7() @file_
 @file >>lwh1.c $macro8() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

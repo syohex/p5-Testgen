@@ -1484,10 +1484,6 @@ function(int argument)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.4-3
 @file >>def.h $macro0() @file_
 @file >>fdef.h $macro1() @file_
@@ -1503,5 +1499,5 @@ testout.h.inc
 @file >>lt7.c $macro11() @file_
 @file >>lt8.c $macro12() @file_
 @file >>lt9.c $macro13() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

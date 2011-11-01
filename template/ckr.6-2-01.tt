@@ -7289,10 +7289,6 @@ t605.c t606.c
 t607.c t608.c
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir ckr.6-2-01
 @file >>def.h $macro0() @file_
 @file >>ft011.c $macro1() @file_
@@ -7418,5 +7414,5 @@ testout.h.inc
 @file >>tdef_2.h $macro121() @file_
 @file >>ftdef_2.h $macro122() @file_
 @file >>FILESET $macro123() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

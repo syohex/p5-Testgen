@@ -353,10 +353,6 @@ $ctest1(Unidef.Char)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir ckr.2-3-06
 @file >>lt???_long.c $macro0([,extern,static]) @file_
 @file >>lt???_struct.c $macro1([,static]) @file_
@@ -370,5 +366,5 @@ testout.h.inc
 @file >>t???_struct.c $macro9([,static,register]) @file_
 @file >>t???_union.c $macro10([,static,register]) @file_
 @file >>t???_typedef.c $macro11([,static,register]) @file_
-@file >>testout.h $testout() @file_
+
 @dir_

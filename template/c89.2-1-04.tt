@@ -486,10 +486,6 @@ $test1(Unidef.Char)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.2-1-04
 @file >>ft???.c $macro0([,extern,static]) @file_
 @comment
@@ -518,5 +514,5 @@ testout.h.inc
 @file >>t???.c $macro16([,,static,register]) @file_
 @file >>t???.c $macro17([,,static,register]) @file_
 @comment_
-@file >>testout.h $testout() @file_
+
 @dir_

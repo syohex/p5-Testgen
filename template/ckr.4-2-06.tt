@@ -18214,10 +18214,6 @@ tres(argument)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir ckr.4-2-06
 @file >>def.h $macro0() @file_
 @file >>fdef.h $macro1() @file_
@@ -18466,5 +18462,5 @@ testout.h.inc
 @file >>t3630.c $macro244() @file_
 @file >>t3705.c $macro245() @file_
 @file >>t3715.c $macro246() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

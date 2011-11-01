@@ -531,10 +531,6 @@ $ctest1(Unidef.Char)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.2-3-02
 @file >>ft???_float.c $macro0([,extern,static]) @file_
 @file >>ft???_struct.c $macro1([,static]) @file_
@@ -553,5 +549,5 @@ testout.h.inc
 @file >>t???_struct.c $macro14([,static,register]) @file_
 @file >>t???_union.c $macro15([,static,register]) @file_
 @file >>t???_typedef.c $macro16([,static,register]) @file_
-@file >>testout.h $testout() @file_
+
 @dir_

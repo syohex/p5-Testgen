@@ -1683,10 +1683,6 @@ main()
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir ckr.3-5
 @file >>incfile.h $macro0() @file_
 @file >>t4312.c $macro1() @file_
@@ -1708,5 +1704,5 @@ testout.h.inc
 @file >>t4329.c $macro17() @file_
 @file >>t4330.c $macro18() @file_
 @file >>t4331.c $macro19() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

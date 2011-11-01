@@ -23835,10 +23835,6 @@ short increment(short variable)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.4-2-02
 @file >>def.h $macro0() @file_
 @file >>fdef.h $macro1() @file_
@@ -24196,5 +24192,5 @@ testout.h.inc
 @file >>t1228.c $macro353() @file_
 @file >>t1229.c $macro354() @file_
 @file >>t1230.c $macro355() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

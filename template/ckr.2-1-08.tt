@@ -1316,10 +1316,6 @@ main()
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir ckr.2-1-08
 @file >>fn???.c $macro0([short,unsigned]) @file_
 @file >>fn002.c $macro1() @file_
@@ -1348,5 +1344,5 @@ testout.h.inc
 @file >>t???.c $macro24([,static,register]) @file_
 @file >>t???.c $macro25([,static,register]) @file_
 @file >>t???.c $macro26([,static,register]) @file_
-@file >>testout.h $testout() @file_
+
 @dir_

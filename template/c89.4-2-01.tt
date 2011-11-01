@@ -14701,10 +14701,6 @@ short increment(char *constant)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.4-2-01
 @file >>def.h $macro0() @file_
 @file >>fdef.h $macro1() @file_
@@ -14942,5 +14938,5 @@ testout.h.inc
 @file >>t0628.c $macro233() @file_
 @file >>t0629.c $macro234() @file_
 @file >>t0630.c $macro235() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

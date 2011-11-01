@@ -1079,10 +1079,6 @@ t800.c t801.c
 t900.c t901.c
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.6-3-03
 @file >>def.h $macro0() @file_
 @file >>ft000.c $macro1() @file_
@@ -1122,5 +1118,5 @@ testout.h.inc
 @file >>t900.c $macro35() @file_
 @file >>t901.c $macro36() @file_
 @file >>FILESET $macro37() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

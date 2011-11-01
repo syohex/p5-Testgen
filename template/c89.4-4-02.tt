@@ -834,10 +834,6 @@ float           LMT[101] =
 };
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.4-4-02
 @file >>fn000.c $macro0() @file_
 @file >>fn001.c $macro1() @file_
@@ -848,5 +844,5 @@ testout.h.inc
 @file >>fstnd.h $macro6() @file_
 @file >>fstnd2.h $macro7() @file_
 @file >>fstnd3.h $macro8() @file_
-@file >>testout.h $testout() @file_
+
 @dir_
