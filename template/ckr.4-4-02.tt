@@ -310,7 +310,7 @@ refer(essen, value)
 @def_
 @def $macro6()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;
@@ -485,7 +485,7 @@ float           LMT[101] =
 @def_
 @def $macro7()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;
@@ -660,7 +660,7 @@ float           LMT[101] =
 @def_
 @def $macro8()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;

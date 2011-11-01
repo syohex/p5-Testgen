@@ -571,7 +571,7 @@ $test1(Struct.BStruct.Int)
 
 @def $macro18()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 #define OK 1
@@ -664,7 +664,7 @@ typedef union {
 
 @def $macro19()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 float           ftest;

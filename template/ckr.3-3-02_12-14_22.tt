@@ -57,7 +57,7 @@ ckr.3-3-22.tt (OK | OK | OK | OK | OK | OK | OK | OK | OK)
 
 @def $macro0()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            i;
 long            j;

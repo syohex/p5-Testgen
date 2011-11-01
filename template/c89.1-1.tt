@@ -357,7 +357,7 @@ $test1(Long)
 
 @def $macro8()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 #define OK 1
@@ -402,7 +402,7 @@ typedef union {
 
 @def $macro9()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 float           ftest;

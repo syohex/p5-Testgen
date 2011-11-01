@@ -194,7 +194,11 @@ sub _generate_testsuite {
         libpath    => $libpath,
     );
 
-    for my $tt_file (@{$self->{argv}}) {
+    File::Copy::copy('config/testout.h', $testsuite_dir)
+        or Carp::croak("Can't copy testout.h");
+	print "Copy testout.h\n";
+
+	for my $tt_file (@{$self->{argv}}) {
         my $template = Testgen::TemplateFile->new(
             name           => $tt_file,
             testsuite_dir  => $testsuite_dir,

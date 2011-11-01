@@ -41,7 +41,7 @@ license.inc
 
 @def $macro0()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            NO = 0;
 long            OK = 1;
 #define NoMistake 00
@@ -49,7 +49,7 @@ long            OK = 1;
 
 @def $macro1()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            NO = 0;
 long            OK = 1;
 float           OK_f = 1.0;

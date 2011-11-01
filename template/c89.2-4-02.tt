@@ -210,7 +210,7 @@ int main(void)
 @def_
 @def $macro5()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;
@@ -383,7 +383,7 @@ float           LMT[101] =
 @def_
 @def $macro6()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;
@@ -556,7 +556,7 @@ float           LMT[101] =
 @def_
 @def $macro7()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;

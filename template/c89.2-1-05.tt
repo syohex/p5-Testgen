@@ -112,7 +112,7 @@ $ctest1(Union.Char)
 
 @def $macro2()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 #ifndef OKRVS

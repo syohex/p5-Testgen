@@ -371,7 +371,7 @@ void refer_2(int essen, float value)
 
 @def $macro7()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 float           ftest;
@@ -658,7 +658,7 @@ float           HEX[101] =
 
 @def $macro8()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 float           ftest;
@@ -853,7 +853,7 @@ float           BEK[101] =
 
 @def $macro9()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;
@@ -1203,7 +1203,7 @@ float           LMTB[126] =
 
 @def $macro10()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;
@@ -1348,7 +1348,7 @@ float           LMT[58] =
 
 @def $macro11()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;

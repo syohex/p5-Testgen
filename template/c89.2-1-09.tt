@@ -382,7 +382,7 @@ $ctest1(Unidef.Char)
 
 @def $macro14()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 #define OK 1
@@ -427,7 +427,7 @@ typedef union {
 
 @def $macro15()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 float           ftest;
 long            itest;
 char            ctest;

@@ -288,7 +288,7 @@ $ctest1(Unidef.Char)
 
 @def $macro8()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 #define NOK 20
@@ -335,7 +335,7 @@ typedef union {
 
 @def $macro9()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 float           ftest;
 long            itest;
 char            ctest;

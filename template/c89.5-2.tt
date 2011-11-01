@@ -30,7 +30,7 @@ license.inc
 #include "sysdep.h"
 #endif /* SYSDEP_H */
 
-#include "testout.h"
+#include "../testout.h"
 @def_
 
 @def $macro0()
@@ -198,7 +198,7 @@ int main(void)
 	    printno() ;
 	return 0;
 }
-#include "testout.h"
+#include "../testout.h"
 @def_
 @def $macro4()
 $LICENSE()

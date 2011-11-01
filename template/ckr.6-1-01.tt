@@ -37,7 +37,7 @@ license.inc
 
 @def $macro0()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 #define NO 0
 #define OK 1
 #define YCHAR	'y'
@@ -854,7 +854,7 @@ function(argument)
 
 @def $macro20()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 #define OK 1
 #define NO 0
 #define YCHAR	'y'
@@ -884,7 +884,7 @@ union Union {
 
 @def $macro21()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 #define OK 1
 #define NO 0
 #define YCHAR	'y'

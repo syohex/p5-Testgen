@@ -34,7 +34,7 @@ license.inc
 #include "sysdep.h"
 #endif
 #include "stnd.h"
-#include "testout.h"
+#include "../testout.h"
 @def_
 
 @def $FHEAD()
@@ -42,7 +42,7 @@ license.inc
 #include "sysdep.h"
 #endif
 #include "fstnd.h"
-#include "testout.h"
+#include "../testout.h"
 @def_
 
 @def $test1($VAR9)
@@ -301,7 +301,7 @@ $LICENSE()
 #endif
 
 #include "stnd.h"
-#include "testout.h"
+#include "../testout.h"
 main()
 {
 	/*--TEST--

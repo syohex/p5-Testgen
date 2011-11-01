@@ -903,7 +903,7 @@ main()
 
 @def $macro17()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 #define INUM 1
@@ -950,7 +950,7 @@ typedef union {
 
 @def $macro18()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 float           ftest;
 long            itest;
 char            ctest;

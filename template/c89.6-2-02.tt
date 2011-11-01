@@ -37,7 +37,7 @@ license.inc
 
 @def $macro0()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 #define NO 0
 #define OK 1
 #define YCHAR	'y'

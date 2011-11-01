@@ -163,7 +163,7 @@ $ctest1(Unidef.Char)
 
 @def $macro4()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;

@@ -30,7 +30,7 @@ license.inc
 #include "sysdep.h"
 #endif
 
-#include "testout.h"
+#include "../testout.h"
 @def_
 
 @def $macro0()

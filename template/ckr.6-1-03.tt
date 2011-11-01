@@ -37,7 +37,7 @@ license.inc
 
 @def $macro0()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 #define NO 0
 #define OK 1
 #define YCHAR	'y'
@@ -2234,7 +2234,7 @@ function_F(argument)
 
 @def $macro44()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 #define OK 1
 #define NO 0
 #define YCHAR	'y'
@@ -2251,7 +2251,7 @@ char            Char[1];
 
 @def $macro45()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 #define OK 1
 #define NO 0
 #define YCHAR	'y'

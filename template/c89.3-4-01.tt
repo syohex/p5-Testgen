@@ -38,7 +38,7 @@ license.inc
 
 @def $macro0()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            i;
 long            j;
 long            k;

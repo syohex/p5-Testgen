@@ -185,7 +185,7 @@ $LICENSE()
 
 #define	ONEL	( ~($ULONGMAX() - 1) )
 
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;
