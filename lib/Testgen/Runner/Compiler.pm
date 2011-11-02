@@ -71,6 +71,8 @@ sub preprocess {
 
     # I should analyze preprocessor's error message.
     # So I hope that error message is English.
+    local $ENV{LANG} = 'C'; # for IPC::Open3
+
     my $old_locale = setlocale(LC_ALL);
     POSIX::setlocale(LC_ALL, "C");
     my $response = $preprocessor_cmd->run;

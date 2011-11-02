@@ -1,5 +1,6 @@
 Revision history for Testgen2
 
+<<<<<<< HEAD
 0.10 2011-XX-XX
   template/*.ttを修正.
   	#include "testout.h" を #include "../testout.h"へ.
@@ -10,6 +11,11 @@ Revision history for Testgen2
   	config/testout.hをテストスイート生成先へコピーするようにした.
   pallalersを設定しないと, マージなしのテストが成功しない?
 	設定なし/parallels => 1 で失敗, parallels => 2で成功.
+=======
+0.07 2011-11-02
+  - Fix too many opened temp files problem.
+  - Fix locale problem.
+>>>>>>> syohex/master
 
 0.06 2011-10-15
   Fix run_with_ipc function.

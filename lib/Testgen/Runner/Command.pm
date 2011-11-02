@@ -113,11 +113,11 @@ sub _run_with_ipc {
     my $self = shift;
 
     my $cwd = Cwd::getcwd;
-    my ($cout, $coutname) = File::Temp::tempfile( DIR => $cwd, UNLINK => 1);
-    my ($cerr, $cerrname) = File::Temp::tempfile( DIR => $cwd, UNLINK => 1);
+    my $cout = File::Temp->new( DIR => $cwd );
+    my $cerr = File::Temp->new( DIR => $cwd );
 
-    *COUT = $cout;
-    *CERR = $cerr;
+    local *COUT = $cout;
+    local *CERR = $cerr;
 
     my ($pid, $status, $run_time);
     my $time_start = [ Time::HiRes::gettimeofday ];
@@ -134,16 +134,21 @@ sub _run_with_ipc {
         alarm 0;
     };
 
-    if ($@ && $@ eq "timeout\n") {
-        kill TERM => $pid;
-        waitpid $pid, 0;
+    if (my $e = $@) {
+        undef $cout;
+        undef $cerr;
 
-        return Testgen::Runner::Command::Response->new(status => undef);
-    } elsif ($@) {
-        return Testgen::Runner::Command::Response->new(
-            status => 1, # If executing command is failed, $? is not set.
-            stderr => "$@",
-        );
+        if ($e eq "timeout\n") {
+            kill TERM => $pid;
+            waitpid $pid, 0;
+
+            return Testgen::Runner::Command::Response->new(status => undef);
+        } else {
+            return Testgen::Runner::Command::Response->new(
+                status => 1, # If executing command is failed, $? is not set.
+                stderr => "$@",
+            );
+        }
     }
 
     seek($cout, 0, POSIX::SEEK_SET) or Carp::croak("Can't seek stdout: $!");
@@ -153,6 +158,9 @@ sub _run_with_ipc {
         local $/;
         <$_>;
     } $cout, $cerr;
+
+    undef $cout;
+    undef $cerr;
 
     $stdout ||= '';
     $stderr ||= '';
