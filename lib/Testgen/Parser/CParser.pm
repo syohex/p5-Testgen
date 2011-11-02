@@ -94,7 +94,7 @@ sub find_missing_headers {
 
     my %header;
     while ($errmsg =~ m{$error_message_re}g) {
-         $header{$1} = 1;
+        $header{$1} = 1;
     }
 
     return keys %header;
