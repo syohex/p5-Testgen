@@ -37,7 +37,7 @@ license.inc
 
 @def $macro0()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 #define NO 0
 #define OK 1
 #define NoMistake 00
@@ -945,10 +945,6 @@ t301.c t302.c
 t311.c t312.c
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.6-3-01
 @file >>def.h $macro0() @file_
 @file >>ft001.c $macro1() @file_
@@ -998,5 +994,5 @@ testout.h.inc
 @file >>t311.c $macro45() @file_
 @file >>t312.c $macro46() @file_
 @file >>FILESET $macro47() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

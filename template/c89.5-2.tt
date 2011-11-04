@@ -30,7 +30,7 @@ license.inc
 #include "sysdep.h"
 #endif /* SYSDEP_H */
 
-#include "testout.h"
+#include "../testout.h"
 @def_
 
 @def $macro0()
@@ -198,7 +198,7 @@ int main(void)
 	    printno() ;
 	return 0;
 }
-#include "testout.h"
+#include "../testout.h"
 @def_
 @def $macro4()
 $LICENSE()
@@ -2291,10 +2291,6 @@ int main(void)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.5-2
 @file >>char1.c $macro0() @file_
 @file >>char2.c $macro1() @file_
@@ -2305,5 +2301,5 @@ testout.h.inc
 @file >>lrecall1.c $macro6() @file_
 @file >>lsw1.c $macro7() @file_
 @file >>lwh1.c $macro8() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

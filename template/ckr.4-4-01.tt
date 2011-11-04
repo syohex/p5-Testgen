@@ -372,7 +372,7 @@ refer_2(essen, value)
 
 @def $macro7()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 float           ftest;
@@ -659,7 +659,7 @@ float           HEX[101] =
 
 @def $macro8()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 float           ftest;
@@ -854,7 +854,7 @@ float           BEK[101] =
 
 @def $macro9()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;
@@ -1204,7 +1204,7 @@ float           LMTB[126] =
 
 @def $macro10()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;
@@ -1349,7 +1349,7 @@ float           LMT[58] =
 
 @def $macro11()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;
@@ -1467,10 +1467,6 @@ float           LMT[33] =
 };
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir ckr.4-4-01
 @file >>fn001.c $macro0() @file_
 @file >>fn002.c $macro1() @file_
@@ -1484,5 +1480,5 @@ testout.h.inc
 @file >>fstnd3.h $macro9() @file_
 @file >>fstnd4.h $macro10() @file_
 @file >>fstnd5.h $macro11() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

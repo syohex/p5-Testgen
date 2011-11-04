@@ -37,7 +37,7 @@ license.inc
 
 @def $macro0()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 #define NO 0
 #define OK 1
 #define YCHAR	'y'
@@ -8313,10 +8313,6 @@ t705.c t706.c: 10
 t707.c t708.c: 6
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir ckr.6-1-02
 @file >>def.h $macro0() @file_
 @file >>ft000.c $macro1() @file_
@@ -8442,5 +8438,5 @@ testout.h.inc
 @file >>tdef_2.h $macro121() @file_
 @file >>ftdef_2.h $macro122() @file_
 @file >>FILESET $macro123() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

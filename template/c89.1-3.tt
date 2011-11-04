@@ -571,7 +571,7 @@ $test1(Struct.BStruct.Int)
 
 @def $macro18()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 #define OK 1
@@ -664,7 +664,7 @@ typedef union {
 
 @def $macro19()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 float           ftest;
@@ -770,10 +770,6 @@ typedef union {
 }               UNIDEF;
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.1-3
 @file >>fn???.c $macro0([,static]) @file_
 @file >>fn???_extern.c $macro1() @file_
@@ -795,5 +791,5 @@ testout.h.inc
 @file >>lt???_extern.c $macro17() @file_
 @file >>stnd3.01.h $macro18() @file_
 @file >>fstnd3.01.h $macro19() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

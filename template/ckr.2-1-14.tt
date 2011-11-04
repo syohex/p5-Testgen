@@ -219,7 +219,7 @@ $ctest1(Unidef.Char)
 
 @def $macro8()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            itest;
 char            ctest;
@@ -382,10 +382,6 @@ $ctest1(Unidef.Char)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir ckr.2-1-14
 @file >>ln???.c $macro0(Long,Short) @file_
 @file >>ln???.c $macro0(Short,Long) @file_
@@ -404,5 +400,5 @@ testout.h.inc
 @file >>t???.c $macro14([,static,register]) @file_
 @file >>lt???.c $macro15([,static,register]) @file_
 @file >>lt???.c $macro16([,static,register]) @file_
-@file >>testout.h $testout() @file_
+
 @dir_

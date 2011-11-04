@@ -30,7 +30,7 @@ license.inc
 #include "sysdep.h"
 #endif
 
-#include "testout.h"
+#include "../testout.h"
 @def_
 
 @def $macro0()
@@ -276,10 +276,6 @@ int main(void)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.5-1
 @file >>ls6.c $macro0() @file_
 @file >>ls7.c $macro1() @file_
@@ -288,5 +284,5 @@ testout.h.inc
 @file >>s3.c $macro4() @file_
 @file >>s31.c $macro5() @file_
 @file >>s8.c $macro6() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

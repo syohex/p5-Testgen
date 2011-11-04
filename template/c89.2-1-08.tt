@@ -903,7 +903,7 @@ int main(void)
 
 @def $macro17()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 #define INUM 1
@@ -950,7 +950,7 @@ typedef union {
 
 @def $macro18()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 float           ftest;
 long            itest;
 char            ctest;
@@ -1316,10 +1316,6 @@ int main(void)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.2-1-08
 @file >>fn???.c $macro0([short,unsigned]) @file_
 @file >>fn002.c $macro1() @file_
@@ -1348,5 +1344,5 @@ testout.h.inc
 @file >>t???.c $macro24([,static,register]) @file_
 @file >>t???.c $macro25([,static,register]) @file_
 @file >>t???.c $macro26([,static,register]) @file_
-@file >>testout.h $testout() @file_
+
 @dir_

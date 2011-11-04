@@ -112,7 +112,7 @@ $ctest1(Union.Char)
 
 @def $macro2()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 #ifndef OKRVS
@@ -269,10 +269,6 @@ $ctest1(Unidef.Char)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.2-1-05
 @file >>lt???.c $macro0([,extern,static]) @file_
 @file >>lt???.c $macro1([,static]) @file_
@@ -290,5 +286,5 @@ testout.h.inc
 @file >>t???.c $macro8([,static,register]) @file_
 @file >>t???.c $macro9([,static,register]) @file_
 @file >>t???.c $macro10([,static,register]) @file_
-@file >>testout.h $testout() @file_
+
 @dir_

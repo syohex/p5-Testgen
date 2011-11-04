@@ -14,6 +14,8 @@ use Testgen::Runner::Compiler;
 use Testgen::TestDirectory;
 use Testgen::Util;
 
+my $div = '========';
+
 sub new {
     my ($class, %args) = @_;
 
@@ -100,13 +102,18 @@ sub run {
     }
 
     # output fileset
-    my $fileset = File::Spec->catfile($self->{output_dir}, "FILESET");
+	my $fileset = File::Spec->catfile($self->{output_dir}, "PROGRAM");
     open my $fh, '>', $fileset or Carp::croak("Can't open $fileset: $!");
     for my $merge_info (@merge_infos) {
-        my ($file_info, $total_oknum) = @{$merge_info};
+        my ($file_info, $total_oknum, $total_prognum, $prog_list) = @{$merge_info};
 
         my $str = join ' ', map { File::Basename::basename($_) } @{$file_info};
-        print {$fh} "$str : $total_oknum\n";
+		print {$fh} "$str : $total_oknum / $total_prognum\n";
+
+		foreach my $list(@{$prog_list}) {
+			print {$fh} "\t${$list}[0] : ${$list}[1]\n";
+		}
+        print {$fh} "$div\n";
     }
 }
 

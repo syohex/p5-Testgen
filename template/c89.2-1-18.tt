@@ -538,7 +538,7 @@ $ctest1(Unidef.Char)
 
 @def $macro18()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 long            itest;
 char            ctest;
 #define OK 1
@@ -583,7 +583,7 @@ typedef union {
 
 @def $macro19()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 float           ftest;
 long            itest;
 char            ctest;
@@ -739,10 +739,6 @@ $ctest1(Unidef.Char)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.2-1-18
 @file >>fn???.c $macro0() @file_
 @file >>fn???.c $macro1() @file_
@@ -772,5 +768,5 @@ testout.h.inc
 @file >>t???.c $macro25([,static,register]) @file_
 @file >>t???.c $macro26([,static,register]) @file_
 @file >>t???.c $macro27([,static,register]) @file_
-@file >>testout.h $testout() @file_
+
 @dir_

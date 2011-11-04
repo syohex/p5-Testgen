@@ -60,18 +60,41 @@ sub output_as_main_file {
     my $self = shift;
 
     my $headers_str   = $self->_include_statements_str;
-    my $pseudo_main_str = join "\n", map { "$_();" } @{$self->{pseudo_mains}};
-    my $fragments_str   = join "\n", @{$self->{fragments}};
+    my ($pseudo_main_str, $function_num) = ('', 0);
+	my @pseudo_mains = ();
+
+	foreach my $function(@{$self->{pseudo_mains}}) {
+		$function_num++;
+		push @pseudo_mains, "\t\tcase $function_num:";
+		push @pseudo_mains, "\t\t\t$function();";
+		push @pseudo_mains, "\t\t\tprintdiv();";	
+			}
+	
+	$pseudo_main_str = join "\n", @pseudo_mains;
+
+	my $fragments_str   = join "\n", @{$self->{fragments}};
 
     return <<"...";
 $headers_str
+#include "../write.h"
 
-int main ()
+int main (int argc, char *argv[])
 {
+	int count = 0;
+	int prog = 1;
 
+	if(argc > 1) {
+		prog = 0;
+		while(argv[1][count] != 0) {
+			prog = (prog * 10) + (argv[1][count] - '0');
+			count++;
+		}
+	}
+	switch(prog) {
 $pseudo_main_str
+	}
 
-    return 0;
+	return 0;
 }
 
 $fragments_str

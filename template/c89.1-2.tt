@@ -34,7 +34,7 @@ license.inc
 #include "sysdep.h"
 #endif
 #include "stnd.h"
-#include "testout.h"
+#include "../testout.h"
 @def_
 
 @def $FHEAD()
@@ -42,7 +42,7 @@ license.inc
 #include "sysdep.h"
 #endif
 #include "fstnd.h"
-#include "testout.h"
+#include "../testout.h"
 @def_
 
 @def $test1($VAR9)
@@ -301,7 +301,7 @@ $LICENSE()
 #endif
 
 #include "stnd.h"
-#include "testout.h"
+#include "../testout.h"
 int main(void)
 {
 	/*--TEST--
@@ -358,10 +358,6 @@ $ctest1(Unidef->Char)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.1-2
 @file >>ft???.c $macro0() @file_
 @file >>lt???.c $macro1([,extern,static]) @file_
@@ -374,5 +370,5 @@ testout.h.inc
 @file >>t019.c $macro8() @file_
 @file >>t023.c $macro9() @file_
 @file >>t027.c $macro10() @file_
-@file >>testout.h $testout() @file_
+
 @dir_

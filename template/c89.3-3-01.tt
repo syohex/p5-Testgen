@@ -38,7 +38,7 @@ license.inc
 
 @def $macro0()
 $LICENSE()
-#include "testout.h"
+#include "../testout.h"
 
 long            i;
 long            j;
@@ -14532,10 +14532,6 @@ int main(void)
 }
 @def_
 
-@include
-testout.h.inc
-@include_
-
 @dir c89.3-3-01
 @file >>incfile.h $macro0() @file_
 @file >>lt0000.c $macro1() @file_
@@ -14846,5 +14842,5 @@ testout.h.inc
 @file >>t0613.c $macro306() @file_
 @file >>t0614.c $macro307() @file_
 @file >>t0615.c $macro308() @file_
-@file >>testout.h $testout() @file_
+
 @dir_
