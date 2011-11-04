@@ -208,19 +208,24 @@ sub merge_tests {
         compiler => $compiler,
     );
 
-    my ($total_oknum, $has_subfile) = (0, 0);
+    my ($total_oknum, $total_prognum, $has_subfile) = (0, 0, 0);
     my %cache;
-    for my $test ( @{$self->{tests}} ) {
-        $total_oknum += $test->oknum();
+	my @prog_list;
+
+	for my $test ( @{$self->{tests}} ) {
+		$total_oknum += $test->oknum();
+		$total_prognum++;
 
         my (@mains, @subs);
         for my $file ( $test->files ) {
             if (exists $cache{$file} || _has_main($file) ) {
                 push @mains, $file;
                 $cache{$file} = 1;
-            } else {
+				unshift @prog_list, [ $file, $test->oknum() ];
+			} else {
                 push @subs, $file;
                 $has_subfile = 1;
+				$prog_list[0][0] .= " $file";
             }
         }
 
@@ -231,6 +236,8 @@ sub merge_tests {
         $main_file->add($_, $prefix) for @mains;
         $sub_file->add($_, $prefix) for @subs;
     }
+
+	@prog_list = sort {@$a[0] cmp @$b[0]} @prog_list;
 
     my @output_files;
 
@@ -251,7 +258,7 @@ sub merge_tests {
         push @output_files, $sub_name;
     }
 
-    return [ \@output_files, $total_oknum ];
+    return [ \@output_files, $total_oknum, $total_prognum, \@prog_list ];
 }
 
 sub _has_main {
