@@ -198,6 +198,10 @@ sub _generate_testsuite {
         or Carp::croak("Can't copy testout.h");
 	print "Copy testout.h\n";
 
+    File::Copy::copy('config/write.h', $testsuite_dir)
+        or Carp::croak("Can't copy write.h");
+	print "Copy write.h\n";
+
 	for my $tt_file (@{$self->{argv}}) {
         my $template = Testgen::TemplateFile->new(
             name           => $tt_file,
