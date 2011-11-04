@@ -4,8 +4,11 @@ Revision history for Testgen2
   template/*.ttを修正.
   	#include "testout.h" を #include "../testout.h"へ.
   template/testout.h.incを削除, 代わりにconfigにtestout.hを配置.
+  testout.hの内容を一部write.hへ, write.hをconfigに配置.
   Generator.pmを修正.
   	config/testout.hをテストスイート生成先へコピーするようにした.
+  Merger.pm, CMergedFile.pm, CParser.pm, TestDirectory.pmを修正.
+    新しいテスト併合手法に対応した併合を行うように修正.
 
 0.07 2011-11-02
   - Fix too many opened temp files problem.
