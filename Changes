@@ -1,5 +1,9 @@
 Revision history for Testgen2
 
+0.08 2011-11-09
+  - Add authors tests
+  - Fix spelling of document and violation of Perl::Critic
+
 0.07 2011-11-02
   - Fix too many opened temp files problem.
   - Fix locale problem.
