@@ -312,8 +312,8 @@ Return results of tests in this directory as Hash reference.
 
 =head3 C<< $template_dir->summarize($log, $faillog) >>
 
-Summary of this test directory. Infomation of fail tests are outputed to
-C<$faillog>, others are outputed to C<$log>.
+Summary of this test directory. Information of fail tests are output to
+C<$faillog>, others are output to C<$log>.
 
 =head3 C<< $template_dir->merge_tests(%args) >> : [ $files:ArrayRef, $oknum:Int ]
 

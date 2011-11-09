@@ -27,7 +27,7 @@ It genrates C source codes from template files and generates
 script to run tests.
 
 Testgen support merging tests. Testsuite has a lot of tests,
-It takes too long time to compile and executeee them.
+It takes too long time to compile and execute them.
 You can save time by merging tests.
 
 =head1 AUTHOR

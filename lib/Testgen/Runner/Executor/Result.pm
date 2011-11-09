@@ -76,11 +76,11 @@ I<status> must be 'success' or 'missing' or 'timeout' or 'error'.
 
 =back
 
-=head2 Instanse Methods
+=head2 Instance Methods
 
 =head3 C<< $execute_result->message() >> :Str
 
-Return message indicated by system or simlator.
+Return message indicated by system or simulator.
 Return C<''> when executing is success.
 
 =head3 C<< $execute_result->is_missing >> :Bool

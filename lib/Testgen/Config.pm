@@ -126,7 +126,7 @@ The config file is like this:
 =head3 C<< $config->get(parameter) >>
 
 Gets parameter in configuration file and returns its value.
-If paramter is not found in config, then return C<undef>.
+If parameter is not found in config, then return C<undef>.
 
 =head1 SEE ALSO
 

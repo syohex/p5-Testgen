@@ -72,7 +72,7 @@ I<status> must be 'success' or 'warn' or 'error'.
 
 =back
 
-=head2 Instanse Methods
+=head2 Instance Methods
 
 =head3 C<< $compile_result->message() >> :Str
 
