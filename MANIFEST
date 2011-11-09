@@ -239,4 +239,6 @@ template/license.inc
 template/testout.h.inc
 tgen.cnf
 util/log2tsv.pl
-xt/pod.t
+xt/01_spelling.t
+xt/02_perlcritic.t
+xt/03_pod.t
