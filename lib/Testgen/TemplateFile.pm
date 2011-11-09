@@ -192,7 +192,7 @@ sub _parse_dir_section {
         my $testdir = File::Spec->catfile($self->{testsuite_dir}, $dirname);
 
         File::Path::rmtree([$testdir], 0, 0) if -d $testdir;
-        File::Path::mkpath([$testdir], 0, 0777);
+        File::Path::mkpath([$testdir], 0, oct(777));
 
         {
             my $guard = Testgen::Util::Chdir->new($testdir);

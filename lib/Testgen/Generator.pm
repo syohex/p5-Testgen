@@ -214,7 +214,7 @@ sub _make_dir {
     }
 
     unless (-d $dir) {
-        File::Path::mkpath([ $dir ], 0, 0777);
+        File::Path::mkpath([ $dir ], 0, oct(777));
     }
 }
 

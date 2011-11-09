@@ -70,7 +70,7 @@ sub run {
 
     my $merge_dir = $self->{output_dir};
     File::Path::rmtree([$merge_dir], 0, 0) if -d $merge_dir;
-    File::Path::mkpath([$merge_dir], 0, 0777);
+    File::Path::mkpath([$merge_dir], 0, oct(777));
 
     my $regexp = $self->{match_regexp};
     my @target_dirs = grep {

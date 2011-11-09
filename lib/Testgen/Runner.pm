@@ -97,7 +97,7 @@ sub _init {
     $self->{start_time} = time;
 
     unless (-d $self->{log_dir}) {
-        File::Path::mkpath([ $self->{log_dir} ], 0, 0777);
+        File::Path::mkpath([ $self->{log_dir} ], 0, oct(777));
     }
 
     my $base = _log_name( $self->{start_time} );
