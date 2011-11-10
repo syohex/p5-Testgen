@@ -1,5 +1,10 @@
 Revision history for Testgen2
 
+0.09 2011-11-11
+  - Add new feature to Testgen::TemplateFile::Macro
+     'body' parameter accept CodeRef.
+     This feature is for creating builtin function.
+
 0.08 2011-11-09
   - Add authors tests
   - Fix spelling of document and violation of Perl::Critic
