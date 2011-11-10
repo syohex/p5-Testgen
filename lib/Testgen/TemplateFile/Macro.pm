@@ -72,9 +72,15 @@ $self->{name}
             $expanded = $arg_binding{$macro};
         } elsif (exists $global_env->{$macro}) {
             my $macro_def = $global_env->{$macro};
-            my $arg_ref   = [ split ',', $arg_str ];
 
-            $expanded = $macro_def->expand($arg_ref, $global_env);
+            if (ref $macro_def->{body} eq 'CODE') {
+                my @args = split /[,\s]/, $arg_str;
+                local $_ = $arg_str;
+                $expanded = $macro_def->{body}->(@args);
+            } else {
+                my $arg_ref = [ split /[,\s]/, $arg_str ];
+                $expanded = $macro_def->expand($arg_ref, $global_env);
+            }
         } else {
             unless ( grep { $macro eq $_ } @ignore_macros ) {
                 _macro_not_found($macro);
@@ -125,7 +131,7 @@ I<%args> might be:
 
 =item dummy_args :ArrayRef[Str] = []
 
-=item body : Str
+=item body : Str or CodeRef
 
 =back
 

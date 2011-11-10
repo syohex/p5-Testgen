@@ -54,4 +54,54 @@ use Testgen::TemplateFile::Macro;
     is($macro->expand(['TEST'], {}), $expected, 'macro expand no global');
 }
 
+{
+    my $test_body =<<'...';
+$VAR9
+$PRINT("%s\n","@OK@");
+$WRITE("@OK@");
+...
+
+    my $macro = Testgen::TemplateFile::Macro->new(
+        name => '$PRINT',
+        dummy_args => [ qw/$VAR9/ ],
+        body => $test_body,
+    );
+
+    ok($macro, 'constucter. body param is CodeRef');
+
+    my $expected =<<'...';
+TEST
+printf("%s\n","@OK@");
+write(1, "@OK@", 4);
+...
+
+    my $builtin = {
+        '$PRINT' => Testgen::TemplateFile::Macro->new(
+            name => '$PRINT',
+            body => sub {
+                "printf($_)";
+            },
+        ),
+
+        '$WRITE' => Testgen::TemplateFile::Macro->new(
+            name => '$WRITE',
+            body => sub {
+                my $string = shift;
+                my $length;
+                if ($string =~ m{^"([^"]+)"$}) {
+                    $length = length $1;
+                } else {
+                    $length = length $string;
+                }
+
+                my $stdout_fd = 1;
+                "write($stdout_fd, $string, $length)";
+            },
+        ),
+    };
+
+    is($macro->expand(['TEST'], $builtin), $expected,
+       'macro expand with builtin func');
+}
+
 done_testing;
