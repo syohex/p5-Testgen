@@ -1,5 +1,8 @@
 Revision history for Testgen2
 
+0.10 2011-11-11
+  - Fix document spell
+
 0.09 2011-11-11
   - Add new feature to Testgen::TemplateFile::Macro
      'body' parameter accept CodeRef.
