@@ -23,7 +23,7 @@ Testgen - Testsuite generator for C compilers
 =head1 DESCRIPTION
 
 Testgen is testsuite generator for C compilers.
-It genrates C source codes from template files and generates
+It generates C source codes from template files and generates
 script to run tests.
 
 Testgen support merging tests. Testsuite has a lot of tests,

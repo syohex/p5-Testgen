@@ -60,7 +60,6 @@ Testsuite
 UCHIYAMA
 Yuji
 Yuki
-genrates
 testsuite
 lang
 TODO
