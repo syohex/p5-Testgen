@@ -47,12 +47,12 @@ SKIP: {
         command => [ $false_cmd ],
     );
 
-    my ($status, $stdout, $stderr) = $cmd->_run_with_system;
-    ok($status != 0, "command is failed with 'system'");
+    my $res = $cmd->_run_with_system;
+    ok($res->status != 0, "command is failed with 'system'");
 
     skip "Windows cannot use IPC", 1 if WIN32;
-    ($status, $stdout, $stderr) = $cmd->_run_with_ipc;
-    ok($status != 0, "command is failed with 'system'");
+    $res = $cmd->_run_with_ipc;
+    ok($res->status != 0, "command is failed with 'system'");
 }
 
 {

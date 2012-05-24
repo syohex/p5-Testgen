@@ -166,7 +166,7 @@ sub _run_with_ipc {
     $stderr ||= '';
 
     return Testgen::Runner::Command::Response->new(
-        status => ($status >> 8),
+        status => $status,
         stdout => $encoder->decode($stdout),
         stderr => $encoder->decode($stderr),
         time   => $run_time - $overhead,
