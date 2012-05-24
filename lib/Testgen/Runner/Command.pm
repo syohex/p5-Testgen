@@ -110,6 +110,8 @@ sub _run_with_system {
 }
 
 sub _run_with_ipc {
+    no warnings 'once';
+
     my $self = shift;
 
     my $cwd = Cwd::getcwd;
