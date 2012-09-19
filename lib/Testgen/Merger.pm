@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 use Carp ();
-use Getopt::Long ();
+use Getopt::Long qw(:config posix_default no_ignore_case gnu_compat);
 use File::Spec ();
 use File::Path ();
 use File::Basename ();

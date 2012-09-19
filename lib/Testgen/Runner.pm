@@ -4,7 +4,7 @@ use warnings;
 
 use Carp ();
 use Cwd ();
-use Getopt::Long ();
+use Getopt::Long qw(:config posix_default no_ignore_case gnu_compat);
 use File::Path ();
 use File::Temp ();
 use File::Basename ();
