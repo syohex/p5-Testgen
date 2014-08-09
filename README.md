@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/syohex/p5-Testgen.png?branch=master)](https://travis-ci.org/syohex/p5-Testgen)
 # NAME
 
 Testgen - Testsuite generator for C compilers
